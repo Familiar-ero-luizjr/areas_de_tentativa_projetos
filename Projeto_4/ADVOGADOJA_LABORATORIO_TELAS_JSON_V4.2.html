@@ -1,0 +1,2407 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Advogado Já · Laboratório JSON Linear V3</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1a2d46;background:#f3f6fb}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}
+button:disabled{opacity:.45;cursor:default}[hidden]{display:none!important}
+.header{background:#122b4b;color:#fff;padding:16px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px;min-width:240px}.logo{background:#c39a45;color:#112746;border-radius:11px;width:43px;height:43px;display:grid;place-items:center;font-weight:900}
+.brand strong{display:block;font-size:16px}.brand small{display:block;color:#b5c7e2;font-size:11px}.header-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-left:auto}
+.btn{border:1px solid #cbd8e6;border-radius:9px;background:#fff;color:#25425f;padding:9px 13px;font-size:12px;font-weight:740;min-height:37px}
+.btn:hover{background:#edf3fa}.btn.primary{background:#2d6cb7;border-color:#2d6cb7;color:white}.btn.primary:hover{background:#255995}
+.header .btn{background:#213f64;color:#eff7ff;border-color:#436288}.header .btn.primary{background:#d2a748;color:#152b44;border-color:#d2a748}
+.save-status{font-size:11px;color:#b8d5ef;margin-left:4px}.tabs{display:flex;background:#fff;border-bottom:1px solid #dce5ef;padding:0 22px;gap:4px;overflow:auto}
+.tab{background:none;border:0;border-bottom:3px solid transparent;padding:13px 17px;color:#667d97;font-size:13px;font-weight:750;white-space:nowrap}
+.tab.active{border-bottom-color:#2c72c2;color:#1c4d86}.page{padding:20px;max-width:1600px;margin:auto}.page-title{margin:2px 0 17px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.page-title h1{font-size:20px;letter-spacing:-.025em;margin:0}.page-title p{font-size:12px;color:#72849b;margin:5px 0 0}
+.grid{display:grid;grid-template-columns:minmax(220px,270px) minmax(280px,1fr) minmax(255px,310px);gap:14px;align-items:start}
+.panel{background:#fff;border:1px solid #dce5ef;border-radius:13px;box-shadow:0 6px 24px #1d42650a;min-width:0;overflow:hidden}
+.panel-head{padding:13px 16px;border-bottom:1px solid #e9eff7;font-weight:800;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.panel-body{padding:15px}.field{display:grid;gap:5px;margin-bottom:13px}.field label{font-weight:760;color:#526983;font-size:11px}
+.input{border:1px solid #d1dce9;background:#fff;border-radius:8px;color:#203b58;padding:9px 10px;outline:none;min-width:0;width:100%;font-size:12px}
+.input:focus{border-color:#4886d0;box-shadow:0 0 0 3px #3477bf17}.muted{color:#70849a;font-size:11px;line-height:1.5}.pill{background:#e8f1fb;color:#2a5e98;font-size:10px;font-weight:800;border-radius:99px;padding:4px 8px}
+.pill.pending{background:#fff3dc;color:#926a1c}.pill.approved{background:#e3f7e9;color:#227343}.slot{padding:7px 0;border-top:1px solid #edf1f7}
+.slot strong{display:block;margin-bottom:4px;font-size:11px;color:#405a77}.frag-btn{width:100%;border:0;background:#f5f8fc;text-align:left;border-radius:6px;margin:3px 0;padding:7px;font-size:11px;color:#3e5e81}
+.frag-btn:hover{background:#e9f1fc}.preview-tools{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 13px;border-bottom:1px solid #e4eaf4;font-size:11px;color:#647e9a}
+.device-area{background:#e7edf5;min-height:660px;display:flex;justify-content:center;align-items:flex-start;padding:24px 10px;overflow:auto}
+.device{width:min(100%,392px);height:650px;background:#fff;border:7px solid #23334e;border-radius:24px;box-shadow:0 10px 30px #27384a23;overflow:hidden;transition:width .2s,height .2s}
+.device.wide{width:min(100%,780px);height:650px}.device iframe{display:block;border:0;width:100%;height:100%;background:white}
+.stack{display:grid;gap:9px}.selected{font-size:12px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;color:#46617f;background:#f5f8fd;padding:8px;border-radius:7px;overflow-wrap:anywhere}
+.btn-row{display:flex;flex-wrap:wrap;gap:7px}.btn-row .btn{flex:1}.editor-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:15px}
+.json-area{width:100%;height:min(70vh,720px);min-height:420px;resize:vertical;padding:15px;border:0;background:#101d32;color:#dceafe;font:12px/1.6 ui-monospace,Consolas,monospace;tab-size:2;outline:none}
+.subnav{padding:10px;display:grid;gap:3px}.subnav button{border:0;background:transparent;color:#536d8a;border-radius:7px;padding:10px;text-align:left;font-size:12px;font-weight:750}
+.subnav button.active{color:#1b5eab;background:#eaf3ff}.notice{padding:10px 12px;border-radius:8px;background:#f1f7ff;color:#476783;font-size:11px;line-height:1.5}
+.notice.error{background:#fff0f0;color:#a43b3b}.tree-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,330px);gap:15px}
+.tree-scroll{overflow:auto;max-height:70vh;min-height:400px;padding:15px;font:12px/1.6 ui-monospace,Consolas,monospace}
+.branch{margin:0}.branch>summary{cursor:pointer;list-style:none;padding:5px 8px;border-radius:6px;display:flex;gap:8px;align-items:flex-start;overflow-wrap:anywhere}
+.branch>summary::-webkit-details-marker{display:none}.branch>summary:hover,.leaf:hover{background:#f4f8fd}.branch>summary::before{content:'▸';color:#6e8aa9}.branch[open]>summary::before{content:'▾'}
+.branch>.children{margin-left:12px;padding-left:10px;border-left:1px solid #d9e4f1}.leaf{padding:5px 8px 5px 20px;display:flex;gap:8px;border-radius:6px;overflow-wrap:anywhere;cursor:pointer}
+.prop{color:#22568b;font-weight:700}.value{color:#307554;white-space:pre-wrap;overflow-wrap:anywhere;max-width:72ch}.value.long{max-height:100px;overflow:auto;background:#f6f8fc;padding:5px;border-radius:5px}
+.type{background:#e6eef9;color:#52759e;font-size:9px;border-radius:4px;padding:2px 5px;white-space:nowrap}.selected-node{background:#fff1c9!important;outline:1px solid #edcf81}
+.paths{padding:15px}.path-list{display:grid;gap:5px;max-height:420px;overflow:auto}.path-item{padding:9px;border:1px solid #e2eaf3;border-radius:7px;font-size:11px;overflow-wrap:anywhere}
+.mono{font-family:ui-monospace,Consolas,monospace}.hint{color:#6c8098;font-size:11px;margin:8px 0}.stat{display:flex;justify-content:space-between;font-size:11px;padding:8px 0;border-bottom:1px solid #edf2f7}
+@media(max-width:1100px){.grid{grid-template-columns:210px minmax(280px,1fr)}.grid>.panel:last-child{grid-column:1/-1}.device-area{min-height:620px}.device{height:580px}}
+@media(max-width:730px){.header{padding:12px}.page{padding:10px}.tabs{padding:0 8px}.grid,.editor-layout,.tree-layout{grid-template-columns:1fr}.grid>.panel:last-child{grid-column:auto}.device-area{padding:12px 5px}.header-actions{margin-left:0}.device{height:610px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="brand"><span class="logo">AJ</span><div><strong>Laboratório de telas</strong><small>Motor nativo · JSON linear V3</small></div></div>
+  <div class="header-actions"><label class="btn">↑ Importar V3<input id="import-file" type="file" accept=".json,application/json" hidden></label><button class="btn primary" id="export">↓ Exportar V3</button><button class="btn" id="reset">Restaurar base</button><span id="save-status" class="save-status">Base incorporada</span></div>
+</header>
+<nav class="tabs" aria-label="Seções"><button class="tab active" data-page="sim">Simulador</button><button class="tab" data-page="edit">Editor JSON</button><button class="tab" data-page="tree">Árvore</button><button class="tab" data-page="links">Relações</button></nav>
+<main>
+<section class="page" id="page-sim"><div class="page-title"><div><h1 id="screen-title">Home profissional</h1><p id="screen-description">Composição base + variante determinada pelo contrato de estados</p></div><span id="runtime-state" class="pill pending">Estado inicial</span></div>
+  <div class="grid">
+    <aside class="panel"><div class="panel-head">Contexto de teste <span class="pill">Mocks</span></div><div class="panel-body">
+      <div class="field"><label for="scenario">Cenário</label><select id="scenario" class="input"></select></div>
+      <div class="field" id="state-field-wrap"><label id="state-field-label" for="oab-status">Atributo do estado</label><select id="oab-status" class="input"></select></div>
+      <div class="notice" id="state-explain"></div><div class="stat"><span>Componentes renderizados</span><strong id="fragment-count">0</strong></div><div class="stat"><span>Ações ativas</span><strong id="action-count">0</strong></div><div id="fragment-list" class="stack" style="margin-top:13px"></div>
+    </div></aside>
+    <section class="panel"><div class="preview-tools"><span>Pré-visualização real do JSON</span><div class="btn-row"><button id="mobile" class="btn">Mobile</button><button id="desktop" class="btn">Desktop</button><button id="simulate" class="btn primary">Simular</button><button id="select-mode" class="btn">Selecionar elemento</button></div></div>
+      <div class="device-area"><div id="device" class="device"><iframe id="preview-frame" sandbox="allow-same-origin" title="Home profissional"></iframe></div></div>
+    </section>
+    <aside class="panel"><div class="panel-head">Inspetor de elemento <span id="edit-mode-state" class="pill">Simulação</span></div><div class="panel-body">
+      <div class="field"><label for="element-filter">Pesquisar elemento</label><input id="element-filter" class="input" placeholder="ID, componente ou texto"></div>
+      <div class="field"><label for="element-list">Elemento</label><select id="element-list" class="input" size="7"></select></div>
+      <div class="selected" id="selected-info">Clique em “Selecionar elemento” no simulador.</div>
+      <label class="notice" style="display:flex;gap:8px;align-items:center;margin:11px 0;cursor:pointer"><input type="checkbox" id="state-only" checked> Aplicar edição somente ao estado selecionado</label>
+      <div class="field" style="margin-top:11px"><label for="element-text">Texto (quando aplicável)</label><input id="element-text" class="input" disabled></div>
+      <div class="field"><label for="element-color">Cor do texto</label><input id="element-color" class="input" placeholder="Ex.: #123456"></div>
+      <div class="field"><label for="element-bg">Fundo</label><input id="element-bg" class="input" placeholder="Ex.: #f4f6ff"></div>
+      <div class="field"><label for="action-type">Ação do clique</label><select id="action-type" class="input"><option value="padrao">Preservar ação atual</option><option value="navegar">Navegar</option><option value="popup">Abrir pop-up</option><option value="alternarEstado">Alternar online</option><option value="menu">Abrir menu</option><option value="nenhuma">Sem ação</option></select></div>
+      <div class="field" id="action-detail-field" hidden><label for="action-value">Destino ou mensagem</label><input id="action-value" class="input" placeholder="Valor"></div>
+      <div class="btn-row"><button class="btn primary" id="apply-element">Aplicar edição</button><button class="btn" id="restore-element">Restaurar elemento</button></div>
+      <p class="muted">As edições são feitas nas chaves do contrato V3 e podem ser exportadas em JSON.</p>
+    </div></aside>
+  </div>
+</section>
+<section class="page" id="page-edit" hidden><div class="page-title"><div><h1>Editor do contrato linear</h1><p>Seções paralelas por chave, sem estrutura V2 ou adaptação intermediária.</p></div><div class="btn-row"><button id="format-json" class="btn">Formatar</button><button id="apply-json" class="btn primary">Validar e aplicar</button></div></div>
+  <div class="editor-layout"><aside class="panel"><div class="panel-head">Seções JSON</div><div id="json-sections" class="subnav"></div></aside><section class="panel"><div class="panel-head"><span id="editing-section">estados</span><span id="editor-result" class="muted">Edite e aplique</span></div><textarea id="json-editor" class="json-area" spellcheck="false" aria-label="Editor JSON"></textarea></section></div></section>
+<section class="page" id="page-tree" hidden><div class="page-title"><div><h1>Árvore integral do JSON V3</h1><p>Objetos, arrays e valores; todos os níveis preservados.</p></div><div class="btn-row"><button id="tree-expand" class="btn">Expandir tudo</button><button id="tree-collapse" class="btn">Recolher tudo</button></div></div>
+  <div class="field"><label for="tree-search">Pesquisar chaves e valores</label><input id="tree-search" class="input" placeholder="Ex.: estados, oab_pendente, estrutura.componentes"></div>
+  <div class="tree-layout"><div class="panel"><div class="panel-head">Contrato linear <span id="tree-search-count" class="muted"></span></div><div id="tree-root" class="tree-scroll"></div></div><aside class="panel"><div class="panel-head">Nó selecionado</div><div class="paths"><div id="tree-path" class="selected">Nenhum nó selecionado</div><textarea id="tree-value" class="input mono" readonly style="height:280px;margin-top:10px;resize:vertical"></textarea><div class="btn-row" style="margin-top:8px"><button id="tree-copy" class="btn">Copiar valor</button><button id="tree-edit" class="btn primary">Editar seção</button></div></div></aside></div>
+</section>
+<section class="page" id="page-links" hidden><div class="page-title"><div><h1>Relações e dependências</h1><p>Referências declaradas pelo estado e destinos de navegação conhecidos.</p></div></div><div class="tree-layout"><section class="panel"><div class="panel-head">Associações de estado</div><div id="state-links" class="panel-body"></div></section><aside class="panel"><div class="panel-head">Navegação e recursos</div><div id="route-links" class="panel-body"></div></aside></div></section>
+</main>
+<div id="toast" role="status" aria-live="polite" style="position:fixed;bottom:16px;right:16px;max-width:min(460px,95vw);background:#193958;color:white;padding:12px 16px;border-radius:10px;font-size:12px;box-shadow:0 10px 30px #152b4666;z-index:99;display:none"></div>
+<script type="application/json" id="embedded-data">{
+  "schema": "advogadoja.tela.linear.v1",
+  "versao": "3.0.0-proposta",
+  "id": "advogado.home_advogado",
+  "nome": "Início Profissional",
+  "ativa": true,
+  "origem": {
+    "arquivo": "ferramentas/v2/info/prototipo_em_construcao/data/prototype.json",
+    "biblioteca": "ferramentas/v2/library/conteudo",
+    "screenKey": "advogado.home_advogado"
+  },
+  "contrato": {
+    "isolamento": "tela_independente_com_referencias_por_chave",
+    "parametrosEntrada": {
+      "profissionalId": {
+        "tipo": "string",
+        "fonte": "sessao.profissional.id",
+        "obrigatorio": true
+      }
+    },
+    "fontesExternas": {
+      "oabStatus": {
+        "caminho": "sessao.profissional.oab.status",
+        "tipo": "enum",
+        "valoresConhecidos": [
+          "nao_enviada",
+          "em_analise",
+          "aprovada",
+          "rejeitada"
+        ],
+        "origemAutoritativa": "backend",
+        "regra": "Se não estiver aprovada, a Home permanece restrita."
+      }
+    },
+    "resolucaoEstados": {
+      "ordem": [
+        "oab_aprovada",
+        "oab_pendente"
+      ],
+      "primeiroCompativel": true,
+      "fallback": "oab_pendente"
+    },
+    "regraComposicao": {
+      "modo": "base_mais_estado",
+      "arrays": "ordem_explicita_de_ids",
+      "adicionados": "acrescentar_ao_slot_indicado",
+      "ocultos": "excluir_da_renderizacao_sem_excluir_do_catalogo",
+      "dados": "valores_do_estado_sobrescrevem_a_base",
+      "ids": "identificadores_sao_chaves_e_nao_indices_de_array"
+    }
+  },
+  "estados": {
+    "oab_pendente": {
+      "nome": "Home com acesso restrito",
+      "quando": {
+        "campo": "sessao.profissional.oab.status",
+        "operador": "diferente",
+        "valor": "aprovada"
+      },
+      "referencias": {
+        "estrutura": "estrutura.composicoes.oab_pendente",
+        "estilos": "estilos.variantes.oab_pendente",
+        "dados": "dados.variantes.oab_pendente",
+        "mocks": "mocks.cenarios.oab_pendente",
+        "acoes": "acoes.grupos.oab_pendente"
+      },
+      "permissao": "restrita"
+    },
+    "oab_aprovada": {
+      "nome": "Home profissional completa",
+      "quando": {
+        "campo": "sessao.profissional.oab.status",
+        "operador": "igual",
+        "valor": "aprovada"
+      },
+      "referencias": {
+        "estrutura": "estrutura.composicoes.oab_aprovada",
+        "estilos": "estilos.variantes.oab_aprovada",
+        "dados": "dados.variantes.oab_aprovada",
+        "mocks": "mocks.cenarios.oab_aprovada",
+        "acoes": "acoes.grupos.oab_aprovada"
+      },
+      "permissao": "completa"
+    }
+  },
+  "estrutura": {
+    "raiz": "prototype-screen",
+    "layout": {
+      "slots": [
+        "header",
+        "main",
+        "navigation",
+        "menu",
+        "modal",
+        "popup",
+        "alert"
+      ],
+      "larguraConteudo": "720px"
+    },
+    "componentes": {
+      "app-header": {
+        "id": "app-header",
+        "slot": "header",
+        "ordem": 10,
+        "origem": "components/headers/app-header/v04",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "app-header::0",
+            "tag": "header",
+            "atributos": {
+              "class": "app-header"
+            },
+            "filhos": [
+              {
+                "id": "app-header::[data-action=\"drawer.open\"]",
+                "tag": "button",
+                "atributos": {
+                  "class": "app-menu-button",
+                  "type": "button",
+                  "data-action": "drawer.open",
+                  "aria-label": {
+                    "ref": "dados.base.fixtures.app-header.menuLabel"
+                  }
+                },
+                "filhos": [
+                  {
+                    "id": "app-header::0.0.0",
+                    "tag": "span"
+                  },
+                  {
+                    "id": "app-header::0.0.1",
+                    "tag": "span"
+                  },
+                  {
+                    "id": "app-header::0.0.2",
+                    "tag": "span"
+                  }
+                ]
+              },
+              {
+                "id": "app-header::0.1",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-brand"
+                },
+                "filhos": [
+                  {
+                    "id": "app-header::0.1.0",
+                    "tag": "img",
+                    "atributos": {
+                      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K",
+                      "alt": ""
+                    }
+                  },
+                  {
+                    "id": "app-header::0.1.1",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "app-brand-copy"
+                    },
+                    "filhos": [
+                      {
+                        "id": "app-header::0.1.1.0",
+                        "tag": "strong",
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.app-header.brand"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "app-header::0.1.1.1",
+                        "tag": "small",
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.app-header.role"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "app-header::0.2",
+                "tag": "button",
+                "atributos": {
+                  "class": "app-notifications",
+                  "type": "button",
+                  "data-goto": {
+                    "ref": "dados.base.fixtures.app-header.notificationsGoto"
+                  },
+                  "aria-label": {
+                    "ref": "dados.base.fixtures.app-header.notificationsLabel"
+                  }
+                },
+                "filhos": [
+                  {
+                    "id": "app-header::0.2.0",
+                    "tag": "svg",
+                    "atributos": {
+                      "viewbox": "0 0 24 24",
+                      "aria-hidden": "true"
+                    },
+                    "filhos": [
+                      {
+                        "id": "app-header::0.2.0.0",
+                        "tag": "path",
+                        "atributos": {
+                          "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "app-header::0.2.1",
+                    "tag": "span",
+                    "atributos": {
+                      "class": "app-notifications-badge"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.fixtures.app-header.unreadCount"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "titlebar": {
+        "id": "titlebar",
+        "slot": "header",
+        "ordem": 20,
+        "origem": "components/headers/titlebar/v01",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "titlebar::0",
+            "tag": "div",
+            "atributos": {
+              "class": "app-titlebar"
+            },
+            "filhos": [
+              {
+                "id": "titlebar::0.0",
+                "tag": "strong",
+                "filhos": [
+                  {
+                    "ref": "dados.base.fixtures.titlebar.title"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "hero": {
+        "id": "hero",
+        "slot": "main",
+        "ordem": 20,
+        "origem": "telas/advogado/home_advogado/main/hero",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "hero::0",
+            "tag": "section",
+            "atributos": {
+              "class": "home-intro"
+            },
+            "filhos": [
+              {
+                "id": "hero::0.0",
+                "tag": "span",
+                "atributos": {
+                  "class": "home-eyebrow"
+                },
+                "filhos": [
+                  {
+                    "ref": "dados.base.fixtures.hero.eyebrow"
+                  }
+                ]
+              },
+              {
+                "id": "hero::0.1",
+                "tag": "h1",
+                "filhos": [
+                  {
+                    "ref": "dados.base.fixtures.hero.title"
+                  }
+                ]
+              },
+              {
+                "id": "hero::0.2",
+                "tag": "p",
+                "filhos": [
+                  {
+                    "ref": "dados.base.fixtures.hero.subtitle"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "online-status": {
+        "id": "online-status",
+        "slot": "main",
+        "ordem": 30,
+        "origem": "telas/advogado/home_advogado/main/online-status",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "online-status::[data-action=\"online.toggle\"]",
+            "tag": "button",
+            "atributos": {
+              "class": "online-card",
+              "type": "button",
+              "data-action": "online.toggle",
+              "data-online-root": ""
+            },
+            "filhos": [
+              {
+                "id": "online-status::0.0",
+                "tag": "span",
+                "atributos": {
+                  "class": "online-dot"
+                }
+              },
+              {
+                "id": "online-status::0.1",
+                "tag": "span",
+                "atributos": {
+                  "class": "online-copy"
+                },
+                "filhos": [
+                  {
+                    "id": "online-status::0.1.0",
+                    "tag": "strong",
+                    "atributos": {
+                      "data-online-status": ""
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.componentes.online-status.online"
+                      }
+                    ],
+                    "vinculos": {
+                      "textoPorEstado": {
+                        "estado": "online",
+                        "verdadeiro": "Online",
+                        "falso": "Offline"
+                      }
+                    }
+                  },
+                  {
+                    "id": "online-status::0.1.1",
+                    "tag": "small",
+                    "atributos": {
+                      "data-online-copy": ""
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.componentes.online-status.recebendo_novas_solicitacoes"
+                      }
+                    ],
+                    "vinculos": {
+                      "textoPorEstado": {
+                        "estado": "online",
+                        "verdadeiro": "Recebendo novas solicitações",
+                        "falso": "Indisponível para novas solicitações"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "online-status::0.2",
+                "tag": "span",
+                "atributos": {
+                  "class": "online-switch",
+                  "aria-hidden": "true"
+                },
+                "filhos": [
+                  {
+                    "id": "online-status::0.2.0",
+                    "tag": "b"
+                  }
+                ]
+              }
+            ],
+            "vinculos": {
+              "classePorEstado": {
+                "estado": "online",
+                "quandoFalso": "is-offline"
+              }
+            }
+          }
+        ]
+      },
+      "actions": {
+        "id": "actions",
+        "slot": "main",
+        "ordem": 40,
+        "origem": "telas/advogado/home_advogado/main/actions",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "actions::0",
+            "tag": "section",
+            "atributos": {
+              "class": "requests-block",
+              "aria-labelledby": "requests-title"
+            },
+            "filhos": [
+              {
+                "id": "actions::0.0",
+                "tag": "div",
+                "atributos": {
+                  "class": "requests-heading"
+                },
+                "filhos": [
+                  {
+                    "id": "actions::0.0.0",
+                    "tag": "div",
+                    "filhos": [
+                      {
+                        "id": "actions::#requests-title",
+                        "tag": "h2",
+                        "atributos": {
+                          "id": "requests-title"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.actions.title"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.0.0.1",
+                        "tag": "p",
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.actions.count"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "actions::0.1",
+                "tag": "div",
+                "atributos": {
+                  "class": "requests-list"
+                },
+                "filhos": [
+                  {
+                    "id": "actions::0.1.0",
+                    "tag": "button",
+                    "atributos": {
+                      "class": "request-card",
+                      "type": "button",
+                      "data-goto": {
+                        "ref": "dados.base.fixtures.actions.items.0.goto"
+                      }
+                    },
+                    "filhos": [
+                      {
+                        "id": "actions::0.1.0.0",
+                        "tag": "div",
+                        "atributos": {
+                          "class": "request-top"
+                        },
+                        "filhos": [
+                          {
+                            "id": "actions::0.1.0.0.0",
+                            "tag": "span",
+                            "atributos": {
+                              "class": "request-priority"
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.actions.items.0.priority"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "actions::0.1.0.0.1",
+                            "tag": "span",
+                            "atributos": {
+                              "class": "request-time"
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.actions.items.0.time"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.0.1",
+                        "tag": "h3",
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.actions.items.0.area"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.0.2",
+                        "tag": "p",
+                        "atributos": {
+                          "class": "request-meta"
+                        },
+                        "filhos": [
+                          {
+                            "partes": [
+                              {
+                                "ref": "dados.base.fixtures.actions.items.0.requestType"
+                              },
+                              " · ",
+                              {
+                                "ref": "dados.base.fixtures.actions.items.0.location"
+                              },
+                              " · ",
+                              {
+                                "ref": "dados.base.fixtures.actions.items.0.mode"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.0.3",
+                        "tag": "p",
+                        "atributos": {
+                          "class": "request-summary"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.actions.items.0.summary"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.0.4",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "request-open"
+                        },
+                        "filhos": [
+                          {
+                            "partes": [
+                              {
+                                "ref": "dados.base.componentes.actions.ver_solicitacao"
+                              },
+                              " "
+                            ]
+                          },
+                          {
+                            "id": "actions::0.1.0.4.0",
+                            "tag": "b",
+                            "filhos": [
+                              "›"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.1",
+                    "tag": "button",
+                    "atributos": {
+                      "class": "request-card",
+                      "type": "button",
+                      "data-goto": {
+                        "ref": "dados.base.fixtures.actions.items.1.goto"
+                      }
+                    },
+                    "filhos": [
+                      {
+                        "id": "actions::0.1.1.0",
+                        "tag": "div",
+                        "atributos": {
+                          "class": "request-top"
+                        },
+                        "filhos": [
+                          {
+                            "id": "actions::0.1.1.0.0",
+                            "tag": "span",
+                            "atributos": {
+                              "class": "request-priority"
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.actions.items.1.priority"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "actions::0.1.1.0.1",
+                            "tag": "span",
+                            "atributos": {
+                              "class": "request-time"
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.actions.items.1.time"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.1.1",
+                        "tag": "h3",
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.actions.items.1.area"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.1.2",
+                        "tag": "p",
+                        "atributos": {
+                          "class": "request-meta"
+                        },
+                        "filhos": [
+                          {
+                            "partes": [
+                              {
+                                "ref": "dados.base.fixtures.actions.items.1.requestType"
+                              },
+                              " · ",
+                              {
+                                "ref": "dados.base.fixtures.actions.items.1.location"
+                              },
+                              " · ",
+                              {
+                                "ref": "dados.base.fixtures.actions.items.1.mode"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.1.3",
+                        "tag": "p",
+                        "atributos": {
+                          "class": "request-summary"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.actions.items.1.summary"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.1.4",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "request-open"
+                        },
+                        "filhos": [
+                          {
+                            "partes": [
+                              {
+                                "ref": "dados.base.componentes.actions.ver_solicitacao"
+                              },
+                              " "
+                            ]
+                          },
+                          {
+                            "id": "actions::0.1.1.4.0",
+                            "tag": "b",
+                            "filhos": [
+                              "›"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "drawer": {
+        "id": "drawer",
+        "slot": "menu",
+        "ordem": 10,
+        "origem": "components/menus/drawer/v01",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "drawer::0",
+            "tag": "aside",
+            "atributos": {
+              "class": "prototype-drawer",
+              "data-overlay-root": "",
+              "aria-hidden": "true"
+            },
+            "filhos": [
+              {
+                "id": "drawer::[data-action=\"drawer.close\"]",
+                "tag": "button",
+                "atributos": {
+                  "class": "drawer-backdrop",
+                  "type": "button",
+                  "data-action": "drawer.close",
+                  "aria-label": {
+                    "ref": "dados.base.componentes.drawer.fechar_menu_aria_label"
+                  }
+                }
+              },
+              {
+                "id": "drawer::0.1",
+                "tag": "div",
+                "atributos": {
+                  "class": "drawer-panel"
+                },
+                "filhos": [
+                  {
+                    "id": "drawer::0.1.0",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "drawer-top"
+                    },
+                    "filhos": [
+                      {
+                        "id": "drawer::0.1.0.0",
+                        "tag": "div",
+                        "atributos": {
+                          "class": "drawer-identity"
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.0.0.0",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "drawer-avatar"
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.avatar"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.0.0.1",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "drawer-profile"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.0.0.1.0",
+                                "tag": "strong",
+                                "filhos": [
+                                  {
+                                    "ref": "dados.base.fixtures.drawer.name"
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "drawer::0.1.0.0.1.1",
+                                "tag": "small",
+                                "filhos": [
+                                  {
+                                    "ref": "dados.base.fixtures.drawer.subtitle"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "drawer::[data-action=\"online.toggle\"]",
+                    "tag": "button",
+                    "atributos": {
+                      "class": "drawer-online",
+                      "type": "button",
+                      "data-action": "online.toggle",
+                      "data-online-root": ""
+                    },
+                    "filhos": [
+                      {
+                        "id": "drawer::0.1.1.0",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "online-dot"
+                        }
+                      },
+                      {
+                        "id": "drawer::0.1.1.1",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "drawer-online-copy"
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.1.1.0",
+                            "tag": "strong",
+                            "atributos": {
+                              "data-online-status": ""
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.componentes.drawer.online"
+                              }
+                            ],
+                            "vinculos": {
+                              "textoPorEstado": {
+                                "estado": "online",
+                                "verdadeiro": "Online",
+                                "falso": "Offline"
+                              }
+                            }
+                          },
+                          {
+                            "id": "drawer::0.1.1.1.1",
+                            "tag": "small",
+                            "atributos": {
+                              "data-online-copy": ""
+                            },
+                            "filhos": [
+                              {
+                                "ref": "dados.base.componentes.drawer.recebendo_novas_solicitacoes"
+                              }
+                            ],
+                            "vinculos": {
+                              "textoPorEstado": {
+                                "estado": "online",
+                                "verdadeiro": "Recebendo novas solicitações",
+                                "falso": "Indisponível para novas solicitações"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.1.2",
+                        "tag": "i",
+                        "atributos": {
+                          "class": "online-switch"
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.1.2.0",
+                            "tag": "b"
+                          }
+                        ]
+                      }
+                    ],
+                    "vinculos": {
+                      "classePorEstado": {
+                        "estado": "online",
+                        "quandoFalso": "is-offline"
+                      }
+                    }
+                  },
+                  {
+                    "id": "drawer::0.1.2",
+                    "tag": "nav",
+                    "atributos": {
+                      "class": "drawer-nav",
+                      "aria-label": {
+                        "ref": "dados.base.componentes.drawer.menu_principal_aria_label"
+                      }
+                    },
+                    "filhos": [
+                      {
+                        "id": "drawer::0.1.2.0",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.0.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.0.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.0.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.0.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.0.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.0.label"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.2.1",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.1.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.1.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.1.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.1.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.1.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.1.label"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.2.2",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.2.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.2.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.2.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.2.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.2.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.2.label"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.2.3",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.3.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.3.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.3.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.3.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.3.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.3.label"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.2.4",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.4.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.4.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.4.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.4.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.4.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.4.label"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.2.5",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.5.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.5.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.5.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.5.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.5.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.5.label"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::0.1.2.6",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-goto": {
+                            "ref": "dados.base.fixtures.drawer.items.6.goto"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.2.6.0",
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.2.6.0.0",
+                                "tag": "path",
+                                "atributos": {
+                                  "d": {
+                                    "ref": "dados.base.fixtures.drawer.items.6.icon"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.2.6.1",
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.items.6.label"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "drawer::0.1.3",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "drawer-footer"
+                    },
+                    "filhos": [
+                      {
+                        "id": "drawer::0.1.3.0",
+                        "tag": "div",
+                        "atributos": {
+                          "class": "drawer-footer-top"
+                        },
+                        "filhos": [
+                          {
+                            "id": "drawer::0.1.3.0.0",
+                            "tag": "button",
+                            "atributos": {
+                              "class": "drawer-logout",
+                              "type": "button",
+                              "data-goto": {
+                                "ref": "dados.base.fixtures.drawer.logoutGoto"
+                              }
+                            },
+                            "filhos": [
+                              {
+                                "id": "drawer::0.1.3.0.0.0",
+                                "tag": "svg",
+                                "atributos": {
+                                  "class": "drawer-icon",
+                                  "viewbox": "0 0 24 24",
+                                  "fill": "none",
+                                  "stroke": "currentColor",
+                                  "stroke-width": "1.5",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "aria-hidden": "true"
+                                },
+                                "filhos": [
+                                  {
+                                    "id": "drawer::0.1.3.0.0.0.0",
+                                    "tag": "path",
+                                    "atributos": {
+                                      "d": "M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "drawer::0.1.3.0.0.1",
+                                "tag": "span",
+                                "filhos": [
+                                  {
+                                    "ref": "dados.base.fixtures.drawer.logoutLabel"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "drawer::0.1.3.0.1",
+                            "tag": "small",
+                            "filhos": [
+                              {
+                                "ref": "dados.base.fixtures.drawer.footer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "drawer::[data-action=\"emergency.mock\"]",
+                        "tag": "button",
+                        "atributos": {
+                          "class": "drawer-emergency",
+                          "type": "button",
+                          "data-action": "emergency.mock"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "dados.base.fixtures.drawer.emergencyLabel"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "route-modal": {
+        "id": "route-modal",
+        "slot": "modal",
+        "ordem": 10,
+        "origem": "components/modals/route-modal/v02",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "route-modal::0",
+            "tag": "div",
+            "atributos": {
+              "class": "route-modal",
+              "data-overlay-root": "",
+              "aria-hidden": "true",
+              "role": "dialog",
+              "aria-modal": "true",
+              "aria-label": {
+                "ref": "dados.base.componentes.route-modal.navegacao_simulada_aria_label"
+              }
+            },
+            "filhos": [
+              {
+                "id": "route-modal::0.0",
+                "tag": "div",
+                "atributos": {
+                  "class": "route-card"
+                },
+                "filhos": [
+                  {
+                    "id": "route-modal::0.0.0",
+                    "tag": "p",
+                    "atributos": {
+                      "class": "kicker"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.componentes.route-modal.tela_modular_navegacao_simulada"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "route-modal::0.0.1",
+                    "tag": "h2",
+                    "atributos": {
+                      "data-route-title": ""
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.componentes.route-modal.navegacao_simulada"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "route-modal::0.0.2",
+                    "tag": "p",
+                    "atributos": {
+                      "data-route-text": ""
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.componentes.route-modal.esta_acao_nao_abre_outra_tela_nesta_biblioteca"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "route-modal::0.0.3",
+                    "tag": "code",
+                    "atributos": {
+                      "data-route-code": ""
+                    }
+                  },
+                  {
+                    "id": "route-modal::[data-action=\"route.close\"]",
+                    "tag": "button",
+                    "atributos": {
+                      "type": "button",
+                      "data-action": "route.close"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "dados.base.componentes.route-modal.fechar"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "status-toast": {
+        "id": "status-toast",
+        "slot": "popup",
+        "ordem": 10,
+        "origem": "components/popups/status-toast/v01",
+        "habilitado": true,
+        "arvore": [
+          {
+            "id": "status-toast::0",
+            "tag": "div",
+            "atributos": {
+              "class": "status-toast",
+              "data-toast-root": "",
+              "role": "status",
+              "aria-live": "polite"
+            },
+            "filhos": [
+              {
+                "id": "status-toast::0.0",
+                "tag": "span",
+                "atributos": {
+                  "data-toast-text": ""
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "oab-validation-panel": {
+        "id": "oab-validation-panel",
+        "slot": "main",
+        "ordem": 35,
+        "origem": "telas/advogado/home_advogado/main/oab-validation-panel",
+        "habilitado": true,
+        "criadoNestaVersao": true,
+        "arvore": [
+          {
+            "id": "oab-validation-panel::root",
+            "tag": "section",
+            "atributos": {
+              "class": "oab-gate-card",
+              "aria-labelledby": "oab-gate-title"
+            },
+            "filhos": [
+              {
+                "id": "oab-validation-panel::eyebrow",
+                "tag": "span",
+                "atributos": {
+                  "class": "oab-gate-eyebrow"
+                },
+                "filhos": [
+                  {
+                    "ref": "dados.variantes.oab_pendente.rotulo"
+                  }
+                ]
+              },
+              {
+                "id": "oab-validation-panel::title",
+                "tag": "h2",
+                "atributos": {
+                  "id": "oab-gate-title"
+                },
+                "filhos": [
+                  {
+                    "ref": "dados.variantes.oab_pendente.titulo"
+                  }
+                ]
+              },
+              {
+                "id": "oab-validation-panel::description",
+                "tag": "p",
+                "filhos": [
+                  {
+                    "ref": "dados.variantes.oab_pendente.descricao"
+                  }
+                ]
+              },
+              {
+                "id": "oab-validation-panel::status",
+                "tag": "p",
+                "atributos": {
+                  "class": "oab-gate-status"
+                },
+                "filhos": [
+                  {
+                    "ref": "dados.variantes.oab_pendente.statusTexto"
+                  }
+                ]
+              },
+              {
+                "id": "oab-validation-panel::cta",
+                "tag": "button",
+                "atributos": {
+                  "type": "button",
+                  "class": "oab-gate-button",
+                  "data-action": "oab.validar"
+                },
+                "filhos": [
+                  {
+                    "ref": "dados.variantes.oab_pendente.textoBotao"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "composicoes": {
+      "base": {
+        "slots": {
+          "header": [
+            "app-header",
+            "titlebar"
+          ],
+          "main": [
+            "hero"
+          ],
+          "modal": [
+            "route-modal"
+          ],
+          "popup": [
+            "status-toast"
+          ]
+        }
+      },
+      "oab_pendente": {
+        "adicionar": {
+          "main": [
+            "oab-validation-panel"
+          ],
+          "menu": [
+            "drawer"
+          ]
+        },
+        "configuracaoMenu": {
+          "componenteRef": "estrutura.componentes.drawer",
+          "modo": "permitir_somente_destinos",
+          "destinosPermitidos": [
+            "advogado.perfil_profissional",
+            "advogado.configuracao.configuracao",
+            "notificacoes.lista.notificacoes",
+            "auth.sessao.entrar"
+          ],
+          "ocultarElementos": [
+            "drawer::[data-action=\"online.toggle\"]"
+          ]
+        },
+        "sobrescreverDados": {
+          "dados.base.fixtures.hero.subtitle": "Sua Home ficará disponível após a validação da OAB."
+        }
+      },
+      "oab_aprovada": {
+        "adicionar": {
+          "main": [
+            "online-status",
+            "actions"
+          ],
+          "menu": [
+            "drawer"
+          ]
+        },
+        "configuracaoMenu": {
+          "componenteRef": "estrutura.componentes.drawer",
+          "modo": "todos"
+        }
+      }
+    }
+  },
+  "estilos": {
+    "base": {
+      "tema": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "baseCss": "/* Base visual original incorporada ao pacote autocontido. */\n/* ===== app.css ===== */\n:root {\n  --primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n* {\n  box-sizing: border-box;\n}\nbody {\n  min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);\n}\na {\n  color: inherit;\n  text-decoration: none;\n}\nbutton,\ninput {\n  font: inherit;\n}\n.screen {\n  display: none;\n  width: 100%;\n  min-height: 100dvh;\n}\n.screen.active {\n  display: block;\n  animation: fade 0.28s ease;\n}\n@keyframes fade {\n  from {\n    opacity: 0;\n    transform: translateY(8px);\n  }\n  to {\n    opacity: 1;\n    transform: none;\n  }\n}\n.open-index {\n  position: fixed;\n  z-index: 20;\n  right: 18px;\n  bottom: 18px;\n  border: 0;\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: rgba(17, 24, 39, 0.82);\n  color: #fff;\n  font-weight: 800;\n  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);\n  cursor: pointer;\n}\n.open-index span {\n  display: inline-grid;\n  min-width: 18px;\n  place-items: center;\n  border-radius: 50%;\n  background: #fff;\n  color: var(--primary);\n  font-size: 11px;\n}\n.sheet {\n  position: fixed;\n  inset: 0;\n  z-index: 30;\n  display: none;\n}\n.sheet.open {\n  display: block;\n}\n.sheet-backdrop {\n  position: absolute;\n  inset: 0;\n  background: rgba(15, 23, 42, 0.5);\n}\n.sheet-panel {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  max-height: 72dvh;\n  overflow: auto;\n  border-radius: 20px 20px 0 0;\n  background: #fff;\n  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.2);\n}\n.sheet-head {\n  position: sticky;\n  top: 0;\n  display: flex;\n  justify-content: space-between;\n  padding: 16px 18px;\n  border-bottom: 1px solid var(--line);\n  background: #fff;\n}\n.sheet-head button {\n  border: 0;\n  background: transparent;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;\n}\n.screen-link {\n  display: flex;\n  width: 100%;\n  gap: 12px;\n  align-items: center;\n  border: 0;\n  border-bottom: 1px solid var(--line);\n  padding: 15px 18px;\n  background: #fff;\n  text-align: left;\n  color: var(--text);\n  cursor: pointer;\n}\n.screen-link:hover {\n  background: #f8fafc;\n}\n.screen-link .number {\n  display: grid;\n  width: 28px;\n  height: 28px;\n  place-items: center;\n  border-radius: 50%;\n  background: #e8eef5;\n  color: var(--primary);\n  font-size: 11px;\n  font-weight: 900;\n}\n.screen-link.active {\n  background: #eef5ff;\n}\n.mark {\n  display: grid;\n  width: 76px;\n  height: 76px;\n  margin: auto;\n  place-items: center;\n  border-radius: 24px;\n  background: var(--primary);\n  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);\n}\n.mark img {\n  width: 54%;\n  height: 54%;\n  object-fit: contain;\n}\n.splash {\n  display: grid;\n  width: 100%;\n  min-height: 100dvh;\n  padding: 28px;\n  place-items: center;\n  color: #fff;\n  background: radial-gradient(\n    circle at 50% 20%,\n    #284e7d 0,\n    var(--primary) 48%,\n    #08172d 100%\n  );\n}\n.splash > div {\n  text-align: center;\n}\n.splash button {\n  border: 0;\n  background: transparent;\n  color: inherit;\n  cursor: pointer;\n  text-align: center;\n}\n.splash h1 {\n  margin: 22px 0 0;\n  font-size: clamp(30px, 8vw, 46px);\n  line-height: 1;\n  letter-spacing: -0.04em;\n}\n.welcome {\n  display: flex;\n  flex-direction: column;\n  background: var(--surface);\n}\n.welcome__image {\n  min-height: 38dvh;\n  overflow: hidden;\n  background: #dce7f4;\n}\n.welcome__image img {\n  display: block;\n  width: 100%;\n  min-height: 38dvh;\n  height: 100%;\n  object-fit: cover;\n  object-position: top center;\n}\n.welcome__copy {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  padding: 30px 24px 26px;\n}\n.eyebrow {\n  margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;\n}\n.welcome h1 {\n  margin: 0;\n  color: var(--primary);\n  font-size: clamp(28px, 7vw, 46px);\n  line-height: 1.08;\n  letter-spacing: -0.035em;\n}\n.welcome__copy > p:not(.eyebrow) {\n  margin: 15px 0 26px;\n  color: var(--muted);\n  line-height: 1.6;\n}\n.grow {\n  flex: 1;\n}\n.button {\n  display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.login {\n  min-height: 100dvh;\n  background: var(--page);\n}\n.topbar {\n  min-height: 64px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 10px 18px;\n  color: #fff;\n  background: var(--primary);\n  font-weight: 800;\n}\n.topbar img {\n  width: 26px;\n  height: 26px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.login__shell {\n  width: min(100%, 520px);\n  margin: auto;\n  padding: 28px 20px 48px;\n}\n.login__brand {\n  margin: 8px 0 24px;\n  text-align: center;\n}\n.login__brand .mark {\n  width: 64px;\n  height: 64px;\n  margin: 0 auto 16px;\n  border-radius: 21px;\n}\n.login h1 {\n  margin: 0;\n  color: var(--primary);\n  font-size: 27px;\n}\n.login__brand p {\n  margin: 8px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n}\n.card {\n  padding: 20px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: #fff;\n}\n.field {\n  position: relative;\n  margin-bottom: 14px;\n}\n.field input {\n  width: 100%;\n  min-height: 57px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 14px 9px;\n  outline: 0;\n}\n.field label {\n  position: absolute;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;\n}\n.help {\n  display: inline-block;\n  margin: 2px 0 14px;\n  color: var(--primary);\n  font-size: 13px;\n  font-weight: 800;\n}\n.divider {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 20px 0 12px;\n  color: var(--muted);\n  font-size: 12px;\n}\n.divider::before,\n.divider::after {\n  height: 1px;\n  flex: 1;\n  background: var(--line);\n  content: \"\";\n}\n.secondary {\n  width: 100%;\n  min-height: 50px;\n  margin-top: 9px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;\n}\n.signup {\n  margin: 20px 0 0;\n  color: var(--muted);\n  text-align: center;\n  font-size: 13px;\n}\n.signup a {\n  color: var(--primary);\n  font-weight: 800;\n}\n.status {\n  min-height: 20px;\n  margin: 12px 0 0;\n  color: var(--primary);\n  text-align: center;\n  font-size: 12px;\n  font-weight: 700;\n}\n@media (min-width: 700px) {\n  .welcome {\n    min-height: 100dvh;\n    padding: 34px;\n    background: #e9eff6;\n  }\n  .welcome__layout {\n    width: min(1080px, 100%);\n    min-height: min(680px, calc(100dvh - 68px));\n    margin: auto;\n    display: grid;\n    grid-template-columns: 1.08fr 0.92fr;\n    overflow: hidden;\n    border: 1px solid var(--line);\n    border-radius: 20px;\n    background: #fff;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.14);\n  }\n  .welcome__image,\n  .welcome__image img {\n    min-height: 0;\n    height: 100%;\n  }\n  .welcome__copy {\n    padding: clamp(42px, 6vw, 76px);\n  }\n  .login__shell {\n    padding-top: 54px;\n  }\n  .card {\n    padding: 28px;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.14);\n  }\n}\n.screen-link .number {\n  width: auto;\n  min-width: 46px;\n  padding: 0 7px;\n  border-radius: 999px;\n}\n.screen-meta {\n  display: flex;\n  min-width: 0;\n  flex-direction: column;\n  gap: 3px;\n}\n.screen-meta strong {\n  font-size: 14px;\n}\n.screen-meta small {\n  color: var(--muted);\n  font-size: 11px;\n  font-weight: 700;\n}\n\n/* ===== Cadastro comum — dados pessoais ===== */\n.registration {\n  min-height: 100dvh;\n  background: var(--page);\n}\n.registration__shell {\n  width: min(100%, 620px);\n  margin: 0 auto;\n  padding: 24px 18px 48px;\n}\n.registration__intro {\n  margin: 2px 2px 18px;\n}\n.registration__intro h1,\n.registration--success h1 {\n  margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;\n}\n.registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status) {\n  margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;\n}\n.progress {\n  height: 5px;\n  margin: 0 2px 18px;\n  overflow: hidden;\n  border-radius: 999px;\n  background: #dce4ed;\n}\n.progress span {\n  display: block;\n  height: 100%;\n  border-radius: inherit;\n  background: var(--gold);\n}\n.form-card {\n  padding: 18px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: var(--surface);\n}\n.form-card .field:last-of-type {\n  margin-bottom: 0;\n}\n.form-card .field input,\n.form-card .select-field select {\n  background: #fff;\n  color: var(--text);\n}\n.select-field {\n  position: relative;\n  margin-bottom: 14px;\n}\n.select-field label {\n  position: absolute;\n  z-index: 1;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;\n  pointer-events: none;\n}\n.select-field select {\n  width: 100%;\n  min-height: 57px;\n  appearance: auto;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 40px 9px 14px;\n  outline: 0;\n  cursor: pointer;\n}\n.field-grid {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 0;\n}\n.choice-group {\n  display: grid;\n  gap: 10px;\n  margin: 0;\n  padding: 0;\n  border: 0;\n}\n.choice-group legend {\n  margin-bottom: 10px;\n  color: var(--primary);\n  font-size: 12px;\n  font-weight: 800;\n}\n.choice-card {\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 12px;\n  align-items: center;\n  min-height: 78px;\n  border: 1px solid var(--line);\n  border-radius: 14px;\n  padding: 14px;\n  cursor: pointer;\n  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;\n}\n.choice-card:has(input:checked) {\n  border-color: var(--primary-soft);\n  background: #f3f7fc;\n  box-shadow: inset 0 0 0 1px rgba(23, 60, 107, .16);\n}\n.choice-card input {\n  width: 18px;\n  height: 18px;\n  accent-color: var(--primary);\n}\n.choice-card span {\n  min-width: 0;\n}\n.choice-card strong,\n.choice-card small {\n  display: block;\n}\n.choice-card strong {\n  color: var(--primary);\n  font-size: 14px;\n}\n.choice-card small {\n  margin-top: 4px;\n  color: var(--muted);\n  font-size: 12px;\n  line-height: 1.45;\n}\n.choice-card b {\n  color: var(--primary-soft);\n  font-size: 24px;\n  font-weight: 500;\n}\n.form-note {\n  display: flex;\n  gap: 8px;\n  margin: 16px 0 0;\n  border-radius: 12px;\n  padding: 12px 13px;\n  background: #f3f6fa;\n  color: var(--muted);\n  font-size: 11px;\n  line-height: 1.5;\n}\n.form-note strong {\n  flex: 0 0 auto;\n  color: var(--primary);\n}\n.form-actions {\n  display: grid;\n  grid-template-columns: minmax(96px, .7fr) 1.3fr;\n  gap: 10px;\n  margin-top: 20px;\n}\n.form-actions.single {\n  grid-template-columns: 1fr;\n}\n.secondary-action {\n  min-height: 54px;\n  border: 1px solid var(--line);\n  border-radius: 13px;\n  padding: 14px 16px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;\n}\n.form-status {\n  min-height: 18px;\n  margin: 10px 0 0;\n  color: #9b2c2c;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 700;\n}\n.upload-field {\n  position: relative;\n  display: grid;\n  grid-template-columns: 1fr auto;\n  gap: 8px 12px;\n  align-items: center;\n  margin: 4px 0 14px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 13px 14px;\n  cursor: pointer;\n}\n.upload-field input {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  opacity: 0;\n  pointer-events: none;\n}\n.upload-field strong,\n.upload-field small,\n.upload-field em {\n  display: block;\n}\n.upload-field strong {\n  color: var(--primary);\n  font-size: 13px;\n}\n.upload-field small,\n.upload-field em {\n  color: var(--muted);\n  font-size: 10px;\n  font-style: normal;\n}\n.upload-field em {\n  grid-column: 1 / -1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.upload-button {\n  border-radius: 9px;\n  padding: 9px 10px;\n  background: #eef3f8;\n  color: var(--primary);\n  font-size: 11px;\n  font-weight: 800;\n}\n.legal-links {\n  display: grid;\n  gap: 8px;\n  margin-bottom: 14px;\n}\n.legal-link {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  justify-content: space-between;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 13px 14px;\n  background: #fff;\n  color: var(--primary);\n  text-align: left;\n  cursor: pointer;\n}\n.legal-link strong,\n.legal-link small {\n  display: block;\n}\n.legal-link small {\n  margin-top: 3px;\n  color: var(--muted);\n  font-size: 10px;\n  font-weight: 500;\n}\n.legal-link b {\n  font-size: 22px;\n  font-weight: 500;\n}\n.check-row {\n  display: grid;\n  grid-template-columns: auto 1fr;\n  gap: 10px;\n  align-items: start;\n  color: var(--text);\n  font-size: 12px;\n  line-height: 1.5;\n  cursor: pointer;\n}\n.check-row input {\n  width: 18px;\n  height: 18px;\n  margin: 1px 0 0;\n  accent-color: var(--primary);\n}\n.link-button {\n  border: 0;\n  padding: 0;\n  background: transparent;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;\n}\n.review-section + .review-section {\n  margin-top: 18px;\n  padding-top: 18px;\n  border-top: 1px solid var(--line);\n}\n.review-section__head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 8px;\n}\n.review-section__head strong {\n  color: var(--primary);\n  font-size: 14px;\n}\n.review-section__head button {\n  border: 0;\n  padding: 5px 0;\n  background: transparent;\n  color: var(--primary-soft);\n  font-size: 11px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.review-section dl {\n  margin: 0;\n}\n.review-section dl > div {\n  display: grid;\n  grid-template-columns: minmax(92px, .55fr) 1.45fr;\n  gap: 10px;\n  padding: 8px 0;\n}\n.review-section dt {\n  color: var(--muted);\n  font-size: 11px;\n}\n.review-section dd {\n  margin: 0;\n  overflow-wrap: anywhere;\n  color: var(--text);\n  font-size: 12px;\n  font-weight: 700;\n}\n.registration--success .success-shell {\n  min-height: calc(100dvh - 64px);\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding-top: 36px;\n  padding-bottom: 60px;\n  text-align: center;\n}\n.success-mark {\n  display: grid;\n  width: 74px;\n  height: 74px;\n  margin: 0 auto 18px;\n  place-items: center;\n  border-radius: 50%;\n  background: var(--primary);\n  color: #fff;\n  font-size: 34px;\n  font-weight: 800;\n  box-shadow: 0 12px 28px rgba(16, 35, 63, .18);\n}\n.registration--success .form-note {\n  margin: 24px 0 18px;\n  text-align: left;\n}\n.text-action {\n  margin-top: 12px;\n  border: 0;\n  background: transparent;\n  color: var(--primary);\n  font-size: 12px;\n  font-weight: 800;\n  cursor: pointer;\n}\n@media (min-width: 520px) {\n  .field-grid {\n    grid-template-columns: 1fr 1fr;\n    gap: 12px;\n  }\n}\n@media (min-width: 700px) {\n  .registration__shell {\n    padding-top: 38px;\n    padding-bottom: 64px;\n  }\n  .form-card {\n    padding: 26px;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.10);\n  }\n}\n\n\n/* ===== onboarding-profissional.css ===== */\n/* ===== Onboarding profissional ===== */\n.professional-onboarding { min-height: 100dvh; background: var(--page); }\n.professional-onboarding .registration__shell { width: min(100%, 680px); }\n.form-card textarea { width:100%; min-height:118px; resize:vertical; border:1px solid var(--line); border-radius:12px; padding:24px 14px 12px; background:#fff; color:var(--text); font:inherit; line-height:1.5; outline:0; }\n.textarea-field { position:relative; margin-bottom:14px; }\n.textarea-field label { position:absolute; z-index:1; top:8px; left:14px; color:var(--primary); font-size:10px; font-weight:800; pointer-events:none; }\n.toggle-grid { display:grid; gap:10px; margin:0 0 14px; }\n.toggle-card { display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center; min-height:72px; border:1px solid var(--line); border-radius:14px; padding:14px; background:#fff; }\n.toggle-card strong,.toggle-card small{display:block}.toggle-card small{margin-top:4px;color:var(--muted);line-height:1.4}.toggle-card input{width:20px;height:20px;accent-color:var(--primary)}\n.multi-select{position:relative;margin-bottom:14px}.multi-select summary{position:relative;min-height:62px;list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:25px 42px 9px 14px;background:#fff;color:var(--text)}.multi-select summary::-webkit-details-marker{display:none}.multi-select summary::after{position:absolute;right:16px;top:50%;content:'▼';color:var(--primary);font-size:12px;transform:translateY(-50%);transition:transform .18s ease}.multi-select[open] summary::after{transform:translateY(-50%) rotate(180deg)}\n.multi-select__label{position:absolute;z-index:1;top:8px;left:14px;color:var(--primary);font-size:10px;font-weight:800;pointer-events:none}.multi-select__value{display:block;overflow:hidden;color:var(--text);text-overflow:ellipsis;white-space:nowrap}.multi-select__panel{display:grid;gap:0;max-height:300px;overflow:auto;margin-top:7px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 12px 28px rgba(16,35,63,.14)}.multi-select__option{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;min-height:46px;padding:10px 13px;border-bottom:1px solid #edf1f5;cursor:pointer}.multi-select__option:last-child{border-bottom:0}.multi-select__option:hover{background:#f7f9fc}.multi-select__option input{width:18px;height:18px;accent-color:var(--primary)}\n.inline-note{margin:0 0 14px;padding:12px 14px;border-left:3px solid var(--gold);border-radius:10px;background:#fff8e7;color:#614617;font-size:12px;line-height:1.5}.office-card[hidden],.review-section[data-office-review][hidden]{display:none}.status-pill{display:inline-flex;align-items:center;min-height:28px;margin-top:10px;border-radius:999px;padding:5px 10px;background:#edf4ff;color:var(--primary);font-size:11px;font-weight:800}\n@media(min-width:700px){.professional-onboarding .form-card{padding:26px}.field-grid.two{grid-template-columns:1fr 1fr;gap:14px}}\n\n\n/* ===== operacao.css ===== */\n/* Operação pós-Home — visual mobile-first do protótipo novo */\n.operational {\n  min-height: 100dvh;\n  background: var(--page);\n  padding-bottom: 78px;\n}\n.app-header {\n  position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  gap: 4px;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  letter-spacing: -.02em;\n}\n.app-brand img {\n  width: 27px;\n  height: 27px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-role {\n  font-size: 10px;\n  font-weight: 800;\n  opacity: .8;\n  text-transform: uppercase;\n  letter-spacing: .06em;\n}\n.app-titlebar {\n  padding: 10px 18px;\n  border-bottom: 1px solid var(--line);\n  background: #fff;\n  color: var(--primary);\n  font-size: 13px;\n}\n.op-shell {\n  width: min(100%, 720px);\n  margin: 0 auto;\n  padding: 22px 16px 36px;\n}\n.op-shell > .eyebrow {\n  margin: 0 0 7px;\n}\n.op-intro {\n  margin: 0 0 18px;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.55;\n}\n.op-hero {\n  margin-bottom: 14px;\n  padding: 19px;\n  border-radius: 18px;\n  background: linear-gradient(135deg, var(--primary), var(--primary-soft));\n  color: #fff;\n}\n.op-hero h1 {\n  margin: 0;\n  font-size: 24px;\n  line-height: 1.15;\n}\n.op-hero p {\n  margin: 7px 0 0;\n  color: #dce7f4;\n  line-height: 1.5;\n}\n.op-card {\n  margin-bottom: 12px;\n  padding: 17px;\n  border: 1px solid var(--line);\n  border-radius: 16px;\n  background: #fff;\n}\n.op-card h2, .op-card h3 {\n  margin: 0;\n  color: var(--primary);\n}\n.op-card h2 { font-size: 18px; }\n.op-card h3 { font-size: 15px; }\n.op-card p {\n  margin: 7px 0 0;\n  color: var(--muted);\n  font-size: 13px;\n  line-height: 1.5;\n}\n.op-grid {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 10px;\n}\n.op-action {\n  width: 100%;\n  min-height: 78px;\n  display: flex;\n  justify-content: space-between;\n  gap: 14px;\n  align-items: center;\n  border: 1px solid var(--line);\n  border-radius: 15px;\n  padding: 14px 15px;\n  background: #fff;\n  color: var(--text);\n  text-align: left;\n  cursor: pointer;\n}\n.op-action strong, .op-action small { display: block; }\n.op-action strong { color: var(--primary); font-size: 14px; }\n.op-action small { margin-top: 4px; color: var(--muted); line-height: 1.35; }\n.op-action::after {\n  content: \"›\";\n  color: var(--gold);\n  font-size: 24px;\n  font-weight: 800;\n}\n.online-card {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  border-color: #a8dfc8;\n  background: #f1fbf6;\n}\n.online-card.is-offline {\n  border-color: var(--line);\n  background: #f8fafc;\n}\n.online-dot {\n  width: 9px;\n  height: 9px;\n  flex: 0 0 auto;\n  border-radius: 50%;\n  background: #15945e;\n  box-shadow: 0 0 0 4px rgba(21,148,94,.12);\n}\n.is-offline .online-dot {\n  background: #98a2b3;\n  box-shadow: none;\n}\n.status-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  margin-top: 10px;\n  border-radius: 999px;\n  padding: 6px 9px;\n  background: #edf3fa;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 900;\n  text-transform: uppercase;\n}\n.status-chip.waiting { background: #fff4d9; color: #7a5400; }\n.status-chip.ok { background: #e5f7ee; color: #08744e; }\n.status-chip.danger { background: #feeceb; color: #b42318; }\n.op-tabs {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 7px;\n  margin-bottom: 12px;\n}\n.op-tabs button {\n  min-height: 42px;\n  border: 1px solid var(--line);\n  border-radius: 10px;\n  background: #fff;\n  color: var(--muted);\n  font-weight: 800;\n  cursor: pointer;\n}\n.op-tabs button.active {\n  border-color: var(--primary);\n  background: var(--primary);\n  color: #fff;\n}\n.meta-list {\n  display: grid;\n  gap: 8px;\n  margin-top: 12px;\n}\n.meta-row {\n  display: flex;\n  justify-content: space-between;\n  gap: 16px;\n  padding-top: 9px;\n  border-top: 1px solid #edf0f4;\n  font-size: 12px;\n}\n.meta-row span { color: var(--muted); }\n.meta-row strong { color: var(--primary); text-align: right; }\n.op-buttons {\n  display: grid;\n  gap: 9px;\n  margin-top: 14px;\n}\n.op-buttons.inline {\n  grid-template-columns: 1fr 1fr;\n}\n.op-secondary, .op-danger {\n  min-height: 48px;\n  border-radius: 12px;\n  padding: 12px 14px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.op-secondary {\n  border: 1px solid var(--line);\n  background: #fff;\n  color: var(--primary);\n}\n.op-danger {\n  border: 1px solid #f1b6b2;\n  background: #fff5f4;\n  color: #b42318;\n}\n.op-empty {\n  padding: 28px 16px;\n  border: 1px dashed #cbd5e1;\n  border-radius: 14px;\n  background: #f8fafc;\n  color: var(--muted);\n  text-align: center;\n  font-size: 13px;\n}\n.op-form {\n  display: grid;\n  gap: 12px;\n}\n.op-form label {\n  display: grid;\n  gap: 6px;\n  color: var(--primary);\n  font-size: 11px;\n  font-weight: 800;\n}\n.op-form input, .op-form select, .op-form textarea {\n  width: 100%;\n  min-height: 48px;\n  border: 1px solid var(--line);\n  border-radius: 11px;\n  padding: 11px 12px;\n  background: #fff;\n  color: var(--text);\n  font: inherit;\n}\n.op-form textarea { min-height: 110px; resize: vertical; }\n.switch-row {\n  display: flex;\n  justify-content: space-between;\n  gap: 14px;\n  align-items: center;\n  padding: 13px 0;\n  border-bottom: 1px solid #edf0f4;\n}\n.switch-row:last-child { border-bottom: 0; }\n.switch-row strong, .switch-row small { display: block; }\n.switch-row small { margin-top: 3px; color: var(--muted); font-size: 11px; }\n.prototype-switch {\n  position: relative;\n  width: 46px;\n  height: 26px;\n  flex: 0 0 auto;\n  border: 0;\n  border-radius: 999px;\n  background: #15945e;\n  cursor: pointer;\n}\n.prototype-switch::after {\n  position: absolute;\n  top: 3px;\n  right: 3px;\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  background: #fff;\n  content: \"\";\n  box-shadow: 0 2px 5px rgba(0,0,0,.18);\n}\n.prototype-switch.is-offline { background: #cbd5e1; }\n.prototype-switch.is-offline::after { right: 23px; }\n.day-list {\n  display: grid;\n  gap: 7px;\n}\n.day-list label {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  min-height: 49px;\n  border: 1px solid var(--line);\n  border-radius: 11px;\n  padding: 10px 12px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;\n}\n.day-list input { width: 19px; height: 19px; accent-color: var(--primary); }\n.radius-value {\n  margin: 4px 0 14px;\n  color: var(--primary);\n  text-align: center;\n  font-size: 38px;\n  font-weight: 900;\n}\n.radius-value small { font-size: 14px; color: var(--muted); }\n.profile-head {\n  display: flex;\n  gap: 13px;\n  align-items: center;\n}\n.profile-avatar {\n  width: 58px;\n  height: 58px;\n  display: grid;\n  flex: 0 0 auto;\n  place-items: center;\n  border-radius: 18px;\n  background: #dfe8f3;\n  color: var(--primary);\n  font-weight: 900;\n}\n.bottom-nav {\n  position: fixed;\n  z-index: 10;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  border-top: 1px solid var(--line);\n  background: rgba(255,255,255,.97);\n  backdrop-filter: blur(12px);\n}\n.bottom-nav button {\n  min-height: 64px;\n  border: 0;\n  padding: 7px 3px;\n  background: transparent;\n  color: #778195;\n  font-size: 9px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.bottom-nav button.active {\n  color: var(--primary);\n  background: #f0f5fb;\n}\n.prototype-drawer {\n  position: fixed;\n  z-index: 40;\n  inset: 0;\n  display: none;\n}\n.prototype-drawer.open { display: block; }\n.drawer-backdrop {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: rgba(7,16,30,.55);\n}\n.drawer-panel {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: min(88vw, 360px);\n  overflow: auto;\n  padding: 18px 14px 22px;\n  background: linear-gradient(180deg, #10233f, #0a1b32);\n  color: #fff;\n  box-shadow: 12px 0 28px rgba(0,0,0,.28);\n}\n.drawer-top {\n  display: flex;\n  justify-content: space-between;\n  gap: 10px;\n  align-items: flex-start;\n  padding: 8px 5px 18px;\n}\n.drawer-identity {\n  display: flex;\n  gap: 11px;\n  align-items: center;\n}\n.drawer-identity strong, .drawer-identity small { display: block; }\n.drawer-identity small {\n  margin-top: 3px;\n  color: #aebdd0;\n  font-size: 9px;\n  font-weight: 900;\n  letter-spacing: .08em;\n}\n.drawer-avatar {\n  width: 48px;\n  height: 48px;\n  display: grid;\n  place-items: center;\n  border: 1px solid #ffffff33;\n  border-radius: 50%;\n  background: #ffffff14;\n  font-weight: 900;\n}\n.drawer-close {\n  border: 0;\n  background: transparent;\n  color: #fff;\n  font-size: 30px;\n  line-height: 1;\n  cursor: pointer;\n}\n.drawer-online {\n  width: 100%;\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 10px;\n  align-items: center;\n  border: 1px solid #ffffff1f;\n  border-radius: 13px;\n  padding: 12px;\n  background: #ffffff0d;\n  color: #fff;\n  text-align: left;\n  cursor: pointer;\n}\n.drawer-online strong, .drawer-online small { display: block; }\n.drawer-online small { margin-top: 2px; color: #aebdd0; font-size: 10px; }\n.online-switch {\n  position: relative;\n  width: 42px;\n  height: 24px;\n  border-radius: 999px;\n  background: #15945e;\n}\n.online-switch b {\n  position: absolute;\n  top: 3px;\n  right: 3px;\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  background: #fff;\n}\n.drawer-online.is-offline .online-switch { background: #64748b; }\n.drawer-online.is-offline .online-switch b { right: 21px; }\n.drawer-nav {\n  display: grid;\n  gap: 3px;\n  margin-top: 12px;\n}\n.drawer-nav button, .drawer-footer button {\n  min-height: 44px;\n  border: 0;\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: transparent;\n  color: #f8fafc;\n  text-align: left;\n  font-weight: 700;\n  cursor: pointer;\n}\n.drawer-nav button:hover, .drawer-footer button:hover { background: #ffffff10; }\n.drawer-footer {\n  margin-top: 16px;\n  padding-top: 12px;\n  border-top: 1px solid #ffffff1a;\n}\n.drawer-footer small {\n  display: block;\n  padding: 8px 12px 0;\n  color: #8190a5;\n}\n.op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\n.is-operational .open-index { bottom: 82px; }\n\n@media (min-width: 720px) {\n  .op-shell { padding: 28px 22px 52px; }\n  .op-grid.two { grid-template-columns: 1fr 1fr; }\n  .bottom-nav {\n    left: 50%;\n    width: min(720px, 100%);\n    transform: translateX(-50%);\n    border-right: 1px solid var(--line);\n    border-left: 1px solid var(--line);\n    border-radius: 16px 16px 0 0;\n    overflow: hidden;\n  }\n}\n\n/* ===== cliente.css ===== */\n/*\n  Cliente + fluxo pós-login.\n  A linguagem visual abaixo reaproveita a estrutura que funcionava melhor no\n  protótipo antigo: cartões simples, hierarquia curta, espaçamento mobile-first\n  e ações sem transformar a Home em painel de atalhos.\n*/\n\n.client-legacy {\n  --client-primary: #10233f;\n  --client-primary-2: #173c6b;\n  --client-gold: #b88932;\n  --client-gold-soft: #fff4db;\n  --client-bg: #eef2f6;\n  --client-surface: #ffffff;\n  --client-soft: #f8fafc;\n  --client-line: #dbe3ee;\n  --client-text: #172033;\n  --client-muted: #667085;\n  --client-ok: #0f8f62;\n  --client-ok-bg: #def7ec;\n  background: var(--client-bg);\n}\n\n.client-legacy .client-legacy__content {\n  min-height: calc(100dvh - 112px);\n  background: var(--client-bg);\n}\n\n.client-legacy .op-card,\n.client-legacy .op-action {\n  border: 1px solid var(--client-line);\n  border-radius: 14px;\n  background: var(--client-surface);\n  box-shadow: 0 4px 12px rgba(15, 23, 42, .035);\n}\n\n.client-legacy .op-card {\n  padding: 16px;\n  margin-bottom: 12px;\n}\n\n.client-legacy .op-action {\n  width: 100%;\n  min-height: 72px;\n  margin: 0 0 12px;\n  padding: 14px 16px;\n  color: var(--client-text);\n  text-align: left;\n}\n\n.client-legacy .op-action strong,\n.client-legacy .op-action small {\n  display: block;\n}\n\n.client-legacy .op-action strong {\n  margin-bottom: 4px;\n  color: var(--client-text);\n  font-size: 15px;\n  font-weight: 800;\n}\n\n.client-legacy .op-action small {\n  color: var(--client-muted);\n  font-size: 12px;\n  line-height: 1.4;\n  font-weight: 600;\n}\n\n.client-home-head {\n  margin-bottom: 18px;\n}\n\n.client-home-head h1 {\n  margin: 0 0 8px;\n  color: var(--client-primary);\n  font-size: 24px;\n  line-height: 1.15;\n}\n\n.client-home-head p {\n  margin: 0;\n  color: var(--client-muted);\n  font-size: 14px;\n  line-height: 1.5;\n}\n\n.client-home-action {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 44px 1fr auto;\n  gap: 12px;\n  align-items: center;\n  margin-bottom: 12px;\n  padding: 16px;\n  border: 1px solid var(--client-line);\n  border-radius: 14px;\n  background: var(--client-surface);\n  color: var(--client-text);\n  text-align: left;\n  box-shadow: 0 4px 12px rgba(15, 23, 42, .035);\n  cursor: pointer;\n}\n\n.client-home-action .iconbox {\n  display: grid;\n  width: 44px;\n  height: 44px;\n  place-items: center;\n  border-radius: 13px;\n  background: #e7f0ff;\n  color: var(--client-primary);\n  font-weight: 900;\n}\n\n.client-home-action.consultoria .iconbox {\n  background: var(--client-gold-soft);\n  color: var(--client-gold);\n}\n\n.client-home-action .txt b,\n.client-home-action .txt small {\n  display: block;\n}\n\n.client-home-action .txt b {\n  margin-bottom: 4px;\n  font-size: 15px;\n  font-weight: 800;\n}\n\n.client-home-action .txt small {\n  color: var(--client-muted);\n  font-size: 12px;\n  line-height: 1.4;\n  font-weight: 600;\n}\n\n.client-home-action .chev {\n  color: var(--client-primary);\n  font-size: 24px;\n  line-height: 1;\n}\n\n.client-notice {\n  margin-top: 12px;\n  padding: 13px 14px;\n  border: 1px solid #ead6a9;\n  border-radius: 12px;\n  background: #fff8e8;\n  color: #70510b;\n  font-size: 12px;\n  line-height: 1.45;\n}\n\n.client-map {\n  position: relative;\n  min-height: 210px;\n  overflow: hidden;\n  margin-bottom: 14px;\n  border: 1px solid var(--client-line, #dbe3ee);\n  border-radius: 14px;\n  background:\n    linear-gradient(90deg, rgba(16,35,63,.06) 1px, transparent 1px) 0 0/36px 36px,\n    linear-gradient(rgba(16,35,63,.06) 1px, transparent 1px) 0 0/36px 36px,\n    #eaf0f6;\n}\n.client-map::before,\n.client-map::after {\n  position: absolute;\n  width: 18px;\n  height: 18px;\n  border-radius: 50% 50% 50% 0;\n  background: #10233f;\n  box-shadow: 0 4px 10px rgba(16,35,63,.2);\n  content: \"\";\n  transform: rotate(-45deg);\n}\n.client-map::before { left: 34%; top: 35%; }\n.client-map::after { right: 25%; top: 48%; background: #b88932; }\n\n.client-chip-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin: 12px 0;\n}\n.client-chip {\n  border: 1px solid #dbe3ee;\n  border-radius: 999px;\n  padding: 8px 11px;\n  background: #fff;\n  color: #10233f;\n  font-size: 11px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.client-chip.active {\n  border-color: #10233f;\n  background: #10233f;\n  color: #fff;\n}\n\n.client-timeline {\n  display: grid;\n  gap: 12px;\n  margin: 16px 0;\n}\n.client-step {\n  display: grid;\n  grid-template-columns: 28px 1fr;\n  gap: 10px;\n  align-items: center;\n  color: #667085;\n  font-size: 12px;\n}\n.client-step span:first-child {\n  display: grid;\n  width: 28px;\n  height: 28px;\n  place-items: center;\n  border-radius: 50%;\n  background: #e7edf4;\n  color: #10233f;\n  font-size: 10px;\n  font-weight: 900;\n}\n.client-step.done span:first-child {\n  background: #def7ec;\n  color: #0f8f62;\n}\n\n.client-profile {\n  display: grid;\n  grid-template-columns: 48px 1fr auto;\n  gap: 12px;\n  align-items: center;\n}\n.client-avatar {\n  display: grid;\n  width: 48px;\n  height: 48px;\n  place-items: center;\n  border-radius: 13px;\n  background: #e7f0ff;\n  color: #10233f;\n  font-weight: 900;\n}\n\n/* Fluxo pós-login: mesma lógica visual da tela \"Caminho do login\" do protótipo antigo. */\n.login-flow {\n  --login-flow-content-max: 560px;\n  min-height: 100dvh;\n  background: #eef2f6;\n  color: #172033;\n}\n.login-flow__bar {\n  min-height: calc(64px + env(safe-area-inset-top));\n  padding-top: env(safe-area-inset-top);\n  padding-left: max(18px, env(safe-area-inset-left));\n  padding-right: max(18px, env(safe-area-inset-right));\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: #10233f;\n  color: #fff;\n  font-size: 16px;\n  font-weight: 800;\n}\n.login-flow__bar img {\n  width: 23px;\n  height: 23px;\n}\n.login-flow__content {\n  width: min(calc(100% - 40px), var(--login-flow-content-max));\n  margin-inline: auto;\n  padding: 20px 0 32px;\n}\n.login-flow__content h1 {\n  margin: 0 0 10px;\n  color: #10233f;\n  font-size: 24px;\n  line-height: 1.15;\n}\n.login-flow__subcopy {\n  margin: 0 0 18px;\n  color: #667085;\n  font-size: 14px;\n  line-height: 1.5;\n}\n.login-flow .role-choice {\n  margin-bottom: 12px;\n  padding: 14px;\n  border: 1px solid #dbe3ee;\n  border-radius: 14px;\n  background: #fff;\n  box-shadow: 0 4px 12px rgba(15,23,42,.035);\n}\n.login-flow .role-choice-head {\n  display: grid;\n  grid-template-columns: 44px 1fr;\n  gap: 12px;\n  align-items: center;\n  margin-bottom: 12px;\n}\n.login-flow .mini-icon {\n  display: grid;\n  width: 44px;\n  height: 44px;\n  place-items: center;\n  border-radius: 13px;\n  background: #e7f0ff;\n  color: #10233f;\n  font-weight: 900;\n}\n.login-flow .mini-icon.gold { background: #fff4db; color: #b88932; }\n.login-flow .mini-icon.ok { background: #def7ec; color: #0f8f62; }\n.login-flow .title {\n  margin-bottom: 4px;\n  color: #172033;\n  font-size: 15px;\n  font-weight: 800;\n}\n.login-flow .muted {\n  color: #667085;\n  font-size: 12px;\n  line-height: 1.35;\n  font-weight: 600;\n}\n.login-flow .role-actions {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 8px;\n}\n.login-flow .role-actions.single {\n  grid-template-columns: 1fr;\n}\n.login-flow .role-actions button {\n  min-height: 38px;\n  border: 1px solid #10233f;\n  border-radius: 10px;\n  padding: 8px 10px;\n  background: #10233f;\n  color: #fff;\n  font: inherit;\n  font-size: 11px;\n  font-weight: 900;\n  text-transform: uppercase;\n  letter-spacing: .03em;\n  cursor: pointer;\n}\n.login-flow .role-actions button + button {\n  background: transparent;\n  color: #10233f;\n}\n@media (min-width: 700px) {\n  .login-flow__content {\n    width: min(calc(100% - 48px), var(--login-flow-content-max));\n    padding: 54px 0 112px;\n  }\n}\n.login-flow__note {\n  margin-top: 16px;\n  padding: 12px 13px;\n  border: 1px dashed #c8d3df;\n  border-radius: 12px;\n  color: #667085;\n  font-size: 11px;\n  line-height: 1.45;\n}\n\n\n\n/* ===== 08 · isolamento de tela ===== */\nhtml,body{min-height:100%;}\nbody.aj08-static{margin:0;overflow-x:hidden;}\nbody.aj08-static .open-index,body.aj08-static .sheet{display:none!important;}\n.aj08-route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}\n.aj08-route-modal.open{display:flex}.aj08-route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}\n.aj08-route-card .aj08-kicker{margin:0 0 7px;color:#b88932;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.aj08-route-card h2{margin:0 0 8px;color:#10233f;font-size:20px}.aj08-route-card p{margin:0 0 12px;color:#667085;font-size:13px;line-height:1.5}.aj08-route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:#10233f;font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.aj08-route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:#10233f;color:#fff;font-weight:800;cursor:pointer}\n.aj08-static-note{position:fixed;z-index:80;right:12px;top:12px;max-width:min(260px,calc(100vw - 24px));padding:7px 10px;border-radius:999px;background:rgba(17,24,39,.86);color:#fff;font-size:10px;font-weight:800;pointer-events:none;box-shadow:0 6px 18px rgba(0,0,0,.15)}\n@media(max-width:600px){.aj08-static-note{top:auto;right:10px;bottom:10px;max-width:calc(100vw - 20px)}}\n\n/* Compatibilidade da composição modular com o DOM das telas estáticas. */\n#screen-root,.screen-runtime,[data-screen-root]{min-height:100dvh}\n.screen-runtime{width:100%}\n.screen-slot,screen-section{display:contents}\n.screen-runtime .prototype-screen .screen-slot--main{display:block;width:min(100%,720px);margin:0 auto;padding:22px 16px 28px}\n.screen-runtime .prototype-screen .screen-slot--main screen-section{display:block}\n.screen-runtime .prototype-screen .screen-slot--main screen-section+screen-section{margin-top:12px}\n.screen-loading,.screen-error{display:block;width:min(100% - 32px,720px);margin:32px auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff;line-height:1.55}\n.section-runtime-warning{display:block;margin:12px;padding:12px;border:1px dashed #b8c2cf;border-radius:12px;background:#fff}\n[data-studio-toolbar]{display:flex!important}\n",
+      "componentes": {
+        "app-header": ".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button { gap: 4px; }\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}\n.app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-brand-copy { min-width: 0; }\n.app-brand-copy strong,\n.app-brand-copy small { display:block; }\n.app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}\n.app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}\n.app-notifications {\n  position: relative;\n  justify-self: end;\n}\n.app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n.app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}\n",
+        "titlebar": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}\n",
+        "hero": ".home-intro {\n  padding: 2px 2px 4px;\n}\n.home-eyebrow {\n  display:block;\n  margin-bottom:6px;\n  color:var(--gold);\n  font-size:11px;\n  font-weight:900;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n}\n.home-intro h1 {\n  margin:0;\n  color:var(--primary);\n  font-size:24px;\n  line-height:1.15;\n  letter-spacing:-.025em;\n}\n.home-intro p {\n  max-width:560px;\n  margin:8px 0 0;\n  color:var(--muted);\n  font-size:14px;\n  line-height:1.5;\n}\n",
+        "online-status": ".online-card {\n  width:100%;\n  display:grid;\n  grid-template-columns:auto minmax(0,1fr) auto;\n  gap:12px;\n  align-items:center;\n  padding:14px 15px;\n  border:1px solid #a8dfc8;\n  border-radius:16px;\n  background:#f1fbf6;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n}\n.online-card.is-offline {\n  border-color:var(--line);\n  background:#f8fafc;\n}\n.online-dot {\n  width:10px;\n  height:10px;\n  border-radius:50%;\n  background:#15945e;\n  box-shadow:0 0 0 4px rgba(21,148,94,.12);\n}\n.is-offline .online-dot {\n  background:#98a2b3;\n  box-shadow:none;\n}\n.online-copy strong,\n.online-copy small { display:block; }\n.online-copy strong {\n  color:var(--primary);\n  font-size:14px;\n}\n.online-copy small {\n  margin-top:3px;\n  color:var(--muted);\n  font-size:12px;\n}\n.online-switch {\n  position:relative;\n  width:40px;\n  height:23px;\n  border-radius:999px;\n  background:#22c55e;\n}\n.online-switch b {\n  position:absolute;\n  top:3px;\n  right:3px;\n  width:17px;\n  height:17px;\n  border-radius:50%;\n  background:#fff;\n}\n.is-offline .online-switch { background:#98a2b3; }\n.is-offline .online-switch b { right:20px; }\n",
+        "actions": ".requests-block { display:grid; gap:12px; }\n.requests-heading {\n  display:flex;\n  justify-content:space-between;\n  gap:12px;\n  align-items:end;\n}\n.requests-heading h2 {\n  margin:0;\n  color:var(--primary);\n  font-size:18px;\n  letter-spacing:-.015em;\n}\n.requests-heading p {\n  margin:4px 0 0;\n  color:var(--muted);\n  font-size:12px;\n}\n.requests-list { display:grid; gap:10px; }\n.request-card {\n  width:100%;\n  display:block;\n  padding:15px;\n  border:1px solid var(--line);\n  border-radius:16px;\n  background:#fff;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n  box-shadow:0 2px 7px rgba(16,35,63,.035);\n}\n.request-card:hover { border-color:#bac7d8; }\n.request-top {\n  display:flex;\n  justify-content:space-between;\n  gap:10px;\n  align-items:center;\n}\n.request-priority {\n  display:inline-flex;\n  align-items:center;\n  min-height:24px;\n  padding:3px 9px;\n  border-radius:999px;\n  background:#fff7e8;\n  color:#8a5a08;\n  font-size:10px;\n  font-weight:900;\n  text-transform:uppercase;\n  letter-spacing:.045em;\n}\n.request-time {\n  color:var(--muted);\n  font-size:11px;\n}\n.request-card h3 {\n  margin:12px 0 0;\n  color:var(--primary);\n  font-size:16px;\n}\n.request-meta {\n  margin:5px 0 0;\n  color:var(--muted);\n  font-size:12px;\n  line-height:1.45;\n}\n.request-summary {\n  margin:11px 0 0;\n  color:#344054;\n  font-size:13px;\n  line-height:1.5;\n}\n.request-open {\n  margin-top:13px;\n  display:flex;\n  justify-content:flex-end;\n  gap:6px;\n  align-items:center;\n  color:var(--primary-soft);\n  font-size:12px;\n  font-weight:800;\n}\n.request-open b {\n  color:var(--gold);\n  font-size:20px;\n  line-height:1;\n}\n@media(min-width:680px) {\n  .requests-list { grid-template-columns:1fr 1fr; }\n  .request-card:first-child { grid-column:1 / -1; }\n}\n",
+        "drawer": ".prototype-drawer {\n  position: fixed;\n  z-index: 40;\n  inset: 0;\n  display: none;\n}\n\n.prototype-drawer.open { display: block; }\n\n.drawer-backdrop {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: rgba(7, 16, 30, .60);\n}\n\n.drawer-panel {\n  position: absolute;\n  inset: 0 auto 0 0;\n  width: min(80vw, 360px);\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  background: #3b4a7d;\n  color: #fff;\n  box-shadow: 12px 0 30px rgba(0, 0, 0, .32);\n}\n\n.drawer-top {\n  flex: 0 0 auto;\n  min-height: 106px;\n  padding: 30px 22px 20px;\n  display: flex;\n  align-items: center;\n}\n\n.drawer-identity {\n  min-width: 0;\n  display: flex;\n  gap: 14px;\n  align-items: center;\n}\n\n.drawer-avatar {\n  flex: 0 0 56px;\n  width: 56px;\n  height: 56px;\n  display: grid;\n  place-items: center;\n  border: 2px solid rgba(255, 255, 255, .20);\n  border-radius: 50%;\n  background: #dbeafe;\n  color: #1e3a8a;\n  font-size: 20px;\n  font-weight: 800;\n}\n\n.drawer-profile { min-width: 0; }\n.drawer-profile strong,\n.drawer-profile small { display: block; }\n.drawer-profile strong {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 16px;\n  font-weight: 600;\n}\n.drawer-profile small {\n  margin-top: 2px;\n  color: #bfdbfe;\n  font-size: 11px;\n  font-weight: 400;\n  text-transform: lowercase;\n}\n\n.drawer-online {\n  flex: 0 0 auto;\n  width: calc(100% - 44px);\n  margin: 0 22px 10px;\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 10px;\n  align-items: center;\n  border: 1px solid rgba(255, 255, 255, .18);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: rgba(255, 255, 255, .08);\n  color: #fff;\n  text-align: left;\n  cursor: pointer;\n}\n.drawer-online-copy strong,\n.drawer-online-copy small { display: block; }\n.drawer-online-copy strong { font-size: 13px; }\n.drawer-online-copy small { margin-top: 2px; color: #bfdbfe; font-size: 10px; }\n.online-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background: #4ade80;\n  box-shadow: 0 0 0 4px rgba(74, 222, 128, .14);\n}\n.drawer-online.is-offline .online-dot { background: #98a2b3; box-shadow: none; }\n.online-switch { position: relative; width: 38px; height: 22px; border-radius: 999px; background: #22c55e; }\n.online-switch b { position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }\n.drawer-online.is-offline .online-switch { background: #64748b; }\n.drawer-online.is-offline .online-switch b { right: 19px; }\n\n.drawer-nav {\n  flex: 1 1 auto;\n  min-height: 0;\n  display: block;\n  margin: 0;\n  padding: 0 0 8px;\n  overflow-x: hidden;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  -webkit-overflow-scrolling: touch;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(255, 255, 255, .35) transparent;\n}\n.drawer-nav::-webkit-scrollbar { width: 5px; }\n.drawer-nav::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(255, 255, 255, .35); }\n\n.drawer-nav button {\n  width: 100%;\n  min-height: 51px;\n  padding: 14px 22px;\n  border: 0;\n  border-bottom: 1px solid rgba(255, 255, 255, .10);\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  text-align: left;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n}\n.drawer-nav button:hover { background: rgba(255, 255, 255, .08); }\n.drawer-icon { flex: 0 0 20px; width: 20px; height: 20px; color: #aebee5; }\n\n.drawer-footer {\n  flex: 0 0 auto;\n  margin-top: 0;\n  padding: 16px 22px 30px;\n  display: flex;\n  flex-direction: column;\n  gap: 22px;\n  background: rgba(0, 0, 0, .10);\n}\n.drawer-footer-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }\n.drawer-logout {\n  min-height: 32px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  font-size: 14px;\n  cursor: pointer;\n}\n.drawer-logout svg { width: 18px; height: 18px; color: #aebee5; }\n.drawer-footer small { color: #aebee5; font-size: 10px; }\n.drawer-emergency {\n  min-height: 41px;\n  border: 1px solid rgba(255, 255, 255, .54);\n  border-radius: 999px;\n  background: transparent;\n  color: #fff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n}\n.drawer-emergency:hover { background: rgba(255, 255, 255, .08); }\n\n@media (max-width: 420px) {\n  .drawer-panel { width: 80vw; }\n  .drawer-top { padding-top: 24px; }\n}\n",
+        "route-modal": ".route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}.route-modal.open{display:flex}.route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}.kicker{margin:0 0 7px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.route-card h2{margin:0 0 8px;color:var(--primary);font-size:20px}.route-card p:not(.kicker){margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.5}.route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:var(--primary);font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}\n\n",
+        "status-toast": ".status-toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:999px;background:#10233f;color:#fff;font-size:13px;box-shadow:0 10px 30px #0003;transition:.2s ease}.status-toast.show{opacity:1;transform:translate(-50%,0)}@media(min-width:900px){.status-toast{bottom:28px}}"
+      },
+      "elementos": {},
+      "cssAdicional": ""
+    },
+    "variantes": {
+      "oab_pendente": {
+        "classeRaiz": "home-oab-pendente",
+        "cssAdicional": ".oab-gate-card{margin:16px 0;padding:24px;border:1px solid #d9cba9;border-radius:16px;background:#fffaf0;color:var(--text,#242424)}.oab-gate-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#936b22}.oab-gate-card h2{margin:10px 0;font-size:22px}.oab-gate-card p{line-height:1.5}.oab-gate-status{font-size:13px;color:#745526}.oab-gate-button{margin-top:12px;border:0;border-radius:10px;padding:12px 18px;background:var(--primary,#2b4d85);color:#fff;font-weight:650;cursor:pointer}"
+      },
+      "oab_aprovada": {
+        "classeRaiz": "home-oab-aprovada",
+        "cssAdicional": ""
+      }
+    }
+  },
+  "dados": {
+    "base": {
+      "componentes": {
+        "app-header": {},
+        "titlebar": {},
+        "hero": {},
+        "online-status": {
+          "online": "Online",
+          "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+        },
+        "actions": {
+          "ver_solicitacao": "Ver solicitação"
+        },
+        "drawer": {
+          "fechar_menu_aria_label": "Fechar menu",
+          "menu_principal_aria_label": "Menu principal",
+          "online": "Online",
+          "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+        },
+        "route-modal": {
+          "navegacao_simulada_aria_label": "Navegação simulada",
+          "tela_modular_navegacao_simulada": "Tela modular · navegação simulada",
+          "navegacao_simulada": "Navegação simulada",
+          "esta_acao_nao_abre_outra_tela_nesta_biblioteca": "Esta ação não abre outra tela nesta biblioteca.",
+          "fechar": "Fechar"
+        },
+        "status-toast": {}
+      },
+      "fixtures": {
+        "app-header": {
+          "brand": "AdvogadoJá",
+          "role": "Advogado",
+          "menuLabel": "Abrir menu",
+          "notificationsGoto": "notificacoes.lista.notificacoes",
+          "notificationsLabel": "Notificações",
+          "unreadCount": "3"
+        },
+        "drawer": {
+          "avatar": "JS",
+          "name": "Dr. João Silva",
+          "subtitle": "Perfil profissional",
+          "showOnline": true,
+          "items": [
+            {
+              "goto": "advogado.clientes.detalhe_solicitacao",
+              "label": "Análise da solicitação",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "goto": "advogado.atendimentos_advogado",
+              "label": "Atendimentos",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "goto": "advogado.perfil_profissional",
+              "label": "Meu Perfil",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "goto": "advogado.assinatura.gestao_assinatura",
+              "label": "Assinatura",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "goto": "escritorio.gestao.escritorio",
+              "label": "Escritório",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "goto": "advogado.configuracao.configuracao",
+              "label": "Configurações",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "goto": "notificacoes.lista.notificacoes",
+              "label": "Notificações",
+              "icon": "M5 6h14M5 12h14M5 18h14"
+            }
+          ],
+          "logoutGoto": "auth.sessao.entrar",
+          "logoutLabel": "Sair",
+          "footer": "Ambiente de demonstração",
+          "emergencyLabel": "Contato prioritário"
+        },
+        "actions": {
+          "title": "Novas solicitações",
+          "count": "2 disponíveis",
+          "items": [
+            {
+              "goto": "advogado.atendimentos_advogado",
+              "priority": "Nova",
+              "time": "há 5 min",
+              "area": "Direito Criminal",
+              "requestType": "Orientação",
+              "location": "Aracaju · SE",
+              "mode": "Online",
+              "summary": "Cliente solicita orientação inicial sobre uma situação jurídica."
+            },
+            {
+              "goto": "advogado.atendimentos_advogado",
+              "priority": "Nova",
+              "time": "há 18 min",
+              "area": "Direito de Família",
+              "requestType": "Consulta",
+              "location": "Aracaju · SE",
+              "mode": "Presencial",
+              "summary": "Solicitação de atendimento para esclarecimento de próximos passos."
+            }
+          ]
+        },
+        "titlebar": {
+          "title": "Início Profissional"
+        },
+        "hero": {
+          "eyebrow": "PAINEL PROFISSIONAL",
+          "title": "Olá, Dr. João Silva",
+          "subtitle": "Acompanhe seus atendimentos e novas solicitações."
+        }
+      },
+      "campos": {}
+    },
+    "variantes": {
+      "oab_pendente": {
+        "rotulo": "VALIDAÇÃO PROFISSIONAL",
+        "titulo": "Valide sua OAB para liberar sua Home",
+        "descricao": "Seu cadastro foi recebido. Para acessar solicitações e disponibilizar atendimentos, conclua ou acompanhe a verificação da OAB.",
+        "statusTexto": "O acesso completo depende da confirmação da OAB.",
+        "textoBotao": "Verificar minha OAB"
+      },
+      "oab_aprovada": {
+        "resumo": "Acesso profissional liberado."
+      }
+    }
+  },
+  "mocks": {
+    "entidades": {
+      "advogado_teste": {
+        "credenciaisOriginais": {
+          "descricao": "Credenciais fictícias, sem autenticação real",
+          "campos": {
+            "email": "advogado@teste.local",
+            "password": "123456"
+          }
+        },
+        "perfil": {
+          "nome": "Dr. João Silva",
+          "subtitulo": "Perfil profissional"
+        }
+      }
+    },
+    "cenarios": {
+      "oab_pendente": {
+        "entidadeRef": "mocks.entidades.advogado_teste",
+        "dadosTelaRef": "dados.base.fixtures",
+        "contexto": {
+          "sessao": {
+            "profissional": {
+              "id": "advogado-teste",
+              "oab": {
+                "status": "em_analise"
+              }
+            }
+          },
+          "online": false
+        }
+      },
+      "oab_aprovada": {
+        "entidadeRef": "mocks.entidades.advogado_teste",
+        "dadosTelaRef": "dados.base.fixtures",
+        "contexto": {
+          "sessao": {
+            "profissional": {
+              "id": "advogado-teste",
+              "oab": {
+                "status": "aprovada"
+              }
+            }
+          },
+          "online": true
+        }
+      }
+    },
+    "uso": "exclusivo_simulador_nao_controla_autorizacao_real"
+  },
+  "acoes": {
+    "porId": {
+      "acao_7": {
+        "tipo": "menu",
+        "modo": "abrir"
+      },
+      "acao_8": {
+        "tipo": "navegar",
+        "destino": "notificacoes.lista.notificacoes"
+      },
+      "acao_9": {
+        "tipo": "alternarEstado",
+        "campo": "online"
+      },
+      "acao_10": {
+        "tipo": "navegar",
+        "destino": "advogado.atendimentos_advogado"
+      },
+      "acao_11": {
+        "tipo": "navegar",
+        "destino": "advogado.atendimentos_advogado"
+      },
+      "acao_12": {
+        "tipo": "menu",
+        "modo": "fechar"
+      },
+      "acao_13": {
+        "tipo": "alternarEstado",
+        "campo": "online"
+      },
+      "acao_14": {
+        "tipo": "navegar",
+        "destino": "advogado.clientes.detalhe_solicitacao"
+      },
+      "acao_15": {
+        "tipo": "navegar",
+        "destino": "advogado.atendimentos_advogado"
+      },
+      "acao_16": {
+        "tipo": "navegar",
+        "destino": "advogado.perfil_profissional"
+      },
+      "acao_17": {
+        "tipo": "navegar",
+        "destino": "advogado.assinatura.gestao_assinatura"
+      },
+      "acao_18": {
+        "tipo": "navegar",
+        "destino": "escritorio.gestao.escritorio"
+      },
+      "acao_19": {
+        "tipo": "navegar",
+        "destino": "advogado.configuracao.configuracao"
+      },
+      "acao_20": {
+        "tipo": "navegar",
+        "destino": "notificacoes.lista.notificacoes"
+      },
+      "acao_21": {
+        "tipo": "navegar",
+        "destino": "auth.sessao.entrar"
+      },
+      "acao_22": {
+        "tipo": "popup",
+        "titulo": "Contato prioritário",
+        "mensagem": "Ação simulada no laboratório."
+      },
+      "acao_23": {
+        "tipo": "fecharPopup"
+      },
+      "acao_validar_oab": {
+        "tipo": "navegar",
+        "destino": "advogado.oab.validacao",
+        "destinoPlanejado": true,
+        "motivo": "Rota de validação a confirmar no catálogo completo."
+      }
+    },
+    "grupos": {
+      "base": [
+        "acao_7",
+        "acao_8",
+        "acao_12",
+        "acao_16",
+        "acao_19",
+        "acao_20",
+        "acao_21",
+        "acao_22",
+        "acao_23"
+      ],
+      "oab_pendente": [
+        "acao_validar_oab"
+      ],
+      "oab_aprovada": [
+        "acao_9",
+        "acao_10",
+        "acao_11",
+        "acao_13",
+        "acao_14",
+        "acao_15",
+        "acao_17",
+        "acao_18"
+      ]
+    }
+  },
+  "interacoes": {
+    "porElemento": {
+      "app-header::[data-action=\"drawer.open\"]": {
+        "evento": "click",
+        "acaoRef": "acao_7"
+      },
+      "app-header::0.2": {
+        "evento": "click",
+        "acaoRef": "acao_8"
+      },
+      "online-status::[data-action=\"online.toggle\"]": {
+        "evento": "click",
+        "acaoRef": "acao_9"
+      },
+      "actions::0.1.0": {
+        "evento": "click",
+        "acaoRef": "acao_10"
+      },
+      "actions::0.1.1": {
+        "evento": "click",
+        "acaoRef": "acao_11"
+      },
+      "drawer::[data-action=\"drawer.close\"]": {
+        "evento": "click",
+        "acaoRef": "acao_12"
+      },
+      "drawer::[data-action=\"online.toggle\"]": {
+        "evento": "click",
+        "acaoRef": "acao_13"
+      },
+      "drawer::0.1.2.0": {
+        "evento": "click",
+        "acaoRef": "acao_14"
+      },
+      "drawer::0.1.2.1": {
+        "evento": "click",
+        "acaoRef": "acao_15"
+      },
+      "drawer::0.1.2.2": {
+        "evento": "click",
+        "acaoRef": "acao_16"
+      },
+      "drawer::0.1.2.3": {
+        "evento": "click",
+        "acaoRef": "acao_17"
+      },
+      "drawer::0.1.2.4": {
+        "evento": "click",
+        "acaoRef": "acao_18"
+      },
+      "drawer::0.1.2.5": {
+        "evento": "click",
+        "acaoRef": "acao_19"
+      },
+      "drawer::0.1.2.6": {
+        "evento": "click",
+        "acaoRef": "acao_20"
+      },
+      "drawer::0.1.3.0.0": {
+        "evento": "click",
+        "acaoRef": "acao_21"
+      },
+      "drawer::[data-action=\"emergency.mock\"]": {
+        "evento": "click",
+        "acaoRef": "acao_22"
+      },
+      "route-modal::[data-action=\"route.close\"]": {
+        "evento": "click",
+        "acaoRef": "acao_23"
+      },
+      "oab-validation-panel::cta": {
+        "evento": "click",
+        "acaoRef": "acao_validar_oab"
+      }
+    },
+    "regra": "Ativar somente interações cujas ações pertençam aos grupos base e estado atual.",
+    "idsLegados": "Os IDs de elementos anteriores foram mantidos para preservar referências; parte ainda é posicional."
+  },
+  "estadoLocal": {
+    "base": {
+      "online": true
+    },
+    "porEstado": {
+      "oab_pendente": {
+        "online": false
+      },
+      "oab_aprovada": {
+        "online": true
+      }
+    },
+    "legado": {
+      "professionalAccess": "restricted"
+    }
+  },
+  "navegacao": {
+    "entradas": {
+      "politica": "calculadas_pelo_catalogo_global",
+      "conhecidasNesteRecorte": [
+        {
+          "telaId": "auth.sessao.entrar",
+          "acaoRef": "acao_0"
+        },
+        {
+          "telaId": "auth.sessao.entrar",
+          "acaoRef": "acao_2"
+        }
+      ]
+    },
+    "saidas": [
+      {
+        "telaId": "notificacoes.lista.notificacoes",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_8",
+          "acoes.porId.acao_20",
+          "dados.base.fixtures.drawer.items.6.goto"
+        ]
+      },
+      {
+        "telaId": "advogado.atendimentos_advogado",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_10",
+          "acoes.porId.acao_11",
+          "acoes.porId.acao_15",
+          "dados.base.fixtures.drawer.items.1.goto",
+          "dados.base.fixtures.actions.items.0.goto",
+          "dados.base.fixtures.actions.items.1.goto"
+        ]
+      },
+      {
+        "telaId": "advogado.clientes.detalhe_solicitacao",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_14",
+          "dados.base.fixtures.drawer.items.0.goto"
+        ]
+      },
+      {
+        "telaId": "advogado.perfil_profissional",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_16",
+          "dados.base.fixtures.drawer.items.2.goto"
+        ]
+      },
+      {
+        "telaId": "advogado.assinatura.gestao_assinatura",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_17",
+          "dados.base.fixtures.drawer.items.3.goto"
+        ]
+      },
+      {
+        "telaId": "escritorio.gestao.escritorio",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_18",
+          "dados.base.fixtures.drawer.items.4.goto"
+        ]
+      },
+      {
+        "telaId": "advogado.configuracao.configuracao",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_19",
+          "dados.base.fixtures.drawer.items.5.goto"
+        ]
+      },
+      {
+        "telaId": "auth.sessao.entrar",
+        "presenteNoCatalogoAnexado": true,
+        "proposta": false,
+        "referenciadoPor": [
+          "acoes.porId.acao_21"
+        ]
+      },
+      {
+        "telaId": "advogado.oab.validacao",
+        "presenteNoCatalogoAnexado": false,
+        "proposta": true,
+        "referenciadoPor": [
+          "acoes.porId.acao_validar_oab"
+        ]
+      }
+    ],
+    "politicas": {
+      "oab_pendente": "Somente navegação permitida pelos grupos de ações e pelo menu restrito.",
+      "oab_aprovada": "Todas as ações originais da Home ficam disponíveis."
+    }
+  },
+  "assets": {
+    "brand_symbol.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K"
+  },
+  "notasMigracao": {
+    "fonte": "upload/advogadoja_laboratorio_telas_v2 (1).json",
+    "motorExistente": "O laboratório V2 precisará entender o contrato linear para renderizar este JSON.",
+    "preservacao": "Árvores, CSS, fixtures, ações e interações originais foram mantidos; refs internos de dados foram rebaseados.",
+    "alteracoesNovas": [
+      "variantes por OAB",
+      "painel de validação",
+      "menu restrito",
+      "cenários de mock",
+      "contrato de navegação"
+    ],
+    "limite": "Rotas referenciadas que não estão nas três telas do JSON de origem não foram inventadas; a rota de OAB é uma proposta.",
+    "seguranca": "Ocultar elementos na interface não substitui a checagem de permissões no backend."
+  }
+}</script>
+<script>
+(()=>{'use strict';
+const SOURCE=JSON.parse(document.getElementById('embedded-data').textContent);
+const $=(id)=>document.getElementById(id);
+const q=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
+const object=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
+const clone=x=>structuredClone(x);
+const at=(obj,path)=>String(path).split('.').reduce((v,k)=>v==null?undefined:v[k],obj);
+const put=(obj,path,value)=>{const keys=path.split('.');let v=obj;for(const k of keys.slice(0,-1)){if(!object(v[k]))v[k]={};v=v[k];}v[keys.at(-1)]=value;};
+let model=clone(SOURCE),scenario='',manualStatus=null,state='',local={},selectMode=false,selectedId=null,nodes=[],page='sim',activeSection='estados',selectedPath=null,dirtyFlag=false;
+const frame=$('preview-frame');let delay;
+function toast(message){const el=$('toast');el.textContent=message;el.style.display='block';clearTimeout(delay);delay=setTimeout(()=>el.style.display='none',3500)}
+function markDirty(){dirtyFlag=true;$('save-status').textContent='Alterações não exportadas';$('save-status').style.color='#ffd77a';try{localStorage.setItem('advogadoja-laboratorio-v3',JSON.stringify(model))}catch{}}
+function download(name,content){const blob=new Blob([content],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function childNodes(root){let result=[];for(const comp of Object.values(root.estrutura.componentes||{})){
+ const walk=(v)=>{if(!object(v)||typeof v.tag!=='string')return;result.push(v.id);for(const c of v.filhos||[])walk(c)};
+ for(const n of comp.arvore||[])walk(n);
+}return result}
+function validate(d){
+ if(!object(d)||d.schema!=='advogadoja.tela.linear.v1')throw Error('É necessário um JSON de tela linear V3.');
+ for(const k of ['id','nome'])if(typeof d[k]!=='string'||!d[k])throw Error('Campo obrigatório: '+k);
+ for(const k of ['contrato','estados','estrutura','estilos','dados','mocks','acoes','interacoes','estadoLocal','navegacao'])if(!object(d[k]))throw Error('Seção obrigatória: '+k);
+ if(!object(d.estrutura.componentes)||!object(d.estrutura.composicoes)||!object(d.acoes.porId)||!object(d.interacoes.porElemento))throw Error('Mapas principais inválidos.');
+ if(!object(d.estilos.base)||!object(d.dados.base))throw Error('Seções base ausentes.');
+ const ids=new Set();let count=0;
+ function check(n,depth){if(typeof n==='string'||(object(n)&&('ref' in n||'partes' in n)))return;
+  if(!object(n)||typeof n.id!=='string'||typeof n.tag!=='string'||!/^[a-z][a-z\d-]*$/i.test(n.tag))throw Error('Nó inválido.');
+  if(['script','iframe','style','object','embed','link'].includes(n.tag.toLowerCase()))throw Error('Tag não permitida: '+n.tag);
+  if(ids.has(n.id))throw Error('Elemento repetido: '+n.id);ids.add(n.id);if(++count>25000||depth>45)throw Error('Limite de elementos excedido');
+  for(const c of n.filhos||[])check(c,depth+1);
+ }
+ for(const [key,comp] of Object.entries(d.estrutura.componentes)){
+  if(!object(comp)||comp.id!==key||!Array.isArray(comp.arvore))throw Error('Componente inválido: '+key);
+  for(const n of comp.arvore)check(n,0);
+ }
+ for(const [key,group] of Object.entries(d.estrutura.composicoes)){
+  for(const compId of Object.values(group.slots||group.adicionar||{}).flat())if(!d.estrutura.componentes[compId])throw Error('Componente ausente em '+key+': '+compId);
+ }
+ for(const [key,s] of Object.entries(d.estados))for(const ref of Object.values(s.referencias||{}))if(at(d,ref)===undefined)throw Error('Referência de estado inválida: '+key+' → '+ref);
+ for(const [key,interaction] of Object.entries(d.interacoes.porElemento)){
+  if(!ids.has(key))throw Error('Interação sem elemento: '+key);
+  if(interaction.acaoRef&&!d.acoes.porId[interaction.acaoRef])throw Error('Ação não encontrada: '+interaction.acaoRef);
+ }
+ for(const [variant,interactions] of Object.entries(d.interacoes.porEstado||{})){
+  if(!d.estados[variant]||!object(interactions))throw Error('Interações de estado inválidas: '+variant);
+  for(const [key,interaction] of Object.entries(interactions)){
+   if(!ids.has(key))throw Error('Interação sem elemento no estado '+variant+': '+key);
+   if(interaction.acaoRef&&!d.acoes.porId[interaction.acaoRef])throw Error('Ação ausente no estado '+variant+': '+interaction.acaoRef);
+  }
+ }
+ function scan(v){if(!v||typeof v!=='object')return;if(Array.isArray(v))return v.forEach(scan);for(const [k,x] of Object.entries(v)){if(k==='ref'&&typeof x==='string'&&at(d,x)===undefined)throw Error('Dado referenciado não existe: '+x);if(x&&typeof x==='object')scan(x)}}scan(d.estrutura);
+ return true;
+}
+function mockKeys(){return Object.keys(model.mocks.cenarios||{});}
+function stateField(){const first=Object.values(model.estados).find(s=>s.quando?.campo)?.quando.campo;return first||null}
+function stateChoices(){const field=stateField();if(!field)return[];const values=new Set();
+ for(const mock of Object.values(model.mocks.cenarios||{})){const val=at(mock.contexto,field);if(val!==undefined&&val!==null)values.add(String(val));}
+ for(const state of Object.values(model.estados)){const val=state.quando?.valor;if(Array.isArray(val)){for(const item of val)values.add(String(item))}else if(val!==undefined&&val!==null)values.add(String(val))}
+ if(field==='sessao.profissional.oab.status')for(const val of ['nao_enviada','em_analise','rejeitada','aprovada'])values.add(val);
+ return [...values]}
+function renderStateSelector(){const field=stateField(),wrap=$('state-field-wrap'),select=$('oab-status');wrap.hidden=!field;if(!field)return;
+ $('state-field-label').textContent=field==='sessao.profissional.oab.status'?'Status da OAB':field;
+ select.replaceChildren();for(const value of stateChoices()){const op=document.createElement('option');op.value=value;op.textContent=value.replace(/_/g,' ');select.append(op)}}
+function context(){const raw=model.mocks.cenarios?.[scenario]?.contexto||{};const copy=clone(raw),field=stateField();if(manualStatus!==null&&field)put(copy,field,manualStatus);return copy}
+function resolveState(ctx){for(const id of model.contrato.resolucaoEstados?.ordem||Object.keys(model.estados)){
+ const when=model.estados[id]?.quando;if(!when)continue;const val=at(ctx,when.campo);
+ if(when.operador==='igual'&&val===when.valor)return id;
+ if(when.operador==='diferente'&&val!==when.valor)return id;
+ if(when.operador==='in'&&Array.isArray(when.valor)&&when.valor.includes(val))return id;
+ }return model.contrato.resolucaoEstados?.fallback||Object.keys(model.estados)[0]}
+function activeActions(){return new Set([...(model.acoes.grupos?.base||[]),...(model.acoes.grupos?.[state]||[])])}
+function activeComponents(){const comp=model.estrutura.composicoes;const base=comp.base?.slots||{};const addition=comp[state]?.adicionar||{};const removal=new Set(comp[state]?.remover||[]);const order=model.estrutura.layout?.slots||['header','main','menu','modal','popup'];
+ const result={};for(const slot of order){const ids=[...(base[slot]||[]),...(addition[slot]||[])].filter(id=>!removal.has(id));if(ids.length)result[slot]=ids;}
+ return result}
+function applyState(){state=resolveState(context());local={...(model.estadoLocal.base||{}),...(model.estadoLocal.porEstado?.[state]||{})};const config=model.estados[state]||{};
+ $('runtime-state').textContent=config.nome||state;$('runtime-state').className='pill '+(config.permissao==='completa'?'approved':'pending');
+ const condition=config.quando;$('state-explain').textContent='Estado ativo: '+state+'. '+(condition?'Condição: '+condition.campo+' '+condition.operador+' '+JSON.stringify(condition.valor)+'. ':'')+(config.permissao?'Permissão: '+config.permissao+'.':'');
+ const field=stateField();if(field){const v=at(context(),field);if(v!==undefined&&v!==null&&!stateChoices().includes(String(v))){const op=document.createElement('option');op.value=String(v);op.textContent=String(v);$('oab-status').append(op)}$('oab-status').value=v===undefined?'':String(v)}
+ renderFragmentList();renderPreview();renderLinks();}
+function resolveRef(path){const overrides=model.estrutura.composicoes[state]?.sobrescreverDados||{};if(Object.prototype.hasOwnProperty.call(overrides,path))return overrides[path];return at(model,path)}
+function valueOf(x){if(object(x)){if(typeof x.ref==='string')return resolveRef(x.ref);if(Array.isArray(x.partes))return x.partes.map(p=>String(valueOf(p)??'')).join('')}return x}
+function safeAttr(el,key,val){if(/^(on|srcdoc|formaction)/i.test(key))return;const v=String(val??'');if(['href','src','xlink:href'].includes(key.toLowerCase())&&/^\s*(javascript:|data:text\/html)/i.test(v))return;
+ if(key==='hidden'){el.hidden=true;return;}if(key==='checked'){el.checked=true;return;}if(key==='selected'){el.selected=true;return;}el.setAttribute(key,v)}
+function renderNode(src,doc,svg=false){if(typeof src==='string'||(object(src)&&!src.tag))return doc.createTextNode(String(valueOf(src)??''));
+ const isSvg=svg||src.tag==='svg',el=isSvg?doc.createElementNS('http://www.w3.org/2000/svg',src.tag):doc.createElement(src.tag);
+ for(const [key,val] of Object.entries(src.atributos||{}))safeAttr(el,key,valueOf(val));el.dataset.labEid=src.id;
+ if(src.vinculos?.valor){const k=src.atributos?.id;el.value=Object.prototype.hasOwnProperty.call(local,k)?local[k]:String(valueOf(src.vinculos.valor)??'');}
+ if(src.vinculos?.textoPorEstado){const r=src.vinculos.textoPorEstado;el.textContent=local[r.estado]?r.verdadeiro:r.falso;}
+ else for(const c of src.filhos||[])el.append(renderNode(c,doc,isSvg));
+ if(src.vinculos?.classePorEstado){const r=src.vinculos.classePorEstado;el.classList.toggle(r.quandoFalso,!local[r.estado]);}
+ return el}
+function cssText(){const base=model.estilos.base,variant=model.estilos.variantes?.[state]||{},ids=Object.values(activeComponents()).flat();
+ const variables=Object.entries(base.tema||{}).filter(([k])=>/^--[\w-]+$/.test(k)).map(([k,v])=>`${k}:${String(v)};`).join('');
+ const modules=ids.map(id=>base.componentes?.[id]||'').join('\n');
+ const layout=model.estrutura.layout?.larguraConteudo?`.lab-original-main{width:min(100%,${model.estrutura.layout.larguraConteudo});margin:0 auto;padding:22px 16px 35px;display:grid;gap:12px}`:'.lab-original-main{padding:14px}';
+ const dev='[data-lab-eid]{cursor:pointer}.select-mode [data-lab-eid]:hover{outline:2px dashed #3983d0!important;outline-offset:1px}.selected-node{outline:3px solid #e59d2a!important;outline-offset:2px}.lab-fragment{min-width:0}.lab-original-header{position:sticky;top:0;z-index:30}';
+ return [base.baseCss||'',`:root{${variables}}`,modules,layout,base.cssAdicional||'',variant.cssAdicional||'',dev].join('\n').replace(/<\/style\s*>/gi,'')}
+function previewShell(){return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+cssText()+'</style></head><body class="'+(selectMode?'select-mode':'')+'"><div id="preview-root"></div></body></html>'}
+function menuPolicy(doc){const cfg=model.estrutura.composicoes[state]?.configuracaoMenu;if(!cfg||cfg.modo==='todos')return;
+ const allowed=new Set(cfg.destinosPermitidos||[]);for(const btn of q('.drawer-nav [data-goto]',doc))if(!allowed.has(btn.getAttribute('data-goto')))btn.remove();
+ for(const id of cfg.ocultarElementos||[])for(const el of q('[data-lab-eid]',doc))if(el.dataset.labEid===id)el.remove();}
+function mountScreen(doc){const root=doc.getElementById('preview-root');root.replaceChildren();const screen=doc.createElement('section');screen.className='screen active '+(model.estrutura.raiz||'')+' '+(model.estilos.variantes?.[state]?.classeRaiz||'');screen.setAttribute('data-screen-key',model.id);
+ const header=doc.createElement('div');header.className='lab-original-header';const main=doc.createElement('main');main.className='lab-original-main';screen.append(header,main);root.append(screen);
+ const slots=activeComponents();for(const [slot,ids] of Object.entries(slots))for(const id of ids){const comp=model.estrutura.componentes[id],wrap=doc.createElement('div');wrap.className='lab-fragment';wrap.dataset.fragment=id;wrap.dataset.slot=slot;
+  for(const node of comp.arvore||[])wrap.append(renderNode(node,doc));(slot==='header'?header:slot==='main'?main:screen).append(wrap)}
+ menuPolicy(doc);for(const layer of [model.estilos.base.elementos||{},model.estilos.variantes?.[state]?.elementos||{}])
+  for(const [id,rule] of Object.entries(layer))for(const el of q('[data-lab-eid]',doc).filter(x=>x.dataset.labEid===id)){
+   for(const [prop,val] of Object.entries(rule.css||{}))if(/^(color|background|backgroundColor|fontSize|width|height|marginLeft|marginTop|borderRadius|opacity|display|padding|textAlign)$/.test(prop))el.style[prop]=val;
+   const x=Number(rule.x)||0,y=Number(rule.y)||0;if(x||y)el.style.transform=`translate(${x}px,${y}px)`;
+  }
+ nodes=q('[data-lab-eid]',doc).map(el=>({id:el.dataset.labEid,component:el.closest('[data-fragment]')?.dataset.fragment||'',tag:el.tagName.toLowerCase(),label:(el.getAttribute('aria-label')||el.getAttribute('placeholder')||el.textContent||'').trim().replace(/\s+/g,' ').slice(0,65),el}));
+ refreshNodeList();if(selectedId)highlightSelection();for(const type of ['click','input','change','submit'])doc.addEventListener(type,handleEvent,true);
+}
+function renderPreview(){frame.onload=()=>{const doc=frame.contentDocument;if(!doc)return;try{mountScreen(doc)}catch(e){toast('Falha ao renderizar: '+e.message);console.error(e)}};frame.srcdoc=previewShell()}
+function findNode(id){for(const comp of Object.values(model.estrutura.componentes)){const stack=[...comp.arvore];while(stack.length){const n=stack.pop();if(!object(n)||!n.tag)continue;if(n.id===id)return n;stack.push(...(n.filhos||[]));}}return null}
+function currentAction(id,event='click'){const inter=model.interacoes.porEstado?.[state]?.[id]||model.interacoes.porElemento[id];if(!inter||inter.evento!==event)return null;if(inter.acaoRef){if(!activeActions().has(inter.acaoRef))return null;return model.acoes.porId[inter.acaoRef];}return inter.acao||null}
+function handleEvent(e){if(e.target.closest('#custom-modal'))return;const start=e.target.closest('[data-lab-eid]');if(selectMode&&e.type==='click'){
+ e.preventDefault();e.stopPropagation();const target=e.target.closest('button,a,input,select,[data-action],[data-goto]')||start;if(target?.dataset.labEid)selectNode(target.dataset.labEid);return;
+ }if(e.type==='submit')e.preventDefault();let node=start;
+ while(node){const id=node.dataset?.labEid,action=id?currentAction(id,e.type):null;if(action){if(e.type==='click')e.preventDefault();e.stopPropagation();executeAction(action,node);return;}node=node.parentElement;}
+ if(e.type==='click'&&e.target.closest('a,button'))e.preventDefault();}
+function popup(title,message){const doc=frame.contentDocument;doc.getElementById('custom-modal')?.remove();const modal=doc.createElement('div');modal.id='custom-modal';modal.style.cssText='position:fixed;inset:0;z-index:9999;background:#071b3288;display:grid;place-items:center;padding:15px';
+ const card=doc.createElement('div');card.style.cssText='width:min(420px,100%);background:white;padding:20px;border-radius:14px;box-shadow:0 15px 60px #0003';const h=doc.createElement('h2');h.textContent=title;const p=doc.createElement('p');p.textContent=message;p.style.whiteSpace='pre-line';const b=doc.createElement('button');b.textContent='Fechar';b.style.cssText='padding:10px 20px;border:0;background:#183a60;color:white;border-radius:8px';b.onclick=()=>modal.remove();card.append(h,p,b);modal.append(card);doc.body.append(modal)}
+function executeAction(a,target){switch(a.tipo){case 'navegar':popup('Navegação declarada','Destino: '+a.destino+'\nEste laboratório contém somente a Home profissional.');break;
+ case 'popup':popup(a.titulo||'Pop-up',a.mensagem||'');break;
+ case 'fecharPopup':frame.contentDocument.getElementById('custom-modal')?.remove();break;
+ case 'alternarEstado':local[a.campo||'online']=!local[a.campo||'online'];updateBindings();toast('Estado local: '+(a.campo||'online')+' = '+local[a.campo||'online']);break;
+ case 'menu':{const drawer=frame.contentDocument.querySelector('.prototype-drawer');if(drawer){const open=a.modo!=='fechar';drawer.classList.toggle('open',open);drawer.setAttribute('aria-hidden',String(!open));}break;}
+ case 'vincular':if(target)local[a.campo]=target.value;break;
+ case 'selecionarFiltro':toast('Filtro aplicado: '+String(valueOf(a.valor)));break;
+ default:toast('Ação '+a.tipo+' executada no simulador.');}}
+function updateBindings(){const doc=frame.contentDocument;for(const id of Object.values(activeComponents()).flat()){const stack=[...(model.estrutura.componentes[id]?.arvore||[])];while(stack.length){const n=stack.pop();if(!object(n)||!n.tag)continue;const el=q('[data-lab-eid]',doc).find(x=>x.dataset.labEid===n.id);
+ if(el&&n.vinculos?.textoPorEstado){const r=n.vinculos.textoPorEstado;el.textContent=local[r.estado]?r.verdadeiro:r.falso}
+ if(el&&n.vinculos?.classePorEstado){const r=n.vinculos.classePorEstado;el.classList.toggle(r.quandoFalso,!local[r.estado])}
+ stack.push(...(n.filhos||[]));}}}
+function refreshNodeList(){const list=$('element-list'),term=$('element-filter').value.toLowerCase();list.replaceChildren();for(const n of nodes.filter(n=>(n.label+' '+n.id+' '+n.component).toLowerCase().includes(term))){const op=document.createElement('option');op.value=n.id;op.textContent=n.component+' · '+n.tag+' · '+(n.label||n.id);op.selected=n.id===selectedId;list.append(op)}}
+function highlightSelection(){const doc=frame.contentDocument;if(!doc)return;for(const el of q('.selected-node',doc))el.classList.remove('selected-node');const n=nodes.find(n=>n.id===selectedId);if(n)n.el.classList.add('selected-node')}
+function selectNode(id){const n=nodes.find(n=>n.id===id);if(!n)return;selectedId=id;highlightSelection();refreshNodeList();$('selected-info').textContent=n.component+' · '+n.tag+'\n'+n.id;
+ const rule=$('state-only').checked?(model.estilos.variantes?.[state]?.elementos?.[id]||{}):(model.estilos.base.elementos?.[id]||{});
+ $('element-color').value=rule.css?.color||'';$('element-bg').value=rule.css?.backgroundColor||'';
+ const src=findNode(id),leaf=src&&Array.isArray(src.filhos)&&src.filhos.length===1&&(typeof src.filhos[0]==='string'||typeof src.filhos[0]?.ref==='string');
+ $('element-text').disabled=!leaf;$('element-text').value=leaf?String(valueOf(src.filhos[0])??''):'';
+ const action=currentAction(id);$('action-type').value=action?.tipo&&['navegar','popup','alternarEstado','menu','nenhuma'].includes(action.tipo)?action.tipo:'padrao';showActionField();$('action-value').value=action?.destino||action?.mensagem||'';
+}
+function showActionField(){$('action-detail-field').hidden=!['navegar','popup'].includes($('action-type').value);$('action-detail-field').querySelector('label').textContent=$('action-type').value==='navegar'?'Tela de destino':'Mensagem do pop-up'}
+function applyElement(){if(!selectedId){toast('Selecione um elemento');return;}const before=clone(model),only=$('state-only').checked,src=findNode(selectedId);
+ const styleMap=only?(model.estilos.variantes[state].elementos ||= {}):(model.estilos.base.elementos ||= {});
+ const css={};if($('element-color').value.trim())css.color=$('element-color').value.trim();if($('element-bg').value.trim())css.backgroundColor=$('element-bg').value.trim();styleMap[selectedId]={...styleMap[selectedId],css};
+ if(!$('element-text').disabled&&src?.filhos?.length===1){const first=src.filhos[0];
+  if(object(first)&&typeof first.ref==='string'){if(only){model.estrutura.composicoes[state].sobrescreverDados ||= {};model.estrutura.composicoes[state].sobrescreverDados[first.ref]=$('element-text').value;}else put(model,first.ref,$('element-text').value)}
+  else if(!only)src.filhos[0]=$('element-text').value;else {model=before;toast('Texto literal sem referência: use o editor JSON ou desmarque a edição por estado.');return;}
+ }
+ const kind=$('action-type').value;if(kind!=='padrao'){const ref=(only?'editor_estado_':'editor_base_')+selectedId.replace(/[^\w-]/g,'_')+(only?'_'+state:'');const action={tipo:kind};if(kind==='navegar')action.destino=$('action-value').value.trim();if(kind==='popup'){action.titulo='Pop-up personalizado';action.mensagem=$('action-value').value;}if(kind==='alternarEstado')action.campo='online';if(kind==='menu')action.modo='abrir';
+ model.acoes.porId[ref]=action;if(only){model.interacoes.porEstado ||= {};model.interacoes.porEstado[state] ||= {};model.interacoes.porEstado[state][selectedId]={evento:'click',acaoRef:ref};}else model.interacoes.porElemento[selectedId]={evento:'click',acaoRef:ref};
+ const group=only?state:'base';model.acoes.grupos[group] ||= [];if(!model.acoes.grupos[group].includes(ref))model.acoes.grupos[group].push(ref);}
+ try{validate(model);markDirty();renderPreview();renderLinks();toast('Elemento atualizado')}catch(e){model=before;toast('Edição desfeita: '+e.message)}
+}
+function restoreElement(){if(!selectedId)return;const id=selectedId,only=$('state-only').checked,source=()=>{const saved=model;model=SOURCE;const original=findNode(id);model=saved;return original?clone(original):null};
+ if(only){const override=model.estilos.variantes[state].elementos||{},initial=SOURCE.estilos.variantes?.[state]?.elementos?.[id];
+  if(initial)override[id]=clone(initial);else delete override[id];
+  const src=findNode(id);const ref=src?.filhos?.[0]?.ref;if(ref){const initialText=SOURCE.estrutura.composicoes[state]?.sobrescreverDados?.[ref];const texts=model.estrutura.composicoes[state].sobrescreverDados||{};if(initialText!==undefined)texts[ref]=clone(initialText);else delete texts[ref]}
+  delete model.interacoes.porEstado?.[state]?.[id];
+ }else{const originalNode=source(),node=findNode(id);if(node&&originalNode){Object.keys(node).forEach(k=>delete node[k]);Object.assign(node,originalNode)}
+  if(SOURCE.estilos.base.elementos?.[id])model.estilos.base.elementos[id]=clone(SOURCE.estilos.base.elementos[id]);else delete model.estilos.base.elementos[id];
+  if(SOURCE.interacoes.porElemento?.[id])model.interacoes.porElemento[id]=clone(SOURCE.interacoes.porElemento[id]);else delete model.interacoes.porElemento[id];
+ }
+ markDirty();renderPreview();toast('Edição restaurada no escopo selecionado')}
+function renderFragmentList(){const root=$('fragment-list');root.replaceChildren();const components=activeComponents(),count=Object.values(components).flat().length;$('fragment-count').textContent=count;$('action-count').textContent=activeActions().size;
+ for(const [slot,ids] of Object.entries(components)){const wrap=document.createElement('div');wrap.className='slot';const strong=document.createElement('strong');strong.textContent=slot.toUpperCase();wrap.append(strong);for(const id of ids){const b=document.createElement('button');b.className='frag-btn';b.textContent=id;b.onclick=()=>{selectMode=true;$('edit-mode-state').textContent='Seleção ativa';renderPreview();setTimeout(()=>{const n=nodes.find(n=>n.component===id);if(n)selectNode(n.id)},100)};wrap.append(b)}root.append(wrap)}}
+function renderLinks(){const root=$('state-links');root.replaceChildren();for(const [id,config] of Object.entries(model.estados)){const wrap=document.createElement('div');wrap.className='path-item';const h=document.createElement('strong');h.textContent=id+' · '+config.nome;wrap.append(h);for(const [name,ref] of Object.entries(config.referencias||{})){const p=document.createElement('div');p.className='mono muted';p.textContent=name+' → '+ref;wrap.append(p)}root.append(wrap)}
+ const routes=$('route-links');routes.replaceChildren();for(const item of model.navegacao.saidas||[]){const div=document.createElement('div');div.className='path-item';div.textContent=item.telaId+(item.proposta?' · planejada':item.presenteNoCatalogoAnexado?' · existente':' · externa');routes.append(div)}
+ const input=document.createElement('div');input.className='notice';input.textContent='Entradas: '+(model.navegacao.entradas?.conhecidasNesteRecorte||[]).map(x=>x.telaId).join(', ')+' · calculadas no recorte de origem';routes.prepend(input)}
+const sectionNames=['contrato','estados','estrutura','estilos','dados','mocks','acoes','interacoes','estadoLocal','navegacao','assets','telaCompleta'];
+function renderSections(){const el=$('json-sections');el.replaceChildren();for(const key of sectionNames){const b=document.createElement('button');b.textContent=key==='telaCompleta'?'Tela completa':key;b.className=key===activeSection?'active':'';b.onclick=()=>{activeSection=key;renderSections();loadEditor()};el.append(b)}}
+function loadEditor(){const value=activeSection==='telaCompleta'?model:model[activeSection];$('editing-section').textContent=activeSection;$('json-editor').value=JSON.stringify(value,null,2);$('editor-result').textContent='JSON linear V3 · edição direta';$('editor-result').className='muted'}
+function applyEditor(){try{const data=JSON.parse($('json-editor').value),next=clone(model);if(activeSection==='telaCompleta')validate(data);else {next[activeSection]=data;validate(next)}model=activeSection==='telaCompleta'?data:next;
+ resetScreenControls();markDirty();applyState();renderSections();$('editor-result').textContent='Validado e aplicado';$('editor-result').className='muted';toast('JSON aplicado com sucesso');}
+ catch(e){$('editor-result').textContent=e.message;$('editor-result').className='notice error';toast('Erro de contrato: '+e.message)}}
+function treeBuild(){const tree=$('tree-root');tree.replaceChildren();const search=$('tree-search').value.toLocaleLowerCase('pt-BR').trim();let hits=0;
+ function node(key,val,path,depth=0){const container=val!==null&&typeof val==='object';const row=document.createElement(container?'summary':'div');row.className=container?'':'leaf';row.title=path;
+  const prop=document.createElement('span');prop.className='prop';prop.textContent=key;row.append(prop);
+  const kind=document.createElement('span');kind.className='type';kind.textContent=Array.isArray(val)?'array':container?'objeto':val===null?'null':typeof val;row.append(kind);
+  const value=document.createElement('span');value.className='value';value.textContent=container?Array.isArray(val)?val.length+' itens':Object.keys(val).length+' propriedades':JSON.stringify(val);if(value.textContent?.length>260)value.classList.add('long');row.append(value);
+  const matched=search&&((key+' '+path+' '+(container?'':JSON.stringify(val))).toLocaleLowerCase('pt-BR').includes(search));if(matched){row.classList.add('selected-node');hits++;}
+  row.addEventListener('click',()=>{selectedPath=path;$('tree-path').textContent=path;$('tree-value').value=JSON.stringify(val,null,2)||String(val);});
+  if(!container)return row;const box=document.createElement('details');box.className='branch';box.append(row);const children=document.createElement('div');children.className='children';box.append(children);
+  // Os ramos são montados sob demanda; a expansão total solicita todos recursivamente.
+  let loaded=false;const fill=()=>{if(loaded)return;loaded=true;for(const [k,v] of Object.entries(val))children.append(node(String(k),v,path+'['+JSON.stringify(k)+']',depth+1))};
+  box.ensureChildren=fill;box.addEventListener('toggle',()=>{if(box.open)fill()});
+  if(search&&depth<15){fill();if(matched||children.querySelector('.selected-node'))box.open=true;}
+  return box;}
+ tree.append(node(model.nome||model.id,model,'$'));
+ if(search){const top=tree.querySelector('details');if(top)top.open=hits>0;}$('tree-search-count').textContent=search?hits+' ocorrências (visíveis)':'Tudo recolhido';}
+function setPage(next){page=next;for(const b of q('.tab'))b.classList.toggle('active',b.dataset.page===next);for(const name of ['sim','edit','tree','links'])$('page-'+name).hidden=next!==name;
+ if(next==='edit'){renderSections();loadEditor()}if(next==='tree')treeBuild();if(next==='links')renderLinks();}
+function resetScreenControls(){scenario=mockKeys().includes(scenario)?scenario:(mockKeys()[0]||'');$('screen-title').textContent=model.nome||model.id;$('screen-description').textContent=model.id+' · composição por estados no contrato linear';
+ const select=$('scenario');select.replaceChildren();for(const id of mockKeys()){const opt=document.createElement('option');opt.value=id;opt.textContent=id;select.append(opt)}select.value=scenario;renderStateSelector()}
+function changeSource(next){validate(next);model=next;scenario=mockKeys()[0]||'';manualStatus=null;selectedId=null;resetScreenControls();applyState();if(page==='edit')loadEditor();if(page==='tree')treeBuild();}
+function init(){validate(model);try{const saved=localStorage.getItem('advogadoja-laboratorio-v3');if(saved){const x=JSON.parse(saved);validate(x);model=x;$('save-status').textContent='Rascunho restaurado';}}catch{}
+ scenario=mockKeys()[0]||'';resetScreenControls();const select=$('scenario');
+ select.onchange=()=>{scenario=select.value;manualStatus=null;applyState()};$('oab-status').onchange=()=>{manualStatus=$('oab-status').value;applyState()};
+ q('.tab').forEach(b=>b.onclick=()=>setPage(b.dataset.page));$('mobile').onclick=()=>$('device').classList.remove('wide');$('desktop').onclick=()=>$('device').classList.add('wide');
+ $('simulate').onclick=()=>{selectMode=false;$('edit-mode-state').textContent='Simulação';renderPreview()};$('select-mode').onclick=()=>{selectMode=true;$('edit-mode-state').textContent='Seleção ativa';renderPreview()};
+ $('element-filter').oninput=refreshNodeList;$('element-list').onchange=e=>selectNode(e.target.value);$('state-only').onchange=()=>{if(selectedId)selectNode(selectedId)};$('action-type').onchange=showActionField;$('apply-element').onclick=applyElement;$('restore-element').onclick=restoreElement;
+ $('apply-json').onclick=applyEditor;$('format-json').onclick=()=>{try{$('json-editor').value=JSON.stringify(JSON.parse($('json-editor').value),null,2)}catch(e){toast(e.message)}};
+ $('export').onclick=()=>{download((model.id||'tela').replace(/[^\w-]+/g,'_')+'_linear_v3.json',JSON.stringify(model,null,2)+'\n');dirtyFlag=false;$('save-status').textContent='JSON exportado';};
+ $('reset').onclick=()=>{if(dirtyFlag&&!confirm('Descartar alterações locais e restaurar a tela V3 incorporada?'))return;model=clone(SOURCE);scenario=mockKeys()[0]||'';manualStatus=null;selectedId=null;dirtyFlag=false;try{localStorage.removeItem('advogadoja-laboratorio-v3')}catch{}$('save-status').textContent='Base restaurada';resetScreenControls();applyState();};
+ $('import-file').onchange=async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;try{if(file.size>15e6)throw Error('Limite: 15 MB');const obj=JSON.parse(await file.text());changeSource(obj);markDirty();toast('Tela linear V3 importada');}catch(err){toast('Importação recusada: '+err.message)}};
+ $('tree-expand').onclick=()=>{let queue=[...q('.branch',$('tree-root'))];for(let i=0;i<queue.length;i++){const branch=queue[i];branch.ensureChildren?.();branch.open=true;queue.push(...q(':scope > .children > .branch',branch))}$('tree-search-count').textContent='Todos os ramos expandidos'};
+ $('tree-collapse').onclick=()=>{for(const d of q('.branch',$('tree-root')))d.open=false};$('tree-search').oninput=()=>{clearTimeout(delay);delay=setTimeout(treeBuild,190)};
+ $('tree-copy').onclick=async()=>{try{await navigator.clipboard.writeText($('tree-value').value);toast('Valor copiado')}catch{toast('Selecione e copie manualmente')}};
+ $('tree-edit').onclick=()=>{if(!selectedPath)return;const rootKey=selectedPath.match(/^\$\["([^"]+)"\]/)?.[1];activeSection=sectionNames.includes(rootKey)?rootKey:'telaCompleta';setPage('edit')};
+ applyState();}
+try{init()}catch(e){toast('Erro de inicialização: '+e.message);console.error(e)}
+})();
+</script>
+</body></html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Advogado Já · Laboratório de telas JSON V3</title>
+<title>Advogado Já · Laboratório de telas JSON V4</title>
 <style>:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#20344d;background:#f0f4f9;--lab-navy:#112943;--lab-blue:#216bd3;--lab-edge:#dce5ef;--lab-sub:#718399;--lab-shadow:0 12px 38px rgba(15,34,54,.08)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #83b6ee;outline-offset:2px}a{color:inherit;text-decoration:none}
 .app-shell{min-height:100vh}.lab-header{min-height:72px;padding:13px 24px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#112943;color:#fff;box-shadow:0 6px 20px #16294018}.brandline{display:flex;align-items:center;gap:12px}.lab-brandmark{height:42px;width:42px;border-radius:12px;display:grid;place-items:center;background:#cc9b51;color:#13253d;font-weight:950}.brandline strong{display:block;font-size:16px;letter-spacing:-.02em}.brandline small{display:block;color:#b7c9df;font-size:11px;margin-top:3px}.lab-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -28,20 +28,33 @@
 .tree-import-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:#0d2546a1;padding:16px}.tree-import-dialog{width:min(600px,100%);max-height:min(90vh,780px);overflow-y:auto;background:#fff;border-radius:14px;padding:23px 26px;box-shadow:0 20px 80px #08183060}.tree-import-dialog h2{font-size:20px;margin:0;color:#153555}.tree-import-dialog p{color:#6a7d91;font-size:12px;line-height:1.55}.tree-import-list{border:1px solid #dce7f1;border-radius:10px;max-height:280px;overflow:auto}.tree-import-row{display:grid;grid-template-columns:1fr auto;gap:4px 9px;padding:10px 13px;border-bottom:1px solid #edf2f6}.tree-import-row:last-child{border-bottom:none}.tree-import-row strong{font-size:12px;color:#1a3b5e}.tree-import-row small{font-size:10px;color:#8298b0;grid-row:2}.tree-import-row span{color:#47708d;font-size:10px;white-space:nowrap;grid-column:2;grid-row:1/3;align-self:center}.tree-import-dialog .tree-import-hint{font-size:11px;color:#7085a1;background:#f1f6fb;padding:11px;border-radius:9px}.tree-import-buttons{display:flex;gap:9px;justify-content:flex-end;margin-top:19px}
 @media(max-width:950px){.tree-layout{grid-template-columns:1fr}.tree-sections{max-height:none;min-height:250px}.tree-detail{border-top:1px solid #dae4ef;border-left:0}.tree-page{margin:0 10px 20px}.tree-detail-json{height:280px;min-height:190px}}
 @media(max-width:630px){.tree-page{margin-inline:8px}.tree-page-head,.tree-filters{padding:14px 12px}.tree-screen-head{gap:6px;flex-wrap:wrap}.tree-screen-title{flex-basis:50%}.tree-screen-head .lab-btn{margin-left:auto}.tree-export-actions{width:100%}.tree-export-actions .lab-btn{flex:1}.tree-sections{padding:10px}.tree-detail-body{padding:12px}}
+
+/* V4 · Documento integral do catálogo: todas as telas em um JSON único e sequencial. */
+.catalog-page[hidden]{display:none!important}
+.catalog-page{margin:0 18px 30px;background:#fff;border-radius:15px;border:1px solid var(--lab-edge);box-shadow:var(--lab-shadow);min-height:620px;overflow:hidden}
+.catalog-controls{display:flex;align-items:end;flex-wrap:wrap;gap:12px;padding:14px 25px;background:#f9fbfe;border-bottom:1px solid var(--lab-edge)}
+.catalog-control{min-width:240px;flex:0 1 280px}.catalog-control-search{flex:1 1 310px}
+.catalog-control label{display:block;font-size:11px;color:#55708e;font-weight:800;margin-bottom:6px}
+.catalog-search-row{display:flex;gap:5px;align-items:center}.catalog-search-row>.input{min-width:0;flex:1}
+.catalog-count{font-size:11px;color:#5d7794;font-weight:740;padding-bottom:10px;white-space:nowrap}
+.catalog-json-wrap{padding:18px 23px 24px;background:#fff}.catalog-code-heading{background:#f0f5fa;border:1px solid #d5e0eb;border-bottom:0;padding:9px 12px;border-radius:11px 11px 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;font:11px ui-monospace,monospace;color:#45617c;flex-wrap:wrap}
+.catalog-code{display:block;width:100%;height:min(69vh,760px);min-height:460px;resize:vertical;background:#12253b;color:#dceafe;border:1px solid #d5e0eb;border-radius:0 0 11px 11px;padding:21px 23px;line-height:1.62;letter-spacing:.005em;tab-size:2;font:12px/1.62 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;outline:none;white-space:pre}
+.catalog-code:focus{border-color:#498dcf;box-shadow:inset 0 0 0 1px #498dcf}
+@media(max-width:700px){.catalog-page{margin:0 8px 22px}.catalog-page .tree-page-head,.catalog-controls{padding:14px 12px}.catalog-json-wrap{padding:11px}.catalog-control{min-width:100%;flex:1}.catalog-count{white-space:normal}.catalog-code{padding:12px;font-size:11px;height:65vh;min-height:430px}}
 </style>
 </head>
 <body>
 <div class="app-shell">
   <header class="lab-header">
-    <div class="brandline"><div class="lab-brandmark">AJ</div><div><strong>Laboratório de telas</strong><small>Advogado Já · JSON declarativo · V3</small></div></div>
+    <div class="brandline"><div class="lab-brandmark">AJ</div><div><strong>Laboratório de telas</strong><small>Advogado Já · JSON declarativo · V4</small></div></div>
     <div class="lab-actions">
-      <div class="mode-tabs" role="group" aria-label="Modo de uso"><button type="button" class="is-active" id="mode-sim">▶ Simular</button><button type="button" id="mode-edit">✎ Editar</button><button type="button" id="mode-tree">♧ Árvore JSON</button></div>
+      <div class="mode-tabs" role="group" aria-label="Modo de uso"><button type="button" class="is-active" id="mode-sim">▶ Simular</button><button type="button" id="mode-edit">✎ Editar</button><button type="button" id="mode-tree">♧ Árvore JSON</button><button type="button" id="mode-catalog">≡ Catálogo completo</button></div>
       <button type="button" id="reset-button" class="lab-btn">Restaurar original</button>
       <button type="button" id="export-button" class="lab-btn lab-btn-primary">↓ Exportar projeto completo</button>
       <label class="lab-btn upload-label">↑ Importar JSON<input type="file" id="import-file" accept=".json,application/json" hidden></label>
     </div>
   </header>
-  <section class="lab-intro"><div><h1>Telas construídas por JSON. Motor universal.</h1><p>Todas as telas são árvores JSON declarativas. Navegue, edite, inspecione a árvore integral e exporte uma tela, uma seleção ou todas.</p></div><span id="save-status" class="save-status">Base original</span></section>
+  <section class="lab-intro"><div><h1>Telas construídas por JSON. Motor universal.</h1><p>Todas as telas são árvores JSON declarativas. Navegue, edite, inspecione as árvores individuais, leia o catálogo JSON completo com todas as telas em sequência e exporte uma tela, uma seleção ou todas.</p></div><span id="save-status" class="save-status">Base original</span></section>
   <div class="lab-workspace" id="simulator-workspace">
     <aside class="lab-sidebar" aria-label="Navegação e telas">
       <div class="sidebar-section"><h2>Jornada de teste</h2><p>Selecione uma tela para pré-visualizar.</p><div id="screens-nav" class="screen-nav"></div><button class="lab-btn lab-btn-full" id="add-client" type="button">＋ Adicionar Home Cliente</button></div>
@@ -82,6 +95,19 @@
           <div class="tree-detail-buttons"><button type="button" class="lab-btn" id="tree-copy-path">Copiar caminho</button><button type="button" class="lab-btn" id="tree-copy-json">Copiar JSON</button><button type="button" class="lab-btn lab-btn-primary" id="tree-edit-block">Editar bloco no editor</button></div>
         </div></aside></div>
     <div class="tree-help">Cada exportação inclui a definição integral das telas escolhidas e dependências globais (mocks e assets). A importação valida o contrato, mostra os conflitos e preserva as telas não selecionadas.</div>
+  </section>
+  <section class="catalog-page" id="catalog-page" hidden aria-labelledby="catalog-page-heading">
+    <div class="tree-page-head">
+      <div><div class="tree-kicker">DOCUMENTO CONSOLIDADO · JSON DECLARATIVO</div><h2 id="catalog-page-heading">Catálogo completo de telas</h2><p>Um único JSON válido com todas as telas, uma abaixo da outra, na ordem atual do laboratório. Inclui os seis blocos declarativos de cada tela e suas dependências.</p></div>
+      <div class="tree-export-actions"><button class="lab-btn" id="catalog-copy" type="button">⧉ Copiar JSON</button><button class="lab-btn lab-btn-primary" id="catalog-export" type="button">↓ Exportar catálogo JSON</button></div>
+    </div>
+    <div class="catalog-controls">
+      <div class="catalog-control"><label for="catalog-jump">Ir para uma tela no JSON</label><select id="catalog-jump" class="input" aria-label="Localizar tela no JSON"><option value="">Escolha uma tela...</option></select></div>
+      <div class="catalog-control catalog-control-search"><label for="catalog-search">Buscar no catálogo</label><div class="catalog-search-row"><input class="input" id="catalog-search" type="search" placeholder="Buscar ID, elemento, estilo, ação, valor..." autocomplete="off"><button type="button" class="lab-btn lab-btn-compact" id="catalog-search-prev" title="Correspondência anterior">↑</button><button type="button" class="lab-btn lab-btn-compact" id="catalog-search-next" title="Próxima correspondência">↓</button></div></div>
+      <div class="catalog-count" id="catalog-count" aria-live="polite"></div>
+    </div>
+    <div class="catalog-json-wrap"><div class="catalog-code-heading"><span>catalogo_telas_completo.json</span><span id="catalog-search-status">Somente leitura · conteúdo ativo do laboratório</span></div><textarea id="catalog-json" class="catalog-code" readonly spellcheck="false" wrap="off" aria-label="JSON consolidado do catálogo de todas as telas"></textarea></div>
+    <div class="tree-help">Este JSON é gerado diretamente das telas atualmente carregadas, inclusive as opcionais e as modificações realizadas no Editor ou importadas. A exportação usa o mesmo conteúdo exibido, compatível com a importação de coleções pela aba Árvore JSON. O código do motor não faz parte do catálogo.</div>
   </section>
   <div id="tree-import-overlay" class="tree-import-overlay" hidden><section class="tree-import-dialog" role="dialog" aria-modal="true" aria-labelledby="tree-import-title">
     <h2 id="tree-import-title">Revisar importação</h2><p id="tree-import-summary"></p><div id="tree-import-list" class="tree-import-list"></div>
@@ -4924,9 +4950,12 @@ function setMode(next){
  $('#mode-sim').classList.toggle('is-active',next==='simulador');
  $('#mode-edit').classList.toggle('is-active',next==='editor');
  $('#mode-tree').classList.toggle('is-active',next==='arvore');
- $('#simulator-workspace').hidden=next==='arvore';
+ $('#mode-catalog').classList.toggle('is-active',next==='catalogo');
+ $('#simulator-workspace').hidden=next==='arvore'||next==='catalogo';
  $('#tree-page').hidden=next!=='arvore';
+ $('#catalog-page').hidden=next!=='catalogo';
  if(next==='arvore'){renderTreePage();return;}
+ if(next==='catalogo'){renderCatalogPage();return;}
  $('#interaction-hint').textContent=next==='simulador'?'Simulador: execute eventos definidos no JSON.':'Editor: selecione qualquer elemento e modifique sua definição no JSON.';
  renderCurrent();
 }
@@ -5238,16 +5267,97 @@ function commitImport(){
   }
   validate(draft);
   projeto=draft;if(!knownScreen(telaAtual))telaAtual=projeto.inicial;
-  elementoAtual=null;runtime.form={};if(added||updated||mergedResources){dirty()}closeImportPreview();renderCurrent();loadJSONEditor();renderTreePage();
+  elementoAtual=null;runtime.form={};if(added||updated||mergedResources){dirty()}closeImportPreview();renderCurrent();loadJSONEditor();renderTreePage();if(modo==='catalogo')renderCatalogPage();
   toast('Importação: '+added+' nova(s), '+updated+' atualizada(s), '+skipped+' preservada(s).');
  }catch(err){toast('Importação não aplicada: '+err.message)}
+}
+
+
+/* 06 · Catálogo JSON completo. Não contém telas hard-coded. Usa a mesma coleção
+ * exportável/importável do laboratório; todas as telas ficam em ordem em `telas: []`.
+ * A visualização é somente leitura e é reconstruída do `projeto` ativo ao abrir a aba.
+ */
+let catalogText='';
+let catalogCursor=-1;
+function catalogSnapshot(){
+ return {
+  schema:EXPORT_SCHEMA,
+  versao:'4.0.0',
+  tipo:'colecao',
+  geradoEm:new Date().toISOString(),
+  origem:{projeto:projeto.projeto,contrato:projeto.schema,inicial:projeto.inicial},
+  dependencias:{mocks:deepcopy(projeto.mocks||{}),assets:deepcopy(projeto.assets||{})},
+  telas:Object.values(projeto.telas).map(t=>deepcopy(t))
+ };
+}
+function renderCatalogPage(){
+ const doc=catalogSnapshot();
+ catalogText=JSON.stringify(doc,null,2);
+ catalogCursor=-1;
+ const editor=$('#catalog-json');
+ editor.value=catalogText;
+ editor.scrollTop=0;
+ const jump=$('#catalog-jump'),old=jump.value;
+ jump.replaceChildren();
+ const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Escolha uma tela...';jump.append(placeholder);
+ for(const t of doc.telas){
+  const opt=document.createElement('option');opt.value=t.id;opt.textContent=(t.nome||t.id)+' · '+t.id; jump.append(opt);
+ }
+ if(doc.telas.some(t=>t.id===old))jump.value=old;
+ $('#catalog-count').textContent=doc.telas.length+' tela(s) · '+catalogText.split('\n').length.toLocaleString('pt-BR')+' linhas · '+new Blob([catalogText]).size.toLocaleString('pt-BR')+' bytes';
+ $('#catalog-search-status').textContent='Somente leitura · conteúdo ativo do laboratório';
+ if($('#catalog-search').value.trim())catalogFind(1,true);
+}
+function catalogReveal(start,length){
+ const viewer=$('#catalog-json');
+ if(start<0||start>=catalogText.length)return false;
+ viewer.focus();viewer.setSelectionRange(start,start+length);
+ // A seleção faz o navegador deslocar a área interna do textarea até o trecho escolhido.
+ return true;
+}
+function catalogFind(direction=1,reset=false){
+ const raw=$('#catalog-search').value;
+ const query=raw.trim();
+ if(!query){catalogCursor=-1;$('#catalog-search-status').textContent='Somente leitura · conteúdo ativo do laboratório';return;}
+ const hay=catalogText.toLocaleLowerCase('pt-BR'),needle=query.toLocaleLowerCase('pt-BR');
+ if(!needle)return;
+ let base=reset?-1:(catalogCursor>=0?catalogCursor:(direction>0?-1:catalogText.length));
+ let found=direction>0?hay.indexOf(needle,base+1):hay.lastIndexOf(needle,base-1);
+ if(found<0)found=direction>0?hay.indexOf(needle):hay.lastIndexOf(needle);
+ catalogCursor=found;
+ if(found<0){$('#catalog-search-status').textContent='Nenhuma correspondência';return;}
+ catalogReveal(found,query.length);
+ const line=catalogText.slice(0,found).split('\n').length;
+ $('#catalog-search-status').textContent='Encontrado · linha '+line.toLocaleString('pt-BR');
+}
+function catalogGoToScreen(id){
+ if(!id)return;
+ const token='"id": '+JSON.stringify(id);
+ const from=catalogText.indexOf('"telas": [');
+ const match=catalogText.indexOf(token,from>=0?from:0);
+ if(match<0){toast('Tela não localizada no catálogo');return;}
+ catalogCursor=match;
+ catalogReveal(match,token.length);
+ $('#catalog-search-status').textContent='Tela '+id+' · linha '+catalogText.slice(0,match).split('\n').length.toLocaleString('pt-BR');
+}
+function setupCatalogControls(){
+ $('#catalog-jump').onchange=e=>catalogGoToScreen(e.target.value);
+ $('#catalog-search').addEventListener('input',()=>catalogFind(1,true));
+ $('#catalog-search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();catalogFind(e.shiftKey?-1:1);}});
+ $('#catalog-search-prev').onclick=()=>catalogFind(-1);
+ $('#catalog-search-next').onclick=()=>catalogFind(1);
+ $('#catalog-copy').onclick=()=>treeCopy(catalogText);
+ $('#catalog-export').onclick=()=>{
+  downloadText('advogadoja_catalogo_telas_completo_v4.json',catalogText);
+  toast('Catálogo completo exportado: '+Object.keys(projeto.telas).length+' tela(s)');
+ };
 }
 
 
 /* 04 · Eventos de interface, importação, exportação e inicialização */
 function setup(){
  validate(projeto);
- $('#mode-sim').onclick=()=>setMode('simulador');$('#mode-edit').onclick=()=>setMode('editor');$('#mode-tree').onclick=()=>setMode('arvore');
+ $('#mode-sim').onclick=()=>setMode('simulador');$('#mode-edit').onclick=()=>setMode('editor');$('#mode-tree').onclick=()=>setMode('arvore');$('#mode-catalog').onclick=()=>setMode('catalogo');
  $('#restart-button').onclick=()=>{runtime.form={};elementoAtual=null;telaAtual=projeto.inicial;renderCurrent();toast('Simulação reiniciada')};
  $('#go-login').onclick=()=>{telaAtual=projeto.inicial;elementoAtual=null;runtime.form={};renderCurrent()};
  $('#mock-button').onclick=()=>{if(telaAtual!=='auth.sessao.entrar'){telaAtual='auth.sessao.entrar';elementoAtual=null;renderCurrent();frame.addEventListener('load',()=>applyMock('advogado-teste'),{once:true})}else applyMock('advogado-teste')};
@@ -5262,12 +5372,13 @@ function setup(){
  for(const e of $$('.inspector-tab'))e.onclick=()=>switchTab(e.dataset.tab);
  $('#json-section').onchange=loadJSONEditor;$('#json-apply').onclick=applyJSON;$('#json-format').onclick=formatJSON;
  $('#json-copy').onclick=()=>navigator.clipboard?.writeText($('#json-editor').value).then(()=>toast('JSON copiado')).catch(()=>toast('Selecione e copie o texto manualmente'));
- $('#export-button').onclick=()=>{downloadText('advogadoja_laboratorio_projeto_completo_v3.json',JSON.stringify(projeto,null,2));alterado=false;$('#save-status').textContent='Projeto exportado';$('#save-status').style.color='#21805d';};
+ $('#export-button').onclick=()=>{downloadText('advogadoja_laboratorio_projeto_completo_v4.json',JSON.stringify(projeto,null,2));alterado=false;$('#save-status').textContent='Projeto exportado';$('#save-status').style.color='#21805d';};
  $('#import-file').onchange=handleImportFile;
- $('#reset-button').onclick=()=>{if(alterado&&!confirm('Restaurar a base original e descartar alterações não exportadas?'))return;projeto=deepcopy(LAB_ORIGINAL);telaAtual=projeto.inicial;runtime.form={};elementoAtual=null;alterado=false;$('#save-status').textContent='Base original';$('#save-status').style.color='';renderCurrent();loadJSONEditor();toast('Configurações originais restauradas')};
+ $('#reset-button').onclick=()=>{if(alterado&&!confirm('Restaurar a base original e descartar alterações não exportadas?'))return;projeto=deepcopy(LAB_ORIGINAL);telaAtual=projeto.inicial;runtime.form={};elementoAtual=null;alterado=false;$('#save-status').textContent='Base original';$('#save-status').style.color='';renderCurrent();loadJSONEditor();if(modo==='arvore')renderTreePage();if(modo==='catalogo')renderCatalogPage();toast('Configurações originais restauradas')};
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePopup()}});
  window.addEventListener('beforeunload',e=>{if(alterado){e.preventDefault();e.returnValue=''}});
  setupTreeControls();
+ setupCatalogControls();
  renderCurrent();
 }
 setup();

@@ -1,4 +1,4 @@
-# Advogado Já — Laboratório de Telas JSON V3
+# Advogado Já — Laboratório de Telas JSON V4
 
 Laboratório independente para modelar, revisar e exportar telas do Advogado Já por meio de JSON, com artefato HTML autocontido e offline.
 
@@ -17,7 +17,9 @@ Abra `http://localhost:8000/Projeto_4/`. No GitHub Pages, o endereço será:
 ## Estrutura
 
 - `index.html`: artefato publicado, autocontido e independente.
-- `ADVOGADOJA_LABORATORIO_TELAS_JSON_V3 (1).html`: fonte do artefato publicado.
-- `laboratorio_telas_json_v3/`: fonte modular, contrato de dados, ferramentas de compilação e testes.
+- `ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.html` e variantes `V4.*`: versões autocontidas do laboratório.
+- Os demais arquivos `.html` na raiz são visualizadores e catálogos independentes, mantidos como referências de trabalho.
+
+O projeto passou a usar artefatos HTML autocontidos; não há mais uma fonte modular separada como parte desta versão.
 
 Leia [`AGENTS.md`](./AGENTS.md) antes de alterar este projeto.

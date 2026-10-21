@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>JSON Workspace · Abas e árvores incrementais</title>
+  <style>
+    :root { --navy:#12253d;--navy2:#193452;--blue:#2563eb;--blue-soft:#eef5ff;--bg:#f3f6fb;--panel:#fff;--line:#dce5f0;--text:#17293e;--muted:#64778c;--good:#13755c;--red:#b43b45;--shadow:0 8px 28px rgba(17,43,75,.07) }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--text);background:var(--bg)}
+    button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #8abaff;outline-offset:2px}
+    button:disabled{opacity:.45;cursor:not-allowed}
+    .shell{min-height:100vh;display:flex;flex-direction:column}
+    .topbar{background:var(--navy);color:#fff;padding:19px max(22px,calc((100vw - 1500px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:13px}.mark{height:43px;width:43px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#7bb5ff,#3d83e0);color:#092b4c;font-weight:950;font-size:16px;letter-spacing:-.07em}.brand strong{display:block;font-size:16px;letter-spacing:.01em}.brand small{display:block;color:#adc1d7;font-size:11px;margin-top:3px}
+    .actions,.small-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+    .btn{border:1px solid var(--line);border-radius:9px;background:#fff;color:#35506c;padding:10px 13px;font-weight:700;font-size:12px;line-height:1.2;white-space:nowrap;transition:background .15s,border-color .15s}.btn:hover:not(:disabled){background:#f1f6ff;border-color:#adcaee}.btn.primary{border-color:#2f76e2;background:#2b70db;color:white}.btn.primary:hover{background:#1e5fbe}.btn.dark{color:#fff;border-color:#6e86a1;background:#223f60}.btn.dark:hover{background:#2d547e}.btn.danger{color:var(--red)}.btn.small{padding:8px 10px;font-size:11px}.btn.icon{padding:8px 10px;min-width:33px}.btn.active{background:#eaf2ff;border-color:#aac8fa;color:#1d5cb6}
+    .container{width:min(1500px,100%);margin:0 auto;padding:25px 22px 35px;flex:1}
+    .intro{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}.eyebrow{color:var(--blue);font-size:10px;font-weight:850;letter-spacing:.15em;text-transform:uppercase;margin:0 0 7px}.intro h1{font-size:27px;letter-spacing:-.035em;line-height:1.1;margin:0 0 9px}.intro p{color:var(--muted);font-size:13px;margin:0;max-width:880px;line-height:1.55}
+    .metrics{display:flex;gap:10px;flex-wrap:wrap}.metric{background:#fff;border:1px solid var(--line);padding:10px 15px;border-radius:10px;min-width:110px}.metric b{display:block;font-size:20px;font-variant-numeric:tabular-nums}.metric span{display:block;font-size:10px;color:var(--muted)}
+    .workspace{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;min-height:500px}
+    .tabs-shell{background:#f8fafd;border-bottom:1px solid var(--line);display:flex;align-items:stretch;min-width:0}.tabs{display:flex;align-items:stretch;gap:5px;padding:9px 11px 0;overflow:auto;flex:1;min-width:0;scrollbar-width:thin}.tab{border:1px solid transparent;border-bottom:0;border-radius:9px 9px 0 0;padding:12px 14px;max-width:250px;min-width:87px;text-align:left;color:#5a7188;background:transparent;white-space:nowrap;display:flex;gap:8px;align-items:center;font-weight:720;font-size:12px;position:relative;bottom:-1px}.tab:hover{background:#e9f0f9}.tab.selected{background:#fff;border-color:var(--line);color:#1e4f8c}.tab .filename{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.count{background:#e2ebf7;border-radius:7px;padding:2px 6px;font-size:10px;flex:none}.tab.selected .count{background:#eaf2ff;color:#205ca7}.add-tab{border:0;border-left:1px solid var(--line);background:#f8fafd;color:#255fa4;font-weight:800;padding:0 18px;flex:none}.add-tab:hover{background:#eaf2ff}
+    .tools{padding:15px 19px;display:flex;align-items:center;justify-content:space-between;gap:13px;border-bottom:1px solid var(--line);flex-wrap:wrap}.section-title{font-size:17px;font-weight:790;letter-spacing:-.02em;margin:0 0 5px}.section-sub{font-size:11px;color:var(--muted);line-height:1.5}.tool-right{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.search{height:34px;min-width:175px;width:min(250px,75vw);background:#fff;border:1px solid var(--line);border-radius:8px;padding:0 11px;color:var(--text);font-size:12px}.search:focus{outline:2px solid #abcafe}
+    .search-area{padding:0 19px}.search-summary{font-size:11px;color:var(--muted);padding:11px 0}.search-results{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 11px}.search-hit{border:1px solid #cfe0f5;background:#f3f8ff;border-radius:7px;color:#26527e;font-size:11px;padding:6px 8px;max-width:100%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.search-hit:hover{background:#e4f0ff}
+    .tree-stage{padding:17px 20px 35px;min-height:260px;overflow-x:auto}.empty{min-height:390px;display:grid;place-items:center;text-align:center;padding:28px}.empty-icon{font-size:31px;color:#6e95c5;width:72px;height:72px;background:#eff5fd;border:1px solid #d8e9ff;border-radius:18px;margin:0 auto 18px;display:grid;place-items:center}.empty h2{font-size:20px;margin:0 0 8px}.empty p{font-size:13px;max-width:530px;line-height:1.7;color:var(--muted);margin:0 auto 18px}
+    .doc-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-bottom:15px}.doc-card:last-child{margin-bottom:0}.doc-heading{background:#f7fafd;border-bottom:1px solid var(--line);padding:12px 14px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}.doc-heading strong{display:block;font-size:13px}.doc-heading small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.doc-body{padding:11px 15px 14px;overflow-x:auto}.doc-toggle{background:transparent;border:0;color:#2e587f;text-align:left;padding:4px 0;font-size:12px;font-weight:750;display:flex;align-items:center;gap:9px}.doc-toggle .arrow{display:inline-block;transition:transform .13s}.doc-card.closed .doc-toggle .arrow{transform:rotate(-90deg)}.doc-card.closed .doc-body{display:none}.number-chip{font:800 10px ui-monospace,monospace;color:#366aa2;background:#e8f1fb;padding:4px 7px;border-radius:6px}
+    .json-tree{font-size:12px;line-height:1.9;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;color:#253d57;min-width:min-content}.json-tree details{position:relative}.json-tree details>summary{cursor:pointer;display:flex;align-items:baseline;gap:5px;border-radius:5px;padding:2px 6px 2px 0;width:max-content;max-width:100%;list-style:none}.json-tree summary::-webkit-details-marker{display:none}.json-tree summary::before{content:'▸';width:14px;flex:none;color:#7092bb;font-size:12px}.json-tree details[open]>summary::before{content:'▾'}.json-tree summary:hover,.primitive-row:hover{background:#edf5ff}.json-tree .children{border-left:1px solid #deebf7;margin-left:7px;padding-left:17px}.primitive-row{display:flex;align-items:baseline;gap:4px;min-height:26px;border-radius:5px;padding-left:19px;max-width:100%;width:max-content}.key{font-weight:750;color:#2b5d9d;overflow-wrap:anywhere}.punct{color:#91a1b2}.type-note{color:#91a1b2;margin-left:5px;font-size:10px}.string{color:#a45228}.number{color:#684bb5}.boolean{color:#09806b;font-weight:650}.null{color:#9296a1;font-style:italic}.value{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}.value-long{max-width:900px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}.show-value{font:inherit;color:#1764ba;border:1px solid #c7ddfa;background:#eef6ff;border-radius:5px;padding:1px 6px;margin-left:5px}.show-value:hover{background:#daeafe}.more-btn{font:700 11px ui-monospace,monospace;border:1px dashed #b8cce4;background:#f7faff;color:#356b9f;padding:6px 11px;border-radius:6px;margin:8px 0 10px 3px}.more-btn:hover{background:#e9f4ff}.json-tree .highlight{background:#fff1b5;border-radius:4px}.root-label{color:#1f5387;font-weight:800}
+    .helper{margin-top:17px;font-size:11px;color:#7c8da2;line-height:1.6}.helper code{background:#edf3fa;padding:2px 4px;border-radius:4px}
+    .drop-mask{position:fixed;inset:0;z-index:50;display:none;place-items:center;background:#092947c9;backdrop-filter:blur(3px);pointer-events:none}.drop-mask.show{display:grid}.drop-target{border:2px dashed #a5d0ff;border-radius:20px;color:#fff;padding:45px;text-align:center;width:min(620px,90vw);background:#1d4e7c}.drop-target strong{display:block;font-size:22px;margin-bottom:8px}.drop-target span{color:#c8e2ff;font-size:13px}
+    .toast{position:fixed;right:20px;bottom:18px;background:#153b5e;color:#fff;border-radius:10px;box-shadow:0 12px 32px #081c3550;padding:12px 17px;font-size:12px;max-width:min(550px,calc(100vw - 35px));z-index:80;display:none;line-height:1.5}.toast.show{display:block}.toast.error{background:#9a3543}
+    dialog{border:1px solid #cbddeb;border-radius:14px;box-shadow:0 30px 90px #061c3650;max-width:min(970px,95vw);width:970px;max-height:85vh;padding:0;background:white;color:var(--text)}dialog::backdrop{background:#071d36b3}.dialog-head{padding:17px 20px;display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line)}.dialog-head h3{margin:0;font-size:16px}.dialog-meta{font-size:11px;color:var(--muted);padding:8px 20px;border-bottom:1px solid var(--line)}.dialog-text{padding:20px;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;max-height:60vh;font:12px/1.6 ui-monospace,monospace;background:#f8fafd;margin:0}
+    .footer{color:#8192a6;font-size:11px;text-align:center;padding:11px}
+    @media(max-width:680px){.topbar{padding:16px}.container{padding:18px 10px 25px}.intro{padding:0 5px}.intro h1{font-size:22px}.tools{padding:13px 11px}.tree-stage{padding:13px 10px 28px}.doc-heading{padding:10px}.doc-body{padding:10px}.tab{padding:11px 9px;max-width:180px}.search-area{padding:0 11px}.metrics{width:100%}.metric{flex:1;min-width:90px}.json-tree{font-size:11px}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="mark">{ }</div><div><strong>JSON Workspace</strong><small>Árvores colapsáveis · importação incremental · arquivo único</small></div></div>
+    <div class="actions">
+      <button class="btn dark" id="importTop">＋ Importar JSON</button>
+      <button class="btn primary" id="exportAllTop" disabled>↓ Exportar todos</button>
+    </div>
+  </header>
+  <main class="container">
+    <section class="intro">
+      <div><div class="eyebrow">Visualizador universal de JSON</div><h1>Um arquivo, uma aba. Tudo conectado em uma coleção.</h1><p>Importe JSONs individuais ou uma coleção exportada anteriormente. Cada arquivo conserva sua estrutura original; o painel <strong>Todos</strong> exibe um abaixo do outro, na ordem de entrada.</p></div>
+      <div class="metrics"><div class="metric"><b id="docCount">0</b><span>JSONs carregados</span></div><div class="metric"><b id="totalSize">0 B</b><span>Tamanho da coleção</span></div></div>
+    </section>
+    <section class="workspace">
+      <div class="tabs-shell"><div class="tabs" id="tabs" role="tablist" aria-label="Arquivos JSON"><button role="tab" class="tab selected" data-tab="__all__" aria-selected="true">☷ <span class="filename">Todos</span><span class="count">0</span></button></div><button id="addTab" class="add-tab" title="Importar outros arquivos">＋</button></div>
+      <div class="tools">
+        <div><h2 class="section-title" id="viewTitle">Nenhum JSON carregado</h2><div class="section-sub" id="viewSubtitle">Selecione um ou vários arquivos JSON para começar.</div></div>
+        <div class="tool-right"><input id="search" class="search" type="search" placeholder="Buscar chave ou valor…" aria-label="Buscar no JSON" disabled><button id="expandTwo" class="btn small" disabled>Expandir 2 níveis</button><button id="collapseAll" class="btn small" disabled>Recolher</button><button id="moveUp" class="btn small icon" title="Mover aba para cima" disabled>↑</button><button id="moveDown" class="btn small icon" title="Mover aba para baixo" disabled>↓</button><button id="exportCurrent" class="btn small" disabled>↓ Exportar aba</button><button id="removeCurrent" class="btn small danger" disabled>✕ Remover</button></div>
+      </div>
+      <div class="search-area" id="searchArea"></div>
+      <div class="tree-stage" id="treeStage"><div class="empty"><div><div class="empty-icon">{…}</div><h2>Seu espaço está vazio</h2><p>Importe <strong>cliente.json</strong>, outros perfis ou qualquer JSON válido. Novos arquivos criam novas abas, sem apagar os anteriores.</p><button class="btn primary" id="importEmpty">＋ Escolher arquivos JSON</button></div></div></div>
+    </section>
+    <p class="helper"><strong>Formato do consolidado:</strong> um JSON válido com o campo <code>documents</code>, contendo as entradas na ordem em que foram adicionadas. Ele pode ser importado neste mesmo HTML para recriar todas as abas. Tudo funciona localmente no navegador, sem envio a servidores. Ao recarregar a página, importe novamente seus arquivos.</p>
+  </main>
+  <footer class="footer">Ferramenta autocontida · HTML + CSS + JavaScript · sem bibliotecas externas</footer>
+</div>
+<div class="drop-mask" id="dropMask"><div class="drop-target"><strong>Solte seus arquivos JSON aqui</strong><span>Cada JSON será adicionado como uma nova aba</span></div></div>
+<input id="fileInput" type="file" accept=".json,application/json,.jsonl,.txt" multiple hidden>
+<dialog id="valueDialog" aria-label="Conteúdo completo"><div class="dialog-head"><h3 id="dialogTitle">Conteúdo</h3><div class="small-actions"><button class="btn small" id="copyValue">Copiar valor</button><button class="btn small" id="closeDialog">Fechar ✕</button></div></div><div class="dialog-meta" id="dialogMeta"></div><pre class="dialog-text" id="dialogText"></pre></dialog>
+<script>
+(() => {
+  'use strict';
+  const BUNDLE_KIND = 'advogadoja.json.tree.bundle';
+  const CHUNK_SIZE = 180;
+  const state = { documents: [], active: '__all__', searchTimer: null, currentText: '' };
+  const $ = id => document.getElementById(id);
+  const el = (tag, className, text) => { const n = document.createElement(tag); if(className)n.className=className;if(text!==undefined)n.textContent=text;return n; };
+  const bytes = n => n < 1024 ? `${n} B` : n < 1048576 ? `${(n/1024).toFixed(1)} KB` : `${(n/1048576).toFixed(2)} MB`;
+  const isContainer = v => v !== null && typeof v === 'object';
+  const childrenOf = v => Array.isArray(v) ? v.map((x,i)=>[String(i),x]) : Object.entries(v);
+  const fmtKey = s => String(s);
+  const idToken = () => `json_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,9)}`;
+  const getDoc = id => state.documents.find(d=>d.id===id);
+  function notify(text, error=false) { const t=$('toast') || (()=>{const x=el('div','toast');x.id='toast';document.body.append(x);return x})(); t.textContent=text;t.className='toast show'+(error?' error':'');clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.classList.remove('show'),5500); }
+  function safeName(name) {return String(name||'sem-nome.json').replace(/[\\/:*?"<>|\x00-\x1f]/g,'_').slice(0,120) || 'sem-nome.json';}
+  function uniqueName(name){ const used=new Set(state.documents.map(x=>x.name.toLowerCase())); name=safeName(name);if(!used.has(name.toLowerCase()))return name;const base=name.replace(/\.json$/i,'');let n=2;while(used.has(`${base} (${n}).json`.toLowerCase()))n++;return `${base} (${n}).json`; }
+  function addDoc(name,data,raw){let display=uniqueName(name); const doc={id:idToken(), name:display, data, raw:typeof raw==='string'?raw:JSON.stringify(data,null,2), expanded:new Set(['$']), visibleInAll:true};state.documents.push(doc);return doc;}
+  function isBundle(v){return v && !Array.isArray(v) && v.format===BUNDLE_KIND && v.schemaVersion===1 && Array.isArray(v.documents) && v.documents.every(d=>d && typeof d==='object' && Object.prototype.hasOwnProperty.call(d,'data'));}
+  async function importFiles(list){let total=0, errors=[], last=null;for(const f of Array.from(list)){
+      try{const raw=await f.text();let data;try{data=JSON.parse(raw);}catch(e){throw new Error('JSON inválido: '+e.message);}
+        if(isBundle(data)) {for(const item of data.documents){last=addDoc(item.name || 'documento.json', item.data, typeof item.originalJson==='string' ? item.originalJson : undefined);total++;}}
+        else{last=addDoc(f.name,data,raw);total++;}
+      }catch(err){errors.push(`${f.name}: ${err.message}`);}
+    }
+    if(last)state.active=last.id;render();
+    if(total)notify(`${total} ${total===1?'JSON adicionado':'JSONs adicionados'} com sucesso. ${state.documents.length} ${state.documents.length===1?'aba disponível':'abas disponíveis'}.`);
+    if(errors.length){const message=errors.slice(0,3).join('\n')+(errors.length>3?`\n… e mais ${errors.length-3}.`: '');notify(message,true);}
+    $('fileInput').value='';
+  }
+  function buildBundle(){return {format:BUNDLE_KIND,schemaVersion:1,title:'Coleção incremental de JSONs',exportedAt:new Date().toISOString(),documents:state.documents.map((d,i)=>({order:i+1,name:d.name,data:d.data}))};}
+  function download(name,text){let blob=new Blob([text],{type:'application/json;charset=utf-8'});let url=URL.createObjectURL(blob);let a=el('a');a.href=url;a.download=safeName(name);document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+  function exportOne(d){if(!d)return;download(d.name,d.raw);notify(`Exportado: ${d.name}`);}
+  function exportAll(){if(!state.documents.length)return;const now=new Date();const dt=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');download(`colecao_json_${dt}.json`,JSON.stringify(buildBundle(),null,2));notify(`${state.documents.length} JSONs exportados em um único arquivo válido.`);}
+  function selectTab(id){if(id!=='__all__'&&!getDoc(id))return;state.active=id;$('search').value='';render();}
+  function render(){renderTabs();renderHeader();renderTree();$('docCount').textContent=state.documents.length;$('totalSize').textContent=bytes(state.documents.reduce((s,d)=>s+new Blob([d.raw]).size,0));$('exportAllTop').disabled=!state.documents.length;}
+  function renderTabs(){const host=$('tabs');host.replaceChildren();const all=el('button','tab'+(state.active==='__all__'?' selected':''));all.type='button';all.setAttribute('role','tab');all.setAttribute('aria-selected',String(state.active==='__all__'));all.append(document.createTextNode('☷ '),el('span','filename','Todos'),el('span','count',String(state.documents.length)));all.addEventListener('click',()=>selectTab('__all__'));host.append(all);
+    state.documents.forEach((d,i)=>{const b=el('button','tab'+(state.active===d.id?' selected':''));b.type='button';b.title=d.name;b.setAttribute('role','tab');b.setAttribute('aria-selected',String(state.active===d.id));b.append(el('span','number-chip',String(i+1).padStart(2,'0')),el('span','filename',d.name));b.addEventListener('click',()=>selectTab(d.id));host.append(b);});
+    host.querySelector('.selected')?.scrollIntoView({block:'nearest',inline:'nearest'});
+  }
+  function renderHeader(){const many=state.active==='__all__',d=getDoc(state.active),i=state.documents.indexOf(d);$('viewTitle').textContent=many ? (state.documents.length?'Todos os JSONs':'Nenhum JSON carregado') : d.name;
+    $('viewSubtitle').textContent=many?(state.documents.length?'Coleção incremental · cada JSON exibido abaixo do anterior · sem mesclar propriedades':'Selecione um ou vários arquivos JSON para começar.'):`Aba ${i+1} de ${state.documents.length} · arquivo independente · árvore colapsável`;
+    $('search').disabled=!state.documents.length; $('expandTwo').disabled=!state.documents.length;$('collapseAll').disabled=!state.documents.length;$('exportCurrent').disabled=!d;$('removeCurrent').disabled=!d;$('moveUp').disabled=!d||i===0;$('moveDown').disabled=!d||i===state.documents.length-1;
+    $('exportCurrent').textContent=d?'↓ Exportar aba':'↓ Exportar aba';$('searchArea').replaceChildren();
+  }
+  function renderTree(){const host=$('treeStage');host.replaceChildren();if(!state.documents.length){const box=el('div','empty');const inside=el('div');inside.innerHTML='<div class="empty-icon">{…}</div><h2>Seu espaço está vazio</h2><p>Importe <strong>cliente.json</strong>, outros perfis ou qualquer JSON válido. Novos arquivos criam novas abas, sem apagar os anteriores.</p>';const b=el('button','btn primary','＋ Escolher arquivos JSON');b.addEventListener('click',openFiles);inside.append(b);box.append(inside);host.append(box);return;}
+    if(state.active==='__all__')state.documents.forEach((d,i)=>host.append(createDocCard(d,i)));
+    else{const d=getDoc(state.active);host.append(buildTree(d));}
+  }
+  function createDocCard(d,i){const card=el('section','doc-card'+(d.visibleInAll?'':' closed'));const head=el('div','doc-heading');const titleBox=el('div');const toggle=el('button','doc-toggle');toggle.type='button';toggle.setAttribute('aria-expanded',String(d.visibleInAll));toggle.append(el('span','arrow','▾'),el('span','',`${i+1}. ${d.name}`));toggle.addEventListener('click',()=>{d.visibleInAll=!d.visibleInAll;card.classList.toggle('closed',!d.visibleInAll);toggle.setAttribute('aria-expanded',String(d.visibleInAll));if(d.visibleInAll&&!body.childNodes.length)body.append(buildTree(d));});titleBox.append(toggle,el('small','',`Raiz: ${describeType(d.data)} · arquivo independente`));head.append(titleBox);
+    const right=el('div','small-actions');const open=el('button','btn small','Abrir aba');open.addEventListener('click',()=>selectTab(d.id));const exp=el('button','btn small','↓ Exportar');exp.addEventListener('click',()=>exportOne(d));right.append(open,exp);head.append(right);card.append(head);const body=el('div','doc-body');if(d.visibleInAll)body.append(buildTree(d));card.append(body);return card;
+  }
+  function describeType(v){return Array.isArray(v)?`array · ${v.length} itens` : v===null?'null':isContainer(v)?`objeto · ${Object.keys(v).length} propriedades`:typeof v;}
+  function pathFor(parent,key){return parent+'/'+encodeURIComponent(String(key)).replace(/%/g,'%25');}
+  function displayPrimitive(value){if(typeof value==='string')return {text:'"'+value+'"',cls:'string'};if(value===null)return{text:'null',cls:'null'};if(typeof value==='number')return{text:String(value),cls:'number'};if(typeof value==='boolean')return{text:String(value),cls:'boolean'};return{text:String(value),cls:'string'};}
+  function buildTree(doc){const host=el('div','json-tree');host.dataset.docId=doc.id;host.append(createNode(doc,'$',doc.data,'$'));return host;}
+  function createNode(doc,path,value,key){const isRoot=path==='$';if(!isContainer(value)){
+      const row=el('div','primitive-row');row.dataset.path=path;row.append(el('span','key'+(isRoot?' root-label':''),fmtKey(key)),el('span','punct',':'));
+      const info=displayPrimitive(value),text=info.text;const preview=text.length>550?text.slice(0,550)+'…':text;row.append(el('span','value '+info.cls+(text.length>550?' value-long':''),preview));
+      if(text.length>550){const button=el('button','show-value','Ver completo');button.title='Abrir texto completo';button.addEventListener('click',()=>openDialog(path,text));row.append(button);}return row;
+    }
+    const details=el('details');details.dataset.path=path;details.dataset.key=String(key);const sum=el('summary');sum.append(el('span','key'+(isRoot?' root-label':''),fmtKey(key)),el('span','punct',':'),el('span','type-note',Array.isArray(value)?`[ ${value.length} itens ]`:`{ ${Object.keys(value).length} propriedades }`));details.append(sum);const child=el('div','children');details.append(child);
+    const pairs=childrenOf(value);let loaded=0;
+    const loadNext=(count=CHUNK_SIZE)=>{const stop=Math.min(pairs.length,loaded+count);const frag=document.createDocumentFragment();for(;loaded<stop;loaded++){const [childKey,childVal]=pairs[loaded];frag.append(createNode(doc,pathFor(path,childKey),childVal,childKey));}const oldMore=child.querySelector(':scope > .more-btn');oldMore?.remove();child.append(frag);
+      if(loaded<pairs.length){const more=el('button','more-btn',`＋ Mostrar mais ${Math.min(CHUNK_SIZE,pairs.length-loaded)} de ${pairs.length-loaded} restantes`);more.type='button';more.addEventListener('click',()=>loadNext());child.append(more);}}
+    details._loadNext=loadNext;details._loaded=()=>loaded;details._pairs=pairs;
+    if(doc.expanded.has(path)){details.open=true;loadNext();}
+    details.addEventListener('toggle',()=>{if(details.open){doc.expanded.add(path);if(details._loaded()===0)loadNext();}else doc.expanded.delete(path);});
+    return details;
+  }
+  function allTreeElements(){return Array.from($('treeStage').querySelectorAll('.json-tree'));}
+  function expandTwo(){for(const tree of allTreeElements()){
+      const root=tree.querySelector(':scope > details');if(!root)continue;root.open=true;root._loadNext?.();for(const child of Array.from(root.querySelectorAll(':scope > .children > details'))){child.open=true;if(child._loaded?.()===0)child._loadNext();}
+    }}
+  function collapseVisible(){for(const tree of allTreeElements())for(const d of tree.querySelectorAll('details[open]'))d.open=false;}
+  function moveDoc(direction){const d=getDoc(state.active);if(!d)return;const i=state.documents.indexOf(d),j=i+direction;if(j<0||j>=state.documents.length)return;[state.documents[i],state.documents[j]]=[state.documents[j],state.documents[i]];render();}
+  function removeDoc(){const d=getDoc(state.active);if(!d)return;if(!confirm(`Remover a aba "${d.name}" do visualizador?\nO arquivo original no seu computador não será alterado.`))return;state.documents=state.documents.filter(x=>x.id!==d.id);state.active='__all__';render();notify('Aba removida. As demais foram preservadas.');}
+  function openDialog(path,text){state.currentText=text;$('dialogTitle').textContent='Valor completo';$('dialogMeta').textContent=`Caminho: ${path} · ${text.length.toLocaleString('pt-BR')} caracteres`;$('dialogText').textContent=text;$('valueDialog').showModal();}
+  function copyText(text){if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(text);const ta=el('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:-9999px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok?Promise.resolve():Promise.reject(new Error('O navegador bloqueou a cópia.'));}
+  function findHits(root,term,limit=90){const hits=[];const stack=[{value:root,path:[],depth:0}];let scanned=0;while(stack.length&&hits.length<limit&&scanned<170000){const node=stack.pop();scanned++;if(node.depth>70)continue;
+      if(node.path.length){const key=String(node.path[node.path.length-1]);const primitive=!isContainer(node.value);const match=key.toLowerCase().includes(term)||(primitive&&String(node.value).slice(0,2400).toLowerCase().includes(term));if(match)hits.push({path:node.path,label:key,preview:primitive?String(node.value).slice(0,75):describeType(node.value)});}
+      if(isContainer(node.value)){const entries=Object.entries(node.value);for(let i=entries.length-1;i>=0;i--){const [key,v]=entries[i];stack.push({value:v,path:node.path.concat(key),depth:node.depth+1});}}
+    }return hits;}
+  function findChildDetail(current,key){const p=pathFor(current.dataset.path,String(key));const selector=':scope > .children > details';const nodes=Array.from(current.querySelectorAll(selector));return nodes.find(n=>n.dataset.path===p);}
+  function findChildLeaf(current,key){const p=pathFor(current.dataset.path,String(key));const rows=Array.from(current.querySelectorAll(':scope > .children > .primitive-row'));return rows.find(n=>n.dataset.path===p);}
+  async function revealPath(docId,parts){selectTab(docId);let cur=$('treeStage').querySelector('.json-tree > details');if(!cur)return;cur.open=true;
+    for(const key of parts){let item=findChildDetail(cur,key)||findChildLeaf(cur,key);let attempts=0;while(!item&&cur._loaded&&cur._loaded()<cur._pairs.length&&attempts++<400){cur._loadNext();item=findChildDetail(cur,key)||findChildLeaf(cur,key);}if(!item)break;
+      if(item.tagName==='DETAILS'){item.open=true;cur=item;}else{cur=item;break;}
+    }
+    cur.scrollIntoView({behavior:'smooth',block:'center'});cur.classList.add('highlight');setTimeout(()=>cur.classList.remove('highlight'),2000);
+  }
+  function runSearch(){const q=$('search').value.trim().toLowerCase(),host=$('searchArea');host.replaceChildren();if(!q)return;if(q.length<2){host.append(el('p','search-summary','Digite pelo menos 2 caracteres para buscar.'));return;}
+    const docs=state.active==='__all__'?state.documents:[getDoc(state.active)].filter(Boolean),hits=[];
+    for(const d of docs){for(const hit of findHits(d.data,q,Math.max(1,90-hits.length)))hits.push({doc:d,...hit});if(hits.length>=90)break;}
+    host.append(el('div','search-summary',`${hits.length}${hits.length>=90?'+' : ''} ocorrência(s) · busca em chaves e valores (prévia de até 2.400 caracteres por valor) · clique para abrir a posição.`));const wrap=el('div','search-results');for(const h of hits){const b=el('button','search-hit');b.title=`${h.doc.name}: ${h.path.join(' / ')}`;b.textContent=`${state.active==='__all__'?h.doc.name+' · ':''}${h.path.join(' / ')} — ${h.preview}`;b.addEventListener('click',()=>revealPath(h.doc.id,h.path));wrap.append(b);}host.append(wrap);
+  }
+  function openFiles(){$('fileInput').click();}
+  $('fileInput').addEventListener('change',e=>importFiles(e.target.files));
+  $('importTop').addEventListener('click',openFiles);$('addTab').addEventListener('click',openFiles);$('exportAllTop').addEventListener('click',exportAll);
+  $('exportCurrent').addEventListener('click',()=>exportOne(getDoc(state.active)));$('removeCurrent').addEventListener('click',removeDoc);$('moveUp').addEventListener('click',()=>moveDoc(-1));$('moveDown').addEventListener('click',()=>moveDoc(1));$('expandTwo').addEventListener('click',expandTwo);$('collapseAll').addEventListener('click',collapseVisible);
+  $('search').addEventListener('input',()=>{clearTimeout(state.searchTimer);state.searchTimer=setTimeout(runSearch,230)});
+  $('closeDialog').addEventListener('click',()=>$('valueDialog').close());$('copyValue').addEventListener('click',()=>copyText(state.currentText).then(()=>notify('Valor copiado.')).catch(e=>notify(e.message,true)));
+  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='o'){e.preventDefault();openFiles();}});
+  let dragDepth=0;document.addEventListener('dragenter',e=>{if(!e.dataTransfer?.types?.includes('Files'))return;e.preventDefault();dragDepth++;$('dropMask').classList.add('show')});document.addEventListener('dragover',e=>{if(e.dataTransfer?.types?.includes('Files'))e.preventDefault()});document.addEventListener('dragleave',e=>{if(!e.dataTransfer?.types?.includes('Files'))return;dragDepth=Math.max(0,dragDepth-1);if(!dragDepth)$('dropMask').classList.remove('show')});document.addEventListener('drop',e=>{e.preventDefault();dragDepth=0;$('dropMask').classList.remove('show');if(e.dataTransfer?.files?.length)importFiles(e.dataTransfer.files)});
+  render();
+})();
+</script>
+</body>
+</html>
