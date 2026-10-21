@@ -14,6 +14,7 @@ Esta raiz é apenas o catálogo e o ponto de publicação no GitHub Pages. Ela c
 
 - Não misture requisitos, código ou documentação entre projetos.
 - Mantenha um `index.html`, `README.md` e `AGENTS.md` na raiz de cada projeto.
+- O `index.html` de cada projeto é o catálogo dos HTMLs publicados; ao adicionar ou remover um HTML, atualize-o no mesmo commit.
 - Use links relativos para compatibilidade com GitHub Pages.
 - Não publique segredos, credenciais, tokens ou dados pessoais reais.
 - Ao criar um novo projeto, atualize este `README.md` e `index.html` com um link para ele.

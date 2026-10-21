@@ -12,6 +12,7 @@ Manter e evoluir o catálogo funcional do Organizador de Vida sem alterar os out
 ## Regras
 
 - `index.html` é a entrada pública e deve continuar abrindo de forma autônoma no GitHub Pages.
+- `index.html` é o catálogo de HTMLs publicados; atualize-o quando adicionar ou remover uma página publicada.
 - Preserve `catalogo_funcional_mestre_organizador_de_vida.html` como fonte de referência, a menos que seja solicitada uma substituição explícita.
 - O acervo legado local é ignorado pelo Git e não deve ser alterado, extraído ou publicado separadamente sem pedido explícito.
 - Não introduza credenciais, dados pessoais reais ou dependências externas obrigatórias.

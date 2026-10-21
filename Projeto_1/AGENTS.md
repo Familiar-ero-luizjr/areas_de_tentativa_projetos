@@ -17,6 +17,10 @@ Este repositório existe para **fechar a especificação funcional do Advogado J
 
 Qualquer agente que editar este repositório deve atuar como mantenedor de especificação, não como inventor de produto.
 
+## Catálogo publicado
+
+`index.html` é o catálogo de HTMLs publicados deste projeto. O laboratório funcional que antes ocupava essa entrada está preservado em `laboratorio_funcional.html`. Ao adicionar ou remover um HTML publicado, atualize o catálogo no mesmo commit.
+
 ## Regra principal: não alucinar
 
 Nunca criar uma tela, fluxo, regra, tabela, campo, permissão, estado ou integração apenas porque parece uma boa prática.
@@ -218,7 +222,7 @@ A partir desse ponto, o laboratório deixa de descobrir arquitetura básica e pa
 
 ### Navegação do laboratório
 
-O `index.html` é somente o **hub de acesso por abas**. Os HTMLs continuam separados e independentes no repositório.
+O `index.html` é o **catálogo dos HTMLs publicados**. O antigo hub por abas está preservado em `laboratorio_funcional.html`; os demais HTMLs continuam separados e independentes no repositório.
 
 Não fundir jornadas, entrevista, banco e inventário em um único arquivo de conteúdo apenas para facilitar navegação. A barra de abas deve carregar cada artefato mantendo sua fonte própria.
 

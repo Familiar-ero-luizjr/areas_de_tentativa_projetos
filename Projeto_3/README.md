@@ -10,7 +10,7 @@ Abra `index.html` por um servidor estático. A partir da raiz do repositório:
 py -m http.server 8000
 ```
 
-Em seguida, acesse `http://localhost:8000/Projeto_3/`.
+Em seguida, acesse `http://localhost:8000/Projeto_3/`. O `index.html` é o catálogo de arquivos publicados; selecione nele a referência de arquitetura.
 
 No GitHub Pages, o endereço será:
 
@@ -18,7 +18,7 @@ No GitHub Pages, o endereço será:
 
 ## Conteúdo
 
-- `index.html`: entrada pública do documento interativo.
+- `index.html`: catálogo dos HTMLs publicados no projeto.
 - `PADRAO_ARQUITETURA_HTML_AUTOCONTIDO.html`: fonte original preservada.
 - `padrao-html-autocontido-dados.json`: conteúdo estruturado usado como referência para evolução do padrão.
 

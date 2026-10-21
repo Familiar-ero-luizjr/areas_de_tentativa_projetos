@@ -2,336 +2,63 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta
-      name="description"
-      content="Laboratório funcional do Advogado Já: inventário, quatro jornadas, entrevista e banco em abas."
-    />
-    <title>Advogado Já · Laboratório Funcional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Laboratório funcional Advogado Já e seus artefatos publicados." />
+    <title>Projeto 1 — Catálogo HTML</title>
     <style>
-      :root {
-        --navy: #10233f;
-        --blue: #2563eb;
-        --bg: #eef2f7;
-        --surface: #fff;
-        --ink: #18253b;
-        --muted: #64748b;
-        --line: #d8e0ea;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font:
-          13px/1.4 Inter,
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          sans-serif;
-        overflow: hidden;
-      }
-      .shell {
-        height: 100vh;
-        display: grid;
-        grid-template-rows: auto auto 1fr;
-      }
-      .topbar {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 10px 14px;
-        background: var(--navy);
-        color: #fff;
-        border-bottom: 1px solid #ffffff20;
-      }
-      .brand {
-        min-width: 0;
-      }
-      .brand strong {
-        display: block;
-        font-size: 13px;
-        letter-spacing: 0.06em;
-      }
-      .brand span {
-        display: block;
-        font-size: 9px;
-        color: #bcd0e8;
-      }
-      .spacer {
-        flex: 1;
-      }
-      .doclink {
-        color: #e8f1ff;
-        text-decoration: none;
-        border: 1px solid #ffffff35;
-        border-radius: 7px;
-        padding: 6px 9px;
-        font-size: 10px;
-        font-weight: 800;
-      }
-      .doclink:hover {
-        background: #ffffff12;
-      }
-      .tabs {
-        display: flex;
-        align-items: stretch;
-        gap: 3px;
-        padding: 7px 8px;
-        background: #fff;
-        border-bottom: 1px solid var(--line);
-        overflow-x: auto;
-        scrollbar-width: thin;
-      }
-      .tab {
-        flex: 0 0 auto;
-        border: 1px solid transparent;
-        border-radius: 8px;
-        background: transparent;
-        color: #526177;
-        padding: 8px 11px;
-        font: 800 10px/1.2 inherit;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-      .tab:hover {
-        background: #f4f7fb;
-      }
-      .tab[aria-selected="true"] {
-        background: #eaf2ff;
-        border-color: #bfd4f7;
-        color: #184f9c;
-      }
-      .stage {
-        position: relative;
-        min-height: 0;
-        background: #fff;
-      }
-      .panel {
-        position: absolute;
-        inset: 0;
-        display: none;
-      }
-      .panel.active {
-        display: block;
-      }
-      .panel iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        background: #fff;
-      }
-      .status {
-        display: none;
-      }
-      @media (max-width: 720px) {
-        .topbar {
-          padding: 8px 10px;
-        }
-        .brand span {
-          display: none;
-        }
-        .doclink {
-          padding: 5px 7px;
-        }
-        .tabs {
-          padding: 6px;
-        }
-        .tab {
-          padding: 8px 9px;
-        }
-      }
+      :root { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; color: #172b46; background: #f2f6fb; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; }
+      header { padding: 2rem max(1.25rem, calc((100vw - 1100px) / 2)); background: #112c4b; color: white; }
+      header a { color: #c8dcf7; } h1 { margin: .7rem 0 .45rem; font-size: clamp(1.9rem, 4vw, 3rem); }
+      header p { margin: 0; color: #c9d7e8; max-width: 60rem; line-height: 1.55; }
+      main { width: min(1100px, 100%); margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+      .tools { display: flex; gap: .8rem; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1.25rem; }
+      input { width: min(30rem, 100%); border: 1px solid #becce0; border-radius: .7rem; padding: .75rem .9rem; font: inherit; }
+      #count { color: #52667e; font-size: .92rem; }
+      .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .85rem; }
+      .item { display: block; padding: 1rem; background: white; border: 1px solid #d6e0ed; border-radius: .8rem; color: inherit; text-decoration: none; box-shadow: 0 2px 12px #152f4a0a; }
+      .item:hover, .item:focus-visible { border-color: #3979c5; box-shadow: 0 8px 20px #152f4a1c; outline: 3px solid #9ac4fb; outline-offset: 2px; }
+      .name { display: block; font-weight: 750; overflow-wrap: anywhere; }
+      .path { display: block; margin-top: .45rem; color: #62758d; font: .76rem/1.45 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+      .empty { color: #66788e; padding: 2rem 0; }
     </style>
   </head>
   <body>
-    <div class="shell">
-      <header class="topbar">
-        <div class="brand">
-          <strong>ADVOGADO JÁ · LAB</strong
-          ><span>Orquestração, definição e construção controlada do produto</span>
-        </div>
-        <div class="spacer"></div>
-        <a class="doclink" href="README.md" target="_blank" rel="noopener"
-          >README</a
-        >
-        <a class="doclink" href="AGENTS.md" target="_blank" rel="noopener"
-          >AGENTS.md</a
-        >
-      </header>
-
-      <nav class="tabs" role="tablist" aria-label="Artefatos do laboratório">
-        <button class="tab" role="tab" aria-selected="true" data-tab="orquestracao">
-          Orquestração
-        </button>
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-tab="inventario"
-        >
-          Inventário
-        </button>
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-tab="prototipo"
-        >
-          Protótipo
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="cliente">
-          Cliente
-        </button>
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-tab="advogado"
-        >
-          Advogado
-        </button>
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-tab="estudante"
-        >
-          Estudante
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="admin">
-          Administrador
-        </button>
-        <button
-          class="tab"
-          role="tab"
-          aria-selected="false"
-          data-tab="entrevista"
-        >
-          Entrevista
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="banco">
-          Banco
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="mapa">
-          Mapa integrado
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="legado">
-          Legado
-        </button>
-              <button class="tab" role="tab" aria-selected="false" data-tab="aplicacoes">Aplicações</button>
-      </nav>
-
-      <main class="stage">
-        <section class="panel active" data-panel="orquestracao">
-          <iframe title="Orquestração do projeto" src="orquestracao/index.html" loading="eager"></iframe>
-        </section>
-        <section class="panel" data-panel="inventario">
-          <iframe
-            title="Inventário Mestre de Telas"
-            src="inventario.html"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="prototipo">
-          <iframe
-            title="Protótipo navegável das quatro jornadas"
-            src="prototipo/index.html?v=2"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="cliente">
-          <iframe
-            title="Jornada Cliente"
-            src="jornadas/cliente_maria.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="advogado">
-          <iframe
-            title="Jornada Advogado"
-            src="jornadas/advogado_joao.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="estudante">
-          <iframe
-            title="Jornada Estudante de Direito"
-            src="jornadas/estudante_ana.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="admin">
-          <iframe
-            title="Jornada Administrador"
-            src="jornadas/administrador.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="entrevista">
-          <iframe
-            title="Entrevista funcional"
-            src="definicao/index.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="banco">
-          <iframe
-            title="Modelo de banco"
-            src="modelos/modelagem_banco_todas_telas.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="mapa">
-          <iframe
-            title="Mapa integrado"
-            src="referencias/mapa_aplicacao_todas_jornadas.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="legado">
-          <iframe
-            title="Laboratório legado"
-            src="legado/index.html"
-            loading="lazy"
-          ></iframe>
-        </section>
-        <section class="panel" data-panel="aplicacoes"><iframe title="Aplicações" src="aplicacoes/index.html" loading="lazy"></iframe></section>
-      </main>
-    </div>
+    <header>
+      <a href="../">← Todos os projetos</a>
+      <h1>Projeto 1</h1>
+      <p>Laboratório funcional Advogado Já e seus artefatos publicados. Selecione um arquivo para abri-lo em uma nova aba.</p>
+    </header>
+    <main>
+      <div class="tools">
+        <input id="filter" type="search" placeholder="Filtrar por nome ou caminho…" aria-label="Filtrar arquivos HTML" />
+        <span id="count"></span>
+      </div>
+      <section id="list" class="list" aria-label="Arquivos HTML publicados"></section>
+      <p id="empty" class="empty" hidden>Nenhum arquivo corresponde ao filtro.</p>
+    </main>
     <script>
-      const tabs = [...document.querySelectorAll(".tab")];
-      const panels = [...document.querySelectorAll(".panel")];
-      function activate(id, push = true) {
-        const tab = tabs.find((t) => t.dataset.tab === id) || tabs[0];
-        const target = tab.dataset.tab;
-        tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
-        panels.forEach((p) =>
-          p.classList.toggle("active", p.dataset.panel === target),
-        );
-        if (push) history.replaceState(null, "", "#" + target);
-        tab.scrollIntoView({ block: "nearest", inline: "nearest" });
+      const files = ["laboratorio_funcional.html","inventario.html","aplicacoes/index.html","aplicacoes/advogadoja-mock-services/index.html","aplicacoes/advogadoja-mock-services/mock-data/reference-planned-data/index.html","aplicacoes/flutter/docs/ARVORE_LIB_FUNCTIONS.html","aplicacoes/flutter/docs/ARVORE_LIB_HISTORICA.html","aplicacoes/flutter/web/index.html","definicao/index.html","docs/KIT_HTML_AUTOCONTIDO_V1/exemplos/aplicacao-painel/interface/estrutura.html","docs/KIT_HTML_AUTOCONTIDO_V1/exemplos/aplicacao-painel/saida/aplicacao-painel.html","docs/KIT_HTML_AUTOCONTIDO_V1/exemplos/arvore-repositorio/interface/estrutura.html","docs/KIT_HTML_AUTOCONTIDO_V1/exemplos/arvore-repositorio/saida/arvore-repositorio.html","docs/KIT_HTML_AUTOCONTIDO_V1/exemplos/catalogo-modulos/interface/estrutura.html","docs/KIT_HTML_AUTOCONTIDO_V1/exemplos/catalogo-modulos/saida/catalogo-modulos.html","docs/KIT_HTML_AUTOCONTIDO_V1/modelos/projeto_base/interface/estrutura.html","docs/KIT_HTML_AUTOCONTIDO_V1/modelos/projeto_base/saida/exemplo-canonico.html","jornadas/administrador.html","jornadas/advogado_joao.html","jornadas/cliente_maria.html","jornadas/estudante_ana.html","legado/index.html","legado/mapa_aplicacao_homologacao.html","legado/mapa_aplicacao_homologacao_v2.html","legado/mapa_aplicacao_producao.html","legado/modelagem_banco_homologacao.html","legado/modelagem_banco_homologacao_v2.html","legado/modelagem_banco_producao.html","modelos/modelagem_banco_todas_telas.html","orquestracao/index.html","planejamento/index.html","prototipo/index.html","referencias/mapa_aplicacao_todas_jornadas.html"];
+      const list = document.querySelector("#list");
+      const filter = document.querySelector("#filter");
+      const count = document.querySelector("#count");
+      const empty = document.querySelector("#empty");
+      function label(path) { return path.split("/").pop().replace(/\.html$/i, "").replace(/[_-]+/g, " "); }
+      function render() {
+        const term = filter.value.trim().toLocaleLowerCase("pt-BR");
+        const visible = files.filter((path) => path.toLocaleLowerCase("pt-BR").includes(term));
+        list.replaceChildren(...visible.map((path) => {
+          const link = document.createElement("a");
+          link.className = "item"; link.href = path; link.target = "_blank"; link.rel = "noopener";
+          const name = document.createElement("span"); name.className = "name"; name.textContent = label(path);
+          const detail = document.createElement("span"); detail.className = "path"; detail.textContent = path;
+          link.append(name, detail); return link;
+        }));
+        count.textContent = `${visible.length} de ${files.length} arquivos`;
+        empty.hidden = visible.length !== 0;
       }
-      tabs.forEach((t, i) => {
-        t.addEventListener("click", () => activate(t.dataset.tab));
-        t.addEventListener("keydown", (ev) => {
-          if (ev.key !== "ArrowLeft" && ev.key !== "ArrowRight") return;
-          ev.preventDefault();
-          const next =
-            (i + (ev.key === "ArrowRight" ? 1 : -1) + tabs.length) %
-            tabs.length;
-          tabs[next].focus();
-          activate(tabs[next].dataset.tab);
-        });
-      });
-      activate(location.hash.slice(1) || "orquestracao", false);
-      window.addEventListener("hashchange", () =>
-        activate(location.hash.slice(1) || "orquestracao", false),
-      );
+      filter.addEventListener("input", render); render();
     </script>
   </body>
 </html>

@@ -10,7 +10,7 @@ Abra `index.html` em um servidor estático. A partir da raiz deste repositório:
 py -m http.server 8000
 ```
 
-Em seguida, acesse `http://localhost:8000/Projeto_2/`.
+Em seguida, acesse `http://localhost:8000/Projeto_2/`. O `index.html` é o catálogo de arquivos publicados; selecione nele o Catálogo Funcional Mestre.
 
 No GitHub Pages, o endereço será:
 
@@ -18,7 +18,7 @@ No GitHub Pages, o endereço será:
 
 ## Conteúdo
 
-- `index.html`: entrada publicada do projeto.
+- `index.html`: catálogo dos HTMLs publicados no projeto.
 - `catalogo_funcional_mestre_organizador_de_vida.html`: arquivo-fonte recebido do catálogo.
 - O acervo legado local é ignorado pelo Git; a página publicada não depende dele.
 

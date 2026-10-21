@@ -4,7 +4,7 @@ Laboratório independente para fechar a especificação funcional do Advogado J�
 
 ## Abrir
 
-O ponto de entrada publicado é `index.html`. A partir da raiz do repositório, execute:
+O ponto de entrada publicado é `index.html`, um catálogo de todos os HTMLs publicados no projeto. O laboratório funcional original está em `laboratorio_funcional.html`. A partir da raiz do repositório, execute:
 
 ```powershell
 py -m http.server 8000

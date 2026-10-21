@@ -7,9 +7,9 @@ Este diretório é um projeto independente. Trabalhe apenas em `Projeto_4/`, exc
 ## Fonte e publicação
 
 - `index.html` é a entrada pública no GitHub Pages e deve permanecer autocontida.
-- `index.html` é a versão publicada atual do laboratório V4.
+- `index.html` é o catálogo de HTMLs publicados; atualize-o quando adicionar ou remover uma página publicada.
 - Os arquivos `ADVOGADOJA_LABORATORIO_TELAS_JSON_V4*.html` e os demais visualizadores são artefatos independentes de referência.
-- Ao aprovar uma nova versão para publicação, copie seu conteúdo para `index.html` e atualize este README.
+- Ao aprovar uma nova versão para publicação, preserve-a com nome próprio e atualize o catálogo e este README.
 
 ## Regras
 

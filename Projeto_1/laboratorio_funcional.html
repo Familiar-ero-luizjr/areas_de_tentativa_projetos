@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Laboratório funcional do Advogado Já: inventário, quatro jornadas, entrevista e banco em abas."
+    />
+    <title>Advogado Já · Laboratório Funcional</title>
+    <style>
+      :root {
+        --navy: #10233f;
+        --blue: #2563eb;
+        --bg: #eef2f7;
+        --surface: #fff;
+        --ink: #18253b;
+        --muted: #64748b;
+        --line: #d8e0ea;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          13px/1.4 Inter,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        overflow: hidden;
+      }
+      .shell {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 14px;
+        background: var(--navy);
+        color: #fff;
+        border-bottom: 1px solid #ffffff20;
+      }
+      .brand {
+        min-width: 0;
+      }
+      .brand strong {
+        display: block;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+      }
+      .brand span {
+        display: block;
+        font-size: 9px;
+        color: #bcd0e8;
+      }
+      .spacer {
+        flex: 1;
+      }
+      .doclink {
+        color: #e8f1ff;
+        text-decoration: none;
+        border: 1px solid #ffffff35;
+        border-radius: 7px;
+        padding: 6px 9px;
+        font-size: 10px;
+        font-weight: 800;
+      }
+      .doclink:hover {
+        background: #ffffff12;
+      }
+      .tabs {
+        display: flex;
+        align-items: stretch;
+        gap: 3px;
+        padding: 7px 8px;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        overflow-x: auto;
+        scrollbar-width: thin;
+      }
+      .tab {
+        flex: 0 0 auto;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: transparent;
+        color: #526177;
+        padding: 8px 11px;
+        font: 800 10px/1.2 inherit;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .tab:hover {
+        background: #f4f7fb;
+      }
+      .tab[aria-selected="true"] {
+        background: #eaf2ff;
+        border-color: #bfd4f7;
+        color: #184f9c;
+      }
+      .stage {
+        position: relative;
+        min-height: 0;
+        background: #fff;
+      }
+      .panel {
+        position: absolute;
+        inset: 0;
+        display: none;
+      }
+      .panel.active {
+        display: block;
+      }
+      .panel iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #fff;
+      }
+      .status {
+        display: none;
+      }
+      @media (max-width: 720px) {
+        .topbar {
+          padding: 8px 10px;
+        }
+        .brand span {
+          display: none;
+        }
+        .doclink {
+          padding: 5px 7px;
+        }
+        .tabs {
+          padding: 6px;
+        }
+        .tab {
+          padding: 8px 9px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <strong>ADVOGADO JÁ · LAB</strong
+          ><span>Orquestração, definição e construção controlada do produto</span>
+        </div>
+        <div class="spacer"></div>
+        <a class="doclink" href="README.md" target="_blank" rel="noopener"
+          >README</a
+        >
+        <a class="doclink" href="AGENTS.md" target="_blank" rel="noopener"
+          >AGENTS.md</a
+        >
+      </header>
+
+      <nav class="tabs" role="tablist" aria-label="Artefatos do laboratório">
+        <button class="tab" role="tab" aria-selected="true" data-tab="orquestracao">
+          Orquestração
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-tab="inventario"
+        >
+          Inventário
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-tab="prototipo"
+        >
+          Protótipo
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="cliente">
+          Cliente
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-tab="advogado"
+        >
+          Advogado
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-tab="estudante"
+        >
+          Estudante
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="admin">
+          Administrador
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          data-tab="entrevista"
+        >
+          Entrevista
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="banco">
+          Banco
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="mapa">
+          Mapa integrado
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="legado">
+          Legado
+        </button>
+              <button class="tab" role="tab" aria-selected="false" data-tab="aplicacoes">Aplicações</button>
+      </nav>
+
+      <main class="stage">
+        <section class="panel active" data-panel="orquestracao">
+          <iframe title="Orquestração do projeto" src="orquestracao/index.html" loading="eager"></iframe>
+        </section>
+        <section class="panel" data-panel="inventario">
+          <iframe
+            title="Inventário Mestre de Telas"
+            src="inventario.html"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="prototipo">
+          <iframe
+            title="Protótipo navegável das quatro jornadas"
+            src="prototipo/index.html?v=2"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="cliente">
+          <iframe
+            title="Jornada Cliente"
+            src="jornadas/cliente_maria.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="advogado">
+          <iframe
+            title="Jornada Advogado"
+            src="jornadas/advogado_joao.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="estudante">
+          <iframe
+            title="Jornada Estudante de Direito"
+            src="jornadas/estudante_ana.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="admin">
+          <iframe
+            title="Jornada Administrador"
+            src="jornadas/administrador.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="entrevista">
+          <iframe
+            title="Entrevista funcional"
+            src="definicao/index.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="banco">
+          <iframe
+            title="Modelo de banco"
+            src="modelos/modelagem_banco_todas_telas.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="mapa">
+          <iframe
+            title="Mapa integrado"
+            src="referencias/mapa_aplicacao_todas_jornadas.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="legado">
+          <iframe
+            title="Laboratório legado"
+            src="legado/index.html"
+            loading="lazy"
+          ></iframe>
+        </section>
+        <section class="panel" data-panel="aplicacoes"><iframe title="Aplicações" src="aplicacoes/index.html" loading="lazy"></iframe></section>
+      </main>
+    </div>
+    <script>
+      const tabs = [...document.querySelectorAll(".tab")];
+      const panels = [...document.querySelectorAll(".panel")];
+      function activate(id, push = true) {
+        const tab = tabs.find((t) => t.dataset.tab === id) || tabs[0];
+        const target = tab.dataset.tab;
+        tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
+        panels.forEach((p) =>
+          p.classList.toggle("active", p.dataset.panel === target),
+        );
+        if (push) history.replaceState(null, "", "#" + target);
+        tab.scrollIntoView({ block: "nearest", inline: "nearest" });
+      }
+      tabs.forEach((t, i) => {
+        t.addEventListener("click", () => activate(t.dataset.tab));
+        t.addEventListener("keydown", (ev) => {
+          if (ev.key !== "ArrowLeft" && ev.key !== "ArrowRight") return;
+          ev.preventDefault();
+          const next =
+            (i + (ev.key === "ArrowRight" ? 1 : -1) + tabs.length) %
+            tabs.length;
+          tabs[next].focus();
+          activate(tabs[next].dataset.tab);
+        });
+      });
+      activate(location.hash.slice(1) || "orquestracao", false);
+      window.addEventListener("hashchange", () =>
+        activate(location.hash.slice(1) || "orquestracao", false),
+      );
+    </script>
+  </body>
+</html>
