@@ -1,0 +1,1 @@
+import Page from "@/views/pages/login";export default function Route(){return <Page/>}

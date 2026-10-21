@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import createContactRequest from "../../src/modules/functions/handlers/createContactRequest"; describe("contact",()=>{it("cria request",()=>expect(createContactRequest({clientId:"client-001",lawyerId:"lawyer-001"}).status).toBe("pending"));});

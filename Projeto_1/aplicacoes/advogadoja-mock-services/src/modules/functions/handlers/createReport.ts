@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function createReport(input: Record<string, any>) { const report={id:uid("report"),reporterId:required(input.reporterId,"reporterId"),targetType:required(input.targetType,"targetType"),targetId:required(input.targetId,"targetId"),reason:required(input.reason,"reason"),details:input.details??"",status:"open",createdAt:now(),updatedAt:now()}; db.insert("reports",report); return report; }

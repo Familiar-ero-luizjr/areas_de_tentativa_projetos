@@ -1,0 +1,38 @@
+{
+  "name": "advogadoja-mock-services",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run typecheck && vite build",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.server.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate": "node scripts/validate-project.mjs",
+    "seed": "node scripts/seed.mjs",
+    "reset": "node scripts/reset.mjs",
+    "export:data": "node scripts/export-data.mjs",
+    "import:data": "node scripts/import-data.mjs",
+    "mock:api": "tsx src/api/node-server.ts",
+    "validate:imports": "node scripts/validate-imports.mjs",
+    "check": "npm run validate && npm run validate:imports && npm run typecheck && npm test && npm run build",
+    "smoke": "tsx scripts/smoke-core.ts",
+    "smoke:api": "node scripts/smoke-api.mjs"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vitest": "^3.2.4",
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5"
+  }
+}

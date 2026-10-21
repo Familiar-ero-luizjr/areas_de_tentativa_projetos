@@ -1,0 +1,1 @@
+import { useState } from "react"; import { mockState } from "../state/mockState"; export function useMockState(){const [value,setValue]=useState(mockState.snapshot()); return {value,refresh:()=>setValue(mockState.snapshot()),reset:()=>{mockState.reset();setValue(mockState.snapshot());}};}

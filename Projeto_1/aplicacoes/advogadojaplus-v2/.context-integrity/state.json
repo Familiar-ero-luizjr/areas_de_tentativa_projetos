@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "project_id": "46f7797f-e81a-470e-8c15-77b0d66b1d23",
+  "project_name": "advogadojaplus-v2-refatorado",
+  "objective": "AdvogadoJá Plus: API Node/Express com mock substituível por MongoDB Atlas; Next.js da jornada cliente até a Home",
+  "current_stage": "Refatoração de arquitetura sem expansão funcional",
+  "records": {
+    "D-API-MOCK": {
+      "id": "D-API-MOCK",
+      "kind": "decision",
+      "epistemic_status": "DECIDED",
+      "lifecycle_status": "ACTIVE",
+      "value": "Frontend Next.js consome somente a API HTTP; API seleciona por DATA_PROVIDER repository mock persistente ou MongoDB Atlas mantendo endpoints e contratos",
+      "scope": "backend.data-access",
+      "tags": [
+        "api",
+        "mock",
+        "mongodb"
+      ],
+      "critical": true,
+      "source": "user-conversation-2026-10-10",
+      "source_ref": null,
+      "supersedes": null,
+      "references": [],
+      "created_at": "2026-10-10T06:13:24+00:00",
+      "updated_at": "2026-10-10T06:13:24+00:00"
+    },
+    "D-MARIA-SCOPE": {
+      "id": "D-MARIA-SCOPE",
+      "kind": "decision",
+      "epistemic_status": "DECIDED",
+      "lifecycle_status": "ACTIVE",
+      "value": "Apenas jornada da cliente até a Home; advogado e pontos bloqueados apontam para Em construção",
+      "scope": "product.scope",
+      "tags": [
+        "frontend",
+        "journey"
+      ],
+      "critical": true,
+      "source": "user-conversation-2026-10-10",
+      "source_ref": null,
+      "supersedes": null,
+      "references": [],
+      "created_at": "2026-10-10T06:13:25+00:00",
+      "updated_at": "2026-10-10T06:13:25+00:00"
+    },
+    "D-VISUAL-SOURCE": {
+      "id": "D-VISUAL-SOURCE",
+      "kind": "decision",
+      "epistemic_status": "DECIDED",
+      "lifecycle_status": "ACTIVE",
+      "value": "HTML do protótipo Maria V7 é fonte visual e funcional; implementação nova em React com estilo por página e componentes/contexto/tema modulares",
+      "scope": "frontend.migration",
+      "tags": [
+        "design",
+        "react"
+      ],
+      "critical": true,
+      "source": "user-conversation-2026-10-10",
+      "source_ref": null,
+      "supersedes": null,
+      "references": [],
+      "created_at": "2026-10-10T06:13:25+00:00",
+      "updated_at": "2026-10-10T06:13:25+00:00"
+    },
+    "A-REFACTOR": {
+      "id": "A-REFACTOR",
+      "kind": "artifact",
+      "epistemic_status": "VERIFIED",
+      "lifecycle_status": "ACTIVE",
+      "value": "Estrutura refatorada com pages em views, estilos base, hooks reais, controllers/rotas API por domínio, modelos Mongoose segregados; validação estrutural e sintática realizada, build npm e testes HTTP pendentes",
+      "scope": "architecture.refactor",
+      "tags": [
+        "audit",
+        "implementation"
+      ],
+      "critical": false,
+      "source": "snapshot-and-static-checks-2026-10-10",
+      "source_ref": null,
+      "supersedes": null,
+      "references": [],
+      "created_at": "2026-10-10T06:13:26+00:00",
+      "updated_at": "2026-10-10T06:13:26+00:00"
+    }
+  },
+  "created_at": "2026-10-10T06:12:56+00:00",
+  "updated_at": "2026-10-10T06:13:26+00:00"
+}

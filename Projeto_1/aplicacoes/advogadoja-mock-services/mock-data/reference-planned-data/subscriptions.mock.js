@@ -1,0 +1,45 @@
+/* Mocks/subscriptions.mock.js — subscriptions/{subscriptionId} — dados simulados */
+window.MOCKS = window.MOCKS || {};
+
+window.MOCKS.subscriptions = [
+  {
+    "id": "subscription-001",
+    "subjectType": "lawyer",
+    "subjectId": "lawyer-001",
+    "planId": "plan-professional",
+    "planCode": "professional",
+    "status": "active",
+    "provider": "stripe",
+    "providerCheckoutSessionId": "cs_mock_001",
+    "providerSubscriptionId": "sub_mock_001",
+    "providerCustomerId": "cus_mock_001",
+    "providerReference": "mock-lawyer-001",
+    "currentPeriodStart": "2026-09-01T00:00:00-03:00",
+    "currentPeriodEnd": "2026-10-01T00:00:00-03:00",
+    "cancelAtPeriodEnd": false,
+    "cancelledAt": null,
+    "providerError": null,
+    "createdAt": "2026-07-03T10:00:00-03:00",
+    "updatedAt": "2026-09-01T00:00:00-03:00"
+  },
+  {
+    "id": "subscription-002",
+    "subjectType": "office",
+    "subjectId": "office-001",
+    "planId": "plan-office",
+    "planCode": "office",
+    "status": "active",
+    "provider": "stripe",
+    "providerCheckoutSessionId": "cs_mock_002",
+    "providerSubscriptionId": "sub_mock_002",
+    "providerCustomerId": "cus_mock_002",
+    "providerReference": "mock-office-001",
+    "currentPeriodStart": "2026-09-05T00:00:00-03:00",
+    "currentPeriodEnd": "2026-10-05T00:00:00-03:00",
+    "cancelAtPeriodEnd": false,
+    "cancelledAt": null,
+    "providerError": null,
+    "createdAt": "2026-07-20T12:00:00-03:00",
+    "updatedAt": "2026-09-05T00:00:00-03:00"
+  }
+];

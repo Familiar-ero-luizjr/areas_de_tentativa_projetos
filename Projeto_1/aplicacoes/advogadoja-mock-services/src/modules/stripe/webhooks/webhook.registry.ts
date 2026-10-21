@@ -1,0 +1,2 @@
+import checkoutCompleted from "./checkoutCompleted"; import paymentSucceeded from "./paymentSucceeded"; import paymentFailed from "./paymentFailed"; import subscriptionUpdated from "./subscriptionUpdated"; import subscriptionDeleted from "./subscriptionDeleted";
+export const webhookRegistry:Record<string,(data:any)=>any>={"checkout.session.completed":checkoutCompleted,"invoice.payment_succeeded":paymentSucceeded,"invoice.payment_failed":paymentFailed,"customer.subscription.updated":subscriptionUpdated,"customer.subscription.deleted":subscriptionDeleted};

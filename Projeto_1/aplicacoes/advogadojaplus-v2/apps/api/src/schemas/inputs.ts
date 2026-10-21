@@ -1,0 +1,5 @@
+import {z} from 'zod';
+export const registerSchema=z.object({role:z.enum(['cliente','advogado']).default('cliente'),name:z.string().trim().min(2).max(160),email:z.string().trim().toLowerCase().email().max(254),password:z.string().min(10).max(128),phone:z.string().max(30).optional(),username:z.string().max(80).optional(),cpf:z.string().max(20).optional(),birthDate:z.string().max(20).optional(),gender:z.string().max(60).optional(),address:z.record(z.string()).optional(),consents:z.array(z.object({document:z.string().min(1),version:z.string().min(1)})).min(1)});
+export const loginSchema=z.object({email:z.string().email(),password:z.string().min(1)});
+export const clientSchema=z.object({name:z.string().trim().min(2).max(160).optional(),phone:z.string().max(30).optional(),address:z.record(z.string()).optional()}).strict();
+export const onboardingSchema=z.object({location:z.string().max(200).optional(),contactPreference:z.string().max(100).optional(),contactTime:z.string().max(100).optional()}).strict();

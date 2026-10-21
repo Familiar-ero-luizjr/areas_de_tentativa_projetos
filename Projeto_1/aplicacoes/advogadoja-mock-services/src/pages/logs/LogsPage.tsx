@@ -1,0 +1,2 @@
+import { useEffect,useState } from "react"; import { apiClient } from "../../api/client";
+export default function LogsPage(){const [logs,setLogs]=useState<unknown[]>([]);const refresh=()=>apiClient.logs().then(setLogs);useEffect(()=>{void refresh();},[]);return <section className="page-shell"><header className="page-heading"><p className="eyebrow">Logs</p><h1>Eventos do servidor mock</h1><button className="aj-button" onClick={refresh}>Atualizar</button></header><div className="panel"><pre className="json-viewer">{JSON.stringify(logs,null,2)}</pre></div></section>}

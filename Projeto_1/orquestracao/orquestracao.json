@@ -1,0 +1,4121 @@
+{
+  "schema": "advogadoja.orquestracao.v2",
+  "versao": 2,
+  "meta": {
+    "titulo": "Orquestração do Projeto Advogado Já",
+    "estado": "EM_ESTRUTURACAO",
+    "jornada_ativa": "cliente",
+    "criado_em": "2026-10-17",
+    "atualizado_em": "2026-10-17",
+    "migrado_de": [
+      "planejamento/planejamento.json",
+      "planejamento/registros.csv"
+    ],
+    "descricao": "Orquestração por blocos e fases; Planejamento e Execução compartilham a mesma hierarquia."
+  },
+  "contexto_atual": {
+    "bloco_id": "blk_governanca_repositorio",
+    "fase_id": "fas_gov_auditar",
+    "modo": "planejamento"
+  },
+  "jornadas": [
+    {
+      "id": "cliente",
+      "nome": "Cliente",
+      "ordem": 1,
+      "status": "planejada",
+      "nota": "Inclui o acesso à Área Estudante por assinatura; definir na entrevista."
+    },
+    {
+      "id": "advogado",
+      "nome": "Advogado",
+      "ordem": 2,
+      "status": "planejada",
+      "nota": "Reutiliza identidade e cadastro comum; validar regras profissionais."
+    },
+    {
+      "id": "administrador",
+      "nome": "Administrador",
+      "ordem": 3,
+      "status": "planejada",
+      "nota": "Papel interno; regras administrativas ainda pendentes."
+    }
+  ],
+  "modelo_acesso": {
+    "identidade": "uma conta por pessoa",
+    "jornadas_principais": [
+      "cliente",
+      "advogado",
+      "administrador"
+    ],
+    "estudante": {
+      "categoria": "area_por_assinatura_do_cliente",
+      "conta_independente": false,
+      "observacao": "Proposta de duas homes na mesma conta; experiência final ainda deve ser aprovada na entrevista."
+    }
+  },
+  "registros": [
+    {
+      "id": "REG-0001",
+      "tipo": "decisao",
+      "titulo": "Três jornadas principais",
+      "descricao": "Jornadas principais de trabalho: Cliente, Advogado e Administrador. Estudante deixa de ser uma jornada independente.",
+      "jornada": "geral",
+      "etapa_id": "ET-002",
+      "artefatos": "Entrevista|Jornadas|Inventario|Mapa",
+      "status": "confirmado",
+      "prioridade": "critica",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Decisão declarada explicitamente."
+    },
+    {
+      "id": "REG-0002",
+      "tipo": "decisao",
+      "titulo": "Cliente pode contratar plano Estudante",
+      "descricao": "Estudante é acesso adicional, contratado com a mesma identidade do Cliente. Não há novo cadastro nem conta independente.",
+      "jornada": "cliente",
+      "etapa_id": "ET-003",
+      "artefatos": "Entrevista|Banco|Jornadas|Prototipo",
+      "status": "confirmado",
+      "prioridade": "critica",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Definir catálogo, cobrança, autorização, renovação e cancelamento na entrevista."
+    },
+    {
+      "id": "REG-0003",
+      "tipo": "proposta",
+      "titulo": "Área Estudante com Home própria",
+      "descricao": "Home Cliente permanece; após assinatura, menu ganha Área Estudante, que abre sua própria Home e telas. Retorno para Cliente sem novo login.",
+      "jornada": "cliente",
+      "etapa_id": "ET-003",
+      "artefatos": "Entrevista|Telas|Prototipo|Mapa",
+      "status": "descartado",
+      "prioridade": "alta",
+      "origem": "Ideia do usuário e recomendação de UX",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-17",
+      "observacoes": "Aprovar detalhes de menu, home inicial e navegação antes de transformar em regra. Substituído por REG-0013: Estudante é área condicional dentro da conta Cliente, sem Home/jornada independente obrigatória."
+    },
+    {
+      "id": "REG-0004",
+      "tipo": "ideia",
+      "titulo": "Agenda integrada ao Google Maps",
+      "descricao": "Ideia futura de agenda e integração com Google Maps e possivelmente outros serviços Google. Definir quais APIs, campos, gatilhos e funções são necessários.",
+      "jornada": "geral",
+      "etapa_id": "ET-007",
+      "artefatos": "Entrevista|Telas|Banco|Integracoes|Mapa",
+      "status": "a_analisar",
+      "prioridade": "media",
+      "origem": "Exemplo citado pelo usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Não presumir integração com Google Calendar sem confirmação."
+    },
+    {
+      "id": "REG-0005",
+      "tipo": "requisito",
+      "titulo": "Preservar design mobile first",
+      "descricao": "Header, CSS, cores, estrutura e padrões atuais são ponto de partida. Ajustar somente quando necessário e de forma padronizada.",
+      "jornada": "geral",
+      "etapa_id": "ET-013",
+      "artefatos": "Telas|Prototipo",
+      "status": "confirmado",
+      "prioridade": "alta",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Verificar acessibilidade e responsividade de cada tela."
+    },
+    {
+      "id": "REG-0006",
+      "tipo": "requisito",
+      "titulo": "Telas independentes e interativas",
+      "descricao": "Cada tela terá pasta própria e funcionará isoladamente: menus, modais, notificações, formulários e mocks. Navegação entre telas caberá ao protótipo.",
+      "jornada": "geral",
+      "etapa_id": "ET-014",
+      "artefatos": "Telas|Prototipo",
+      "status": "confirmado",
+      "prioridade": "alta",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Permite usar as especificações como base futura para Flutter ou React."
+    },
+    {
+      "id": "REG-0007",
+      "tipo": "pergunta",
+      "titulo": "Comportamento após expiração do plano Estudante",
+      "descricao": "A Área Estudante continua visível para renovar? O que fica acessível? Qual é a home padrão?",
+      "jornada": "cliente",
+      "etapa_id": "ET-007",
+      "artefatos": "Entrevista|Telas|Banco|Prototipo",
+      "status": "em_entrevista",
+      "prioridade": "alta",
+      "origem": "Sugestão não aprovada",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Separar acesso à área de direito a conteúdos pagos."
+    },
+    {
+      "id": "REG-0008",
+      "tipo": "referencia",
+      "titulo": "Legado como fonte de comparação",
+      "descricao": "Consultar o legado em cada jornada para identificar funcionalidades, campos, regras e erros; não replicá-los automaticamente.",
+      "jornada": "geral",
+      "etapa_id": "ET-008",
+      "artefatos": "Legado|Entrevista|Banco|Telas",
+      "status": "confirmado",
+      "prioridade": "media",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Registrar o que foi aproveitado e por quê."
+    },
+    {
+      "id": "REG-0009",
+      "tipo": "decisao",
+      "titulo": "Uma jornada de cada vez",
+      "descricao": "Fechar Cliente primeiro, depois Advogado e por fim Administrador; validar entrevista, telas, banco, protótipo, inventário e mapa antes de passar adiante.",
+      "jornada": "geral",
+      "etapa_id": "ET-004",
+      "artefatos": "Entrevista|Jornadas|Telas|Banco|Prototipo|Inventario|Mapa",
+      "status": "confirmado",
+      "prioridade": "critica",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Decisões comuns já aprovadas podem ser reutilizadas nas próximas jornadas."
+    },
+    {
+      "id": "REG-0010",
+      "tipo": "requisito",
+      "titulo": "Controle de estado e custo de requisições",
+      "descricao": "Avaliar providers/context ou equivalente Flutter, cache com expiração e invalidação, permissões validadas no backend, custo Firebase e funções mínimas.",
+      "jornada": "geral",
+      "etapa_id": "ET-021",
+      "artefatos": "Banco|Integracoes|Seguranca",
+      "status": "a_analisar",
+      "prioridade": "alta",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "O usuário não pretende utilizar App Check. Documentar medidas de segurança alternativas e riscos antes de implementar."
+    },
+    {
+      "id": "REG-0011",
+      "tipo": "pergunta",
+      "titulo": "Definir interação entre Cliente e Advogado",
+      "descricao": "Uma identidade pode ter ambos os papéis? Como escolher contexto inicial e alternar entre experiências?",
+      "jornada": "geral",
+      "etapa_id": "ET-001",
+      "artefatos": "Entrevista|Jornadas|Banco|Prototipo",
+      "status": "a_analisar",
+      "prioridade": "alta",
+      "origem": "Pergunta necessária para fechar jornadas",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Não pressupor regra do legado ou seletor obrigatório."
+    },
+    {
+      "id": "REG-0012",
+      "tipo": "pergunta",
+      "titulo": "Definir planos e acessos Estudante",
+      "descricao": "Quais planos, preços, status, direitos de acesso, conteúdo externo e política de reembolso devem existir?",
+      "jornada": "cliente",
+      "etapa_id": "ET-007",
+      "artefatos": "Entrevista|Banco|Integracoes|Telas",
+      "status": "a_analisar",
+      "prioridade": "alta",
+      "origem": "Pergunta necessária para fechar plano",
+      "criado_em": "2026-10-16",
+      "atualizado_em": "2026-10-16",
+      "observacoes": "Plataforma de conteúdo, pagamento e callbacks devem ser confirmados."
+    },
+    {
+      "id": "REG-0013",
+      "tipo": "decisao",
+      "titulo": "Área Estudante condicionada ao plano Cliente",
+      "descricao": "Cliente sem plano pode acessar a opção de contratar o plano Estudante. Com plano/entitlement ativo, a área/aba Estudante fica disponível dentro da mesma conta Cliente, sem novo cadastro, nova identidade, novo login ou quarta jornada independente.",
+      "jornada": "cliente",
+      "etapa_id": "",
+      "artefatos": "Orquestracao|Jornadas|Prototipo|Inventario|Mapa|Banco",
+      "status": "confirmado",
+      "prioridade": "critica",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-17",
+      "atualizado_em": "2026-10-17",
+      "observacoes": "A normalização estrutural será executada em bloco próprio antes do fechamento completo da Jornada Cliente."
+    },
+    {
+      "id": "REG-0014",
+      "tipo": "decisao",
+      "titulo": "Orquestração organizada por blocos e fases",
+      "descricao": "O JSON único da Orquestração passa a organizar o trabalho como blocos macro contendo fases próprias. Planejamento e Execução são visões da mesma hierarquia e ordem.",
+      "jornada": "geral",
+      "etapa_id": "",
+      "artefatos": "Orquestracao",
+      "status": "confirmado",
+      "prioridade": "critica",
+      "origem": "Conversa com usuário",
+      "criado_em": "2026-10-17",
+      "atualizado_em": "2026-10-17",
+      "observacoes": "Números visuais são posição; IDs técnicos permanecem estáveis."
+    }
+  ],
+  "regras": {
+    "globais": [
+      {
+        "id": "reg_001",
+        "grupo": "Método",
+        "ativa": true,
+        "texto": "Toda alteração estrutural segue auditoria → planejamento específico → validação do plano → execução → validação → handoff."
+      },
+      {
+        "id": "reg_002",
+        "grupo": "Execução",
+        "ativa": true,
+        "texto": "A execução não decide arquitetura, produto ou escopo. Se a instrução for insuficiente, deve bloquear e devolver ao Planejamento."
+      },
+      {
+        "id": "reg_003",
+        "grupo": "Execução",
+        "ativa": true,
+        "texto": "Uma tarefa executável deve informar alvo, precondições, referências, instruções mecânicas, resultado esperado e validações."
+      },
+      {
+        "id": "reg_004",
+        "grupo": "Contexto",
+        "ativa": true,
+        "texto": "Carregar somente o contexto explicitamente necessário à tarefa atual; usar busca/trechos antes de ler artefatos inteiros."
+      },
+      {
+        "id": "reg_005",
+        "grupo": "Contexto",
+        "ativa": true,
+        "texto": "Não carregar React, Flutter, Mock Services ou legado durante definição funcional salvo quando a etapa declarar essa leitura necessária."
+      },
+      {
+        "id": "reg_006",
+        "grupo": "Decisões",
+        "ativa": true,
+        "texto": "Não converter proposta, hipótese ou legado em decisão confirmada. Decisão confirmada exige origem explícita."
+      },
+      {
+        "id": "reg_007",
+        "grupo": "Decisões",
+        "ativa": true,
+        "texto": "Quando uma decisão mudar de significado, preservar o registro anterior e apontar qual registro/revisão o substitui."
+      },
+      {
+        "id": "reg_008",
+        "grupo": "Ordem",
+        "ativa": true,
+        "texto": "A ordem visual dos cards é a ordem real do fluxo. IDs internos são estáveis e independentes da posição; nunca usar F01 como identidade técnica."
+      },
+      {
+        "id": "reg_009",
+        "grupo": "Ordem",
+        "ativa": true,
+        "texto": "Planejamento e Execução são duas visões do mesmo card. Reordenar um card altera a posição em ambas as abas."
+      },
+      {
+        "id": "reg_010",
+        "grupo": "Aplicações",
+        "ativa": true,
+        "texto": "React/Node/Mongo e Flutter são duas implementações da mesma aplicação funcional e devem permanecer equivalentes no comportamento do produto."
+      },
+      {
+        "id": "reg_011",
+        "grupo": "Mock",
+        "ativa": true,
+        "texto": "Mock Services é infraestrutura externa simulada compartilhada, com estado comum entre instâncias; não é protótipo nem fonte de verdade da UI."
+      },
+      {
+        "id": "reg_012",
+        "grupo": "Histórico",
+        "ativa": true,
+        "texto": "Execução já gerada não é sobrescrita silenciosamente: uma nova geração arquiva a revisão anterior no histórico."
+      },
+      {
+        "id": "reg_013",
+        "grupo": "Economia de contexto",
+        "ativa": true,
+        "texto": "Ao finalizar uma fase, registrar handoff curto com fatos, decisões, arquivos alterados, bloqueios e próximo passo para evitar reler contexto desnecessário."
+      },
+      {
+        "id": "reg_014",
+        "grupo": "Qualidade",
+        "ativa": true,
+        "texto": "Não marcar fase concluída apenas porque arquivos foram alterados; critérios de saída e validações previstas precisam estar satisfeitos."
+      },
+      {
+        "id": "reg_015",
+        "grupo": "Hierarquia",
+        "ativa": true,
+        "texto": "O trabalho é organizado por blocos e fases. Bloco é objetivo macro; fase é etapa ordenada dentro do bloco."
+      },
+      {
+        "id": "reg_016",
+        "grupo": "Governança",
+        "ativa": true,
+        "texto": "Cada fronteira operacional do repositório deve possuir instruções locais suficientes para definir o que pode ler, alterar, decidir e entregar."
+      },
+      {
+        "id": "reg_017",
+        "grupo": "Orquestração",
+        "ativa": true,
+        "texto": "Toda atividade controlada deve nascer ou ser registrada na Orquestração; áreas especialistas executam somente o escopo encaminhado."
+      },
+      {
+        "id": "reg_018",
+        "grupo": "Usuários",
+        "ativa": true,
+        "texto": "As jornadas principais são Cliente, Advogado e Administrador. A Área Estudante é acesso condicionado ao plano/entitlement do Cliente, sem nova conta ou login."
+      }
+    ],
+    "protocolos": [
+      {
+        "id": "P-AUDITORIA",
+        "nome": "Auditoria dirigida",
+        "objetivo": "Produzir fatos, divergências e lacunas sem alterar o produto.",
+        "passos": [
+          "Definir a pergunta/objetivo da auditoria",
+          "Carregar somente contexto obrigatório",
+          "Ler fontes autorizadas",
+          "Registrar estado atual com evidência",
+          "Separar fato, hipótese, conflito e decisão",
+          "Listar riscos e pendências",
+          "Encerrar sem implementar"
+        ]
+      },
+      {
+        "id": "P-DECISAO",
+        "nome": "Decisão / entrevista",
+        "objetivo": "Resolver somente pendências necessárias e preservar evolução das decisões.",
+        "passos": [
+          "Partir dos achados da auditoria",
+          "Reutilizar pergunta existente quando possível",
+          "Perguntar apenas o que bloqueia",
+          "Registrar resposta, origem e impacto",
+          "Preservar decisão substituída",
+          "Atualizar pendências"
+        ]
+      },
+      {
+        "id": "P-ESPECIFICACAO",
+        "nome": "Especificação funcional",
+        "objetivo": "Transformar decisões em jornada/tela/estado/dado observável.",
+        "passos": [
+          "Aplicar decisões confirmadas",
+          "Definir entradas e saídas",
+          "Definir ações e destinos",
+          "Separar telas, componentes e estados",
+          "Definir dados necessários",
+          "Definir critérios de aceite"
+        ]
+      },
+      {
+        "id": "P-ARQUITETURA-FUNCIONAL",
+        "nome": "Dados e contratos",
+        "objetivo": "Definir persistência e contratos pela necessidade funcional, sem acoplamento prematuro.",
+        "passos": [
+          "Rastrear dados às telas",
+          "Definir fonte de verdade",
+          "Definir leitura/gravação/propriedade",
+          "Definir histórico e permissões",
+          "Definir entradas/saídas/erros de contratos",
+          "Validar modelo de banco"
+        ]
+      },
+      {
+        "id": "P-PROTOTIPO",
+        "nome": "Protótipo de baixa",
+        "objetivo": "Materializar e provar a definição funcional antes da implementação real.",
+        "passos": [
+          "Confirmar especificação aprovada",
+          "Planejar alteração do protótipo",
+          "Materializar telas/estados/navegação",
+          "Percorrer cenários",
+          "Registrar lacunas",
+          "Aprovar ou devolver ao planejamento"
+        ]
+      },
+      {
+        "id": "P-PLANEJAMENTO-TECNICO",
+        "nome": "Planejamento técnico",
+        "objetivo": "Converter requisito aprovado em tarefas mecânicas por arquivo.",
+        "passos": [
+          "Auditar somente aplicações necessárias",
+          "Selecionar lote pequeno",
+          "Identificar arquivos exatos",
+          "Definir reutilização e contratos",
+          "Definir estados e tratamento de erro/loading",
+          "Escrever cada alteração concreta",
+          "Definir testes e resultado esperado",
+          "Revisar se o executor ainda precisa decidir algo"
+        ]
+      },
+      {
+        "id": "P-IMPLEMENTACAO",
+        "nome": "Implementação controlada",
+        "objetivo": "Executar pacote aprovado sem novas decisões arquiteturais.",
+        "passos": [
+          "Executar na ordem",
+          "Não extrapolar alvos",
+          "Registrar evidência",
+          "Bloquear se instrução for insuficiente",
+          "Rodar validações",
+          "Produzir handoff"
+        ]
+      },
+      {
+        "id": "P-VALIDACAO",
+        "nome": "Validação e regressão",
+        "objetivo": "Comparar o realizado com o esperado e impedir fechamento prematuro.",
+        "passos": [
+          "Executar critérios de aceite",
+          "Comparar artefatos/implementações",
+          "Testar erros e estados",
+          "Registrar divergências",
+          "Bloquear conclusão se houver crítico",
+          "Produzir evidência"
+        ]
+      },
+      {
+        "id": "P-LOTE-CONTINUO",
+        "nome": "Ciclo de lotes",
+        "objetivo": "Repetir planejamento/implementação/homologação sem perder contexto.",
+        "passos": [
+          "Selecionar próximo lote",
+          "Reusar decisões aprovadas",
+          "Auditar impacto específico",
+          "Gerar plano e execução",
+          "Homologar",
+          "Executar regressão do que já estava concluído"
+        ]
+      },
+      {
+        "id": "P-SINCRONIZACAO",
+        "nome": "Sincronização final",
+        "objetivo": "Consolidar artefatos e produzir handoff sem reabrir decisões.",
+        "passos": [
+          "Revisar resultados finais",
+          "Atualizar somente artefatos impactados",
+          "Registrar pendências restantes",
+          "Atualizar status",
+          "Produzir handoff curto",
+          "Abrir próxima jornada somente após conclusão"
+        ]
+      }
+    ]
+  },
+  "historico": [
+    {
+      "id": "hist_orq_v2_blocos",
+      "tipo": "mudanca_schema",
+      "em": "2026-10-17",
+      "descricao": "Orquestração migrada de fases lineares para blocos contendo fases. Fases detalhadas da Jornada Cliente foram preservadas dentro do bloco Cliente."
+    },
+    {
+      "id": "hist_migracao_planejamento_v1",
+      "tipo": "migracao",
+      "em": "2026-10-17",
+      "descricao": "Planejamento V1 e registros.csv incorporados ao JSON único de Orquestração. A pasta planejamento antiga deve ser mantida apenas até validação da migração."
+    }
+  ],
+  "legado_planejamento": {
+    "schema": "advogadoja.planejamento.v1",
+    "versao": 1,
+    "fases": [
+      {
+        "id": "F01",
+        "titulo": "Definição das jornadas",
+        "objetivo": "Decidir quais experiências existem antes de começar as entrevistas",
+        "etapas": [
+          {
+            "id": "ET-001",
+            "titulo": "Criar seção na entrevista para definir jornadas e tipos de acesso",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-002",
+            "titulo": "Confirmar as jornadas principais: Cliente, Advogado e Administrador",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-003",
+            "titulo": "Definir a condição de Estudante como benefício/plano associado à conta Cliente",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-004",
+            "titulo": "Revisar os HTMLs atuais e fixar a ordem: Cliente → Advogado → Administrador",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          }
+        ]
+      },
+      {
+        "id": "F02",
+        "titulo": "Entrevista da jornada escolhida",
+        "objetivo": "Definir antes de alterar a implementação",
+        "etapas": [
+          {
+            "id": "ET-005",
+            "titulo": "Analisar profundamente o HTML da jornada selecionada",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-006",
+            "titulo": "Levantar perguntas sobre telas, campos, estados, menus, modais, ações e navegação",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-007",
+            "titulo": "Levantar perguntas sobre banco, Firebase, APIs, integrações, permissões, cache e custos",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-008",
+            "titulo": "Comparar com o legado para encontrar possibilidades úteis, sem adotá-las automaticamente",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-009",
+            "titulo": "Realizar a entrevista e registrar respostas, decisões, conflitos e pendências",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-010",
+            "titulo": "Consolidar as definições funcionais da jornada",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          }
+        ]
+      },
+      {
+        "id": "F03",
+        "titulo": "Revisão e construção das telas",
+        "objetivo": "Manter o que já está certo e construir apenas o necessário",
+        "etapas": [
+          {
+            "id": "ET-011",
+            "titulo": "Classificar cada tela: manter, alterar, criar, reutilizar ou excluir",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-012",
+            "titulo": "Especificar campos, conteúdos, estados e ações de cada tela",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-013",
+            "titulo": "Preservar o padrão aprovado: mobile first, header, temas, cores e CSS",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-014",
+            "titulo": "Organizar telas em pastas próprias com HTML, estilos, componentes, lógica, JSON e mocks",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-015",
+            "titulo": "Implementar interações locais: menus, modais, notificações, seletores e formulários",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-016",
+            "titulo": "Preparar mocks coerentes com as jornadas, incluindo dados de exemplo preenchidos",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-017",
+            "titulo": "Manter a tela isolada da navegação entre telas; o protótipo controla essa navegação",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-018",
+            "titulo": "Testar isoladamente visual, responsividade, acessibilidade e interações",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          }
+        ]
+      },
+      {
+        "id": "F04",
+        "titulo": "Banco e arquitetura técnica",
+        "objetivo": "Rastrear dados e controlar custos e acesso",
+        "etapas": [
+          {
+            "id": "ET-019",
+            "titulo": "Revisar a modelagem do banco conforme requisitos aprovados",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-020",
+            "titulo": "Definir origem, destino, leitura, gravação e propriedade de cada informação",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-021",
+            "titulo": "Definir identidade, autorização, estado, providers, cache e invalidação",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-022",
+            "titulo": "Definir integrações, requisições e funções indispensáveis, mantendo segurança e custo sob controle",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-023",
+            "titulo": "Documentar contratos de dados, variáveis de ambiente e dependências técnicas por tela",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          }
+        ]
+      },
+      {
+        "id": "F05",
+        "titulo": "Consolidação e publicação da jornada",
+        "objetivo": "Atualizar os artefatos e encerrar o ciclo",
+        "etapas": [
+          {
+            "id": "ET-024",
+            "titulo": "Revisar se as perguntas críticas da entrevista foram respondidas",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-025",
+            "titulo": "Verificar coerência entre fluxo, telas, comportamentos, dados e banco",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-026",
+            "titulo": "Validar a jornada de ponta a ponta e registrar pendências remanescentes",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-027",
+            "titulo": "Atualizar o protótipo navegável com telas, mocks e condições aprovadas",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-028",
+            "titulo": "Atualizar o inventário de telas e o estado de cada item",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-029",
+            "titulo": "Atualizar o mapa integrado e as conexões com serviços e dados",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          },
+          {
+            "id": "ET-030",
+            "titulo": "Concluir a jornada e iniciar a próxima, reaproveitando o que foi aprovado",
+            "status": "nao_iniciado",
+            "observacoes": ""
+          }
+        ]
+      }
+    ],
+    "regras": [
+      "Nunca converter hipótese, proposta ou referência do legado em decisão confirmada automaticamente.",
+      "Todos os registros e etapas possuem IDs estáveis; nunca reutilizar IDs eliminados.",
+      "Uma alteração no navegador só persiste após exportação e substituição do arquivo no repositório.",
+      "Separar tela, componente, ação, estado, jornada e assinatura.",
+      "Telas e integrações somente são implementadas quando o requisito estiver aprovado."
+    ]
+  },
+  "blocos": [
+    {
+      "id": "blk_governanca_repositorio",
+      "titulo": "Governança do repositório",
+      "status": "em_planejamento",
+      "arquivado": false,
+      "objetivo": "Definir a função de cada área do repositório e criar uma hierarquia coerente de AGENTS.md/README.md antes de aprofundar o produto.",
+      "criterios_entrada": [
+        "Árvore atual do repositório disponível",
+        "Acesso aos AGENTS.md e README.md existentes"
+      ],
+      "criterios_conclusao": [
+        "Cada fronteira operacional possui responsabilidade definida",
+        "AGENTS.md locais dizem o que pode ler, alterar, decidir e entregar",
+        "A hierarquia de precedência entre AGENTS.md está documentada",
+        "Não existem contradições críticas conhecidas entre instruções locais"
+      ],
+      "observacoes": "Primeiro bloco estrutural. Não redesenha jornadas do produto.",
+      "fases": [
+        {
+          "id": "fas_gov_auditar",
+          "titulo": "Auditar estrutura e instruções atuais",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Mapear pastas, aplicações, AGENTS.md e README.md existentes sem alterar o repositório.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "/AGENTS.md",
+                "árvore atual do repositório",
+                "AGENTS.md existentes",
+                "README.md existentes"
+              ],
+              "nao_ler": [
+                "conteúdo detalhado de telas",
+                "código de aplicação sem relação com governança"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Inventário de fronteiras operacionais produzido",
+              "Contradições e lacunas de governança registradas"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_gov_aud_01",
+                "tipo": "leitura_verificacao",
+                "titulo": "Produzir inventário de governança",
+                "alvos": [
+                  "/",
+                  "**/AGENTS.md",
+                  "**/README.md"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Listar cada pasta raiz e aplicação relevante.",
+                  "Identificar AGENTS.md/README.md existentes.",
+                  "Registrar responsabilidade declarada, lacunas e conflitos.",
+                  "Não editar arquivos nesta fase."
+                ],
+                "resultado_esperado": "Inventário objetivo das fronteiras operacionais e pendências de governança.",
+                "validacoes": [
+                  "Nenhuma pasta operacional relevante ficou sem classificação"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_gov_responsabilidades",
+          "titulo": "Definir responsabilidades e fronteiras",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Fechar o contrato operacional de cada pasta e aplicação.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Cada área tem missão, entradas, saídas, leituras e escritas permitidas",
+              "Áreas que não podem decidir produto estão explicitamente limitadas"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_gov_resp_01",
+                "tipo": "outro",
+                "titulo": "Escrever matriz de responsabilidades",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Para cada pasta operacional, definir missão.",
+                  "Definir o que pode ler.",
+                  "Definir o que pode alterar.",
+                  "Definir o que não pode decidir.",
+                  "Definir entrada esperada e entrega para a etapa seguinte."
+                ],
+                "resultado_esperado": "Matriz de responsabilidades pronta para orientar os AGENTS.md.",
+                "validacoes": [
+                  "Nenhuma fronteira operacional ficou ambígua"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_gov_agents",
+          "titulo": "Criar ou atualizar AGENTS.md e README.md",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PLANEJAMENTO-TECNICO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Aplicar a matriz de responsabilidades nos arquivos de instrução do repositório.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "AGENTS.md raiz e locais coerentes",
+              "README.md humanos não contradizem AGENTS.md"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_gov_agents_01",
+                "tipo": "alterar_arquivo",
+                "titulo": "Atualizar documentação operacional",
+                "alvos": [
+                  "/AGENTS.md",
+                  "pastas operacionais/AGENTS.md",
+                  "pastas operacionais/README.md"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Auditar cada arquivo antes de alterar.",
+                  "Aplicar somente responsabilidades aprovadas.",
+                  "Preservar regras locais válidas que não conflitem.",
+                  "Não introduzir decisão de produto por inferência."
+                ],
+                "resultado_esperado": "Hierarquia documental coerente e rastreável.",
+                "validacoes": [
+                  "Revisar conflitos entre raiz e locais",
+                  "Verificar que aplicações possuem AGENTS.md próprios quando necessário"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_gov_validar",
+          "titulo": "Validar governança e linha de autoridade",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Testar se qualquer agente consegue saber onde atuar e qual instrução prevalece.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Caminho de leitura AGENTS raiz → AGENTS local está inequívoco",
+              "Nenhuma instrução crítica se contradiz silenciosamente"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_gov_val_01",
+                "tipo": "leitura_verificacao",
+                "titulo": "Executar auditoria final de governança",
+                "alvos": [
+                  "/AGENTS.md",
+                  "**/AGENTS.md"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Simular tarefas em cada área.",
+                  "Confirmar qual AGENTS.md governa cada tarefa.",
+                  "Registrar qualquer conflito restante.",
+                  "Bloquear conclusão se houver conflito crítico."
+                ],
+                "resultado_esperado": "Governança pronta para sustentar os próximos blocos.",
+                "validacoes": [
+                  "Critérios do bloco B1 atendidos"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_regras_operacao",
+      "titulo": "Regras de operação",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Definir a constituição operacional do laboratório: método, precedência, contexto, decisões, bloqueios, histórico e economia de tokens.",
+      "criterios_entrada": [
+        "Governança do repositório suficientemente definida"
+      ],
+      "criterios_conclusao": [
+        "Regras globais aprovadas",
+        "Protocolos reutilizáveis aprovados",
+        "Precedência de fontes e decisões definida",
+        "Método de bloqueio, revisão e handoff definido"
+      ],
+      "observacoes": "A aba Regras permanece viva após o fechamento deste bloco.",
+      "fases": [
+        {
+          "id": "fas_reg_auditar",
+          "titulo": "Auditar regras existentes e contradições",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Separar regras atuais válidas, duplicadas, conflitantes ou incompletas.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "/AGENTS.md",
+                "orquestracao/AGENTS.md",
+                "orquestracao/orquestracao.json.regras"
+              ],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Mapa de regras existentes e conflitos produzido"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_reg_metodo",
+          "titulo": "Fechar método de trabalho e precedência",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir como auditoria, planejamento, execução, validação e decisões evoluem.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Método audit→plan→execute validado",
+              "Precedência de fontes definida",
+              "Tratamento de decisão substituída definido",
+              "Bloqueio e retorno ao planejamento definidos"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_reg_contexto",
+          "titulo": "Fechar política de contexto e economia de tokens",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir leitura mínima, handoff e proibições de contexto desnecessário.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Política de contexto mínimo definida",
+              "Uso de busca/trechos antes de arquivos grandes definido",
+              "Handoff curto obrigatório definido"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_reg_publicar",
+          "titulo": "Publicar e validar Regras canônicas",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Atualizar a aba Regras e validar que os protocolos orientam planejamento sem gerar checklists genéricos.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Regras e protocolos coerentes com AGENTS.md",
+              "Execução continua dependente de plano específico"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_usuarios_identidade_acesso",
+      "titulo": "Usuários, identidade e acesso",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Fechar o modelo de usuários/perfis e as regras de identidade, papéis, planos e acesso antes de refatorar as jornadas.",
+      "criterios_entrada": [
+        "Regras operacionais definidas"
+      ],
+      "criterios_conclusao": [
+        "Jornadas principais confirmadas",
+        "Identidade e papéis definidos",
+        "Área Estudante classificada como acesso por plano do Cliente",
+        "Condições de exibição/compra/ativação do plano registradas"
+      ],
+      "observacoes": "Não redesenhar todas as telas neste bloco; fechar primeiro o modelo de acesso.",
+      "fases": [
+        {
+          "id": "fas_usr_auditar",
+          "titulo": "Auditar definições de usuários e perfis",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Localizar divergências sobre Cliente, Advogado, Administrador e Estudante.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "jornadas/",
+                "definicao/",
+                "modelos/",
+                "prototipo/",
+                "referencias/",
+                "registros confirmados relacionados a identidade"
+              ],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Contradições de usuário/perfil listadas"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_usr_identidade",
+          "titulo": "Fechar identidade, papéis e jornadas principais",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Consolidar Cliente, Advogado e Administrador como jornadas principais e separar papel, perfil e identidade.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Três jornadas principais registradas",
+              "Regras de identidade/papéis sem conflito crítico"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_usr_estudante",
+          "titulo": "Fechar acesso à Área Estudante por plano",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir a Área Estudante dentro da conta Cliente: sem plano há opção de contratar; com entitlement ativo a área/aba Estudante fica disponível sem novo login.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [
+                "Cliente sem plano deve poder ver opção de contratar plano Estudante.",
+                "Com plano/entitlement ativo, a Área Estudante aparece dentro da mesma conta Cliente.",
+                "Não existe nova conta, novo cadastro ou quarta jornada independente."
+              ],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Condição sem plano definida",
+              "Condição com plano ativo definida",
+              "Sem nova identidade/login/jornada"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_usr_validar",
+          "titulo": "Validar modelo de acesso antes da refatoração",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Confirmar que o modelo pode ser aplicado aos artefatos sem inventar regras faltantes.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Modelo aprovado para iniciar normalização estrutural"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_normalizacao_tres_jornadas",
+      "titulo": "Normalização estrutural para três jornadas",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Remover a antiga estrutura de Estudante como jornada independente e incorporar sua área condicional à Jornada Cliente.",
+      "criterios_entrada": [
+        "Modelo de usuários e acesso fechado"
+      ],
+      "criterios_conclusao": [
+        "Artefatos principais trabalham com Cliente, Advogado e Administrador",
+        "Estudante aparece somente como área/benefício condicionado ao plano do Cliente",
+        "Nenhuma navegação exige nova conta ou novo login para Estudante"
+      ],
+      "observacoes": "Este bloco prepara o laboratório; ainda não é o fechamento completo da Jornada Cliente.",
+      "fases": [
+        {
+          "id": "fas_norm_auditar",
+          "titulo": "Auditar artefatos que tratam Estudante como jornada",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Identificar todos os pontos que ainda modelam Estudante como quarta jornada.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "jornadas/estudante_ana.html",
+                "jornadas/cliente_maria.html",
+                "prototipo/",
+                "inventario.html",
+                "referencias/mapa_aplicacao_todas_jornadas.html",
+                "definicao/",
+                "modelos/"
+              ],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Lista exata de artefatos e impactos produzida"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_norm_planejar",
+          "titulo": "Planejar refatoração estrutural",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PLANEJAMENTO-TECNICO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir exatamente como cada artefato será alterado para incorporar Estudante ao Cliente.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Arquivos, mudanças e validações descritos de forma mecânica"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_norm_executar",
+          "titulo": "Executar refatoração para três jornadas",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-IMPLEMENTACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Aplicar o plano aprovado sem redesenhar funcionalidades além do necessário.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Cliente contém acesso condicional à Área Estudante",
+              "Artefatos principais deixam de apresentar quarta jornada"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_norm_validar",
+          "titulo": "Validar laboratório normalizado",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Percorrer estrutura resultante e confirmar que o ponto de partida para Cliente está coerente.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Três jornadas principais coerentes entre artefatos",
+              "Área Estudante condicional ao plano Cliente"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_jornada_cliente",
+      "titulo": "Fechamento completo da Jornada Cliente",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Auditar, decidir, especificar, prototipar, implementar e homologar a Jornada Cliente ponta a ponta nas duas aplicações.",
+      "criterios_entrada": [
+        "Blocos estruturais anteriores concluídos",
+        "Laboratório normalizado para três jornadas"
+      ],
+      "criterios_conclusao": [
+        "Jornada Cliente funcionalmente fechada",
+        "Protótipo validado",
+        "React e Flutter equivalentes funcionalmente",
+        "Mock Services suporta os cenários necessários",
+        "Artefatos de controle sincronizados"
+      ],
+      "observacoes": "Fases detalhadas migradas da Orquestração V1.",
+      "fases": [
+        {
+          "id": "fas_escopo_cliente",
+          "titulo": "Fixar escopo e fontes da Jornada Cliente",
+          "status": "pronto",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir exatamente o que será tratado como primeira jornada e quais fontes podem orientar o trabalho.",
+            "estrategia": "Começar pelo contexto mínimo e transformar referências em uma lista controlada de fontes e limites.",
+            "auditoria": {
+              "resumo": "Migração inicial do planejamento anterior. A primeira jornada continua sendo Cliente; Estudante é acesso associado à conta Cliente e não jornada principal independente.",
+              "fontes": [
+                "planejamento/planejamento.json",
+                "planejamento/registros.csv"
+              ],
+              "achados": [
+                "O planejamento anterior encerrava o ciclo antes da implementação real nas duas tecnologias.",
+                "Planejamento e execução estavam separados do processo de implementação das aplicações."
+              ],
+              "decisoes": [
+                "Cliente é a primeira jornada.",
+                "React/Node/Mongo e Flutter são a mesma aplicação funcional em tecnologias diferentes."
+              ],
+              "riscos": [
+                "Não apagar a pasta planejamento antiga antes de validar a migração."
+              ]
+            },
+            "escopo": {
+              "incluir": [
+                "Jornada Cliente",
+                "Acesso Estudante quando impactar Cliente",
+                "Fluxos comuns usados pela Cliente"
+              ],
+              "excluir": [
+                "Implementação React/Flutter",
+                "Mudanças de produção",
+                "Decisões ainda não necessárias"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "AGENTS.md",
+                "orquestracao/orquestracao.json",
+                "jornadas/cliente_maria.html",
+                "definicao/entrevista.json",
+                "prototipo/cliente.json",
+                "modelos/modelagem_banco_todas_telas.html",
+                "referencias/mapa_aplicacao_todas_jornadas.html"
+              ],
+              "nao_ler": [
+                "aplicacoes/ completas",
+                "legado/ completo",
+                "arquivos não relacionados à Jornada Cliente"
+              ]
+            },
+            "validacoes": [
+              "Conferir se nenhum registro confirmado do planejamento anterior foi perdido"
+            ],
+            "criterios_saida": [
+              "Fontes obrigatórias listadas",
+              "Limites do escopo explícitos",
+              "Registros confirmados aplicáveis identificados"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_scope_01",
+                "tipo": "leitura_verificacao",
+                "titulo": "Validar fontes e decisões vigentes",
+                "alvos": [
+                  "orquestracao/orquestracao.json",
+                  "jornadas/cliente_maria.html"
+                ],
+                "precondicoes": [],
+                "referencias": [
+                  "REG-0001",
+                  "REG-0002",
+                  "REG-0005",
+                  "REG-0008",
+                  "REG-0009"
+                ],
+                "instrucoes": [
+                  "Ler as regras ativas de orquestração.",
+                  "Localizar registros confirmados da Jornada Cliente e gerais que alterem seu escopo.",
+                  "Listar somente as fontes que precisam ser lidas na auditoria seguinte.",
+                  "Não alterar artefatos de produto."
+                ],
+                "resultado_esperado": "Lista final de fontes, decisões vigentes e limites do trabalho.",
+                "validacoes": [
+                  "Nenhum arquivo de produto alterado",
+                  "Toda fonte possui motivo de uso"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_auditoria_funcional",
+          "titulo": "Auditar estado funcional atual da Jornada Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Mapear telas, ações, estados, dados e divergências atuais sem corrigir durante a auditoria.",
+            "estrategia": "Auditar por artefato, registrar fato + fonte e separar divergência de decisão pendente.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Sequência da jornada",
+                "Telas e componentes",
+                "Ações e destinos",
+                "Estados e condições",
+                "Dados e integrações já declaradas"
+              ],
+              "excluir": [
+                "Correções de código",
+                "Criação de telas",
+                "Definição técnica de produção"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "jornadas/cliente_maria.html",
+                "definicao/entrevista.json",
+                "prototipo/cliente.json",
+                "modelos/modelagem_banco_todas_telas.html",
+                "referencias/mapa_aplicacao_todas_jornadas.html",
+                "orquestracao/orquestracao.json"
+              ],
+              "nao_ler": [
+                "aplicacoes/advogadojaplus-v2",
+                "aplicacoes/flutter",
+                "aplicacoes/advogadoja-mock-services",
+                "legado/ salvo quando uma divergência exigir comparação"
+              ]
+            },
+            "validacoes": [
+              "A auditoria não altera artefatos de produto",
+              "Toda lacuna crítica aparece no planejamento"
+            ],
+            "criterios_saida": [
+              "Inventário funcional da Cliente produzido",
+              "Divergências classificadas",
+              "Pendências bloqueadoras separadas",
+              "Cada achado possui fonte"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_audit_01",
+                "tipo": "leitura_verificacao",
+                "titulo": "Mapear jornada e protótipo",
+                "alvos": [
+                  "jornadas/cliente_maria.html",
+                  "prototipo/cliente.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Extrair em ordem as telas/estados apresentados.",
+                  "Para cada ação visível, registrar destino ou marcar destino ausente.",
+                  "Não corrigir divergências nesta tarefa."
+                ],
+                "resultado_esperado": "Mapa comparativo Jornada × Protótipo com lacunas explícitas.",
+                "validacoes": [
+                  "Cada divergência cita os dois artefatos comparados"
+                ]
+              },
+              {
+                "id": "tsk_audit_02",
+                "tipo": "leitura_verificacao",
+                "titulo": "Conferir entrevista, banco e mapa",
+                "alvos": [
+                  "definicao/entrevista.json",
+                  "modelos/modelagem_banco_todas_telas.html",
+                  "referencias/mapa_aplicacao_todas_jornadas.html"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Verificar quais pendências já possuem pergunta/decisão.",
+                  "Identificar dados persistentes exigidos por telas já confirmadas.",
+                  "Marcar conflitos sem escolher silenciosamente um lado."
+                ],
+                "resultado_esperado": "Lista de perguntas existentes, dados necessários e conflitos cruzados.",
+                "validacoes": [
+                  "Nenhum conflito foi resolvido por inferência"
+                ]
+              },
+              {
+                "id": "tsk_audit_03",
+                "tipo": "outro",
+                "titulo": "Consolidar relatório de auditoria",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Preencher resumo, fontes, achados, decisões e riscos deste card.",
+                  "Separar cada item em: confirmado, conflito, pendência, proposta ou legado.",
+                  "Criar referências para os registros aplicáveis."
+                ],
+                "resultado_esperado": "Auditoria consolidada pronta para transformar em plano.",
+                "validacoes": [
+                  "Resumo suficiente para a etapa seguinte sem reler todos os artefatos"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_pendencias",
+          "titulo": "Consolidar pendências e conflitos da Jornada Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Transformar a auditoria em uma lista curta e priorizada de decisões ainda necessárias.",
+            "estrategia": "Eliminar duplicações e perguntar apenas o que bloqueia a jornada ou a especificação de telas/dados.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Pendências bloqueadoras",
+                "Conflitos entre artefatos",
+                "Perguntas existentes reutilizáveis"
+              ],
+              "excluir": [
+                "Implementação",
+                "Perguntas exploratórias sem impacto no fechamento da jornada"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Resultado da fase anterior em orquestracao.json",
+                "registros confirmados/propostos relacionados à Cliente",
+                "definicao/entrevista.json"
+              ],
+              "nao_ler": [
+                "Aplicações",
+                "Legado sem referência de conflito",
+                "Arquivos técnicos de produção"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Pendências priorizadas",
+              "Perguntas reutilizadas ou criadas com IDs estáveis",
+              "Cada pendência aponta impacto"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_pending_01",
+                "tipo": "leitura_verificacao",
+                "titulo": "Agrupar pendências por decisão",
+                "alvos": [
+                  "orquestracao/orquestracao.json",
+                  "definicao/entrevista.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Agrupar achados equivalentes.",
+                  "Associar pergunta existente quando houver.",
+                  "Criar proposta de nova pergunta somente se não existir pergunta equivalente.",
+                  "Classificar prioridade e artefatos impactados."
+                ],
+                "resultado_esperado": "Lista sem duplicações de decisões necessárias.",
+                "validacoes": [
+                  "Nenhuma decisão confirmada foi reaberta sem conflito real"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_entrevista",
+          "titulo": "Realizar entrevista das pendências bloqueadoras",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Obter decisões explícitas somente para os pontos necessários ao fechamento da Jornada Cliente.",
+            "estrategia": "Conduzir perguntas objetivas, registrar resposta, impacto e eventual substituição de decisão anterior.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Perguntas bloqueadoras",
+                "Respostas e decisões",
+                "Impactos em jornada/tela/dados"
+              ],
+              "excluir": [
+                "Soluções técnicas ainda não necessárias"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Lista priorizada da fase anterior",
+                "definicao/entrevista.json",
+                "orquestracao/orquestracao.json"
+              ],
+              "nao_ler": [
+                "Aplicações",
+                "Arquivos técnicos",
+                "Legado sem necessidade explícita"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Perguntas críticas respondidas ou explicitamente adiadas sem bloquear",
+              "Decisões registradas com origem",
+              "Mudanças preservam histórico"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_interview_01",
+                "tipo": "outro",
+                "titulo": "Registrar cada resposta e impacto",
+                "alvos": [
+                  "definicao/entrevista.json",
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Para cada pergunta respondida, registrar decisão com origem explícita.",
+                  "Se substituir decisão anterior, preservar registro anterior e indicar substituição.",
+                  "Listar artefatos que precisarão ser sincronizados; não alterá-los ainda se não fizerem parte do plano desta fase."
+                ],
+                "resultado_esperado": "Memória de decisões atualizada e pendências bloqueadoras reduzidas.",
+                "validacoes": [
+                  "Nenhuma proposta virou confirmado sem decisão explícita"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_consolidacao_funcional",
+          "titulo": "Consolidar a Jornada Cliente funcional",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ESPECIFICACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Produzir uma sequência funcional única, sem conflitos conhecidos, para servir de base às telas.",
+            "estrategia": "Aplicar somente decisões confirmadas e manter pendências não bloqueadoras identificadas.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Entradas e saídas",
+                "Ações e destinos",
+                "Condições/guards",
+                "Estados",
+                "Caminhos alternativos"
+              ],
+              "excluir": [
+                "Código",
+                "Infraestrutura específica"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "jornadas/cliente_maria.html",
+                "orquestracao/orquestracao.json",
+                "definicao/entrevista.json"
+              ],
+              "nao_ler": [
+                "Aplicações",
+                "Detalhes de framework"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Jornada percorrível ponta a ponta",
+              "Toda ação relevante possui destino ou pendência explícita",
+              "Estados não são confundidos com telas"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_flow_01",
+                "tipo": "alterar_arquivo",
+                "titulo": "Atualizar jornada com decisões confirmadas",
+                "alvos": [
+                  "jornadas/cliente_maria.html"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Aplicar somente decisões confirmadas após a auditoria/entrevista.",
+                  "Manter a estrutura visual existente quando não houver decisão para mudá-la.",
+                  "Não inventar telas para representar estados.",
+                  "Preservar identificação rastreável de telas e fluxos existentes."
+                ],
+                "resultado_esperado": "HTML da jornada reflete o fluxo funcional consolidado.",
+                "validacoes": [
+                  "Percurso ponta a ponta possível",
+                  "Nenhum ponto pendente foi ocultado"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_telas",
+          "titulo": "Fechar inventário e especificação das telas Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ESPECIFICACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Decidir manter/alterar/criar/reutilizar/excluir e especificar cada tela necessária.",
+            "estrategia": "Trabalhar tela por tela com rastreabilidade à jornada e às decisões.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Classificação de telas",
+                "Campos/conteúdos",
+                "Ações",
+                "Estados",
+                "Loading/erro/vazio",
+                "Componentes reutilizáveis"
+              ],
+              "excluir": [
+                "Implementação React/Flutter"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Jornada Cliente consolidada",
+                "inventario.html",
+                "definicao/entrevista.json",
+                "orquestracao/orquestracao.json"
+              ],
+              "nao_ler": [
+                "Aplicações",
+                "Legado salvo para comparação pontual"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Nenhuma tela sem objetivo",
+              "Nenhuma ação sem destino",
+              "Componentes e estados separados de telas",
+              "Inventário sincronizado"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_screen_01",
+                "tipo": "alterar_arquivo",
+                "titulo": "Classificar e atualizar inventário",
+                "alvos": [
+                  "inventario.html"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Para cada item da Jornada Cliente classificar: manter, alterar, criar, reutilizar, excluir, possível duplicata ou pendente.",
+                  "Associar justificativa e fonte da decisão.",
+                  "Não inventar conteúdo para itens marcados como criar sem especificação."
+                ],
+                "resultado_esperado": "Inventário Cliente fechado ou com pendências não bloqueadoras explícitas.",
+                "validacoes": [
+                  "Toda tela possui classificação"
+                ]
+              },
+              {
+                "id": "tsk_screen_02",
+                "tipo": "outro",
+                "titulo": "Especificar telas aprovadas",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Para cada tela aprovada registrar objetivo, conteúdo, campos, ações, destinos, estados, validações e dados necessários.",
+                  "Registrar componentes transversais necessários sem duplicá-los por tela."
+                ],
+                "resultado_esperado": "Especificações completas suficientes para protótipo de baixa.",
+                "validacoes": [
+                  "Cada ação possui resultado observável"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_dados_contratos",
+          "titulo": "Fechar dados, banco e contratos funcionais da Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ARQUITETURA-FUNCIONAL",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir persistência e contratos observáveis necessários às telas sem antecipar detalhes de produção desnecessários.",
+            "estrategia": "Rastrear cada dado à necessidade funcional e definir leitura/gravação/propriedade/estado.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Entidades/campos",
+                "Origem/destino",
+                "Leitura/gravação",
+                "Histórico",
+                "Permissões funcionais",
+                "Contratos/API"
+              ],
+              "excluir": [
+                "Escolha final de infraestrutura quando não necessária"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Especificações das telas Cliente",
+                "modelos/modelagem_banco_todas_telas.html",
+                "orquestracao/orquestracao.json"
+              ],
+              "nao_ler": [
+                "Firebase Rules/Functions antigas",
+                "MongoDB implementação específica antes do contrato",
+                "Configuração de produção"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Todo dado de tela possui origem",
+              "Contratos têm entradas/saídas/erros",
+              "Modelo de banco atende persistência necessária"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_data_01",
+                "tipo": "alterar_arquivo",
+                "titulo": "Revisar modelo de banco pela jornada aprovada",
+                "alvos": [
+                  "modelos/modelagem_banco_todas_telas.html"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Adicionar/ajustar somente entidades e campos exigidos por requisito confirmado.",
+                  "Documentar fonte de verdade, histórico e relações.",
+                  "Não modelar campo apenas porque aparece no legado."
+                ],
+                "resultado_esperado": "Modelo de banco coerente com a Jornada Cliente.",
+                "validacoes": [
+                  "Cada mudança tem requisito rastreável"
+                ]
+              },
+              {
+                "id": "tsk_data_02",
+                "tipo": "outro",
+                "titulo": "Definir contratos funcionais necessários",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Para cada operação necessária registrar entrada, saída, erros observáveis e evento/efeito esperado.",
+                  "Manter contrato neutro de framework e provedor."
+                ],
+                "resultado_esperado": "Lista de contratos capaz de ser atendida por Mock Services e integrações reais.",
+                "validacoes": [
+                  "Contratos não dependem de detalhes de UI"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_prototipo_baixa",
+          "titulo": "Materializar e validar protótipo de baixa fidelidade",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PROTOTIPO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Representar integralmente a jornada aprovada antes de implementação real.",
+            "estrategia": "Atualizar protótipo somente com telas/estados/condições já especificados e validar ponta a ponta.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Telas Cliente",
+                "Navegação",
+                "Estados",
+                "Modais",
+                "Dados fictícios necessários para demonstrar comportamento"
+              ],
+              "excluir": [
+                "Integrações reais"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Jornada consolidada",
+                "Especificações de telas",
+                "Contratos funcionais",
+                "prototipo/index.html",
+                "prototipo/cliente.json"
+              ],
+              "nao_ler": [
+                "Aplicações reais",
+                "Infraestrutura de produção"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Jornada percorrível no protótipo",
+              "Estados principais representados",
+              "Nenhuma regra nova criada no protótipo"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_proto_01",
+                "tipo": "alterar_arquivo",
+                "titulo": "Atualizar dados do protótipo Cliente",
+                "alvos": [
+                  "prototipo/cliente.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Materializar sequência e estados aprovados.",
+                  "Usar dados fictícios suficientes para percorrer os cenários.",
+                  "Não introduzir decisão funcional nova."
+                ],
+                "resultado_esperado": "JSON Cliente do protótipo representa a especificação aprovada.",
+                "validacoes": [
+                  "JSON válido"
+                ]
+              },
+              {
+                "id": "tsk_proto_02",
+                "tipo": "validar_comportamento",
+                "titulo": "Validar protótipo ponta a ponta",
+                "alvos": [
+                  "prototipo/index.html"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Percorrer a Jornada Cliente do início ao fim.",
+                  "Testar caminhos alternativos e estados críticos definidos.",
+                  "Registrar qualquer lacuna e devolver ao planejamento; não improvisar no protótipo."
+                ],
+                "resultado_esperado": "Protótipo funcionalmente aprovado ou lista de bloqueios objetiva.",
+                "validacoes": [
+                  "Nenhuma ação termina sem destino esperado"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_congelar",
+          "titulo": "Congelar versão funcional da Jornada Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Criar um marco explícito que autoriza planejamento técnico das aplicações.",
+            "estrategia": "Validar coerência entre jornada, telas, dados, banco e protótipo antes de permitir implementação.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Coerência funcional",
+                "Pendências remanescentes",
+                "Versão/revisão aprovada"
+              ],
+              "excluir": [
+                "Código das aplicações"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "jornadas/cliente_maria.html",
+                "inventario.html",
+                "modelos/modelagem_banco_todas_telas.html",
+                "prototipo/cliente.json",
+                "orquestracao/orquestracao.json"
+              ],
+              "nao_ler": [
+                "Aplicações ainda não auditadas para implementação"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Sem pendência crítica de definição",
+              "Artefatos funcionais coerentes",
+              "Revisão aprovada registrada"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_freeze_01",
+                "tipo": "validar_comportamento",
+                "titulo": "Executar checklist de coerência funcional",
+                "alvos": [
+                  "jornadas/cliente_maria.html",
+                  "inventario.html",
+                  "modelos/modelagem_banco_todas_telas.html",
+                  "prototipo/cliente.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Comparar telas, ações, dados e estados entre os quatro artefatos.",
+                  "Listar divergências restantes.",
+                  "Se existir divergência crítica, bloquear esta fase e devolver à fase correspondente."
+                ],
+                "resultado_esperado": "Relatório de coerência sem bloqueios críticos.",
+                "validacoes": [
+                  "Todas as divergências críticas resolvidas"
+                ]
+              },
+              {
+                "id": "tsk_freeze_02",
+                "tipo": "outro",
+                "titulo": "Registrar marco funcional aprovado",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Registrar revisão congelada da Jornada Cliente.",
+                  "Marcar quais pendências não bloqueadoras permanecem.",
+                  "Autorizar somente depois disso a auditoria técnica das aplicações."
+                ],
+                "resultado_esperado": "Marco funcional rastreável e autorização de implementação.",
+                "validacoes": [
+                  "Revisão e data registradas"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_auditar_apps",
+          "titulo": "Auditar React, Flutter e Mock Services para o primeiro lote",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PLANEJAMENTO-TECNICO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Conhecer o estado real das três aplicações antes de definir arquivos e alterações do primeiro lote.",
+            "estrategia": "Auditar apenas áreas necessárias ao lote; identificar reutilização, dívida e contratos existentes.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Estrutura React/Node/Mongo",
+                "Estrutura Flutter",
+                "Mock Services",
+                "Componentes loading/erro/alerta/feedback",
+                "Contratos e navegação relevantes"
+              ],
+              "excluir": [
+                "Implementação durante auditoria"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "aplicacoes/AGENTS.md",
+                "aplicacoes/advogadojaplus-v2/AGENTS.md",
+                "aplicacoes/flutter/AGENTS.md",
+                "aplicacoes/advogadoja-mock-services/AGENTS.md",
+                "Jornada Cliente congelada",
+                "Especificações do lote candidato"
+              ],
+              "nao_ler": [
+                "Partes das aplicações fora do lote",
+                "Legado técnico não relacionado"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Arquivos candidatos identificados",
+              "Componentes reutilizáveis identificados",
+              "Riscos técnicos registrados",
+              "Nenhum código alterado"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_apps_01",
+                "tipo": "leitura_verificacao",
+                "titulo": "Auditar React/Node/Mongo do lote",
+                "alvos": [
+                  "aplicacoes/advogadojaplus-v2"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Ler primeiro AGENTS/README locais.",
+                  "Inspecionar somente rotas, views, components, services e API relacionados às telas do lote.",
+                  "Registrar arquivos exatos a reutilizar/alterar/criar.",
+                  "Não editar."
+                ],
+                "resultado_esperado": "Mapa de impacto React/Node/Mongo com caminhos exatos.",
+                "validacoes": [
+                  "Nenhum arquivo alterado"
+                ]
+              },
+              {
+                "id": "tsk_apps_02",
+                "tipo": "leitura_verificacao",
+                "titulo": "Auditar Flutter do lote",
+                "alvos": [
+                  "aplicacoes/flutter"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Ler primeiro AGENTS/README locais.",
+                  "Inspecionar somente lib/, navegação, tema, componentes e contratos relacionados ao lote.",
+                  "Registrar caminhos exatos e lacunas de infraestrutura transversal.",
+                  "Não editar."
+                ],
+                "resultado_esperado": "Mapa de impacto Flutter com caminhos exatos.",
+                "validacoes": [
+                  "Nenhum arquivo alterado"
+                ]
+              },
+              {
+                "id": "tsk_apps_03",
+                "tipo": "leitura_verificacao",
+                "titulo": "Auditar Mock Services do lote",
+                "alvos": [
+                  "aplicacoes/advogadoja-mock-services"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Ler AGENTS/README locais.",
+                  "Mapear módulos, API, persistência e painel necessários aos contratos do lote.",
+                  "Registrar o que já existe e o que precisa ser criado/alterado.",
+                  "Não editar."
+                ],
+                "resultado_esperado": "Mapa de impacto do mock com contratos e dados necessários.",
+                "validacoes": [
+                  "Nenhum arquivo alterado"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_planejar_lote",
+          "titulo": "Planejar tecnicamente o primeiro lote de telas",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PLANEJAMENTO-TECNICO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Converter a especificação aprovada e a auditoria das aplicações em instruções mecânicas por arquivo.",
+            "estrategia": "Selecionar um lote pequeno e escrever tarefas na ordem exata, com alvo, instruções, resultado e validação.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Seleção do lote",
+                "Arquivos a criar/alterar",
+                "Reutilização",
+                "Contratos",
+                "Estados UI",
+                "Mock",
+                "Testes"
+              ],
+              "excluir": [
+                "Execução do código antes de o plano estar pronto"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Resultado da auditoria das aplicações",
+                "Jornada Cliente congelada",
+                "Contratos funcionais do lote",
+                "AGENTS locais de aplicações"
+              ],
+              "nao_ler": [
+                "Arquivos fora do lote",
+                "Requisitos não aprovados"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Cada tarefa possui caminho exato",
+              "Cada tarefa é mecânica",
+              "Ordem e precondições definidas",
+              "Validações por tarefa definidas",
+              "Plano marcado pronto"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_plan_01",
+                "tipo": "outro",
+                "titulo": "Compilar pacote técnico do lote",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Definir telas do lote.",
+                  "Converter cada impacto auditado em tarefa concreta por arquivo/caminho.",
+                  "Escrever instruções sem verbos genéricos como 'ajustar' sem explicar o ajuste.",
+                  "Definir precondições, referências, resultado esperado e validação de cada tarefa.",
+                  "Revisar se uma IA executora precisa tomar alguma decisão; se precisar, completar o plano."
+                ],
+                "resultado_esperado": "Checklist executável sem decisões arquiteturais pendentes.",
+                "validacoes": [
+                  "Todas as tarefas têm alvos exatos",
+                  "Nenhuma tarefa depende de inferência funcional"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_implementar_lote",
+          "titulo": "Implementar o lote nas duas aplicações e adaptar Mock Services",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-IMPLEMENTACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Executar exatamente o pacote aprovado e produzir comportamento equivalente em React e Flutter.",
+            "estrategia": "Executar tarefas na ordem, registrar evidências e bloquear em vez de improvisar.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "React/Node/Mongo",
+                "Flutter",
+                "Mock Services",
+                "Testes previstos"
+              ],
+              "excluir": [
+                "Mudanças fora do lote"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Pacote técnico aprovado desta fase",
+                "AGENTS das aplicações",
+                "Somente arquivos citados nas tarefas"
+              ],
+              "nao_ler": [
+                "Arquivos fora do plano",
+                "Novas decisões de produto",
+                "Reestruturações não previstas"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Todas as tarefas concluídas ou bloqueio devolvido ao planejamento",
+              "Build/testes previstos passam",
+              "Mock suporta cenário compartilhado"
+            ],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_homologar_lote",
+          "titulo": "Homologar o lote integrado e validar equivalência",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Provar que React e Flutter exibem o mesmo produto funcional e que o Mock Services sustenta o cenário compartilhado.",
+            "estrategia": "Executar cenários definidos, comparar resultados observáveis e registrar divergências sem corrigi-las fora do plano.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Happy path",
+                "Erros",
+                "Loading/vazio",
+                "Navegação",
+                "Persistência compartilhada",
+                "Equivalência React × Flutter"
+              ],
+              "excluir": [
+                "Novos requisitos"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "React implementado",
+                "Flutter implementado",
+                "Mock Services do lote",
+                "cenários de homologação do lote"
+              ],
+              "nao_ler": [
+                "Infraestrutura de produção"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Cenários passam nas duas tecnologias",
+              "Mesmo resultado funcional observado",
+              "Divergências viram novo plano/revisão"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_hom_01",
+                "tipo": "validar_comportamento",
+                "titulo": "Executar cenários multi-instância no mock",
+                "alvos": [
+                  "aplicacoes/advogadoja-mock-services",
+                  "aplicacoes/advogadojaplus-v2",
+                  "aplicacoes/flutter"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Subir ambiente conforme README locais.",
+                  "Executar cenário Cliente em uma instância e ator relacionado em outra quando aplicável.",
+                  "Registrar evidência de mudança de estado compartilhada.",
+                  "Repetir cenário nas duas implementações do Advogado Já."
+                ],
+                "resultado_esperado": "Evidências de homologação compartilhada e equivalência funcional.",
+                "validacoes": [
+                  "Estado compartilhado não depende de localStorage isolado"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_repetir_lotes",
+          "titulo": "Repetir ciclo de lotes até cobrir toda a Jornada Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-LOTE-CONTINUO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Implementar a jornada integral em lotes pequenos sem perder a disciplina de auditoria, plano e validação.",
+            "estrategia": "Para cada novo lote, repetir auditoria de impacto, plano específico, geração de execução e homologação.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Próximo lote pequeno",
+                "Reuso do que já foi aprovado",
+                "Regressão dos lotes anteriores"
+              ],
+              "excluir": [
+                "Mudanças globais não planejadas"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Backlog de telas Cliente ainda não implementadas",
+                "Resultados dos lotes anteriores",
+                "orquestracao/orquestracao.json"
+              ],
+              "nao_ler": [
+                "Jornadas Advogado/Administrador salvo dependência necessária"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Todas as telas Cliente implementadas em React e Flutter",
+              "Todos os contratos necessários cobertos pelo mock",
+              "Regressões dos lotes anteriores continuam passando"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_repeat_01",
+                "tipo": "outro",
+                "titulo": "Selecionar próximo lote e criar revisão de plano",
+                "alvos": [
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Listar telas Cliente ainda não implementadas.",
+                  "Selecionar o menor lote coerente.",
+                  "Duplicar o ciclo auditado de planejamento técnico, implementação e homologação.",
+                  "Não avançar para Jornada Advogado antes de concluir os critérios finais da Cliente."
+                ],
+                "resultado_esperado": "Sequência de lotes controlada até cobertura integral da Cliente.",
+                "validacoes": [
+                  "Nenhum lote começou sem plano específico"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_regressao_final",
+          "titulo": "Executar regressão e validação final da Jornada Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Validar ponta a ponta a implementação completa antes de marcar a jornada como concluída.",
+            "estrategia": "Comparar produto final com especificação congelada e executar cenários principais e de erro nas duas tecnologias.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Ponta a ponta",
+                "Erros",
+                "Estados vazios",
+                "Sessão/retomada",
+                "Múltiplas instâncias",
+                "Responsividade",
+                "Acessibilidade básica",
+                "Persistência"
+              ],
+              "excluir": [
+                "Novas features"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Jornada congelada",
+                "React completo",
+                "Flutter completo",
+                "Mock Services completo para homologação",
+                "histórico dos lotes"
+              ],
+              "nao_ler": [
+                "Jornadas seguintes"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Sem bloqueio crítico",
+              "React e Flutter funcionalmente equivalentes",
+              "Regressão documentada"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_reg_01",
+                "tipo": "validar_comportamento",
+                "titulo": "Executar matriz final de cenários",
+                "alvos": [
+                  "aplicacoes/advogadojaplus-v2",
+                  "aplicacoes/flutter",
+                  "aplicacoes/advogadoja-mock-services"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Executar todos os cenários críticos definidos para Cliente nas duas aplicações.",
+                  "Comparar ações, destinos, mensagens funcionais, estados e dados.",
+                  "Registrar qualquer divergência como bloqueio e não marcar conclusão até nova revisão corrigir."
+                ],
+                "resultado_esperado": "Matriz de regressão final sem divergência crítica.",
+                "validacoes": [
+                  "Todos os cenários críticos possuem evidência"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_concluir_cliente",
+          "titulo": "Consolidar artefatos e concluir a Jornada Cliente",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-SINCRONIZACAO",
+          "jornada": "cliente",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Encerrar o ciclo atualizando os artefatos de controle e deixando um handoff curto para a próxima jornada.",
+            "estrategia": "Sincronizar somente o que foi realmente alterado e registrar o estado final da Cliente.",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [
+                "Jornada",
+                "Inventário",
+                "Banco",
+                "Protótipo",
+                "Mapa",
+                "Orquestração",
+                "Documentação das aplicações"
+              ],
+              "excluir": [
+                "Novas funcionalidades"
+              ]
+            },
+            "contexto": {
+              "ler_obrigatorio": [
+                "Resultados da regressão final",
+                "orquestracao/orquestracao.json",
+                "jornadas/cliente_maria.html",
+                "inventario.html",
+                "modelos/modelagem_banco_todas_telas.html",
+                "prototipo/cliente.json",
+                "referencias/mapa_aplicacao_todas_jornadas.html"
+              ],
+              "nao_ler": [
+                "Implementar Jornada Advogado nesta fase"
+              ]
+            },
+            "validacoes": [],
+            "criterios_saida": [
+              "Cliente marcada concluída",
+              "Pendências não bloqueadoras registradas",
+              "Handoff para Advogado produzido",
+              "Nenhuma fonte de verdade divergente conhecida"
+            ],
+            "tarefas_execucao": [
+              {
+                "id": "tsk_close_01",
+                "tipo": "alterar_arquivo",
+                "titulo": "Sincronizar artefatos finais",
+                "alvos": [
+                  "jornadas/cliente_maria.html",
+                  "inventario.html",
+                  "modelos/modelagem_banco_todas_telas.html",
+                  "prototipo/cliente.json",
+                  "referencias/mapa_aplicacao_todas_jornadas.html",
+                  "orquestracao/orquestracao.json"
+                ],
+                "precondicoes": [],
+                "referencias": [],
+                "instrucoes": [
+                  "Aplicar somente sincronizações derivadas do trabalho concluído.",
+                  "Atualizar status da Jornada Cliente para concluída.",
+                  "Registrar pendências não bloqueadoras e aprendizados reutilizáveis.",
+                  "Produzir handoff curto para iniciar a auditoria da Jornada Advogado."
+                ],
+                "resultado_esperado": "Artefatos coerentes e jornada formalmente concluída.",
+                "validacoes": [
+                  "Nenhum artefato principal conhecido contradiz o estado final da Cliente"
+                ]
+              }
+            ]
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_jornada_advogado",
+      "titulo": "Fechamento completo da Jornada Advogado",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Aplicar o processo canônico de fechamento à Jornada Advogado.",
+      "criterios_entrada": [
+        "Jornada Cliente concluída ou dependências comuns explicitamente liberadas"
+      ],
+      "criterios_conclusao": [
+        "Jornada Advogado funcionalmente fechada e homologada"
+      ],
+      "observacoes": "Detalhes específicos serão preenchidos após auditoria da jornada.",
+      "fases": [
+        {
+          "id": "fas_adv_auditar",
+          "titulo": "Auditar estado funcional atual da Jornada Advogado",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Mapear telas, ações, estados, dados, decisões e pendências da Jornada Advogado.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_perguntas",
+          "titulo": "Consolidar pendências e perguntas bloqueadoras",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Gerar somente perguntas necessárias a partir da auditoria.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_decidir",
+          "titulo": "Realizar entrevista e registrar decisões",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Resolver pendências bloqueadoras e preservar evolução das decisões.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_fluxo",
+          "titulo": "Consolidar fluxo funcional ponta a ponta",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ESPECIFICACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Transformar decisões em fluxo observável, sem implementação técnica.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_telas",
+          "titulo": "Fechar inventário e especificação de telas",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ESPECIFICACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Classificar e especificar telas, componentes, ações e estados.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_dados",
+          "titulo": "Fechar dados, banco e contratos funcionais",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ARQUITETURA-FUNCIONAL",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir persistência, permissões e contratos derivados da jornada.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_prototipo",
+          "titulo": "Materializar e validar protótipo de baixa",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PROTOTIPO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Provar a jornada antes das aplicações reais.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_apps",
+          "titulo": "Planejar e implementar lotes nas aplicações",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PLANEJAMENTO-TECNICO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Auditar React, Flutter e Mock; planejar lotes e gerar execução mecânica.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_homologar",
+          "titulo": "Homologar e executar regressão",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Validar comportamento integrado e equivalência funcional.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adv_concluir",
+          "titulo": "Consolidar artefatos e concluir a jornada",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-SINCRONIZACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Sincronizar artefatos e produzir handoff para o próximo bloco.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_jornada_administrador",
+      "titulo": "Fechamento completo da Jornada Administrador",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Aplicar o processo canônico de fechamento à Jornada Administrador.",
+      "criterios_entrada": [
+        "Jornadas anteriores suficientemente consolidadas"
+      ],
+      "criterios_conclusao": [
+        "Jornada Administrador funcionalmente fechada e homologada"
+      ],
+      "observacoes": "Detalhes específicos serão preenchidos após auditoria da jornada.",
+      "fases": [
+        {
+          "id": "fas_adm_auditar",
+          "titulo": "Auditar estado funcional atual da Jornada Administrador",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Mapear telas, ações, estados, dados, decisões e pendências da Jornada Administrador.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_perguntas",
+          "titulo": "Consolidar pendências e perguntas bloqueadoras",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Gerar somente perguntas necessárias a partir da auditoria.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_decidir",
+          "titulo": "Realizar entrevista e registrar decisões",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-DECISAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Resolver pendências bloqueadoras e preservar evolução das decisões.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_fluxo",
+          "titulo": "Consolidar fluxo funcional ponta a ponta",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ESPECIFICACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Transformar decisões em fluxo observável, sem implementação técnica.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_telas",
+          "titulo": "Fechar inventário e especificação de telas",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ESPECIFICACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Classificar e especificar telas, componentes, ações e estados.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_dados",
+          "titulo": "Fechar dados, banco e contratos funcionais",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ARQUITETURA-FUNCIONAL",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Definir persistência, permissões e contratos derivados da jornada.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_prototipo",
+          "titulo": "Materializar e validar protótipo de baixa",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PROTOTIPO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Provar a jornada antes das aplicações reais.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_apps",
+          "titulo": "Planejar e implementar lotes nas aplicações",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-PLANEJAMENTO-TECNICO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Auditar React, Flutter e Mock; planejar lotes e gerar execução mecânica.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_homologar",
+          "titulo": "Homologar e executar regressão",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Validar comportamento integrado e equivalência funcional.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_adm_concluir",
+          "titulo": "Consolidar artefatos e concluir a jornada",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-SINCRONIZACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Sincronizar artefatos e produzir handoff para o próximo bloco.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "blk_consolidacao_transversal",
+      "titulo": "Consolidação transversal",
+      "status": "rascunho",
+      "arquivado": false,
+      "objetivo": "Eliminar contradições que só aparecem após as três jornadas estarem fechadas e validar o ecossistema ponta a ponta.",
+      "criterios_entrada": [
+        "Cliente, Advogado e Administrador concluídos"
+      ],
+      "criterios_conclusao": [
+        "Contratos compartilhados coerentes",
+        "Cenários entre jornadas validados",
+        "Artefatos finais sincronizados",
+        "Pendências não bloqueadoras registradas"
+      ],
+      "observacoes": "",
+      "fases": [
+        {
+          "id": "fas_cross_auditar",
+          "titulo": "Auditar cruzamentos entre jornadas",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-AUDITORIA",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Comparar identidade, dados, eventos, permissões e transições entre Cliente, Advogado e Administrador.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_cross_contratos",
+          "titulo": "Consolidar contratos, dados e componentes compartilhados",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-ARQUITETURA-FUNCIONAL",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Eliminar divergências entre necessidades comuns sem reabrir decisões válidas.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_cross_e2e",
+          "titulo": "Validar cenários integrados ponta a ponta",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-VALIDACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Testar cenários que atravessam mais de uma jornada e múltiplas instâncias.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        },
+        {
+          "id": "fas_cross_final",
+          "titulo": "Sincronizar artefatos e encerrar ciclo funcional",
+          "status": "rascunho",
+          "arquivada": false,
+          "protocolo_id": "P-SINCRONIZACAO",
+          "planejamento": {
+            "revisao": 0,
+            "objetivo": "Atualizar controles finais e produzir handoff para a etapa de infraestrutura/produção quando autorizada.",
+            "estrategia": "",
+            "auditoria": {
+              "resumo": "",
+              "fontes": [],
+              "achados": [],
+              "decisoes": [],
+              "riscos": []
+            },
+            "escopo": {
+              "incluir": [],
+              "excluir": []
+            },
+            "contexto": {
+              "ler_obrigatorio": [],
+              "nao_ler": []
+            },
+            "validacoes": [],
+            "criterios_saida": [],
+            "tarefas_execucao": []
+          },
+          "execucao": {
+            "status": "nao_gerada",
+            "revisao_plano": 0,
+            "gerada_em": null,
+            "itens": [],
+            "bloqueios": [],
+            "resultado": "",
+            "handoff": ""
+          }
+        }
+      ]
+    }
+  ]
+}

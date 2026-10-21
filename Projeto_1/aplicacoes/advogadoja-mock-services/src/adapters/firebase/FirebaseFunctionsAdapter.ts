@@ -1,0 +1,1 @@
+import type { FunctionsGateway } from "../../contracts/FunctionsGateway"; import { runFunction } from "../../modules/functions/functions.runner"; export class FirebaseFunctionsAdapter implements FunctionsGateway { async call<TInput=unknown,TOutput=unknown>(name:string,input:TInput){return await runFunction(name,input as any) as TOutput;} }

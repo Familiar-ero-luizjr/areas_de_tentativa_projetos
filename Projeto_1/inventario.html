@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Advogado Já · Inventário Mestre</title>
+<style>
+:root{--navy:#10233f;--blue:#2563eb;--bg:#f4f7fb;--ink:#18253b;--muted:#64748b;--line:#dbe2ea;--green:#087f5b;--amber:#946200;--red:#b42318;--violet:#6d28d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1500px;margin:auto;padding:20px}.hero{padding:22px 24px;border-radius:18px;background:linear-gradient(120deg,#10233f,#184777 75%,#235bd4);color:#fff}
+.eyebrow{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#eed29a}.hero h1{margin:4px 0 7px;font-size:28px}.hero p{margin:0;max-width:980px;color:#d6e2f3}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:14px 0}.stat{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}.stat span{display:block;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase}.stat strong{display:block;font-size:23px;color:var(--navy)}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:10px;position:sticky;top:0;z-index:5;box-shadow:0 7px 22px #10233f0b}
+.toolbar input,.toolbar select{height:38px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;padding:0 10px;color:var(--ink)}.toolbar input{flex:1;min-width:240px}.toolbar button{height:38px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;padding:0 12px;color:var(--navy);font-weight:800;cursor:pointer}.meta{margin-left:auto;color:var(--muted);font-size:11px}
+.wrap{overflow:auto;border:1px solid var(--line);border-radius:13px;background:#fff}table{width:100%;border-collapse:collapse;min-width:1160px}th{background:#f8fafc;color:#526177;font-size:10px;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:9px;border-bottom:1px solid var(--line);position:sticky;top:63px;z-index:3}td{padding:10px 9px;border-bottom:1px solid #eef1f5;vertical-align:top}tr:hover td{background:#fbfdff}
+.key{font:800 11px ui-monospace,SFMono-Regular,Consolas,monospace;color:#173c6b}.title{font-weight:800;color:var(--navy)}.sub{display:block;margin-top:3px;color:var(--muted);font-size:10px}.pill{display:inline-block;padding:3px 7px;border-radius:99px;background:#eef4ff;color:#2457a7;font-size:9px;font-weight:850;margin:1px 3px 2px 0}.pill.shared{background:#f5f3ff;color:var(--violet)}.pill.new{background:#fffbeb;color:var(--amber)}
+.audit{min-width:155px;border:1px solid #cbd5e1;border-radius:7px;padding:6px 7px;background:#fff;font-size:11px;font-weight:750}.error{margin-top:12px;padding:12px;border:1px solid #fecdd3;border-radius:10px;background:#fff1f2;color:#9f1b14}.foot{padding:14px 2px;color:var(--muted);font-size:10px}
+@media(max-width:850px){main{padding:10px}.stats{grid-template-columns:repeat(2,1fr)}.meta{width:100%;margin-left:0}.hero h1{font-size:23px}}
+</style>
+</head>
+<body><main>
+<header class="hero"><div class="eyebrow">Laboratório funcional · eixo principal</div><h1>Inventário Mestre de Telas</h1><p>Derivado das quatro jornadas. O objetivo é fechar quais telas realmente existem e o que falta alterar, criar, excluir ou decidir. Estado, ação e componente não viram tela sem necessidade funcional real.</p></header>
+<section class="stats">
+<div class="stat"><span>Telas únicas</span><strong id="uniqueCount">—</strong></div>
+<div class="stat"><span>Ocorrências</span><strong id="occurrenceCount">—</strong></div>
+<div class="stat"><span>Confirmadas</span><strong id="confirmedCount">—</strong></div>
+<div class="stat"><span>Pendentes</span><strong id="pendingCount">—</strong></div>
+<div class="stat"><span>Compartilhadas</span><strong id="sharedCount">—</strong></div>
+</section>
+<div class="toolbar">
+<input id="search" type="search" placeholder="Buscar screenKey, tela, nó ou saída…">
+<select id="persona"><option value="">Todas as jornadas</option><option value="cliente">Cliente</option><option value="advogado">Advogado</option><option value="estudante">Estudante</option><option value="administrador">Administrador</option></select>
+<select id="statusFilter"><option value="">Todos os status</option><option>A AUDITAR</option><option>CONFIRMADA</option><option>ALTERAR</option><option>CRIAR</option><option>EXCLUIR</option><option>POSSÍVEL DUPLICATA</option><option>PENDENTE</option></select>
+<button id="resetBtn">Limpar decisões locais</button><span class="meta" id="resultMeta">Carregando jornadas…</span>
+</div>
+<div class="wrap"><table><thead><tr><th>screenKey</th><th>Tela</th><th>Jornadas</th><th>Origem</th><th>Saídas conhecidas</th><th>Auditoria</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="errors"></div><div class="foot">Os status de auditoria são salvos apenas neste navegador. A estrutura é relida diretamente dos quatro HTMLs a cada abertura.</div>
+</main>
+<script>
+const SOURCES=[
+{id:"cliente",label:"Cliente",url:"jornadas/cliente_maria.html"},
+{id:"advogado",label:"Advogado",url:"jornadas/advogado_joao.html"},
+{id:"estudante",label:"Estudante",url:"jornadas/estudante_ana.html"},
+{id:"administrador",label:"Administrador",url:"jornadas/administrador.html"}];
+const STORAGE="advogadoja.lab.inventory.audit.v1";
+const STATUSES=["A AUDITAR","CONFIRMADA","ALTERAR","CRIAR","EXCLUIR","POSSÍVEL DUPLICATA","PENDENTE"];
+let items=[],saved=loadSaved();
+
+function loadSaved(){try{return JSON.parse(localStorage.getItem(STORAGE)||"{}")}catch{return {}}}
+function save(){localStorage.setItem(STORAGE,JSON.stringify(saved))}
+function e(v){return String(v??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function readObject(source,marker){
+  const p=source.indexOf(marker); if(p<0) throw new Error("FLOW_NODES não encontrado");
+  const start=source.indexOf("{",p+marker.length); if(start<0) throw new Error("FLOW_NODES inválido");
+  let depth=0,quote="",escape=false;
+  for(let i=start;i<source.length;i++){const ch=source[i];
+    if(quote){if(escape)escape=false;else if(ch==="\\")escape=true;else if(ch===quote)quote="";continue}
+    if(ch==='"'||ch==="'"){quote=ch;continue}
+    if(ch==="{")depth++; else if(ch==="}"){depth--;if(depth===0)return source.slice(start,i+1)}
+  } throw new Error("FLOW_NODES incompleto");
+}
+function outs(n){const a=[];if(n.next)a.push(n.next);if(Array.isArray(n.routes))n.routes.forEach(r=>a.push((r.label?r.label+" → ":"")+(r.next||"")));return a.filter(Boolean)}
+async function load(){
+ const occurrences=[],fail=[];
+ for(const s of SOURCES){try{
+   const r=await fetch(s.url,{cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);
+   const html=await r.text();const flow=JSON.parse(readObject(html,"const FLOW_NODES"));
+   Object.entries(flow).forEach(([nodeId,n])=>{if(!n.screen)return;occurrences.push({screen:n.screen,title:n.title||n.screen,persona:s.id,label:s.label,nodeId,outputs:outs(n),isNew:!!(n.newScreen||n.proposal),pending:!!n.pending})});
+ }catch(err){fail.push(s.label+": "+err.message)}}
+ const map=new Map();
+ for(const o of occurrences){if(!map.has(o.screen))map.set(o.screen,{screen:o.screen,titles:new Set(),personas:new Set(),origins:[],outputs:new Set(),isNew:false,pending:false});const x=map.get(o.screen);x.titles.add(o.title);x.personas.add(o.persona);x.origins.push(o);o.outputs.forEach(v=>x.outputs.add(v));x.isNew ||= o.isNew;x.pending ||= o.pending}
+ items=[...map.values()].sort((a,b)=>a.screen.localeCompare(b.screen,"pt-BR"));
+ uniqueCount.textContent=items.length;occurrenceCount.textContent=occurrences.length;
+ if(fail.length)errors.innerHTML='<div class="error"><b>Falha ao ler jornada:</b><br>'+fail.map(e).join("<br>")+"</div>";
+ render();
+}
+function statusOf(x){return saved[x.screen]||(x.pending?"PENDENTE":x.isNew?"CRIAR":"A AUDITAR")}
+function render(){
+ const q=search.value.trim().toLowerCase(),p=persona.value,sf=statusFilter.value;
+ const filtered=items.filter(x=>{const s=statusOf(x),blob=[x.screen,...x.titles,...x.origins.map(o=>o.nodeId),...x.outputs].join(" ").toLowerCase();return(!q||blob.includes(q))&&(!p||x.personas.has(p))&&(!sf||s===sf)});
+ rows.innerHTML=filtered.map(x=>{
+   const status=statusOf(x),titles=[...x.titles],shared=x.personas.size>1;
+   const labels=[...x.personas].map(id=>SOURCES.find(s=>s.id===id)?.label||id);
+   const origins=x.origins.map(o=>o.label+" · "+o.nodeId).join(" · ");
+   const outputs=[...x.outputs].join(" · ")||"Sem saída explícita";
+   return '<tr><td><span class="key">'+e(x.screen)+'</span>'+(x.isNew?'<span class="sub"><span class="pill new">proposta</span></span>':'')+'</td><td><span class="title">'+e(titles[0])+'</span>'+(titles.length>1?'<span class="sub">Também: '+e(titles.slice(1).join(" · "))+'</span>':'')+'</td><td>'+labels.map(l=>'<span class="pill '+(shared?'shared':'')+'">'+e(l)+'</span>').join("")+'</td><td><span class="sub">'+e(origins)+'</span></td><td><span class="sub">'+e(outputs)+'</span></td><td><select class="audit" data-key="'+e(x.screen)+'">'+STATUSES.map(s=>'<option'+(s===status?' selected':'')+'>'+s+'</option>').join("")+'</select></td></tr>';
+ }).join("")||'<tr><td colspan="6" style="padding:45px;text-align:center;color:#64748b">Nenhuma tela corresponde aos filtros.</td></tr>';
+ document.querySelectorAll(".audit").forEach(el=>el.onchange=()=>{saved[el.dataset.key]=el.value;save();render()});
+ const all=items.map(statusOf);confirmedCount.textContent=all.filter(s=>s==="CONFIRMADA").length;pendingCount.textContent=all.filter(s=>s==="A AUDITAR"||s==="PENDENTE").length;sharedCount.textContent=items.filter(x=>x.personas.size>1).length;resultMeta.textContent=filtered.length+" de "+items.length+" telas";
+}
+search.oninput=render;persona.onchange=render;statusFilter.onchange=render;resetBtn.onclick=()=>{if(confirm("Limpar somente os status de auditoria deste navegador?")){saved={};localStorage.removeItem(STORAGE);render()}};
+load();
+</script></body></html>

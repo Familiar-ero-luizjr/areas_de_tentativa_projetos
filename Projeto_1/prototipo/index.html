@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Protótipo · Advogado Já Plus</title>
+    <style>
+      :root {
+        font-family: Inter, system-ui, Arial, sans-serif;
+        color: #17243a;
+        background: #edf2f8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 13px 18px;
+        background: #10233f;
+        color: white;
+      }
+      header strong {
+        font-size: 16px;
+      }
+      header small {
+        font-size: 11px;
+        color: #baccdf;
+      }
+      header .grow {
+        flex: 1;
+      }
+      .shell {
+        display: grid;
+        grid-template-columns: 285px minmax(0, 1fr);
+        height: calc(100vh - 58px);
+      }
+      aside {
+        background: white;
+        border-right: 1px solid #dce4ef;
+        overflow: auto;
+        padding: 15px;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #61758f;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 8px 0 4px;
+      }
+      p {
+        line-height: 1.55;
+      }
+      .profiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
+        margin: 13px 0 18px;
+      }
+      .profile {
+        background: #f4f7fb;
+        border: 1px solid #dae4f0;
+        border-radius: 10px;
+        padding: 10px 5px;
+        font-weight: 700;
+        font-size: 11px;
+        color: #284369;
+      }
+      .profile.active {
+        background: #e9f2ff;
+        border-color: #2563eb;
+        color: #1556a6;
+      }
+      .search {
+        width: 100%;
+        border: 1px solid #d6dfeb;
+        border-radius: 9px;
+        padding: 10px;
+        margin: 8px 0;
+      }
+      .nodes {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        max-height: 52vh;
+        overflow: auto;
+      }
+      .node {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        border: 0;
+        border-radius: 8px;
+        padding: 9px;
+        background: transparent;
+        text-align: left;
+        color: #526478;
+        font-size: 11px;
+      }
+      .node.current {
+        background: #eaf2ff;
+        color: #154db1;
+        font-weight: 800;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 100%;
+        background: #b7c5d7;
+        flex-shrink: 0;
+      }
+      .node.current .dot {
+        background: #2563eb;
+      }
+      main {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .toolbar {
+        padding: 13px 19px;
+        background: white;
+        border-bottom: 1px solid #dce4ef;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .title {
+        flex: 1;
+        min-width: 200px;
+      }
+      .title h1 {
+        font-size: 17px;
+        margin: 3px 0;
+      }
+      .title small {
+        color: #66758a;
+        font-size: 11px;
+      }
+      .action {
+        border: 1px solid #cad6e7;
+        background: white;
+        border-radius: 8px;
+        color: #1b3b67;
+        font-weight: 700;
+        font-size: 11px;
+        padding: 10px 12px;
+      }
+      .action.primary {
+        background: #2563eb;
+        color: white;
+        border-color: #2563eb;
+      }
+      .content {
+        overflow: auto;
+        padding: 18px;
+        flex: 1;
+      }
+      .workspace {
+        max-width: 1100px;
+        margin: auto;
+      }
+      .notice {
+        background: #fff9e8;
+        border: 1px solid #f0deab;
+        color: #765a17;
+        border-radius: 9px;
+        padding: 10px 13px;
+        font-size: 11px;
+        margin-bottom: 13px;
+      }
+      .preview {
+        background: white;
+        border: 1px solid #dce5f0;
+        border-radius: 14px;
+        box-shadow: 0 7px 32px #16315310;
+        overflow: hidden;
+      }
+      .frame {
+        width: 100%;
+        height: min(65vh, 750px);
+        border: 0;
+        display: block;
+        background: #eef2f6;
+      }
+      .placeholder {
+        padding: 55px 22px;
+        text-align: center;
+        min-height: 200px;
+        color: #5d6c7c;
+      }
+      .placeholder h3 {
+        color: #17243a;
+      }
+      .choices {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 0 14px;
+      }
+      .choice {
+        border: 1px solid #d5e1f3;
+        background: white;
+        padding: 11px;
+        border-radius: 9px;
+        text-align: left;
+        min-width: 145px;
+        color: #23405c;
+      }
+      .choice span {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .choice small {
+        display: block;
+        font-size: 10px;
+        color: #62778d;
+        margin-top: 5px;
+      }
+      .choice.selected {
+        border-color: #2563eb;
+        background: #eaf2ff;
+      }
+      .loading {
+        padding: 35px;
+        color: #566b82;
+        text-align: center;
+      }
+      .footnote {
+        font-size: 11px;
+        color: #6b7e92;
+        margin-top: 10px;
+      }
+      .flowlink {
+        background: transparent;
+        border: 0;
+        color: #c9defa;
+        text-decoration: underline;
+        font-size: 11px;
+      }
+      .error {
+        color: #a22;
+      }
+      .wide {
+        width: 100%;
+      }
+      @media (max-width: 800px) {
+        .shell {
+          grid-template-columns: 1fr;
+          height: auto;
+          min-height: calc(100vh - 58px);
+        }
+        aside {
+          border-bottom: 1px solid #dce4ef;
+        }
+        .nodes {
+          max-height: 145px;
+        }
+        .content {
+          padding: 10px;
+        }
+        .frame {
+          height: 62vh;
+        }
+        header {
+          padding: 10px;
+        }
+        .toolbar {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>ADVOGADO JÁ PLUS <small>· Protótipo navegável</small></strong>
+      <div class="grow"></div>
+      <a class="flowlink" href="../index.html#inventario"
+        >Voltar ao laboratório</a
+      >
+    </header>
+    <div class="shell">
+      <aside>
+        <div class="eyebrow">Experiência</div>
+        <h2>Escolha uma jornada</h2>
+        <p style="font-size: 11px; color: #66778b; margin: 0">
+          Caminhos e telas preservados do laboratório atual.
+        </p>
+        <div class="profiles" id="profiles"></div>
+        <div class="eyebrow">Pontos da jornada</div>
+        <input
+          class="search"
+          id="search"
+          placeholder="Buscar tela ou etapa"
+          aria-label="Buscar etapa"
+        />
+        <div class="nodes" id="nodes"></div>
+      </aside>
+      <main>
+        <div class="toolbar">
+          <div class="title">
+            <div class="eyebrow" id="profileLabel">Jornada</div>
+            <h1 id="currentTitle">Carregando…</h1>
+            <small id="currentMeta"></small>
+          </div>
+          <button class="action" id="back" type="button">← Voltar</button
+          ><button class="action primary" id="next" type="button">
+            Avançar →</button
+          ><button class="action" id="restart" type="button">Reiniciar</button>
+        </div>
+        <div class="content">
+          <div class="workspace">
+            <div class="notice">
+              Modo demonstração: os caminhos de navegação refletem as jornadas
+              existentes. As telas são prévias visuais estáticas; botões dentro
+              delas não executam processos reais. Use <b>Avançar</b> e as opções
+              de decisão para navegar.
+            </div>
+            <div class="choices" id="choices"></div>
+            <div class="preview" id="preview">
+              <div class="loading">Preparando tela…</div>
+            </div>
+            <div class="footnote" id="note"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="app.js" defer></script>
+  </body>
+</html>

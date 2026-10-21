@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function createSubscriptionCheckout(input: Record<string, any>) { const planId=required(input.planId,"planId"); const plan=db.find("plans",planId); if(!plan) throw new Error("Plano não encontrado"); return { id:uid("checkout"), mode:"subscription", planId, userId:required(input.userId,"userId"), amount:plan.amount??plan.price??0, currency:plan.currency??"BRL", status:"open", url:`https://mock.stripe.local/checkout/${uid("session")}`, createdAt:now() }; }

@@ -1,0 +1,1 @@
+import { db } from "../../../data/database/db"; export function createSubscription(input:any){ const value={id:input.id??`sub-${Date.now()}`,status:"active",createdAt:new Date().toISOString(),...input}; db.insert("subscriptions",value); return value; }

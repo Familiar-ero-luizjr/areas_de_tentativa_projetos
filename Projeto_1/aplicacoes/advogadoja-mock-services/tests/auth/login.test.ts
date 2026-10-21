@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { authService } from "../../src/modules/auth/auth.service"; describe("auth",()=>{it("faz login mock",async()=>{const u=await authService.signIn("mariana.souza@example.com","x");expect(u.uid).toBeTruthy();});});

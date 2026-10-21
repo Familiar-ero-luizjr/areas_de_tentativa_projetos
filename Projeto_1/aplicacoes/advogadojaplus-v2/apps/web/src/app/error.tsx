@@ -1,0 +1,1 @@
+"use client";export default function Error({reset}:{error:Error;reset:()=>void}){return <main style={{padding:30}}><h1>Não foi possível carregar</h1><button onClick={reset}>Tentar novamente</button></main>}

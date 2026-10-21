@@ -1,0 +1,1 @@
+import Page from "@/views/pages/recuperar-senha";export default function Route(){return <Page/>}

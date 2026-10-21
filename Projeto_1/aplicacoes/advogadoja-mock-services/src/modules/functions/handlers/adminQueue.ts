@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db";
+export default function adminQueue(input: Record<string, any>) { const kind=input.kind??"all"; const result:any={}; if(kind==="all"||kind==="oab") result.oab=db.collection("lawyerPrivate").filter((x:any)=>x.oabStatus==="pending"); if(kind==="all"||kind==="profiles") result.profiles=db.collection("lawyers").filter((x:any)=>x.profileStatus==="pending_review"); if(kind==="all"||kind==="reports") result.reports=db.collection("reports").filter((x:any)=>x.status==="open"); return result; }

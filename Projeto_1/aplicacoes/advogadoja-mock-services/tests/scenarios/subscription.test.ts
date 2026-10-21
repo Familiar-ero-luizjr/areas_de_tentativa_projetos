@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { scenarioRegistry } from "../../src/scenarios/registry"; describe("scenario subscription",()=>{it("tem checkout",()=>expect(scenarioRegistry.some(s=>s.id==="checkout-success")).toBe(true));});

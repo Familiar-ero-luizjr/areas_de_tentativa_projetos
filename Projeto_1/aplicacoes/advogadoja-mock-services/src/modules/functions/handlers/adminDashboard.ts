@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db";
+export default function adminDashboard() { return { users:db.collection("users").length, lawyers:db.collection("lawyers").length, clients:db.collection("clients").length, pendingOab:db.collection("lawyerPrivate").filter((x:any)=>x.oabStatus==="pending").length, openReports:db.collection("reports").filter((x:any)=>x.status==="open").length, openTickets:db.collection("supportTickets").filter((x:any)=>x.status==="open").length, activeSubscriptions:db.collection("subscriptions").filter((x:any)=>x.status==="active").length }; }

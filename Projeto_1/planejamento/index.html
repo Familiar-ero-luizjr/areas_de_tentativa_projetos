@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Plano vivo de execução e memória verificável do laboratório Advogado Já.">
+  <title>Advogado Já · Planejamento e Memória</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<!-- ============================================================
+  01 | CABEÇALHO: navegação, origem dos arquivos e atualização
+  Não armazena dados funcionais. Os dados estão em JSON e CSV.
+============================================================= -->
+<header class="topbar">
+  <div class="brand-icon" aria-hidden="true">AJ</div>
+  <div class="brand"><strong>Planejamento e memória</strong><small>Advogado Já · laboratório funcional</small></div>
+  <div class="top-actions">
+    <span class="file-status" id="fileStatus"><span class="status-dot"></span> Iniciando...</span>
+    <button class="btn btn-ghost" id="refresh" title="Recarrega planejamento.json e registros.csv da mesma pasta"><span aria-hidden="true">↻</span> Recarregar arquivos</button>
+  </div>
+</header>
+<!-- ============================================================
+  02 | FERRAMENTAS DE DADOS: importação e exportação explícitas
+  As alterações feitas na página não gravam no repositório.
+============================================================= -->
+<section class="data-toolbar" aria-label="Ferramentas de dados">
+  <div class="source-info"><span class="source-dot"></span><strong>Dados externos</strong><span>planejamento.json + registros.csv</span></div>
+  <div class="toolbar-actions">
+    <button id="importJson" class="btn">Importar JSON</button>
+    <button id="importCsv" class="btn">Importar CSV</button>
+    <button id="exportJson" class="btn">Exportar JSON</button>
+    <button id="exportCsv" class="btn">Exportar CSV</button>
+    <button id="exportSnapshot" class="btn btn-primary" title="JSON completo com planejamento e registros">Snapshot completo</button>
+    <input id="jsonPicker" type="file" accept=".json,application/json" class="sr-only">
+    <input id="csvPicker" type="file" accept=".csv,text/csv,text/plain" class="sr-only">
+  </div>
+</section>
+<!-- ============================================================
+  03 | NAVEGAÇÃO INTERNA: visão geral / roteiro / memória / guia
+============================================================= -->
+<main class="page" id="appMain">
+  <section id="banner" class="banner hidden" role="status"></section>
+  <div class="intro">
+    <div>
+      <div class="eyebrow">CENTRAL DE CONTROLE FUNCIONAL</div>
+      <h1>Nada decidido se perde. Nada pendente vira verdade.</h1>
+      <p>Registre cada decisão, questão e ideia com ID, origem, jornada e etapa. A sequência vive no JSON; as descobertas, no CSV.</p>
+    </div>
+    <div class="intro-actions"><button id="addRecordTop" class="btn btn-primary">+ Novo registro</button></div>
+  </div>
+  <div class="metrics" aria-label="Indicadores">
+    <div class="metric"><span>Etapas do roteiro</span><strong id="metricSteps">—</strong><small id="metricStepsSub">aguardando JSON</small></div>
+    <div class="metric"><span>Registros e evidências</span><strong id="metricRecords">—</strong><small id="metricRecordsSub">aguardando CSV</small></div>
+    <div class="metric"><span>Registros confirmados</span><strong id="metricDecisions">—</strong><small>nunca inclui propostas</small></div>
+    <div class="metric"><span>Itens a analisar</span><strong id="metricPending">—</strong><small>dúvidas, ideias e propostas</small></div>
+  </div>
+  <nav class="view-tabs" role="tablist" aria-label="Visões do planejamento">
+    <button role="tab" class="view-tab active" data-view="visao" aria-selected="true">Visão geral</button>
+    <button role="tab" class="view-tab" data-view="roteiro" aria-selected="false">Sequência de trabalho</button>
+    <button role="tab" class="view-tab" data-view="registros" aria-selected="false">Memória de decisões <span id="recordsPill" class="number-pill">0</span></button>
+    <button role="tab" class="view-tab" data-view="guia" aria-selected="false">Como atualizar</button>
+  </nav>
+  <!-- 04 | VISÃO GERAL: jornadas e fase atual -->
+  <section class="view active" data-view-panel="visao">
+    <div class="section-heading"><div><h2>Jornadas de trabalho</h2><p>Estudante pertence à conta Cliente: não é uma quarta jornada independente.</p></div></div>
+    <div id="journeys" class="journey-grid" aria-live="polite"></div>
+    <div class="overview-grid">
+      <article class="surface"><div class="section-heading"><div><h2>Roteiro em fases</h2><p>30 etapas agrupadas por responsabilidade.</p></div><button class="link-btn" data-switch="roteiro">Ver todas →</button></div><div id="phasesOverview" class="phase-mini-list"></div></article>
+      <article class="surface"><div class="section-heading"><div><h2>Banco de ideias e pendências</h2><p>Tudo fica registrado até ser analisado.</p></div><button class="link-btn" data-switch="registros">Ver registros →</button></div><div id="pendingOverview" class="pending-list"></div></article>
+    </div>
+  </section>
+  <!-- 05 | ROTEIRO: edição local de estados com exportação JSON -->
+  <section class="view" data-view-panel="roteiro">
+    <div class="section-heading"><div><h2>Sequência atualizada</h2><p>Altere o estado de uma etapa; depois exporte o JSON para persistir no repositório.</p></div><div class="flex-line"><label class="control-label" for="stepFilter">Estado</label><select id="stepFilter" class="select"><option value="">Todos</option><option value="nao_iniciado">Não iniciado</option><option value="em_andamento">Em andamento</option><option value="concluido">Concluído</option><option value="bloqueado">Bloqueado</option></select></div></div>
+    <div id="phases" class="phases"></div>
+  </section>
+  <!-- 06 | REGISTROS: filtro, edição, importação e exportação CSV -->
+  <section class="view" data-view-panel="registros">
+    <div class="section-heading"><div><h2>Registro de decisões e ideias</h2><p>Uma ideia capturada não significa uma implementação aprovada.</p></div><button id="addRecord" class="btn btn-primary">+ Novo registro</button></div>
+    <div class="filters surface">
+      <label class="field-grow"><span>Pesquisar</span><input id="recordSearch" type="search" placeholder="Título, ID, detalhes, etapa, serviço..." autocomplete="off"></label>
+      <label><span>Jornada</span><select id="journeyFilter"><option value="">Todas</option><option value="geral">Geral</option><option value="cliente">Cliente</option><option value="advogado">Advogado</option><option value="administrador">Administrador</option></select></label>
+      <label><span>Tipo</span><select id="typeFilter"><option value="">Todos</option></select></label>
+      <label><span>Estado</span><select id="statusFilter"><option value="">Todos</option></select></label>
+    </div>
+    <div id="registerSummary" class="result-summary" role="status"></div>
+    <div id="registerList" class="record-grid"></div>
+    <div class="centered"><button id="showMore" class="btn hidden">Mostrar mais</button></div>
+  </section>
+  <!-- 07 | GUIA: contrato de dados e procedimento GitHub -->
+  <section class="view" data-view-panel="guia">
+    <div class="overview-grid guide-grid">
+      <article class="surface"><h2>Onde cada informação fica</h2><div class="guide-row"><code>planejamento.json</code><span>Jornadas, fases, 30 etapas, status de execução e regras do roteiro.</span></div><div class="guide-row"><code>registros.csv</code><span>Decisões, propostas, ideias, perguntas, riscos e referências rastreáveis.</span></div><div class="guide-row"><code>index.html</code><span>Interface da aba. Não deve ser editado para acrescentar decisões.</span></div><div class="guide-row"><code>app.js</code><span>Carregamento, validação, filtros e importação/exportação.</span></div></article>
+      <article class="surface"><h2>Como salvar sem perder nada</h2><ol class="instruction-list"><li>Abra a aba no laboratório pelo servidor local ou GitHub Pages.</li><li>Edite registros e estados. O indicador mostrará alterações em memória.</li><li>Exporte o CSV depois de editar registros ou o JSON depois de editar etapas.</li><li>Substitua o arquivo correspondente na pasta <code>planejamento/</code> do GitHub e faça commit.</li><li>Recarregue a aba: ela lê os dois arquivos publicados novamente.</li></ol><p class="guide-hint">Ao importar, os registros são substituídos pelo arquivo importado. Exporte sua versão atual antes de importar outra.</p></article>
+      <article class="surface"><h2>Regras anti-esquecimento</h2><div id="rules" class="rules"></div></article>
+      <article class="surface"><h2>Validação e limitações</h2><p>O navegador não pode gravar diretamente em arquivos locais nem enviar commits ao GitHub sem uma integração autenticada. Os botões exportam arquivos para você substituir no repositório.</p><p>Para carregar arquivos automaticamente, a pasta precisa ser servida por HTTP/HTTPS. Se abrir em <code>file://</code>, use os botões de importação manual.</p><p>Não armazenar senhas, chaves privadas, documentos pessoais reais ou tokens nestes arquivos, especialmente num GitHub público.</p></article>
+    </div>
+  </section>
+  <footer class="footer"><span id="sourceDetails">Fonte: aguardando leitura...</span><span>Versão 1 · decisões rastreáveis por ID</span></footer>
+</main>
+<!-- ============================================================
+  08 | MODAL DE EDIÇÃO DE REGISTRO (independente do fluxo do app)
+  Não cria telas adicionais no produto Advogado Já.
+============================================================= -->
+<dialog id="recordDialog" class="edit-dialog" aria-labelledby="dialogTitle">
+  <form id="recordForm" novalidate>
+    <div class="dialog-header"><div><span class="eyebrow">MEMÓRIA DO PROJETO</span><h2 id="dialogTitle">Novo registro</h2></div><button type="button" class="close-btn" id="closeDialog" aria-label="Fechar">×</button></div>
+    <div class="dialog-body">
+      <div class="dialog-grid"><label><span>ID</span><input name="id" id="fieldId" readonly></label><label><span>Tipo *</span><select name="tipo" id="fieldTipo" required></select></label></div>
+      <label><span>Título *</span><input name="titulo" maxlength="180" required placeholder="O que não podemos esquecer?"></label>
+      <label><span>Descrição *</span><textarea name="descricao" rows="4" maxlength="20000" required placeholder="Contexto, funcionamento esperado, dúvidas e exemplos..."></textarea></label>
+      <div class="dialog-grid"><label><span>Jornada</span><select name="jornada" id="fieldJornada"><option value="geral">Geral / Compartilhada</option><option value="cliente">Cliente (inclui Estudante)</option><option value="advogado">Advogado</option><option value="administrador">Administrador</option></select></label><label><span>Etapa relacionada</span><select name="etapa_id" id="fieldEtapa"><option value="">Sem etapa específica</option></select></label></div>
+      <div class="dialog-grid"><label><span>Estado</span><select name="status" id="fieldStatus"></select></label><label><span>Prioridade</span><select name="prioridade" id="fieldPriority"></select></label></div>
+      <label><span>Artefatos afetados (separe com |)</span><input name="artefatos" placeholder="Entrevista|Telas|Banco|Prototipo"></label>
+      <label><span>Origem / evidência</span><input name="origem" placeholder="Conversa, entrevista, arquivo, legado..."></label>
+      <label><span>Observações e próximos passos</span><textarea name="observacoes" rows="3" maxlength="15000"></textarea></label>
+      <p class="guide-hint">Somente marque <strong>Confirmado</strong> quando houver decisão explícita. Ao salvar, exporte o CSV para persistir.</p>
+    </div>
+    <div class="dialog-footer"><button id="cancelDialog" type="button" class="btn">Cancelar</button><button class="btn btn-primary" type="submit">Salvar registro</button></div>
+  </form>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { firestoreService } from "../../src/modules/firestore/firestore.service"; describe("firestore write",()=>{it("grava doc",async()=>{await firestoreService.set("users","test-user",{name:"Teste"});expect(await firestoreService.get("users","test-user")).not.toBeNull();});});

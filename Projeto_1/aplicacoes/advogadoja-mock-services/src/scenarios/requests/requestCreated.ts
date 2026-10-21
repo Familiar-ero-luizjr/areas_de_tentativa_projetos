@@ -1,0 +1,2 @@
+import type { Scenario } from "../scenario.types"; import createContactRequest from "../../modules/functions/handlers/createContactRequest";
+const scenario:Scenario={id:"request-created",title:"Solicitação criada",description:"Cria solicitação pendente cliente → advogado.",steps:[{name:"Criar solicitação",run:()=>createContactRequest({clientId:"client-001",lawyerId:"lawyer-001",subject:"Solicitação de cenário"})}]};export default scenario;

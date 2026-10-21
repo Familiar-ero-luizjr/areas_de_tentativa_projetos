@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import paymentWebhook from "../../src/modules/functions/handlers/paymentWebhook"; describe("payment",()=>{it("aceita webhook",()=>expect(paymentWebhook({type:"invoice.payment_succeeded",data:{}}).received).toBe(true));});

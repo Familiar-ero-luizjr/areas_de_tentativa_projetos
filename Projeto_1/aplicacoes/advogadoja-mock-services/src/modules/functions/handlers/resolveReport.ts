@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, required } from "./_helpers";
+export default function resolveReport(input: Record<string, any>) { const reportId=required(input.reportId,"reportId"); const item=db.update("reports",reportId,{status:"resolved",resolution:input.resolution??"resolved",resolvedBy:input.adminId??"admin-001",resolvedAt:now()}); if(!item) throw new Error("Denúncia não encontrada"); return item; }

@@ -1,0 +1,1 @@
+import { logger } from "./logger"; export const requestLogger={request:(method:string,path:string,body?:unknown)=>logger.write("info","request",{method,path,body}),response:(status:number,path:string,data?:unknown)=>logger.write(status>=400?"error":"info","response",{status,path,data})};

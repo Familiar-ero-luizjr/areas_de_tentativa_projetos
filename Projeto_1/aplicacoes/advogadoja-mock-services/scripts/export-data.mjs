@@ -1,0 +1,1 @@
+import fs from "node:fs"; import path from "node:path"; const src=path.join(process.cwd(),"mock-data/firebase/firestore.json"); const out=path.join(process.cwd(),"mock-data/export-firestore.json"); fs.copyFileSync(src,out); console.log(out);

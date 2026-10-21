@@ -1,0 +1,1 @@
+import { logger } from "./logger"; export const eventLogger={info:(event:string,data?:unknown)=>logger.write("info",event,data),warn:(event:string,data?:unknown)=>logger.write("warn",event,data),error:(event:string,data?:unknown)=>logger.write("error",event,data)};

@@ -1,0 +1,2 @@
+import type { Scenario } from "../scenario.types"; import declineContactRequest from "../../modules/functions/handlers/declineContactRequest";
+const scenario:Scenario={id:"request-declined",title:"Solicitação recusada",description:"Recusa request-004.",steps:[{name:"Recusar",run:()=>declineContactRequest({requestId:"request-004",actorId:"lawyer-004",reason:"Cenário de teste"})}]};export default scenario;

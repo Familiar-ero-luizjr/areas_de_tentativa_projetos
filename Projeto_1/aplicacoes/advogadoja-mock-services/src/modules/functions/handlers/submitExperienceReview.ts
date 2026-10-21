@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function submitExperienceReview(input: Record<string, any>) { const review={id:uid("review"),requestId:required(input.requestId,"requestId"),clientId:required(input.clientId,"clientId"),lawyerId:required(input.lawyerId,"lawyerId"),rating:Number(input.rating??5),comment:String(input.comment??""),createdAt:now(),updatedAt:now()}; db.insert("experienceReviews",review); return review; }

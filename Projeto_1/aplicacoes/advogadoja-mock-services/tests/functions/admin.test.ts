@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import adminDashboard from "../../src/modules/functions/handlers/adminDashboard"; describe("admin",()=>{it("retorna métricas",()=>expect(adminDashboard().users).toBeGreaterThan(0));});

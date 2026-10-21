@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { scenarioRegistry } from "../../src/scenarios/registry"; describe("scenario onboarding",()=>{it("tem cenários",()=>expect(scenarioRegistry.some(s=>s.id==="oab-pending")).toBe(true));});

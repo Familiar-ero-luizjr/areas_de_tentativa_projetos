@@ -1,0 +1,7 @@
+'use client';
+import {useState}from 'react';import{useRouter}from'next/navigation';import{AppShell}from'@/components/layout/AppShell';import{PageSection}from './LoginPage.styles';
+import {useLoginPage} from './LoginPage.hooks';
+export default function LoginPage(){
+ const {router,email,setEmail,password,setPassword,busy,submit}=useLoginPage();
+ return <AppShell title="Entre na sua conta"><PageSection><p className="lead">Acesse sua jornada na plataforma.</p><form onSubmit={submit}><label className="field"><span>E-mail</span><input type="email" value={email} onChange={e=>setEmail(e.target.value)} required/></label><label className="field"><span>Senha</span><input type="password" value={password} onChange={e=>setPassword(e.target.value)} required/></label><button type="button" className="textLink" onClick={()=>router.push('/recuperar-senha')}>Esqueci minha senha</button><button className="primaryBtn full" type="submit" disabled={busy}>{busy?'Entrando…':'Entrar →'}</button></form><div className="orLine">ou</div><button className="secondaryBtn full" onClick={()=>router.push('/em-construcao')}>Continuar com Google</button><button className="secondaryBtn full" onClick={()=>router.push('/em-construcao')}>Continuar com Apple</button><p className="hint">Ainda não tem conta?</p><button className="textLink" onClick={()=>router.push('/cadastro/tipo-conta')}>Criar uma conta</button></PageSection></AppShell>;
+}

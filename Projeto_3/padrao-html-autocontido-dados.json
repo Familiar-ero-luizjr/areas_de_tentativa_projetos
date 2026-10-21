@@ -1,0 +1,768 @@
+{
+  "examples": {
+    "manifest": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"app\": { \"id\": \"minha-aplicacao\", \"title\": \"Meu HTML Autocontido\" },\n  \"entry\": { \"route\": \"#/inicio\", \"layout\": \"principal\" },\n  \"registries\": [\"pages\", \"components\", \"services\", \"relations\"],\n  \"capabilities\": { \"mocks\": true, \"offline\": true }\n}",
+    "source": "aplicacao/\n├── app.manifest.json          # identidade e montagem\n├── interface/\n│   ├── shell.html             # estrutura global\n│   ├── paginas/               # telas independentes\n│   └── componentes/           # fragmentos HTML reutilizáveis\n├── estilos/\n│   ├── tokens.css             # cores, espaçamento, tipografia\n│   ├── base.css               # reset, acessibilidade\n│   ├── layout.css             # grade, navegação, shell\n│   └── componentes/           # estilos por componente\n├── dados/\n│   ├── schema/                # contratos e validação\n│   ├── seeds/                 # dados padrão editáveis\n│   └── catalogos/             # conteúdo e listas estáticas\n├── mocks/                     # OPCIONAL\n│   ├── cenarios.json          # cenários de dados fictícios\n│   └── handlers.js            # respostas simuladas\n├── relacoes/\n│   ├── relacoes.json          # arestas e regras declarativas\n│   └── engine.js              # indexação e consulta\n├── runtime/\n│   ├── bootstrap.js           # ordem de inicialização\n│   ├── registry.js            # módulos/componentes/serviços\n│   ├── router.js              # navegação por hash\n│   ├── store.js               # estado em memória\n│   └── event-bus.js           # eventos com contratos\n├── servicos/\n│   ├── clientes.service.js    # lógica por domínio\n│   └── adapters/              # mock / API real, se aplicável\n├── assets/                    # SVG, imagens, ícones, fontes licenciadas\n├── tests/                     # validação automatizada\n├── ferramentas/build.py       # incorpora CSS/JS/JSON/assets\n└── dist/aplicacao.html        # ARQUIVO FINAL AUTÔNOMO",
+    "final": "<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <title>Minha aplicação</title>\n  <style id=\"bundle-css\">/* CSS agrupado por camada */</style>\n</head>\n<body>\n  <div id=\"app\" role=\"application\"></div>\n  <script id=\"bundle-data\" type=\"application/json\">\n    {\"manifest\":{},\"pages\":[],\"entities\":[],\"mocks\":{},\"relations\":[]}\n  </script>\n  <script>/* JS compilado em ordem definida no manifesto */</script>\n</body>\n</html>",
+    "pages": "{\n  \"pages\": [\n    {\"id\":\"inicio\",\"path\":\"/inicio\",\"title\":\"Início\",\"component\":\"page.home\",\"layout\":\"principal\"},\n    {\"id\":\"clientes\",\"path\":\"/clientes\",\"title\":\"Clientes\",\"component\":\"page.clients\",\"layout\":\"principal\"},\n    {\"id\":\"cliente-detalhe\",\"path\":\"/clientes/:id\",\"component\":\"page.client.detail\",\"layout\":\"principal\"}\n  ]\n}",
+    "styles": ":root {\n  --color-bg: #f7f8fc;\n  --color-text: #17243a;\n  --color-brand: #315cdb;\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --radius-md: 12px;\n}\n[data-theme=\"dark\"] { --color-bg: #111827; --color-text: #f1f5f9; }\n/* componentes usam tokens; evite cores soltas por página */",
+    "data": "{\n  \"schemaVersion\": 1,\n  \"entities\": {\n    \"clientes\": [\n      {\"id\":\"cli-001\",\"name\":\"Cliente Exemplo\",\"status\":\"ativo\"}\n    ],\n    \"pedidos\": [\n      {\"id\":\"ped-001\",\"clienteId\":\"cli-001\",\"total\":180}\n    ]\n  }\n}",
+    "mock": "{\n  \"enabled\": true,\n  \"scenario\": \"demonstracao\",\n  \"latencyMs\": 100,\n  \"datasets\": {\n    \"demonstracao\": {\n      \"clientes\": [{\"id\":\"cli-001\",\"name\":\"Cliente Exemplo\"}],\n      \"pedidos\": [{\"id\":\"ped-001\",\"clienteId\":\"cli-001\"}]\n    },\n    \"vazio\": {\"clientes\":[],\"pedidos\":[]}\n  }\n}",
+    "adapters": "// Contrato idêntico no mock e na integração real:\nconst clienteRepository = {\n  list: () => Promise.resolve([]),\n  getById: (id) => Promise.resolve(null)\n};\n\n// Escolha do adaptador em configuração:\n// adapter = config.mode === 'mock' ? mockAdapter : apiAdapter;\n// IMPORTANTE: uma API real exige servidor e conexão; file:// não a simula.",
+    "relations": "{\n  \"relations\": [\n    {\"id\":\"rel-01\",\"kind\":\"belongsTo\",\"from\":\"pedidos.clienteId\",\"to\":\"clientes.id\",\"required\":true},\n    {\"id\":\"rel-02\",\"kind\":\"navigatesTo\",\"from\":\"page.home\",\"to\":\"page.clients\"}\n  ]\n}",
+    "relationengine": "// Esboço do contrato (não código de execução importado):\nindexById(\"clientes\", clientes);       // O(1) por ID médio\nvalidateForeignKeys(relations, entities); // relatórios de ausências\ngetRelated(\"cli-001\", \"pedidos\");    // consulta orientada a índices\n// NUNCA usar eval em expressões salvas no JSON.",
+    "store": "{\n  \"state\": {\n    \"route\": \"/inicio\",\n    \"session\": { \"user\": null },\n    \"ui\": { \"theme\": \"light\", \"sidebarOpen\": true },\n    \"filters\": { \"clients\": \"\" }\n  }\n}",
+    "event": "{\n  \"events\": [\n    {\"name\":\"client:selected\",\"payload\":{\"id\":\"string\"}},\n    {\"name\":\"route:changed\",\"payload\":{\"path\":\"string\"}},\n    {\"name\":\"data:updated\",\"payload\":{\"entity\":\"string\",\"id\":\"string\"}}\n  ]\n}",
+    "registry": "{\n  \"components\": [\n    {\"id\":\"page.home\",\"module\":\"pages/home\",\"mount\":\"mountHome\"},\n    {\"id\":\"page.clients\",\"module\":\"pages/clients\",\"mount\":\"mountClients\"},\n    {\"id\":\"ui.modal\",\"module\":\"components/modal\",\"mount\":\"mountModal\"}\n  ],\n  \"modules\": [\n    {\"id\":\"store\",\"deps\":[]},\n    {\"id\":\"relations\",\"deps\":[\"store\"]},\n    {\"id\":\"router\",\"deps\":[\"store\",\"components\"]}\n  ]\n}",
+    "router": "NAVEGAÇÃO EM HTML ÚNICO (file://)\n\n#/inicio                  → page.home\n#/clientes                → page.clients\n#/clientes/cli-001        → page.client.detail\n\nO roteador lê location.hash, procura a rota no registro,\ndesmonta a página anterior e monta a próxima no mesmo #app.\nNão requer múltiplos HTMLs nem rewrites de servidor.",
+    "assets": "{\n  \"assets\": [\n    {\"id\":\"logo\",\"source\":\"assets/logo.svg\",\"mime\":\"image/svg+xml\",\"mode\":\"inline\"},\n    {\"id\":\"icone\",\"source\":\"assets/icon.png\",\"mime\":\"image/png\",\"mode\":\"data-uri\"}\n  ]\n}",
+    "bootstrap": "1. Ler e validar o manifest + JSON embutido\n2. Instalar tratamento global de erros\n3. Criar registries (componentes/serviços)\n4. Iniciar storage e state store\n5. Carregar dados e selecionar adapter (mock / local)\n6. Criar índices / validar relações\n7. Registrar componentes, páginas e eventos\n8. Iniciar router por hash\n9. Montar layout + página inicial\n10. Exibir estado pronto (ou erro recuperável)",
+    "build": "FONTE EDITÁVEL\n  HTML fragmentos  +  CSS modular  +  JS modular  +  JSON  +  assets\n               │\n               ▼\n  validar contratos → ordenar módulos → incorporar recursos\n               │\n               ▼\n           dist/aplicacao.html\n               │\n               ▼\n    testar com file:// e dados realistas",
+    "checklist": "[ ] Nenhum arquivo externo obrigatório (CDN, import, fetch local)\n[ ] Nenhum segredo incorporado\n[ ] JSON válido e IDs únicos; referências resolvidas\n[ ] Rotas cadastradas; página inexistente tratada\n[ ] Eventos registrados e listeners removidos ao desmontar\n[ ] HTML dinâmico escapado; CSP compatível quando possível\n[ ] Testes de import/export/reset/persistência\n[ ] Busca e listas grandes sem travamento perceptível\n[ ] Layout legível em mobile e teclado\n[ ] Abrir dist/aplicacao.html diretamente (file://)",
+    "flow": "ALTERAR OU CRIAR UM RECURSO\n        │\n        ├── Só muda conteúdo? → editar dados/*.json\n        ├── Só muda visual?   → editar estilos/* e componentes\n        ├── Nova tela?       → interface/paginas + pages.json\n        ├── Nova lógica?     → servicos/* ou runtime/modules\n        ├── Nova relação?    → relacoes.json + validação\n        └── Novo mock?       → mocks/cenarios.json + adapter\n        │\n        ▼\n validar → recompilar → testar o HTML final",
+    "versioning": "{\n  \"schemaVersion\": \"2.0.0\",\n  \"dataVersion\": 5,\n  \"migrations\": [\n    {\"from\":4,\"to\":5,\"id\":\"mig-004-005\",\"reason\":\"renomeia cliente.nome\"}\n  ]\n}"
+  },
+  "groups": [
+    {
+      "id": "fundamentos",
+      "label": "Fundamentos"
+    },
+    {
+      "id": "camadas",
+      "label": "Camadas do projeto"
+    },
+    {
+      "id": "execucao",
+      "label": "Execução e relações"
+    },
+    {
+      "id": "qualidade",
+      "label": "Compilação e qualidade"
+    }
+  ],
+  "manifest": {
+    "schemaVersion": "1.0.0",
+    "docId": "padrao-arquitetura-html-autocontido",
+    "title": "Arquitetura de HTML Autocontido",
+    "subtitle": "Padrão de organização para aplicações offline modulares e extensíveis",
+    "edition": "Proposta arquitetural de referência · Outubro 2026",
+    "purpose": "Documentar responsabilidades, contratos, fluxo de compilação e evolução de um HTML único."
+  },
+  "principles": [
+    {
+      "id": "p1",
+      "title": "Fonte modular",
+      "description": "Módulos, CSS, dados e interfaces têm arquivos próprios durante o desenvolvimento."
+    },
+    {
+      "id": "p2",
+      "title": "Entrega unitária",
+      "description": "O artefato distribuído incorpora os recursos necessários para executar offline."
+    },
+    {
+      "id": "p3",
+      "title": "Contratos explícitos",
+      "description": "IDs, registros, schemas, dependências e eventos são validados."
+    },
+    {
+      "id": "p4",
+      "title": "Extensão previsível",
+      "description": "Adicionar um recurso é cadastrar seu módulo no lugar certo e recompilar."
+    }
+  ],
+  "sections": [
+    {
+      "id": "visao",
+      "group": "fundamentos",
+      "title": "01 · Visão e princípios",
+      "summary": "Uma arquitetura de manutenção modular que produz um único HTML transportável.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "title": "Duas perspectivas",
+          "text": "DESENVOLVIMENTO (editável)                DISTRIBUIÇÃO (executável)\n\nestrutura/ ───┐\nestilos/ ─────┤\ndados/ ───────┤\nmocks/ ───────┤\nrelacoes/ ────┼────→ BUILDER ─────→ aplicacao.html\nscripts/ ─────┤                       ↑\nassets/ ──────┘                  CSS + JS + JSON\n                                tudo incorporado"
+        },
+        {
+          "type": "list",
+          "title": "Invariantes",
+          "items": [
+            "Cada responsabilidade possui endereço previsível na fonte.",
+            "Cada módulo declara seu contrato e dependências.",
+            "Dados e conteúdo mudam por JSON; lógica executável muda nos módulos JS.",
+            "O HTML final abre offline sem depender da árvore de fontes.",
+            "Não prometer tamanho ilimitado ou zero bugs: validar cargas realistas."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Diferença central",
+          "text": "O HTML final é um artefato compilado. Editar dados no navegador altera a sessão ou o storage local; não altera o arquivo .html em disco. Exporte o JSON e recompile para distribuir as mudanças."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "source",
+      "group": "fundamentos",
+      "title": "02 · Árvore de origem padrão",
+      "summary": "Um lugar óbvio para cada tipo de alteração, com áreas opcionais isoladas.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Árvore de diretórios de referência",
+          "exampleId": "source"
+        },
+        {
+          "type": "list",
+          "title": "Regras",
+          "items": [
+            "interface/ guarda estrutura sem assumir lógica de negócio.",
+            "estilos/ guarda tokens, regras globais e CSS local por componente.",
+            "dados/ guarda esquemas, conteúdo padrão, catálogos e metadados.",
+            "mocks/ existe apenas quando a aplicação exige simulação.",
+            "runtime/ guarda mecanismos genéricos; servicos/ guarda lógica de domínio.",
+            "dist/ é gerado, nunca a fonte de verdade."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Organização flexível",
+          "text": "As pastas são uma arquitetura de referência, não obrigação para todo protótipo. Projetos pequenos podem agrupar módulos, preservando a separação lógica."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "final",
+      "group": "fundamentos",
+      "title": "03 · Anatomia do HTML compilado",
+      "summary": "Um arquivo com regiões marcadas, dados incorporados e inicialização reproduzível.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Estrutura ilustrativa do HTML final",
+          "exampleId": "final"
+        },
+        {
+          "type": "list",
+          "title": "Conteúdo mínimo",
+          "items": [
+            "DOCTYPE, idioma, charset, viewport e título.",
+            "CSS consolidado e agrupado por camada.",
+            "Contêiner da aplicação, modais e regiões acessíveis.",
+            "Bloco <script type=\"application/json\"> com dados inertes.",
+            "Módulos JS concatenados/empacotados por dependência e bootstrap ao final."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Segurança de incorporação",
+          "text": "Durante a montagem, o gerador precisa escapar sequências que fechariam a tag script (ex.: <\\/script) e validar JSON. JSON nunca deve ser executado como código."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "manifest",
+      "group": "fundamentos",
+      "title": "04 · Manifesto e catálogos",
+      "summary": "O manifesto é o índice da aplicação: identidade, versão, entradas e registros.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Manifesto JSON ilustrativo",
+          "exampleId": "manifest"
+        },
+        {
+          "type": "list",
+          "title": "Separação recomendada",
+          "items": [
+            "app.manifest.json: identidade, capabilities e ponto de entrada.",
+            "pages.json: caminhos e componentes de cada tela.",
+            "components.json: IDs e mounts de componentes.",
+            "modules.json: módulos e dependências.",
+            "assets.json: recursos e estratégias de incorporação."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Uma fonte de verdade por assunto",
+          "text": "Não duplicar a mesma rota em cinco arquivos. Os registros validam IDs e dependências durante o build."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "shell",
+      "group": "camadas",
+      "title": "05 · Estrutura, layouts e componentes",
+      "summary": "As páginas não precisam repetir a navegação, o cabeçalho nem os modais.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "title": "Composição do shell",
+          "text": "DOCUMENTO HTML\n└── #app\n    ├── Layout principal\n    │   ├── Cabeçalho\n    │   ├── Menu / navegação\n    │   └── <main id=\"page-outlet\">\n    │         └── Página atual (mount/unmount)\n    ├── Região de avisos / toasts\n    └── Região de modais"
+        },
+        {
+          "type": "list",
+          "title": "Contratos",
+          "items": [
+            "Toda página tem um ID estável e um método de montagem.",
+            "Montar devolve cleanup() para remover eventos e recursos.",
+            "Componentes recebem props/dados sem acessar variáveis globais arbitrárias.",
+            "Semântica e acessibilidade são parte da interface, não decoração."
+          ]
+        },
+        {
+          "type": "example",
+          "title": "Registro de páginas",
+          "exampleId": "pages"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "css",
+      "group": "camadas",
+      "title": "06 · Estilos e design tokens",
+      "summary": "Estilos globais consistentes sem acoplamento entre telas.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "title": "Ordem lógica de CSS",
+          "text": "tokens.css\n   ↓\nbase.css\n   ↓\nlayout.css\n   ↓\ncomponents/*.css\n   ↓\npages/*.css\n   ↓\nutilities.css (mínimo)"
+        },
+        {
+          "type": "example",
+          "title": "Exemplo de tokens",
+          "exampleId": "styles"
+        },
+        {
+          "type": "list",
+          "title": "Diretrizes",
+          "items": [
+            "Uma variável de tema deve mudar aparência sem procurar cores em dezenas de arquivos.",
+            "Seletores de componente por classe ou data-attribute; evitar CSS global acidental.",
+            "Os módulos não devem injetar CSS duplicado por montagem.",
+            "Testar responsividade, foco visível e contraste."
+          ]
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "data",
+      "group": "camadas",
+      "title": "07 · Dados, schemas e contratos",
+      "summary": "Catálogos e registros estruturados separados dos componentes.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Banco local ilustrativo (JSON)",
+          "exampleId": "data"
+        },
+        {
+          "type": "list",
+          "title": "Regras",
+          "items": [
+            "IDs únicos e tipos explícitos.",
+            "Separar dado persistente de estado temporário da interface.",
+            "Validar referências e migrar mudanças de schema.",
+            "Registrar unidades, campos obrigatórios e valores padrão.",
+            "Datas e valores devem ter formatos consistentes."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "JSON como conteúdo, não como código",
+          "text": "JSON pode configurar telas, campos, rotas, permissões simuladas e relações. Não deve conter JavaScript executável, funções ou fragmentos HTML inseguros."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "mocks",
+      "group": "camadas",
+      "title": "08 · Mocks e cenários opcionais",
+      "summary": "Simulação isolada, com as mesmas interfaces de serviço da aplicação.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Configuração de mock",
+          "exampleId": "mock"
+        },
+        {
+          "type": "example",
+          "title": "Contrato de adaptador",
+          "exampleId": "adapters"
+        },
+        {
+          "type": "list",
+          "title": "Separação",
+          "items": [
+            "Dado fictício reside em mocks/cenarios.json.",
+            "Handler simulado reside em mocks/handlers.js.",
+            "Aplicação conversa com uma interface de repositório, não conhece a origem.",
+            "Trocar cenário não exige alterar telas e componentes.",
+            "Não incluir usuários reais, chaves privadas ou dados de produção."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Limite do offline",
+          "text": "Um HTML com file:// pode simular chamadas assíncronas e falhas, mas não implementa uma API real de backend, autenticação confiável ou banco remoto sem infraestrutura."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "services",
+      "group": "camadas",
+      "title": "09 · Serviços, regras e adaptadores",
+      "summary": "Regras de domínio independentes do HTML e da origem dos dados.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "title": "Fluxo de dados",
+          "text": "TELA / COMPONENTE\n        │\n        ▼\nSERVIÇO DE DOMÍNIO ──→ VALIDADOR\n        │\n        ▼\nINTERFACE DE REPOSITÓRIO\n        │\n        ├── MockAdapter\n        ├── LocalStorageAdapter\n        └── ApiAdapter (conexão externa, quando houver)"
+        },
+        {
+          "type": "list",
+          "title": "Regras",
+          "items": [
+            "Componentes não acessam datasets JSON diretamente de forma dispersa.",
+            "Serviços devolvem contratos previsíveis e tratam erros.",
+            "Adapters são selecionados por configuração, não via busca por texto no código.",
+            "Dependências devem ser passadas em criação/registro, sem singletons ocultos."
+          ]
+        },
+        {
+          "type": "example",
+          "title": "Interface de repositório",
+          "exampleId": "adapters"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "registry",
+      "group": "camadas",
+      "title": "10 · Registro de módulos e scripts",
+      "summary": "Novos scripts entram por registro e dependências, não por ordem acidental.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Registro de componentes e dependências",
+          "exampleId": "registry"
+        },
+        {
+          "type": "list",
+          "title": "Responsabilidades",
+          "items": [
+            "Cada módulo tem ID exclusivo, versão quando necessária e dependências explícitas.",
+            "O build valida módulos ausentes e possíveis ciclos.",
+            "Montadores de componentes ficam em código próprio.",
+            "Scripts devem ser incorporados na ordem topológica correta ou empacotados pelo bundler.",
+            "Evitar duplicar inicializações e listeners."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "O que não fazer",
+          "text": "Adicionar um <script> com código novo em qualquer ponto do HTML compilado é frágil. Acrescente o módulo na fonte, atualize registro e rebuild."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "relations",
+      "group": "execucao",
+      "title": "11 · Motor de relações",
+      "summary": "Índices e regras declarativas ligando registros, páginas e entidades.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "title": "Separação das responsabilidades",
+          "text": "relacoes.json ──→ VALIDADOR ──→ ENGINE\n                                      │\n                            ┌─────────┴─────────┐\n                            ▼                   ▼\n                       Índice por ID       Índice reverso\n                            │                   │\n                            └─────────┬─────────┘\n                                      ▼\n                              QUERY / RESOLVER\n                                      │\n                               TELAS / SERVIÇOS"
+        },
+        {
+          "type": "example",
+          "title": "Definições de relações",
+          "exampleId": "relations"
+        },
+        {
+          "type": "example",
+          "title": "Interface ilustrativa do motor",
+          "exampleId": "relationengine"
+        },
+        {
+          "type": "list",
+          "title": "Invariantes",
+          "items": [
+            "Relações apontam para IDs canônicos; nunca para posição em arrays.",
+            "Referências ausentes geram relatório, não erros silenciosos.",
+            "Ciclos só são proibidos nos grafos que exigem hierarquia acíclica.",
+            "Índices são construídos uma vez e atualizados quando os dados mudam.",
+            "Expressões textuais não podem ser avaliadas com eval."
+          ]
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "state",
+      "group": "execucao",
+      "title": "12 · Estado, persistência e histórico",
+      "summary": "O estado da aplicação é diferente dos dados de domínio.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "State store ilustrativo",
+          "exampleId": "store"
+        },
+        {
+          "type": "list",
+          "title": "Camadas",
+          "items": [
+            "Estado de domínio: registros e catálogos.",
+            "Estado de navegação: rota atual, parâmetros.",
+            "Estado de UI: seleção, tema, modal e filtros.",
+            "Persistência opcional: localStorage/IndexedDB com migração/limites.",
+            "Alterações de usuário: exportar JSON para backup e transferência."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Persistência não é arquivo",
+          "text": "localStorage depende do navegador, origem e privacidade; especialmente em file:// pode variar. Não substitui download/backup do JSON."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "eventbus",
+      "group": "execucao",
+      "title": "13 · Eventos e comunicação",
+      "summary": "Os módulos colaboram por contratos, sem importar detalhes de tela uns dos outros.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Catálogo de eventos",
+          "exampleId": "event"
+        },
+        {
+          "type": "diagram",
+          "title": "Ciclo de um evento",
+          "text": "AÇÃO → VALIDAR → SERVIÇO → STORE → EMIT(evento)\n                                 │              │\n                                 └──────────────┼──→ Componentes inscritos\n                                                └──→ Telemetria local (opcional)"
+        },
+        {
+          "type": "list",
+          "title": "Regras",
+          "items": [
+            "Eventos têm nomes estáveis e schema de payload.",
+            "Quem se inscreve devolve unsubscribe.",
+            "Páginas removem os subscriptions em unmount.",
+            "Evitar ciclos infinitos de evento chamando evento.",
+            "Ações transacionais ficam em serviços; event bus apenas comunica."
+          ]
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "router",
+      "group": "execucao",
+      "title": "14 · Páginas múltiplas no mesmo HTML",
+      "summary": "Uma única página física pode apresentar dezenas de telas virtuais.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Exemplo de URLs internas por hash",
+          "exampleId": "router"
+        },
+        {
+          "type": "example",
+          "title": "Manifesto de rotas",
+          "exampleId": "pages"
+        },
+        {
+          "type": "list",
+          "title": "Regras",
+          "items": [
+            "Hash routing funciona em file:// sem servidor de rotas.",
+            "Cada rota mapeia para um componente registrado.",
+            "URL inválida usa fallback de não encontrado.",
+            "Rota dinâmica valida seus parâmetros.",
+            "Mount/unmount limpa recursos da tela anterior.",
+            "Aplicações com arquivos HTML realmente separados não são um único HTML final."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Mais de uma tela ≠ múltiplos arquivos",
+          "text": "Várias telas, diálogos e layouts podem coexistir no mesmo documento usando roteamento interno. Isso é diferente de abrir um novo documento HTML físico."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "assets",
+      "group": "execucao",
+      "title": "15 · Assets, mídias e recursos",
+      "summary": "Imagens, ícones e fontes entram no bundle de forma previsível.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Registro de assets",
+          "exampleId": "assets"
+        },
+        {
+          "type": "list",
+          "title": "Estratégias",
+          "items": [
+            "SVG seguro e pequeno pode ser incorporado.",
+            "PNG/JPG podem usar data URLs e incorporação binária.",
+            "Fontes devem ter licença, tamanho e necessidade avaliados.",
+            "Evitar links CDN, @import remoto ou fetch obrigatório.",
+            "Vídeos grandes podem tornar o HTML pesado demais para uso viável."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Custo do autocontido",
+          "text": "Dados base64 aumentam o tamanho da representação e podem consumir muita memória. Prefira assets leves e carregamento sob demanda."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "bootstrap",
+      "group": "execucao",
+      "title": "16 · Inicialização e ciclo de vida",
+      "summary": "O sistema sobe de forma determinística, com erros rastreáveis.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Pipeline de inicialização",
+          "exampleId": "bootstrap"
+        },
+        {
+          "type": "list",
+          "title": "Estados do app",
+          "items": [
+            "booting: exibir inicialização.",
+            "ready: montar rota selecionada.",
+            "degraded: exibir falha de módulo/asset não crítico.",
+            "error: exibir diagnóstico e mecanismo de recuperação."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Contrato de inicialização",
+          "text": "Nenhuma tela deve iniciar antes de validar dados essenciais e preparar registries. O bootstrap é o único dono da inicialização."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "quality",
+      "group": "qualidade",
+      "title": "17 · Desempenho em projetos grandes",
+      "summary": "Escalar por modularização, índices e renderização incremental.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "title": "Estratégia de custo",
+          "text": "TAMANHO NO DISCO  ≠  MEMÓRIA TOTAL  ≠  TEMPO DE RENDER\n\nDados extensos → compressão opcional → leitura sob demanda\nListas extensas → paginação/virtualização\nRelações → índices Map / Set\nBusca → indexação incremental e debounce\nTelas → montar somente a rota atual"
+        },
+        {
+          "type": "list",
+          "title": "Critérios",
+          "items": [
+            "Não carregar/renderizar milhares de nós DOM no primeiro frame.",
+            "Não descomprimir todo conteúdo grande se apenas uma parte é visível.",
+            "Preferir buscas indexadas por ID; medir buscas por texto.",
+            "Medir tempo de inicialização e uso de memória com bases representativas.",
+            "Aceitar limites práticos de tamanho do arquivo e do navegador."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Realismo",
+          "text": "Nenhuma arquitetura permite HTML de tamanho literalmente ilimitado ou ausência garantida de bugs. O padrão busca previsibilidade, medição e isolamento de falhas."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "security",
+      "group": "qualidade",
+      "title": "18 · Segurança, offline e limites",
+      "summary": "Um HTML offline continua sujeito a conteúdo malicioso e restrições do navegador.",
+      "blocks": [
+        {
+          "type": "list",
+          "title": "Exigências",
+          "items": [
+            "Escapar texto de JSON antes de inseri-lo no HTML.",
+            "Sanitizar HTML rico permitido por contrato; idealmente evitar HTML arbitrário.",
+            "Não executar string como código (eval/Function).",
+            "Não embutir secrets, tokens de API, senhas nem dados de produção.",
+            "Não confiar em autorização/segurança real implementada só no cliente.",
+            "Evitar fetch/import obrigatório em file://, e não prometer comportamento idêntico em todos os navegadores.",
+            "Tratar limites de armazenamento local e falhas de importação."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Limite de confiança",
+          "text": "Qualquer pessoa com acesso ao HTML final consegue examinar os scripts e os dados embutidos. Não usar como barreira para informação sensível."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "build",
+      "group": "qualidade",
+      "title": "19 · Build e entrega autocontida",
+      "summary": "A compilação transforma fontes legíveis no artefato offline distribuível.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Pipeline de compilação",
+          "exampleId": "build"
+        },
+        {
+          "type": "list",
+          "title": "Contrato de build",
+          "items": [
+            "Validar JSON/IDs/referências antes de empacotar.",
+            "Resolver dependências e falhar quando módulos obrigatórios faltarem.",
+            "Incorporar fontes locais CSS/JS/HTML sem dependências externas.",
+            "Escapar corretamente dados embutidos em tags script.",
+            "Registrar versão/hash dos artefatos para rastreabilidade.",
+            "Não presumir que minificação é sempre necessária; priorizar debug e source maps quando útil."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Critério de aceite",
+          "text": "Abrir o HTML compilado como arquivo local, sem rede. Navegar por rotas, consultar dados, importar/exportar, operar mocks e testar falhas."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "testing",
+      "group": "qualidade",
+      "title": "20 · Testes e validação",
+      "summary": "A arquitetura deve ser testável em cada nível e também no arquivo final.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Checklist mínimo de validação",
+          "exampleId": "checklist"
+        },
+        {
+          "type": "list",
+          "title": "Camadas de teste",
+          "items": [
+            "Unitários: validadores, relações, serviços e parsers.",
+            "Contrato: consistência de schemas, IDs e registries.",
+            "Integração: mudança de dados atualiza componentes.",
+            "E2E: abrir arquivo compilado local, navegar, pesquisar, importar e exportar.",
+            "Carga: HTML grande e cenários com milhares de registros."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "Sem atalhos",
+          "text": "O build funcionar não garante que o HTML funcione. Testar o artefato realmente distribuído é parte do padrão."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "workflow",
+      "group": "qualidade",
+      "title": "21 · Como acrescentar ou remover",
+      "summary": "Mapa de manutenção: onde editar e o que atualizar.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Árvore de decisão para alterações",
+          "exampleId": "flow"
+        },
+        {
+          "type": "list",
+          "title": "Ao criar uma página",
+          "items": [
+            "Criar o componente de tela em interface/paginas ou módulo correspondente.",
+            "Registrar a rota em pages.json.",
+            "Registrar o componente no catálogo, se exigido.",
+            "Acrescentar CSS local e fixtures de teste.",
+            "Compilar e navegar até a nova rota em file://."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Ao criar mock/script/relação",
+          "items": [
+            "Mock: acrescentar dataset + handler no adaptador; validar schema.",
+            "Script: adicionar módulo e dependências no registry; testar import/order.",
+            "Relação: editar relacoes.json; revalidar chaves e índices.",
+            "Exclusão: localizar referências e limpar dependências/rotas antes de remover."
+          ]
+        },
+        {
+          "type": "note",
+          "title": "A promessa prática",
+          "text": "Mudar um recurso exige atuar em sua camada e nos contratos explicitamente relacionados — nunca procurar funções espalhadas em um monolito sem índice."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "versions",
+      "group": "qualidade",
+      "title": "22 · Versões, migração e anti-padrões",
+      "summary": "Evoluir sem quebrar dados exportados, páginas ou módulos.",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Exemplo de versionamento de dados",
+          "exampleId": "versioning"
+        },
+        {
+          "type": "list",
+          "title": "Contratos",
+          "items": [
+            "Versionar schema de dados e manifesto separadamente.",
+            "Migrações explícitas de dados antigos.",
+            "IDs persistentes não devem ser reutilizados para outra entidade.",
+            "Alterações de contratos devem informar impacto sobre consumidores.",
+            "Build reprodutível e rastreável por hash/versão."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Anti-padrões",
+          "items": [
+            "Um arquivo JS com milhares de linhas sem limites de responsabilidade.",
+            "Várias cópias do mesmo mock espalhadas pelas telas.",
+            "Acesso direto a localStorage de cada componente.",
+            "Roteamento e regras em eventos onclick dispersos.",
+            "Editar manualmente apenas o HTML compilado e perder a fonte.",
+            "Adicionar scripts de terceiros sem incorporar/validar dependências."
+          ]
+        }
+      ],
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "theme": "light",
+    "showSectionNumbers": true,
+    "showSummaryCards": true,
+    "readingWidth": "wide"
+  }
+}

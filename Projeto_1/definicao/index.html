@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#10233f" />
+    <title>Advogado Já · Entrevista por Blocos</title>
+    <style>
+      :root {
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: #19304a;
+        background: #f3f6fa;
+        --navy: #10233f;
+        --blue: #2563eb;
+        --line: #dbe5ef;
+        --muted: #667b92;
+        --green: #08745d;
+        --amber: #966515;
+        --red: #a83d4e;
+        --purple: #6550a4;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #8bb8f4;
+        outline-offset: 2px;
+      }
+      header {
+        background: var(--navy);
+        color: #fff;
+        padding: 12px clamp(14px, 3vw, 32px);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .brand {
+        flex: 1;
+        min-width: 220px;
+      }
+      .brand b {
+        display: block;
+        font-size: 15px;
+      }
+      .brand small {
+        color: #b9cce3;
+      }
+      .headtag {
+        font-size: 10px;
+        border: 1px solid #ffffff38;
+        border-radius: 99px;
+        padding: 6px 9px;
+      }
+      .page {
+        max-width: 1600px;
+        margin: auto;
+        padding: 18px clamp(10px, 2vw, 28px);
+      }
+      .top {
+        display: flex;
+        gap: 12px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .top > div:first-child {
+        flex: 1;
+      }
+      .top h1 {
+        font-size: clamp(23px, 3vw, 31px);
+        margin: 2px 0 4px;
+      }
+      .top p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .rule {
+        font-size: 10px;
+        border: 1px solid #cfe0f4;
+        background: #eef5ff;
+        color: #245a97;
+        border-radius: 9px;
+        padding: 8px 10px;
+      }
+      .toolbar {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 9px;
+        display: flex;
+        gap: 7px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .toolbar input {
+        flex: 1;
+        min-width: 190px;
+      }
+      .field,
+      .toolbar input,
+      .toolbar select {
+        border: 1px solid #cbd8e6;
+        border-radius: 8px;
+        padding: 8px 9px;
+        background: #fff;
+        color: #263f5b;
+      }
+      .btn {
+        border: 1px solid #cbd8e6;
+        background: #fff;
+        color: #315a86;
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 11px;
+        font-weight: 800;
+      }
+      .btn.primary {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+      }
+      .btn.good {
+        background: #eefaf6;
+        color: #08705a;
+        border-color: #bee8db;
+      }
+      .btn.danger {
+        color: #9c3145;
+        background: #fff5f6;
+        border-color: #efcbd1;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 13px;
+      }
+      .sidebar {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 10px;
+        align-self: start;
+        position: sticky;
+        top: 12px;
+      }
+      .sidebar h2 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #6d8198;
+        margin: 4px 7px 9px;
+      }
+      .blockbtn {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        border-radius: 9px;
+        padding: 10px;
+        text-align: left;
+        color: #466079;
+        margin: 2px 0;
+      }
+      .blockbtn:hover,
+      .blockbtn.active {
+        background: #edf4ff;
+        color: #174f91;
+      }
+      .blockbtn b {
+        display: block;
+        font-size: 11px;
+      }
+      .blockbtn span {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 9px;
+        margin-top: 4px;
+        color: #71869c;
+      }
+      .bar {
+        height: 4px;
+        background: #e8eef5;
+        border-radius: 9px;
+        margin-top: 6px;
+        overflow: hidden;
+      }
+      .bar i {
+        display: block;
+        height: 100%;
+        background: #5d8fd1;
+      }
+      .workspace {
+        min-width: 0;
+      }
+      .blockhead {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 10px;
+      }
+      .crumb {
+        font-size: 10px;
+        color: #71859b;
+      }
+      .blockhead h2 {
+        font-size: 19px;
+        margin: 4px 0;
+      }
+      .stats {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .pill {
+        font-size: 9px;
+        padding: 4px 7px;
+        border: 1px solid #d8e2ed;
+        border-radius: 99px;
+        color: #60758a;
+        background: #f8fafc;
+      }
+      .pill.resolvida {
+        color: var(--green);
+        background: #eefaf6;
+        border-color: #bee6d9;
+      }
+      .pill.revisar {
+        color: var(--amber);
+        background: #fff8e9;
+        border-color: #eeddb5;
+      }
+      .pill.obsoleta {
+        color: var(--red);
+        background: #fff4f6;
+        border-color: #efc9d1;
+      }
+      .pill.adiada {
+        color: var(--purple);
+        background: #f6f2ff;
+        border-color: #dcd2f3;
+      }
+      .phase {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-bottom: 9px;
+        overflow: hidden;
+      }
+      .phase > summary {
+        list-style: none;
+        padding: 13px 14px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        cursor: pointer;
+      }
+      .phase > summary::-webkit-details-marker {
+        display: none;
+      }
+      .phase > summary strong {
+        font-size: 12px;
+        flex: 1;
+      }
+      .phase > summary small {
+        font-size: 9px;
+        color: #7a8da1;
+      }
+      .phasebody {
+        padding: 0 12px 12px;
+      }
+      .node {
+        border-left: 2px solid #dce6f0;
+        margin: 7px 0 7px 7px;
+        padding-left: 11px;
+      }
+      .nodehead {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin: 8px 0;
+      }
+      .nodehead b {
+        font-size: 11px;
+      }
+      .nodehead span {
+        font-size: 9px;
+        color: #7a8da1;
+      }
+      .q {
+        border: 1px solid #dfe7ef;
+        border-radius: 10px;
+        margin: 7px 0;
+        background: #fff;
+        overflow: hidden;
+      }
+      .q > summary {
+        list-style: none;
+        padding: 10px 11px;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        cursor: pointer;
+      }
+      .q > summary::-webkit-details-marker {
+        display: none;
+      }
+      .qid {
+        font:
+          800 10px ui-monospace,
+          monospace;
+        color: #56708d;
+        padding-top: 2px;
+      }
+      .qtext {
+        font-size: 11px;
+        font-weight: 750;
+        line-height: 1.4;
+        flex: 1;
+      }
+      .qbody {
+        border-top: 1px solid #edf1f5;
+        padding: 11px;
+      }
+      .legacy {
+        font-size: 9px;
+        color: #7b6b3c;
+        background: #fff9e9;
+        border: 1px solid #efdfb6;
+        padding: 6px 8px;
+        border-radius: 7px;
+        margin-bottom: 8px;
+      }
+      .options {
+        display: grid;
+        gap: 6px;
+      }
+      .opt {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        border: 1px solid #e0e8f1;
+        border-radius: 8px;
+        padding: 8px;
+        font-size: 11px;
+        color: #445d77;
+      }
+      .opt:has(input:checked) {
+        border-color: #98bced;
+        background: #eff5ff;
+        color: #164d91;
+      }
+      .opt input {
+        margin-top: 2px;
+        accent-color: var(--blue);
+      }
+      .other {
+        margin-top: 6px;
+      }
+      .formrow {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 9px;
+      }
+      .formrow .full {
+        grid-column: 1/-1;
+      }
+      label.caption {
+        font-size: 9px;
+        font-weight: 800;
+        color: #65798f;
+        display: block;
+        margin-bottom: 4px;
+      }
+      textarea.field {
+        width: 100%;
+        min-height: 56px;
+        resize: vertical;
+      }
+      .actions {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 9px;
+      }
+      .details {
+        margin-top: 8px;
+        border-top: 1px dashed #dbe4ed;
+        padding-top: 7px;
+      }
+      .details summary {
+        font-size: 10px;
+        color: #55718f;
+      }
+      .details pre {
+        white-space: pre-wrap;
+        font:
+          10px/1.5 ui-monospace,
+          monospace;
+        color: #5b6f84;
+      }
+      .empty {
+        padding: 25px;
+        text-align: center;
+        color: #75899f;
+        background: #fff;
+        border: 1px dashed #cbd8e6;
+        border-radius: 12px;
+      }
+      .statusline {
+        font-size: 10px;
+        color: #687d92;
+        min-height: 15px;
+        margin-bottom: 9px;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+        }
+        .formrow {
+          grid-template-columns: 1fr;
+        }
+        .formrow .full {
+          grid-column: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <b>ADVOGADO JÁ · ENTREVISTA</b
+        ><small>Bloco → Fase → Subfase/Tela → Perguntas</small>
+      </div>
+      <span class="headtag">V3</span
+      ><a
+        href="../index.html"
+        style="color: #dce9f7; font-size: 11px; text-decoration: none"
+        >Voltar ao laboratório ↗</a
+      >
+    </header>
+    <div class="page">
+      <section class="top">
+        <div>
+          <h1>Entrevista funcional</h1>
+          <p>
+            Uma única árvore de trabalho. Abra um bloco, desça pelas fases e
+            resolva somente as perguntas daquele contexto.
+          </p>
+        </div>
+        <div class="rule">
+          <b>Regra:</b> novas perguntas decisórias = 4–5 opções + Outro
+        </div>
+      </section>
+      <div class="toolbar">
+        <input
+          id="search"
+          type="search"
+          placeholder="Buscar dentro do bloco atual…"
+        />
+        <select id="filter">
+          <option value="">Todos os estados</option>
+          <option value="pendente">Pendente</option>
+          <option value="revisar">Revisar</option>
+          <option value="resolvida">Resolvida</option>
+          <option value="obsoleta">Obsoleta</option>
+          <option value="adiada">Adiada</option>
+        </select>
+        <button class="btn" id="importBtn" type="button">Importar JSON</button>
+        <button class="btn primary" id="exportBtn" type="button">
+          Exportar JSON
+        </button>
+        <input
+          id="fileInput"
+          type="file"
+          accept=".json,application/json"
+          hidden
+        />
+      </div>
+      <div id="status" class="statusline">Carregando entrevista.json…</div>
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Blocos</h2>
+          <div id="blocks"></div>
+        </aside>
+        <main class="workspace">
+          <div id="blockHead"></div>
+          <div id="phases"></div>
+        </main>
+      </div>
+    </div>
+    <script>
+      (function () {
+        "use strict";
+        var JSON_PATH = "entrevista.json",
+          SCHEMA = "advogadoja.entrevista.hierarquica.v3";
+        var data = null,
+          selectedBlock = "",
+          dirty = false;
+        var $ = function (id) {
+          return document.getElementById(id);
+        };
+        var esc = function (v) {
+          return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+            return {
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            }[c];
+          });
+        };
+        function report(t, bad) {
+          $("status").textContent = t;
+          $("status").style.color = bad ? "#a23a4a" : "#687d92";
+        }
+        function clone(x) {
+          return JSON.parse(JSON.stringify(x));
+        }
+        function allNodes() {
+          var out = [];
+          function walk(n) {
+            out.push(n);
+            (n.filhos || []).forEach(walk);
+          }
+          (data.areas || []).forEach(walk);
+          return out;
+        }
+        function nodeById(id) {
+          return allNodes().find(function (n) {
+            return n.id === id;
+          });
+        }
+        function questionsOfSource(id) {
+          var n = nodeById(id),
+            out = [];
+          function walk(x) {
+            if (!x) return;
+            (x.perguntas || []).forEach(function (q) {
+              out.push({ q: q, node: x });
+            });
+            (x.filhos || []).forEach(walk);
+          }
+          walk(n);
+          return out;
+        }
+        function directQuestionsOfSource(id) {
+          var n = nodeById(id);
+          return ((n && n.perguntas) || []).map(function (q) {
+            return { q: q, node: n };
+          });
+        }
+        function qStatus(q) {
+          return (q.gestao && q.gestao.status_trabalho) || "pendente";
+        }
+        function nodeRows(n) {
+          var out = [];
+          if (n.fonte_area_id)
+            out = out.concat(questionsOfSource(n.fonte_area_id));
+          (n.perguntas_ids || []).forEach(function (id) {
+            var hit = findQ(id);
+            if (hit) out.push(hit);
+          });
+          (n.filhos || []).forEach(function (c) {
+            out = out.concat(nodeRows(c));
+          });
+          return uniqueRows(out);
+        }
+        function phaseRows(p) {
+          return nodeRows(p);
+        }
+        function uniqueRows(rows) {
+          var seen = {};
+          return rows.filter(function (r) {
+            if (seen[r.q.id]) return false;
+            seen[r.q.id] = 1;
+            return true;
+          });
+        }
+        function findQ(id) {
+          var hit = null;
+          allNodes().some(function (n) {
+            var q = (n.perguntas || []).find(function (x) {
+              return x.id === id;
+            });
+            if (q) {
+              hit = { q: q, node: n };
+              return true;
+            }
+            return false;
+          });
+          return hit;
+        }
+        function counts(rows) {
+          var c = {
+            total: rows.length,
+            pendente: 0,
+            revisar: 0,
+            resolvida: 0,
+            obsoleta: 0,
+            adiada: 0,
+          };
+          rows.forEach(function (r) {
+            var s = qStatus(r.q);
+            c[s] = (c[s] || 0) + 1;
+          });
+          return c;
+        }
+        function pct(c) {
+          return c.total ? Math.round((c.resolvida * 100) / c.total) : 0;
+        }
+        function currentBlock() {
+          return (data.orquestracao.blocos || []).find(function (b) {
+            return b.id === selectedBlock;
+          });
+        }
+        function renderBlocks() {
+          var root = $("blocks");
+          root.innerHTML = (data.orquestracao.blocos || [])
+            .map(function (b, i) {
+              var rows = [];
+              (b.fases || []).forEach(function (p) {
+                rows = rows.concat(phaseRows(p));
+              });
+              rows = uniqueRows(rows);
+              var c = counts(rows);
+              return (
+                '<button class="blockbtn ' +
+                (b.id === selectedBlock ? "active" : "") +
+                '" data-block="' +
+                esc(b.id) +
+                '"><b>B' +
+                (i + 1) +
+                " · " +
+                esc(b.titulo) +
+                "</b><span><em>" +
+                c.resolvida +
+                "/" +
+                c.total +
+                " resolvidas</em><em>" +
+                pct(c) +
+                '%</em></span><div class="bar"><i style="width:' +
+                pct(c) +
+                '%"></i></div></button>'
+              );
+            })
+            .join("");
+          root.querySelectorAll("[data-block]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              selectedBlock = b.dataset.block;
+              render();
+            });
+          });
+        }
+        function filterRows(rows) {
+          var term = $("search").value.trim().toLowerCase(),
+            f = $("filter").value;
+          return rows.filter(function (r) {
+            var q = r.q,
+              s = qStatus(q);
+            var hay = (
+              q.id +
+              " " +
+              q.texto +
+              " " +
+              r.node.titulo
+            ).toLowerCase();
+            return (!term || hay.indexOf(term) >= 0) && (!f || s === f);
+          });
+        }
+        function phaseCountText(p) {
+          var c = counts(phaseRows(p));
+          return c.resolvida + "/" + c.total + " · " + pct(c) + "%";
+        }
+        function sourceChildrenUi(sourceId) {
+          var n = nodeById(sourceId);
+          if (!n) return "";
+          var direct = filterRows(directQuestionsOfSource(sourceId));
+          var html = direct.map(renderQuestion).join("");
+          (n.filhos || []).forEach(function (ch) {
+            var c = counts(questionsOfSource(ch.id));
+            var body = sourceChildrenUi(ch.id);
+            if (body)
+              html +=
+                '<div class="node"><div class="nodehead"><b>' +
+                esc(ch.titulo) +
+                "</b><span>" +
+                c.resolvida +
+                "/" +
+                c.total +
+                " resolvidas</span></div>" +
+                body +
+                "</div>";
+          });
+          return html;
+        }
+        function renderNode(n) {
+          var body = "";
+          if (n.fonte_area_id) body += sourceChildrenUi(n.fonte_area_id);
+          (n.perguntas_ids || []).forEach(function (id) {
+            var h = findQ(id);
+            if (h && filterRows([h]).length) body += renderQuestion(h);
+          });
+          (n.filhos || []).forEach(function (ch) {
+            var inner = renderNode(ch);
+            if (inner) {
+              var c = counts(nodeRows(ch));
+              body +=
+                '<div class="node"><div class="nodehead"><b>' +
+                esc(ch.titulo) +
+                "</b><span>" +
+                c.resolvida +
+                "/" +
+                c.total +
+                " resolvidas</span></div>" +
+                inner +
+                "</div>";
+            }
+          });
+          return body;
+        }
+        function renderQuestion(rec) {
+          var q = rec.q,
+            g = q.gestao || {},
+            s = qStatus(q),
+            opts = q.opcoes || [],
+            selected = (q.resposta && q.resposta.opcao_id) || "",
+            other = (q.resposta && q.resposta.texto_livre) || "",
+            just = (q.resposta && q.resposta.justificativa) || "";
+          var legacy =
+            opts.length < 4
+              ? '<div class="legacy">Pergunta legada com ' +
+                opts.length +
+                " opções. Preservada até auditoria; novas/reformuladas devem ter 4–5 opções + Outro.</div>"
+              : "";
+          var ops = opts
+            .map(function (o) {
+              return (
+                '<label class="opt"><input type="radio" name="ans-' +
+                esc(q.id) +
+                '" value="' +
+                esc(o.id) +
+                '" ' +
+                (selected === o.id ? "checked" : "") +
+                "> <span><b>" +
+                esc(o.id) +
+                ".</b> " +
+                esc(o.texto) +
+                "</span></label>"
+              );
+            })
+            .join("");
+          if (q.permite_outra !== false)
+            ops +=
+              '<label class="opt"><input type="radio" name="ans-' +
+              esc(q.id) +
+              '" value="OTHER" ' +
+              (selected === "OTHER" ? "checked" : "") +
+              '> <span><b>Outro.</b> Escrever uma alternativa diferente</span></label><input class="field other" data-other="' +
+              esc(q.id) +
+              '" value="' +
+              esc(other) +
+              '" placeholder="Escreva sua alternativa…">';
+          return (
+            '<details class="q" data-q="' +
+            esc(q.id) +
+            '"><summary><span class="pill ' +
+            esc(s) +
+            '">' +
+            esc(s.toUpperCase()) +
+            '</span><span class="qid">' +
+            esc(q.id) +
+            '</span><span class="qtext">' +
+            esc(q.texto) +
+            '</span></summary><div class="qbody">' +
+            legacy +
+            '<div class="options">' +
+            ops +
+            '</div><div class="formrow"><div class="full"><label class="caption">Observação / justificativa</label><textarea class="field" data-just="' +
+            esc(q.id) +
+            '">' +
+            esc(just) +
+            '</textarea></div></div><div class="actions"><button type="button" class="btn good" data-resolve="' +
+            esc(q.id) +
+            '">Salvar e resolver</button><button type="button" class="btn" data-reopen="' +
+            esc(q.id) +
+            '">Reabrir</button><button type="button" class="btn" data-delay="' +
+            esc(q.id) +
+            '">Adiar</button><button type="button" class="btn danger" data-obsolete="' +
+            esc(q.id) +
+            '">Obsoleta</button></div><details class="details"><summary>Detalhes e histórico</summary><pre>' +
+            esc(
+              "Área: " +
+                rec.node.titulo +
+                "\nResposta: " +
+                (g.estado_resposta || "—") +
+                "\nDecisão: " +
+                (g.estado_decisao || "—") +
+                "\nOrigem: " +
+                (g.origem || "—"),
+            ) +
+            "</pre></details></div></details>"
+          );
+        }
+        function renderWorkspace() {
+          var b = currentBlock();
+          if (!b) {
+            $("blockHead").innerHTML =
+              '<div class="empty">Selecione um bloco.</div>';
+            $("phases").innerHTML = "";
+            return;
+          }
+          var rows = [];
+          (b.fases || []).forEach(function (p) {
+            rows = rows.concat(phaseRows(p));
+          });
+          var c = counts(uniqueRows(rows));
+          $("blockHead").innerHTML =
+            '<section class="blockhead"><div class="crumb">Bloco atual</div><h2>' +
+            esc(b.titulo) +
+            '</h2><div class="stats"><span class="pill resolvida">' +
+            c.resolvida +
+            ' resolvidas</span><span class="pill revisar">' +
+            c.revisar +
+            ' revisar</span><span class="pill">' +
+            c.pendente +
+            ' pendentes</span><span class="pill obsoleta">' +
+            c.obsoleta +
+            ' obsoletas</span><span class="pill adiada">' +
+            c.adiada +
+            " adiadas</span></div></section>";
+          $("phases").innerHTML =
+            (b.fases || [])
+              .map(function (p, i) {
+                var body = renderNode(p);
+                var visible =
+                  body || (!$("search").value && !$("filter").value);
+                if (!visible) return "";
+                return (
+                  '<details class="phase" ' +
+                  (i === 0 ? "open" : "") +
+                  "><summary><strong>F" +
+                  (i + 1) +
+                  " · " +
+                  esc(p.titulo) +
+                  "</strong><small>" +
+                  esc(phaseCountText(p)) +
+                  '</small></summary><div class="phasebody">' +
+                  (body ||
+                    '<div class="empty">Esta fase ainda não possui perguntas vinculadas.</div>') +
+                  "</div></details>"
+                );
+              })
+              .join("") || '<div class="empty">Nenhuma fase.</div>';
+          wireQuestions();
+        }
+        function wireQuestions() {
+          document.querySelectorAll("[data-resolve]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              saveQuestion(btn.dataset.resolve, "resolvida");
+            });
+          });
+          document.querySelectorAll("[data-reopen]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              saveQuestion(btn.dataset.reopen, "revisar", true);
+            });
+          });
+          document.querySelectorAll("[data-delay]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              saveQuestion(btn.dataset.delay, "adiada", true);
+            });
+          });
+          document.querySelectorAll("[data-obsolete]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              if (confirm("Marcar esta pergunta como obsoleta?"))
+                saveQuestion(btn.dataset.obsolete, "obsoleta", true);
+            });
+          });
+        }
+        function saveQuestion(id, status, noAnswerRequired) {
+          var hit = findQ(id);
+          if (!hit) return;
+          var q = hit.q,
+            g = q.gestao || (q.gestao = {}),
+            box = document.querySelector('[data-q="' + CSS.escape(id) + '"]');
+          var checked =
+              box &&
+              box.querySelector(
+                'input[name="ans-' + CSS.escape(id) + '"]:checked',
+              ),
+            value = checked ? checked.value : "",
+            other =
+              box && box.querySelector('[data-other="' + CSS.escape(id) + '"]'),
+            just =
+              box && box.querySelector('[data-just="' + CSS.escape(id) + '"]');
+          if (status === "resolvida") {
+            if (!value) return alert("Escolha uma opção antes de resolver.");
+            if (value === "OTHER" && (!other || !other.value.trim()))
+              return alert("Escreva a opção Outro.");
+            q.resposta = q.resposta || {};
+            q.resposta.opcao_id = value;
+            q.resposta.texto_livre =
+              value === "OTHER" ? other.value.trim() : "";
+            q.resposta.justificativa = just ? just.value.trim() : "";
+            g.respondida = true;
+            g.estado_resposta =
+              data.configuracao.regras.estado_resposta_confirmada ||
+              "respondida";
+            g.estado_decisao =
+              data.configuracao.regras.estado_aprovacao || "aprovada";
+          } else if (status === "revisar") {
+            g.estado_decisao =
+              data.configuracao.regras.estado_reabertura || "reaberta";
+          } else if (status === "obsoleta") {
+            g.estado_decisao = "descartada";
+          }
+          g.status_trabalho = status;
+          g.atualizado_em = new Date().toISOString();
+          g.historico = g.historico || [];
+          g.historico.push({
+            em: g.atualizado_em,
+            tipo: "status_trabalho",
+            status: status,
+            origem: "entrevista_v3",
+          });
+          dirty = true;
+          render();
+          report("Alteração em memória. Exporte o JSON para publicar.");
+        }
+        function render() {
+          renderBlocks();
+          renderWorkspace();
+        }
+        function exportJSON() {
+          var blob = new Blob([JSON.stringify(data, null, 2) + "\n"], {
+              type: "application/json;charset=utf-8",
+            }),
+            url = URL.createObjectURL(blob),
+            a = document.createElement("a");
+          a.href = url;
+          a.download = "entrevista.json";
+          a.click();
+          setTimeout(function () {
+            URL.revokeObjectURL(url);
+          }, 1000);
+          report(
+            "entrevista.json exportado. Publique o arquivo no repositório para persistir.",
+          );
+        }
+        async function importJSON(file) {
+          if (!file) return;
+          try {
+            var x = JSON.parse(await file.text());
+            if (x.schema !== SCHEMA || !x.orquestracao)
+              throw Error("JSON incompatível com a V3");
+            data = x;
+            selectedBlock =
+              (data.orquestracao.blocos[0] && data.orquestracao.blocos[0].id) ||
+              "";
+            dirty = true;
+            render();
+            report("JSON importado em memória.");
+          } catch (e) {
+            report(e.message, true);
+          }
+        }
+        $("search").addEventListener("input", renderWorkspace);
+        $("filter").addEventListener("change", renderWorkspace);
+        $("exportBtn").addEventListener("click", exportJSON);
+        $("importBtn").addEventListener("click", function () {
+          $("fileInput").click();
+        });
+        $("fileInput").addEventListener("change", function (e) {
+          importJSON(e.target.files[0]);
+          e.target.value = "";
+        });
+        window.addEventListener("beforeunload", function (e) {
+          if (dirty) {
+            e.preventDefault();
+            e.returnValue = "";
+          }
+        });
+        fetch(JSON_PATH, { cache: "no-store" })
+          .then(function (r) {
+            if (!r.ok) throw Error("Falha ao abrir entrevista.json");
+            return r.json();
+          })
+          .then(function (x) {
+            if (x.schema !== SCHEMA || !x.orquestracao)
+              throw Error("Schema incompatível: esperado " + SCHEMA);
+            data = x;
+            selectedBlock = (
+              x.orquestracao.blocos.find(function (b) {
+                return b.status === "ativo";
+              }) || x.orquestracao.blocos[0]
+            ).id;
+            render();
+            report(
+              "Entrevista carregada · " +
+                allNodes().reduce(function (n, x) {
+                  return n + (x.perguntas || []).length;
+                }, 0) +
+                " perguntas canônicas.",
+            );
+          })
+          .catch(function (e) {
+            report(
+              e.message + " Use Importar JSON se estiver abrindo por file://.",
+              true,
+            );
+          });
+      })();
+    </script>
+  </body>
+</html>

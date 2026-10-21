@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { authService } from "../../src/modules/auth/auth.service"; describe("logout",()=>{it("limpa sessão",async()=>{await authService.signOut();expect(authService.currentUser()).toBeNull();});});

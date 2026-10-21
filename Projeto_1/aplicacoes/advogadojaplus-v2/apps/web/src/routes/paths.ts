@@ -1,0 +1,2 @@
+export const steps = ['/boas-vindas','/login','/cadastro/tipo-conta','/cadastro/identificacao','/cadastro/contato','/cadastro/endereco','/cadastro/seguranca','/cadastro/consentimentos','/cadastro/revisao','/cadastro/concluido','/cliente/onboarding/localizacao','/cliente/onboarding/preferencias-contato','/cliente/onboarding/concluido','/cliente/inicio'] as const;
+export const paths = {home:'/cliente/inicio',construction:'/em-construcao',login:'/login',register:'/cadastro/tipo-conta'} as const;

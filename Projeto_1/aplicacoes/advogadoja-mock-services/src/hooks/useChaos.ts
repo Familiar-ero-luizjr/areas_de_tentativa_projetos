@@ -1,0 +1,1 @@
+import { useState } from "react"; import { chaosEngine } from "../chaos/chaos.engine"; export function useChaos(){const [value,setValue]=useState(chaosEngine.get());return {value,set:(p:any)=>{chaosEngine.set(p);setValue(chaosEngine.get());},reset:()=>{chaosEngine.reset();setValue(chaosEngine.get());}};}

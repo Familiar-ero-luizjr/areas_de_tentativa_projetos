@@ -1,0 +1,1 @@
+export const manyLawyers = { center: { lat: -10.9472, lng: -37.0731 }, markers: Array.from({ length: 12 }, (_, i) => ({ id: `lawyer-${i+1}`, lat: -10.95 + i*0.002, lng: -37.07 + i*0.002 })) } as const;

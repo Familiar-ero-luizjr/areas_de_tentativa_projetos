@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { mapsService } from "../../src/modules/maps/maps.service"; describe("distance",()=>{it("zero para mesmo ponto",async()=>expect(await mapsService.distance({lat:0,lng:0},{lat:0,lng:0})).toBe(0));});

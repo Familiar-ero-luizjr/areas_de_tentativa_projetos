@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { db } from "../../src/data/database/db"; describe("query",()=>{it("filtra advogado",()=>expect(db.collection("lawyers").filter((x:any)=>x.active!==false).length).toBeGreaterThan(0));});

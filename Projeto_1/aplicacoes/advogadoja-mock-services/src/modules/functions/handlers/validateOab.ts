@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, required } from "./_helpers";
+export default function validateOab(input: Record<string, any>) { const lawyerId=required(input.lawyerId,"lawyerId"); const item=db.update("lawyerPrivate",lawyerId,{oabStatus:input.approved?"approved":"rejected",oabReviewedAt:now(),oabReviewReason:input.reason??null}); if(!item) throw new Error("Registro OAB não encontrado"); return item; }

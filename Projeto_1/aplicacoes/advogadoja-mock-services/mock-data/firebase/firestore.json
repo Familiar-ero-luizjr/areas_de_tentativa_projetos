@@ -1,0 +1,2247 @@
+{
+  "adminStaff": [
+    {
+      "id": "admin-001",
+      "displayName": "Patrícia Admin",
+      "email": "patricia.admin@example.com",
+      "role": "admin",
+      "permissions": [
+        "lawyer-review",
+        "support",
+        "reports",
+        "privacy"
+      ],
+      "status": "active",
+      "department": "Operações",
+      "phoneE164": "+5579999999001",
+      "notes": "Conta administrativa fictícia para o protótipo.",
+      "createdBy": null,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-12T17:00:00-03:00",
+      "lastAdminAccessAt": "2026-09-13T08:00:00-03:00"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit-001",
+      "actorId": "lawyer-002",
+      "actorType": "lawyer",
+      "action": "office.invite.created",
+      "subjectType": "office_invite",
+      "subjectId": "invite-002",
+      "requestId": null,
+      "metadata": {
+        "officeId": "office-001",
+        "invitedUid": "lawyer-004"
+      },
+      "createdAt": "2026-09-10T09:00:00-03:00"
+    },
+    {
+      "id": "audit-002",
+      "actorId": "lawyer-003",
+      "actorType": "lawyer",
+      "action": "contact_request.accepted",
+      "subjectType": "contact_request",
+      "subjectId": "request-002",
+      "requestId": "request-002",
+      "metadata": {
+        "officeId": "office-001"
+      },
+      "createdAt": "2026-09-06T15:25:00-03:00"
+    },
+    {
+      "id": "audit-003",
+      "actorId": "admin-001",
+      "actorType": "admin",
+      "action": "support_ticket.resolved",
+      "subjectType": "support_ticket",
+      "subjectId": "ticket-002",
+      "requestId": null,
+      "metadata": {},
+      "createdAt": "2026-09-08T16:30:00-03:00"
+    },
+    {
+      "id": "audit-004",
+      "actorId": "client-001",
+      "actorType": "client",
+      "action": "privacy_request.created",
+      "subjectType": "privacy_request",
+      "subjectId": "privacy-request-001",
+      "requestId": null,
+      "metadata": {
+        "requestType": "access"
+      },
+      "createdAt": "2026-09-12T11:00:00-03:00"
+    }
+  ],
+  "clients": [
+    {
+      "id": "client-001",
+      "phoneE164": "+5579999991001",
+      "birthday": "1992-04-18",
+      "gender": "feminino",
+      "profilePhotoUrl": null,
+      "address": "Rua das Acácias",
+      "addressNumber": "120",
+      "district": "Centro",
+      "neighborhood": "São José",
+      "city": "Aracaju",
+      "uf": "SE",
+      "zipCode": "49000-001",
+      "latitude": -10.9472,
+      "longitude": -37.0731,
+      "onboardingStatus": "completed",
+      "startDate": "2026-08-20T14:00:00-03:00",
+      "endDate": "2026-08-20T14:12:00-03:00",
+      "createdAt": "2026-08-20T14:00:00-03:00",
+      "updatedAt": "2026-09-10T18:40:00-03:00",
+      "cpf": "000.000.000-01",
+      "profilePhotoFileName": null,
+      "profilePhotoUploadState": "not_uploaded",
+      "complement": "Apto 301",
+      "country": "BR",
+      "preferredContactChannels": [
+        "whatsapp"
+      ],
+      "bestContactTime": "18h às 21h",
+      "locationSource": "gps",
+      "locationCapturedAt": "2026-08-20T14:08:00-03:00"
+    },
+    {
+      "id": "client-002",
+      "phoneE164": "+5579999991002",
+      "birthday": "1988-11-09",
+      "gender": "masculino",
+      "profilePhotoUrl": null,
+      "address": "Avenida Beira Mar",
+      "addressNumber": "850",
+      "district": "13 de Julho",
+      "neighborhood": "13 de Julho",
+      "city": "Aracaju",
+      "uf": "SE",
+      "zipCode": "49020-010",
+      "latitude": null,
+      "longitude": null,
+      "onboardingStatus": "completed",
+      "startDate": "2026-08-28T09:00:00-03:00",
+      "endDate": "2026-08-28T09:10:00-03:00",
+      "createdAt": "2026-08-28T09:00:00-03:00",
+      "updatedAt": "2026-09-11T10:15:00-03:00",
+      "cpf": "000.000.000-02",
+      "profilePhotoFileName": null,
+      "profilePhotoUploadState": "not_uploaded",
+      "complement": null,
+      "country": "BR",
+      "preferredContactChannels": [
+        "whatsapp",
+        "email"
+      ],
+      "bestContactTime": "09h às 12h",
+      "locationSource": "manual",
+      "locationCapturedAt": null
+    }
+  ],
+  "consentHistory": [
+    {
+      "id": "consent-001",
+      "userId": "client-001",
+      "consentType": "terms",
+      "documentId": "legal-terms-1.0",
+      "version": "1.0",
+      "status": "accepted",
+      "context": "signup",
+      "acceptedAt": "2026-08-20T14:10:00-03:00",
+      "revokedAt": null,
+      "createdAt": "2026-08-20T14:10:00-03:00"
+    },
+    {
+      "id": "consent-002",
+      "userId": "client-002",
+      "consentType": "terms",
+      "documentId": "legal-terms-1.0",
+      "version": "1.0",
+      "status": "accepted",
+      "context": "signup",
+      "acceptedAt": "2026-08-28T09:05:00-03:00",
+      "revokedAt": null,
+      "createdAt": "2026-08-28T09:05:00-03:00"
+    },
+    {
+      "id": "consent-003",
+      "userId": "lawyer-001",
+      "consentType": "terms",
+      "documentId": "legal-terms-1.0",
+      "version": "1.0",
+      "status": "accepted",
+      "context": "lawyer-onboarding",
+      "acceptedAt": "2026-07-02T10:01:00-03:00",
+      "revokedAt": null,
+      "createdAt": "2026-07-02T10:01:00-03:00"
+    },
+    {
+      "id": "consent-004",
+      "userId": "lawyer-002",
+      "consentType": "terms",
+      "documentId": "legal-terms-1.0",
+      "version": "1.0",
+      "status": "accepted",
+      "context": "lawyer-onboarding",
+      "acceptedAt": "2026-06-15T11:01:00-03:00",
+      "revokedAt": null,
+      "createdAt": "2026-06-15T11:01:00-03:00"
+    },
+    {
+      "id": "consent-005",
+      "userId": "lawyer-003",
+      "consentType": "terms",
+      "documentId": "legal-terms-1.0",
+      "version": "1.0",
+      "status": "accepted",
+      "context": "lawyer-onboarding",
+      "acceptedAt": "2026-07-10T16:01:00-03:00",
+      "revokedAt": null,
+      "createdAt": "2026-07-10T16:01:00-03:00"
+    },
+    {
+      "id": "consent-006",
+      "userId": "lawyer-004",
+      "consentType": "terms",
+      "documentId": "legal-terms-1.0",
+      "version": "1.0",
+      "status": "accepted",
+      "context": "lawyer-onboarding",
+      "acceptedAt": "2026-08-01T13:01:00-03:00",
+      "revokedAt": null,
+      "createdAt": "2026-08-01T13:01:00-03:00"
+    }
+  ],
+  "contactAcceptances": [
+    {
+      "id": "request-001",
+      "requestId": "request-001",
+      "clientId": "client-001",
+      "lawyerId": "lawyer-001",
+      "status": "active",
+      "releasedChannels": [
+        "whatsapp",
+        "email"
+      ],
+      "clientContactSnapshot": {
+        "phoneE164": "+5579999991001",
+        "email": "mariana.cliente@example.com"
+      },
+      "lawyerContactSnapshot": {
+        "phoneE164": "+5579999992001",
+        "email": "ana.adv@example.com"
+      },
+      "acceptedAt": "2026-09-01T10:20:00-03:00",
+      "releasedAt": "2026-09-01T10:20:00-03:00",
+      "revokedAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-01T10:20:00-03:00",
+      "updatedAt": "2026-09-01T10:20:00-03:00"
+    },
+    {
+      "id": "request-002",
+      "requestId": "request-002",
+      "clientId": "client-002",
+      "lawyerId": "lawyer-003",
+      "status": "active",
+      "releasedChannels": [
+        "whatsapp"
+      ],
+      "clientContactSnapshot": {
+        "phoneE164": "+5579999991002",
+        "email": "joao.cliente@example.com"
+      },
+      "lawyerContactSnapshot": {
+        "phoneE164": "+5579999992003",
+        "email": "camila.member@example.com"
+      },
+      "acceptedAt": "2026-09-06T15:25:00-03:00",
+      "releasedAt": "2026-09-06T15:25:00-03:00",
+      "revokedAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-06T15:25:00-03:00",
+      "updatedAt": "2026-09-06T15:25:00-03:00"
+    }
+  ],
+  "contactRequestEvents": {
+    "request-001": [
+      {
+        "id": "event-001",
+        "requestId": "request-001",
+        "eventType": "created",
+        "statusFrom": null,
+        "statusTo": "waiting",
+        "actorId": "client-001",
+        "actorType": "client",
+        "reason": null,
+        "message": "Solicitação criada.",
+        "data": {},
+        "createdAt": "2026-09-01T10:00:00-03:00"
+      },
+      {
+        "id": "event-002",
+        "requestId": "request-001",
+        "eventType": "accepted",
+        "statusFrom": "waiting",
+        "statusTo": "accepted",
+        "actorId": "lawyer-001",
+        "actorType": "lawyer",
+        "reason": null,
+        "message": "Advogada aceitou a solicitação.",
+        "data": {
+          "releasedChannels": [
+            "whatsapp",
+            "email"
+          ]
+        },
+        "createdAt": "2026-09-01T10:20:00-03:00"
+      }
+    ],
+    "request-002": [
+      {
+        "id": "event-003",
+        "requestId": "request-002",
+        "eventType": "created",
+        "statusFrom": null,
+        "statusTo": "waiting",
+        "actorId": "client-002",
+        "actorType": "client",
+        "reason": null,
+        "message": "Solicitação enviada ao escritório.",
+        "data": {},
+        "createdAt": "2026-09-06T15:00:00-03:00"
+      },
+      {
+        "id": "event-004",
+        "requestId": "request-002",
+        "eventType": "assigned",
+        "statusFrom": "waiting",
+        "statusTo": "waiting",
+        "actorId": "lawyer-002",
+        "actorType": "lawyer",
+        "reason": null,
+        "message": "Owner atribuiu a solicitação à advogada do escritório.",
+        "data": {
+          "assignedLawyerId": "lawyer-003"
+        },
+        "createdAt": "2026-09-06T15:10:00-03:00"
+      },
+      {
+        "id": "event-005",
+        "requestId": "request-002",
+        "eventType": "accepted",
+        "statusFrom": "waiting",
+        "statusTo": "accepted",
+        "actorId": "lawyer-003",
+        "actorType": "lawyer",
+        "reason": null,
+        "message": "Advogada aceitou a solicitação.",
+        "data": {},
+        "createdAt": "2026-09-06T15:25:00-03:00"
+      }
+    ],
+    "request-004": [
+      {
+        "id": "event-006",
+        "requestId": "request-004",
+        "eventType": "declined",
+        "statusFrom": "waiting",
+        "statusTo": "declined",
+        "actorId": "lawyer-004",
+        "actorType": "lawyer",
+        "reason": "Indisponível no horário solicitado",
+        "message": "Solicitação recusada.",
+        "data": {},
+        "createdAt": "2026-09-11T21:00:00-03:00"
+      }
+    ]
+  },
+  "contactRequests": [
+    {
+      "id": "request-001",
+      "clientId": "client-001",
+      "lawyerId": "lawyer-001",
+      "officeId": null,
+      "assignedLawyerId": "lawyer-001",
+      "assignedBy": null,
+      "assignedAt": "2026-09-01T10:05:00-03:00",
+      "needType": "priority-contact",
+      "specialtyId": "family",
+      "specialtyIds": [
+        "family"
+      ],
+      "area": "Família",
+      "areas": [
+        "Família"
+      ],
+      "title": "Orientação sobre guarda",
+      "description": "Cliente busca orientação inicial sobre guarda e convivência.",
+      "modality": "online",
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "location": {
+        "latitude": -10.9472,
+        "longitude": -37.0731,
+        "source": "gps",
+        "capturedAt": "2026-09-01T10:00:00-03:00"
+      },
+      "status": "accepted",
+      "eligibleLawyerIds": [
+        "lawyer-001",
+        "lawyer-002"
+      ],
+      "declinedBy": [],
+      "declineReason": null,
+      "cancellationReason": null,
+      "closureReason": null,
+      "closureNote": null,
+      "acceptedAt": "2026-09-01T10:20:00-03:00",
+      "declinedAt": null,
+      "cancelledAt": null,
+      "expiredAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-01T10:00:00-03:00",
+      "updatedAt": "2026-09-01T10:20:00-03:00",
+      "attachmentUrls": []
+    },
+    {
+      "id": "request-002",
+      "clientId": "client-002",
+      "lawyerId": null,
+      "officeId": "office-001",
+      "assignedLawyerId": "lawyer-003",
+      "assignedBy": "lawyer-002",
+      "assignedAt": "2026-09-06T15:10:00-03:00",
+      "needType": "consultation",
+      "specialtyId": "labor",
+      "specialtyIds": [
+        "labor"
+      ],
+      "area": "Trabalhista",
+      "areas": [
+        "Trabalhista"
+      ],
+      "title": "Dúvida sobre rescisão",
+      "description": "Cliente quer entender documentos e próximos passos após rescisão.",
+      "modality": "ambos",
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "location": {
+        "latitude": null,
+        "longitude": null,
+        "source": "manual",
+        "capturedAt": null
+      },
+      "status": "accepted",
+      "eligibleLawyerIds": [
+        "lawyer-003"
+      ],
+      "declinedBy": [],
+      "declineReason": null,
+      "cancellationReason": null,
+      "closureReason": null,
+      "closureNote": null,
+      "acceptedAt": "2026-09-06T15:25:00-03:00",
+      "declinedAt": null,
+      "cancelledAt": null,
+      "expiredAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-06T15:00:00-03:00",
+      "updatedAt": "2026-09-06T15:25:00-03:00",
+      "attachmentUrls": []
+    },
+    {
+      "id": "request-003",
+      "clientId": "client-001",
+      "lawyerId": null,
+      "officeId": null,
+      "assignedLawyerId": null,
+      "assignedBy": null,
+      "assignedAt": null,
+      "needType": "consultation",
+      "specialtyId": "consumer",
+      "specialtyIds": [
+        "consumer"
+      ],
+      "area": "Consumidor",
+      "areas": [
+        "Consumidor"
+      ],
+      "title": "Cobrança que não reconheço",
+      "description": "Cliente relata cobrança e busca orientação inicial.",
+      "modality": "online",
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "location": {
+        "latitude": -10.9472,
+        "longitude": -37.0731,
+        "source": "gps",
+        "capturedAt": "2026-09-12T19:10:00-03:00"
+      },
+      "status": "waiting",
+      "eligibleLawyerIds": [
+        "lawyer-002",
+        "lawyer-003"
+      ],
+      "declinedBy": [],
+      "declineReason": null,
+      "cancellationReason": null,
+      "closureReason": null,
+      "closureNote": null,
+      "acceptedAt": null,
+      "declinedAt": null,
+      "cancelledAt": null,
+      "expiredAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-12T19:10:00-03:00",
+      "updatedAt": "2026-09-12T19:10:00-03:00",
+      "attachmentUrls": []
+    },
+    {
+      "id": "request-004",
+      "clientId": "client-002",
+      "lawyerId": "lawyer-004",
+      "officeId": null,
+      "assignedLawyerId": null,
+      "assignedBy": null,
+      "assignedAt": null,
+      "needType": "priority-contact",
+      "specialtyId": "criminal",
+      "specialtyIds": [
+        "criminal"
+      ],
+      "area": "Criminal",
+      "areas": [
+        "Criminal"
+      ],
+      "title": "Contato com criminalista",
+      "description": "Cliente solicitou contato prioritário com profissional da área criminal.",
+      "modality": "online",
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "location": {
+        "latitude": null,
+        "longitude": null,
+        "source": "manual",
+        "capturedAt": null
+      },
+      "status": "declined",
+      "eligibleLawyerIds": [
+        "lawyer-004"
+      ],
+      "declinedBy": [
+        "lawyer-004"
+      ],
+      "declineReason": "Indisponível no horário solicitado",
+      "cancellationReason": null,
+      "closureReason": null,
+      "closureNote": null,
+      "acceptedAt": null,
+      "declinedAt": "2026-09-11T21:00:00-03:00",
+      "cancelledAt": null,
+      "expiredAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-11T20:30:00-03:00",
+      "updatedAt": "2026-09-11T21:00:00-03:00",
+      "attachmentUrls": []
+    }
+  ],
+  "experienceReviews": [
+    {
+      "id": "request-001",
+      "requestId": "request-001",
+      "clientId": "client-001",
+      "lawyerId": "lawyer-001",
+      "stars": 5,
+      "criteria": {
+        "clarity": 5,
+        "responseTime": 5,
+        "respectfulCommunication": 5
+      },
+      "comment": "Contato claro e rápido.",
+      "status": "published",
+      "published": true,
+      "moderationNote": null,
+      "moderatedBy": null,
+      "moderatedAt": null,
+      "createdAt": "2026-09-08T18:00:00-03:00",
+      "updatedAt": "2026-09-08T18:00:00-03:00"
+    },
+    {
+      "id": "request-002",
+      "requestId": "request-002",
+      "clientId": "client-002",
+      "lawyerId": "lawyer-003",
+      "stars": 4,
+      "criteria": {
+        "clarity": 4,
+        "responseTime": 4,
+        "respectfulCommunication": 5
+      },
+      "comment": "Atendimento objetivo.",
+      "status": "published",
+      "published": true,
+      "moderationNote": null,
+      "moderatedBy": null,
+      "moderatedAt": null,
+      "createdAt": "2026-09-10T12:30:00-03:00",
+      "updatedAt": "2026-09-10T12:30:00-03:00"
+    }
+  ],
+  "firebaseAuth": [
+    {
+      "id": "client-001",
+      "uid": "client-001",
+      "email": "mariana.cliente@example.com",
+      "displayName": "Mariana Oliveira",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-08-20T14:00:00-03:00",
+      "lastSignInAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "client-002",
+      "uid": "client-002",
+      "email": "joao.cliente@example.com",
+      "displayName": "João Pedro Santos",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-08-28T09:00:00-03:00",
+      "lastSignInAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "lawyer-001",
+      "uid": "lawyer-001",
+      "email": "ana.adv@example.com",
+      "displayName": "Ana Beatriz Souza",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-07-02T10:00:00-03:00",
+      "lastSignInAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "lawyer-002",
+      "uid": "lawyer-002",
+      "email": "rafael.owner@example.com",
+      "displayName": "Rafael Mendes Costa",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-06-15T11:00:00-03:00",
+      "lastSignInAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "lawyer-003",
+      "uid": "lawyer-003",
+      "email": "camila.member@example.com",
+      "displayName": "Camila Rocha Lima",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-07-10T16:00:00-03:00",
+      "lastSignInAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "lawyer-004",
+      "uid": "lawyer-004",
+      "email": "bruno.invited@example.com",
+      "displayName": "Bruno Tavares Alves",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-08-01T13:00:00-03:00",
+      "lastSignInAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "admin-001",
+      "uid": "admin-001",
+      "email": "patricia.admin@example.com",
+      "displayName": "Patrícia Admin",
+      "photoUrl": null,
+      "emailVerified": true,
+      "disabled": false,
+      "providers": [
+        "password"
+      ],
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "lastSignInAt": "2026-09-13T08:00:00-03:00"
+    }
+  ],
+  "lawOfficeMembers": {
+    "office-001": [
+      {
+        "id": "lawyer-002",
+        "userId": "lawyer-002",
+        "name": "Rafael Mendes Costa",
+        "email": "rafael.owner@example.com",
+        "oab": "OAB/SE 23456",
+        "role": "owner",
+        "status": "active",
+        "invitedBy": null,
+        "joinedAt": "2026-07-20T10:00:00-03:00",
+        "createdAt": "2026-07-20T10:00:00-03:00",
+        "updatedAt": "2026-09-12T12:00:00-03:00"
+      },
+      {
+        "id": "lawyer-003",
+        "userId": "lawyer-003",
+        "name": "Camila Rocha Lima",
+        "email": "camila.member@example.com",
+        "oab": "OAB/SE 34567",
+        "role": "member",
+        "status": "active",
+        "invitedBy": "lawyer-002",
+        "joinedAt": "2026-08-05T14:30:00-03:00",
+        "createdAt": "2026-08-04T10:00:00-03:00",
+        "updatedAt": "2026-09-12T09:20:00-03:00"
+      }
+    ]
+  },
+  "lawOffices": [
+    {
+      "id": "office-001",
+      "ownerId": "lawyer-002",
+      "name": "Costa & Lima Advocacia",
+      "cnpj": "12.345.678/0001-90",
+      "email": "contato@costalima.example.com",
+      "phoneE164": "+557930000001",
+      "address": "Avenida Empresarial",
+      "addressNumber": "500",
+      "district": "Jardins",
+      "neighborhood": "Jardins",
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "zipCode": "49025-200",
+      "latitude": -10.9321,
+      "longitude": -37.0654,
+      "coordinates": {
+        "latitude": -10.9321,
+        "longitude": -37.0654
+      },
+      "status": "active",
+      "distributionStrategy": "manual",
+      "subscriptionActive": true,
+      "createdAt": "2026-07-20T10:00:00-03:00",
+      "updatedAt": "2026-09-12T12:00:00-03:00"
+    }
+  ],
+  "lawyerPrivate": [
+    {
+      "id": "lawyer-001",
+      "cpf": "111.111.111-01",
+      "phoneE164": "+5579999992001",
+      "birthday": "1988-02-11",
+      "gender": "feminino",
+      "profilePhotoUrl": "/mocks/assets/lawyer-001.jpg",
+      "profilePhotoFileName": "lawyer-001.jpg",
+      "profilePhotoUploadState": "uploaded",
+      "address": "Rua A",
+      "addressNumber": "101",
+      "district": "Centro",
+      "neighborhood": "Centro",
+      "city": "Aracaju",
+      "uf": "SE",
+      "zipCode": "49000-101",
+      "oabDocumentFileName": "oab-lawyer-001.pdf",
+      "oabDocumentUrl": "/mocks/docs/oab-lawyer-001.pdf",
+      "oabDocumentUploadState": "uploaded",
+      "oabValidationNote": "Documento conferido no fluxo simulado.",
+      "oabReviewedBy": "admin-001",
+      "oabReviewedAt": "2026-07-03T09:00:00-03:00",
+      "moderationNote": null,
+      "moderatedBy": "admin-001",
+      "moderationReviewedAt": "2026-07-03T09:10:00-03:00",
+      "createdAt": "2026-07-02T10:00:00-03:00",
+      "updatedAt": "2026-09-12T08:30:00-03:00",
+      "complement": null,
+      "country": "BR"
+    },
+    {
+      "id": "lawyer-002",
+      "cpf": "222.222.222-02",
+      "phoneE164": "+5579999992002",
+      "birthday": "1985-06-20",
+      "gender": "masculino",
+      "profilePhotoUrl": "/mocks/assets/lawyer-002.jpg",
+      "profilePhotoFileName": "lawyer-002.jpg",
+      "profilePhotoUploadState": "uploaded",
+      "address": "Avenida Empresarial",
+      "addressNumber": "500",
+      "district": "Jardins",
+      "neighborhood": "Jardins",
+      "city": "Aracaju",
+      "uf": "SE",
+      "zipCode": "49025-200",
+      "oabDocumentFileName": "oab-lawyer-002.pdf",
+      "oabDocumentUrl": "/mocks/docs/oab-lawyer-002.pdf",
+      "oabDocumentUploadState": "uploaded",
+      "oabValidationNote": "Documento conferido no fluxo simulado.",
+      "oabReviewedBy": "admin-001",
+      "oabReviewedAt": "2026-06-16T08:45:00-03:00",
+      "moderationNote": null,
+      "moderatedBy": "admin-001",
+      "moderationReviewedAt": "2026-06-16T09:00:00-03:00",
+      "createdAt": "2026-06-15T11:00:00-03:00",
+      "updatedAt": "2026-09-12T12:00:00-03:00",
+      "complement": "Sala 501",
+      "country": "BR"
+    },
+    {
+      "id": "lawyer-003",
+      "cpf": "333.333.333-03",
+      "phoneE164": "+5579999992003",
+      "birthday": "1993-09-03",
+      "gender": "feminino",
+      "profilePhotoUrl": "/mocks/assets/lawyer-003.jpg",
+      "profilePhotoFileName": "lawyer-003.jpg",
+      "profilePhotoUploadState": "uploaded",
+      "address": "Rua do Trabalho",
+      "addressNumber": "88",
+      "district": "Salgado Filho",
+      "neighborhood": "Salgado Filho",
+      "city": "Aracaju",
+      "uf": "SE",
+      "zipCode": "49020-300",
+      "oabDocumentFileName": "oab-lawyer-003.pdf",
+      "oabDocumentUrl": "/mocks/docs/oab-lawyer-003.pdf",
+      "oabDocumentUploadState": "uploaded",
+      "oabValidationNote": "Documento conferido no fluxo simulado.",
+      "oabReviewedBy": "admin-001",
+      "oabReviewedAt": "2026-07-11T09:20:00-03:00",
+      "moderationNote": null,
+      "moderatedBy": "admin-001",
+      "moderationReviewedAt": "2026-07-11T09:30:00-03:00",
+      "createdAt": "2026-07-10T16:00:00-03:00",
+      "updatedAt": "2026-09-12T09:20:00-03:00",
+      "complement": "Apto 204",
+      "country": "BR"
+    },
+    {
+      "id": "lawyer-004",
+      "cpf": "444.444.444-04",
+      "phoneE164": "+5579999992004",
+      "birthday": "1995-01-15",
+      "gender": "masculino",
+      "profilePhotoUrl": "/mocks/assets/lawyer-004.jpg",
+      "profilePhotoFileName": "lawyer-004.jpg",
+      "profilePhotoUploadState": "uploaded",
+      "address": "Rua da Justiça",
+      "addressNumber": "74",
+      "district": "Atalaia",
+      "neighborhood": "Atalaia",
+      "city": "Aracaju",
+      "uf": "SE",
+      "zipCode": "49037-400",
+      "oabDocumentFileName": "oab-lawyer-004.pdf",
+      "oabDocumentUrl": "/mocks/docs/oab-lawyer-004.pdf",
+      "oabDocumentUploadState": "uploaded",
+      "oabValidationNote": "Documento conferido no fluxo simulado.",
+      "oabReviewedBy": "admin-001",
+      "oabReviewedAt": "2026-08-02T10:00:00-03:00",
+      "moderationNote": null,
+      "moderatedBy": "admin-001",
+      "moderationReviewedAt": "2026-08-02T10:10:00-03:00",
+      "createdAt": "2026-08-01T13:00:00-03:00",
+      "updatedAt": "2026-09-12T10:00:00-03:00",
+      "complement": null,
+      "country": "BR"
+    }
+  ],
+  "lawyers": [
+    {
+      "id": "lawyer-001",
+      "name": "Ana Beatriz Souza",
+      "professionalName": "Dra. Ana Souza",
+      "educationInstitution": "Universidade Exemplo",
+      "educationInstitutionCity": "Aracaju",
+      "educationCourse": "Direito",
+      "graduationYear": 2015,
+      "specialization": "Direito de Família e Civil",
+      "practiceStartYear": 2016,
+      "jobDescription": "Advogada autônoma",
+      "bio": "Atendimento jurídico consultivo e contencioso com foco em família e cível.",
+      "workMode": "hibrido",
+      "experience": "10 anos de atuação profissional",
+      "oabNumber": "12345",
+      "oabUf": "SE",
+      "oabDisplay": "OAB/SE 12345",
+      "oabType": "definitiva",
+      "oabValidationStatus": "validated",
+      "profileValidated": true,
+      "oabSubmittedAt": "2026-07-02T10:30:00-03:00",
+      "oabValidatedAt": "2026-07-03T09:00:00-03:00",
+      "practiceAreas": [
+        "family",
+        "civil"
+      ],
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "latitude": -10.9472,
+      "longitude": -37.0731,
+      "coordinates": {
+        "latitude": -10.9472,
+        "longitude": -37.0731
+      },
+      "serviceModalities": [
+        "online",
+        "presencial"
+      ],
+      "priorityContactActive": true,
+      "consultationActive": true,
+      "available": true,
+      "weeklySchedule": {
+        "segunda": true,
+        "terca": true,
+        "quarta": true,
+        "quinta": true,
+        "sexta": true,
+        "sabado": false,
+        "domingo": false
+      },
+      "serviceRadiusKm": 25,
+      "moderationStatus": "approved",
+      "submittedForReviewAt": "2026-07-02T10:35:00-03:00",
+      "moderatedAt": "2026-07-03T09:10:00-03:00",
+      "subscriptionActive": true,
+      "officeCreationRequested": false,
+      "officeOnboardingCompleted": false,
+      "ownedOfficeId": null,
+      "officeId": null,
+      "officeRole": null,
+      "officeMembershipStatus": null,
+      "validationAcknowledged": true,
+      "experienceRating": 5.0,
+      "experienceReviewCount": 1,
+      "ratings": [
+        5
+      ],
+      "onboardingStatus": "completed",
+      "startDate": "2026-07-02T10:00:00-03:00",
+      "endDate": "2026-07-03T09:15:00-03:00",
+      "createdAt": "2026-07-02T10:00:00-03:00",
+      "updatedAt": "2026-09-12T08:30:00-03:00",
+      "languages": [
+        "Português",
+        "Inglês"
+      ]
+    },
+    {
+      "id": "lawyer-002",
+      "name": "Rafael Mendes Costa",
+      "professionalName": "Dr. Rafael Costa",
+      "educationInstitution": "Faculdade Modelo de Sergipe",
+      "educationInstitutionCity": "Aracaju",
+      "educationCourse": "Direito",
+      "graduationYear": 2012,
+      "specialization": "Direito Empresarial e Consumidor",
+      "practiceStartYear": 2013,
+      "jobDescription": "Sócio proprietário de escritório",
+      "bio": "Atuação empresarial, contratual e consumerista para pessoas e empresas.",
+      "workMode": "hibrido",
+      "experience": "13 anos de atuação profissional",
+      "oabNumber": "23456",
+      "oabUf": "SE",
+      "oabDisplay": "OAB/SE 23456",
+      "oabType": "definitiva",
+      "oabValidationStatus": "validated",
+      "profileValidated": true,
+      "oabSubmittedAt": "2026-06-15T11:30:00-03:00",
+      "oabValidatedAt": "2026-06-16T08:45:00-03:00",
+      "practiceAreas": [
+        "business",
+        "consumer",
+        "civil"
+      ],
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "latitude": -10.9321,
+      "longitude": -37.0654,
+      "coordinates": {
+        "latitude": -10.9321,
+        "longitude": -37.0654
+      },
+      "serviceModalities": [
+        "online",
+        "presencial"
+      ],
+      "priorityContactActive": true,
+      "consultationActive": true,
+      "available": true,
+      "weeklySchedule": {
+        "segunda": true,
+        "terca": true,
+        "quarta": true,
+        "quinta": true,
+        "sexta": true,
+        "sabado": false,
+        "domingo": false
+      },
+      "serviceRadiusKm": 40,
+      "moderationStatus": "approved",
+      "submittedForReviewAt": "2026-06-15T11:40:00-03:00",
+      "moderatedAt": "2026-06-16T09:00:00-03:00",
+      "subscriptionActive": true,
+      "officeCreationRequested": true,
+      "officeOnboardingCompleted": true,
+      "ownedOfficeId": "office-001",
+      "officeId": "office-001",
+      "officeRole": "owner",
+      "officeMembershipStatus": "active",
+      "validationAcknowledged": true,
+      "experienceRating": 0,
+      "experienceReviewCount": 0,
+      "ratings": [],
+      "onboardingStatus": "completed",
+      "startDate": "2026-06-15T11:00:00-03:00",
+      "endDate": "2026-06-16T09:10:00-03:00",
+      "createdAt": "2026-06-15T11:00:00-03:00",
+      "updatedAt": "2026-09-12T12:00:00-03:00",
+      "languages": [
+        "Português"
+      ]
+    },
+    {
+      "id": "lawyer-003",
+      "name": "Camila Rocha Lima",
+      "professionalName": "Dra. Camila Lima",
+      "educationInstitution": "Universidade Exemplo",
+      "educationInstitutionCity": "Aracaju",
+      "educationCourse": "Direito",
+      "graduationYear": 2018,
+      "specialization": "Direito Trabalhista",
+      "practiceStartYear": 2019,
+      "jobDescription": "Advogada associada",
+      "bio": "Atuação em relações de trabalho, acordos e orientação preventiva.",
+      "workMode": "hibrido",
+      "experience": "7 anos de atuação profissional",
+      "oabNumber": "34567",
+      "oabUf": "SE",
+      "oabDisplay": "OAB/SE 34567",
+      "oabType": "definitiva",
+      "oabValidationStatus": "validated",
+      "profileValidated": true,
+      "oabSubmittedAt": "2026-07-10T16:30:00-03:00",
+      "oabValidatedAt": "2026-07-11T09:20:00-03:00",
+      "practiceAreas": [
+        "labor"
+      ],
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "latitude": -10.9321,
+      "longitude": -37.0654,
+      "coordinates": {
+        "latitude": -10.9321,
+        "longitude": -37.0654
+      },
+      "serviceModalities": [
+        "online",
+        "presencial"
+      ],
+      "priorityContactActive": true,
+      "consultationActive": true,
+      "available": true,
+      "weeklySchedule": {
+        "segunda": true,
+        "terca": true,
+        "quarta": true,
+        "quinta": true,
+        "sexta": true,
+        "sabado": false,
+        "domingo": false
+      },
+      "serviceRadiusKm": 30,
+      "moderationStatus": "approved",
+      "submittedForReviewAt": "2026-07-10T16:35:00-03:00",
+      "moderatedAt": "2026-07-11T09:30:00-03:00",
+      "subscriptionActive": true,
+      "officeCreationRequested": false,
+      "officeOnboardingCompleted": false,
+      "ownedOfficeId": null,
+      "officeId": "office-001",
+      "officeRole": "member",
+      "officeMembershipStatus": "active",
+      "validationAcknowledged": true,
+      "experienceRating": 4.0,
+      "experienceReviewCount": 1,
+      "ratings": [
+        4
+      ],
+      "onboardingStatus": "completed",
+      "startDate": "2026-07-10T16:00:00-03:00",
+      "endDate": "2026-07-11T09:35:00-03:00",
+      "createdAt": "2026-07-10T16:00:00-03:00",
+      "updatedAt": "2026-09-12T09:20:00-03:00",
+      "languages": [
+        "Português",
+        "Inglês"
+      ]
+    },
+    {
+      "id": "lawyer-004",
+      "name": "Bruno Tavares Alves",
+      "professionalName": "Dr. Bruno Alves",
+      "educationInstitution": "Centro Universitário Exemplo",
+      "educationInstitutionCity": "Aracaju",
+      "educationCourse": "Direito",
+      "graduationYear": 2020,
+      "specialization": "Direito Criminal",
+      "practiceStartYear": 2021,
+      "jobDescription": "Advogado criminalista",
+      "bio": "Atuação criminal consultiva e contenciosa.",
+      "workMode": "online",
+      "experience": "5 anos de atuação profissional",
+      "oabNumber": "45678",
+      "oabUf": "SE",
+      "oabDisplay": "OAB/SE 45678",
+      "oabType": "definitiva",
+      "oabValidationStatus": "validated",
+      "profileValidated": true,
+      "oabSubmittedAt": "2026-08-01T13:30:00-03:00",
+      "oabValidatedAt": "2026-08-02T10:00:00-03:00",
+      "practiceAreas": [
+        "criminal"
+      ],
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "latitude": -10.959,
+      "longitude": -37.06,
+      "coordinates": {
+        "latitude": -10.959,
+        "longitude": -37.06
+      },
+      "serviceModalities": [
+        "online"
+      ],
+      "priorityContactActive": true,
+      "consultationActive": true,
+      "available": true,
+      "weeklySchedule": {
+        "segunda": true,
+        "terca": true,
+        "quarta": true,
+        "quinta": true,
+        "sexta": true,
+        "sabado": true,
+        "domingo": false
+      },
+      "serviceRadiusKm": null,
+      "moderationStatus": "approved",
+      "submittedForReviewAt": "2026-08-01T13:35:00-03:00",
+      "moderatedAt": "2026-08-02T10:10:00-03:00",
+      "subscriptionActive": false,
+      "officeCreationRequested": false,
+      "officeOnboardingCompleted": false,
+      "ownedOfficeId": null,
+      "officeId": "office-001",
+      "officeRole": "member",
+      "officeMembershipStatus": "pending",
+      "validationAcknowledged": true,
+      "experienceRating": 0,
+      "experienceReviewCount": 0,
+      "ratings": [],
+      "onboardingStatus": "completed",
+      "startDate": "2026-08-01T13:00:00-03:00",
+      "endDate": "2026-08-02T10:15:00-03:00",
+      "createdAt": "2026-08-01T13:00:00-03:00",
+      "updatedAt": "2026-09-12T10:00:00-03:00",
+      "languages": [
+        "Português"
+      ]
+    }
+  ],
+  "legalDocuments": [
+    {
+      "id": "legal-terms-1.0",
+      "type": "terms",
+      "title": "Termos de Uso",
+      "version": "1.0",
+      "contentPath": "/legal/terms/1.0",
+      "active": true,
+      "effectiveAt": "2026-06-01T00:00:00-03:00",
+      "publishedAt": "2026-05-25T10:00:00-03:00",
+      "createdAt": "2026-05-20T10:00:00-03:00",
+      "updatedAt": "2026-05-25T10:00:00-03:00"
+    },
+    {
+      "id": "legal-privacy-1.0",
+      "type": "privacy",
+      "title": "Política de Privacidade",
+      "version": "1.0",
+      "contentPath": "/legal/privacy/1.0",
+      "active": true,
+      "effectiveAt": "2026-06-01T00:00:00-03:00",
+      "publishedAt": "2026-05-25T10:00:00-03:00",
+      "createdAt": "2026-05-20T10:00:00-03:00",
+      "updatedAt": "2026-05-25T10:00:00-03:00"
+    }
+  ],
+  "migrationRecords": [
+    {
+      "id": "migration-record-001",
+      "migrationId": "migration-001",
+      "sourceSystem": "legacy-firestore",
+      "sourceCollection": "users",
+      "sourceId": "legacy-user-001",
+      "targetPath": "users/client-001",
+      "targetId": "client-001",
+      "status": "migrated",
+      "warnings": [],
+      "error": null,
+      "migratedAt": "2026-08-15T01:01:00-03:00",
+      "createdAt": "2026-08-15T01:01:00-03:00"
+    },
+    {
+      "id": "migration-record-002",
+      "migrationId": "migration-001",
+      "sourceSystem": "legacy-firestore",
+      "sourceCollection": "advogados",
+      "sourceId": "legacy-lawyer-001",
+      "targetPath": "lawyers/lawyer-001",
+      "targetId": "lawyer-001",
+      "status": "migrated",
+      "warnings": [],
+      "error": null,
+      "migratedAt": "2026-08-15T01:02:00-03:00",
+      "createdAt": "2026-08-15T01:02:00-03:00"
+    },
+    {
+      "id": "migration-record-003",
+      "migrationId": "migration-001",
+      "sourceSystem": "legacy-firestore",
+      "sourceCollection": "escritorios",
+      "sourceId": "legacy-office-001",
+      "targetPath": "law_offices/office-001",
+      "targetId": "office-001",
+      "status": "migrated",
+      "warnings": [
+        "Nome da coleção de origem mantido apenas como referência técnica."
+      ],
+      "error": null,
+      "migratedAt": "2026-08-15T01:03:00-03:00",
+      "createdAt": "2026-08-15T01:03:00-03:00"
+    }
+  ],
+  "migrationRuns": [
+    {
+      "id": "migration-001",
+      "sourceSystem": "legacy-firestore",
+      "targetSystem": "firestore",
+      "version": "v3",
+      "status": "completed",
+      "startedAt": "2026-08-15T01:00:00-03:00",
+      "finishedAt": "2026-08-15T01:05:00-03:00",
+      "totalRecords": 3,
+      "migratedRecords": 3,
+      "failedRecords": 0,
+      "warnings": [
+        "Mocks de migração existem apenas para rastreabilidade técnica."
+      ],
+      "createdAt": "2026-08-15T00:55:00-03:00",
+      "updatedAt": "2026-08-15T01:05:00-03:00"
+    }
+  ],
+  "migrationSnapshots": [
+    {
+      "id": "snapshot-001",
+      "migrationId": "migration-001",
+      "sourceSystem": "legacy-firestore",
+      "sourcePath": "advogados/legacy-lawyer-001",
+      "sourceId": "legacy-lawyer-001",
+      "data": {
+        "nome": "Ana Souza",
+        "cidade": "Aracaju"
+      },
+      "checksum": "mock-checksum-001",
+      "importedAt": "2026-08-15T01:02:00-03:00",
+      "retentionStatus": "active",
+      "createdAt": "2026-08-15T01:02:00-03:00"
+    },
+    {
+      "id": "snapshot-002",
+      "migrationId": "migration-001",
+      "sourceSystem": "legacy-firestore",
+      "sourcePath": "escritorios/legacy-office-001",
+      "sourceId": "legacy-office-001",
+      "data": {
+        "nome": "Costa & Lima Advocacia"
+      },
+      "checksum": "mock-checksum-002",
+      "importedAt": "2026-08-15T01:03:00-03:00",
+      "retentionStatus": "active",
+      "createdAt": "2026-08-15T01:03:00-03:00"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notification-001",
+      "userId": "client-001",
+      "type": "request_accepted",
+      "title": "Contato liberado",
+      "body": "Dra. Ana Souza aceitou sua solicitação.",
+      "route": "/requests/request-001",
+      "sourceType": "contact_request",
+      "sourceId": "request-001",
+      "sourceRequestId": "request-001",
+      "senderUserId": "lawyer-001",
+      "messageId": null,
+      "iconName": "check",
+      "iconType": "success",
+      "photoUrl": null,
+      "data": {
+        "lawyerId": "lawyer-001"
+      },
+      "read": true,
+      "readAt": "2026-09-01T10:22:00-03:00",
+      "pushSentAt": "2026-09-01T10:20:10-03:00",
+      "deliveredAt": "2026-09-01T10:20:15-03:00",
+      "createdAt": "2026-09-01T10:20:00-03:00",
+      "updatedAt": "2026-09-01T10:22:00-03:00"
+    },
+    {
+      "id": "notification-002",
+      "userId": "lawyer-001",
+      "type": "new_request",
+      "title": "Nova solicitação",
+      "body": "Você recebeu uma solicitação compatível com Família.",
+      "route": "/requests/request-001",
+      "sourceType": "contact_request",
+      "sourceId": "request-001",
+      "sourceRequestId": "request-001",
+      "senderUserId": "client-001",
+      "messageId": null,
+      "iconName": "briefcase",
+      "iconType": "info",
+      "photoUrl": null,
+      "data": {
+        "specialtyId": "family"
+      },
+      "read": true,
+      "readAt": "2026-09-01T10:10:00-03:00",
+      "pushSentAt": "2026-09-01T10:00:10-03:00",
+      "deliveredAt": "2026-09-01T10:00:15-03:00",
+      "createdAt": "2026-09-01T10:00:00-03:00",
+      "updatedAt": "2026-09-01T10:10:00-03:00"
+    },
+    {
+      "id": "notification-003",
+      "userId": "lawyer-003",
+      "type": "office_request_assigned",
+      "title": "Solicitação atribuída",
+      "body": "Rafael Costa atribuiu uma solicitação trabalhista a você.",
+      "route": "/requests/request-002",
+      "sourceType": "contact_request",
+      "sourceId": "request-002",
+      "sourceRequestId": "request-002",
+      "senderUserId": "lawyer-002",
+      "messageId": null,
+      "iconName": "office",
+      "iconType": "info",
+      "photoUrl": null,
+      "data": {
+        "officeId": "office-001"
+      },
+      "read": true,
+      "readAt": "2026-09-06T15:15:00-03:00",
+      "pushSentAt": "2026-09-06T15:10:05-03:00",
+      "deliveredAt": "2026-09-06T15:10:10-03:00",
+      "createdAt": "2026-09-06T15:10:00-03:00",
+      "updatedAt": "2026-09-06T15:15:00-03:00"
+    },
+    {
+      "id": "notification-004",
+      "userId": "lawyer-004",
+      "type": "office_invite",
+      "title": "Convite para escritório",
+      "body": "Costa & Lima Advocacia convidou você para integrar a equipe.",
+      "route": "/office/invites/invite-002",
+      "sourceType": "office_invite",
+      "sourceId": "invite-002",
+      "sourceRequestId": null,
+      "senderUserId": "lawyer-002",
+      "messageId": null,
+      "iconName": "mail",
+      "iconType": "gold",
+      "photoUrl": null,
+      "data": {
+        "officeId": "office-001",
+        "role": "member"
+      },
+      "read": false,
+      "readAt": null,
+      "pushSentAt": "2026-09-10T09:00:10-03:00",
+      "deliveredAt": "2026-09-10T09:00:15-03:00",
+      "createdAt": "2026-09-10T09:00:00-03:00",
+      "updatedAt": "2026-09-10T09:00:00-03:00"
+    },
+    {
+      "id": "notification-005",
+      "userId": "client-001",
+      "type": "request_waiting",
+      "title": "Solicitação enviada",
+      "body": "Sua solicitação de Consumidor está aguardando aceite.",
+      "route": "/requests/request-003",
+      "sourceType": "contact_request",
+      "sourceId": "request-003",
+      "sourceRequestId": "request-003",
+      "senderUserId": null,
+      "messageId": null,
+      "iconName": "clock",
+      "iconType": "info",
+      "photoUrl": null,
+      "data": {},
+      "read": false,
+      "readAt": null,
+      "pushSentAt": "2026-09-12T19:10:05-03:00",
+      "deliveredAt": "2026-09-12T19:10:10-03:00",
+      "createdAt": "2026-09-12T19:10:00-03:00",
+      "updatedAt": "2026-09-12T19:10:00-03:00"
+    }
+  ],
+  "officeInvites": [
+    {
+      "id": "invite-001",
+      "officeId": "office-001",
+      "invitedUid": "lawyer-003",
+      "invitedEmail": "camila.member@example.com",
+      "invitedBy": "lawyer-002",
+      "role": "member",
+      "status": "accepted",
+      "createdAt": "2026-08-04T10:00:00-03:00",
+      "expiresAt": "2026-08-11T10:00:00-03:00",
+      "respondedAt": "2026-08-05T14:30:00-03:00",
+      "invitedOab": "OAB/SE 34567"
+    },
+    {
+      "id": "invite-002",
+      "officeId": "office-001",
+      "invitedUid": "lawyer-004",
+      "invitedEmail": "bruno.invited@example.com",
+      "invitedBy": "lawyer-002",
+      "role": "member",
+      "status": "pending",
+      "createdAt": "2026-09-10T09:00:00-03:00",
+      "expiresAt": "2026-09-17T09:00:00-03:00",
+      "respondedAt": null,
+      "invitedOab": "OAB/SE 45678"
+    }
+  ],
+  "privacyRequests": [
+    {
+      "id": "privacy-request-001",
+      "userId": "client-001",
+      "requestType": "access",
+      "status": "open",
+      "reason": "Solicitação fictícia de acesso aos dados.",
+      "assignedAdminId": "admin-001",
+      "decision": null,
+      "completedAt": null,
+      "createdAt": "2026-09-12T11:00:00-03:00",
+      "updatedAt": "2026-09-12T11:00:00-03:00"
+    }
+  ],
+  "reports": [
+    {
+      "id": "report-001",
+      "reporterUserId": "client-002",
+      "reporterRole": "cliente",
+      "targetType": "lawyer",
+      "targetId": "lawyer-004",
+      "requestId": "request-004",
+      "subject": "Contato não concluído",
+      "category": "Uso irregular",
+      "body": "Registro fictício para testar a fila de moderação.",
+      "evidenceUrls": [],
+      "status": "open",
+      "priority": "normal",
+      "assignedAdminId": "admin-001",
+      "decision": null,
+      "resolutionNote": null,
+      "resolvedBy": null,
+      "resolvedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-12T08:00:00-03:00"
+    },
+    {
+      "id": "report-002",
+      "reporterUserId": "lawyer-001",
+      "reporterRole": "advogado",
+      "targetType": "request",
+      "targetId": "request-003",
+      "requestId": "request-003",
+      "subject": "Informações insuficientes",
+      "category": "Solicitação",
+      "body": "Registro fictício para testar análise administrativa.",
+      "evidenceUrls": [],
+      "status": "resolved",
+      "priority": "low",
+      "assignedAdminId": "admin-001",
+      "decision": "no_action",
+      "resolutionNote": "Sem violação identificada no cenário simulado.",
+      "resolvedBy": "admin-001",
+      "resolvedAt": "2026-09-12T14:00:00-03:00",
+      "createdAt": "2026-09-12T10:00:00-03:00",
+      "updatedAt": "2026-09-12T14:00:00-03:00"
+    }
+  ],
+  "serviceModalities": [
+    {
+      "id": "online",
+      "code": "online",
+      "label": "Online",
+      "description": "Atendimento remoto.",
+      "active": true,
+      "sortOrder": 1,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "presencial",
+      "code": "presencial",
+      "label": "Presencial",
+      "description": "Atendimento presencial.",
+      "active": true,
+      "sortOrder": 2,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "ambos",
+      "code": "ambos",
+      "label": "Online ou presencial",
+      "description": "Permite as duas modalidades.",
+      "active": true,
+      "sortOrder": 3,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    }
+  ],
+  "serviceTypes": [
+    {
+      "id": "priority-contact",
+      "code": "priority-contact",
+      "label": "Contato prioritário",
+      "description": "Busca por contato em menor prazo.",
+      "active": true,
+      "sortOrder": 1,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "consultation",
+      "code": "consultation",
+      "label": "Consulta",
+      "description": "Solicitação consultiva para orientação jurídica.",
+      "active": true,
+      "sortOrder": 2,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    }
+  ],
+  "specialties": [
+    {
+      "id": "family",
+      "code": "family",
+      "value": "family",
+      "label": "Família",
+      "description": "Questões familiares, guarda, alimentos e divórcio",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 1,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "civil",
+      "code": "civil",
+      "value": "civil",
+      "label": "Cível",
+      "description": "Relações civis, obrigações e responsabilidade",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 2,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "criminal",
+      "code": "criminal",
+      "value": "criminal",
+      "label": "Criminal",
+      "description": "Atuação em matéria criminal",
+      "category": "Criminal",
+      "active": true,
+      "sortOrder": 3,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "labor",
+      "code": "labor",
+      "value": "labor",
+      "label": "Trabalhista",
+      "description": "Relações de trabalho e emprego",
+      "category": "Trabalhista",
+      "active": true,
+      "sortOrder": 4,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "consumer",
+      "code": "consumer",
+      "value": "consumer",
+      "label": "Consumidor",
+      "description": "Relações de consumo",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 5,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "business",
+      "code": "business",
+      "value": "business",
+      "label": "Empresarial",
+      "description": "Empresas, contratos e relações societárias",
+      "category": "Empresarial",
+      "active": true,
+      "sortOrder": 6,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "tax",
+      "code": "tax",
+      "value": "tax",
+      "label": "Tributário",
+      "description": "Questões fiscais e tributárias",
+      "category": "Empresarial",
+      "active": true,
+      "sortOrder": 7,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "real-estate",
+      "code": "real-estate",
+      "value": "real-estate",
+      "label": "Imobiliário",
+      "description": "Imóveis, locações e contratos",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 8,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "social-security",
+      "code": "social-security",
+      "value": "social-security",
+      "label": "Previdenciário",
+      "description": "Benefícios e relações previdenciárias",
+      "category": "Social",
+      "active": true,
+      "sortOrder": 9,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "administrative",
+      "code": "administrative",
+      "value": "administrative",
+      "label": "Administrativo",
+      "description": "Relações com a Administração Pública",
+      "category": "Público",
+      "active": true,
+      "sortOrder": 10,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "digital",
+      "code": "digital",
+      "value": "digital",
+      "label": "Digital",
+      "description": "Questões jurídicas ligadas ao ambiente digital",
+      "category": "Tecnologia",
+      "active": true,
+      "sortOrder": 11,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "succession",
+      "code": "succession",
+      "value": "succession",
+      "label": "Sucessões",
+      "description": "Inventários, heranças e sucessão",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 12,
+      "createdAt": "2026-06-01T08:00:00-03:00",
+      "updatedAt": "2026-09-01T08:00:00-03:00"
+    },
+    {
+      "id": "intellectual-property",
+      "code": "intellectual-property",
+      "value": "intellectual-property",
+      "label": "Direito Intelectual",
+      "description": "Propriedade intelectual, marcas, direitos autorais e ativos imateriais",
+      "category": "Empresarial",
+      "active": true,
+      "sortOrder": 13,
+      "createdAt": "2026-09-13T05:54:00-03:00",
+      "updatedAt": "2026-09-13T05:54:00-03:00"
+    },
+    {
+      "id": "traffic",
+      "code": "traffic",
+      "value": "traffic",
+      "label": "Trânsito",
+      "description": "Questões administrativas e judiciais relacionadas ao trânsito",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 14,
+      "createdAt": "2026-09-13T05:54:00-03:00",
+      "updatedAt": "2026-09-13T05:54:00-03:00"
+    },
+    {
+      "id": "banking",
+      "code": "banking",
+      "value": "banking",
+      "label": "Bancário",
+      "description": "Relações bancárias, contratos financeiros e conflitos com instituições financeiras",
+      "category": "Cível",
+      "active": true,
+      "sortOrder": 15,
+      "createdAt": "2026-09-13T05:54:00-03:00",
+      "updatedAt": "2026-09-13T05:54:00-03:00"
+    },
+    {
+      "id": "unknown",
+      "code": "unknown",
+      "value": "unknown",
+      "label": "Não sei informar",
+      "description": "Opção de triagem quando o Cliente ainda não sabe identificar a especialidade",
+      "category": "Triagem",
+      "active": true,
+      "sortOrder": 16,
+      "createdAt": "2026-09-13T05:54:00-03:00",
+      "updatedAt": "2026-09-13T05:54:00-03:00"
+    }
+  ],
+  "structures": {
+    "address": {
+      "address": "Rua Exemplo",
+      "addressNumber": "100",
+      "complement": "Sala 2",
+      "district": "Centro",
+      "neighborhood": "Centro",
+      "city": "Aracaju",
+      "cityNormalized": "aracaju",
+      "uf": "SE",
+      "zipCode": "49000-000",
+      "country": "BR"
+    },
+    "location": {
+      "latitude": -10.9472,
+      "longitude": -37.0731,
+      "coordinates": {
+        "latitude": -10.9472,
+        "longitude": -37.0731
+      },
+      "source": "manual",
+      "capturedAt": "2026-09-10T10:00:00-03:00"
+    }
+  },
+  "supportTicketMessages": {
+    "ticket-001": [
+      {
+        "id": "message-001",
+        "ticketId": "ticket-001",
+        "senderUserId": "client-001",
+        "senderRole": "cliente",
+        "message": "Quero entender quais dados ficam vinculados à minha conta.",
+        "attachmentUrls": [],
+        "createdAt": "2026-09-09T11:00:00-03:00"
+      },
+      {
+        "id": "message-002",
+        "ticketId": "ticket-001",
+        "senderUserId": "admin-001",
+        "senderRole": "admin",
+        "message": "Recebemos a solicitação e estamos verificando as informações.",
+        "attachmentUrls": [],
+        "createdAt": "2026-09-09T11:30:00-03:00"
+      }
+    ],
+    "ticket-002": [
+      {
+        "id": "message-003",
+        "ticketId": "ticket-002",
+        "senderUserId": "lawyer-003",
+        "senderRole": "advogado",
+        "message": "Meu vínculo com o escritório já está ativo?",
+        "attachmentUrls": [],
+        "createdAt": "2026-09-08T14:00:00-03:00"
+      },
+      {
+        "id": "message-004",
+        "ticketId": "ticket-002",
+        "senderUserId": "admin-001",
+        "senderRole": "admin",
+        "message": "Sim. Seu vínculo está como membro ativo.",
+        "attachmentUrls": [],
+        "createdAt": "2026-09-08T16:25:00-03:00"
+      }
+    ]
+  },
+  "supportTickets": [
+    {
+      "id": "ticket-001",
+      "userId": "client-001",
+      "userRole": "cliente",
+      "subject": "Privacidade da conta",
+      "category": "Privacidade",
+      "body": "Quero entender quais dados ficam vinculados à minha conta.",
+      "status": "open",
+      "priority": "normal",
+      "attachmentUrls": [],
+      "assignedAdminId": "admin-001",
+      "resolution": null,
+      "resolvedAt": null,
+      "closedAt": null,
+      "createdAt": "2026-09-09T11:00:00-03:00",
+      "updatedAt": "2026-09-09T11:30:00-03:00"
+    },
+    {
+      "id": "ticket-002",
+      "userId": "lawyer-003",
+      "userRole": "advogado",
+      "subject": "Dúvida sobre vínculo com escritório",
+      "category": "Perfil",
+      "body": "Preciso confirmar como aparece meu vínculo com o escritório.",
+      "status": "resolved",
+      "priority": "normal",
+      "attachmentUrls": [],
+      "assignedAdminId": "admin-001",
+      "resolution": "Vínculo confirmado como membro ativo.",
+      "resolvedAt": "2026-09-08T16:30:00-03:00",
+      "closedAt": "2026-09-08T16:35:00-03:00",
+      "createdAt": "2026-09-08T14:00:00-03:00",
+      "updatedAt": "2026-09-08T16:35:00-03:00"
+    }
+  ],
+  "userDevices": [
+    {
+      "id": "device-001",
+      "userId": "client-001",
+      "platform": "android",
+      "deviceName": "Celular Mariana",
+      "deviceModel": "Android Mock",
+      "osVersion": "16",
+      "appVersion": "3.0.0",
+      "pushToken": "mock_push_client_001",
+      "pushEnabled": true,
+      "notificationPermission": "granted",
+      "active": true,
+      "lastSeenAt": "2026-09-12T20:00:00-03:00",
+      "createdAt": "2026-08-20T14:00:00-03:00",
+      "updatedAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "device-002",
+      "userId": "client-002",
+      "platform": "ios",
+      "deviceName": "Celular João",
+      "deviceModel": "iPhone Mock",
+      "osVersion": "20",
+      "appVersion": "3.0.0",
+      "pushToken": "mock_push_client_002",
+      "pushEnabled": true,
+      "notificationPermission": "granted",
+      "active": true,
+      "lastSeenAt": "2026-09-12T18:00:00-03:00",
+      "createdAt": "2026-08-28T09:00:00-03:00",
+      "updatedAt": "2026-09-12T18:00:00-03:00"
+    },
+    {
+      "id": "device-003",
+      "userId": "lawyer-001",
+      "platform": "android",
+      "deviceName": "Celular Ana",
+      "deviceModel": "Android Mock",
+      "osVersion": "16",
+      "appVersion": "3.0.0",
+      "pushToken": "mock_push_lawyer_001",
+      "pushEnabled": true,
+      "notificationPermission": "granted",
+      "active": true,
+      "lastSeenAt": "2026-09-12T17:30:00-03:00",
+      "createdAt": "2026-07-02T10:00:00-03:00",
+      "updatedAt": "2026-09-12T17:30:00-03:00"
+    },
+    {
+      "id": "device-004",
+      "userId": "lawyer-002",
+      "platform": "web",
+      "deviceName": "Notebook Rafael",
+      "deviceModel": "Browser Mock",
+      "osVersion": "Windows",
+      "appVersion": "3.0.0",
+      "pushToken": null,
+      "pushEnabled": false,
+      "notificationPermission": "denied",
+      "active": true,
+      "lastSeenAt": "2026-09-13T07:50:00-03:00",
+      "createdAt": "2026-06-15T11:00:00-03:00",
+      "updatedAt": "2026-09-13T07:50:00-03:00"
+    },
+    {
+      "id": "device-005",
+      "userId": "lawyer-003",
+      "platform": "android",
+      "deviceName": "Celular Camila",
+      "deviceModel": "Android Mock",
+      "osVersion": "16",
+      "appVersion": "3.0.0",
+      "pushToken": "mock_push_lawyer_003",
+      "pushEnabled": true,
+      "notificationPermission": "granted",
+      "active": true,
+      "lastSeenAt": "2026-09-12T18:30:00-03:00",
+      "createdAt": "2026-07-10T16:00:00-03:00",
+      "updatedAt": "2026-09-12T18:30:00-03:00"
+    },
+    {
+      "id": "device-006",
+      "userId": "lawyer-004",
+      "platform": "android",
+      "deviceName": "Celular Bruno",
+      "deviceModel": "Android Mock",
+      "osVersion": "16",
+      "appVersion": "3.0.0",
+      "pushToken": "mock_push_lawyer_004",
+      "pushEnabled": true,
+      "notificationPermission": "granted",
+      "active": true,
+      "lastSeenAt": "2026-09-12T19:30:00-03:00",
+      "createdAt": "2026-08-01T13:00:00-03:00",
+      "updatedAt": "2026-09-12T19:30:00-03:00"
+    }
+  ],
+  "userSessions": [
+    {
+      "id": "session-001",
+      "userId": "client-001",
+      "deviceId": "device-001",
+      "status": "active",
+      "startedAt": "2026-09-12T08:00:00-03:00",
+      "lastSeenAt": "2026-09-12T20:00:00-03:00",
+      "endedAt": null,
+      "revokedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-12T20:00:00-03:00"
+    },
+    {
+      "id": "session-002",
+      "userId": "client-002",
+      "deviceId": "device-002",
+      "status": "active",
+      "startedAt": "2026-09-12T08:00:00-03:00",
+      "lastSeenAt": "2026-09-12T18:00:00-03:00",
+      "endedAt": null,
+      "revokedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-12T18:00:00-03:00"
+    },
+    {
+      "id": "session-003",
+      "userId": "lawyer-001",
+      "deviceId": "device-003",
+      "status": "active",
+      "startedAt": "2026-09-12T08:00:00-03:00",
+      "lastSeenAt": "2026-09-12T17:30:00-03:00",
+      "endedAt": null,
+      "revokedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-12T17:30:00-03:00"
+    },
+    {
+      "id": "session-004",
+      "userId": "lawyer-002",
+      "deviceId": "device-004",
+      "status": "active",
+      "startedAt": "2026-09-12T08:00:00-03:00",
+      "lastSeenAt": "2026-09-13T07:50:00-03:00",
+      "endedAt": null,
+      "revokedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-13T07:50:00-03:00"
+    },
+    {
+      "id": "session-005",
+      "userId": "lawyer-003",
+      "deviceId": "device-005",
+      "status": "active",
+      "startedAt": "2026-09-12T08:00:00-03:00",
+      "lastSeenAt": "2026-09-12T18:30:00-03:00",
+      "endedAt": null,
+      "revokedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-12T18:30:00-03:00"
+    },
+    {
+      "id": "session-006",
+      "userId": "lawyer-004",
+      "deviceId": "device-006",
+      "status": "active",
+      "startedAt": "2026-09-12T08:00:00-03:00",
+      "lastSeenAt": "2026-09-12T19:30:00-03:00",
+      "endedAt": null,
+      "revokedAt": null,
+      "createdAt": "2026-09-12T08:00:00-03:00",
+      "updatedAt": "2026-09-12T19:30:00-03:00"
+    }
+  ],
+  "users": [
+    {
+      "id": "client-001",
+      "name": "Mariana",
+      "surname": "Oliveira",
+      "username": "mariana.oliveira",
+      "currentUsername": "mariana.oliveira",
+      "email": "mariana.cliente@example.com",
+      "pendingEmail": null,
+      "profiles": [
+        "cliente"
+      ],
+      "active": true,
+      "accountStatus": "active",
+      "legalConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-08-20T14:10:00-03:00",
+        "revokedAt": null,
+        "context": "signup"
+      },
+      "locationConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-08-20T14:11:00-03:00",
+        "revokedAt": null,
+        "context": "nearby-lawyers"
+      },
+      "communicationPreferences": {
+        "push": true,
+        "email": true
+      },
+      "createdAt": "2026-08-20T14:00:00-03:00",
+      "updatedAt": "2026-09-10T18:40:00-03:00"
+    },
+    {
+      "id": "client-002",
+      "name": "João",
+      "surname": "Pedro Santos",
+      "username": "joao.santos",
+      "currentUsername": "joao.santos",
+      "email": "joao.cliente@example.com",
+      "pendingEmail": null,
+      "profiles": [
+        "cliente"
+      ],
+      "active": true,
+      "accountStatus": "active",
+      "legalConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-08-28T09:05:00-03:00",
+        "revokedAt": null,
+        "context": "signup"
+      },
+      "locationConsent": {
+        "status": "pending",
+        "version": "1.0",
+        "acceptedAt": null,
+        "revokedAt": null,
+        "context": "nearby-lawyers"
+      },
+      "communicationPreferences": {
+        "push": true,
+        "email": false
+      },
+      "createdAt": "2026-08-28T09:00:00-03:00",
+      "updatedAt": "2026-09-11T10:15:00-03:00"
+    },
+    {
+      "id": "lawyer-001",
+      "name": "Ana Beatriz",
+      "surname": "Souza",
+      "username": "ana.souza",
+      "currentUsername": "ana.souza",
+      "email": "ana.adv@example.com",
+      "pendingEmail": null,
+      "profiles": [
+        "advogado"
+      ],
+      "active": true,
+      "accountStatus": "active",
+      "legalConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-07-02T10:01:00-03:00",
+        "revokedAt": null,
+        "context": "lawyer-onboarding"
+      },
+      "locationConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-07-02T10:02:00-03:00",
+        "revokedAt": null,
+        "context": "professional-location"
+      },
+      "communicationPreferences": {
+        "push": true,
+        "email": true
+      },
+      "createdAt": "2026-07-02T10:00:00-03:00",
+      "updatedAt": "2026-09-12T08:30:00-03:00"
+    },
+    {
+      "id": "lawyer-002",
+      "name": "Rafael",
+      "surname": "Mendes Costa",
+      "username": "rafael.costa",
+      "currentUsername": "rafael.costa",
+      "email": "rafael.owner@example.com",
+      "pendingEmail": null,
+      "profiles": [
+        "advogado"
+      ],
+      "active": true,
+      "accountStatus": "active",
+      "legalConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-06-15T11:01:00-03:00",
+        "revokedAt": null,
+        "context": "lawyer-onboarding"
+      },
+      "locationConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-06-15T11:02:00-03:00",
+        "revokedAt": null,
+        "context": "professional-location"
+      },
+      "communicationPreferences": {
+        "push": true,
+        "email": true
+      },
+      "createdAt": "2026-06-15T11:00:00-03:00",
+      "updatedAt": "2026-09-12T12:00:00-03:00"
+    },
+    {
+      "id": "lawyer-003",
+      "name": "Camila",
+      "surname": "Rocha Lima",
+      "username": "camila.lima",
+      "currentUsername": "camila.lima",
+      "email": "camila.member@example.com",
+      "pendingEmail": null,
+      "profiles": [
+        "advogado"
+      ],
+      "active": true,
+      "accountStatus": "active",
+      "legalConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-07-10T16:01:00-03:00",
+        "revokedAt": null,
+        "context": "lawyer-onboarding"
+      },
+      "locationConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-07-10T16:02:00-03:00",
+        "revokedAt": null,
+        "context": "professional-location"
+      },
+      "communicationPreferences": {
+        "push": true,
+        "email": true
+      },
+      "createdAt": "2026-07-10T16:00:00-03:00",
+      "updatedAt": "2026-09-12T09:20:00-03:00"
+    },
+    {
+      "id": "lawyer-004",
+      "name": "Bruno",
+      "surname": "Tavares Alves",
+      "username": "bruno.alves",
+      "currentUsername": "bruno.alves",
+      "email": "bruno.invited@example.com",
+      "pendingEmail": null,
+      "profiles": [
+        "advogado"
+      ],
+      "active": true,
+      "accountStatus": "active",
+      "legalConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-08-01T13:01:00-03:00",
+        "revokedAt": null,
+        "context": "lawyer-onboarding"
+      },
+      "locationConsent": {
+        "status": "accepted",
+        "version": "1.0",
+        "acceptedAt": "2026-08-01T13:02:00-03:00",
+        "revokedAt": null,
+        "context": "professional-location"
+      },
+      "communicationPreferences": {
+        "push": true,
+        "email": true
+      },
+      "createdAt": "2026-08-01T13:00:00-03:00",
+      "updatedAt": "2026-09-12T10:00:00-03:00"
+    }
+  ]
+}

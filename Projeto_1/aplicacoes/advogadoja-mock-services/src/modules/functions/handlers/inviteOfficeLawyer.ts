@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function inviteOfficeLawyer(input: Record<string, any>) { const invite={id:uid("invite"),officeId:required(input.officeId,"officeId"),invitedBy:required(input.invitedBy,"invitedBy"),invitedUid:input.invitedUid??null,email:input.email??null,status:"pending",createdAt:now(),updatedAt:now(),expiresAt:input.expiresAt??new Date(Date.now()+7*86400000).toISOString()}; db.insert("officeInvites",invite); return invite; }

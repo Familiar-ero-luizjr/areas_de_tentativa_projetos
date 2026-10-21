@@ -1,0 +1,299 @@
+{
+  "schema": "advogadoja.planejamento.v1",
+  "versao": 1,
+  "titulo": "Plano de trabalho e memória de decisões · Advogado Já",
+  "atualizado_em": "2026-10-16",
+  "descricao": "Roteiro de trabalho; etapas não são decisões de implementação. Decisões, propostas, dúvidas e ideias vivem em registros.csv.",
+  "jornadas": [
+    {
+      "id": "cliente",
+      "nome": "Cliente",
+      "ordem": 1,
+      "status": "planejada",
+      "nota": "Inclui o acesso à Área Estudante por assinatura; definir na entrevista."
+    },
+    {
+      "id": "advogado",
+      "nome": "Advogado",
+      "ordem": 2,
+      "status": "planejada",
+      "nota": "Reutiliza identidade e cadastro comum; validar regras profissionais."
+    },
+    {
+      "id": "administrador",
+      "nome": "Administrador",
+      "ordem": 3,
+      "status": "planejada",
+      "nota": "Papel interno; regras administrativas ainda pendentes."
+    }
+  ],
+  "modelo_acesso": {
+    "identidade": "uma conta por pessoa",
+    "jornadas_principais": [
+      "cliente",
+      "advogado",
+      "administrador"
+    ],
+    "estudante": {
+      "categoria": "area_por_assinatura_do_cliente",
+      "conta_independente": false,
+      "observacao": "Proposta de duas homes na mesma conta; experiência final ainda deve ser aprovada na entrevista."
+    }
+  },
+  "fases": [
+    {
+      "id": "F01",
+      "titulo": "Definição das jornadas",
+      "objetivo": "Decidir quais experiências existem antes de começar as entrevistas",
+      "etapas": [
+        {
+          "id": "ET-001",
+          "titulo": "Criar seção na entrevista para definir jornadas e tipos de acesso",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-002",
+          "titulo": "Confirmar as jornadas principais: Cliente, Advogado e Administrador",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-003",
+          "titulo": "Definir a condição de Estudante como benefício/plano associado à conta Cliente",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-004",
+          "titulo": "Revisar os HTMLs atuais e fixar a ordem: Cliente → Advogado → Administrador",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "titulo": "Entrevista da jornada escolhida",
+      "objetivo": "Definir antes de alterar a implementação",
+      "etapas": [
+        {
+          "id": "ET-005",
+          "titulo": "Analisar profundamente o HTML da jornada selecionada",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-006",
+          "titulo": "Levantar perguntas sobre telas, campos, estados, menus, modais, ações e navegação",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-007",
+          "titulo": "Levantar perguntas sobre banco, Firebase, APIs, integrações, permissões, cache e custos",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-008",
+          "titulo": "Comparar com o legado para encontrar possibilidades úteis, sem adotá-las automaticamente",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-009",
+          "titulo": "Realizar a entrevista e registrar respostas, decisões, conflitos e pendências",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-010",
+          "titulo": "Consolidar as definições funcionais da jornada",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "titulo": "Revisão e construção das telas",
+      "objetivo": "Manter o que já está certo e construir apenas o necessário",
+      "etapas": [
+        {
+          "id": "ET-011",
+          "titulo": "Classificar cada tela: manter, alterar, criar, reutilizar ou excluir",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-012",
+          "titulo": "Especificar campos, conteúdos, estados e ações de cada tela",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-013",
+          "titulo": "Preservar o padrão aprovado: mobile first, header, temas, cores e CSS",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-014",
+          "titulo": "Organizar telas em pastas próprias com HTML, estilos, componentes, lógica, JSON e mocks",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-015",
+          "titulo": "Implementar interações locais: menus, modais, notificações, seletores e formulários",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-016",
+          "titulo": "Preparar mocks coerentes com as jornadas, incluindo dados de exemplo preenchidos",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-017",
+          "titulo": "Manter a tela isolada da navegação entre telas; o protótipo controla essa navegação",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-018",
+          "titulo": "Testar isoladamente visual, responsividade, acessibilidade e interações",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "titulo": "Banco e arquitetura técnica",
+      "objetivo": "Rastrear dados e controlar custos e acesso",
+      "etapas": [
+        {
+          "id": "ET-019",
+          "titulo": "Revisar a modelagem do banco conforme requisitos aprovados",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-020",
+          "titulo": "Definir origem, destino, leitura, gravação e propriedade de cada informação",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-021",
+          "titulo": "Definir identidade, autorização, estado, providers, cache e invalidação",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-022",
+          "titulo": "Definir integrações, requisições e funções indispensáveis, mantendo segurança e custo sob controle",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-023",
+          "titulo": "Documentar contratos de dados, variáveis de ambiente e dependências técnicas por tela",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "titulo": "Consolidação e publicação da jornada",
+      "objetivo": "Atualizar os artefatos e encerrar o ciclo",
+      "etapas": [
+        {
+          "id": "ET-024",
+          "titulo": "Revisar se as perguntas críticas da entrevista foram respondidas",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-025",
+          "titulo": "Verificar coerência entre fluxo, telas, comportamentos, dados e banco",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-026",
+          "titulo": "Validar a jornada de ponta a ponta e registrar pendências remanescentes",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-027",
+          "titulo": "Atualizar o protótipo navegável com telas, mocks e condições aprovadas",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-028",
+          "titulo": "Atualizar o inventário de telas e o estado de cada item",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-029",
+          "titulo": "Atualizar o mapa integrado e as conexões com serviços e dados",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        },
+        {
+          "id": "ET-030",
+          "titulo": "Concluir a jornada e iniciar a próxima, reaproveitando o que foi aprovado",
+          "status": "nao_iniciado",
+          "observacoes": ""
+        }
+      ]
+    }
+  ],
+  "catalogos": {
+    "status_etapa": [
+      "nao_iniciado",
+      "em_andamento",
+      "concluido",
+      "bloqueado"
+    ],
+    "status_registro": [
+      "confirmado",
+      "proposto",
+      "a_analisar",
+      "em_entrevista",
+      "em_execucao",
+      "concluido",
+      "descartado"
+    ],
+    "tipos_registro": [
+      "decisao",
+      "proposta",
+      "pergunta",
+      "ideia",
+      "requisito",
+      "risco",
+      "referencia"
+    ],
+    "prioridades": [
+      "critica",
+      "alta",
+      "media",
+      "baixa"
+    ]
+  },
+  "regras": [
+    "Nunca converter hipótese, proposta ou referência do legado em decisão confirmada automaticamente.",
+    "Todos os registros e etapas possuem IDs estáveis; nunca reutilizar IDs eliminados.",
+    "Uma alteração no navegador só persiste após exportação e substituição do arquivo no repositório.",
+    "Separar tela, componente, ação, estado, jornada e assinatura.",
+    "Telas e integrações somente são implementadas quando o requisito estiver aprovado."
+  ]
+}

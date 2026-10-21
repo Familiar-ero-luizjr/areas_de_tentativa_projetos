@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { scenarioRegistry } from "../../src/scenarios/registry"; describe("scenario failures",()=>{it("tem offline",()=>expect(scenarioRegistry.some(s=>s.id==="firebase-offline")).toBe(true));});

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Painel de aplicação — exemplo offline</title>
+  <style>
+/* @ARQUIVO: estilos/tema.css */
+/* @REGIAO:ESTILOS.BASE */
+:root{--bg:#f5f7fb;--surface:#fff;--ink:#142238;--secondary:#66758b;--line:#dce3ed;--accent:#285fe9;--accent-muted:#eef4ff;--navy:#162e52;--radius:12px;--shadow:0 7px 24px rgba(18,32,62,.055)}
+*,*::before,*::after{box-sizing:border-box}
+html{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
+body{margin:0}.app{max-width:1440px;margin:0 auto;padding:22px 24px 50px}
+button,input,select{font:inherit}button{cursor:pointer}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.site-header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;padding:18px 0 24px}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.15em;font-weight:800;color:var(--accent)}h1{font-size:clamp(24px,3vw,31px);letter-spacing:-.03em;line-height:1.2;margin:7px 0 8px}.heading p{font-size:13px;color:var(--secondary);margin:0;line-height:1.5}.mode-pill{font-size:10px;font-weight:750;color:#166534;background:#e9f9ee;border:1px solid #b5e6c4;border-radius:999px;padding:6px 10px;white-space:nowrap}
+/* @REGIAO:ESTILOS.CONTROLES */
+.bar{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding:13px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.search-box{flex:1 1 340px;display:flex;align-items:center;gap:8px;min-width:220px;padding:0 10px;background:#fbfcfe;border:1px solid #d5deea;border-radius:8px;height:39px;color:var(--secondary)}.search-box input{min-width:0;flex:1;border:0;outline:0;background:transparent;font-size:13px;color:var(--ink)}.search-box button{border:0;background:transparent;font-size:20px;color:var(--secondary)}.filter-control{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--secondary)}.filter-control select{border:1px solid var(--line);border-radius:8px;padding:9px 6px;background:#fff;color:var(--ink);font-size:12px}.btn{border:1px solid #d4ddeb;border-radius:8px;padding:9px 11px;background:#fff;color:#3b4e67;font-size:12px;font-weight:650}.btn:hover{background:var(--accent-muted);border-color:#bed0ff}.btn:focus-visible,.node-btn:focus-visible,.card-btn:focus-visible,.tree-toggle:focus-visible{outline:3px solid #adc4ff;outline-offset:2px}.status{color:var(--secondary);font-size:12px;min-height:23px;margin:12px 4px}
+/* @REGIAO:ESTILOS.PAINEIS */
+.columns{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.8fr);gap:16px;align-items:start}.items-panel,.details{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.items-panel{padding:12px;min-height:270px}.details{position:sticky;top:16px;padding:20px;overflow:auto;max-height:calc(100vh - 35px)}.details-empty,.empty{color:var(--secondary);padding:35px 10px;text-align:center;font-size:13px}.btn-more{display:block;width:100%;margin-top:12px}.btn-more[hidden]{display:none}.footer{font-size:11px;color:#8290a2;margin-top:20px;text-align:center}.detail-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:800}.details h2{font-size:22px;margin:8px 0}.details p{font-size:13px;color:#4e6078;line-height:1.6;white-space:pre-wrap}.detail-key{font-size:11px;font-weight:800;color:var(--secondary);margin-top:16px}.detail-field{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #eef2f7;font-size:12px;overflow-wrap:anywhere}.detail-field span:first-child{width:38%;min-width:90px;color:var(--secondary)}.detail-field span:last-child{flex:1;white-space:pre-wrap}.details code{font-family:ui-monospace,Consolas,monospace;font-size:11px;background:#eff4fa;padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+/* @REGIAO:ESTILOS.ARVORE */
+.tree,.tree-children{list-style:none;margin:0;padding:0}.tree-children{margin-left:17px;border-left:1px solid var(--line);padding-left:14px}.tree-entry{display:flex;align-items:center;gap:5px;min-height:39px;border-radius:7px}.tree-entry:hover{background:#f5f8fe}.tree-toggle{flex:none;width:29px;height:29px;background:transparent;border:0;color:#61748f;border-radius:6px;font-weight:900}.tree-toggle[disabled]{opacity:.28;cursor:default}.node-btn{flex:1;text-align:left;background:transparent;border:0;padding:7px 3px;color:var(--ink);font-size:13px;min-width:0;overflow-wrap:anywhere}.node-btn.selected{color:#144bd2;font-weight:750}.node-symbol{color:var(--accent);font-size:14px;margin-right:8px}.node-secondary{display:inline-block;color:var(--secondary);font-size:10px;margin-left:7px}
+/* @REGIAO:ESTILOS.CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.card-btn{text-align:left;border:1px solid #dce3ed;border-radius:12px;background:#fff;padding:17px;display:flex;flex-direction:column;gap:7px;min-height:135px}.card-btn:hover{background:#f5f8ff;border-color:#b7c9fc}.card-btn.selected{border-color:#285fe9;box-shadow:inset 0 0 0 1px #285fe9}.card-kicker{color:var(--accent);font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.05em}.card-title{font-size:15px;font-weight:800}.card-desc{font-size:12px;line-height:1.5;color:var(--secondary)}.search-row{display:block;width:100%;padding:13px;border:0;border-bottom:1px solid #eef2f7;text-align:left;background:#fff;color:var(--ink);font-size:13px}.search-row:hover{background:#f3f7fe}.search-row span{display:block;font-size:11px;color:var(--secondary);margin-top:4px;overflow-wrap:anywhere}.search-row strong{font-weight:750}.search-row.selected{background:#eff4ff}.results-count{font-size:11px;color:var(--secondary);padding:6px 12px 12px}
+@media(max-width:800px){.app{padding:12px 12px 30px}.site-header{padding:12px 2px 17px}.columns{grid-template-columns:1fr}.details{position:relative;top:auto;max-height:none}.bar{gap:8px}.mode-pill{display:none}}
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="site-header">
+      <div class="heading">
+        <div class="eyebrow">HTML AUTOCONTIDO · COMPARTIMENTADO</div>
+        <h1 id="appTitle">Painel de aplicação — exemplo offline</h1>
+        <p id="appDescription">Dados, visual e comportamento organizados. Visualização local sem servidor.</p>
+      </div>
+      <span class="mode-pill" id="modePill">Offline</span>
+    </header>
+    <section class="bar" aria-label="Ferramentas de navegação">
+      <label class="search-box">
+        <span class="sr-only">Pesquisar itens</span>
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Pesquisar título, descrição, palavras-chave ou conteúdo…">
+        <button id="clearSearch" type="button" title="Limpar pesquisa" aria-label="Limpar pesquisa">×</button>
+      </label>
+      <label class="filter-control">Buscar em
+        <select id="searchMode">
+          <option value="all">Tudo</option>
+          <option value="name">Nome / caminho</option>
+          <option value="content">Conteúdo</option>
+        </select>
+      </label>
+      <button id="expandAll" class="btn" type="button">Expandir 1 nível</button>
+      <button id="collapseAll" class="btn" type="button">Recolher</button>
+      <button id="importData" class="btn" type="button">Importar JSON</button>
+      <input id="importFile" type="file" accept=".json,application/json" hidden>
+      <button id="exportData" class="btn" type="button">Exportar JSON</button>
+    </section>
+    <div class="status" id="status" role="status" aria-live="polite">Carregando…</div>
+    <div class="columns">
+      <main class="items-panel" aria-label="Conteúdo principal">
+        <div id="content" class="content"></div>
+        <button id="showMore" class="btn btn-more" type="button" hidden>Mostrar mais resultados</button>
+      </main>
+      <aside class="details" aria-label="Detalhes do item selecionado">
+        <div id="detailsContent"><div class="details-empty">Selecione um item para ver detalhes e metadados.</div></div>
+      </aside>
+    </div>
+    <footer class="footer">Fonte JSON canônica com IDs estáveis · Renderização progressiva · Nenhuma dependência externa obrigatória</footer>
+  </div>
+  <script id="app-data" type="application/json">{"schema":"html.autocontido.dados.v1","versao":1,"projeto":{"id":"aplicacao-painel","titulo":"Painel de aplicação — exemplo offline","modo":"aplicacao"},"itens":[{"id":"home","parentId":null,"titulo":"Início","tipo":"tela","descricao":"Ponto de entrada da aplicação ilustrativa.","campos":{"blocos":["boas-vindas","indicadores","atalhos"]},"palavrasChave":["exemplo","fictício","autocontido"]},{"id":"clientes","parentId":null,"titulo":"Clientes","tipo":"tela","descricao":"Lista e detalhes de registros fictícios.","campos":{"blocos":["filtro","lista","detalhe"]},"palavrasChave":["exemplo","fictício","autocontido"]},{"id":"tarefas","parentId":null,"titulo":"Tarefas","tipo":"tela","descricao":"Organizador ilustrativo com estados simulados.","campos":{"blocos":["filtro","cards","ações"]},"palavrasChave":["exemplo","fictício","autocontido"]},{"id":"ajustes","parentId":null,"titulo":"Ajustes","tipo":"tela","descricao":"Preferências locais, sem backend.","campos":{"blocos":["configurações","histórico"]},"palavrasChave":["exemplo","fictício","autocontido"]}]}</script>
+  <script>
+/* @ARQUIVO: comportamentos/01-estado-indices.js */
+/* @REGIAO:ESTADO_E_INDICES — sem acesso ao DOM para dados arbitrários */
+'use strict';
+const App = {
+  modelo: null,
+  porId: new Map(), filhos: new Map(), caminhos: new Map(), indice: [],
+  selecionado: null, buscaAtiva: false, resultados: [], pagina: 80,
+  paginaAtual: 80, tokenBusca: 0, expandido: new Set(),
+  elemento(id){return document.getElementById(id)},
+  normalizar(v){return String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR')},
+  camposComoTexto(it){return [it.descricao||'',JSON.stringify(it.campos||{}),...(it.palavrasChave||[])].join(' ')},
+  validar(itens){
+    if(!Array.isArray(itens))throw Error('O JSON deve conter uma lista de itens');
+    const mapa = new Map();
+    for(const it of itens){
+      if(!it || typeof it.id!=='string' || !it.id.trim() || typeof it.titulo!=='string' || !it.titulo.trim())throw Error('Um item está sem ID ou título válido');
+      if(mapa.has(it.id))throw Error('ID duplicado: '+it.id);
+      if(it.parentId!=null && typeof it.parentId!=='string')throw Error('parentId inválido: '+it.id);
+      if(it.campos!==undefined && (!it.campos || Array.isArray(it.campos) || typeof it.campos!=='object'))throw Error('Campos inválidos: '+it.id);
+      if(it.palavrasChave!==undefined && (!Array.isArray(it.palavrasChave)||it.palavrasChave.some(x=>typeof x!=='string')))throw Error('Palavras-chave inválidas: '+it.id);
+      mapa.set(it.id,it);
+    }
+    const verificados=new Set();
+    for(const it of itens){
+      if(it.parentId!=null && !mapa.has(it.parentId))throw Error('Pai ausente: '+it.id+' → '+it.parentId);
+      const passando = new Set();let p=it.id;
+      while(p!=null && !verificados.has(p)){
+        if(passando.has(p))throw Error('Ciclo hierárquico: '+p);
+        passando.add(p); p=mapa.get(p)?.parentId??null;
+      }
+      for(const id of passando)verificados.add(id);
+    }
+  },
+  construirIndices(){
+    const itens = this.modelo.itens;
+    this.validar(itens);
+    this.porId=new Map(itens.map(x=>[x.id,x]));
+    this.filhos=new Map(); this.caminhos=new Map(); this.indice=[];
+    for(const item of itens){
+      const pai=item.parentId??null;
+      if(!this.filhos.has(pai))this.filhos.set(pai,[]);
+      this.filhos.get(pai).push(item);
+    }
+    const caminho=(id)=>{
+      if(this.caminhos.has(id))return this.caminhos.get(id);
+      const it=this.porId.get(id);
+      const valor = (it.parentId?caminho(it.parentId)+'/':'')+it.titulo;
+      this.caminhos.set(id,valor);return valor;
+    };
+    for(const it of itens){
+      const nome=this.normalizar(caminho(it.id));
+      const conteudo=this.normalizar(this.camposComoTexto(it));
+      this.indice.push({id:it.id,nome,conteudo});
+    }
+  },
+  carregar(payload){
+    if(payload?.schema!=='html.autocontido.dados.v1')throw Error('Schema de dados não reconhecido');
+    this.modelo=payload; this.construirIndices();this.expandido.clear();
+    this.buscaAtiva=false;this.resultados=[];this.paginaAtual=this.pagina;
+    this.selecionado=null;
+  },
+  anunciar(m){this.elemento('status').textContent=m},
+  titulo(){return this.modelo.projeto?.titulo||'HTML independente'}
+};
+
+
+/* @ARQUIVO: comportamentos/02-componentes-render.js */
+/* @REGIAO:COMPONENTES_E_RENDER — elementos da interface, sem dados duplicados */
+App.criar = (tag, classe, texto)=>{
+  const el=document.createElement(tag);
+  if(classe)el.className=classe;
+  if(texto!==undefined)el.textContent=String(texto);
+  return el;
+};
+App.selecionar = function(id){
+  this.selecionado=id;this.mostrarDetalhes(id);
+  document.querySelectorAll('[data-select-id]').forEach(el=>{
+    el.classList.toggle('selected',el.dataset.selectId===id);
+    el.setAttribute('aria-current',el.dataset.selectId===id?'true':'false');
+  });
+};
+App.mostrarDetalhes = function(id){
+  const area=this.elemento('detailsContent');area.replaceChildren();
+  const item=this.porId.get(id);
+  if(!item){area.append(this.criar('div','details-empty','Selecione um item para ver detalhes e metadados.'));return;}
+  area.append(this.criar('div','detail-label',item.tipo||'Item'));
+  area.append(this.criar('h2',null,item.titulo));
+  area.append(this.criar('p',null,item.descricao||'Nenhuma descrição disponível.'));
+  const idTitle=this.criar('div','detail-key','IDENTIFICADOR ESTÁVEL');area.append(idTitle);
+  area.append(this.criar('code',null,item.id));
+  area.append(this.criar('div','detail-key','CAMINHO COMPLETO'));
+  area.append(this.criar('p',null,this.caminhos.get(item.id)||item.titulo));
+  for(const [key,value] of Object.entries(item.campos||{})){
+    const row=this.criar('div','detail-field');
+    row.append(this.criar('span',null,key),this.criar('span',null,typeof value==='string'?value:JSON.stringify(value,null,2)));
+    area.append(row);
+  }
+  if(item.palavrasChave?.length){
+    area.append(this.criar('div','detail-key','PALAVRAS-CHAVE'));
+    area.append(this.criar('p',null,item.palavrasChave.join(' · ')));
+  }
+};
+App.criarItemArvore = function(item){
+  const li=this.criar('li','tree-node');
+  const linha=this.criar('div','tree-entry');
+  const filhos=this.filhos.get(item.id)||[];
+  const toggle=this.criar('button','tree-toggle',filhos.length?'▸':'·');
+  toggle.type='button';toggle.disabled=!filhos.length;
+  toggle.setAttribute('aria-label',filhos.length?'Expandir '+item.titulo:'Sem filhos');
+  toggle.setAttribute('aria-expanded',this.expandido.has(item.id)?'true':'false');
+  const button=this.criar('button','node-btn');button.type='button';button.dataset.selectId=item.id;
+  button.append(this.criar('span','node-symbol',filhos.length?'▣':'▤'));
+  button.append(document.createTextNode(item.titulo));
+  if(item.tipo)button.append(this.criar('span','node-secondary',item.tipo));
+  linha.append(toggle,button);li.append(linha);
+  const sub=this.criar('ul','tree-children');li.append(sub);
+  const preencher=()=>{
+    sub.replaceChildren();
+    const limite=100;let visiveis=limite;
+    const acrescentar=(começo,final)=>{
+      const fragmento=document.createDocumentFragment();
+      for(let i=começo;i<final;i++)fragmento.append(this.criarItemArvore(filhos[i]));
+      sub.append(fragmento);
+    };
+    acrescentar(0,Math.min(visiveis,filhos.length));
+    if(filhos.length>visiveis){
+      const mais=this.criar('button','btn btn-more',`Mostrar mais (${filhos.length-visiveis})`);
+      mais.type='button';sub.append(mais);
+      mais.addEventListener('click',()=>{
+        const anterior=visiveis;visiveis=Math.min(visiveis+limite,filhos.length);
+        sub.removeChild(mais);acrescentar(anterior,visiveis);
+        if(visiveis<filhos.length){mais.textContent=`Mostrar mais (${filhos.length-visiveis})`;sub.append(mais);}
+      });
+    }
+  };
+  toggle.addEventListener('click',()=>{
+    if(this.expandido.has(item.id)){
+      this.expandido.delete(item.id);sub.replaceChildren();toggle.textContent='▸';toggle.setAttribute('aria-expanded','false');
+    }else{
+      this.expandido.add(item.id);preencher();toggle.textContent='▾';toggle.setAttribute('aria-expanded','true');
+    }
+  });
+  if(this.expandido.has(item.id)){preencher();toggle.textContent='▾';toggle.setAttribute('aria-expanded','true');}
+  return li;
+};
+App.renderArvore=function(){
+  const content=this.elemento('content');content.replaceChildren();
+  const roots=this.filhos.get(null)||[];
+  if(!roots.length){content.append(this.criar('div','empty','Não há itens para apresentar.'));return;}
+  const ul=this.criar('ul','tree');content.append(ul);
+  let exibidos=0;const inserir=(limite)=>{
+    const fragmento=document.createDocumentFragment();
+    const fim=Math.min(exibidos+limite,roots.length);
+    for(let i=exibidos;i<fim;i++)fragmento.append(this.criarItemArvore(roots[i]));
+    ul.append(fragmento);exibidos=fim;
+  };
+  inserir(100);
+  if(exibidos<roots.length){const mais=this.elemento('showMore');mais.hidden=false;mais.textContent=`Mais raízes (${roots.length-exibidos})`;mais.onclick=()=>{
+    inserir(100);mais.hidden=exibidos>=roots.length;mais.textContent=`Mais raízes (${roots.length-exibidos})`;
+  };}
+};
+App.renderCards = function(){
+  const content=this.elemento('content');content.replaceChildren();
+  const items=this.modelo.itens;
+  if(!items.length){content.append(this.criar('div','empty','Não há itens para apresentar.'));return;}
+  const cards=this.criar('div','cards');content.append(cards);
+  const desenhar=()=>{
+    const fragmento=document.createDocumentFragment();
+    for(let i=cards.childElementCount;i<Math.min(this.paginaAtual,items.length);i++){
+      const item=items[i];const botao=this.criar('button','card-btn');botao.type='button';botao.dataset.selectId=item.id;
+      botao.append(this.criar('span','card-kicker',item.tipo||'Módulo'));
+      botao.append(this.criar('span','card-title',item.titulo));
+      botao.append(this.criar('span','card-desc',item.descricao||'Selecione para consultar os dados.'));
+      fragmento.append(botao);
+    }
+    cards.append(fragmento);
+    const mais=this.elemento('showMore');mais.hidden=this.paginaAtual>=items.length;
+    mais.textContent=`Mostrar mais (${Math.max(0,items.length-this.paginaAtual)})`;
+  };
+  desenhar();
+  this.elemento('showMore').onclick=()=>{this.paginaAtual+=this.pagina;desenhar();};
+};
+App.renderNormal = function(){
+  this.elemento('showMore').hidden=true;
+  this.elemento('searchInput').value='';
+  this.elemento('expandAll').disabled=this.modelo.projeto.modo!=='arvore';
+  this.elemento('collapseAll').disabled=this.modelo.projeto.modo!=='arvore';
+  this.paginaAtual=this.pagina;
+  if(this.modelo.projeto.modo==='arvore')this.renderArvore();else this.renderCards();
+  this.anunciar(`${this.modelo.itens.length.toLocaleString('pt-BR')} itens disponíveis · pesquisa por título, caminho e conteúdo`);
+};
+
+
+/* @ARQUIVO: comportamentos/03-busca.js */
+/* @REGIAO:BUSCA — índice em memória + lotes progressivos + cancelamento */
+App.programarBusca = function(){
+  clearTimeout(this.timerBusca);
+  this.timerBusca=setTimeout(()=>this.buscar(),190);
+};
+App.buscar = function(){
+  const termo=this.normalizar(this.elemento('searchInput').value.trim());
+  this.tokenBusca++;
+  if(!termo){this.buscaAtiva=false;this.resultados=[];this.renderNormal();return;}
+  const modo=this.elemento('searchMode').value;
+  this.buscaAtiva=true;this.resultados=[];this.paginaAtual=this.pagina;
+  const token=this.tokenBusca;
+  const indice=this.indice;
+  let offset=0;
+  this.elemento('showMore').hidden=true;
+  this.elemento('content').replaceChildren();
+  this.anunciar('Pesquisando no índice…');
+  const passo=()=>{
+    if(token!==this.tokenBusca)return;
+    const fim=Math.min(offset+500,indice.length);
+    for(let i=offset;i<fim;i++){
+      const r=indice[i];
+      if((modo==='all'&&(r.nome.includes(termo)||r.conteudo.includes(termo)))||
+         (modo==='name'&&r.nome.includes(termo))||
+         (modo==='content'&&r.conteudo.includes(termo)))this.resultados.push(r.id);
+    }
+    offset=fim;
+    if(offset<indice.length){setTimeout(passo,0);return;}
+    this.desenharResultados();
+  };
+  passo();
+};
+App.desenharResultados = function(){
+  const content=this.elemento('content');content.replaceChildren();
+  const n=this.resultados.length;
+  this.anunciar(`${n.toLocaleString('pt-BR')} resultado(s) · ${this.modelo.itens.length.toLocaleString('pt-BR')} itens indexados`);
+  if(!n){content.append(this.criar('div','empty','Nenhum resultado. Experimente outro termo ou filtro.'));this.elemento('showMore').hidden=true;return;}
+  content.append(this.criar('div','results-count',`Exibindo até ${Math.min(n,this.paginaAtual)} de ${n} resultados`));
+  const results=this.criar('div');content.append(results);
+  const inserir=()=>{
+    const start=results.childElementCount, end=Math.min(n,this.paginaAtual);
+    const fragmento=document.createDocumentFragment();
+    for(let i=start;i<end;i++){
+      const id=this.resultados[i],it=this.porId.get(id);
+      const botao=this.criar('button','search-row');botao.type='button';botao.dataset.selectId=id;
+      botao.append(this.criar('strong',null,it.titulo));
+      botao.append(this.criar('span',null,this.caminhos.get(id)));
+      fragmento.append(botao);
+    }
+    results.append(fragmento);
+    content.firstChild.textContent=`Exibindo ${Math.min(n,this.paginaAtual)} de ${n} resultados`;
+    const mais=this.elemento('showMore');mais.hidden=this.paginaAtual>=n;
+    mais.textContent=`Mostrar mais (${Math.max(n-this.paginaAtual,0)})`;
+  };
+  inserir();
+  this.elemento('showMore').onclick=()=>{this.paginaAtual+=this.pagina;inserir();};
+};
+
+
+/* @ARQUIVO: comportamentos/04-acoes.js */
+/* @REGIAO:ACOES_E_INICIALIZACAO — interação, exportação e importação sem alterar o HTML-fonte */
+App.exportar = function(){
+  const dados={schema:'html.autocontido.dados.v1',versao:this.modelo.versao,itens:this.modelo.itens};
+  const blob=new Blob([JSON.stringify(dados,null,2)],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download=(this.modelo.projeto.id||'dados')+'.json';
+  document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);
+};
+App.importar = async function(file){
+  try{
+    if(!file)return;
+    const incoming=JSON.parse(await file.text());
+    if(incoming.schema!=='html.autocontido.dados.v1'||!Array.isArray(incoming.itens))throw Error('Schema/itens incompatíveis');
+    const current=new Map(this.modelo.itens.map(it=>[it.id,it]));
+    for(const it of incoming.itens)current.set(it.id,it);
+    const merged=[...current.values()];this.validar(merged);
+    if(!window.confirm(`Importar ${incoming.itens.length} item(ns) por ID, atualizando os existentes e preservando os demais? A alteração ficará somente nesta sessão até exportar JSON.`))return;
+    this.modelo.itens=merged;
+    this.construirIndices();this.buscaAtiva=false;
+    this.elemento('searchInput').value='';this.renderNormal();this.mostrarDetalhes(null);
+    this.anunciar(`${incoming.itens.length} itens importados/atualizados por ID · exporte JSON para salvar a nova versão.`);
+  }catch(err){this.anunciar('Falha na importação: '+err.message);}
+};
+App.iniciar = function(){
+  try{
+    this.carregar(JSON.parse(this.elemento('app-data').textContent));
+    this.elemento('appTitle').textContent=this.titulo();
+    this.elemento('modePill').textContent={'arvore':'Árvore','modulos':'Módulos','aplicacao':'Aplicação'}[this.modelo.projeto.modo]+' · offline';
+    this.elemento('appDescription').textContent='Artefato independente · '+this.modelo.itens.length.toLocaleString('pt-BR')+' itens · busca indexada e atualização por ID';
+    this.elemento('searchInput').addEventListener('input',()=>this.programarBusca());
+    this.elemento('searchMode').addEventListener('change',()=>this.programarBusca());
+    this.elemento('clearSearch').addEventListener('click',()=>{this.elemento('searchInput').value='';this.buscar();this.elemento('searchInput').focus();});
+    this.elemento('content').addEventListener('click',(e)=>{
+      const botao=e.target.closest('[data-select-id]');
+      if(botao&&this.elemento('content').contains(botao))this.selecionar(botao.dataset.selectId);
+    });
+    this.elemento('expandAll').addEventListener('click',()=>{
+      if(this.modelo.projeto.modo!=='arvore'||this.buscaAtiva)return;
+      for(const it of this.filhos.get(null)||[])this.expandido.add(it.id);
+      this.renderArvore();
+      this.anunciar('Primeiro nível expandido; outras ramificações continuam sob demanda.');
+    });
+    this.elemento('collapseAll').addEventListener('click',()=>{this.expandido.clear();this.buscaAtiva?this.desenharResultados():this.renderNormal();});
+    this.elemento('exportData').addEventListener('click',()=>this.exportar());
+    this.elemento('importData').addEventListener('click',()=>this.elemento('importFile').click());
+    this.elemento('importFile').addEventListener('change',async(e)=>{await this.importar(e.target.files?.[0]);e.target.value='';});
+    this.renderNormal();
+  }catch(e){this.anunciar('Erro ao inicializar: '+e.message);this.elemento('content').textContent='Não foi possível carregar os dados. Verifique o JSON embarcado.';}
+};
+App.iniciar();
+
+  </script>
+</body>
+</html>

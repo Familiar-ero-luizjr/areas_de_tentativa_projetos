@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, required } from "./_helpers";
+export default function submitLawyerOab(input: Record<string, any>) { const lawyerId=required(input.lawyerId,"lawyerId"); const payload={oabNumber:required(input.oabNumber,"oabNumber"),oabUf:required(input.oabUf,"oabUf"),oabStatus:"pending",oabSubmittedAt:now()}; const current=db.find("lawyerPrivate",lawyerId); return current?db.update("lawyerPrivate",lawyerId,payload):db.insert("lawyerPrivate",{id:lawyerId,...payload,createdAt:now(),updatedAt:now()}); }

@@ -1,0 +1,67 @@
+{
+  "screens": 71,
+  "functions_prod": [
+    "recordConsent",
+    "searchLawyers",
+    "createContactRequest",
+    "acceptContactRequest",
+    "declineContactRequest",
+    "closeContactRequest",
+    "getReleasedContact",
+    "submitLawyerOab",
+    "submitLawyerProfileForReview",
+    "submitExperienceReview",
+    "createSupportTicket",
+    "createReport",
+    "saveOffice",
+    "inviteOfficeLawyer",
+    "createSubscriptionCheckout",
+    "paymentWebhook",
+    "adminDashboard",
+    "adminQueue",
+    "validateOab",
+    "moderateLawyerProfile",
+    "resolveReport"
+  ],
+  "functions_homolog": [
+    "recordConsent",
+    "searchLawyers",
+    "createContactRequest",
+    "acceptContactRequest",
+    "declineContactRequest",
+    "closeContactRequest",
+    "getReleasedContact",
+    "submitLawyerOab",
+    "submitLawyerProfileForReview",
+    "submitExperienceReview",
+    "createSupportTicket",
+    "createReport",
+    "saveOffice",
+    "inviteOfficeLawyer",
+    "acceptOfficeInvite",
+    "getPendingOfficeInvite",
+    "createSubscriptionCheckout",
+    "paymentWebhook",
+    "adminDashboard",
+    "adminQueue",
+    "validateOab",
+    "moderateLawyerProfile",
+    "resolveReport"
+  ],
+  "global_runtime": {
+    "PROD": [
+      "Firebase Core inicializado antes da aplicação.",
+      "Firebase App Check ativado: Play Integrity em produção Android, App Attest/DeviceCheck no iOS e reCAPTCHA v3 no Web; debug providers fora de produção/local.",
+      "Crashlytics registra erros fatais fora do Web e coleta em produção.",
+      "Firebase Messaging registra handler de background; a sessão solicita token push após autenticação.",
+      "Remote Config faz fetch/activate; intervalo mínimo de 1 hora em produção."
+    ],
+    "HOMOLOG": [
+      "Firebase Core inicializado antes da aplicação.",
+      "App Check está explicitamente ausente do runtime de homologação.",
+      "Crashlytics possui handlers, mas coleta é desabilitada.",
+      "Firebase Messaging registra handler de background; a sessão solicita token push após autenticação.",
+      "Remote Config faz fetch/activate; intervalo mínimo de 5 minutos."
+    ]
+  }
+}

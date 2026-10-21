@@ -1,0 +1,1 @@
+import { useState } from "react"; import { logger } from "../logs/logger"; export function useLogs(){const [entries,setEntries]=useState([...logger.entries]);return {entries,refresh:()=>setEntries([...logger.entries]),clear:()=>{logger.clear();setEntries([]);}};}

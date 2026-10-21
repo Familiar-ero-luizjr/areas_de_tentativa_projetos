@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { firestoreService } from "../../src/modules/firestore/firestore.service"; describe("firestore read",()=>{it("lista users",async()=>expect((await firestoreService.list("users")).length).toBeGreaterThan(0));});

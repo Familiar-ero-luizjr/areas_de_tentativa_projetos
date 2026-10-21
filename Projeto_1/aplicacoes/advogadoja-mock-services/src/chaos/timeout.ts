@@ -1,0 +1,1 @@
+export async function withTimeout<T>(promise:Promise<T>,ms:number):Promise<T>{ let timer:number|undefined; const timeout=new Promise<never>((_,reject)=>{timer=window.setTimeout(()=>reject(new Error("Mock timeout")),ms)}); try{return await Promise.race([promise,timeout]);}finally{if(timer)clearTimeout(timer);} }

@@ -1,0 +1,1 @@
+export default function TreeNode({name,value}:{name:string;value:unknown}){return <li><strong>{name}</strong>{typeof value==="object"&&value!==null?<pre>{JSON.stringify(value,null,2)}</pre>:<span> {String(value)}</span>}</li>}

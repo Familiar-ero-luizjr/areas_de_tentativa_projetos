@@ -1,0 +1,1 @@
+"use client";import{useModal}from "@/context/ModalContext";export function InfoButton({title,content}:{title:string;content:string}){const{open}=useModal();return <button type="button" className="textLink" onClick={()=>open(title,content)}>{title} ↗</button>}

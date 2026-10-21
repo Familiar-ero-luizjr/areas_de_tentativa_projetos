@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function closeContactRequest(input: Record<string, any>) { const id=required(input.requestId,"requestId"); const req=db.update("contactRequests",id,{status:"closed",closedAt:now(),closeReason:input.reason??"resolved"}); if(!req) throw new Error("Solicitação não encontrada"); db.insert("contactRequestEvents",{id:uid("request-event"),requestId:id,eventType:"closed",actorId:input.actorId??req.clientId,createdAt:now()}); return req; }

@@ -1,0 +1,1 @@
+import { db } from "../src/data/database/db"; const snapshot=db.snapshot(); for(const [name,items] of Object.entries(snapshot)){ if(!Array.isArray(items)) throw new Error(`${name} não é array`); } console.log("Dados válidos",Object.keys(snapshot).length);

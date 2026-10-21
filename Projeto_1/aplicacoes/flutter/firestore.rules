@@ -1,0 +1,294 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function self(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function admin() {
+      return signedIn() && request.auth.token.admin == true;
+    }
+
+    function officeOwner(officeId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/law_offices/$(officeId)).data.ownerId == request.auth.uid;
+    }
+
+    function activeOfficeMember(officeId, uid) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/law_offices/$(officeId)/members/$(uid))
+        && get(/databases/$(database)/documents/law_offices/$(officeId)/members/$(uid)).data.status == 'active';
+    }
+
+    function inviteBelongsToCurrentUser(data) {
+      return signedIn()
+        && (
+          data.get('invitedUid', '') == request.auth.uid
+          || (
+            data.get('invitedEmail', '') != ''
+            && data.get('invitedEmail', '') == request.auth.token.email
+          )
+        );
+    }
+
+    function inviteNotExpired(data) {
+      return !data.keys().hasAny(['expiresAt']) || data.expiresAt > request.time;
+    }
+
+    function canReadRequestData(data) {
+      return signedIn()
+        && (
+          data.clienteId == request.auth.uid
+          || data.advogadoId == request.auth.uid
+          || (data.officeId != null && activeOfficeMember(data.officeId, request.auth.uid))
+          || admin()
+        );
+    }
+
+    function canManageRequestData(data) {
+      return signedIn()
+        && (
+          data.clienteId == request.auth.uid
+          || data.advogadoId == request.auth.uid
+          || (data.officeId != null && officeOwner(data.officeId))
+          || admin()
+        );
+    }
+
+    function validOfficeAssignment(oldData, newData) {
+      let changed = newData.diff(oldData).affectedKeys();
+      return !changed.hasAny(['advogadoId', 'assignedBy', 'assignedAt'])
+        || admin()
+        || (
+          oldData.officeId != null
+          && newData.officeId == oldData.officeId
+          && officeOwner(oldData.officeId)
+          && activeOfficeMember(oldData.officeId, newData.advogadoId)
+          && newData.assignedBy == request.auth.uid
+          && newData.assignedAt == request.time
+        );
+    }
+
+    match /users/{uid} {
+      allow read: if self(uid) || admin();
+      allow create: if self(uid)
+        && request.resource.data.keys().hasOnly([
+          'accountType', 'displayName', 'email', 'legalConsent',
+          'onboardingComplete', 'createdAt', 'updatedAt'
+        ]);
+      allow update: if self(uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'accountType', 'displayName', 'email', 'legalConsent',
+          'onboardingComplete', 'updatedAt'
+        ]);
+      allow delete: if admin();
+    }
+
+    match /clients/{uid} {
+      allow read, create, update: if self(uid) || admin();
+      allow delete: if admin();
+    }
+
+    match /lawyers/{uid} {
+      allow read: if true;
+      allow create: if self(uid)
+        && !request.resource.data.keys().hasAny([
+          'oabStatus', 'moderationStatus', 'adminNotes'
+        ]);
+      allow update: if (
+          admin()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'oabStatus', 'moderationStatus', 'adminNotes', 'updatedAt'
+          ])
+        ) || (
+          self(uid)
+          && request.resource.data.diff(resource.data).affectedKeys().hasNone([
+            'oabStatus', 'moderationStatus', 'adminNotes'
+          ])
+        );
+      allow delete: if admin();
+    }
+
+    match /lawyer_private/{uid} {
+      allow read, create, update: if self(uid) || admin();
+      allow delete: if admin();
+    }
+
+    match /law_offices/{officeId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update: if officeOwner(officeId) || admin();
+      allow delete: if admin();
+
+      match /members/{uid} {
+        allow read: if self(uid) || officeOwner(officeId) || admin();
+
+        // Associação por convite é feita pelo próprio cliente em uma transação
+        // atômica junto com a mudança do convite para "accepted".
+        allow create, update: if admin()
+          || (
+            self(uid)
+            && request.resource.data.keys().hasOnly([
+              'uid', 'role', 'status', 'joinedAt', 'inviteId'
+            ])
+            && request.resource.data.uid == uid
+            && request.resource.data.status == 'active'
+            && request.resource.data.joinedAt == request.time
+            && getAfter(
+              /databases/$(database)/documents/office_invites/$(request.resource.data.inviteId)
+            ).data.status == 'accepted'
+            && getAfter(
+              /databases/$(database)/documents/office_invites/$(request.resource.data.inviteId)
+            ).data.acceptedBy == uid
+            && getAfter(
+              /databases/$(database)/documents/office_invites/$(request.resource.data.inviteId)
+            ).data.officeId == officeId
+            && getAfter(
+              /databases/$(database)/documents/office_invites/$(request.resource.data.inviteId)
+            ).data.get('role', 'member') == request.resource.data.role
+            && inviteBelongsToCurrentUser(
+              getAfter(
+                /databases/$(database)/documents/office_invites/$(request.resource.data.inviteId)
+              ).data
+            )
+          );
+        allow delete: if admin();
+      }
+    }
+
+    match /office_invites/{inviteId} {
+      allow read: if signedIn()
+        && (
+          inviteBelongsToCurrentUser(resource.data)
+          || officeOwner(resource.data.officeId)
+          || admin()
+        );
+      allow create: if signedIn()
+        && (officeOwner(request.resource.data.officeId) || admin());
+
+      // O convidado pode aceitar o próprio convite diretamente, mas somente
+      // se a associação correspondente for criada na mesma transação.
+      allow update: if admin()
+        || (
+          inviteBelongsToCurrentUser(resource.data)
+          && inviteNotExpired(resource.data)
+          && resource.data.get('status', 'pending') == 'pending'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'status', 'acceptedBy', 'respondedAt'
+          ])
+          && request.resource.data.status == 'accepted'
+          && request.resource.data.acceptedBy == request.auth.uid
+          && request.resource.data.respondedAt == request.time
+          && getAfter(
+            /databases/$(database)/documents/law_offices/$(resource.data.officeId)/members/$(request.auth.uid)
+          ).data.uid == request.auth.uid
+          && getAfter(
+            /databases/$(database)/documents/law_offices/$(resource.data.officeId)/members/$(request.auth.uid)
+          ).data.status == 'active'
+          && getAfter(
+            /databases/$(database)/documents/law_offices/$(resource.data.officeId)/members/$(request.auth.uid)
+          ).data.inviteId == inviteId
+        );
+      allow delete: if admin();
+    }
+
+    match /contact_requests/{requestId} {
+      allow create: if signedIn()
+        && request.resource.data.clienteId == request.auth.uid;
+      allow read: if canReadRequestData(resource.data);
+      allow update: if canManageRequestData(resource.data)
+        && validOfficeAssignment(resource.data, request.resource.data);
+      allow delete: if admin();
+
+      match /events/{eventId} {
+        allow read: if canReadRequestData(
+          get(/databases/$(database)/documents/contact_requests/$(requestId)).data
+        );
+
+        allow create: if admin()
+          || (
+            signedIn()
+            && request.resource.data.keys().hasOnly([
+              'type', 'actorId', 'lawyerId', 'officeId', 'createdAt'
+            ])
+            && request.resource.data.type == 'office_distribution'
+            && request.resource.data.actorId == request.auth.uid
+            && request.resource.data.createdAt == request.time
+            && officeOwner(request.resource.data.officeId)
+            && activeOfficeMember(
+              request.resource.data.officeId,
+              request.resource.data.lawyerId
+            )
+            && getAfter(
+              /databases/$(database)/documents/contact_requests/$(requestId)
+            ).data.officeId == request.resource.data.officeId
+            && getAfter(
+              /databases/$(database)/documents/contact_requests/$(requestId)
+            ).data.advogadoId == request.resource.data.lawyerId
+            && getAfter(
+              /databases/$(database)/documents/contact_requests/$(requestId)
+            ).data.assignedBy == request.auth.uid
+          );
+        allow update, delete: if admin();
+      }
+    }
+
+    match /contact_acceptances/{acceptanceId} {
+      allow read: if signedIn()
+        && (
+          resource.data.clienteId == request.auth.uid
+          || resource.data.advogadoId == request.auth.uid
+          || admin()
+        );
+      allow create, update, delete: if admin();
+    }
+
+    match /subscriptions/{uid} {
+      allow read: if self(uid) || admin();
+      allow write: if admin();
+    }
+
+    match /plans/{planId} {
+      allow read: if true;
+      allow write: if admin();
+    }
+
+    match /notifications/{notificationId} {
+      allow read, update: if signedIn()
+        && resource.data.uid == request.auth.uid;
+      allow create, delete: if admin();
+    }
+
+    match /support_tickets/{ticketId} {
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow read: if signedIn()
+        && (resource.data.userId == request.auth.uid || admin());
+      allow update, delete: if admin();
+    }
+
+    match /reports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if admin();
+    }
+
+    match /audit_logs/{logId} {
+      allow read: if admin();
+      allow write: if false;
+    }
+
+    match /consent_history/{consentId} {
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid;
+      allow read: if signedIn()
+        && (resource.data.uid == request.auth.uid || admin());
+      allow update, delete: if false;
+    }
+  }
+}

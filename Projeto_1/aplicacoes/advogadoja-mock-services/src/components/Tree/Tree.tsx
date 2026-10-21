@@ -1,0 +1,1 @@
+import TreeNode from "./TreeNode"; export default function Tree({value}:{value:Record<string,unknown>}){return <ul className="tree">{Object.entries(value).map(([k,v])=><TreeNode key={k} name={k} value={v}/>)}</ul>}

@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, required } from "./_helpers";
+export default function moderateLawyerProfile(input: Record<string, any>) { const lawyerId=required(input.lawyerId,"lawyerId"); const item=db.update("lawyers",lawyerId,{profileStatus:input.approved?"approved":"rejected",profileReviewedAt:now(),profileReviewReason:input.reason??null}); if(!item) throw new Error("Advogado não encontrado"); return item; }

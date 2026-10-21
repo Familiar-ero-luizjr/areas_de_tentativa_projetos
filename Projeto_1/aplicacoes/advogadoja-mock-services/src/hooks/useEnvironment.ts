@@ -1,0 +1,1 @@
+import { useState } from "react"; import { environmentStore } from "../state/environmentStore"; export function useEnvironment(){const [value,setValue]=useState(environmentStore.get()); return {value,set:(v:string)=>{environmentStore.set(v);setValue(v);}};}

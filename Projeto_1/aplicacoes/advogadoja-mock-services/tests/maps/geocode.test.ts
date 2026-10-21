@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { mapsService } from "../../src/modules/maps/maps.service"; describe("geocode",()=>{it("é determinístico",async()=>expect(await mapsService.geocode("Aracaju")).toEqual(await mapsService.geocode("Aracaju")));});

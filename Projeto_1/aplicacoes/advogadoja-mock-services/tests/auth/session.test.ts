@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { authStore } from "../../src/modules/auth/auth.store"; describe("session",()=>{it("inicia vazia ou válida",()=>{expect(authStore.get()).toHaveProperty("user");});});

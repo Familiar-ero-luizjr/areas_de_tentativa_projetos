@@ -1,0 +1,2 @@
+import type { MessagingGateway } from "../../contracts/MessagingGateway"; import { messagingStore } from "./messaging.store";
+export class MockMessagingGateway implements MessagingGateway { async send(input:{token?:string;topic?:string;title:string;body:string}){ const item={id:`notification-${Date.now()}`,...input,createdAt:new Date().toISOString()}; messagingStore.history.push(item); return {id:item.id,queued:true}; } }

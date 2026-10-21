@@ -1,0 +1,1 @@
+import{UnderConstruction}from "@/components/states/UnderConstruction";export default function Page(){return <UnderConstruction/>}

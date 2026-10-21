@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() { return request.auth != null; }
+    function self(uid) { return signedIn() && request.auth.uid == uid; }
+    function admin() { return signedIn() && request.auth.token.admin == true; }
+    function safeSize(maxMb) { return request.resource.size < maxMb * 1024 * 1024; }
+    function image() { return request.resource.contentType.matches('image/.*'); }
+    function pdfOrImage() { return request.resource.contentType == 'application/pdf' || image(); }
+    match /profiles/public/{uid}/{file} { allow read: if true; allow write: if self(uid) && image() && safeSize(5); }
+    match /users/private/{uid}/{file} { allow read, write: if self(uid) || admin(); }
+    match /oab/{uid}/{file} { allow read: if self(uid) || admin(); allow write: if self(uid) && pdfOrImage() && safeSize(10); }
+    match /support/{uid}/{file} { allow read: if self(uid) || admin(); allow write: if self(uid) && safeSize(10); }
+    match /reports/{uid}/{file} { allow read: if self(uid) || admin(); allow write: if self(uid) && safeSize(10); }
+  }
+}

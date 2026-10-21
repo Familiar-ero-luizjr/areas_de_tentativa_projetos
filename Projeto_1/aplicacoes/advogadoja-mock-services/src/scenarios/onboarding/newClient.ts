@@ -1,0 +1,2 @@
+import type { Scenario } from "../scenario.types"; import { db } from "../../data/database/db";
+const scenario:Scenario={id:"new-client",title:"Novo cliente",description:"Cria usuário e perfil de cliente novos.",steps:[{name:"Criar conta",run:()=>{const id=`client-scenario-${Date.now()}`;db.insert("users",{id,email:`${id}@example.com`,roles:["cliente"],createdAt:new Date().toISOString()});db.insert("clients",{id,name:"Cliente Cenário",active:true,createdAt:new Date().toISOString()});return{id};}}]};export default scenario;

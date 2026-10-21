@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function declineContactRequest(input: Record<string, any>) { const id=required(input.requestId,"requestId"); const req=db.update("contactRequests",id,{status:"declined",declinedAt:now(),declineReason:input.reason??null}); if(!req) throw new Error("Solicitação não encontrada"); db.insert("contactRequestEvents",{id:uid("request-event"),requestId:id,eventType:"declined",actorId:input.actorId??req.lawyerId,createdAt:now()}); return req; }

@@ -1,0 +1,1 @@
+const services=new Map<string,boolean>([["auth",true],["firestore",true],["functions",true],["stripe",true],["maps",true]]); export const servicesStore={isEnabled:(s:string)=>services.get(s)!==false,set:(s:string,v:boolean)=>services.set(s,v),all:()=>Object.fromEntries(services)};

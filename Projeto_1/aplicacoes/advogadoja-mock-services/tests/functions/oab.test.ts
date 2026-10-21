@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import submitLawyerOab from "../../src/modules/functions/handlers/submitLawyerOab"; describe("oab",()=>{it("submete OAB",()=>expect(submitLawyerOab({lawyerId:"lawyer-001",oabNumber:"12345",oabUf:"SE"}).oabStatus).toBe("pending"));});

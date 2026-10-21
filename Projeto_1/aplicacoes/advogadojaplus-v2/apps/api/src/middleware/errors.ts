@@ -1,0 +1,3 @@
+import type {ErrorRequestHandler,RequestHandler} from 'express';import {ZodError} from 'zod';import {HttpError} from '../errors/http-error.js';
+export const notFound:RequestHandler=(_req,_res,next)=>next(new HttpError(404,'ROUTE_NOT_FOUND','Rota não encontrada'));
+export const errorHandler:ErrorRequestHandler=(err:unknown,_req,res,_next)=>{if(err instanceof ZodError){res.status(422).json({error:{code:'VALIDATION_ERROR',message:'Dados inválidos',issues:err.issues.map(x=>({path:x.path.join('.'),message:x.message}))}});return;}if(err instanceof HttpError){res.status(err.status).json({error:{code:err.code,message:err.message}});return;}console.error('Internal error',err);res.status(500).json({error:{code:'INTERNAL_ERROR',message:'Erro interno'}});};

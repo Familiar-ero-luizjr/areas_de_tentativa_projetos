@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { webhookRegistry } from "../../src/modules/stripe/webhooks/webhook.registry"; describe("webhooks",()=>{it("registra eventos",()=>expect(Object.keys(webhookRegistry).length).toBeGreaterThan(3));});

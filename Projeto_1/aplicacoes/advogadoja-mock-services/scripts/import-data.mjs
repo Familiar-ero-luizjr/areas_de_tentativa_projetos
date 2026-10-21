@@ -1,0 +1,1 @@
+import fs from "node:fs"; import path from "node:path"; const file=process.argv[2]; if(!file)throw new Error("Uso: npm run import:data -- caminho.json"); JSON.parse(fs.readFileSync(path.resolve(file),"utf8")); console.log("JSON válido para importação:",path.resolve(file));

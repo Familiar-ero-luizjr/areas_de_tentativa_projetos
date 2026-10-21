@@ -1,0 +1,1 @@
+export interface DatabaseGateway { list<T=unknown>(collection: string): Promise<T[]>; get<T=unknown>(collection: string, id: string): Promise<T | null>; set<T=unknown>(collection: string, id: string, value: T): Promise<T>; remove(collection: string, id: string): Promise<boolean>; }

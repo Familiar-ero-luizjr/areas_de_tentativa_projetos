@@ -1,0 +1,1 @@
+import { describe,it,expect } from "vitest"; import { mapsService } from "../../src/modules/maps/maps.service"; describe("location",()=>{it("retorna posição",async()=>expect((await mapsService.currentLocation()).lat).toBeTypeOf("number"));});

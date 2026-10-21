@@ -1,0 +1,1 @@
+export interface LatLng { lat: number; lng: number; } export interface MapsGateway { currentLocation(): Promise<LatLng>; geocode(address: string): Promise<LatLng>; distance(a: LatLng,b: LatLng): Promise<number>; }

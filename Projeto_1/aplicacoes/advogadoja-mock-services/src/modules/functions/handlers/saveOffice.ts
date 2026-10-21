@@ -1,0 +1,2 @@
+import { db } from "../../../data/database/db"; import { now, uid, required } from "./_helpers";
+export default function saveOffice(input: Record<string, any>) { const id=input.id??uid("office"); const payload={name:required(input.name,"name"),ownerId:required(input.ownerId,"ownerId"),phoneE164:input.phoneE164??null,email:input.email??null,address:input.address??null,status:input.status??"active"}; const existing=db.find("lawOffices",id); return existing?db.update("lawOffices",id,payload):db.insert("lawOffices",{id,...payload,createdAt:now(),updatedAt:now()}); }

@@ -1,0 +1,1 @@
+"use client";import{useRouter}from "next/navigation";export function UnderConstruction(){const r=useRouter();return <div className="construction"><div className="constructionIcon">⚖</div><h1>Em construção</h1><p>Essa área ainda não está disponível nesta versão da jornada.</p><button className="primaryBtn" onClick={()=>r.push("/login")}>Voltar para entrar</button></div>}

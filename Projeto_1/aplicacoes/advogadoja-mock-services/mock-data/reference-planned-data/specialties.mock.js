@@ -1,0 +1,197 @@
+/* Mocks/specialties.mock.js — specialties/{specialtyId} — dados simulados */
+window.MOCKS = window.MOCKS || {};
+
+window.MOCKS.specialties = [
+  {
+    "id": "family",
+    "code": "family",
+    "value": "family",
+    "label": "Família",
+    "description": "Questões familiares, guarda, alimentos e divórcio",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 1,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "civil",
+    "code": "civil",
+    "value": "civil",
+    "label": "Cível",
+    "description": "Relações civis, obrigações e responsabilidade",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 2,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "criminal",
+    "code": "criminal",
+    "value": "criminal",
+    "label": "Criminal",
+    "description": "Atuação em matéria criminal",
+    "category": "Criminal",
+    "active": true,
+    "sortOrder": 3,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "labor",
+    "code": "labor",
+    "value": "labor",
+    "label": "Trabalhista",
+    "description": "Relações de trabalho e emprego",
+    "category": "Trabalhista",
+    "active": true,
+    "sortOrder": 4,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "consumer",
+    "code": "consumer",
+    "value": "consumer",
+    "label": "Consumidor",
+    "description": "Relações de consumo",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 5,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "business",
+    "code": "business",
+    "value": "business",
+    "label": "Empresarial",
+    "description": "Empresas, contratos e relações societárias",
+    "category": "Empresarial",
+    "active": true,
+    "sortOrder": 6,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "tax",
+    "code": "tax",
+    "value": "tax",
+    "label": "Tributário",
+    "description": "Questões fiscais e tributárias",
+    "category": "Empresarial",
+    "active": true,
+    "sortOrder": 7,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "real-estate",
+    "code": "real-estate",
+    "value": "real-estate",
+    "label": "Imobiliário",
+    "description": "Imóveis, locações e contratos",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 8,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "social-security",
+    "code": "social-security",
+    "value": "social-security",
+    "label": "Previdenciário",
+    "description": "Benefícios e relações previdenciárias",
+    "category": "Social",
+    "active": true,
+    "sortOrder": 9,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "administrative",
+    "code": "administrative",
+    "value": "administrative",
+    "label": "Administrativo",
+    "description": "Relações com a Administração Pública",
+    "category": "Público",
+    "active": true,
+    "sortOrder": 10,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "digital",
+    "code": "digital",
+    "value": "digital",
+    "label": "Digital",
+    "description": "Questões jurídicas ligadas ao ambiente digital",
+    "category": "Tecnologia",
+    "active": true,
+    "sortOrder": 11,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "succession",
+    "code": "succession",
+    "value": "succession",
+    "label": "Sucessões",
+    "description": "Inventários, heranças e sucessão",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 12,
+    "createdAt": "2026-06-01T08:00:00-03:00",
+    "updatedAt": "2026-09-01T08:00:00-03:00"
+  },
+  {
+    "id": "intellectual-property",
+    "code": "intellectual-property",
+    "value": "intellectual-property",
+    "label": "Direito Intelectual",
+    "description": "Propriedade intelectual, marcas, direitos autorais e ativos imateriais",
+    "category": "Empresarial",
+    "active": true,
+    "sortOrder": 13,
+    "createdAt": "2026-09-13T05:54:00-03:00",
+    "updatedAt": "2026-09-13T05:54:00-03:00"
+  },
+  {
+    "id": "traffic",
+    "code": "traffic",
+    "value": "traffic",
+    "label": "Trânsito",
+    "description": "Questões administrativas e judiciais relacionadas ao trânsito",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 14,
+    "createdAt": "2026-09-13T05:54:00-03:00",
+    "updatedAt": "2026-09-13T05:54:00-03:00"
+  },
+  {
+    "id": "banking",
+    "code": "banking",
+    "value": "banking",
+    "label": "Bancário",
+    "description": "Relações bancárias, contratos financeiros e conflitos com instituições financeiras",
+    "category": "Cível",
+    "active": true,
+    "sortOrder": 15,
+    "createdAt": "2026-09-13T05:54:00-03:00",
+    "updatedAt": "2026-09-13T05:54:00-03:00"
+  },
+  {
+    "id": "unknown",
+    "code": "unknown",
+    "value": "unknown",
+    "label": "Não sei informar",
+    "description": "Opção de triagem quando o Cliente ainda não sabe identificar a especialidade",
+    "category": "Triagem",
+    "active": true,
+    "sortOrder": 16,
+    "createdAt": "2026-09-13T05:54:00-03:00",
+    "updatedAt": "2026-09-13T05:54:00-03:00"
+  }
+];
