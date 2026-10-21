@@ -2,7 +2,7 @@
 
 ## Escopo
 
-Esta raiz é apenas o catálogo e o ponto de publicação no GitHub Pages. Ela contém links para projetos independentes em `Projeto_1/`, `Projeto_2/` e `Projeto_3/`.
+Esta raiz é apenas o catálogo e o ponto de publicação no GitHub Pages. Ela contém links para projetos independentes em diretórios `Projeto_*`.
 
 ## Antes de editar
 

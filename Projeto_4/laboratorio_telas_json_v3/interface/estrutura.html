@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Advogado Já · Laboratório de telas JSON V3</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="lab-header">
+    <div class="brandline"><div class="lab-brandmark">AJ</div><div><strong>Laboratório de telas</strong><small>Advogado Já · JSON declarativo · V3</small></div></div>
+    <div class="lab-actions">
+      <div class="mode-tabs" role="group" aria-label="Modo de uso"><button type="button" class="is-active" id="mode-sim">▶ Simular</button><button type="button" id="mode-edit">✎ Editar</button><button type="button" id="mode-tree">♧ Árvore JSON</button></div>
+      <button type="button" id="reset-button" class="lab-btn">Restaurar original</button>
+      <button type="button" id="export-button" class="lab-btn lab-btn-primary">↓ Exportar projeto completo</button>
+      <label class="lab-btn upload-label">↑ Importar JSON<input type="file" id="import-file" accept=".json,application/json" hidden></label>
+    </div>
+  </header>
+  <section class="lab-intro"><div><h1>Telas construídas por JSON. Motor universal.</h1><p>Todas as telas são árvores JSON declarativas. Navegue, edite, inspecione a árvore integral e exporte uma tela, uma seleção ou todas.</p></div><span id="save-status" class="save-status">Base original</span></section>
+  <div class="lab-workspace" id="simulator-workspace">
+    <aside class="lab-sidebar" aria-label="Navegação e telas">
+      <div class="sidebar-section"><h2>Jornada de teste</h2><p>Selecione uma tela para pré-visualizar.</p><div id="screens-nav" class="screen-nav"></div><button class="lab-btn lab-btn-full" id="add-client" type="button">＋ Adicionar Home Cliente</button></div>
+      <div class="sidebar-section"><h2>Ferramentas rápidas</h2><button type="button" class="lab-btn lab-btn-full" id="mock-button">Preencher login com mock</button><button type="button" class="lab-btn lab-btn-full" id="go-login">↩ Voltar para Entrar</button><div class="helper-text">Os mocks são fictícios. Nenhuma autenticação, cadastro ou chamada ao servidor é realizada.</div></div>
+      <div class="sidebar-section"><h2>Estrutura JSON</h2><div class="section-tags"><span>estrutura</span><span>estilos</span><span>acoes</span><span>interacoes</span><span>dados</span><span>estados</span></div><p class="helper-text">Os seis blocos são declarativos. Nenhuma tela tem HTML estrutural programado no motor.</p></div>
+    </aside>
+    <main class="lab-canvas-area">
+      <div class="canvas-toolbar"><div class="canvas-title"><strong id="canvas-title">Entrar</strong><small id="canvas-path">auth.sessao.entrar</small></div><div class="canvas-buttons"><button class="lab-btn lab-btn-compact" id="viewport-mobile">Celular</button><button class="lab-btn lab-btn-compact" id="viewport-desktop">Largo</button><button class="lab-btn lab-btn-compact" id="restart-button">↻ Reiniciar</button></div></div>
+      <div class="canvas-stage"><div class="device-shell" id="device-shell"><iframe id="preview-frame" title="Visualização da tela Advogado Já" sandbox="allow-same-origin"></iframe></div></div>
+      <div class="canvas-foot"><div id="interaction-hint">Modo Simulador: os elementos executam suas ações configuradas.</div><div id="last-event">Pronto</div></div>
+    </main>
+    <aside class="lab-inspector" aria-label="Editor da tela">
+      <div class="inspector-tabs" role="tablist"><button class="inspector-tab is-active" id="tab-properties" data-tab="properties" role="tab">Elemento</button><button class="inspector-tab" id="tab-json" data-tab="json" role="tab">JSON</button><button class="inspector-tab" id="tab-guide" data-tab="guide" role="tab">Guia</button></div>
+      <div class="inspector-view is-active" id="view-properties" role="tabpanel">
+        <div class="inspector-head"><h2>Propriedades do elemento</h2><p>Clique para selecionar o elemento; Alt+clique seleciona elementos internos, como ícones.</p></div>
+        <label class="field-label" for="element-filter">Buscar elemento</label><input id="element-filter" class="input" placeholder="Botão, ícone, texto, header…" type="search" />
+        <label class="field-label" for="element-list">Elementos da tela</label><select id="element-list" class="input select-element" size="6" aria-label="Elementos da tela"></select>
+        <div class="element-meta" id="element-meta">Selecione um elemento.</div>
+        <section class="inspector-group"><h3>Texto</h3><label class="field-label" for="element-text">Texto visível (elementos simples)</label><input id="element-text" class="input" placeholder="Sem texto editável" /></section>
+        <section class="inspector-group"><h3>Posição e aparência</h3><div class="mini-grid"><label>Deslocamento X<input class="input" id="pos-x" type="number" value="0"></label><label>Deslocamento Y<input class="input" id="pos-y" type="number" value="0"></label></div><div class="mini-grid"><label>Cor do texto<input class="input" id="style-color" type="text" placeholder="Ex.: #10233f"></label><label>Fundo<input class="input" id="style-background" type="text" placeholder="Ex.: #ffffff"></label></div><div class="mini-grid"><label>Tamanho (px)<input class="input" id="font-size" type="number" placeholder="Auto"></label><label>Largura CSS<input class="input" id="style-width" type="text" placeholder="Ex.: 120px"></label></div><button type="button" id="clear-styles" class="lab-btn lab-btn-full">Limpar ajustes deste elemento</button></section>
+        <section class="inspector-group"><h3>Ação do elemento</h3><label class="field-label" for="action-type">Ao clicar</label><select id="action-type" class="input"><option value="padrao">Comportamento original</option><option value="navegar">Navegar para tela</option><option value="popup">Abrir pop-up</option><option value="mock">Aplicar mock</option><option value="alternarEstado">Alternar estado online</option><option value="menu">Abrir menu</option><option value="nenhuma">Não fazer nada</option></select><div id="action-detail"></div><button type="button" id="save-action" class="lab-btn lab-btn-full lab-btn-primary">Aplicar ação</button></section>
+      </div>
+      <div class="inspector-view" id="view-json" role="tabpanel"><div class="inspector-head"><h2>JSON declarativo</h2><p>Edite separadamente cada contrato da tela. Aplicar reconstrói o simulador.</p></div><label class="field-label" for="json-section">Bloco de dados</label><select class="input" id="json-section"><option value="estrutura">01 · Estrutura</option><option value="estilos">02 · Estilos e CSS</option><option value="acoes">03 · Ações</option><option value="interacoes">04 · Interações</option><option value="dados">05 · Dados e mocks da tela</option><option value="estados">06 · Estados</option><option value="tela">Tela completa</option><option value="projeto">Projeto completo</option></select><textarea spellcheck="false" id="json-editor" class="json-editor" aria-label="Editor JSON"></textarea><div class="json-actions"><button class="lab-btn lab-btn-primary" id="json-apply">Validar e aplicar</button><button class="lab-btn" id="json-format">Formatar</button><button class="lab-btn" id="json-copy">Copiar</button></div><div id="json-validation" class="validation" aria-live="polite"></div></div>
+      <div class="inspector-view" id="view-guide" role="tabpanel"><div class="inspector-head"><h2>Como usar</h2><p>Laboratório offline: árvores de elementos JSON, estilos de referência e ações independentes.</p></div><ol class="guide-list"><li><b>Simular:</b> abra em Entrar; clique em Entrar para ir à Home Profissional.</li><li><b>Editar:</b> clique em qualquer elemento no celular para selecioná-lo.</li><li><b>Modificar:</b> ajuste cor, posição e ação. Clique em Aplicar ação.</li><li><b>Experimentar:</b> volte a Simular e teste o novo comportamento.</li><li><b>JSON:</b> altere estrutura, estilos, ações, interações, dados ou estados por bloco.</li><li><b>Salvar:</b> exporte o JSON. Para recuperá-lo, use Importar JSON.</li></ol><p class="helper-text">Cada tela é definida por nós em <code>estrutura.fragmentos[].arvore</code>. Ajustes de aparência ficam em <code>estilos.elementos</code>, e eventos em <code>interacoes</code> com referências ao catálogo <code>acoes</code>.</p><p class="helper-text">Ao importar JSON, alterações de conteúdo e CSS serão renderizadas sem chamadas remotas. Dados importados não devem conter informações confidenciais.</p></div>
+    </aside>
+  </div>
+  <section class="tree-page" id="tree-page" hidden aria-labelledby="tree-page-heading">
+    <div class="tree-page-head"><div><div class="tree-kicker">EXPLORADOR DECLARATIVO</div><h2 id="tree-page-heading">Árvore JSON de cada tela</h2><p>Expanda cada tela e seus blocos. As árvores são geradas do JSON ativo do laboratório, não de cópias.</p></div>
+      <div class="tree-export-actions"><button type="button" class="lab-btn" id="tree-export-selected">↓ Exportar selecionadas</button><button type="button" class="lab-btn lab-btn-primary" id="tree-export-all">↓ Exportar todas</button><label class="lab-btn upload-label" for="tree-import-file">↑ Importar telas<input id="tree-import-file" type="file" hidden accept=".json,application/json"></label></div>
+    </div>
+    <div class="tree-filters"><div class="tree-searchbox"><label for="tree-search">Buscar no JSON</label><input class="input" id="tree-search" type="search" placeholder="Nome, ID, propriedade, caminho ou valor…" autocomplete="off"></div>
+      <div class="tree-selection-actions"><span id="tree-counter">0 telas selecionadas</span><button type="button" class="lab-btn lab-btn-compact" id="tree-select-all">Marcar todas</button><button type="button" class="lab-btn lab-btn-compact" id="tree-select-none">Desmarcar</button></div></div>
+    <div class="tree-layout"><div id="tree-sections" class="tree-sections" aria-label="Árvores JSON por tela"></div>
+      <aside class="tree-detail" aria-label="Detalhe do nó selecionado"><div class="tree-detail-heading"><strong>Inspeção do JSON</strong><span id="tree-detail-type">Nenhum nó selecionado</span></div>
+        <div class="tree-detail-body"><p id="tree-detail-tip">Clique em qualquer propriedade, objeto ou array para visualizar seu valor completo e caminho.</p>
+          <label class="field-label" for="tree-detail-path">Caminho do nó</label><input readonly class="input tree-detail-path" id="tree-detail-path" value="">
+          <label class="field-label" for="tree-detail-json">Valor completo (somente leitura)</label><textarea readonly class="json-editor tree-detail-json" id="tree-detail-json" spellcheck="false" placeholder="Selecione um nó na árvore."></textarea>
+          <div class="tree-detail-buttons"><button type="button" class="lab-btn" id="tree-copy-path">Copiar caminho</button><button type="button" class="lab-btn" id="tree-copy-json">Copiar JSON</button><button type="button" class="lab-btn lab-btn-primary" id="tree-edit-block">Editar bloco no editor</button></div>
+        </div></aside></div>
+    <div class="tree-help">Cada exportação inclui a definição integral das telas escolhidas e dependências globais (mocks e assets). A importação valida o contrato, mostra os conflitos e preserva as telas não selecionadas.</div>
+  </section>
+  <div id="tree-import-overlay" class="tree-import-overlay" hidden><section class="tree-import-dialog" role="dialog" aria-modal="true" aria-labelledby="tree-import-title">
+    <h2 id="tree-import-title">Revisar importação</h2><p id="tree-import-summary"></p><div id="tree-import-list" class="tree-import-list"></div>
+    <label class="field-label" for="tree-import-policy">Se o ID já existir no laboratório:</label>
+    <select class="input" id="tree-import-policy"><option value="skip">Preservar existente (ignorar importada)</option><option value="replace">Atualizar existente com JSON importado</option></select>
+    <p class="tree-import-hint">Nenhuma outra tela será excluída. Mocks e assets adicionais são incorporados; valores globais existentes só são atualizados quando você escolhe atualizar.</p>
+    <div class="tree-import-buttons"><button class="lab-btn" type="button" id="tree-import-cancel">Cancelar</button><button class="lab-btn lab-btn-primary" type="button" id="tree-import-confirm">Confirmar importação</button></div>
+  </section></div>
+  <div class="lab-toast" id="lab-toast" role="status" aria-live="polite"></div>
+</div>
+<script type="application/json" id="embedded-data">/*__DATA__*/</script>
+<script>/*__JS__*/</script>
+</body>
+</html>

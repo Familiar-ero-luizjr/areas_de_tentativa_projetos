@@ -1,0 +1,2618 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Padrão arquitetural para aplicações HTML autocontidas, com conteúdo gerenciado por JSON."
+    />
+    <title>Arquitetura de HTML Autocontido · Referência</title>
+    <style id="app-css">
+      :root {
+        --canvas: #f4f6fa;
+        --surface: #fff;
+        --surface-alt: #f8faff;
+        --ink: #162338;
+        --ink-2: #44526b;
+        --muted: #71809a;
+        --brand: #3359d9;
+        --brand-soft: #eaf0ff;
+        --border: #e3e9f1;
+        --code-bg: #111e31;
+        --code-ink: #d8e8ff;
+        --success: #168066;
+        --warn: #995d16;
+        --radius: 14px;
+        --shadow: 0 8px 32px rgba(20, 37, 65, 0.035);
+        --sans:
+          Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        --mono:
+          "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono",
+          monospace;
+      }
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --canvas: #0c1321;
+        --surface: #142033;
+        --surface-alt: #1a2a41;
+        --ink: #eff5ff;
+        --ink-2: #bfccdd;
+        --muted: #95a6c0;
+        --brand: #8dadff;
+        --brand-soft: #25395c;
+        --border: #2a3c56;
+        --code-bg: #0b1421;
+        --code-ink: #dbe9ff;
+        --success: #5ad0aa;
+        --warn: #f6bd64;
+        --shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.55;
+        font-size: 14px;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 3px solid var(--brand);
+        outline-offset: 2px;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .topbar {
+        height: 77px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 32px;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        min-width: 270px;
+        text-decoration: none;
+      }
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        border-radius: 11px;
+        width: 40px;
+        height: 40px;
+        background: #273d88;
+        color: white;
+        font-family: var(--mono);
+        font-weight: 800;
+        font-size: 13px;
+        box-shadow: 0 7px 16px rgba(34, 70, 154, 0.18);
+      }
+      .brand-label {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+        gap: 3px;
+      }
+      .brand-label strong {
+        font-size: 15px;
+        letter-spacing: 0.015em;
+      }
+      .brand-dot {
+        color: var(--brand);
+      }
+      .brand-label small {
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.035em;
+      }
+      .top-tabs {
+        display: flex;
+        align-self: stretch;
+        gap: 12px;
+      }
+      .top-tabs button {
+        height: 100%;
+        min-width: 135px;
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 13px;
+        appearance: none;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        padding: 0 12px;
+      }
+      .top-tabs button[aria-selected="true"] {
+        color: var(--brand);
+        border-color: var(--brand);
+      }
+      .tab-icon {
+        font-size: 17px;
+        margin-right: 7px;
+        font-weight: 700;
+      }
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .state-marker {
+        color: var(--success);
+        background: color-mix(in srgb, var(--success) 9%, transparent);
+        border-radius: 100px;
+        padding: 6px 11px;
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .state-marker.dirty {
+        color: var(--warn);
+        background: color-mix(in srgb, var(--warn) 10%, transparent);
+      }
+      .primary-button,
+      .secondary-button,
+      .ghost-button,
+      .icon-button,
+      .danger-button {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 9px;
+        padding: 9px 13px;
+        font-weight: 700;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+      .primary-button {
+        color: #fff;
+        background: #355cdd;
+        border-color: #355cdd;
+      }
+      .secondary-button {
+        color: var(--brand);
+        border-color: color-mix(in srgb, var(--brand) 28%, var(--border));
+        background: var(--brand-soft);
+      }
+      .ghost-button {
+        border-color: transparent;
+        background: transparent;
+        color: var(--ink-2);
+      }
+      .danger-button {
+        color: #b43b3b;
+        border-color: color-mix(in srgb, #b43b3b 25%, var(--border));
+        background: transparent;
+      }
+      .icon-button {
+        font-size: 20px;
+        padding: 5px 11px;
+        min-width: 36px;
+      }
+      .primary-button:hover {
+        background: #284ac2;
+      }
+      .secondary-button:hover,
+      .ghost-button:hover,
+      .icon-button:hover {
+        background: var(--brand-soft);
+      }
+      .workspace {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        min-height: calc(100vh - 77px);
+      }
+      .sidebar {
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 77px;
+        max-height: calc(100vh - 77px);
+      }
+      .sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 22px 17px;
+      }
+      .eyebrow {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+      }
+      .version-chip {
+        font-size: 10px;
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        border-radius: 6px;
+        padding: 3px 7px;
+      }
+      .search-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 18px 15px;
+        padding: 0 10px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--surface-alt);
+        color: var(--muted);
+      }
+      .search-wrap > span {
+        font-size: 22px;
+      }
+      .search-wrap input {
+        background: transparent;
+        outline: none;
+        border: 0;
+        color: var(--ink);
+        width: 100%;
+        min-height: 39px;
+        min-width: 0;
+        font-size: 12px;
+      }
+      .search-wrap kbd {
+        font-size: 11px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 3px;
+        padding: 1px 5px;
+      }
+      .sidebar-nav {
+        overflow: auto;
+        padding: 0 12px 24px;
+        flex: 1;
+      }
+      .nav-group {
+        margin: 14px 0 7px;
+        padding: 0 10px;
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      .nav-link {
+        display: block;
+        text-decoration: none;
+        font-size: 12.5px;
+        color: var(--ink-2);
+        padding: 9px 10px;
+        border-radius: 8px;
+        margin: 2px 0;
+        line-height: 1.35;
+      }
+      .nav-link:hover {
+        background: var(--surface-alt);
+        color: var(--ink);
+      }
+      .nav-link.active {
+        background: var(--brand-soft);
+        color: var(--brand);
+        font-weight: 750;
+      }
+      .nav-link .number {
+        display: inline-block;
+        width: 22px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .sidebar-footer {
+        padding: 19px 24px 28px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: var(--ink-2);
+      }
+      .sidebar-footer p {
+        margin: 0;
+        line-height: 1.45;
+        font-size: 11px;
+      }
+      .sidebar-footer small {
+        color: var(--muted);
+      }
+      .tip-bullet {
+        height: 9px;
+        width: 9px;
+        background: var(--success);
+        border-radius: 50%;
+        margin-top: 5px;
+        flex: none;
+      }
+      .main {
+        min-width: 0;
+        padding: 36px clamp(22px, 4vw, 70px) 70px;
+      }
+      .view {
+        max-width: 1150px;
+        margin: auto;
+      }
+      .view[hidden] {
+        display: none;
+      }
+      .breadcrumb {
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 2px 0 18px;
+      }
+      .crumb-sep {
+        opacity: 0.5;
+      }
+      h1 {
+        font-size: clamp(26px, 3.1vw, 42px);
+        line-height: 1.19;
+        letter-spacing: -0.035em;
+        margin: 0 0 16px;
+        font-weight: 800;
+      }
+      h2 {
+        font-size: 21px;
+        letter-spacing: -0.018em;
+        margin: 0 0 14px;
+      }
+      h3 {
+        font-size: 15px;
+        margin: 0 0 12px;
+        letter-spacing: -0.01em;
+      }
+      .lede {
+        font-size: 15px;
+        color: var(--ink-2);
+        max-width: 820px;
+        margin: 0 0 22px;
+        line-height: 1.8;
+      }
+      .hero {
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          125deg,
+          var(--surface) 50%,
+          var(--brand-soft) 140%
+        );
+        border-radius: 18px;
+        padding: 34px 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:after {
+        content: "</>";
+        position: absolute;
+        font-family: var(--mono);
+        font-size: 135px;
+        color: var(--brand);
+        opacity: 0.055;
+        right: 10px;
+        top: 5px;
+        font-weight: 900;
+        pointer-events: none;
+      }
+      .hero .eyebrow {
+        color: var(--brand);
+        display: block;
+        margin-bottom: 16px;
+      }
+      .hero p {
+        color: var(--ink-2);
+        font-size: 14px;
+        max-width: 780px;
+        line-height: 1.8;
+        margin: 0;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+      }
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 26px;
+      }
+      .mini-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 17px;
+      }
+      .mini-card .kicker {
+        font-size: 11px;
+        color: var(--brand);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+      }
+      .mini-card h3 {
+        margin: 8px 0 5px;
+        font-size: 13px;
+      }
+      .mini-card p {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.65;
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin: 10px 0 24px;
+      }
+      .section-head h1 {
+        font-size: clamp(24px, 2.7vw, 34px);
+      }
+      .section-head p {
+        font-size: 14px;
+        color: var(--ink-2);
+        max-width: 800px;
+        margin: 0;
+        line-height: 1.75;
+      }
+      .section-tools {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .document-block {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 14px;
+        padding: 24px;
+        margin: 15px 0;
+      }
+      .document-block > h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 13px;
+      }
+      .block-icon {
+        background: var(--brand-soft);
+        color: var(--brand);
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .document-block p {
+        color: var(--ink-2);
+        line-height: 1.75;
+        white-space: pre-line;
+        margin: 0;
+      }
+      .document-block ul {
+        margin: 0;
+        padding-left: 21px;
+        color: var(--ink-2);
+      }
+      .document-block li {
+        margin: 8px 0;
+        line-height: 1.7;
+      }
+      .document-block pre {
+        position: relative;
+        margin: 0;
+        padding: 18px 20px;
+        background: var(--code-bg);
+        color: var(--code-ink);
+        border-radius: 9px;
+        white-space: pre;
+        overflow-x: auto;
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 1.7;
+        tab-size: 2;
+        max-height: 560px;
+      }
+      .document-block pre.diagram {
+        background: var(--surface-alt);
+        border: 1px dashed var(--border);
+        color: var(--ink);
+        max-height: none;
+      }
+      .document-block.note {
+        background: color-mix(in srgb, var(--brand-soft) 64%, var(--surface));
+        border-color: color-mix(in srgb, var(--brand) 18%, var(--border));
+      }
+      .document-block.note p {
+        color: var(--ink);
+      }
+      .block-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        margin: 0 0 12px;
+      }
+      .block-meta h3 {
+        margin: 0;
+      }
+      .small-tag {
+        color: var(--muted);
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+        padding: 3px 8px;
+        border-radius: 5px;
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+      .copy-inline {
+        font-size: 11px;
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+        color: var(--ink-2);
+        border-radius: 6px;
+        padding: 4px 8px;
+      }
+      .bottom-nav {
+        margin-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .bottom-nav a {
+        flex: 1;
+        text-decoration: none;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 17px;
+        max-width: 340px;
+      }
+      .bottom-nav a strong {
+        display: block;
+        font-size: 12px;
+      }
+      .bottom-nav a span {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        margin-bottom: 5px;
+      }
+      .empty {
+        text-align: center;
+        background: var(--surface);
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px dashed var(--border);
+        color: var(--muted);
+      }
+      .data-header {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        padding: 25px 28px;
+        margin-bottom: 16px;
+      }
+      .data-header h1 {
+        font-size: 29px;
+        margin: 0 0 7px;
+      }
+      .data-header p {
+        color: var(--ink-2);
+        margin: 0;
+        max-width: 850px;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      .json-topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 20px 0 12px;
+      }
+      .json-selector {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .json-selector select {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 10px 11px;
+        color: var(--ink);
+        border-radius: 9px;
+        min-width: 190px;
+        font-size: 12px;
+      }
+      .json-editor-box {
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background: var(--surface);
+        padding: 16px;
+        box-shadow: var(--shadow);
+      }
+      .editor-info {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        padding: 0 2px 12px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .editor-info strong {
+        font-weight: 800;
+        color: var(--ink);
+      }
+      #json-editor {
+        display: block;
+        width: 100%;
+        min-height: 480px;
+        height: 55vh;
+        max-height: 760px;
+        resize: vertical;
+        white-space: pre;
+        tab-size: 2;
+        outline: none;
+        border: 1px solid #2d415e;
+        background: var(--code-bg);
+        color: var(--code-ink);
+        font: 12px/1.65 var(--mono);
+        padding: 18px;
+        border-radius: 8px;
+      }
+      .editor-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .action-stack {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .json-hint {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 13px 3px;
+      }
+      .validation-box {
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 13px 16px;
+        font-size: 12px;
+        color: var(--ink-2);
+        margin-top: 14px;
+        white-space: pre-wrap;
+      }
+      .validation-box.error {
+        border-color: #d85c5c;
+        color: #c44747;
+        background: color-mix(in srgb, #d85c5c 7%, var(--surface));
+      }
+      .validation-box.success {
+        border-color: color-mix(in srgb, var(--success) 45%, var(--border));
+        color: var(--success);
+      }
+      .json-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .json-stat {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .json-stat strong {
+        display: block;
+        font-size: 18px;
+        color: var(--ink);
+        font-family: var(--mono);
+      }
+      .callout {
+        border-left: 3px solid var(--brand);
+        background: var(--brand-soft);
+        border-radius: 0 10px 10px 0;
+        padding: 12px 15px;
+        margin: 14px 0;
+        color: var(--ink-2);
+        font-size: 12px;
+        line-height: 1.75;
+      }
+      .toast {
+        position: fixed;
+        right: 26px;
+        bottom: 24px;
+        max-width: min(430px, calc(100vw - 48px));
+        background: var(--ink);
+        color: var(--surface);
+        padding: 12px 17px;
+        border-radius: 10px;
+        box-shadow: 0 16px 45px #0003;
+        z-index: 50;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .toast[hidden] {
+        display: none;
+      }
+      @media (max-width: 1150px) {
+        .summary-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .brand {
+          min-width: auto;
+        }
+        .brand-label small {
+          display: none;
+        }
+        .topbar {
+          padding: 0 20px;
+        }
+        .state-marker {
+          display: none;
+        }
+      }
+      @media (max-width: 860px) {
+        .workspace {
+          display: block;
+        }
+        .sidebar {
+          position: static;
+          max-height: none;
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .sidebar-top,
+        .sidebar-footer {
+          display: none;
+        }
+        .sidebar-nav {
+          max-height: 135px;
+        }
+        .sidebar-nav .nav-group {
+          margin-top: 8px;
+        }
+        .main {
+          padding: 25px 15px 60px;
+        }
+        .topbar {
+          gap: 8px;
+        }
+        .brand-label {
+          display: none;
+        }
+        .top-tabs {
+          gap: 0;
+        }
+        .top-tabs button {
+          min-width: 0;
+          font-size: 12px;
+          padding: 0 9px;
+        }
+        .top-actions .primary-button {
+          font-size: 0;
+          gap: 0;
+        }
+        .top-actions .primary-button span {
+          font-size: 15px;
+        }
+        .hero {
+          padding: 23px;
+        }
+        .document-block {
+          padding: 16px;
+        }
+        .section-head {
+          flex-direction: column;
+        }
+        .section-tools {
+          justify-content: flex-start;
+        }
+        .json-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .topbar {
+          height: 65px;
+          padding: 0 10px;
+        }
+        .brand-mark {
+          height: 32px;
+          width: 32px;
+        }
+        .workspace {
+          min-height: calc(100vh - 65px);
+        }
+        .sidebar {
+          top: 65px;
+        }
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+        .top-tabs button {
+          font-size: 11px;
+        }
+        .tab-icon {
+          display: none;
+        }
+        .top-actions {
+          gap: 3px;
+        }
+        .json-stats {
+          grid-template-columns: 1fr;
+        }
+        .json-editor-box {
+          padding: 10px;
+        }
+        .bottom-nav {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-root">
+      <header class="topbar">
+        <a class="brand" href="#doc/visao" aria-label="Ir para visão geral">
+          <span class="brand-mark" aria-hidden="true"
+            ><span>&lt;/&gt;</span></span
+          >
+          <span class="brand-label"
+            ><strong>HTML<span class="brand-dot">.</span>STANDARDS</strong
+            ><small>Guia de arquitetura autocontida</small></span
+          >
+        </a>
+        <nav class="top-tabs" role="tablist" aria-label="Áreas do documento">
+          <button
+            type="button"
+            role="tab"
+            id="tab-doc"
+            aria-controls="view-doc"
+            data-tab="doc"
+            aria-selected="true"
+          >
+            <span class="tab-icon">▤</span> Guia visual
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-json"
+            aria-controls="view-json"
+            data-tab="json"
+            aria-selected="false"
+          >
+            <span class="tab-icon">{ }</span> JSON ativo
+          </button>
+        </nav>
+        <div class="top-actions">
+          <span id="state-marker" class="state-marker" title="Estado dos dados"
+            >Padrão original</span
+          >
+          <button
+            id="theme-toggle"
+            class="icon-button"
+            type="button"
+            aria-label="Alternar tema"
+            title="Alternar tema"
+          >
+            ◐
+          </button>
+          <button type="button" data-action="export" class="primary-button">
+            <span aria-hidden="true">↓</span> Exportar JSON
+          </button>
+        </div>
+      </header>
+      <div class="workspace">
+        <aside class="sidebar" id="sidebar" aria-label="Sumário e navegação">
+          <div class="sidebar-top">
+            <span class="eyebrow">NAVEGAÇÃO</span
+            ><span class="version-chip">Padrão v1.0</span>
+          </div>
+          <label class="search-wrap"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              type="search"
+              id="nav-search"
+              placeholder="Buscar no guia..."
+              autocomplete="off"
+              aria-label="Buscar seções"
+            /><kbd>/</kbd></label
+          >
+          <div class="sidebar-nav" id="sidebar-nav"></div>
+          <div class="sidebar-footer">
+            <div class="tip-bullet"></div>
+            <p>
+              Conteúdo editável por JSON.<br /><small
+                >Nenhuma conexão externa necessária.</small
+              >
+            </p>
+          </div>
+        </aside>
+        <main id="main" class="main">
+          <section
+            id="view-doc"
+            role="tabpanel"
+            aria-labelledby="tab-doc"
+            class="view"
+          ></section>
+          <section
+            id="view-json"
+            role="tabpanel"
+            aria-labelledby="tab-json"
+            class="view"
+            hidden
+          ></section>
+        </main>
+      </div>
+    </div>
+    <div id="toast" role="status" aria-live="polite" class="toast" hidden></div>
+    <input id="json-file" type="file" accept=".json,application/json" hidden />
+    <script id="app-default-json" type="application/json">
+      {
+        "examples": {
+          "manifest": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"app\": { \"id\": \"minha-aplicacao\", \"title\": \"Meu HTML Autocontido\" },\n  \"entry\": { \"route\": \"#/inicio\", \"layout\": \"principal\" },\n  \"registries\": [\"pages\", \"components\", \"services\", \"relations\"],\n  \"capabilities\": { \"mocks\": true, \"offline\": true }\n}",
+          "source": "aplicacao/\n├── app.manifest.json          # identidade e montagem\n├── interface/\n│   ├── shell.html             # estrutura global\n│   ├── paginas/               # telas independentes\n│   └── componentes/           # fragmentos HTML reutilizáveis\n├── estilos/\n│   ├── tokens.css             # cores, espaçamento, tipografia\n│   ├── base.css               # reset, acessibilidade\n│   ├── layout.css             # grade, navegação, shell\n│   └── componentes/           # estilos por componente\n├── dados/\n│   ├── schema/                # contratos e validação\n│   ├── seeds/                 # dados padrão editáveis\n│   └── catalogos/             # conteúdo e listas estáticas\n├── mocks/                     # OPCIONAL\n│   ├── cenarios.json          # cenários de dados fictícios\n│   └── handlers.js            # respostas simuladas\n├── relacoes/\n│   ├── relacoes.json          # arestas e regras declarativas\n│   └── engine.js              # indexação e consulta\n├── runtime/\n│   ├── bootstrap.js           # ordem de inicialização\n│   ├── registry.js            # módulos/componentes/serviços\n│   ├── router.js              # navegação por hash\n│   ├── store.js               # estado em memória\n│   └── event-bus.js           # eventos com contratos\n├── servicos/\n│   ├── clientes.service.js    # lógica por domínio\n│   └── adapters/              # mock / API real, se aplicável\n├── assets/                    # SVG, imagens, ícones, fontes licenciadas\n├── tests/                     # validação automatizada\n├── ferramentas/build.py       # incorpora CSS/JS/JSON/assets\n└── dist/aplicacao.html        # ARQUIVO FINAL AUTÔNOMO",
+          "final": "\u003c!doctype html\u003e\n\u003chtml lang=\"pt-BR\"\u003e\n\u003chead\u003e\n  \u003cmeta charset=\"utf-8\"\u003e\n  \u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\"\u003e\n  \u003ctitle\u003eMinha aplicação\u003c/title\u003e\n  \u003cstyle id=\"bundle-css\"\u003e/* CSS agrupado por camada */\u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n  \u003cdiv id=\"app\" role=\"application\"\u003e\u003c/div\u003e\n  \u003cscript id=\"bundle-data\" type=\"application/json\"\u003e\n    {\"manifest\":{},\"pages\":[],\"entities\":[],\"mocks\":{},\"relations\":[]}\n  \u003c/script\u003e\n  \u003cscript\u003e/* JS compilado em ordem definida no manifesto */\u003c/script\u003e\n\u003c/body\u003e\n\u003c/html\u003e",
+          "pages": "{\n  \"pages\": [\n    {\"id\":\"inicio\",\"path\":\"/inicio\",\"title\":\"Início\",\"component\":\"page.home\",\"layout\":\"principal\"},\n    {\"id\":\"clientes\",\"path\":\"/clientes\",\"title\":\"Clientes\",\"component\":\"page.clients\",\"layout\":\"principal\"},\n    {\"id\":\"cliente-detalhe\",\"path\":\"/clientes/:id\",\"component\":\"page.client.detail\",\"layout\":\"principal\"}\n  ]\n}",
+          "styles": ":root {\n  --color-bg: #f7f8fc;\n  --color-text: #17243a;\n  --color-brand: #315cdb;\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --radius-md: 12px;\n}\n[data-theme=\"dark\"] { --color-bg: #111827; --color-text: #f1f5f9; }\n/* componentes usam tokens; evite cores soltas por página */",
+          "data": "{\n  \"schemaVersion\": 1,\n  \"entities\": {\n    \"clientes\": [\n      {\"id\":\"cli-001\",\"name\":\"Cliente Exemplo\",\"status\":\"ativo\"}\n    ],\n    \"pedidos\": [\n      {\"id\":\"ped-001\",\"clienteId\":\"cli-001\",\"total\":180}\n    ]\n  }\n}",
+          "mock": "{\n  \"enabled\": true,\n  \"scenario\": \"demonstracao\",\n  \"latencyMs\": 100,\n  \"datasets\": {\n    \"demonstracao\": {\n      \"clientes\": [{\"id\":\"cli-001\",\"name\":\"Cliente Exemplo\"}],\n      \"pedidos\": [{\"id\":\"ped-001\",\"clienteId\":\"cli-001\"}]\n    },\n    \"vazio\": {\"clientes\":[],\"pedidos\":[]}\n  }\n}",
+          "adapters": "// Contrato idêntico no mock e na integração real:\nconst clienteRepository = {\n  list: () =\u003e Promise.resolve([]),\n  getById: (id) =\u003e Promise.resolve(null)\n};\n\n// Escolha do adaptador em configuração:\n// adapter = config.mode === 'mock' ? mockAdapter : apiAdapter;\n// IMPORTANTE: uma API real exige servidor e conexão; file:// não a simula.",
+          "relations": "{\n  \"relations\": [\n    {\"id\":\"rel-01\",\"kind\":\"belongsTo\",\"from\":\"pedidos.clienteId\",\"to\":\"clientes.id\",\"required\":true},\n    {\"id\":\"rel-02\",\"kind\":\"navigatesTo\",\"from\":\"page.home\",\"to\":\"page.clients\"}\n  ]\n}",
+          "relationengine": "// Esboço do contrato (não código de execução importado):\nindexById(\"clientes\", clientes);       // O(1) por ID médio\nvalidateForeignKeys(relations, entities); // relatórios de ausências\ngetRelated(\"cli-001\", \"pedidos\");    // consulta orientada a índices\n// NUNCA usar eval em expressões salvas no JSON.",
+          "store": "{\n  \"state\": {\n    \"route\": \"/inicio\",\n    \"session\": { \"user\": null },\n    \"ui\": { \"theme\": \"light\", \"sidebarOpen\": true },\n    \"filters\": { \"clients\": \"\" }\n  }\n}",
+          "event": "{\n  \"events\": [\n    {\"name\":\"client:selected\",\"payload\":{\"id\":\"string\"}},\n    {\"name\":\"route:changed\",\"payload\":{\"path\":\"string\"}},\n    {\"name\":\"data:updated\",\"payload\":{\"entity\":\"string\",\"id\":\"string\"}}\n  ]\n}",
+          "registry": "{\n  \"components\": [\n    {\"id\":\"page.home\",\"module\":\"pages/home\",\"mount\":\"mountHome\"},\n    {\"id\":\"page.clients\",\"module\":\"pages/clients\",\"mount\":\"mountClients\"},\n    {\"id\":\"ui.modal\",\"module\":\"components/modal\",\"mount\":\"mountModal\"}\n  ],\n  \"modules\": [\n    {\"id\":\"store\",\"deps\":[]},\n    {\"id\":\"relations\",\"deps\":[\"store\"]},\n    {\"id\":\"router\",\"deps\":[\"store\",\"components\"]}\n  ]\n}",
+          "router": "NAVEGAÇÃO EM HTML ÚNICO (file://)\n\n#/inicio                  → page.home\n#/clientes                → page.clients\n#/clientes/cli-001        → page.client.detail\n\nO roteador lê location.hash, procura a rota no registro,\ndesmonta a página anterior e monta a próxima no mesmo #app.\nNão requer múltiplos HTMLs nem rewrites de servidor.",
+          "assets": "{\n  \"assets\": [\n    {\"id\":\"logo\",\"source\":\"assets/logo.svg\",\"mime\":\"image/svg+xml\",\"mode\":\"inline\"},\n    {\"id\":\"icone\",\"source\":\"assets/icon.png\",\"mime\":\"image/png\",\"mode\":\"data-uri\"}\n  ]\n}",
+          "bootstrap": "1. Ler e validar o manifest + JSON embutido\n2. Instalar tratamento global de erros\n3. Criar registries (componentes/serviços)\n4. Iniciar storage e state store\n5. Carregar dados e selecionar adapter (mock / local)\n6. Criar índices / validar relações\n7. Registrar componentes, páginas e eventos\n8. Iniciar router por hash\n9. Montar layout + página inicial\n10. Exibir estado pronto (ou erro recuperável)",
+          "build": "FONTE EDITÁVEL\n  HTML fragmentos  +  CSS modular  +  JS modular  +  JSON  +  assets\n               │\n               ▼\n  validar contratos → ordenar módulos → incorporar recursos\n               │\n               ▼\n           dist/aplicacao.html\n               │\n               ▼\n    testar com file:// e dados realistas",
+          "checklist": "[ ] Nenhum arquivo externo obrigatório (CDN, import, fetch local)\n[ ] Nenhum segredo incorporado\n[ ] JSON válido e IDs únicos; referências resolvidas\n[ ] Rotas cadastradas; página inexistente tratada\n[ ] Eventos registrados e listeners removidos ao desmontar\n[ ] HTML dinâmico escapado; CSP compatível quando possível\n[ ] Testes de import/export/reset/persistência\n[ ] Busca e listas grandes sem travamento perceptível\n[ ] Layout legível em mobile e teclado\n[ ] Abrir dist/aplicacao.html diretamente (file://)",
+          "flow": "ALTERAR OU CRIAR UM RECURSO\n        │\n        ├── Só muda conteúdo? → editar dados/*.json\n        ├── Só muda visual?   → editar estilos/* e componentes\n        ├── Nova tela?       → interface/paginas + pages.json\n        ├── Nova lógica?     → servicos/* ou runtime/modules\n        ├── Nova relação?    → relacoes.json + validação\n        └── Novo mock?       → mocks/cenarios.json + adapter\n        │\n        ▼\n validar → recompilar → testar o HTML final",
+          "versioning": "{\n  \"schemaVersion\": \"2.0.0\",\n  \"dataVersion\": 5,\n  \"migrations\": [\n    {\"from\":4,\"to\":5,\"id\":\"mig-004-005\",\"reason\":\"renomeia cliente.nome\"}\n  ]\n}"
+        },
+        "groups": [
+          { "id": "fundamentos", "label": "Fundamentos" },
+          { "id": "camadas", "label": "Camadas do projeto" },
+          { "id": "execucao", "label": "Execução e relações" },
+          { "id": "qualidade", "label": "Compilação e qualidade" }
+        ],
+        "manifest": {
+          "schemaVersion": "1.0.0",
+          "docId": "padrao-arquitetura-html-autocontido",
+          "title": "Arquitetura de HTML Autocontido",
+          "subtitle": "Padrão de organização para aplicações offline modulares e extensíveis",
+          "edition": "Proposta arquitetural de referência · Outubro 2026",
+          "purpose": "Documentar responsabilidades, contratos, fluxo de compilação e evolução de um HTML único."
+        },
+        "principles": [
+          {
+            "id": "p1",
+            "title": "Fonte modular",
+            "description": "Módulos, CSS, dados e interfaces têm arquivos próprios durante o desenvolvimento."
+          },
+          {
+            "id": "p2",
+            "title": "Entrega unitária",
+            "description": "O artefato distribuído incorpora os recursos necessários para executar offline."
+          },
+          {
+            "id": "p3",
+            "title": "Contratos explícitos",
+            "description": "IDs, registros, schemas, dependências e eventos são validados."
+          },
+          {
+            "id": "p4",
+            "title": "Extensão previsível",
+            "description": "Adicionar um recurso é cadastrar seu módulo no lugar certo e recompilar."
+          }
+        ],
+        "sections": [
+          {
+            "id": "visao",
+            "group": "fundamentos",
+            "title": "01 · Visão e princípios",
+            "summary": "Uma arquitetura de manutenção modular que produz um único HTML transportável.",
+            "blocks": [
+              {
+                "type": "diagram",
+                "title": "Duas perspectivas",
+                "text": "DESENVOLVIMENTO (editável)                DISTRIBUIÇÃO (executável)\n\nestrutura/ ───┐\nestilos/ ─────┤\ndados/ ───────┤\nmocks/ ───────┤\nrelacoes/ ────┼────→ BUILDER ─────→ aplicacao.html\nscripts/ ─────┤                       ↑\nassets/ ──────┘                  CSS + JS + JSON\n                                tudo incorporado"
+              },
+              {
+                "type": "list",
+                "title": "Invariantes",
+                "items": [
+                  "Cada responsabilidade possui endereço previsível na fonte.",
+                  "Cada módulo declara seu contrato e dependências.",
+                  "Dados e conteúdo mudam por JSON; lógica executável muda nos módulos JS.",
+                  "O HTML final abre offline sem depender da árvore de fontes.",
+                  "Não prometer tamanho ilimitado ou zero bugs: validar cargas realistas."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Diferença central",
+                "text": "O HTML final é um artefato compilado. Editar dados no navegador altera a sessão ou o storage local; não altera o arquivo .html em disco. Exporte o JSON e recompile para distribuir as mudanças."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "source",
+            "group": "fundamentos",
+            "title": "02 · Árvore de origem padrão",
+            "summary": "Um lugar óbvio para cada tipo de alteração, com áreas opcionais isoladas.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Árvore de diretórios de referência",
+                "exampleId": "source"
+              },
+              {
+                "type": "list",
+                "title": "Regras",
+                "items": [
+                  "interface/ guarda estrutura sem assumir lógica de negócio.",
+                  "estilos/ guarda tokens, regras globais e CSS local por componente.",
+                  "dados/ guarda esquemas, conteúdo padrão, catálogos e metadados.",
+                  "mocks/ existe apenas quando a aplicação exige simulação.",
+                  "runtime/ guarda mecanismos genéricos; servicos/ guarda lógica de domínio.",
+                  "dist/ é gerado, nunca a fonte de verdade."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Organização flexível",
+                "text": "As pastas são uma arquitetura de referência, não obrigação para todo protótipo. Projetos pequenos podem agrupar módulos, preservando a separação lógica."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "final",
+            "group": "fundamentos",
+            "title": "03 · Anatomia do HTML compilado",
+            "summary": "Um arquivo com regiões marcadas, dados incorporados e inicialização reproduzível.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Estrutura ilustrativa do HTML final",
+                "exampleId": "final"
+              },
+              {
+                "type": "list",
+                "title": "Conteúdo mínimo",
+                "items": [
+                  "DOCTYPE, idioma, charset, viewport e título.",
+                  "CSS consolidado e agrupado por camada.",
+                  "Contêiner da aplicação, modais e regiões acessíveis.",
+                  "Bloco \u003cscript type=\"application/json\"\u003e com dados inertes.",
+                  "Módulos JS concatenados/empacotados por dependência e bootstrap ao final."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Segurança de incorporação",
+                "text": "Durante a montagem, o gerador precisa escapar sequências que fechariam a tag script (ex.: \u003c\\/script) e validar JSON. JSON nunca deve ser executado como código."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "manifest",
+            "group": "fundamentos",
+            "title": "04 · Manifesto e catálogos",
+            "summary": "O manifesto é o índice da aplicação: identidade, versão, entradas e registros.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Manifesto JSON ilustrativo",
+                "exampleId": "manifest"
+              },
+              {
+                "type": "list",
+                "title": "Separação recomendada",
+                "items": [
+                  "app.manifest.json: identidade, capabilities e ponto de entrada.",
+                  "pages.json: caminhos e componentes de cada tela.",
+                  "components.json: IDs e mounts de componentes.",
+                  "modules.json: módulos e dependências.",
+                  "assets.json: recursos e estratégias de incorporação."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Uma fonte de verdade por assunto",
+                "text": "Não duplicar a mesma rota em cinco arquivos. Os registros validam IDs e dependências durante o build."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "shell",
+            "group": "camadas",
+            "title": "05 · Estrutura, layouts e componentes",
+            "summary": "As páginas não precisam repetir a navegação, o cabeçalho nem os modais.",
+            "blocks": [
+              {
+                "type": "diagram",
+                "title": "Composição do shell",
+                "text": "DOCUMENTO HTML\n└── #app\n    ├── Layout principal\n    │   ├── Cabeçalho\n    │   ├── Menu / navegação\n    │   └── \u003cmain id=\"page-outlet\"\u003e\n    │         └── Página atual (mount/unmount)\n    ├── Região de avisos / toasts\n    └── Região de modais"
+              },
+              {
+                "type": "list",
+                "title": "Contratos",
+                "items": [
+                  "Toda página tem um ID estável e um método de montagem.",
+                  "Montar devolve cleanup() para remover eventos e recursos.",
+                  "Componentes recebem props/dados sem acessar variáveis globais arbitrárias.",
+                  "Semântica e acessibilidade são parte da interface, não decoração."
+                ]
+              },
+              {
+                "type": "example",
+                "title": "Registro de páginas",
+                "exampleId": "pages"
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "css",
+            "group": "camadas",
+            "title": "06 · Estilos e design tokens",
+            "summary": "Estilos globais consistentes sem acoplamento entre telas.",
+            "blocks": [
+              {
+                "type": "diagram",
+                "title": "Ordem lógica de CSS",
+                "text": "tokens.css\n   ↓\nbase.css\n   ↓\nlayout.css\n   ↓\ncomponents/*.css\n   ↓\npages/*.css\n   ↓\nutilities.css (mínimo)"
+              },
+              {
+                "type": "example",
+                "title": "Exemplo de tokens",
+                "exampleId": "styles"
+              },
+              {
+                "type": "list",
+                "title": "Diretrizes",
+                "items": [
+                  "Uma variável de tema deve mudar aparência sem procurar cores em dezenas de arquivos.",
+                  "Seletores de componente por classe ou data-attribute; evitar CSS global acidental.",
+                  "Os módulos não devem injetar CSS duplicado por montagem.",
+                  "Testar responsividade, foco visível e contraste."
+                ]
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "data",
+            "group": "camadas",
+            "title": "07 · Dados, schemas e contratos",
+            "summary": "Catálogos e registros estruturados separados dos componentes.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Banco local ilustrativo (JSON)",
+                "exampleId": "data"
+              },
+              {
+                "type": "list",
+                "title": "Regras",
+                "items": [
+                  "IDs únicos e tipos explícitos.",
+                  "Separar dado persistente de estado temporário da interface.",
+                  "Validar referências e migrar mudanças de schema.",
+                  "Registrar unidades, campos obrigatórios e valores padrão.",
+                  "Datas e valores devem ter formatos consistentes."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "JSON como conteúdo, não como código",
+                "text": "JSON pode configurar telas, campos, rotas, permissões simuladas e relações. Não deve conter JavaScript executável, funções ou fragmentos HTML inseguros."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "mocks",
+            "group": "camadas",
+            "title": "08 · Mocks e cenários opcionais",
+            "summary": "Simulação isolada, com as mesmas interfaces de serviço da aplicação.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Configuração de mock",
+                "exampleId": "mock"
+              },
+              {
+                "type": "example",
+                "title": "Contrato de adaptador",
+                "exampleId": "adapters"
+              },
+              {
+                "type": "list",
+                "title": "Separação",
+                "items": [
+                  "Dado fictício reside em mocks/cenarios.json.",
+                  "Handler simulado reside em mocks/handlers.js.",
+                  "Aplicação conversa com uma interface de repositório, não conhece a origem.",
+                  "Trocar cenário não exige alterar telas e componentes.",
+                  "Não incluir usuários reais, chaves privadas ou dados de produção."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Limite do offline",
+                "text": "Um HTML com file:// pode simular chamadas assíncronas e falhas, mas não implementa uma API real de backend, autenticação confiável ou banco remoto sem infraestrutura."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "services",
+            "group": "camadas",
+            "title": "09 · Serviços, regras e adaptadores",
+            "summary": "Regras de domínio independentes do HTML e da origem dos dados.",
+            "blocks": [
+              {
+                "type": "diagram",
+                "title": "Fluxo de dados",
+                "text": "TELA / COMPONENTE\n        │\n        ▼\nSERVIÇO DE DOMÍNIO ──→ VALIDADOR\n        │\n        ▼\nINTERFACE DE REPOSITÓRIO\n        │\n        ├── MockAdapter\n        ├── LocalStorageAdapter\n        └── ApiAdapter (conexão externa, quando houver)"
+              },
+              {
+                "type": "list",
+                "title": "Regras",
+                "items": [
+                  "Componentes não acessam datasets JSON diretamente de forma dispersa.",
+                  "Serviços devolvem contratos previsíveis e tratam erros.",
+                  "Adapters são selecionados por configuração, não via busca por texto no código.",
+                  "Dependências devem ser passadas em criação/registro, sem singletons ocultos."
+                ]
+              },
+              {
+                "type": "example",
+                "title": "Interface de repositório",
+                "exampleId": "adapters"
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "registry",
+            "group": "camadas",
+            "title": "10 · Registro de módulos e scripts",
+            "summary": "Novos scripts entram por registro e dependências, não por ordem acidental.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Registro de componentes e dependências",
+                "exampleId": "registry"
+              },
+              {
+                "type": "list",
+                "title": "Responsabilidades",
+                "items": [
+                  "Cada módulo tem ID exclusivo, versão quando necessária e dependências explícitas.",
+                  "O build valida módulos ausentes e possíveis ciclos.",
+                  "Montadores de componentes ficam em código próprio.",
+                  "Scripts devem ser incorporados na ordem topológica correta ou empacotados pelo bundler.",
+                  "Evitar duplicar inicializações e listeners."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "O que não fazer",
+                "text": "Adicionar um \u003cscript\u003e com código novo em qualquer ponto do HTML compilado é frágil. Acrescente o módulo na fonte, atualize registro e rebuild."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "relations",
+            "group": "execucao",
+            "title": "11 · Motor de relações",
+            "summary": "Índices e regras declarativas ligando registros, páginas e entidades.",
+            "blocks": [
+              {
+                "type": "diagram",
+                "title": "Separação das responsabilidades",
+                "text": "relacoes.json ──→ VALIDADOR ──→ ENGINE\n                                      │\n                            ┌─────────┴─────────┐\n                            ▼                   ▼\n                       Índice por ID       Índice reverso\n                            │                   │\n                            └─────────┬─────────┘\n                                      ▼\n                              QUERY / RESOLVER\n                                      │\n                               TELAS / SERVIÇOS"
+              },
+              {
+                "type": "example",
+                "title": "Definições de relações",
+                "exampleId": "relations"
+              },
+              {
+                "type": "example",
+                "title": "Interface ilustrativa do motor",
+                "exampleId": "relationengine"
+              },
+              {
+                "type": "list",
+                "title": "Invariantes",
+                "items": [
+                  "Relações apontam para IDs canônicos; nunca para posição em arrays.",
+                  "Referências ausentes geram relatório, não erros silenciosos.",
+                  "Ciclos só são proibidos nos grafos que exigem hierarquia acíclica.",
+                  "Índices são construídos uma vez e atualizados quando os dados mudam.",
+                  "Expressões textuais não podem ser avaliadas com eval."
+                ]
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "state",
+            "group": "execucao",
+            "title": "12 · Estado, persistência e histórico",
+            "summary": "O estado da aplicação é diferente dos dados de domínio.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "State store ilustrativo",
+                "exampleId": "store"
+              },
+              {
+                "type": "list",
+                "title": "Camadas",
+                "items": [
+                  "Estado de domínio: registros e catálogos.",
+                  "Estado de navegação: rota atual, parâmetros.",
+                  "Estado de UI: seleção, tema, modal e filtros.",
+                  "Persistência opcional: localStorage/IndexedDB com migração/limites.",
+                  "Alterações de usuário: exportar JSON para backup e transferência."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Persistência não é arquivo",
+                "text": "localStorage depende do navegador, origem e privacidade; especialmente em file:// pode variar. Não substitui download/backup do JSON."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "eventbus",
+            "group": "execucao",
+            "title": "13 · Eventos e comunicação",
+            "summary": "Os módulos colaboram por contratos, sem importar detalhes de tela uns dos outros.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Catálogo de eventos",
+                "exampleId": "event"
+              },
+              {
+                "type": "diagram",
+                "title": "Ciclo de um evento",
+                "text": "AÇÃO → VALIDAR → SERVIÇO → STORE → EMIT(evento)\n                                 │              │\n                                 └──────────────┼──→ Componentes inscritos\n                                                └──→ Telemetria local (opcional)"
+              },
+              {
+                "type": "list",
+                "title": "Regras",
+                "items": [
+                  "Eventos têm nomes estáveis e schema de payload.",
+                  "Quem se inscreve devolve unsubscribe.",
+                  "Páginas removem os subscriptions em unmount.",
+                  "Evitar ciclos infinitos de evento chamando evento.",
+                  "Ações transacionais ficam em serviços; event bus apenas comunica."
+                ]
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "router",
+            "group": "execucao",
+            "title": "14 · Páginas múltiplas no mesmo HTML",
+            "summary": "Uma única página física pode apresentar dezenas de telas virtuais.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Exemplo de URLs internas por hash",
+                "exampleId": "router"
+              },
+              {
+                "type": "example",
+                "title": "Manifesto de rotas",
+                "exampleId": "pages"
+              },
+              {
+                "type": "list",
+                "title": "Regras",
+                "items": [
+                  "Hash routing funciona em file:// sem servidor de rotas.",
+                  "Cada rota mapeia para um componente registrado.",
+                  "URL inválida usa fallback de não encontrado.",
+                  "Rota dinâmica valida seus parâmetros.",
+                  "Mount/unmount limpa recursos da tela anterior.",
+                  "Aplicações com arquivos HTML realmente separados não são um único HTML final."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Mais de uma tela ≠ múltiplos arquivos",
+                "text": "Várias telas, diálogos e layouts podem coexistir no mesmo documento usando roteamento interno. Isso é diferente de abrir um novo documento HTML físico."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "assets",
+            "group": "execucao",
+            "title": "15 · Assets, mídias e recursos",
+            "summary": "Imagens, ícones e fontes entram no bundle de forma previsível.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Registro de assets",
+                "exampleId": "assets"
+              },
+              {
+                "type": "list",
+                "title": "Estratégias",
+                "items": [
+                  "SVG seguro e pequeno pode ser incorporado.",
+                  "PNG/JPG podem usar data URLs e incorporação binária.",
+                  "Fontes devem ter licença, tamanho e necessidade avaliados.",
+                  "Evitar links CDN, @import remoto ou fetch obrigatório.",
+                  "Vídeos grandes podem tornar o HTML pesado demais para uso viável."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Custo do autocontido",
+                "text": "Dados base64 aumentam o tamanho da representação e podem consumir muita memória. Prefira assets leves e carregamento sob demanda."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "bootstrap",
+            "group": "execucao",
+            "title": "16 · Inicialização e ciclo de vida",
+            "summary": "O sistema sobe de forma determinística, com erros rastreáveis.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Pipeline de inicialização",
+                "exampleId": "bootstrap"
+              },
+              {
+                "type": "list",
+                "title": "Estados do app",
+                "items": [
+                  "booting: exibir inicialização.",
+                  "ready: montar rota selecionada.",
+                  "degraded: exibir falha de módulo/asset não crítico.",
+                  "error: exibir diagnóstico e mecanismo de recuperação."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Contrato de inicialização",
+                "text": "Nenhuma tela deve iniciar antes de validar dados essenciais e preparar registries. O bootstrap é o único dono da inicialização."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "quality",
+            "group": "qualidade",
+            "title": "17 · Desempenho em projetos grandes",
+            "summary": "Escalar por modularização, índices e renderização incremental.",
+            "blocks": [
+              {
+                "type": "diagram",
+                "title": "Estratégia de custo",
+                "text": "TAMANHO NO DISCO  ≠  MEMÓRIA TOTAL  ≠  TEMPO DE RENDER\n\nDados extensos → compressão opcional → leitura sob demanda\nListas extensas → paginação/virtualização\nRelações → índices Map / Set\nBusca → indexação incremental e debounce\nTelas → montar somente a rota atual"
+              },
+              {
+                "type": "list",
+                "title": "Critérios",
+                "items": [
+                  "Não carregar/renderizar milhares de nós DOM no primeiro frame.",
+                  "Não descomprimir todo conteúdo grande se apenas uma parte é visível.",
+                  "Preferir buscas indexadas por ID; medir buscas por texto.",
+                  "Medir tempo de inicialização e uso de memória com bases representativas.",
+                  "Aceitar limites práticos de tamanho do arquivo e do navegador."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Realismo",
+                "text": "Nenhuma arquitetura permite HTML de tamanho literalmente ilimitado ou ausência garantida de bugs. O padrão busca previsibilidade, medição e isolamento de falhas."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "security",
+            "group": "qualidade",
+            "title": "18 · Segurança, offline e limites",
+            "summary": "Um HTML offline continua sujeito a conteúdo malicioso e restrições do navegador.",
+            "blocks": [
+              {
+                "type": "list",
+                "title": "Exigências",
+                "items": [
+                  "Escapar texto de JSON antes de inseri-lo no HTML.",
+                  "Sanitizar HTML rico permitido por contrato; idealmente evitar HTML arbitrário.",
+                  "Não executar string como código (eval/Function).",
+                  "Não embutir secrets, tokens de API, senhas nem dados de produção.",
+                  "Não confiar em autorização/segurança real implementada só no cliente.",
+                  "Evitar fetch/import obrigatório em file://, e não prometer comportamento idêntico em todos os navegadores.",
+                  "Tratar limites de armazenamento local e falhas de importação."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Limite de confiança",
+                "text": "Qualquer pessoa com acesso ao HTML final consegue examinar os scripts e os dados embutidos. Não usar como barreira para informação sensível."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "build",
+            "group": "qualidade",
+            "title": "19 · Build e entrega autocontida",
+            "summary": "A compilação transforma fontes legíveis no artefato offline distribuível.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Pipeline de compilação",
+                "exampleId": "build"
+              },
+              {
+                "type": "list",
+                "title": "Contrato de build",
+                "items": [
+                  "Validar JSON/IDs/referências antes de empacotar.",
+                  "Resolver dependências e falhar quando módulos obrigatórios faltarem.",
+                  "Incorporar fontes locais CSS/JS/HTML sem dependências externas.",
+                  "Escapar corretamente dados embutidos em tags script.",
+                  "Registrar versão/hash dos artefatos para rastreabilidade.",
+                  "Não presumir que minificação é sempre necessária; priorizar debug e source maps quando útil."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Critério de aceite",
+                "text": "Abrir o HTML compilado como arquivo local, sem rede. Navegar por rotas, consultar dados, importar/exportar, operar mocks e testar falhas."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "testing",
+            "group": "qualidade",
+            "title": "20 · Testes e validação",
+            "summary": "A arquitetura deve ser testável em cada nível e também no arquivo final.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Checklist mínimo de validação",
+                "exampleId": "checklist"
+              },
+              {
+                "type": "list",
+                "title": "Camadas de teste",
+                "items": [
+                  "Unitários: validadores, relações, serviços e parsers.",
+                  "Contrato: consistência de schemas, IDs e registries.",
+                  "Integração: mudança de dados atualiza componentes.",
+                  "E2E: abrir arquivo compilado local, navegar, pesquisar, importar e exportar.",
+                  "Carga: HTML grande e cenários com milhares de registros."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "Sem atalhos",
+                "text": "O build funcionar não garante que o HTML funcione. Testar o artefato realmente distribuído é parte do padrão."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "workflow",
+            "group": "qualidade",
+            "title": "21 · Como acrescentar ou remover",
+            "summary": "Mapa de manutenção: onde editar e o que atualizar.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Árvore de decisão para alterações",
+                "exampleId": "flow"
+              },
+              {
+                "type": "list",
+                "title": "Ao criar uma página",
+                "items": [
+                  "Criar o componente de tela em interface/paginas ou módulo correspondente.",
+                  "Registrar a rota em pages.json.",
+                  "Registrar o componente no catálogo, se exigido.",
+                  "Acrescentar CSS local e fixtures de teste.",
+                  "Compilar e navegar até a nova rota em file://."
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Ao criar mock/script/relação",
+                "items": [
+                  "Mock: acrescentar dataset + handler no adaptador; validar schema.",
+                  "Script: adicionar módulo e dependências no registry; testar import/order.",
+                  "Relação: editar relacoes.json; revalidar chaves e índices.",
+                  "Exclusão: localizar referências e limpar dependências/rotas antes de remover."
+                ]
+              },
+              {
+                "type": "note",
+                "title": "A promessa prática",
+                "text": "Mudar um recurso exige atuar em sua camada e nos contratos explicitamente relacionados — nunca procurar funções espalhadas em um monolito sem índice."
+              }
+            ],
+            "enabled": true
+          },
+          {
+            "id": "versions",
+            "group": "qualidade",
+            "title": "22 · Versões, migração e anti-padrões",
+            "summary": "Evoluir sem quebrar dados exportados, páginas ou módulos.",
+            "blocks": [
+              {
+                "type": "example",
+                "title": "Exemplo de versionamento de dados",
+                "exampleId": "versioning"
+              },
+              {
+                "type": "list",
+                "title": "Contratos",
+                "items": [
+                  "Versionar schema de dados e manifesto separadamente.",
+                  "Migrações explícitas de dados antigos.",
+                  "IDs persistentes não devem ser reutilizados para outra entidade.",
+                  "Alterações de contratos devem informar impacto sobre consumidores.",
+                  "Build reprodutível e rastreável por hash/versão."
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Anti-padrões",
+                "items": [
+                  "Um arquivo JS com milhares de linhas sem limites de responsabilidade.",
+                  "Várias cópias do mesmo mock espalhadas pelas telas.",
+                  "Acesso direto a localStorage de cada componente.",
+                  "Roteamento e regras em eventos onclick dispersos.",
+                  "Editar manualmente apenas o HTML compilado e perder a fonte.",
+                  "Adicionar scripts de terceiros sem incorporar/validar dependências."
+                ]
+              }
+            ],
+            "enabled": true
+          }
+        ],
+        "settings": {
+          "theme": "light",
+          "showSectionNumbers": true,
+          "showSummaryCards": true,
+          "readingWidth": "wide"
+        }
+      }
+    </script>
+    <script id="app-runtime">
+      /* 01-state.js */
+      (function () {
+        "use strict";
+        const clone = (value) => JSON.parse(JSON.stringify(value));
+        const DEFAULT = JSON.parse(
+          document.getElementById("app-default-json").textContent,
+        );
+        const STORAGE = "html-autocontido-architecture-doc.v1";
+        const ALLOWED_BLOCKS = new Set([
+          "text",
+          "diagram",
+          "list",
+          "note",
+          "example",
+        ]);
+        const idPattern = /^[a-z0-9][a-z0-9_-]*$/;
+
+        function validate(input) {
+          const errors = [];
+          const record = (x) =>
+            x !== null && typeof x === "object" && !Array.isArray(x);
+          if (!record(input)) return ["A raiz do JSON deve ser um objeto."];
+          if (
+            !record(input.manifest) ||
+            typeof input.manifest.title !== "string" ||
+            !input.manifest.title.trim()
+          )
+            errors.push("manifest.title é obrigatório.");
+          if (!Array.isArray(input.groups) || !input.groups.length)
+            errors.push("groups deve ser uma lista não vazia.");
+          if (!Array.isArray(input.sections))
+            errors.push("sections deve ser uma lista.");
+          if (!record(input.examples))
+            errors.push("examples deve ser um objeto de códigos/textos.");
+          if (!Array.isArray(input.principles))
+            errors.push("principles deve ser uma lista.");
+          if (!record(input.settings))
+            errors.push("settings deve ser um objeto.");
+          if (errors.length) return errors;
+          const groupIds = new Set();
+          input.groups.forEach((g, i) => {
+            if (
+              !record(g) ||
+              !idPattern.test(g.id || "") ||
+              typeof g.label !== "string" ||
+              !g.label.trim()
+            )
+              errors.push("groups[" + i + "] precisa de id minúsculo e label.");
+            else if (groupIds.has(g.id))
+              errors.push("Grupo duplicado: " + g.id);
+            else groupIds.add(g.id);
+          });
+          const sectionIds = new Set();
+          input.sections.forEach((s, i) => {
+            if (!record(s)) {
+              errors.push("sections[" + i + "] deve ser objeto.");
+              return;
+            }
+            if (typeof s.id !== "string" || !idPattern.test(s.id))
+              errors.push(
+                "sections[" +
+                  i +
+                  "].id deve ser único e conter letras minúsculas, números, _ ou -.",
+              );
+            else if (sectionIds.has(s.id))
+              errors.push("Seção duplicada: " + s.id);
+            else sectionIds.add(s.id);
+            if (!groupIds.has(s.group))
+              errors.push(
+                "Grupo desconhecido em " + (s.id || i) + ": " + s.group,
+              );
+            if (typeof s.title !== "string" || !s.title.trim())
+              errors.push("Título ausente em " + (s.id || i));
+            if (typeof s.summary !== "string")
+              errors.push("summary deve ser texto em " + (s.id || i));
+            if (s.enabled !== undefined && typeof s.enabled !== "boolean")
+              errors.push("enabled deve ser boolean em " + (s.id || i));
+            if (!Array.isArray(s.blocks)) {
+              errors.push("blocks deve ser lista em " + (s.id || i));
+              return;
+            }
+            s.blocks.forEach((b, j) => {
+              const at = "sections[" + i + "].blocks[" + j + "]";
+              if (!record(b) || !ALLOWED_BLOCKS.has(b.type)) {
+                errors.push(at + ": type inválido.");
+                return;
+              }
+              if (typeof b.title !== "string")
+                errors.push(at + ": title precisa ser texto.");
+              if (
+                ["text", "diagram", "note"].includes(b.type) &&
+                typeof b.text !== "string"
+              )
+                errors.push(at + ": text precisa ser texto.");
+              if (
+                b.type === "list" &&
+                (!Array.isArray(b.items) ||
+                  b.items.some((item) => typeof item !== "string"))
+              )
+                errors.push(at + ": items deve ser lista de textos.");
+              if (
+                b.type === "example" &&
+                (typeof b.exampleId !== "string" ||
+                  typeof input.examples[b.exampleId] !== "string")
+              )
+                errors.push(at + ": exampleId deve existir em examples.");
+            });
+          });
+          Object.entries(input.examples).forEach(([id, body]) => {
+            if (typeof body !== "string")
+              errors.push("examples." + id + " deve ser texto.");
+          });
+          input.principles.forEach((p, i) => {
+            if (
+              !record(p) ||
+              typeof p.title !== "string" ||
+              typeof p.description !== "string"
+            )
+              errors.push(
+                "principles[" + i + "] precisa de title e description.",
+              );
+          });
+          if (!["light", "dark"].includes(input.settings.theme))
+            errors.push('settings.theme deve ser "light" ou "dark".');
+          if (
+            input.settings.readingWidth !== undefined &&
+            !["wide", "normal"].includes(input.settings.readingWidth)
+          )
+            errors.push('settings.readingWidth deve ser "wide" ou "normal".');
+          return errors;
+        }
+        const APP = {
+          defaultData: DEFAULT,
+          data: clone(DEFAULT),
+          search: "",
+          route: { tab: "doc", key: "visao" },
+          jsonScope: "__all__",
+          editorDirty: false,
+          persistMode: "not-changed",
+          validate,
+          clone,
+          esc(s) {
+            return String(s ?? "").replace(
+              /[&<>"']/g,
+              (c) =>
+                ({
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;",
+                })[c],
+            );
+          },
+          routeUrl(tab, key) {
+            return (
+              "#" +
+              tab +
+              "/" +
+              encodeURIComponent(key || (tab === "doc" ? "visao" : "__all__"))
+            );
+          },
+          parseRoute() {
+            const found = /^#(doc|json)\/(.*)$/.exec(location.hash);
+            if (!found) return { tab: "doc", key: "visao" };
+            let key;
+            try {
+              key = decodeURIComponent(found[2]);
+            } catch {
+              return { tab: "doc", key: "visao" };
+            }
+            return { tab: found[1], key: key || "visao" };
+          },
+          save() {
+            try {
+              localStorage.setItem(STORAGE, JSON.stringify(APP.data));
+              APP.persistMode = "local";
+            } catch {
+              APP.persistMode = "session";
+            }
+            APP.updateStateMarker();
+          },
+          replace(data, save = true) {
+            const errors = validate(data);
+            if (errors.length) return errors;
+            APP.data = clone(data);
+            document.documentElement.dataset.theme = APP.data.settings.theme;
+            if (save) APP.save();
+            APP.updateStateMarker();
+            return [];
+          },
+          updateStateMarker() {
+            const el = document.getElementById("state-marker");
+            if (!el) return;
+            const isDifferent =
+              JSON.stringify(APP.data) !== JSON.stringify(DEFAULT);
+            const label = isDifferent
+              ? APP.persistMode === "local"
+                ? "Alterações salvas localmente"
+                : "Alterações na sessão"
+              : "Padrão original";
+            el.textContent =
+              label + (APP.editorDirty ? " · editor não aplicado" : "");
+            el.classList.toggle("dirty", isDifferent || APP.editorDirty);
+          },
+          toast(text) {
+            const el = document.getElementById("toast");
+            el.textContent = text;
+            el.hidden = false;
+            clearTimeout(APP._toastTimer);
+            APP._toastTimer = setTimeout(() => {
+              el.hidden = true;
+            }, 3600);
+          },
+          download(payload, filename) {
+            const blob = new Blob([JSON.stringify(payload, null, 2) + "\n"], {
+              type: "application/json;charset=utf-8",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 8000);
+          },
+        };
+        try {
+          const stored = localStorage.getItem(STORAGE);
+          if (stored) {
+            const candidate = JSON.parse(stored);
+            if (!validate(candidate).length) {
+              APP.data = candidate;
+              APP.persistMode = "local";
+            } else {
+              APP.persistMode = "session";
+            }
+          }
+        } catch {
+          APP.persistMode = "session";
+        }
+        document.documentElement.dataset.theme = APP.data.settings.theme;
+        window.HTMLStandard = APP;
+      })();
+
+      /* 02-render.js */
+      (function () {
+        "use strict";
+        const A = window.HTMLStandard;
+        const e = A.esc;
+        const titleShort = (s) => String(s || "").replace(/^\d+[\s·.-]*/, "");
+        const displayTitle = (s) =>
+          A.data.settings.showSectionNumbers === false ? titleShort(s) : s;
+        const visibleSections = () =>
+          A.data.sections.filter((s) => s.enabled !== false);
+        function renderNav() {
+          const nav = document.getElementById("sidebar-nav");
+          const term = A.search.trim().toLocaleLowerCase("pt-BR");
+          if (A.route.tab === "json") {
+            const keys = Object.keys(A.data);
+            nav.innerHTML =
+              '<div class="nav-group">Dados carregados</div>' +
+              [["__all__", "JSON completo"], ...keys.map((k) => [k, k])]
+                .map(
+                  ([key, label]) =>
+                    `<a class="nav-link ${A.route.key === key ? "active" : ""}" href="${A.routeUrl("json", key)}">${e(label)}</a>`,
+                )
+                .join("") +
+              '<div class="nav-group">Orientação</div><p class="json-hint" style="padding:0 10px">Selecione uma coleção para editar. A aplicação valida o conjunto antes de aplicar.</p>';
+            return;
+          }
+          const groups = A.data.groups;
+          const sections = visibleSections().filter((s) => {
+            if (!term) return true;
+            const text = [
+              s.title,
+              s.summary,
+              ...s.blocks.map(
+                (b) => (b.text || "") + " " + (b.items || []).join(" "),
+              ),
+            ]
+              .join(" ")
+              .toLocaleLowerCase("pt-BR");
+            return text.includes(term);
+          });
+          nav.innerHTML =
+            groups
+              .map((group) => {
+                const list = sections.filter((s) => s.group === group.id);
+                if (!list.length) return "";
+                return (
+                  `<div class="nav-group">${e(group.label)}</div>` +
+                  list
+                    .map(
+                      (s) =>
+                        `<a class="nav-link ${A.route.key === s.id ? "active" : ""}" href="${A.routeUrl("doc", s.id)}" title="${e(s.title)}">${e(displayTitle(s.title))}</a>`,
+                    )
+                    .join("")
+                );
+              })
+              .join("") || '<div class="empty">Nenhuma seção encontrada.</div>';
+        }
+        function renderBlock(b) {
+          const type = b.type;
+          const icon =
+            { diagram: "⌗", text: "¶", list: "☷", note: "!", example: "{ }" }[
+              type
+            ] || "•";
+          const head = `<h3><span class="block-icon">${icon}</span>${e(b.title)}</h3>`;
+          if (type === "text")
+            return `<section class="document-block">${head}<p>${e(b.text)}</p></section>`;
+          if (type === "list")
+            return `<section class="document-block">${head}<ul>${b.items.map((item) => `<li>${e(item)}</li>`).join("")}</ul></section>`;
+          if (type === "note")
+            return `<aside class="document-block note">${head}<p>${e(b.text)}</p></aside>`;
+          if (type === "diagram")
+            return `<section class="document-block">${head}<pre class="diagram">${e(b.text)}</pre></section>`;
+          if (type === "example") {
+            const body = A.data.examples[b.exampleId] ?? "";
+            return `<section class="document-block"><div class="block-meta"><h3><span class="block-icon">{ }</span>${e(b.title)}</h3><div style="display:flex;gap:7px;align-items:center"><span class="small-tag">examples.${e(b.exampleId)}</span><button type="button" class="copy-inline" data-action="copy-example" data-key="${e(b.exampleId)}">Copiar</button></div></div><pre>${e(body)}</pre></section>`;
+          }
+          return "";
+        }
+        function renderDoc() {
+          const doc = document.getElementById("view-doc");
+          const ordered = visibleSections();
+          if (!ordered.length) {
+            doc.innerHTML =
+              '<div class="empty">Nenhuma seção visível. Abra a aba JSON para ativar ou criar seções.</div>';
+            return;
+          }
+          let s = ordered.find((item) => item.id === A.route.key);
+          if (!s) {
+            s = ordered[0];
+          }
+          const idx = ordered.findIndex((item) => item.id === s.id);
+          const group = A.data.groups.find((g) => g.id === s.group);
+          const showHero = s.id === "visao";
+          let html = "";
+          if (showHero) {
+            html += `<div class="hero"><span class="eyebrow">${e(A.data.manifest.edition || "ARQUITETURA • PADRÃO DE REFERÊNCIA")}</span><h1>${e(A.data.manifest.title)}</h1><p>${e(A.data.manifest.subtitle)}</p><div class="hero-actions"><a href="${A.routeUrl("doc", "source")}" class="primary-button" style="text-decoration:none">Explorar estrutura →</a><a href="${A.routeUrl("json", "__all__")}" class="secondary-button" style="text-decoration:none">Inspecionar JSON { }</a></div></div>`;
+            if (A.data.settings.showSummaryCards !== false) {
+              html +=
+                '<div class="summary-grid">' +
+                A.data.principles
+                  .map(
+                    (p) =>
+                      `<div class="mini-card"><span class="kicker">${e(p.id || "REGRA")}</span><h3>${e(p.title)}</h3><p>${e(p.description)}</p></div>`,
+                  )
+                  .join("") +
+                "</div>";
+            }
+          }
+          html += `<div class="breadcrumb">DOCUMENTAÇÃO <span class="crumb-sep">/</span> ${e(group?.label || s.group)} <span class="crumb-sep">/</span> ${e(s.id)}</div>`;
+          html += `<div class="section-head"><div><h1>${e(displayTitle(s.title))}</h1><p>${e(s.summary)}</p></div><div class="section-tools"><button class="secondary-button" data-action="edit-section" data-id="${e(s.id)}">{ } Editar JSON</button><button class="ghost-button" data-action="move-up" data-id="${e(s.id)}" ${idx === 0 ? "disabled" : ""} title="Mover a seção para cima">↑</button><button class="ghost-button" data-action="move-down" data-id="${e(s.id)}" ${idx === ordered.length - 1 ? "disabled" : ""} title="Mover a seção para baixo">↓</button></div></div>`;
+          html += s.blocks.map(renderBlock).join("");
+          if (!s.blocks.length)
+            html +=
+              '<div class="empty">Seção sem blocos. Abra Editar JSON para incluir text, diagram, example, list ou note.</div>';
+          html += `<div class="document-block" style="padding:15px 19px"><div class="editor-actions" style="margin:0"><small style="color:var(--muted)">Modifique seções e seus blocos na aba JSON, sem editar o código HTML.</small><div class="action-stack"><button class="ghost-button" data-action="add-section">+ Nova seção</button><button class="ghost-button" data-action="duplicate-section" data-id="${e(s.id)}">Duplicar</button><button class="danger-button" data-action="remove-section" data-id="${e(s.id)}">Remover</button></div></div></div>`;
+          html +=
+            '<nav class="bottom-nav" aria-label="Próxima seção">' +
+            (idx > 0
+              ? `<a href="${A.routeUrl("doc", ordered[idx - 1].id)}"><span>← ANTERIOR</span><strong>${e(titleShort(ordered[idx - 1].title))}</strong></a>`
+              : "<span></span>") +
+            (idx < ordered.length - 1
+              ? `<a href="${A.routeUrl("doc", ordered[idx + 1].id)}" style="text-align:right"><span>PRÓXIMA →</span><strong>${e(titleShort(ordered[idx + 1].title))}</strong></a>`
+              : "<span></span>") +
+            "</nav>";
+          doc.innerHTML = html;
+          A.currentSection = s.id;
+        }
+        function selectedPayload(scope) {
+          if (scope === "__all__") return A.data;
+          if (scope.startsWith("sec:"))
+            return A.data.sections.find((s) => s.id === scope.slice(4));
+          return A.data[scope];
+        }
+        function renderJson() {
+          const json = document.getElementById("view-json");
+          let scope = A.route.key;
+          const sections = A.data.sections;
+          const available = [
+            ["__all__", "Documento completo"],
+            ...Object.keys(A.data).map((key) => [key, `${key}.json`]),
+            ...sections.map((s) => [
+              "sec:" + s.id,
+              "Seção: " + titleShort(s.title),
+            ]),
+          ];
+          if (!available.some((x) => x[0] === scope)) scope = "__all__";
+          A.jsonScope = scope;
+          const raw = JSON.stringify(selectedPayload(scope), null, 2);
+          const bytes = new Blob([JSON.stringify(A.data)]).size;
+          json.innerHTML = `
+      <div class="breadcrumb">CONFIGURAÇÃO <span class="crumb-sep">/</span> JSON ATIVO</div>
+      <div class="data-header"><h1>Central JSON</h1><p>Todos os dados que alimentam este guia estão aqui. Escolha a coleção ou seção, edite, valide e aplique. O conteúdo visual é atualizado sem mexer no HTML. Os dados originais ficam incorporados no arquivo.</p></div>
+      <div class="json-topline"><div class="json-selector"><label for="json-scope" class="eyebrow">EDITAR</label><select id="json-scope" aria-label="Selecionar documento JSON">${available.map(([id, label]) => `<option value="${e(id)}" ${scope === id ? "selected" : ""}>${e(label)}</option>`).join("")}</select></div><div class="action-stack"><button class="ghost-button" data-action="import">↑ Importar JSON completo</button><button class="ghost-button" data-action="export-scope">↓ Exportar seleção</button></div></div>
+      <div class="json-editor-box"><div class="editor-info"><span><strong>${e(scope === "__all__" ? "DOCUMENTO COMPLETO" : scope)}</strong> · edição direta com validação</span><span id="scope-bytes">${new Intl.NumberFormat("pt-BR").format(raw.length)} caracteres</span></div><textarea id="json-editor" spellcheck="false" aria-label="Editor JSON"></textarea><div id="validation" class="validation-box">Pronto para editar. Clique em “Validar” para conferir o JSON antes de aplicar.</div><div class="editor-actions"><div class="action-stack"><button class="primary-button" data-action="apply">Aplicar alterações</button><button class="secondary-button" data-action="validate">Validar</button><button class="ghost-button" data-action="format">Formatar</button></div><div class="action-stack"><button class="ghost-button" data-action="discard">Descartar rascunho</button><button class="danger-button" data-action="reset">Restaurar dados padrão</button></div></div></div>
+      <div class="json-stats"><div class="json-stat"><strong>${sections.length}</strong> seções no documento</div><div class="json-stat"><strong>${Object.keys(A.data.examples).length}</strong> exemplos editáveis</div><div class="json-stat"><strong>${(bytes / 1024).toFixed(1).replace(".", ",")} KB</strong> JSON ativo em memória</div></div>
+      <div class="callout"><strong>Como funciona:</strong> “Aplicar” muda os dados ativos, re-renderiza o guia e tenta salvar no armazenamento local. “Exportar JSON” cria um arquivo transferível. O HTML original <strong>não é reescrito</strong> pelo navegador. Para distribuir alterações como novo padrão, atualize a fonte JSON e recompile. A importação aceita um documento completo no mesmo contrato, substituindo os dados locais após confirmação.</div>
+      <p class="json-hint"><strong>Tipos de bloco suportados:</strong> text (text), diagram (text), note (text), list (items: string[]), example (exampleId presente em examples). O campo enabled:false esconde uma seção. Os objetos manifest, groups, sections, examples, principles e settings são os principais conjuntos usados pela visualização.</p>`;
+          document.getElementById("json-editor").value = raw;
+          A.editorDirty = false;
+        }
+        A.getSelectedPayload = selectedPayload;
+        A.render = function render() {
+          A.route = A.parseRoute();
+          const docTab = A.route.tab === "doc";
+          document.getElementById("view-doc").hidden = !docTab;
+          document.getElementById("view-json").hidden = docTab;
+          for (const tab of ["doc", "json"]) {
+            const el = document.getElementById("tab-" + tab);
+            el.setAttribute("aria-selected", String(A.route.tab === tab));
+            el.tabIndex = A.route.tab === tab ? 0 : -1;
+          }
+          document.documentElement.dataset.theme = A.data.settings.theme;
+          document.querySelector(".main").style.maxWidth =
+            A.data.settings.readingWidth === "normal" ? "1140px" : "";
+          renderNav();
+          if (docTab) renderDoc();
+          else renderJson();
+          document.getElementById("nav-search").value = A.search;
+          A.updateStateMarker();
+          const active = A.data.sections.find((s) => s.id === A.route.key);
+          document.title =
+            (docTab
+              ? active
+                ? displayTitle(active.title)
+                : "Guia visual"
+              : "JSON ativo") +
+            " · " +
+            A.data.manifest.title;
+        };
+        A.renderNav = renderNav;
+        A.showValidation = (msg, kind = "default") => {
+          const el = document.getElementById("validation");
+          if (!el) return;
+          el.textContent = msg;
+          el.className =
+            "validation-box" +
+            (kind === "error"
+              ? " error"
+              : kind === "success"
+                ? " success"
+                : "");
+        };
+      })();
+
+      /* 03-events.js */
+      (function () {
+        "use strict";
+        const A = window.HTMLStandard;
+        const $ = (id) => document.getElementById(id);
+        let revertHash = false;
+        function navigation(tab, key) {
+          const next = A.routeUrl(tab, key);
+          if (location.hash === next) {
+            A.render();
+            return;
+          }
+          location.hash = next;
+        }
+        function keepDraft() {
+          if (!A.editorDirty) return true;
+          return confirm(
+            "Há alterações no editor JSON que ainda não foram aplicadas. Descartar o rascunho e continuar?",
+          );
+        }
+        function editorCandidate() {
+          const editor = $("json-editor");
+          if (!editor) throw new Error("Editor indisponível.");
+          let payload;
+          try {
+            payload = JSON.parse(editor.value);
+          } catch (ex) {
+            throw new Error("JSON inválido: " + ex.message);
+          }
+          const next = A.clone(A.data);
+          const scope = A.jsonScope;
+          if (scope === "__all__") return payload;
+          if (scope.startsWith("sec:")) {
+            const idx = next.sections.findIndex((s) => s.id === scope.slice(4));
+            if (idx < 0) throw new Error("A seção selecionada já não existe.");
+            next.sections[idx] = payload;
+          } else next[scope] = payload;
+          return next;
+        }
+        function validateInput() {
+          try {
+            const candidate = editorCandidate();
+            const errors = A.validate(candidate);
+            if (errors.length) {
+              A.showValidation(
+                errors.map((x, i) => `${i + 1}. ${x}`).join("\n"),
+                "error",
+              );
+              return null;
+            }
+            A.showValidation(
+              "✓ JSON sintaticamente correto. Contratos estruturais e referências de exemplos verificados.",
+              "success",
+            );
+            return candidate;
+          } catch (err) {
+            A.showValidation(err.message, "error");
+            return null;
+          }
+        }
+        function uniqueId(prefix) {
+          const ids = new Set(A.data.sections.map((s) => s.id));
+          let i = 1;
+          while (ids.has(prefix + "-" + i)) i++;
+          return prefix + "-" + i;
+        }
+        function mutate(fn) {
+          fn();
+          A.save();
+          A.render();
+        }
+        async function clipboard(text) {
+          try {
+            if (
+              navigator.clipboard &&
+              typeof navigator.clipboard.writeText === "function"
+            ) {
+              await navigator.clipboard.writeText(text);
+              return true;
+            }
+          } catch {}
+          const box = document.createElement("textarea");
+          box.value = text;
+          box.style.position = "fixed";
+          box.style.left = "-9999px";
+          document.body.appendChild(box);
+          box.select();
+          try {
+            return document.execCommand("copy");
+          } catch {
+            return false;
+          } finally {
+            box.remove();
+          }
+        }
+        document.addEventListener("click", async (event) => {
+          const tab = event.target.closest("[data-tab]");
+          if (tab) {
+            event.preventDefault();
+            navigation(
+              tab.dataset.tab,
+              tab.dataset.tab === "json"
+                ? "__all__"
+                : A.currentSection || "visao",
+            );
+            return;
+          }
+          const act = event.target.closest("[data-action]");
+          if (!act) return;
+          event.preventDefault();
+          const action = act.dataset.action;
+          if (action === "export") {
+            A.download(A.data, "padrao-html-autocontido-dados.json");
+            A.toast("JSON completo exportado.");
+            return;
+          }
+          if (action === "export-scope") {
+            A.download(
+              A.getSelectedPayload(A.jsonScope),
+              A.jsonScope.replace(/[^a-z0-9_-]/gi, "-") + ".json",
+            );
+            A.toast("JSON selecionado exportado.");
+            return;
+          }
+          if (action === "import") {
+            if (!keepDraft()) return;
+            $("json-file").value = "";
+            $("json-file").click();
+            return;
+          }
+          if (action === "validate") {
+            validateInput();
+            return;
+          }
+          if (action === "format") {
+            try {
+              const json = JSON.parse($("json-editor").value);
+              $("json-editor").value = JSON.stringify(json, null, 2);
+              A.editorDirty = true;
+              A.updateStateMarker();
+              A.showValidation(
+                "JSON formatado. Clique em Aplicar para efetivar as mudanças.",
+                "success",
+              );
+            } catch (ex) {
+              A.showValidation("Erro de sintaxe: " + ex.message, "error");
+            }
+            return;
+          }
+          if (action === "apply") {
+            const candidate = validateInput();
+            if (!candidate) return;
+            A.replace(candidate);
+            if (A.jsonScope.startsWith("sec:")) {
+              const selectedIndex = A.data.sections.findIndex(
+                (s) => s.id === A.jsonScope.slice(4),
+              );
+              if (selectedIndex >= 0)
+                A.currentSection = A.data.sections[selectedIndex].id;
+            }
+            A.editorDirty = false;
+            const route = A.route;
+            // Section id changes can invalidate the old editor scope.
+            if (route.tab === "json" && A.jsonScope.startsWith("sec:")) {
+              const current = candidate.sections.find(
+                (s) => s.id === A.jsonScope.slice(4),
+              );
+              if (!current) {
+                navigation("json", "sections");
+                return;
+              }
+            }
+            A.render();
+            A.toast("Alterações aplicadas ao documento.");
+            return;
+          }
+          if (action === "discard") {
+            if (!keepDraft()) return;
+            A.render();
+            A.toast("Rascunho descartado.");
+            return;
+          }
+          if (action === "reset") {
+            if (
+              !confirm(
+                "Restaurar todos os dados originais incorporados no HTML? Alterações não exportadas serão perdidas.",
+              )
+            )
+              return;
+            A.replace(A.defaultData);
+            A.editorDirty = false;
+            try {
+              localStorage.removeItem("html-autocontido-architecture-doc.v1");
+            } catch {}
+            navigation("json", "__all__");
+            A.render();
+            A.toast("Dados padrão restaurados.");
+            return;
+          }
+          if (action === "copy-example") {
+            const text = A.data.examples[act.dataset.key];
+            if (typeof text !== "string") return;
+            A.toast(
+              (await clipboard(text))
+                ? "Exemplo copiado."
+                : "Não foi possível copiar automaticamente.",
+            );
+            return;
+          }
+          if (action === "edit-section") {
+            navigation("json", "sec:" + act.dataset.id);
+            return;
+          }
+          if (action === "add-section") {
+            const current = A.data.sections.find(
+              (s) => s.id === A.currentSection,
+            );
+            const id = uniqueId("nova-secao");
+            const newSection = {
+              id,
+              group: current?.group || A.data.groups[0].id,
+              title: "Nova seção",
+              summary: "Descreva aqui a finalidade da seção.",
+              enabled: true,
+              blocks: [
+                {
+                  type: "text",
+                  title: "Descrição",
+                  text: "Substitua este texto pelas informações da nova seção.",
+                },
+              ],
+            };
+            mutate(() => A.data.sections.push(newSection));
+            navigation("json", "sec:" + id);
+            A.toast("Seção criada. Edite seu JSON para preencher o conteúdo.");
+            return;
+          }
+          if (action === "duplicate-section") {
+            const i = A.data.sections.findIndex((s) => s.id === act.dataset.id);
+            if (i < 0) return;
+            const duplicated = A.clone(A.data.sections[i]);
+            duplicated.id = uniqueId("copia-" + duplicated.id);
+            duplicated.title += " (cópia)";
+            mutate(() => A.data.sections.splice(i + 1, 0, duplicated));
+            navigation("json", "sec:" + duplicated.id);
+            A.toast("Seção duplicada e pronta para edição.");
+            return;
+          }
+          if (action === "remove-section") {
+            if (A.data.sections.length <= 1) {
+              A.toast("O guia precisa manter ao menos uma seção.");
+              return;
+            }
+            const id = act.dataset.id;
+            if (
+              !confirm(
+                "Excluir esta seção da documentação? Os dados padrão podem ser restaurados.",
+              )
+            )
+              return;
+            const target = A.data.sections.find((s) => s.id === id);
+            mutate(() => {
+              A.data.sections = A.data.sections.filter((s) => s.id !== id);
+            });
+            const first = A.data.sections.find((s) => s.enabled !== false);
+            navigation("doc", first?.id || A.data.sections[0].id);
+            A.toast("Seção removida do JSON ativo.");
+            return;
+          }
+          if (action === "move-up" || action === "move-down") {
+            const id = act.dataset.id;
+            const items = A.data.sections;
+            const at = items.findIndex((s) => s.id === id);
+            if (at < 0) return;
+            const offset = action === "move-up" ? -1 : 1;
+            let other = at + offset;
+            while (
+              other >= 0 &&
+              other < items.length &&
+              items[other].enabled === false
+            )
+              other += offset;
+            if (other < 0 || other >= items.length) return;
+            mutate(() => {
+              [items[at], items[other]] = [items[other], items[at]];
+            });
+            A.toast("Ordem atualizada.");
+            return;
+          }
+        });
+        $("json-file").addEventListener("change", async (event) => {
+          const file = event.target.files?.[0];
+          if (!file) return;
+          try {
+            const candidate = JSON.parse(await file.text());
+            const errors = A.validate(candidate);
+            if (errors.length) {
+              A.showValidation(errors.join("\n"), "error");
+              return;
+            }
+            if (
+              !confirm(
+                "Importar " +
+                  file.name +
+                  " e SUBSTITUIR todos os JSONs ativos? Exporte antes se quiser guardar suas alterações.",
+              )
+            )
+              return;
+            A.replace(candidate);
+            A.editorDirty = false;
+            navigation("json", "__all__");
+            A.render();
+            A.toast("Arquivo JSON importado e aplicado.");
+          } catch (ex) {
+            A.showValidation("Falha na importação: " + ex.message, "error");
+          }
+        });
+        $("json-scope")?.addEventListener("change", () => {}); // Seletor é renderizado dinamicamente.
+        document.addEventListener("change", (event) => {
+          if (event.target.id === "json-scope") {
+            if (!keepDraft()) {
+              event.target.value = A.jsonScope;
+              return;
+            }
+            navigation("json", event.target.value);
+          }
+        });
+        document.addEventListener("input", (event) => {
+          if (event.target.id === "nav-search") {
+            A.search = event.target.value;
+            A.renderNav();
+            const input = $("nav-search");
+            input.focus();
+            input.setSelectionRange(input.value.length, input.value.length);
+          }
+          if (event.target.id === "json-editor") {
+            A.editorDirty = true;
+            A.updateStateMarker();
+            const info = $("scope-bytes");
+            if (info)
+              info.textContent =
+                new Intl.NumberFormat("pt-BR").format(
+                  event.target.value.length,
+                ) + " caracteres";
+          }
+        });
+        window.addEventListener("hashchange", () => {
+          if (revertHash) {
+            revertHash = false;
+            return;
+          }
+          if (!keepDraft()) {
+            revertHash = true;
+            const old = A.routeUrl(A.route.tab, A.route.key);
+            history.replaceState(null, "", old);
+            return;
+          }
+          A.editorDirty = false;
+          A.render();
+          window.scrollTo({ top: 0, behavior: "instant" });
+        });
+        $("theme-toggle").addEventListener("click", () => {
+          A.data.settings.theme =
+            A.data.settings.theme === "light" ? "dark" : "light";
+          A.save();
+          document.documentElement.dataset.theme = A.data.settings.theme;
+          A.updateStateMarker();
+        });
+        document.addEventListener("keydown", (event) => {
+          const tag = (document.activeElement?.tagName || "").toLowerCase();
+          if (
+            event.key === "/" &&
+            !["input", "textarea", "select"].includes(tag)
+          ) {
+            event.preventDefault();
+            $("nav-search").focus();
+          }
+          if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key.toLowerCase() === "s"
+          ) {
+            event.preventDefault();
+            A.download(A.data, "padrao-html-autocontido-dados.json");
+            A.toast("JSON exportado.");
+          }
+        });
+        if (!location.hash)
+          history.replaceState(null, "", A.routeUrl("doc", "visao"));
+        A.render();
+      })();
+    </script>
+  </body>
+</html>
