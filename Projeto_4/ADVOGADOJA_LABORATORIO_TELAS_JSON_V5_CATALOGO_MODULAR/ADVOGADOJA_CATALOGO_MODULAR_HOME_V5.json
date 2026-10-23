@@ -1,0 +1,2141 @@
+{
+  "schema": "advogadoja.catalogo.modular.v2-proposta",
+  "versao": "2.0.0",
+  "nome": "Catálogo Advogado Já",
+  "Componentes": {
+    "globais": {
+      "headers": {
+        "titlebar.v01": {
+          "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+          "identidade": {
+            "id": "header.titlebar.v01",
+            "nome": "Barra de título",
+            "tipo": "componente",
+            "escopo": "global",
+            "categoria": "titlebar"
+          },
+          "estrutura": {
+            "formato": "arvore_elementos",
+            "arvore": [
+              {
+                "id": "titlebar::0",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-titlebar"
+                },
+                "filhos": [
+                  {
+                    "id": "titlebar::0.0",
+                    "tag": "strong",
+                    "filhos": [
+                      {
+                        "ref": "props.dados.title"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "estilos": {
+            "css": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}\n"
+          },
+          "interface": {
+            "propriedadesAceitas": [],
+            "eventosEmitidos": [],
+            "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+          },
+          "dadosExemplo": {
+            "componentes": {
+              "titlebar": {}
+            },
+            "fixtures": {
+              "titlebar": {
+                "title": "Início Profissional"
+              }
+            },
+            "campos": {}
+          },
+          "origemHistorica": {
+            "sourcePath": "components/headers/titlebar/v01",
+            "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+          }
+        },
+        "app-header.v04": {
+          "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+          "identidade": {
+            "id": "header.app-header.v04",
+            "nome": "Cabeçalho Profissional",
+            "tipo": "componente",
+            "escopo": "global",
+            "categoria": "header"
+          },
+          "estrutura": {
+            "formato": "arvore_elementos",
+            "arvore": [
+              {
+                "id": "app-header::0",
+                "tag": "header",
+                "atributos": {
+                  "class": "app-header"
+                },
+                "filhos": [
+                  {
+                    "id": "app-header::[data-action=\"drawer.open\"]",
+                    "tag": "button",
+                    "atributos": {
+                      "class": "app-menu-button",
+                      "type": "button",
+                      "data-action": "drawer.open",
+                      "aria-label": {
+                        "ref": "props.dados.menuLabel"
+                      }
+                    },
+                    "filhos": [
+                      {
+                        "id": "app-header::0.0.0",
+                        "tag": "span"
+                      },
+                      {
+                        "id": "app-header::0.0.1",
+                        "tag": "span"
+                      },
+                      {
+                        "id": "app-header::0.0.2",
+                        "tag": "span"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "app-header::0.1",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "app-brand"
+                    },
+                    "filhos": [
+                      {
+                        "id": "app-header::0.1.0",
+                        "tag": "img",
+                        "atributos": {
+                          "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K",
+                          "alt": ""
+                        }
+                      },
+                      {
+                        "id": "app-header::0.1.1",
+                        "tag": "div",
+                        "atributos": {
+                          "class": "app-brand-copy"
+                        },
+                        "filhos": [
+                          {
+                            "id": "app-header::0.1.1.0",
+                            "tag": "strong",
+                            "filhos": [
+                              {
+                                "ref": "props.dados.brand"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "app-header::0.1.1.1",
+                            "tag": "small",
+                            "filhos": [
+                              {
+                                "ref": "props.dados.role"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "app-header::0.2",
+                    "tag": "button",
+                    "atributos": {
+                      "class": "app-notifications",
+                      "type": "button",
+                      "aria-label": {
+                        "ref": "props.dados.notificationsLabel"
+                      },
+                      "data-event-id": "selecionar_destino"
+                    },
+                    "filhos": [
+                      {
+                        "id": "app-header::0.2.0",
+                        "tag": "svg",
+                        "atributos": {
+                          "viewbox": "0 0 24 24",
+                          "aria-hidden": "true"
+                        },
+                        "filhos": [
+                          {
+                            "id": "app-header::0.2.0.0",
+                            "tag": "path",
+                            "atributos": {
+                              "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "id": "app-header::0.2.1",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "app-notifications-badge"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.dados.unreadCount"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "estilos": {
+            "css": ".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button { gap: 4px; }\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}\n.app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-brand-copy { min-width: 0; }\n.app-brand-copy strong,\n.app-brand-copy small { display:block; }\n.app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}\n.app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}\n.app-notifications {\n  position: relative;\n  justify-self: end;\n}\n.app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n.app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}\n"
+          },
+          "interface": {
+            "propriedadesAceitas": [],
+            "eventosEmitidos": [
+              "abrirMenu",
+              "abrirNotificacoes"
+            ],
+            "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+          },
+          "dadosExemplo": {
+            "componentes": {
+              "app-header": {}
+            },
+            "fixtures": {
+              "app-header": {
+                "brand": "AdvogadoJá",
+                "role": "Advogado",
+                "menuLabel": "Abrir menu",
+                "notificationsGoto": "notificacoes.lista.notificacoes",
+                "notificationsLabel": "Notificações",
+                "unreadCount": "3"
+              }
+            },
+            "campos": {}
+          },
+          "origemHistorica": {
+            "sourcePath": "components/headers/app-header/v04",
+            "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+          }
+        }
+      },
+      "menus": {
+        "drawer.v01": {
+          "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+          "identidade": {
+            "id": "menu.drawer.v01",
+            "nome": "Menu lateral Profissional",
+            "tipo": "componente",
+            "escopo": "global",
+            "categoria": "drawer"
+          },
+          "estrutura": {
+            "formato": "arvore_com_repeticao_de_itens",
+            "arvore": [
+              {
+                "tag": "aside",
+                "atributos": {
+                  "class": "prototype-drawer",
+                  "data-overlay-root": "",
+                  "aria-hidden": "true"
+                },
+                "filhos": [
+                  {
+                    "tag": "button",
+                    "atributos": {
+                      "class": "drawer-backdrop",
+                      "type": "button",
+                      "aria-label": {
+                        "ref": "props.rotulos.fechar_menu_aria_label"
+                      }
+                    },
+                    "eventoEmitido": "fecharMenu"
+                  },
+                  {
+                    "tag": "div",
+                    "atributos": {
+                      "class": "drawer-panel"
+                    },
+                    "filhos": [
+                      {
+                        "tag": "div",
+                        "atributos": {
+                          "class": "drawer-top"
+                        },
+                        "filhos": [
+                          {
+                            "tag": "div",
+                            "atributos": {
+                              "class": "drawer-identity"
+                            },
+                            "filhos": [
+                              {
+                                "tag": "div",
+                                "atributos": {
+                                  "class": "drawer-avatar"
+                                },
+                                "filhos": [
+                                  {
+                                    "ref": "props.perfil.avatar"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "atributos": {
+                                  "class": "drawer-profile"
+                                },
+                                "filhos": [
+                                  {
+                                    "tag": "strong",
+                                    "filhos": [
+                                      {
+                                        "ref": "props.perfil.name"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tag": "small",
+                                    "filhos": [
+                                      {
+                                        "ref": "props.perfil.subtitle"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "button",
+                        "atributos": {
+                          "class": "drawer-online",
+                          "type": "button",
+                          "data-online-root": ""
+                        },
+                        "vinculos": {
+                          "classePorEstado": {
+                            "estado": "online",
+                            "quandoFalso": "is-offline"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "tag": "span",
+                            "atributos": {
+                              "class": "online-dot"
+                            }
+                          },
+                          {
+                            "tag": "span",
+                            "atributos": {
+                              "class": "drawer-online-copy"
+                            },
+                            "filhos": [
+                              {
+                                "tag": "strong",
+                                "atributos": {
+                                  "data-online-status": ""
+                                },
+                                "vinculos": {
+                                  "textoPorEstado": {
+                                    "estado": "online",
+                                    "verdadeiro": "Online",
+                                    "falso": "Offline"
+                                  }
+                                },
+                                "filhos": [
+                                  {
+                                    "ref": "props.disponibilidade.online"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "small",
+                                "atributos": {
+                                  "data-online-copy": ""
+                                },
+                                "vinculos": {
+                                  "textoPorEstado": {
+                                    "estado": "online",
+                                    "verdadeiro": "Recebendo novas solicitações",
+                                    "falso": "Indisponível para novas solicitações"
+                                  }
+                                },
+                                "filhos": [
+                                  {
+                                    "ref": "props.disponibilidade.recebendo_novas_solicitacoes"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "i",
+                            "atributos": {
+                              "class": "online-switch"
+                            },
+                            "filhos": [
+                              {
+                                "tag": "b"
+                              }
+                            ]
+                          }
+                        ],
+                        "eventoEmitido": "alternarDisponibilidade",
+                        "aplicaA": {
+                          "propsVerdadeiras": [
+                            "mostrarDisponibilidade"
+                          ]
+                        }
+                      },
+                      {
+                        "tag": "nav",
+                        "atributos": {
+                          "class": "drawer-nav",
+                          "aria-label": {
+                            "ref": "props.rotulos.menu_principal_aria_label"
+                          }
+                        },
+                        "filhos": [],
+                        "repetir": {
+                          "colecaoRef": "props.itens",
+                          "chave": "id",
+                          "elemento": {
+                            "tag": "button",
+                            "atributos": {
+                              "type": "button",
+                              "data-item-id": {
+                                "ref": "item.id"
+                              },
+                              "data-event-id": "itemSelecionado"
+                            },
+                            "filhos": [
+                              {
+                                "tag": "svg",
+                                "atributos": {
+                                  "class": "drawer-icon",
+                                  "viewBox": "0 0 24 24",
+                                  "fill": "none",
+                                  "stroke": "currentColor",
+                                  "stroke-width": "1.5",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "aria-hidden": "true"
+                                },
+                                "filhos": [
+                                  {
+                                    "tag": "path",
+                                    "atributos": {
+                                      "d": {
+                                        "ref": "item.icone"
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "span",
+                                "filhos": [
+                                  {
+                                    "ref": "item.nome"
+                                  }
+                                ]
+                              }
+                            ],
+                            "eventoEmitido": "itemSelecionado"
+                          }
+                        }
+                      },
+                      {
+                        "tag": "div",
+                        "atributos": {
+                          "class": "drawer-footer"
+                        },
+                        "filhos": [
+                          {
+                            "tag": "div",
+                            "atributos": {
+                              "class": "drawer-footer-top"
+                            },
+                            "filhos": [
+                              {
+                                "tag": "button",
+                                "atributos": {
+                                  "class": "drawer-logout",
+                                  "type": "button"
+                                },
+                                "filhos": [
+                                  {
+                                    "tag": "svg",
+                                    "atributos": {
+                                      "class": "drawer-icon",
+                                      "viewbox": "0 0 24 24",
+                                      "fill": "none",
+                                      "stroke": "currentColor",
+                                      "stroke-width": "1.5",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "aria-hidden": "true"
+                                    },
+                                    "filhos": [
+                                      {
+                                        "tag": "path",
+                                        "atributos": {
+                                          "d": "M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tag": "span",
+                                    "filhos": [
+                                      {
+                                        "ref": "props.rodape.logoutLabel"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "eventoEmitido": "sairSolicitado"
+                              },
+                              {
+                                "tag": "small",
+                                "filhos": [
+                                  {
+                                    "ref": "props.rodape.footer"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "button",
+                            "atributos": {
+                              "class": "drawer-emergency",
+                              "type": "button"
+                            },
+                            "filhos": [
+                              {
+                                "ref": "props.rodape.emergencyLabel"
+                              }
+                            ],
+                            "eventoEmitido": "contatoPrioritario"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "estilos": {
+            "css": ".prototype-drawer {\n  position: fixed;\n  z-index: 40;\n  inset: 0;\n  display: none;\n}\n\n.prototype-drawer.open { display: block; }\n\n.drawer-backdrop {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: rgba(7, 16, 30, .60);\n}\n\n.drawer-panel {\n  position: absolute;\n  inset: 0 auto 0 0;\n  width: min(80vw, 360px);\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  background: #3b4a7d;\n  color: #fff;\n  box-shadow: 12px 0 30px rgba(0, 0, 0, .32);\n}\n\n.drawer-top {\n  flex: 0 0 auto;\n  min-height: 106px;\n  padding: 30px 22px 20px;\n  display: flex;\n  align-items: center;\n}\n\n.drawer-identity {\n  min-width: 0;\n  display: flex;\n  gap: 14px;\n  align-items: center;\n}\n\n.drawer-avatar {\n  flex: 0 0 56px;\n  width: 56px;\n  height: 56px;\n  display: grid;\n  place-items: center;\n  border: 2px solid rgba(255, 255, 255, .20);\n  border-radius: 50%;\n  background: #dbeafe;\n  color: #1e3a8a;\n  font-size: 20px;\n  font-weight: 800;\n}\n\n.drawer-profile { min-width: 0; }\n.drawer-profile strong,\n.drawer-profile small { display: block; }\n.drawer-profile strong {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 16px;\n  font-weight: 600;\n}\n.drawer-profile small {\n  margin-top: 2px;\n  color: #bfdbfe;\n  font-size: 11px;\n  font-weight: 400;\n  text-transform: lowercase;\n}\n\n.drawer-online {\n  flex: 0 0 auto;\n  width: calc(100% - 44px);\n  margin: 0 22px 10px;\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 10px;\n  align-items: center;\n  border: 1px solid rgba(255, 255, 255, .18);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: rgba(255, 255, 255, .08);\n  color: #fff;\n  text-align: left;\n  cursor: pointer;\n}\n.drawer-online-copy strong,\n.drawer-online-copy small { display: block; }\n.drawer-online-copy strong { font-size: 13px; }\n.drawer-online-copy small { margin-top: 2px; color: #bfdbfe; font-size: 10px; }\n.online-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background: #4ade80;\n  box-shadow: 0 0 0 4px rgba(74, 222, 128, .14);\n}\n.drawer-online.is-offline .online-dot { background: #98a2b3; box-shadow: none; }\n.online-switch { position: relative; width: 38px; height: 22px; border-radius: 999px; background: #22c55e; }\n.online-switch b { position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }\n.drawer-online.is-offline .online-switch { background: #64748b; }\n.drawer-online.is-offline .online-switch b { right: 19px; }\n\n.drawer-nav {\n  flex: 1 1 auto;\n  min-height: 0;\n  display: block;\n  margin: 0;\n  padding: 0 0 8px;\n  overflow-x: hidden;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  -webkit-overflow-scrolling: touch;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(255, 255, 255, .35) transparent;\n}\n.drawer-nav::-webkit-scrollbar { width: 5px; }\n.drawer-nav::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(255, 255, 255, .35); }\n\n.drawer-nav button {\n  width: 100%;\n  min-height: 51px;\n  padding: 14px 22px;\n  border: 0;\n  border-bottom: 1px solid rgba(255, 255, 255, .10);\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  text-align: left;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n}\n.drawer-nav button:hover { background: rgba(255, 255, 255, .08); }\n.drawer-icon { flex: 0 0 20px; width: 20px; height: 20px; color: #aebee5; }\n\n.drawer-footer {\n  flex: 0 0 auto;\n  margin-top: 0;\n  padding: 16px 22px 30px;\n  display: flex;\n  flex-direction: column;\n  gap: 22px;\n  background: rgba(0, 0, 0, .10);\n}\n.drawer-footer-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }\n.drawer-logout {\n  min-height: 32px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  font-size: 14px;\n  cursor: pointer;\n}\n.drawer-logout svg { width: 18px; height: 18px; color: #aebee5; }\n.drawer-footer small { color: #aebee5; font-size: 10px; }\n.drawer-emergency {\n  min-height: 41px;\n  border: 1px solid rgba(255, 255, 255, .54);\n  border-radius: 999px;\n  background: transparent;\n  color: #fff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n}\n.drawer-emergency:hover { background: rgba(255, 255, 255, .08); }\n\n@media (max-width: 420px) {\n  .drawer-panel { width: 80vw; }\n  .drawer-top { padding-top: 24px; }\n}\n"
+          },
+          "interface": {
+            "propriedadesAceitas": [
+              "itens",
+              "perfil",
+              "rodape",
+              "rotulos",
+              "disponibilidade",
+              "mostrarDisponibilidade",
+              "aberto"
+            ],
+            "eventosEmitidos": [
+              "fecharMenu",
+              "itemSelecionado",
+              "alternarDisponibilidade",
+              "sairSolicitado",
+              "contatoPrioritario"
+            ],
+            "contratoItens": "Lista unica fornecida pela tela; item {id,nome,icone,destino|acaoRef,aplicaA}; motor filtra antes de renderizar.",
+            "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+          },
+          "dadosExemplo": {
+            "componentes": {
+              "drawer": {
+                "fechar_menu_aria_label": "Fechar menu",
+                "menu_principal_aria_label": "Menu principal",
+                "online": "Online",
+                "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+              }
+            },
+            "fixtures": {
+              "drawer": {
+                "avatar": "JS",
+                "name": "Dr. João Silva",
+                "subtitle": "Perfil profissional",
+                "showOnline": true,
+                "items": [
+                  {
+                    "goto": "advogado.clientes.detalhe_solicitacao",
+                    "label": "Análise da solicitação",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "goto": "advogado.atendimentos_advogado",
+                    "label": "Atendimentos",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "goto": "advogado.perfil_profissional",
+                    "label": "Meu Perfil",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "goto": "advogado.assinatura.gestao_assinatura",
+                    "label": "Assinatura",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "goto": "escritorio.gestao.escritorio",
+                    "label": "Escritório",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "goto": "advogado.configuracao.configuracao",
+                    "label": "Configurações",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "goto": "notificacoes.lista.notificacoes",
+                    "label": "Notificações",
+                    "icon": "M5 6h14M5 12h14M5 18h14"
+                  }
+                ],
+                "logoutGoto": "auth.sessao.entrar",
+                "logoutLabel": "Sair",
+                "footer": "Ambiente de demonstração",
+                "emergencyLabel": "Contato prioritário"
+              }
+            },
+            "campos": {}
+          },
+          "origemHistorica": {
+            "sourcePath": "components/menus/drawer/v01",
+            "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+          }
+        }
+      },
+      "modais": {
+        "route-modal.v02": {
+          "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+          "identidade": {
+            "id": "modal.route-modal.v02",
+            "nome": "Modal de navegação simulada",
+            "tipo": "componente",
+            "escopo": "global",
+            "categoria": "route-modal"
+          },
+          "estrutura": {
+            "formato": "arvore_elementos",
+            "arvore": [
+              {
+                "id": "route-modal::0",
+                "tag": "div",
+                "atributos": {
+                  "class": "route-modal",
+                  "data-overlay-root": "",
+                  "aria-hidden": "true",
+                  "role": "dialog",
+                  "aria-modal": "true",
+                  "aria-label": {
+                    "ref": "props.textos.navegacao_simulada_aria_label"
+                  }
+                },
+                "filhos": [
+                  {
+                    "id": "route-modal::0.0",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "route-card"
+                    },
+                    "filhos": [
+                      {
+                        "id": "route-modal::0.0.0",
+                        "tag": "p",
+                        "atributos": {
+                          "class": "kicker"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.textos.tela_modular_navegacao_simulada"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "route-modal::0.0.1",
+                        "tag": "h2",
+                        "atributos": {
+                          "data-route-title": ""
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.textos.navegacao_simulada"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "route-modal::0.0.2",
+                        "tag": "p",
+                        "atributos": {
+                          "data-route-text": ""
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.textos.esta_acao_nao_abre_outra_tela_nesta_biblioteca"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "route-modal::0.0.3",
+                        "tag": "code",
+                        "atributos": {
+                          "data-route-code": ""
+                        }
+                      },
+                      {
+                        "id": "route-modal::[data-action=\"route.close\"]",
+                        "tag": "button",
+                        "atributos": {
+                          "type": "button",
+                          "data-action": "route.close"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.textos.fechar"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "estilos": {
+            "css": ".route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}.route-modal.open{display:flex}.route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}.kicker{margin:0 0 7px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.route-card h2{margin:0 0 8px;color:var(--primary);font-size:20px}.route-card p:not(.kicker){margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.5}.route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:var(--primary);font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}\n\n"
+          },
+          "interface": {
+            "propriedadesAceitas": [],
+            "eventosEmitidos": [
+              "fecharModal"
+            ],
+            "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+          },
+          "dadosExemplo": {
+            "componentes": {
+              "route-modal": {
+                "navegacao_simulada_aria_label": "Navegação simulada",
+                "tela_modular_navegacao_simulada": "Tela modular · navegação simulada",
+                "navegacao_simulada": "Navegação simulada",
+                "esta_acao_nao_abre_outra_tela_nesta_biblioteca": "Esta ação não abre outra tela nesta biblioteca.",
+                "fechar": "Fechar"
+              }
+            },
+            "fixtures": {},
+            "campos": {}
+          },
+          "origemHistorica": {
+            "sourcePath": "components/modals/route-modal/v02",
+            "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+          }
+        }
+      },
+      "popups": {
+        "status-toast.v01": {
+          "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+          "identidade": {
+            "id": "popup.status-toast.v01",
+            "nome": "Toast de alteração de status",
+            "tipo": "componente",
+            "escopo": "global",
+            "categoria": "status-toast"
+          },
+          "estrutura": {
+            "formato": "arvore_elementos",
+            "arvore": [
+              {
+                "id": "status-toast::0",
+                "tag": "div",
+                "atributos": {
+                  "class": "status-toast",
+                  "data-toast-root": "",
+                  "role": "status",
+                  "aria-live": "polite"
+                },
+                "filhos": [
+                  {
+                    "id": "status-toast::0.0",
+                    "tag": "span",
+                    "atributos": {
+                      "data-toast-text": ""
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "estilos": {
+            "css": ".status-toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:999px;background:#10233f;color:#fff;font-size:13px;box-shadow:0 10px 30px #0003;transition:.2s ease}.status-toast.show{opacity:1;transform:translate(-50%,0)}@media(min-width:900px){.status-toast{bottom:28px}}"
+          },
+          "interface": {
+            "propriedadesAceitas": [],
+            "eventosEmitidos": [],
+            "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+          },
+          "dadosExemplo": {
+            "componentes": {
+              "status-toast": {}
+            },
+            "fixtures": {},
+            "campos": {}
+          },
+          "origemHistorica": {
+            "sourcePath": "components/popups/status-toast/v01",
+            "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+          }
+        }
+      }
+    },
+    "locais": {
+      "advogado": {
+        "home": {
+          "oab-validation-panel": {
+            "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+            "identidade": {
+              "id": "cmp_advogado_home_advogado_main_oab_validation_panel",
+              "nome": "Painel de validação OAB",
+              "tipo": "componente",
+              "escopo": "local",
+              "categoria": "main"
+            },
+            "estrutura": {
+              "formato": "arvore_elementos",
+              "arvore": [
+                {
+                  "id": "oab-validation-panel::root",
+                  "tag": "section",
+                  "atributos": {
+                    "class": "oab-gate-card",
+                    "aria-labelledby": "oab-gate-title"
+                  },
+                  "filhos": [
+                    {
+                      "id": "oab-validation-panel::eyebrow",
+                      "tag": "span",
+                      "atributos": {
+                        "class": "oab-gate-eyebrow"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.dados.rotulo"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "oab-validation-panel::title",
+                      "tag": "h2",
+                      "atributos": {
+                        "id": "oab-gate-title"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.dados.titulo"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "oab-validation-panel::description",
+                      "tag": "p",
+                      "filhos": [
+                        {
+                          "ref": "props.dados.descricao"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "oab-validation-panel::status",
+                      "tag": "p",
+                      "atributos": {
+                        "class": "oab-gate-status"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.dados.statusTexto"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "oab-validation-panel::cta",
+                      "tag": "button",
+                      "atributos": {
+                        "type": "button",
+                        "class": "oab-gate-button",
+                        "data-action": "oab.validar"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.dados.textoBotao"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "estilos": {
+              "css": ".oab-gate-card{margin:16px 0;padding:24px;border:1px solid #d9cba9;border-radius:16px;background:#fffaf0;color:var(--text,#242424)}.oab-gate-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#936b22}.oab-gate-card h2{margin:10px 0;font-size:22px}.oab-gate-card p{line-height:1.5}.oab-gate-status{font-size:13px;color:#745526}.oab-gate-button{margin-top:12px;border:0;border-radius:10px;padding:12px 18px;background:var(--primary,#2b4d85);color:#fff;font-weight:650;cursor:pointer}"
+            },
+            "interface": {
+              "propriedadesAceitas": [
+                "rotulo",
+                "titulo",
+                "descricao",
+                "statusTexto",
+                "textoBotao"
+              ],
+              "eventosEmitidos": [
+                "solicitarValidacaoOab"
+              ],
+              "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+            },
+            "dadosExemplo": {
+              "rotulo": "VALIDAÇÃO PROFISSIONAL",
+              "titulo": "Valide sua OAB para liberar sua Home",
+              "descricao": "Seu cadastro foi recebido. Para acessar solicitações e disponibilizar atendimentos, conclua ou acompanhe a verificação da OAB.",
+              "statusTexto": "O acesso completo depende da confirmação da OAB.",
+              "textoBotao": "Verificar minha OAB"
+            },
+            "origemHistorica": {
+              "sourcePath": "telas/advogado/home_advogado/main/oab-validation-panel",
+              "descricao": "Painel da montagem pendente extraído do linear_v3."
+            }
+          },
+          "online-status": {
+            "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+            "identidade": {
+              "id": "cmp_advogado_home_advogado_main_online_status",
+              "nome": "Status Online",
+              "tipo": "componente",
+              "escopo": "local",
+              "categoria": "content"
+            },
+            "estrutura": {
+              "formato": "arvore_elementos",
+              "arvore": [
+                {
+                  "id": "online-status::[data-action=\"online.toggle\"]",
+                  "tag": "button",
+                  "atributos": {
+                    "class": "online-card",
+                    "type": "button",
+                    "data-online-root": "",
+                    "data-event-id": "online.toggle"
+                  },
+                  "filhos": [
+                    {
+                      "id": "online-status::0.0",
+                      "tag": "span",
+                      "atributos": {
+                        "class": "online-dot"
+                      }
+                    },
+                    {
+                      "id": "online-status::0.1",
+                      "tag": "span",
+                      "atributos": {
+                        "class": "online-copy"
+                      },
+                      "filhos": [
+                        {
+                          "id": "online-status::0.1.0",
+                          "tag": "strong",
+                          "atributos": {
+                            "data-online-status": ""
+                          },
+                          "filhos": [
+                            {
+                              "ref": "props.textos.online"
+                            }
+                          ],
+                          "vinculos": {
+                            "textoPorEstado": {
+                              "estado": "online",
+                              "verdadeiro": "Online",
+                              "falso": "Offline"
+                            }
+                          }
+                        },
+                        {
+                          "id": "online-status::0.1.1",
+                          "tag": "small",
+                          "atributos": {
+                            "data-online-copy": ""
+                          },
+                          "filhos": [
+                            {
+                              "ref": "props.textos.recebendo_novas_solicitacoes"
+                            }
+                          ],
+                          "vinculos": {
+                            "textoPorEstado": {
+                              "estado": "online",
+                              "verdadeiro": "Recebendo novas solicitações",
+                              "falso": "Indisponível para novas solicitações"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "online-status::0.2",
+                      "tag": "span",
+                      "atributos": {
+                        "class": "online-switch",
+                        "aria-hidden": "true"
+                      },
+                      "filhos": [
+                        {
+                          "id": "online-status::0.2.0",
+                          "tag": "b"
+                        }
+                      ]
+                    }
+                  ],
+                  "vinculos": {
+                    "classePorEstado": {
+                      "estado": "online",
+                      "quandoFalso": "is-offline"
+                    }
+                  }
+                }
+              ]
+            },
+            "estilos": {
+              "css": ".online-card {\n  width:100%;\n  display:grid;\n  grid-template-columns:auto minmax(0,1fr) auto;\n  gap:12px;\n  align-items:center;\n  padding:14px 15px;\n  border:1px solid #a8dfc8;\n  border-radius:16px;\n  background:#f1fbf6;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n}\n.online-card.is-offline {\n  border-color:var(--line);\n  background:#f8fafc;\n}\n.online-dot {\n  width:10px;\n  height:10px;\n  border-radius:50%;\n  background:#15945e;\n  box-shadow:0 0 0 4px rgba(21,148,94,.12);\n}\n.is-offline .online-dot {\n  background:#98a2b3;\n  box-shadow:none;\n}\n.online-copy strong,\n.online-copy small { display:block; }\n.online-copy strong {\n  color:var(--primary);\n  font-size:14px;\n}\n.online-copy small {\n  margin-top:3px;\n  color:var(--muted);\n  font-size:12px;\n}\n.online-switch {\n  position:relative;\n  width:40px;\n  height:23px;\n  border-radius:999px;\n  background:#22c55e;\n}\n.online-switch b {\n  position:absolute;\n  top:3px;\n  right:3px;\n  width:17px;\n  height:17px;\n  border-radius:50%;\n  background:#fff;\n}\n.is-offline .online-switch { background:#98a2b3; }\n.is-offline .online-switch b { right:20px; }\n"
+            },
+            "interface": {
+              "propriedadesAceitas": [],
+              "eventosEmitidos": [
+                "alternarDisponibilidade"
+              ],
+              "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+            },
+            "dadosExemplo": {
+              "componentes": {
+                "online-status": {
+                  "online": "Online",
+                  "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+                }
+              },
+              "fixtures": {},
+              "campos": {}
+            },
+            "origemHistorica": {
+              "sourcePath": "features/advogado/screens/home_advogado/main/online-status",
+              "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+            }
+          },
+          "hero": {
+            "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+            "identidade": {
+              "id": "cmp_advogado_home_advogado_main_hero",
+              "nome": "Apresentação Profissional",
+              "tipo": "componente",
+              "escopo": "local",
+              "categoria": "content"
+            },
+            "estrutura": {
+              "formato": "arvore_elementos",
+              "arvore": [
+                {
+                  "id": "hero::0",
+                  "tag": "section",
+                  "atributos": {
+                    "class": "home-intro"
+                  },
+                  "filhos": [
+                    {
+                      "id": "hero::0.0",
+                      "tag": "span",
+                      "atributos": {
+                        "class": "home-eyebrow"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.dados.eyebrow"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "hero::0.1",
+                      "tag": "h1",
+                      "filhos": [
+                        {
+                          "ref": "props.dados.title"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "hero::0.2",
+                      "tag": "p",
+                      "filhos": [
+                        {
+                          "ref": "props.dados.subtitle"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "estilos": {
+              "css": ".home-intro {\n  padding: 2px 2px 4px;\n}\n.home-eyebrow {\n  display:block;\n  margin-bottom:6px;\n  color:var(--gold);\n  font-size:11px;\n  font-weight:900;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n}\n.home-intro h1 {\n  margin:0;\n  color:var(--primary);\n  font-size:24px;\n  line-height:1.15;\n  letter-spacing:-.025em;\n}\n.home-intro p {\n  max-width:560px;\n  margin:8px 0 0;\n  color:var(--muted);\n  font-size:14px;\n  line-height:1.5;\n}\n"
+            },
+            "interface": {
+              "propriedadesAceitas": [],
+              "eventosEmitidos": [],
+              "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+            },
+            "dadosExemplo": {
+              "componentes": {
+                "hero": {}
+              },
+              "fixtures": {
+                "hero": {
+                  "eyebrow": "PAINEL PROFISSIONAL",
+                  "title": "Olá, Dr. João Silva",
+                  "subtitle": "Acompanhe seus atendimentos e novas solicitações."
+                }
+              },
+              "campos": {}
+            },
+            "origemHistorica": {
+              "sourcePath": "features/advogado/screens/home_advogado/main/hero",
+              "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+            }
+          },
+          "actions": {
+            "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+            "identidade": {
+              "id": "cmp_advogado_home_advogado_main_actions",
+              "nome": "Novas solicitações",
+              "tipo": "componente",
+              "escopo": "local",
+              "categoria": "content"
+            },
+            "estrutura": {
+              "formato": "arvore_elementos",
+              "arvore": [
+                {
+                  "id": "actions::0",
+                  "tag": "section",
+                  "atributos": {
+                    "class": "requests-block",
+                    "aria-labelledby": "requests-title"
+                  },
+                  "filhos": [
+                    {
+                      "id": "actions::0.0",
+                      "tag": "div",
+                      "atributos": {
+                        "class": "requests-heading"
+                      },
+                      "filhos": [
+                        {
+                          "id": "actions::0.0.0",
+                          "tag": "div",
+                          "filhos": [
+                            {
+                              "id": "actions::#requests-title",
+                              "tag": "h2",
+                              "atributos": {
+                                "id": "requests-title"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.title"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.0.0.1",
+                              "tag": "p",
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.count"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "actions::0.1",
+                      "tag": "div",
+                      "atributos": {
+                        "class": "requests-list"
+                      },
+                      "filhos": [
+                        {
+                          "id": "actions::0.1.0",
+                          "tag": "button",
+                          "atributos": {
+                            "class": "request-card",
+                            "type": "button",
+                            "data-event-id": "selecionar_destino"
+                          },
+                          "filhos": [
+                            {
+                              "id": "actions::0.1.0.0",
+                              "tag": "div",
+                              "atributos": {
+                                "class": "request-top"
+                              },
+                              "filhos": [
+                                {
+                                  "id": "actions::0.1.0.0.0",
+                                  "tag": "span",
+                                  "atributos": {
+                                    "class": "request-priority"
+                                  },
+                                  "filhos": [
+                                    {
+                                      "ref": "props.dados.items.0.priority"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "actions::0.1.0.0.1",
+                                  "tag": "span",
+                                  "atributos": {
+                                    "class": "request-time"
+                                  },
+                                  "filhos": [
+                                    {
+                                      "ref": "props.dados.items.0.time"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.0.1",
+                              "tag": "h3",
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.0.area"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.0.2",
+                              "tag": "p",
+                              "atributos": {
+                                "class": "request-meta"
+                              },
+                              "filhos": [
+                                {
+                                  "partes": [
+                                    {
+                                      "ref": "props.dados.items.0.requestType"
+                                    },
+                                    " · ",
+                                    {
+                                      "ref": "props.dados.items.0.location"
+                                    },
+                                    " · ",
+                                    {
+                                      "ref": "props.dados.items.0.mode"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.0.3",
+                              "tag": "p",
+                              "atributos": {
+                                "class": "request-summary"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.0.summary"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.0.4",
+                              "tag": "span",
+                              "atributos": {
+                                "class": "request-open"
+                              },
+                              "filhos": [
+                                {
+                                  "partes": [
+                                    {
+                                      "ref": "props.textos.ver_solicitacao"
+                                    },
+                                    " "
+                                  ]
+                                },
+                                {
+                                  "id": "actions::0.1.0.4.0",
+                                  "tag": "b",
+                                  "filhos": [
+                                    "›"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.1",
+                          "tag": "button",
+                          "atributos": {
+                            "class": "request-card",
+                            "type": "button",
+                            "data-event-id": "selecionar_destino"
+                          },
+                          "filhos": [
+                            {
+                              "id": "actions::0.1.1.0",
+                              "tag": "div",
+                              "atributos": {
+                                "class": "request-top"
+                              },
+                              "filhos": [
+                                {
+                                  "id": "actions::0.1.1.0.0",
+                                  "tag": "span",
+                                  "atributos": {
+                                    "class": "request-priority"
+                                  },
+                                  "filhos": [
+                                    {
+                                      "ref": "props.dados.items.1.priority"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "actions::0.1.1.0.1",
+                                  "tag": "span",
+                                  "atributos": {
+                                    "class": "request-time"
+                                  },
+                                  "filhos": [
+                                    {
+                                      "ref": "props.dados.items.1.time"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.1.1",
+                              "tag": "h3",
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.1.area"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.1.2",
+                              "tag": "p",
+                              "atributos": {
+                                "class": "request-meta"
+                              },
+                              "filhos": [
+                                {
+                                  "partes": [
+                                    {
+                                      "ref": "props.dados.items.1.requestType"
+                                    },
+                                    " · ",
+                                    {
+                                      "ref": "props.dados.items.1.location"
+                                    },
+                                    " · ",
+                                    {
+                                      "ref": "props.dados.items.1.mode"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.1.3",
+                              "tag": "p",
+                              "atributos": {
+                                "class": "request-summary"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.1.summary"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.1.4",
+                              "tag": "span",
+                              "atributos": {
+                                "class": "request-open"
+                              },
+                              "filhos": [
+                                {
+                                  "partes": [
+                                    {
+                                      "ref": "props.textos.ver_solicitacao"
+                                    },
+                                    " "
+                                  ]
+                                },
+                                {
+                                  "id": "actions::0.1.1.4.0",
+                                  "tag": "b",
+                                  "filhos": [
+                                    "›"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "estilos": {
+              "css": ".requests-block { display:grid; gap:12px; }\n.requests-heading {\n  display:flex;\n  justify-content:space-between;\n  gap:12px;\n  align-items:end;\n}\n.requests-heading h2 {\n  margin:0;\n  color:var(--primary);\n  font-size:18px;\n  letter-spacing:-.015em;\n}\n.requests-heading p {\n  margin:4px 0 0;\n  color:var(--muted);\n  font-size:12px;\n}\n.requests-list { display:grid; gap:10px; }\n.request-card {\n  width:100%;\n  display:block;\n  padding:15px;\n  border:1px solid var(--line);\n  border-radius:16px;\n  background:#fff;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n  box-shadow:0 2px 7px rgba(16,35,63,.035);\n}\n.request-card:hover { border-color:#bac7d8; }\n.request-top {\n  display:flex;\n  justify-content:space-between;\n  gap:10px;\n  align-items:center;\n}\n.request-priority {\n  display:inline-flex;\n  align-items:center;\n  min-height:24px;\n  padding:3px 9px;\n  border-radius:999px;\n  background:#fff7e8;\n  color:#8a5a08;\n  font-size:10px;\n  font-weight:900;\n  text-transform:uppercase;\n  letter-spacing:.045em;\n}\n.request-time {\n  color:var(--muted);\n  font-size:11px;\n}\n.request-card h3 {\n  margin:12px 0 0;\n  color:var(--primary);\n  font-size:16px;\n}\n.request-meta {\n  margin:5px 0 0;\n  color:var(--muted);\n  font-size:12px;\n  line-height:1.45;\n}\n.request-summary {\n  margin:11px 0 0;\n  color:#344054;\n  font-size:13px;\n  line-height:1.5;\n}\n.request-open {\n  margin-top:13px;\n  display:flex;\n  justify-content:flex-end;\n  gap:6px;\n  align-items:center;\n  color:var(--primary-soft);\n  font-size:12px;\n  font-weight:800;\n}\n.request-open b {\n  color:var(--gold);\n  font-size:20px;\n  line-height:1;\n}\n@media(min-width:680px) {\n  .requests-list { grid-template-columns:1fr 1fr; }\n  .request-card:first-child { grid-column:1 / -1; }\n}\n"
+            },
+            "interface": {
+              "propriedadesAceitas": [
+                "solicitacoes"
+              ],
+              "eventosEmitidos": [
+                "solicitacaoSelecionada"
+              ],
+              "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+            },
+            "dadosExemplo": {
+              "componentes": {
+                "actions": {
+                  "ver_solicitacao": "Ver solicitação"
+                }
+              },
+              "fixtures": {
+                "actions": {
+                  "title": "Novas solicitações",
+                  "count": "2 disponíveis",
+                  "items": [
+                    {
+                      "goto": "advogado.atendimentos_advogado",
+                      "priority": "Nova",
+                      "time": "há 5 min",
+                      "area": "Direito Criminal",
+                      "requestType": "Orientação",
+                      "location": "Aracaju · SE",
+                      "mode": "Online",
+                      "summary": "Cliente solicita orientação inicial sobre uma situação jurídica."
+                    },
+                    {
+                      "goto": "advogado.atendimentos_advogado",
+                      "priority": "Nova",
+                      "time": "há 18 min",
+                      "area": "Direito de Família",
+                      "requestType": "Consulta",
+                      "location": "Aracaju · SE",
+                      "mode": "Presencial",
+                      "summary": "Solicitação de atendimento para esclarecimento de próximos passos."
+                    }
+                  ]
+                }
+              },
+              "campos": {}
+            },
+            "origemHistorica": {
+              "sourcePath": "features/advogado/screens/home_advogado/main/actions",
+              "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+            }
+          }
+        }
+      }
+    }
+  },
+  "Telas": {
+    "advogado": {
+      "home_advogado": {
+        "schema": "advogadoja.tela.macro.referenciada.v2-proposta",
+        "identidade": {
+          "id": "advogado.home_advogado",
+          "nome": "Início Profissional",
+          "tipo": "tela",
+          "status": "proposta",
+          "origem": "advogado_home_advogado_enxuta (1).json"
+        },
+        "classificacao": {
+          "pasta": "advogado",
+          "jornadas": [
+            "advogado"
+          ],
+          "subjornadas": [
+            "area_profissional"
+          ],
+          "compartilhada": false,
+          "escopo": "advogado"
+        },
+        "estados": {
+          "fonte": "sessao.profissional.oab.status",
+          "autoritativa": "backend",
+          "grupos": [
+            {
+              "id": "oab_pendente",
+              "nome": "OAB não aprovada",
+              "quando": {
+                "operador": "diferente",
+                "valor": "aprovada"
+              },
+              "observacao": "Inclui nao_enviada, em_analise, rejeitada ou outro estado conhecido não aprovado"
+            },
+            {
+              "id": "oab_aprovada",
+              "nome": "OAB aprovada",
+              "quando": {
+                "operador": "igual",
+                "valor": "aprovada"
+              }
+            }
+          ],
+          "indefinido": "bloquear_ate_verificacao",
+          "fallbackSeguro": "oab_pendente"
+        },
+        "componentes": {
+          "instancias": [
+            {
+              "id": "cabecalho",
+              "ref": "header.app-header.v04",
+              "slot": "header",
+              "ordem": 10,
+              "props": {
+                "dadosRef": "mocks.base.app-header"
+              }
+            },
+            {
+              "id": "titulo",
+              "ref": "header.titlebar.v01",
+              "slot": "header",
+              "ordem": 20,
+              "props": {
+                "dadosRef": "mocks.base.titlebar"
+              }
+            },
+            {
+              "id": "introducao",
+              "ref": "cmp_advogado_home_advogado_main_hero",
+              "slot": "main",
+              "ordem": 10,
+              "props": {
+                "dadosRef": "mocks.base.hero"
+              }
+            },
+            {
+              "id": "painel_oab",
+              "ref": "cmp_advogado_home_advogado_main_oab_validation_panel",
+              "slot": "main",
+              "ordem": 20,
+              "props": {
+                "dadosRef": "dados.textos.oab"
+              }
+            },
+            {
+              "id": "disponibilidade",
+              "ref": "cmp_advogado_home_advogado_main_online_status",
+              "slot": "main",
+              "ordem": 20,
+              "props": {
+                "dadosRef": "mocks.base.online-status",
+                "textosRef": "dados.textos.online-status"
+              }
+            },
+            {
+              "id": "solicitacoes",
+              "ref": "cmp_advogado_home_advogado_main_actions",
+              "slot": "main",
+              "ordem": 30,
+              "props": {
+                "dadosRef": "mocks.base.actions",
+                "textosRef": "dados.textos.actions"
+              }
+            },
+            {
+              "id": "menu_principal",
+              "ref": "menu.drawer.v01",
+              "slot": "menu",
+              "ordem": 10,
+              "props": {
+                "itens": [
+                  {
+                    "id": "perfil",
+                    "nome": "Meu perfil",
+                    "destino": "advogado.perfil_profissional",
+                    "icone": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "id": "configuracoes",
+                    "nome": "Configurações",
+                    "destino": "advogado.configuracao.configuracao",
+                    "icone": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "id": "notificacoes",
+                    "nome": "Notificações",
+                    "destino": "notificacoes.lista.notificacoes",
+                    "icone": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "id": "atendimentos",
+                    "nome": "Atendimentos",
+                    "destino": "advogado.atendimentos_advogado",
+                    "aplicaA": {
+                      "estados": [
+                        "oab_aprovada"
+                      ]
+                    },
+                    "icone": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "id": "assinatura",
+                    "nome": "Assinatura",
+                    "destino": "advogado.assinatura.gestao_assinatura",
+                    "aplicaA": {
+                      "estados": [
+                        "oab_aprovada"
+                      ]
+                    },
+                    "icone": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "id": "escritorio",
+                    "nome": "Escritório",
+                    "destino": "escritorio.gestao.escritorio",
+                    "aplicaA": {
+                      "estados": [
+                        "oab_aprovada"
+                      ]
+                    },
+                    "icone": "M5 6h14M5 12h14M5 18h14"
+                  },
+                  {
+                    "id": "sair",
+                    "nome": "Sair",
+                    "acaoRef": "encerrar_sessao",
+                    "icone": "M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"
+                  }
+                ],
+                "cabecalho": "Profissional",
+                "perfilRef": "mocks.base.drawer",
+                "rodapeRef": "mocks.base.drawer",
+                "rotulosRef": "dados.textos.drawer",
+                "disponibilidadeRef": "dados.textos.drawer",
+                "mostrarDisponibilidade": {
+                  "quando": {
+                    "estados": [
+                      "oab_aprovada"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "modal_rotas",
+              "ref": "modal.route-modal.v02",
+              "slot": "modal",
+              "ordem": 10,
+              "props": {
+                "textosRef": "dados.textos.route-modal"
+              }
+            },
+            {
+              "id": "notificacao_toast",
+              "ref": "popup.status-toast.v01",
+              "slot": "popup",
+              "ordem": 10,
+              "props": {}
+            }
+          ],
+          "contratoInstanciacao": {
+            "resolver": "ref por ID no catalogo",
+            "props": "cada campo *Ref aponta para dados ou mocks da propria tela; props literais permanecem",
+            "filtragem": "aplicaA de grupo/instancia/item por jornada e estado",
+            "semCopiaHTMLCSSNaTela": true,
+            "montagem": "CSS da tela + CSS dos componentes selecionados; HTML da tela + arvores dos componentes selecionados"
+          }
+        },
+        "estrutura": {
+          "raiz": "prototype-screen",
+          "html": "<div class=\"prototype-screen home-profissional\" data-screen-id=\"advogado.home_advogado\"><div class=\"screen-layout\"><header class=\"screen-slot screen-slot--header\" data-slot=\"header\"></header><main class=\"screen-slot screen-slot--main\" data-slot=\"main\"></main><div class=\"screen-slot screen-slot--navigation\" data-slot=\"navigation\"></div><div class=\"screen-slot screen-slot--menu\" data-slot=\"menu\"></div><div class=\"screen-slot screen-slot--modal\" data-slot=\"modal\"></div><div class=\"screen-slot screen-slot--popup\" data-slot=\"popup\"></div><div class=\"screen-slot screen-slot--alert\" data-slot=\"alert\"></div></div></div>",
+          "layout": {
+            "larguraConteudo": "720px",
+            "slots": [
+              "header",
+              "main",
+              "navigation",
+              "menu",
+              "modal",
+              "popup",
+              "alert"
+            ],
+            "resolucao": "cada grupo de estrutura insere instancias no slot data-slot correspondente"
+          },
+          "grupos": [
+            {
+              "id": "comum_header",
+              "slot": "header",
+              "ordem": 10,
+              "instancias": [
+                "cabecalho",
+                "titulo"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "comum_main",
+              "slot": "main",
+              "ordem": 10,
+              "instancias": [
+                "introducao"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "pendente_main",
+              "slot": "main",
+              "ordem": 20,
+              "instancias": [
+                "painel_oab"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "oab_pendente"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "aprovada_main",
+              "slot": "main",
+              "ordem": 20,
+              "instancias": [
+                "disponibilidade",
+                "solicitacoes"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "oab_aprovada"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "comum_menu",
+              "slot": "menu",
+              "ordem": 10,
+              "instancias": [
+                "menu_principal"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "comum_modal",
+              "slot": "modal",
+              "ordem": 10,
+              "instancias": [
+                "modal_rotas"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "comum_popup",
+              "slot": "popup",
+              "ordem": 10,
+              "instancias": [
+                "notificacao_toast"
+              ],
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            }
+          ]
+        },
+        "estilos": {
+          "tema": {
+            "--primary": "#10233f",
+            "--primary-soft": "#173c6b",
+            "--gold": "#b88932",
+            "--page": "#eef2f6",
+            "--surface": "#fff",
+            "--line": "#dbe3ee",
+            "--text": "#172033",
+            "--muted": "#667085"
+          },
+          "globalDaTela": "*{box-sizing:border-box}\nbody{min-width:320px;min-height:100dvh;margin:0;background:var(--page);color:var(--text);font-family:\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\nbutton,input{font:inherit}\nbutton{cursor:pointer}\na{color:inherit;text-decoration:none}\n.prototype-screen{min-height:100dvh}\n.screen-slot--main{display:block;width:min(100%,720px);margin:0 auto;padding:22px 16px 28px}\n.screen-slot--main>*+*{margin-top:12px}\n.screen-layout{min-height:100dvh;}\n.home-profissional{min-height:100dvh;}\n.screen-slot--main{display:block;width:min(100%,720px);margin:0 auto;padding:22px 16px 28px;}\n.screen-slot--main>*+*{margin-top:12px;}\n",
+          "grupos": [
+            {
+              "id": "home_base",
+              "css": ".home-profissional {min-height:100dvh; max-width:720px; margin-inline:auto;} ",
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "home_pendente",
+              "aplicaA": {
+                "estados": [
+                  "oab_pendente"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              },
+              "css": ".home-profissional.oab-pendente{background:var(--page);}"
+            },
+            {
+              "id": "home_aprovada",
+              "aplicaA": {
+                "estados": [
+                  "oab_aprovada"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              },
+              "css": ".home-profissional.oab-aprovada{background:var(--page);}"
+            }
+          ],
+          "politica": "CSS de cada componente e propriedade da definicao em Componentes; esta secao guarda somente CSS proprio da tela e ajustes condicionais."
+        },
+        "acoes": {
+          "grupos": [
+            {
+              "id": "acoes_comuns",
+              "acoes": [
+                {
+                  "id": "abrir_menu",
+                  "origem": "cabecalho",
+                  "evento": "abrirMenu",
+                  "efeito": {
+                    "tipo": "estado_local",
+                    "campo": "menuAberto",
+                    "valor": true
+                  }
+                },
+                {
+                  "id": "fechar_menu",
+                  "origem": "menu_principal",
+                  "evento": "fecharMenu",
+                  "efeito": {
+                    "tipo": "estado_local",
+                    "campo": "menuAberto",
+                    "valor": false
+                  }
+                },
+                {
+                  "id": "navegar_item_menu",
+                  "origem": "menu_principal",
+                  "evento": "itemSelecionado",
+                  "efeito": {
+                    "tipo": "resolver_item",
+                    "colecaoRef": "componentes.instancias.menu_principal.props.itens"
+                  }
+                },
+                {
+                  "id": "abrir_notificacoes",
+                  "origem": "cabecalho",
+                  "evento": "abrirNotificacoes",
+                  "destino": "notificacoes.lista.notificacoes"
+                },
+                {
+                  "id": "encerrar_sessao",
+                  "tipo": "comando",
+                  "comandoRef": "auth.sign_out",
+                  "seSucesso": {
+                    "destino": "auth.sessao.entrar"
+                  },
+                  "seErro": {
+                    "tipo": "mostrar_erro"
+                  },
+                  "statusContrato": "proposto"
+                }
+              ],
+              "aplicaA": {
+                "estados": [
+                  "*"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              }
+            },
+            {
+              "id": "acoes_pendentes",
+              "aplicaA": {
+                "estados": [
+                  "oab_pendente"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              },
+              "acoes": [
+                {
+                  "id": "solicitar_validacao_oab",
+                  "origem": "painel_oab",
+                  "evento": "solicitarValidacaoOab",
+                  "destino": "advogado.oab.validacao",
+                  "statusDestino": "a_confirmar"
+                }
+              ]
+            },
+            {
+              "id": "acoes_aprovadas",
+              "aplicaA": {
+                "estados": [
+                  "oab_aprovada"
+                ],
+                "jornadas": [
+                  "advogado"
+                ]
+              },
+              "acoes": [
+                {
+                  "id": "alternar_disponibilidade",
+                  "origem": "disponibilidade",
+                  "evento": "alternarDisponibilidade",
+                  "comandoRef": "profissional.alternar_online",
+                  "statusContrato": "proposto"
+                },
+                {
+                  "id": "abrir_solicitacao",
+                  "origem": "solicitacoes",
+                  "evento": "solicitacaoSelecionada",
+                  "destino": "advogado.clientes.detalhe_solicitacao"
+                }
+              ]
+            }
+          ]
+        },
+        "dados": {
+          "textos": {
+            "online-status": {
+              "online": "Online",
+              "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+            },
+            "actions": {
+              "ver_solicitacao": "Ver solicitação"
+            },
+            "drawer": {
+              "fechar_menu_aria_label": "Fechar menu",
+              "menu_principal_aria_label": "Menu principal",
+              "online": "Online",
+              "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+            },
+            "route-modal": {
+              "navegacao_simulada_aria_label": "Navegação simulada",
+              "tela_modular_navegacao_simulada": "Tela modular · navegação simulada",
+              "navegacao_simulada": "Navegação simulada",
+              "esta_acao_nao_abre_outra_tela_nesta_biblioteca": "Esta ação não abre outra tela nesta biblioteca.",
+              "fechar": "Fechar"
+            },
+            "oab": {
+              "rotulo": "VALIDAÇÃO PROFISSIONAL",
+              "titulo": "Valide sua OAB para liberar sua Home",
+              "descricao": "Seu cadastro foi recebido. Para acessar solicitações e disponibilizar atendimentos, conclua ou acompanhe a verificação da OAB.",
+              "statusTexto": "O acesso completo depende da confirmação da OAB.",
+              "textoBotao": "Verificar minha OAB"
+            }
+          },
+          "assets": {
+            "marca": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K"
+          },
+          "fontes": [
+            {
+              "id": "profissionalOabStatus",
+              "path": "sessao.profissional.oab.status",
+              "autoridade": "backend"
+            },
+            {
+              "id": "perfil",
+              "path": "sessao.profissional",
+              "autoridade": "backend"
+            },
+            {
+              "id": "solicitacoes",
+              "path": "profissional.solicitacoes",
+              "autoridade": "backend"
+            }
+          ],
+          "binding": "refs declarativas da tela e props repassadas as instancias; nenhuma consulta a pasta para completar conteudo visual"
+        },
+        "mocks": {
+          "base": {
+            "app-header": {
+              "brand": "AdvogadoJá",
+              "role": "Advogado",
+              "menuLabel": "Abrir menu",
+              "notificationsLabel": "Notificações",
+              "unreadCount": "3"
+            },
+            "drawer": {
+              "avatar": "JS",
+              "name": "Dr. João Silva",
+              "subtitle": "Perfil profissional",
+              "logoutLabel": "Sair",
+              "footer": "Ambiente de demonstração",
+              "emergencyLabel": "Contato prioritário"
+            },
+            "actions": {
+              "title": "Novas solicitações",
+              "count": "2 disponíveis",
+              "items": [
+                {
+                  "priority": "Nova",
+                  "time": "há 5 min",
+                  "area": "Direito Criminal",
+                  "requestType": "Orientação",
+                  "location": "Aracaju · SE",
+                  "mode": "Online",
+                  "summary": "Cliente solicita orientação inicial sobre uma situação jurídica."
+                },
+                {
+                  "priority": "Nova",
+                  "time": "há 18 min",
+                  "area": "Direito de Família",
+                  "requestType": "Consulta",
+                  "location": "Aracaju · SE",
+                  "mode": "Presencial",
+                  "summary": "Solicitação de atendimento para esclarecimento de próximos passos."
+                }
+              ]
+            },
+            "titlebar": {
+              "title": "Início Profissional"
+            },
+            "hero": {
+              "eyebrow": "PAINEL PROFISSIONAL",
+              "title": "Olá, Dr. João Silva",
+              "subtitle": "Acompanhe seus atendimentos e novas solicitações."
+            }
+          },
+          "cenarios": {
+            "oab_pendente": {
+              "sessao": {
+                "profissional": {
+                  "id": "advogado-teste",
+                  "oab": {
+                    "status": "em_analise"
+                  }
+                }
+              },
+              "sobrescrever": {
+                "hero.subtitle": "Sua Home ficará disponível após a validação da OAB."
+              }
+            },
+            "oab_aprovada": {
+              "sessao": {
+                "profissional": {
+                  "id": "advogado-teste",
+                  "oab": {
+                    "status": "aprovada"
+                  }
+                }
+              }
+            }
+          },
+          "uso": "apenas simulação; nao autoriza recursos em producao"
+        },
+        "politicas": {
+          "componentes": "apenas_referencias_sem_html_css_embutido",
+          "transicoes": "sair_das_acoes_e_itens_do_componente",
+          "mapa": "especificacao_separada_futura"
+        },
+        "origemHistorica": {
+          "arquivos": [
+            "advogado_home_profissional_linear_v3.json",
+            "catalogo_home_profissional_completo.json"
+          ],
+          "observacao": "Conversao ilustrativa do modelo antigo; nao e motor de producao nem padrao aprovado das 85 recomendacoes."
+        },
+        "versao": "2.0.0-proposta",
+        "observacoesDeConformidade": {
+          "status": "proposta_para_validacao",
+          "semMotorImplementado": true,
+          "visual": "HTML da tela e CSS global presentes; HTML/CSS completos dos 9 componentes residem nos JSONs separados; menus dinamicos via repetir",
+          "acoes": "Definidas na tela e relacionadas a eventos que os componentes emitem.",
+          "mock": "Dados textuais e cenarios do legado restaurados; itens do menu sao configurados pela tela."
+        }
+      }
+    }
+  }
+}

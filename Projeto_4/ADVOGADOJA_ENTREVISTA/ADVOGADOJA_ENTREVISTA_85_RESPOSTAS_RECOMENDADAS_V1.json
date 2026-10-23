@@ -1,0 +1,1441 @@
+{
+  "format": "advogadoja.entrevista-json-tela.v1",
+  "source": {
+    "filename": "ADVOGADOJA_ENTREVISTA_85_RESPOSTAS_RECOMENDADAS_V1.json",
+    "version": "recomendacoes.v1",
+    "note": "Projeto importável no HTML da Entrevista. 85 respostas: 5 decisões anteriores preservadas e 80 recomendações não aprovadas."
+  },
+  "requirements": [
+    {
+      "id": "R01",
+      "status": "CONFIRMADA",
+      "text": "Um JSON canônico por tela contém a identidade, a classificação, os estados, a estrutura própria, as configurações dos componentes e os relacionamentos necessários; o HTML/CSS dos componentes reutilizáveis permanece em JSONs próprios da pasta componentes. O motor resolve as referências para gerar uma montagem autocontida quando necessário."
+    },
+    {
+      "id": "R02",
+      "status": "CONFIRMADA",
+      "text": "A tela pode possuir estados distintos (por exemplo, situação de OAB) que alteram estrutura, conteúdo, CSS, menu e ações, individualmente ou em conjunto."
+    },
+    {
+      "id": "R03",
+      "status": "CONFIRMADA",
+      "text": "A tela possui classificação/vínculo de jornada, útil para a árvore; uma tela pode ser utilizada em mais de um contexto."
+    },
+    {
+      "id": "R04",
+      "status": "CONFIRMADA",
+      "text": "O JSON contém uma seção de estados, identificando os estados e permitindo associação de outras seções a eles."
+    },
+    {
+      "id": "R05",
+      "status": "CONFIRMADA",
+      "text": "Grupos de estrutura/componentes, CSS e ações têm atributos que os relacionam a estados, quando aplicável. Não é obrigatório criar um grande bloco completo para cada variante."
+    },
+    {
+      "id": "R06",
+      "status": "CONFIRMADA",
+      "text": "Um componente Menu é definido uma vez: mesmo design, HTML, CSS e forma de abrir/fechar. Mudam seus itens, rótulos quando necessário e destinos, conforme uso/estado."
+    },
+    {
+      "id": "R07",
+      "status": "APROVADA",
+      "text": "Uma lista única de itens para um componente, com identificação e atributos de estados permitidos; não repetir o item em um array para cada estado."
+    },
+    {
+      "id": "R08",
+      "status": "CONFIRMADA",
+      "text": "O motor deve interpretar ações/destinos e estados para compor relações de fluxo, sem depender de um fluxo global mantido manualmente."
+    },
+    {
+      "id": "R09",
+      "status": "CONFIRMADA",
+      "text": "A tela pode ser chamada de mais de um ponto e reutilizada sem duplicar sua identidade; o motor deve conseguir mostrar essas relações."
+    },
+    {
+      "id": "R10",
+      "status": "CONFIRMADA",
+      "text": "O próprio conteúdo de cada JSON deverá permitir ao motor organizar árvore por classificação/jornada e compor um fluxo."
+    },
+    {
+      "id": "R11",
+      "status": "EM DISCUSSÃO",
+      "text": "Evitar blocos independentes flow e prototype, preferindo derivar essas visões dos dados, componentes e ações da tela. A forma final ainda não foi aprovada."
+    },
+    {
+      "id": "R12",
+      "status": "CONFIRMADA",
+      "text": "Componentes reutilizáveis são armazenados separadamente na pasta componentes, em JSONs próprios com HTML/CSS/comportamento genérico; a tela referencia os componentes por ID e configura suas instâncias conforme estado/jornada. A incorporação de definições poderá ocorrer no artefato gerado pelo motor, sem modificar a tela-fonte."
+    },
+    {
+      "id": "R13",
+      "status": "ADIADA",
+      "text": "O mapa terá especificações próprias, mais textuais; não detalhar seu contrato agora."
+    },
+    {
+      "id": "R14",
+      "status": "CONFIRMADA",
+      "text": "O motor recebe os JSONs de telas, busca as definições dos componentes referenciados, combina estados, jornadas, itens, ações e destinos e produz uma montagem resolvida sem editar os JSONs de origem."
+    },
+    {
+      "id": "R15",
+      "status": "APROVADA",
+      "text": "Disponibilização do JSON consolidado (opção C): montar dinamicamente para uso imediato e também permitir exportar o JSON resolvido, para testes, auditoria, integração ou reutilização. A montagem gerada não é uma segunda fonte canônica."
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "topic": "Decisões iniciais",
+      "text": "Como estruturar as montagens condicionadas por estado?",
+      "hint": "O solicitante propôs uma solução própria, diferente de A/B/C.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Um bloco completo da tela para cada estado"
+        },
+        {
+          "id": "B",
+          "label": "Estrutura base + somente modificações por estado"
+        },
+        {
+          "id": "C",
+          "label": "Híbrido: base comum + substituição de regiões"
+        },
+        {
+          "id": "D",
+          "label": "Grupos por seção, cada um com atributos que associam estados e jornadas"
+        }
+      ],
+      "answer": {
+        "optionId": "D",
+        "text": "Haverá uma seção de estados e grupos nas seções de estrutura/componentes, HTML, CSS e ações. Cada grupo pode ter um atributo que o vincula ao estado; o motor combina os grupos compatíveis. A precedência ainda não foi decidida.",
+        "status": "CONFIRMADA",
+        "origemDecisao": "usuario_historico"
+      },
+      "source": "pergunta_respondida"
+    },
+    {
+      "id": "Q02",
+      "topic": "Decisões iniciais",
+      "text": "O Menu precisa ser definido novamente em cada estado?",
+      "hint": "HTML, CSS, apresentação e mecanismo de abrir/fechar são comuns.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Sim: criar outro componente Menu por estado"
+        },
+        {
+          "id": "B",
+          "label": "Não: um Menu único, configurável por itens, nomes e destinos"
+        }
+      ],
+      "answer": {
+        "optionId": "B",
+        "text": "Um componente Menu é configurado uma vez; cada uso informa itens, possíveis rótulos e destinos.",
+        "status": "CONFIRMADA",
+        "origemDecisao": "usuario_historico"
+      },
+      "source": "pergunta_respondida"
+    },
+    {
+      "id": "Q02A",
+      "topic": "Decisões iniciais",
+      "text": "Como organizar os itens do Menu que mudam conforme o estado?",
+      "hint": "Opção B aprovada expressamente.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Array completo de itens por estado (pode repetir itens)"
+        },
+        {
+          "id": "B",
+          "label": "Lista única de itens com atributos indicando estados permitidos"
+        }
+      ],
+      "answer": {
+        "optionId": "B",
+        "text": "Uma lista única de itens; cada item possui os estados nos quais aparece. Os nomes exatos dos campos não foram aprovados.",
+        "status": "APROVADA",
+        "origemDecisao": "usuario_historico"
+      },
+      "source": "pergunta_respondida"
+    },
+    {
+      "id": "Q03",
+      "topic": "Decisões iniciais",
+      "text": "Quem define e executa a ação ao clicar em um item?",
+      "hint": "Próxima decisão. O usuário já quer ações e destinos configurados na tela, com componentes externos e um motor que os combine; ainda falta definir a responsabilidade por executar e resolver ações simples/complexas.",
+      "options": [
+        {
+          "id": "A",
+          "label": "A tela controla todas as ações: componente informa o item selecionado"
+        },
+        {
+          "id": "B",
+          "label": "O próprio item informa o destino, executado pelo Menu genericamente"
+        },
+        {
+          "id": "C",
+          "label": "Híbrido: destino direto ou referência a ação complexa da tela"
+        },
+        {
+          "id": "D",
+          "label": "Outra organização (descrever no campo de observação)"
+        }
+      ],
+      "answer": {
+        "optionId": "C",
+        "text": "Adotar o modelo híbrido (opção C). A tela configura cada item de componente: navegação simples usa destino por screenId no próprio item; efeitos complexos usam acaoRef para uma definição declarativa da tela. O componente reutilizável apenas emite o evento identificado e executa comportamentos universais de apresentação (abrir/fechar, seleção), sem conhecer autorização, rotas da aplicação ou APIs. O motor resolve ambas as formas e gera uma relação normalizada. Esta é uma sugestão do assistente; não foi aprovada pelo usuário.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_ja_apresentada"
+    },
+    {
+      "id": "Q04.1",
+      "topic": "Associação entre jornada e estados",
+      "text": "Um grupo pode ter vários estados associados, como um item do Menu, ou um único estado por grupo?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Permitir vários estados por grupo por meio de aplicaA.estados: [\"oab_a_validar\", \"oab_validada\"]. O mesmo grupo só é armazenado uma vez, inclusive se compartilhado por estados; a identificação do grupo é estável. Não exigir um estado único por grupo.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q04.2",
+      "topic": "Associação entre jornada e estados",
+      "text": "Como marcar um grupo comum a todos os estados: sem campo, [], all, shared ou outra convenção?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Ausência da propriedade aplicaA.estados significa “sem restrição de estado” (grupo comum). Quando explicitada, a lista deve ser não vazia; [] é inválido para evitar ambiguidade. Se desejarmos mostrar a regra no editor, renderizar visualmente “todos” sem repetir valores no JSON.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q04.3",
+      "topic": "Associação entre jornada e estados",
+      "text": "A seleção é feita por jornada E estado (interseção), ou há regras que podem funcionar por jornada OU estado?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar interseção E entre dimensões informadas: jornada compatível E estado compatível E permissão satisfeita. Dentro de cada dimensão, uma lista indica alternativas OU (qualquer uma pode combinar). Condições excepcionais mais complexas ficam em aplicaA.quando como objeto declarativo all/any/not, não em convenções implícitas.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q04.4",
+      "topic": "Associação entre jornada e estados",
+      "text": "Se dois grupos compatíveis quiserem ocupar a mesma região, devem somar, substituir, ordenar ou gerar erro?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Grupos compatíveis em um mesmo slot são combinados pela ordem; cada instância possui id, slot e ordem/âncora. Caso um grupo declare operacao:\"substituir\", ele troca o alvo explicitamente identificado. Duas substituições do mesmo alvo com igual prioridade e condições simultâneas geram conflito de validação; não deixar que a ordem física do JSON resolva ambiguidades silenciosamente.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q04.5",
+      "topic": "Associação entre jornada e estados",
+      "text": "Qual a regra de prioridade quando várias condições são verdadeiras? Valor explícito, primeiro da lista, maior especificidade ou outra?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Cada grupo condicional pode ter prioridade numérica explícita; aplicar primeiro as regras de acesso/segurança, depois a especificidade e a prioridade declaradas, com ordenação estável somente para inserções sem conflito. Quando duas regras incompatíveis tiverem mesma prioridade, o compilador sinaliza erro. A resolução deve ser determinística e testável, não depender de tentativa e erro.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q04.6",
+      "topic": "Associação entre jornada e estados",
+      "text": "Qual montagem exibir se a OAB, jornada ou permissão ainda não tiver sido carregada? Estado neutro, tela de carregamento, restrita ou erro?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Enquanto jornada, autenticação, OAB ou permissão autoritativa não estiverem carregadas, apresentar estado explícito carregando/verificando; em erro ou condição desconhecida, escolher a montagem restrita/indisponível. Nunca usar o mock como fonte de autorização real nem presumir OAB aprovada por ausência de dados.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q04.7",
+      "topic": "Associação entre jornada e estados",
+      "text": "Diferenças entre estado visual local (menu aberto, loading) e estado de negócio (OAB, assinatura, autorização) devem usar o mesmo mecanismo de associação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar o mesmo vocabulário de identificadores e condições, mas distinguir o tipo de estado: negocio/autoritativo (OAB, papel, assinatura), local/UI (drawerAberto, modalAtivo) e operacional (carregando, erro). Estados de negócio podem mudar montagem e permissões; estados locais alteram propriedades/aparência ou áreas pontuais sem necessariamente recompilar o fluxo.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q05.1",
+      "topic": "Estrutura HTML",
+      "text": "O HTML de um grupo será armazenado como string HTML, como árvore JSON (tag, atributos, filhos) ou como um desses formatos gerado do outro?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Recomendo árvore JSON estruturada como fonte canônica dos elementos próprios da tela (tag, atributos, filhos, ids de instância e bindings), gerando o HTML renderizável automaticamente. Permitir importar HTML legado por um conversor, sem manter duas versões editáveis em paralelo. O componente externo também deve declarar seu HTML/estrutura no JSON próprio, resolvido por referência.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q05.2",
+      "topic": "Estrutura HTML",
+      "text": "Se mantivermos HTML e árvore no mesmo JSON, qual deles é a fonte única de verdade para impedir inconsistência?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Se os dois formatos estiverem disponíveis, manter apenas a árvore estruturada como editável/canônica; htmlGerado é artefato derivado, regenerado pelo motor, opcionalmente com hash de origem. Uma alteração de HTML gerado nunca deve sobrescrever silenciosamente a árvore.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q05.3",
+      "topic": "Estrutura HTML",
+      "text": "A estrutura de tela deverá ser agrupada por slots (header, main, navigation, menu, modal, popup, etc.) ou por uma árvore única?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Organizar a montagem por slots nomeados (header, main, navigation, menu, modal, popup, alert) e, dentro de cada slot, uma árvore/hierarquia de instâncias. Cada grupo possui id estável, slot, ordem e aplicaA; isso torna edição linear e renderização precisa, sem perder estruturas internas aninhadas.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q05.4",
+      "topic": "Estrutura HTML",
+      "text": "Como representar a ordem de montagem dos componentes — ordem do array, ordem explícita ou IDs/âncoras?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar ordem explícita numérica por instância, com desempate por id estável; aceitar ancoraRef/posicao relativa quando inserir antes/depois de um elemento. A posição do objeto ou array no arquivo não deve ser a única fonte de ordenação. Validar conflitos de posições quando a ordem for obrigatória.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q05.5",
+      "topic": "Estrutura HTML",
+      "text": "Um estado pode trocar uma região HTML inteira, ou só alterar propriedades/conteúdo dos componentes existentes?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Permitir ambos: ajustes de props, dados e visibilidade de instâncias existentes e substituição integral de uma região identificada (slot ou nó) quando a estrutura muda de verdade. Os grupos permanecem vinculados a estados; o motor escolhe a operação declarada (adicionar, atualizar, ocultar, substituir), preservando a base compartilhada.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q05.6",
+      "topic": "Estrutura HTML",
+      "text": "O JSON admite atributos/eventos HTML brutos, ou somente atributos e gatilhos descritos em formato controlado pelo motor?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Permitir atributos HTML seguros (id, class, role, aria-*, data-*, src controlado, type etc.) na árvore; proibir scripts inline, onClick em string, eval e código arbitrário. Eventos são declarados separadamente com id do elemento, tipo do evento e acaoRef/destino. O motor valida atributos e aplica sanitização ao renderizar.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q06.1",
+      "topic": "Estilos e CSS",
+      "text": "Onde fica o CSS da tela, e onde fica o CSS intrínseco de cada componente?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "CSS intrínseco de cada componente fica apenas no JSON de componente da pasta componentes; CSS específico de tela fica no JSON de tela. A composição reúne CSS dos componentes referenciados e da tela/estado para renderização, sem copiar manualmente estilos do componente para cada tela-fonte.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q06.2",
+      "topic": "Estilos e CSS",
+      "text": "É permitido acrescentar CSS condicionado ao estado ou jornada, mantendo o CSS comum sem duplicação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Definir estilos.grupos[] com id, css e aplicaA (estados, jornadas e/ou condições). O CSS comum é declarado uma vez em um grupo sem restrições; regras condicionais só descrevem os ajustes necessários. A alteração do conteúdo HTML não implica duplicar o CSS.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q06.3",
+      "topic": "Estilos e CSS",
+      "text": "Um CSS condicionado pode substituir regras da base ou somente adicionar regras? Qual é a ordem de aplicação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Adotar cascata determinística: tokens/tema base → CSS do componente → CSS base da tela → CSS condicional selecionado → classes/props de estado de instância. Preferir classes ou tokens específicos a !important. Conflitos de seletor/escopo podem ser avisados; o compilador registra a ordem para auditoria.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q06.4",
+      "topic": "Estilos e CSS",
+      "text": "O CSS será uma string, blocos por seletor/propriedades, ou combinação com fonte única?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar css como string dentro de cada grupo, formato nativo do navegador e fácil de migrar, mais metadados id/aplicaA/escopo/ordem. Não duplicar regras como objeto de seletor e string CSS editáveis simultaneamente. O motor pode analisar, validar e exibir uma árvore de regras derivada, se desejado.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q06.5",
+      "topic": "Estilos e CSS",
+      "text": "Como representar tokens de design, responsividade, temas e recursos visuais, sem buscar CSS de arquivos externos durante a renderização?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Tokens de design devem ser identificados por chave; definir os específicos da tela no seu JSON e os intrínsecos no JSON do componente. Regras responsivas usam CSS @media/@container nos grupos pertinentes. O motor resolve tudo a partir dos JSONs de origem, sem fetch de .css externo na montagem consolidada; fontes/assets devem ser referências controladas ou recursos incluídos no pacote gerado, quando exigido offline.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q06.6",
+      "topic": "Estilos e CSS",
+      "text": "A mesma classe CSS usada por componentes diferentes precisa de isolamento/escopo para evitar conflitos?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Aplicar escopo estável por componente e por instância (classes prefixadas ou data-component-id), e para CSS local da tela usar um identificador raiz. Isso evita vazamento de estilos entre componentes reutilizados e entre telas na visualização integrada.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.1",
+      "topic": "Relações e rotas do fluxo",
+      "text": "O destino de uma ação será uma referência por ID de tela, uma rota de aplicação, ou os dois com papéis distintos?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Referenciar destino lógico por screenId estável. Rota web/Flutter é uma propriedade derivada do catálogo/roteador de destino, não a identidade usada pelo Flow. A ação pode enviar parâmetros e contexto de entrada; o motor resolve o caminho técnico na geração para cada plataforma.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.2",
+      "topic": "Relações e rotas do fluxo",
+      "text": "Cada ação pode ter vários destinos condicionados (estado, jornada, resultado de operação, permissões)? Como representá-los sem repetir a ação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Cada ação possui um id e um array transicoes[] com quando, resultado e destino; uma condição pode combinar estado, jornada, resultado de backend e permissão. A resolução é ordenada/determinística, exige rota de fallback quando necessário e distingue navegar, mudar estado local, emitir evento ou executar comando.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.3",
+      "topic": "Relações e rotas do fluxo",
+      "text": "Como indicar que o resultado da ação é estado da mesma tela, em vez de navegação para outra tela?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Destinos são tipados: {tipo:\"tela\", screenId:\"...\"} para navegação; {tipo:\"estado_local\", estadoId:\"...\"} para atualizar a mesma tela; {tipo:\"efeito\", efeitoRef:\"...\"} para efeito sem navegação. Dessa forma um estado de solicitação não vira tela fictícia no grafo.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.4",
+      "topic": "Relações e rotas do fluxo",
+      "text": "As entradas da tela devem ser apenas derivadas das ações de outras telas, ou também existir como referências declaradas/editáveis? Se ambas, qual é a fonte de verdade?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Entradas físicas/efetivas são derivadas automaticamente das saídas das demais telas. A tela declara apenas parâmetros aceitos, contextos possíveis e, opcionalmente, relações esperadas como requisitos não executáveis. O visualizador pode editar vínculos na origem (ação/transição da tela chamadora), sem manter manualmente um segundo índice de entradas que possa divergir.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.5",
+      "topic": "Relações e rotas do fluxo",
+      "text": "Ao reutilizar a tela a partir de lugares diferentes, como o motor distingue contexto de entrada, origem, parâmetros e comportamento de “voltar”?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Na navegação, transportar um contexto de entrada com origemScreenId, actionId, entryContext, parametros e returnPolicy (voltar historico, destino explicito ou fechar modal). A tela reutilizada é a mesma; pode selecionar grupos pelo contexto quando necessário. O histórico de navegação real fica no motor e não em cópias do JSON de tela.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.6",
+      "topic": "Relações e rotas do fluxo",
+      "text": "Você quer poder inserir e remover relações manualmente no JSON/visualizador, sem editar o HTML? Em qual seção isso deve ocorrer?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Criar no editor uma área “Relações/Ações” que permite adicionar ou remover transições por screenId e actionId, editar condições e pré-visualizar as ligações. A gravação altera somente as configurações de ações/itens na tela-fonte correspondente; a projeção Flow é recalculada automaticamente e nunca editada como fonte principal.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.7",
+      "topic": "Relações e rotas do fluxo",
+      "text": "O motor deve identificar rotas ainda inexistentes, ciclos, destinos temporários e transições sem ação visível? Como marcar pendências?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Validar referências com estados: resolvida, pendente, externa, proposta ou inválida; registrar destinos ausentes, transições órfãs, ações não disparáveis e ciclos sem saída. Ciclos legítimos (voltar à Home, retentar) são aceitos e anotados, não bloqueados. Pendências devem aparecer no editor e no relatório de integridade antes de publicar.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q07.8",
+      "topic": "Relações e rotas do fluxo",
+      "text": "Um clique sem navegação (salvar, abrir drawer, disparar serviço, exibir alerta) deve aparecer no grafo do flow como ação/estado, ou apenas nas especificações da tela?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "O Flow deve mostrar navegações entre telas como arestas e permitir detalhar ações locais/serviços na mesma tela como eventos ou estados colapsáveis, sem criar nós de tela fictícios. O usuário pode alternar visualização simplificada (tela→tela) e técnica (ação, condição, comando, resultado).",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q08.1",
+      "topic": "Identidade e classificação",
+      "text": "Quais metadados são obrigatórios: id, nome, descrição, tipo, versão, status, autoria, ordem, categoria, seção etc.?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Obrigatórios: schemaVersion, tipo:\"tela\", id estável, nome, versao, status, classificacao.pastaPrincipal e jornadas[]. Recomendados: descricao, categoria, secao, tags, ordem, origemHistorica e atualizadoEm. autoria e revisoes opcionais; evitar metadados obrigatórios que não mudam a montagem ou relações.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q08.2",
+      "topic": "Identidade e classificação",
+      "text": "Uma tela terá uma pasta classificatória principal (shared, cliente, advogado...) e várias jornadas permitidas, ou só uma lista de jornadas?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar ambas: pastaPrincipal única para organização física/lógica (shared, cliente, advogado, administrador etc.) e jornadas[] com todas as jornadas em que a tela é utilizável. Uma tela shared pode aparecer em vários contextos sem duplicação de id ou arquivo.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q08.3",
+      "topic": "Identidade e classificação",
+      "text": "A hierarquia jornada → subjornada → fluxo → tela será declarada na tela, inferida pelo motor, ou combinada?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Combinar declarações e inferência: tela declara seus vínculos classificatórios mínimos (jornadas, subjornadas, grupos funcionais), enquanto a sequência de fluxos e conexões é derivada das ações. A hierarquia jornada→subjornada→fluxo→tela é uma projeção do motor, não uma árvore duplicada em cada arquivo.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q08.4",
+      "topic": "Identidade e classificação",
+      "text": "Qual diferença no contrato entre papel/perfil, jornada ativa, área de estudante, permissão e pasta de classificação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Separar identidade da pessoa, perfis/permissões efetivos, jornada ativa e classificação do arquivo. Pasta é metadado organizacional, não autorização. Jornada ativa é contexto de uso, não cria nova identidade. Tratar Estudante como área/assinatura relacionada ao Cliente, conforme direcionamento atual do projeto; Administrador exige concessão interna explícita, não escolha livre no cadastro.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q08.5",
+      "topic": "Identidade e classificação",
+      "text": "Quando uma tela for compartilhada, a árvore deverá exibi-la em cada jornada como referência ao mesmo ID ou apenas em shared, com vínculos de uso?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Árvore principal mostra a definição canônica apenas na pastaPrincipal; visualizações por jornada mostram referências ao mesmo screenId nos contextos em que participa. Abrir qualquer referência deve levar à única tela-fonte, indicando que é compartilhada e em quais jornadas aparece.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q08.6",
+      "topic": "Identidade e classificação",
+      "text": "A ordem das telas na árvore deve ser manual, por contexto/relacionamento ou gerada automaticamente por navegação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar ordem editorial explícita para agrupamento e exibição de telas, com possibilidade de ordenar por hierarquia de classificação; a sequência de navegação é derivada do grafo e deve aparecer na visualização de Flow. Evitar obrigar uma ordem linear única em fluxos com ramificações e retornos.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q09.1",
+      "topic": "Dados, mocks e estados",
+      "text": "Quais dados pertencem ao JSON como exemplo/mock, e quais apenas aparecem como contrato de fonte real (sessão, banco, serviço, API)?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Dados reais são contratos/bindings tipados: fonte, caminho, obrigatoriedade, validações e fallback visual, nunca registros privados embutidos. Mocks são cenários sintéticos isolados, identificados por id, contendo valores necessários para testar o desenho e as ações. Tokens de integração permanecem fora de qualquer JSON de tela.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q09.2",
+      "topic": "Dados, mocks e estados",
+      "text": "Como identificar a origem autoritativa de estados como situação da OAB, assinatura e autorização?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Cada fato/estado de negócio identifica fonteAutorizada (backend, banco/serviço, sessão validada), caminho lógico, tipo e estados possíveis. A OAB e permissões administrativas devem ser confirmadas no servidor; no protótipo, os mocks substituem somente valores de simulação, nunca a regra de segurança em produção.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q09.3",
+      "topic": "Dados, mocks e estados",
+      "text": "Os mocks são por estado, por jornada ou por cenário combinando condições?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Cenários são objetos identificados por id, com jornada, fatos/estados e dados de exemplo combináveis. Evitar um mock duplicado por cada permutação; usar cenário base e overrides quando fizer sentido. O editor permite escolher o cenário para renderização e verificar as montagens condicionais.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q09.4",
+      "topic": "Dados, mocks e estados",
+      "text": "Como representam-se parâmetros de entrada, dados fornecidos ao componente, validações e valores padrão?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Definir contratos de parâmetros tipados na tela e props tipadas no componente (nome, tipo, obrigatório, default, validação). Bindings fazem referência a fonte.caminho ou mocks; dados da tela configuram instâncias por id. Não incluir funções JavaScript executáveis como valores padrão.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q09.5",
+      "topic": "Dados, mocks e estados",
+      "text": "O que deve acontecer diante de valor ausente, desconhecido, erro ou carregamento de dados?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Prever explicitamente carregando, vazio, erro, indisponível e desconhecido. Dados cosméticos podem usar fallback de apresentação; permissões e estados autoritativos ausentes nunca liberam ações restritas. Registrar mensagens, ações de repetir e placeholders como montagens/grupos de estado próprios, quando necessários.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q09.6",
+      "topic": "Dados, mocks e estados",
+      "text": "Uma condição deve ser um objeto declarativo (comparações/composições) ou permitir expressões livres? Como controlar os riscos das expressões?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar AST/objeto declarativo e validável: operadores eq, neq, in, exists, gt/lt e composições all/any/not, com caminhos tipados. Não permitir eval, JS arbitrário ou expressões livres no JSON. A lista de operadores é versionada, documentada e executada por interpretador pequeno e determinístico.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q10.1",
+      "topic": "Projeções dos motores",
+      "text": "Confirmar se não haverá seções independentes obrigatórias flow e prototype dentro do JSON da tela: motor deriva tudo de estrutura, estados e ações?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Recomendo não exigir seções independentes flow ou prototype no JSON canônico da tela. Flow é projeção das ações, contextos e destinos; Protótipo é projeção de montagens, HTML/CSS e cenários. Manter configurações específicas opcionais somente quando não puderem ser derivadas, sem repetir transições ou estrutura visual.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q10.2",
+      "topic": "Projeções dos motores",
+      "text": "O que o motor de Flow precisa mostrar: tela, ação, condições, estado, origem, destino, subfluxo e pendência?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Exibir screenId, título, jornada/subjornada, condições/estados, actionId e elemento emissor, tipo de efeito, destino, contexto, origem derivada e status da ligação. Oferecer modo resumido e expandido, destacando referências faltantes, ciclos válidos, ramificações e subfluxos.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q10.3",
+      "topic": "Projeções dos motores",
+      "text": "O que o motor de Protótipo deve fazer com a mesma fonte: renderizar HTML/CSS, selecionar mocks, executar ações simuladas, navegar entre JSONs?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Consumir exatamente a montagem resolvida do motor, aplicar cenário de mock selecionado, renderizar HTML/CSS dos JSONs de componentes e da tela, simular comandos/efeitos e navegar entre telas por IDs. Não executar backend real por padrão; permitir adaptadores de integração explicitamente autorizados e registrar ações simuladas.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q10.4",
+      "topic": "Projeções dos motores",
+      "text": "As saídas do motor são arquivos gerados (projeções) ou visualizações calculadas em tempo de uso — ou ambos?",
+      "hint": "Decisão expressa do solicitante na entrevista: escolha C — montagem dinâmica e exportação opcional do resultado consolidado.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Somente montagem temporária em memória, sem exportar o consolidado"
+        },
+        {
+          "id": "B",
+          "label": "Somente montagem exportada e salva como arquivo consolidado"
+        },
+        {
+          "id": "C",
+          "label": "Ambos: montagem dinâmica e exportação opcional da versão consolidada"
+        }
+      ],
+      "answer": {
+        "optionId": "C",
+        "text": "O motor deve gerar a montagem em tempo de uso e também permitir exportar o resultado consolidado sob demanda. JSONs da tela e dos componentes permanecem como fontes canônicas; a consolidação é derivada, não editada manualmente.",
+        "status": "APROVADA",
+        "origemDecisao": "usuario_historico"
+      },
+      "source": "pergunta_respondida"
+    },
+    {
+      "id": "Q10.5",
+      "topic": "Projeções dos motores",
+      "text": "Quais metadados mínimos precisamos reservar para o mapa sem modelá-lo agora? Detalhamento adiado.",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Reservar apenas map opcional com identificadores, agrupamento lógico, observacoes e ordemEditorial; nenhuma regra de navegação deve depender desse bloco. Adiar definição dos campos textuais e layouts do mapa, que consumirá as relações e classificações já disponíveis.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q11.1",
+      "topic": "Validação e governança",
+      "text": "Quais seções/campos são obrigatórios, opcionais e condicionais para uma tela simples, compartilhada ou com múltiplos estados?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Obrigatórios no JSON de tela: schemaVersion, tipo, id, nome, classificacao, jornadas, estados[] (pode vazio) e montagem/estrutura mínima. Componentes[], estilos[], acoes[] e mocks[] podem ser vazios quando aplicável; grupos condicionais exigem id e condição válida. Definir perfis de validação para tela simples, compartilhada e condicionada, sem exigir campos inúteis.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q11.2",
+      "topic": "Validação e governança",
+      "text": "O motor deve bloquear, avisar ou substituir por placeholder ao encontrar componente/estado/ação/destino não resolvido?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Diferenciar nível: erro estrutural, id duplicado e permissão irresolvida bloqueiam compilação/publicação; ausência de destino ou componente bloqueia a montagem afetada em modo de produção, mas no editor aparece como pendência com placeholder identificável. Avisos não críticos (mock incompleto, estilo ausente) não devem derrubar toda a coleção.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q11.3",
+      "topic": "Validação e governança",
+      "text": "Como tratar IDs duplicados, rotas sem destino, regras concorrentes e referências circulares?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "IDs duplicados no mesmo escopo são erro; referências não resolvidas geram diagnóstico com origem e localização; regras concorrentes sem precedência explícita bloqueiam seleção; ciclos de navegação são aceitos e analisados, mas ciclos de dependência entre componentes que impedem resolução devem ser rejeitados.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q11.4",
+      "topic": "Validação e governança",
+      "text": "Como registrar versão do schema, versão da tela, status (proposta/aprovado) e mudanças compatíveis/incompatíveis?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Distinguir schemaVersion do formato, versao do conteúdo da tela e status editorial (proposta, em_revisao, aprovada, descontinuada). Mudanças incompatíveis elevam versão principal do schema e exigem migração. Mudanças em conteúdo/estilo seguem versionamento do item e histórico de revisão, sem alterar IDs estáveis arbitrariamente.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q11.5",
+      "topic": "Validação e governança",
+      "text": "Precisaremos de validação estrutural automatizada (ex.: JSON Schema) e validação semântica das relações?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim: JSON Schema para formato e tipos, mais validador semântico para ids, refs, estados, jornadas, condições, ações, destinos, prioridades, escopos de CSS e contratos de props. Gerar relatório automático acionável com erros, alertas e sugestões; testar o compilador com fixtures e snapshots.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q12.1",
+      "topic": "Componentes e autocontenção",
+      "text": "Durante a edição, o componente deve continuar como um JSON próprio, referenciado por ID nas telas?",
+      "hint": "Resposta explícita do solicitante: componentes permanecem separados, na pasta componentes, e a tela os referencia.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Componentes são JSONs independentes e reutilizáveis na pasta componentes, referenciados por IDs nas telas; HTML/CSS próprios não ficam embutidos no JSON-fonte da tela. As instâncias podem receber itens, ações e configurações locais.",
+        "status": "CONFIRMADA",
+        "origemDecisao": "usuario_historico"
+      },
+      "source": "pergunta_respondida"
+    },
+    {
+      "id": "Q12.2",
+      "topic": "Componentes e autocontenção",
+      "text": "No JSON exportado de uma tela, suas implementações HTML/CSS devem ser incorporadas integralmente, para atender ao requisito de autocontenção, ou haverá outro formato de pacote fechado?",
+      "hint": "A tela-fonte não incorpora os componentes. A exportação consolidada existe; falta decidir o formato exato do pacote gerado (inline completo, referências resolvidas, assets, versões).",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Manter a tela-fonte referencial, conforme aprovado. No JSON resolvido exportável, incorporar definições HTML/CSS dos componentes utilizados e recursos necessários (ou produzir pacote fechado com manifesto quando for grande). O consolidado é snapshot imutável gerado, nunca segunda fonte canônica. Permitir exportação por tela, cenário e coleção.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q12.3",
+      "topic": "Componentes e autocontenção",
+      "text": "Se o componente aparece duas vezes na mesma tela, a definição deve existir uma vez e as instâncias serem múltiplas?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. No registro de componentes resolvidos, uma definição por componentId+versao; no arranjo visual, várias instâncias com instanceId próprio, props, bindings, ações e estado de uso. O motor não copia a definição integral para cada instância.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q12.4",
+      "topic": "Componentes e autocontenção",
+      "text": "Como lidar com atualização do componente compartilhado: todas as telas atualizam automaticamente na edição? A exportação vira um snapshot congelado?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Durante edição, telas que usam componentId acompanham a versão compatível do componente e recompilam suas montagens afetadas. Para estabilidade, permitir fixar versaoRef; artefatos exportados guardam snapshot, versões e hashes para reprodução e auditoria, sem alterar retroativamente arquivos já exportados.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q12.5",
+      "topic": "Componentes e autocontenção",
+      "text": "Que campos o componente expõe para a tela configurar: itens, rótulos, propriedades, eventos, slots internos, visibilidade, classes e dados?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "O componente publica contrato tipado de props (itens, rótulos, variantes, classes permitidas, dados, slots internos), eventos emitidos e comportamentos internos genéricos. A tela configura instâncias e associa eventos a ações/destinos conforme jornada/estado. Exigir ids estáveis de evento e item para que o motor relacione sem interpretar HTML arbitrário.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q13.1",
+      "topic": "Eventos e efeitos",
+      "text": "Quais eventos serão padronizados (click, submit, change, load, ações de sistema, eventos de dados etc.)?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Padronizar eventos mínimos click, submit, change, input, focus/blur, mount/load, selectItem e eventos semânticos emitidos por componente. Cada evento tem id, origem (componentInstanceId/elementId), payload tipado e política de propagação; eventos de sistema/dados devem ter nomes explícitos e não executar JavaScript inline.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q13.2",
+      "topic": "Eventos e efeitos",
+      "text": "Como representar ações que não navegam, como abrir/fechar menu/modal, atualizar campo, alternar online e exibir toast?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Representar efeitos declarativos tipados: UI.open/close/toggle, state.set, toast.show, form.validate, data.refresh, service.call, navigate.to. O destino/efeito fica no item para navegação simples ou numa ação referenciada para operações complexas. Cada efeito define condições, parâmetros e resultado, sem transformar todo efeito em rota de tela.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q13.3",
+      "topic": "Eventos e efeitos",
+      "text": "Como uma ação chama serviço/backend sem embutir código executável arbitrário no JSON?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "A ação referencia commandId de um catálogo de operações permitidas; payload é composto por bindings e valores tipados; respostas normalizadas indicam sucesso/erro. O executador do ambiente chama API/backend com autorização própria. O JSON nunca contém URLs secretas, token, função JS livre ou regras privilegiadas executadas somente no cliente.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q13.4",
+      "topic": "Eventos e efeitos",
+      "text": "Como mapear sucesso, erro, cancelamento, confirmação e ações encadeadas?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Definir sequência de efeitos com id/ordem, confirmação opcional, eventos onSuccess/onError/onCancel e fallback explícito. Navegar somente após resultado validado quando a ação exigir operação (ex.: logout, salvar); erros permanecem no estado correto, exibindo feedback. Evitar encadeamentos implícitos de ações sem tratamento de falha.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q13.5",
+      "topic": "Eventos e efeitos",
+      "text": "O mesmo item pode ter destinos e rótulos diferentes conforme estado/jornada sem duplicá-lo? Qual sintaxe de exceção?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Um item de menu mantém o mesmo id e campos padrão, com overrides[] condicionados por estado/jornada para label, visibilidade, destino ou acaoRef. O motor combina o item uma única vez com a primeira regra compatível de prioridade explícita. Sem criar cópias do item para cada variante.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q14.1",
+      "topic": "Montagem e responsividade",
+      "text": "A posição de um componente será dada por slot e ordem, árvore hierárquica ou ambos?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Ambos: slot nomeado define a região e arvore local define aninhamento; ordem explícita/âncoras determinam posição entre irmãos. Cada instância possui id, componenteRef, slot, aplicaA, props e eventBindings. Essa combinação permite montar layouts diferentes sem uma árvore monolítica.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q14.2",
+      "topic": "Montagem e responsividade",
+      "text": "É permitido ter repetição dinâmica de elementos (listas vindas dos dados) sem enumerar cada nó HTML no JSON?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Nós e componentes repetidores podem definir repeat:{sourceRef,itemKey,templateRef} para listas dinâmicas; o motor cria instâncias com ids determinísticos por chave, sem gravar um nó por registro do mock. Exigir chave estável, estado vazio e limite/paginação quando aplicável.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q14.3",
+      "topic": "Montagem e responsividade",
+      "text": "Como o mesmo JSON descreve diferenças mobile/tablet/desktop?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar abordagem mobile-first com CSS responsivo no grupo de estilo e props/layout responsivos declarativos apenas quando a estrutura realmente muda por breakpoint. Não criar três JSONs independentes para mobile/tablet/desktop. O motor pode simular largura, orientação e preferências de acessibilidade.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q14.4",
+      "topic": "Montagem e responsividade",
+      "text": "Uma tela pode ter múltiplas instâncias do mesmo componente com ações diferentes?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. componentRef identifica a definição única e instanceId diferencia ocorrências. Cada instância recebe props, bindings e ações próprias; o componente declara eventos genéricos. Assim dois menus, cards ou botões iguais podem agir de forma diferente na mesma tela.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q14.5",
+      "topic": "Montagem e responsividade",
+      "text": "O conteúdo HTML de um estado pode mudar sem exigir CSS duplicado? (Intenção já confirmada; falta formalizar a resolução.)",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Grupos de HTML/estrutura e CSS são independentes, ambos com aplicaA opcional. Alteração de estrutura por estado não exige duplicar estilo base; reutilizar classes e CSS do componente. CSS condicional só é fornecido se houver mudança efetiva de aparência.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q15.1",
+      "topic": "Importação e exportação",
+      "text": "A unidade canônica de armazenamento será um JSON de tela, com a coleção sendo só um invólucro de vários JSONs?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. A unidade canônica é um JSON por tela e um JSON por componente, independentes e identificados. Uma coleção agrega documentos por referência/ordem para transporte e edição, sem criar nova fonte de verdade ou concatenar JSONs inválidos.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q15.2",
+      "topic": "Importação e exportação",
+      "text": "O visualizador deverá importar/editar/exportar cada tela separadamente, além de exportar uma coleção válida que preserve ordem e identidade?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Importar/exportar telas isoladas e coleções com envelope versionado {format, documents:[{order,name,data}]}, preservando id e metadados. O editor deve exibir árvore colapsável, status, filtros por jornada/estado e alterações incrementais; operações não descartam documentos anteriores inadvertidamente.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q15.3",
+      "topic": "Importação e exportação",
+      "text": "Ao importar uma tela com o mesmo id, devemos substituir, versionar, mesclar ou impedir a duplicação?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Nunca criar duas telas ativas com mesmo id silenciosamente. Ao importar o mesmo id, detectar conflitos e oferecer opções explícitas: substituir versão atual, criar nova revisão versionada, comparar/mesclar campos com prévia ou cancelar. Fazer backup/undo antes de substituir; não renomear id automático para esconder conflito.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q15.4",
+      "topic": "Importação e exportação",
+      "text": "O que exatamente o motor pode recalcular após cada importação: índice de telas, entradas, saídas, árvore, grafo e validações?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Recalcular incrementalmente índice de IDs, dependências de componentes, montagens impactadas, entradas derivadas, saídas, árvore de jornadas, grafo de Flow e diagnósticos. Componentes alterados invalidam as telas que os referenciam; o motor pode usar cache por hash/versão para evitar remontar tudo.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q15.5",
+      "topic": "Importação e exportação",
+      "text": "Precisamos distinguir JSON de componente, JSON de tela e JSON consolidado por um discriminador explícito de tipo?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Exigir discriminador tipo:\"tela\" | \"componente\" | \"consolidado\", acompanhado de schemaVersion e id/manifest. O importador valida contrato correspondente, diferencia artefato gerado de fonte editável e impede importar consolidado como substituto silencioso da tela canônica.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q16.1",
+      "topic": "Segurança e permissões",
+      "text": "O motor de protótipo poderá simular qualquer estado mediante mock, distinguindo isso da verificação real de acesso?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. O protótipo pode selecionar cenários sintéticos, inclusive OAB aprovada/pendente, para demonstrar todas as montagens; deve exibir indicação visível “SIMULAÇÃO/MOCK” e usar executores simulados. Isso nunca altera direitos de acesso, dados reais ou serviços de produção.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q16.2",
+      "topic": "Segurança e permissões",
+      "text": "Estados como OAB aprovada e papel de administrador dependem de verificação do backend, não apenas de flag visual no cliente?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Verificações de OAB, autorização de administrador, assinatura e acesso a dados protegidos devem ser aplicadas no backend e refletidas no cliente apenas como estado. A ausência de resposta verificada implica acesso restrito. Não confiar em flags de CSS, mock ou JSON local como autorização.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q16.3",
+      "topic": "Segurança e permissões",
+      "text": "O JSON exportado nunca deve conter credenciais, segredos, dados reais sensíveis nem código de autenticação privilegiado? Como registrar essa política?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Proibir credenciais, tokens, chaves privadas, dados pessoais reais sensíveis, endpoints administrativos secretos e funções privilegiadas no JSON; usar mocks fictícios e identificadores de comandos. Aplicar scanner de segredos e validação de permissões em CI/publicação, com exceções documentadas apenas para dados públicos.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q16.4",
+      "topic": "Segurança e permissões",
+      "text": "Quais ações exigem confirmação de servidor e quais são estritamente locais/visuais?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Ações locais: abrir menu/modal, alternar aba, exibir mensagem, alterar rascunho de formulário. Exigem servidor: autenticação, logout válido, alteração de perfil persistente, estado online profissional, solicitação/aceite, assinatura, OAB e administração. Cada comando declara requiresServer:true e política onSuccess/onError; o servidor valida autorização e persistência.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q17.1",
+      "topic": "Testes e documentação",
+      "text": "Cada tela deverá fornecer cenários mínimos para testar todos os estados/jornadas e os principais cliques?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Cada tela deve incluir ou vincular cenários mínimos cobrindo cada jornada/estado principal, menus diferentes, caminhos de sucesso/erro e cliques críticos. Criar matriz de cobertura por montagem e ação; mocks nunca precisam reproduzir todo o banco, apenas dados sintéticos suficientes para verificar comportamento.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q17.2",
+      "topic": "Testes e documentação",
+      "text": "Como documentar regras de negócio, pendências, decisões e critérios de aceite sem confundi-los com dados executáveis?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Manter documentacao como bloco não executável com requisitos, regras de negócio, pendências (id/status/responsável), justificativas, critérios de aceite e referências históricas. Diferenciar decisaoAprovada de recomendacao e hipotese; o motor ignora documentação ao executar a tela, mas o editor pode gerar relatórios.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q17.3",
+      "topic": "Testes e documentação",
+      "text": "Deseja um relatório automático de cobertura: estados sem estrutura, itens sem ação, destinos ausentes, componentes sem estilo, mocks ausentes?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim. Relatório com estado sem montagem, componente/ação inexistentes, item sem destino/efeito, duas regras concorrentes, entradas/saídas órfãs, CSS sem escopo, mock incompleto, permissão desconhecida e cobertura de testes. Mostrar severidade, screenId e caminho JSON exato de cada problema.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q17.4",
+      "topic": "Testes e documentação",
+      "text": "O visualizador em árvore deve mostrar blocos visuais, dados, ações e relações em uma sequência linear obrigatória?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Exibir sequência linear estável: identidade → classificação → contratos/dados → estados → componentes referenciados → estrutura/grupos → estilos/grupos → itens e ações → mocks/cenários → documentação → mapa opcional. Essa é ordem de apresentação/editoração, não obrigação de dependência temporal de montagem.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q18.1",
+      "topic": "Migração dos JSONs existentes",
+      "text": "Qual arquivo existente será a referência de conteúdo visual e comportamento, sem automaticamente aprovar sua estrutura (home_advogado_autocontido, linear_v3, catálogo completo etc.)?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Usar home_advogado_autocontido.json como referência principal de conteúdo e fidelidade visual; usar advogado_home_profissional_linear_v3.json para inspiração de organização por grupos/estados e catalogo_home_profissional_completo.json para mapear componentes globais e locais. Não copiar automaticamente seus schemas legados nem transformar caminhos de origem em dependências executáveis.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q18.2",
+      "topic": "Migração dos JSONs existentes",
+      "text": "Como converter nós de flow legados em ações e relações locais por tela, preservando múltiplos pontos de entrada?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Criar migração por screenId: agrupar todos os nós legados que apontam à mesma tela, converter branches/routes e next em eventos, ações e transições locais com entryContext, preservando estados locais e múltiplos pontos de origem. Gerar índice reverso de entradas derivadas; registrar pendências onde a ação visual concreta ainda não estiver identificada, sem inventar botão.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q18.3",
+      "topic": "Migração dos JSONs existentes",
+      "text": "Na migração, o que fazer com atributos de origem (sourcePath, origem, pastas UI): manter somente como histórico, remover ou transformar em identificadores?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Preservar origem/sourcePath exclusivamente em metadados historicos auditáveis e opcionais; referências executáveis passam a ser componentRef, screenId, actionId e stateId. O motor jamais usa caminho de pasta UI do legado para buscar HTML/CSS da tela-fonte após migração, exceto no importador/conversor explicitamente configurado.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    },
+    {
+      "id": "Q18.4",
+      "topic": "Migração dos JSONs existentes",
+      "text": "Após as decisões, qual conjunto de telas-piloto validará o contrato: Entrar, Home Cliente e Home Profissional, incluindo OAB a validar/validada?",
+      "hint": "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+      "options": [],
+      "answer": {
+        "optionId": null,
+        "text": "Sim: validar com Entrar (shared, autenticação, rotas condicionais), Home Cliente (jornada cliente, busca como estado local, menu contextual) e Home Profissional (OAB a validar/validada, menus/ações distintos). Testar importação, resolução de componentes externos, montagem visual, mocks, grafo Flow, exportação snapshot e validação de referências antes de considerar o contrato estável.",
+        "status": "RECOMENDADA",
+        "origemDecisao": "recomendacao_assistente",
+        "revisao": "AGUARDANDO_VALIDACAO_USUARIO"
+      },
+      "source": "pergunta_futura"
+    }
+  ],
+  "notes": "Atualização V0.6. Q10.4 escolha C aprovada; Q12.1 confirmada. Q03 segue pendente. R01 e R12 adequados à orientação mais recente: componentes externos à tela-fonte. Não duplicar HTML/CSS de componentes no JSON canônico da tela.\n\nATENÇÃO: respostas com status RECOMENDADA foram propostas pelo assistente e aguardam revisão; não são decisões do usuário. As respostas com CONFIRMADA ou APROVADA foram preservadas da entrevista v0.6. Este projeto não substitui o schema canônico definitivo.",
+  "updatedAt": "2026-10-23",
+  "recommendationMeta": {
+    "objetivo": "Contrato canônico da tela, organizado em seções e grupos identificados, com estados/jornadas, componentes reutilizáveis em arquivos externos e montagem dinâmica/exportável.",
+    "metodo": "recomendacoes_tecnicas_sobre_questionario_85_perguntas_e_decisoes_ja_aprovadas",
+    "status": "PROPOSTA_PARA_REVISAO",
+    "criterios": [
+      "simplicidade_motor",
+      "sem_duplicacao",
+      "reuso_componentes",
+      "estados_jornadas",
+      "ids_estaveis",
+      "edicao_incremental",
+      "seguranca"
+    ],
+    "respostasPreexistentes": 5,
+    "respostasRecomendadas": 80,
+    "aviso": "A quantidade respondida significa preenchida; somente CONFIRMADA/APROVADA representa decisão do usuário."
+  }
+}

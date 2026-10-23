@@ -1,0 +1,2937 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#13253f" />
+    <title>Advogado Já · Entrevista e contrato JSON</title>
+    <style>
+      :root {
+        --navy: #13253f;
+        --navy2: #1c3858;
+        --blue: #2571c5;
+        --bg: #f2f5f9;
+        --white: #fff;
+        --ink: #233147;
+        --muted: #6b778c;
+        --line: #dce3ed;
+        --soft: #eef3fa;
+        --green: #217456;
+        --greenbg: #e8f5ee;
+        --gold: #986b21;
+        --goldbg: #fff6e6;
+        --red: #aa3344;
+        --shadow: 0 9px 32px rgba(22, 44, 74, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          14px/1.55 ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          Arial,
+          sans-serif;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      :focus-visible {
+        outline: 3px solid #74abf1;
+        outline-offset: 2px;
+      }
+      button,
+      .pill,
+      .qcard {
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+      }
+      a {
+        color: var(--blue);
+      }
+      .apphead {
+        background: var(--navy);
+        color: white;
+        padding: 21px clamp(18px, 3vw, 45px) 14px;
+      }
+      .apphead-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 18px;
+        flex-wrap: wrap;
+        max-width: 1640px;
+        margin: auto;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .logo {
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 13px;
+        background: #284b77;
+        font-size: 24px;
+        border: 1px solid #5877a2;
+      }
+      .eyebrow {
+        color: #bbcee5;
+        font-size: 10px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        font-weight: 850;
+      }
+      .apphead h1 {
+        font-size: clamp(19px, 2vw, 27px);
+        margin: 1px 0 1px;
+        letter-spacing: -0.035em;
+      }
+      .apphead p {
+        color: #c6d3e3;
+        font-size: 12px;
+        margin: 0;
+      }
+      .head-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 9px 12px;
+        font-size: 12px;
+        font-weight: 760;
+        background: white;
+        color: var(--ink);
+        min-height: 36px;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        background: #eff5fb;
+      }
+      .btn.inverse {
+        background: #233d61;
+        color: white;
+        border-color: #547294;
+      }
+      .btn.inverse:hover {
+        background: #32557e;
+      }
+      .btn.primary {
+        background: var(--blue);
+        color: white;
+        border-color: var(--blue);
+      }
+      .btn.primary:hover {
+        background: #155da8;
+      }
+      .btn.danger {
+        color: var(--red);
+      }
+      .btn.sm {
+        padding: 5px 10px;
+        min-height: 29px;
+        font-size: 11px;
+      }
+      .navtabs {
+        max-width: 1640px;
+        margin: 20px auto -14px;
+        display: flex;
+        gap: 5px;
+      }
+      .tab {
+        border: 0;
+        background: none;
+        color: #b9cae0;
+        border-bottom: 3px solid transparent;
+        padding: 10px 18px;
+        font-weight: 750;
+      }
+      .tab.active {
+        color: white;
+        border-bottom-color: #78b4fb;
+      }
+      .tab:hover {
+        color: white;
+      }
+      .layout {
+        max-width: 1640px;
+        padding: 22px clamp(12px, 2vw, 35px) 40px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 258px minmax(0, 1fr);
+        gap: 20px;
+      }
+      .sidebar,
+      .panel,
+      .qcard,
+      .smallpanel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        box-shadow: var(--shadow);
+      }
+      .sidebar {
+        position: sticky;
+        top: 14px;
+        align-self: start;
+        max-height: calc(100vh - 28px);
+        overflow: auto;
+      }
+      .sb-title {
+        font-weight: 850;
+        font-size: 13px;
+        padding: 16px 15px 8px;
+      }
+      .stats {
+        display: flex;
+        gap: 7px;
+        padding: 0 14px 14px;
+      }
+      .stat {
+        background: var(--soft);
+        padding: 9px;
+        border-radius: 9px;
+        flex: 1;
+        text-align: center;
+      }
+      .stat strong {
+        display: block;
+        font-size: 19px;
+        line-height: 1.2;
+        color: var(--navy);
+      }
+      .stat span {
+        font-size: 10px;
+        color: var(--muted);
+      }
+      .progress-track {
+        background: #dfebf7;
+        height: 6px;
+        margin: 0 14px 12px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-track > div {
+        background: #2e9b73;
+        height: 100%;
+        width: 0;
+      }
+      .side-label {
+        padding: 12px 14px 4px;
+        font-size: 10px;
+        color: var(--muted);
+        font-weight: 900;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+      .topic-btn {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        justify-content: space-between;
+        gap: 9px;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        border-left: 3px solid transparent;
+        padding: 9px 14px 9px 11px;
+        color: var(--ink);
+        width: 100%;
+        font-weight: 650;
+        font-size: 12px;
+      }
+      .topic-btn:hover {
+        background: #f2f6fb;
+      }
+      .topic-btn.active {
+        border-left-color: var(--blue);
+        background: #eaf3ff;
+        color: #174f8e;
+      }
+      .topic-btn small {
+        background: #edf0f6;
+        color: #718097;
+        border-radius: 7px;
+        padding: 1px 6px;
+        white-space: nowrap;
+      }
+      .topic-btn.active small {
+        background: #cee4fc;
+        color: #235b92;
+      }
+      .panel {
+        padding: 22px;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .panel-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .panel-head h2 {
+        margin: 0;
+        font-size: 21px;
+        letter-spacing: -0.03em;
+        color: var(--navy);
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .micro {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .panel-head p {
+        margin: 3px 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .tools {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .search {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 9px;
+        padding: 9px 12px;
+        min-width: 220px;
+        outline-color: #8dc5fd;
+      }
+      .filter {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 9px;
+        padding: 9px;
+        font-size: 12px;
+      }
+      .req-box {
+        background: #f8fafc;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 11px 14px;
+        margin-bottom: 16px;
+      }
+      .req-box summary {
+        cursor: pointer;
+        color: var(--navy);
+        font-weight: 770;
+      }
+      .req-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .req {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 9px;
+        font-size: 11px;
+      }
+      .req strong {
+        color: var(--navy);
+      }
+      .qstack {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .qcard {
+        padding: 0;
+        box-shadow: none;
+        overflow: hidden;
+      }
+      .qcard.answered {
+        border-left: 4px solid #309770;
+      }
+      .qcard.current {
+        border-left: 4px solid #e6a538;
+      }
+      .qtop {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        gap: 11px;
+        justify-content: space-between;
+        border: 0;
+        background: white;
+        padding: 16px;
+      }
+      .qtop:hover {
+        background: #fbfdff;
+      }
+      .qnum {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #d6e2f1;
+        border-radius: 7px;
+        padding: 3px 7px;
+        background: #f4f8fd;
+        color: #225f9f;
+        font-weight: 850;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .qtitle {
+        font-weight: 760;
+        color: var(--ink);
+        line-height: 1.45;
+      }
+      .qtopcopy {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .status {
+        font-size: 10px;
+        font-weight: 820;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        border-radius: 50px;
+        padding: 5px 9px;
+        align-self: flex-start;
+        white-space: nowrap;
+      }
+      .status.approved {
+        color: var(--green);
+        background: var(--greenbg);
+      }
+      .status.suggested {
+        color: #975c12;
+        background: #fff2d6;
+      }
+      .qcard:has(.status.suggested) {
+        border-left: 4px solid #d5a44d;
+      }
+      .status.pending {
+        color: var(--gold);
+        background: var(--goldbg);
+      }
+      .status.future {
+        color: #687b92;
+        background: #eff2f6;
+      }
+      .chev {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1;
+      }
+      .qbody {
+        padding: 0 16px 16px 16px;
+        border-top: 1px solid #f0f2f6;
+      }
+      .hint {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 11px 0;
+      }
+      .opts {
+        display: grid;
+        gap: 7px;
+        margin: 12px 0;
+      }
+      .opt {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        text-align: left;
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 11px 12px;
+        width: 100%;
+        border-radius: 9px;
+        color: var(--ink);
+        line-height: 1.4;
+      }
+      .opt:hover {
+        border-color: #8bb5e6;
+        background: #f7fbff;
+      }
+      .opt.selected {
+        background: #eef8f4;
+        border-color: #80bea6;
+      }
+      .circle {
+        flex: none;
+        height: 17px;
+        width: 17px;
+        border: 2px solid #adb9c8;
+        border-radius: 50%;
+        margin-top: 1px;
+        display: grid;
+        place-items: center;
+        font-size: 9px;
+        color: white;
+      }
+      .opt.selected .circle {
+        border-color: #238361;
+        background: #238361;
+      }
+      .opt-code {
+        font-size: 11px;
+        font-weight: 850;
+        color: #42668b;
+        min-width: 17px;
+      }
+      .answer-tools {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .field-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 760;
+        margin: 12px 0 5px;
+      }
+      .ans-text {
+        min-height: 65px;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        resize: vertical;
+        outline-color: #8bbbf0;
+      }
+      .minipanel {
+        border-top: 1px dashed var(--line);
+        margin-top: 15px;
+        padding-top: 13px;
+      }
+      .minipanel summary {
+        font-size: 11px;
+        color: #47709e;
+        cursor: pointer;
+        font-weight: 760;
+      }
+      .mini-actions {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .notice {
+        border: 1px solid #ecd5a5;
+        background: #fffaf0;
+        border-radius: 9px;
+        padding: 12px 14px;
+        color: #795b2d;
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+      .notice.blue {
+        background: #f0f7ff;
+        border-color: #c9e1fd;
+        color: #2a567d;
+      }
+      .code-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .codeswitch {
+        display: inline-flex;
+        padding: 3px;
+        background: #f2f6fa;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        gap: 2px;
+      }
+      .codeswitch button {
+        border: 0;
+        border-radius: 7px;
+        padding: 7px 10px;
+        background: transparent;
+        color: #6b788b;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .codeswitch button.active {
+        background: white;
+        color: #245b99;
+        box-shadow: 0 1px 5px #0001;
+      }
+      .code {
+        background: #102139;
+        color: #dce9f5;
+        white-space: pre;
+        overflow: auto;
+        max-height: 70vh;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #30425e;
+        font:
+          12px/1.65 ui-monospace,
+          Consolas,
+          "SFMono-Regular",
+          Menlo,
+          monospace;
+        tab-size: 2;
+      }
+      .summary-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .smallpanel {
+        padding: 15px;
+        box-shadow: none;
+      }
+      .smallpanel strong {
+        font-size: 21px;
+        color: var(--navy);
+      }
+      .smallpanel p {
+        margin: 1px 0;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .settings-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .settings-item {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+      }
+      .settings-item h3 {
+        font-size: 14px;
+        color: var(--navy);
+        margin: 0 0 4px;
+      }
+      .settings-item p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0 0 10px;
+      }
+      .footnote {
+        font-size: 11px;
+        color: var(--muted);
+        padding: 16px 0 0;
+      }
+      .empty {
+        padding: 35px 10px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .toast {
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        background: var(--navy);
+        color: white;
+        z-index: 200;
+        box-shadow: 0 12px 30px #13253f44;
+        border-radius: 10px;
+        padding: 12px 17px;
+        max-width: min(410px, calc(100vw - 35px));
+      }
+      .dialog-cover {
+        position: fixed;
+        inset: 0;
+        background: #07172788;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: 14px;
+      }
+      .dialog {
+        background: white;
+        border-radius: 14px;
+        width: min(580px, 100%);
+        max-height: 90vh;
+        overflow: auto;
+        padding: 22px;
+        box-shadow: 0 25px 70px #0005;
+      }
+      .dialog h2 {
+        font-size: 19px;
+        margin: 0;
+        color: var(--navy);
+      }
+      .dialog input,
+      .dialog select,
+      .dialog textarea {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        margin-top: 4px;
+      }
+      .dialog label {
+        display: block;
+        font-weight: 700;
+        font-size: 12px;
+        margin-top: 13px;
+      }
+      .dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 20px;
+      }
+      .countmark {
+        font-size: 10px;
+        padding: 3px 7px;
+        border-radius: 6px;
+        background: #e8eff8;
+        color: #416184;
+      }
+      .inline-note {
+        border-left: 3px solid #79a7d5;
+        padding: 5px 10px;
+        background: #f7faff;
+        font-size: 11px;
+        color: var(--muted);
+        margin: 9px 0;
+      }
+      .tag {
+        border: 1px solid #d6e1ed;
+        border-radius: 6px;
+        padding: 2px 6px;
+        font-size: 10px;
+        color: #64748b;
+      }
+      .sep {
+        height: 1px;
+        background: var(--line);
+        margin: 18px 0;
+      }
+      .topic-hint {
+        font-size: 11px;
+        margin-top: 4px;
+        color: var(--muted);
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+          padding-top: 18px;
+        }
+        .sidebar {
+          position: static;
+          max-height: none;
+        }
+        .side-topics {
+          display: flex;
+          overflow-x: auto;
+          border-top: 1px solid var(--line);
+          padding: 5px;
+        }
+        .topic-btn {
+          min-width: 145px;
+          border-left: 0;
+          border-bottom: 3px solid transparent;
+          padding: 8px;
+        }
+        .topic-btn.active {
+          border-bottom-color: var(--blue);
+        }
+        .side-label {
+          display: none;
+        }
+        .stats {
+          max-width: 330px;
+        }
+        .panel {
+          padding: 15px;
+        }
+      }
+      @media (max-width: 540px) {
+        .apphead {
+          padding: 16px 13px 12px;
+        }
+        .navtabs {
+          margin-top: 12px;
+        }
+        .tab {
+          padding: 11px;
+          font-size: 12px;
+        }
+        .head-actions .btn {
+          font-size: 11px;
+          padding: 7px 9px;
+        }
+        .panel-head h2 {
+          font-size: 18px;
+        }
+        .qtop {
+          padding: 12px;
+          gap: 6px;
+        }
+        .qbody {
+          padding: 0 12px 12px;
+        }
+        .summary-cards {
+          gap: 7px;
+        }
+        .smallpanel {
+          padding: 9px;
+        }
+        .search {
+          min-width: 100%;
+          width: 100%;
+        }
+        .tools {
+          width: 100%;
+        }
+        .filter {
+          flex: 1;
+        }
+        .code {
+          font-size: 10px;
+          padding: 12px;
+        }
+        .status {
+          font-size: 8px;
+          padding: 4px 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="apphead">
+      <div class="apphead-row">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">⚖</div>
+          <div>
+            <div class="eyebrow">
+              Advogado Já · Laboratório de especificação
+            </div>
+            <h1>Entrevista do JSON Canônico</h1>
+            <p>
+              Decisões reversíveis → contrato em construção · Arquivo
+              autocontido e offline
+            </p>
+          </div>
+        </div>
+        <div class="head-actions">
+          <button type="button" id="btnImport" class="btn inverse">
+            ↥ Importar projeto</button
+          ><button type="button" id="btnExport" class="btn inverse">
+            ↧ Exportar projeto</button
+          ><button type="button" id="btnExportDraft" class="btn inverse">
+            { } Exportar JSON
+          </button>
+        </div>
+      </div>
+      <nav class="navtabs" aria-label="Abas principais" role="tablist">
+        <button
+          data-main-tab="questions"
+          class="tab active"
+          role="tab"
+          aria-selected="true"
+        >
+          01 · Entrevista</button
+        ><button
+          data-main-tab="draft"
+          class="tab"
+          role="tab"
+          aria-selected="false"
+        >
+          02 · JSON em construção</button
+        ><button
+          data-main-tab="review"
+          class="tab"
+          role="tab"
+          aria-selected="false"
+        >
+          03 · Resumo e arquivos
+        </button>
+      </nav>
+    </header>
+    <main class="layout" id="mainLayout">
+      <aside class="sidebar" id="interviewSidebar">
+        <div class="sb-title">
+          Andamento <span class="micro" id="pct" style="float: right">0%</span>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong id="statTotal">—</strong><span>Perguntas</span>
+          </div>
+          <div class="stat">
+            <strong id="statAnswered">—</strong><span>Respondidas</span>
+          </div>
+          <div class="stat">
+            <strong id="statPending">—</strong><span>Pendentes</span>
+          </div>
+        </div>
+        <div class="progress-track"><div id="progress"></div></div>
+        <div class="side-label">Categorias</div>
+        <div id="topics" class="side-topics"></div>
+        <div class="footnote" style="padding: 14px">
+          O projeto é salvo no navegador quando possível. Exporte o arquivo JSON
+          para ter uma cópia portátil.
+        </div>
+      </aside>
+      <section class="panel" data-panel="questions">
+        <div class="panel-head">
+          <div>
+            <h2 id="currentTopic">Entrevista completa</h2>
+            <p>
+              Marque, desmarque ou altere respostas; o JSON será recomposto
+              automaticamente.
+            </p>
+          </div>
+          <button class="btn primary" type="button" id="btnAddQ">
+            ＋ Nova pergunta
+          </button>
+        </div>
+        <div class="notice blue">
+          <strong>Decisões iniciais recuperadas:</strong> Q01 (grupos vinculados
+          a estados), Q02 (Menu único) e Q02A (lista única de itens, opção B). A
+          Q03 continua aberta. As demais perguntas vieram do documento V0.5, sem
+          alternativas inventadas.
+        </div>
+        <details class="req-box">
+          <summary>
+            13 requisitos conhecidos do projeto · consultar fonte
+          </summary>
+          <div class="req-grid" id="requirementList"></div>
+        </details>
+        <div class="tools" style="margin-bottom: 14px">
+          <input
+            id="searchInput"
+            class="search"
+            type="search"
+            placeholder="Buscar por ID, pergunta ou tema…"
+            aria-label="Buscar perguntas"
+          /><select
+            class="filter"
+            id="statusFilter"
+            aria-label="Filtrar status"
+          >
+            <option value="all">Todas</option>
+            <option value="answered">Respondidas</option>
+            <option value="pending">Pendentes</option></select
+          ><span class="micro" id="visibleCount"></span>
+        </div>
+        <div class="qstack" id="questionList"></div>
+        <p class="footnote">
+          Perguntas futuras admitem texto livre ou alternativas criadas por
+          você. Selecionar novamente uma alternativa já marcada a desmarca. Para
+          substituir uma resposta, escolha outra opção ou edite o texto.
+        </p>
+      </section>
+      <section class="panel hidden" data-panel="draft">
+        <div class="panel-head">
+          <div>
+            <h2>JSON em construção</h2>
+            <p>
+              Prévia reativa baseada somente nas respostas registradas — não é o
+              schema final.
+            </p>
+          </div>
+          <div class="tools">
+            <button class="btn" type="button" id="btnCopy">Copiar JSON</button
+            ><button class="btn primary" type="button" id="btnExportDraft">
+              Exportar rascunho
+            </button>
+          </div>
+        </div>
+        <div class="notice">
+          <strong>Atenção:</strong> os nomes provisórios no JSON abaixo são
+          apenas projeção de entrevista. Questões ainda não respondidas
+          permanecem em aberto. Mudar ou desmarcar respostas refaz esta prévia,
+          sem reter decisões descartadas.
+        </div>
+        <div class="code-top">
+          <div class="codeswitch">
+            <button data-codeswitch="draft" class="active">
+              Contrato em construção</button
+            ><button data-codeswitch="full">
+              Perguntas + respostas (projeto)
+            </button>
+          </div>
+          <span class="micro" id="jsonInfo"></span>
+        </div>
+        <pre
+          class="code"
+          id="jsonCode"
+          tabindex="0"
+          aria-label="Código JSON gerado"
+        ></pre>
+        <p class="footnote">
+          Para continuar a entrevista noutro navegador, use “Exportar projeto”,
+          que preserva enunciados, alternativas, respostas e categorias.
+          “Exportar rascunho” contém apenas a projeção do contrato.
+        </p>
+      </section>
+      <section class="panel hidden" data-panel="review">
+        <div class="panel-head">
+          <div>
+            <h2>Resumo e portabilidade</h2>
+            <p>
+              Registro auditável da entrevista, inclusive das escolhas que podem
+              ser alteradas.
+            </p>
+          </div>
+          <button class="btn" id="btnExportMd">↧ Exportar resumo .MD</button>
+        </div>
+        <div class="summary-cards" id="reviewStats"></div>
+        <div class="settings-list">
+          <div class="settings-item">
+            <h3>Exportar projeto completo</h3>
+            <p>
+              Contém as 85 perguntas originais, alternativas, perguntas
+              adicionais, respostas, observações, requisitos e categorias. É o
+              arquivo recomendado para retomar o trabalho.
+            </p>
+            <button class="btn primary" id="btnExport">
+              ↧ Exportar projeto .json
+            </button>
+          </div>
+          <div class="settings-item">
+            <h3>Importar / mesclar projeto</h3>
+            <p>
+              Importe um projeto exportado deste HTML. Você escolhe se deseja
+              substituir toda a entrevista ou mesclar perguntas pelo
+              identificador.
+            </p>
+            <button class="btn" id="btnImport">↥ Importar projeto .json</button>
+          </div>
+          <div class="settings-item">
+            <h3>Exportar contrato em construção</h3>
+            <p>
+              Um JSON derivado das respostas. Não executável, ainda incompleto e
+              com sinalização de decisões pendentes.
+            </p>
+            <button class="btn" id="btnExportDraft">
+              ↧ Exportar rascunho .json
+            </button>
+          </div>
+          <div class="settings-item">
+            <h3>Relatório em Markdown</h3>
+            <p>
+              Registra todas as perguntas e quais alternativas estão marcadas.
+              Facilita compartilhar ou discutir fora do HTML.
+            </p>
+            <button class="btn" id="btnExportMd">↧ Exportar .md</button>
+          </div>
+          <div class="settings-item">
+            <h3>Reversão e restauração</h3>
+            <p>
+              Você pode desmarcar questões individualmente na entrevista. As
+              ações abaixo afetam a coleção inteira e exigem confirmação.
+            </p>
+            <div class="mini-actions">
+              <button class="btn danger" id="btnClear">
+                Desmarcar todas as respostas</button
+              ><button class="btn danger" id="btnReset">
+                Restaurar documento V0.5
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="sep"></div>
+        <h2 style="font-size: 18px; margin-bottom: 8px">
+          Decisões registradas
+        </h2>
+        <div class="settings-list" id="decisionList"></div>
+        <p class="footnote" id="savedInfo">
+          Nenhuma exportação automática de arquivo é feita. Baixe o projeto para
+          ter cópia externa.
+        </p>
+      </section>
+    </main>
+    <input
+      id="importInput"
+      type="file"
+      accept=".json,application/json"
+      class="hidden"
+      aria-label="Arquivo de projeto para importar"
+    />
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <div id="dialogCover" class="dialog-cover hidden" role="presentation">
+      <div
+        class="dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dialogTitle"
+      >
+        <h2 id="dialogTitle">Adicionar pergunta</h2>
+        <p class="micro">
+          A nova questão será incluída nas exportações e no JSON de decisões
+          quando respondida.
+        </p>
+        <label
+          >ID da pergunta (opcional)<input
+            id="newQuestionId"
+            placeholder="Ex.: Q19.1 (automático se vazio)" /></label
+        ><label
+          >Pergunta<textarea
+            id="newText"
+            rows="3"
+            placeholder="Escreva uma pergunta objetiva…"
+          ></textarea></label
+        ><label>Categoria<select id="newTopic"></select></label
+        ><label id="newTopicOtherWrap" class="hidden"
+          >Nova categoria<input
+            id="newTopicOther"
+            placeholder="Nome da categoria" /></label
+        ><label
+          >Alternativas opcionais — uma por linha<textarea
+            id="newOptions"
+            rows="4"
+            placeholder="Alternativa A&#10;Alternativa B&#10;Alternativa C"
+          ></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button class="btn" type="button" id="dialogCancel">Cancelar</button
+          ><button class="btn primary" type="button" id="dialogSave">
+            Salvar pergunta
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const SEED_DATA = {
+        format: "advogadoja.entrevista-json-tela.v1",
+        source: {
+          filename: "ADVOGADOJA_ENTREVISTA_COMPLETA_JSON_TELA_V0_5.md",
+          version: "0.5",
+          note: "Perguntas e requisitos extraídos do documento, sem adicionar opções às perguntas futuras.",
+        },
+        requirements: [
+          {
+            id: "R01",
+            status: "CONFIRMADA",
+            text: "Um JSON por tela, com conteúdo visual suficiente (estrutura HTML e CSS) para a renderização, sem consultar o código visual de uma pasta UI externa.",
+          },
+          {
+            id: "R02",
+            status: "CONFIRMADA",
+            text: "A tela pode possuir estados distintos (por exemplo, situação de OAB) que alteram estrutura, conteúdo, CSS, menu e ações, individualmente ou em conjunto.",
+          },
+          {
+            id: "R03",
+            status: "CONFIRMADA",
+            text: "A tela possui classificação/vínculo de jornada, útil para a árvore; uma tela pode ser utilizada em mais de um contexto.",
+          },
+          {
+            id: "R04",
+            status: "CONFIRMADA",
+            text: "O JSON contém uma seção de estados, identificando os estados e permitindo associação de outras seções a eles.",
+          },
+          {
+            id: "R05",
+            status: "CONFIRMADA",
+            text: "Grupos de estrutura/componentes, CSS e ações têm atributos que os relacionam a estados, quando aplicável. Não é obrigatório criar um grande bloco completo para cada variante.",
+          },
+          {
+            id: "R06",
+            status: "CONFIRMADA",
+            text: "Um componente Menu é definido uma vez: mesmo design, HTML, CSS e forma de abrir/fechar. Mudam seus itens, rótulos quando necessário e destinos, conforme uso/estado.",
+          },
+          {
+            id: "R07",
+            status: "APROVADA",
+            text: "Uma lista única de itens para um componente, com identificação e atributos de estados permitidos; não repetir o item em um array para cada estado.",
+          },
+          {
+            id: "R08",
+            status: "CONFIRMADA",
+            text: "O motor deve interpretar ações/destinos e estados para compor relações de fluxo, sem depender de um fluxo global mantido manualmente.",
+          },
+          {
+            id: "R09",
+            status: "CONFIRMADA",
+            text: "A tela pode ser chamada de mais de um ponto e reutilizada sem duplicar sua identidade; o motor deve conseguir mostrar essas relações.",
+          },
+          {
+            id: "R10",
+            status: "CONFIRMADA",
+            text: "O próprio conteúdo de cada JSON deverá permitir ao motor organizar árvore por classificação/jornada e compor um fluxo.",
+          },
+          {
+            id: "R11",
+            status: "EM DISCUSSÃO",
+            text: "Evitar blocos independentes flow e prototype, preferindo derivar essas visões dos dados, componentes e ações da tela. A forma final ainda não foi aprovada.",
+          },
+          {
+            id: "R12",
+            status: "EM DISCUSSÃO",
+            text: "Componentes podem existir separadamente durante edição e serem referenciados na tela. Não está decidido como sua implementação completa será empacotada no JSON autocontido.",
+          },
+          {
+            id: "R13",
+            status: "ADIADA",
+            text: "O mapa terá especificações próprias, mais textuais; não detalhar seu contrato agora.",
+          },
+        ],
+        questions: [
+          {
+            id: "Q01",
+            topic: "Decisões iniciais",
+            text: "Como estruturar as montagens condicionadas por estado?",
+            hint: "O solicitante propôs uma solução própria, diferente de A/B/C.",
+            options: [
+              { id: "A", label: "Um bloco completo da tela para cada estado" },
+              {
+                id: "B",
+                label: "Estrutura base + somente modificações por estado",
+              },
+              {
+                id: "C",
+                label: "Híbrido: base comum + substituição de regiões",
+              },
+              {
+                id: "D",
+                label:
+                  "Grupos por seção, cada um com atributos que associam estados e jornadas",
+              },
+            ],
+            answer: {
+              optionId: "D",
+              text: "Haverá uma seção de estados e grupos nas seções de estrutura/componentes, HTML, CSS e ações. Cada grupo pode ter um atributo que o vincula ao estado; o motor combina os grupos compatíveis. A precedência ainda não foi decidida.",
+              status: "CONFIRMADA",
+            },
+            source: "pergunta_respondida",
+          },
+          {
+            id: "Q02",
+            topic: "Decisões iniciais",
+            text: "O Menu precisa ser definido novamente em cada estado?",
+            hint: "HTML, CSS, apresentação e mecanismo de abrir/fechar são comuns.",
+            options: [
+              { id: "A", label: "Sim: criar outro componente Menu por estado" },
+              {
+                id: "B",
+                label:
+                  "Não: um Menu único, configurável por itens, nomes e destinos",
+              },
+            ],
+            answer: {
+              optionId: "B",
+              text: "Um componente Menu é configurado uma vez; cada uso informa itens, possíveis rótulos e destinos.",
+              status: "CONFIRMADA",
+            },
+            source: "pergunta_respondida",
+          },
+          {
+            id: "Q02A",
+            topic: "Decisões iniciais",
+            text: "Como organizar os itens do Menu que mudam conforme o estado?",
+            hint: "Opção B aprovada expressamente.",
+            options: [
+              {
+                id: "A",
+                label:
+                  "Array completo de itens por estado (pode repetir itens)",
+              },
+              {
+                id: "B",
+                label:
+                  "Lista única de itens com atributos indicando estados permitidos",
+              },
+            ],
+            answer: {
+              optionId: "B",
+              text: "Uma lista única de itens; cada item possui os estados nos quais aparece. Os nomes exatos dos campos não foram aprovados.",
+              status: "APROVADA",
+            },
+            source: "pergunta_respondida",
+          },
+          {
+            id: "Q03",
+            topic: "Decisões iniciais",
+            text: "Quem define e executa a ação ao clicar em um item?",
+            hint: "Pergunta já apresentada e ainda não respondida.",
+            options: [
+              {
+                id: "A",
+                label:
+                  "A tela controla todas as ações: componente informa o item selecionado",
+              },
+              {
+                id: "B",
+                label:
+                  "O próprio item informa o destino, executado pelo Menu genericamente",
+              },
+              {
+                id: "C",
+                label:
+                  "Híbrido: destino direto ou referência a ação complexa da tela",
+              },
+              {
+                id: "D",
+                label: "Outra organização (descrever no campo de observação)",
+              },
+            ],
+            answer: null,
+            source: "pergunta_ja_apresentada",
+          },
+          {
+            id: "Q04.1",
+            topic: "Associação entre jornada e estados",
+            text: "Um grupo pode ter vários estados associados, como um item do Menu, ou um único estado por grupo?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q04.2",
+            topic: "Associação entre jornada e estados",
+            text: "Como marcar um grupo comum a todos os estados: sem campo, [], all, shared ou outra convenção?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q04.3",
+            topic: "Associação entre jornada e estados",
+            text: "A seleção é feita por jornada E estado (interseção), ou há regras que podem funcionar por jornada OU estado?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q04.4",
+            topic: "Associação entre jornada e estados",
+            text: "Se dois grupos compatíveis quiserem ocupar a mesma região, devem somar, substituir, ordenar ou gerar erro?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q04.5",
+            topic: "Associação entre jornada e estados",
+            text: "Qual a regra de prioridade quando várias condições são verdadeiras? Valor explícito, primeiro da lista, maior especificidade ou outra?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q04.6",
+            topic: "Associação entre jornada e estados",
+            text: "Qual montagem exibir se a OAB, jornada ou permissão ainda não tiver sido carregada? Estado neutro, tela de carregamento, restrita ou erro?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q04.7",
+            topic: "Associação entre jornada e estados",
+            text: "Diferenças entre estado visual local (menu aberto, loading) e estado de negócio (OAB, assinatura, autorização) devem usar o mesmo mecanismo de associação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q05.1",
+            topic: "Estrutura HTML",
+            text: "O HTML de um grupo será armazenado como string HTML, como árvore JSON (tag, atributos, filhos) ou como um desses formatos gerado do outro?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q05.2",
+            topic: "Estrutura HTML",
+            text: "Se mantivermos HTML e árvore no mesmo JSON, qual deles é a fonte única de verdade para impedir inconsistência?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q05.3",
+            topic: "Estrutura HTML",
+            text: "A estrutura de tela deverá ser agrupada por slots (header, main, navigation, menu, modal, popup, etc.) ou por uma árvore única?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q05.4",
+            topic: "Estrutura HTML",
+            text: "Como representar a ordem de montagem dos componentes — ordem do array, ordem explícita ou IDs/âncoras?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q05.5",
+            topic: "Estrutura HTML",
+            text: "Um estado pode trocar uma região HTML inteira, ou só alterar propriedades/conteúdo dos componentes existentes?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q05.6",
+            topic: "Estrutura HTML",
+            text: "O JSON admite atributos/eventos HTML brutos, ou somente atributos e gatilhos descritos em formato controlado pelo motor?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q06.1",
+            topic: "Estilos e CSS",
+            text: "Onde fica o CSS da tela, e onde fica o CSS intrínseco de cada componente?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q06.2",
+            topic: "Estilos e CSS",
+            text: "É permitido acrescentar CSS condicionado ao estado ou jornada, mantendo o CSS comum sem duplicação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q06.3",
+            topic: "Estilos e CSS",
+            text: "Um CSS condicionado pode substituir regras da base ou somente adicionar regras? Qual é a ordem de aplicação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q06.4",
+            topic: "Estilos e CSS",
+            text: "O CSS será uma string, blocos por seletor/propriedades, ou combinação com fonte única?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q06.5",
+            topic: "Estilos e CSS",
+            text: "Como representar tokens de design, responsividade, temas e recursos visuais, sem buscar CSS de arquivos externos durante a renderização?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q06.6",
+            topic: "Estilos e CSS",
+            text: "A mesma classe CSS usada por componentes diferentes precisa de isolamento/escopo para evitar conflitos?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.1",
+            topic: "Relações e rotas do fluxo",
+            text: "O destino de uma ação será uma referência por ID de tela, uma rota de aplicação, ou os dois com papéis distintos?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.2",
+            topic: "Relações e rotas do fluxo",
+            text: "Cada ação pode ter vários destinos condicionados (estado, jornada, resultado de operação, permissões)? Como representá-los sem repetir a ação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.3",
+            topic: "Relações e rotas do fluxo",
+            text: "Como indicar que o resultado da ação é estado da mesma tela, em vez de navegação para outra tela?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.4",
+            topic: "Relações e rotas do fluxo",
+            text: "As entradas da tela devem ser apenas derivadas das ações de outras telas, ou também existir como referências declaradas/editáveis? Se ambas, qual é a fonte de verdade?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.5",
+            topic: "Relações e rotas do fluxo",
+            text: "Ao reutilizar a tela a partir de lugares diferentes, como o motor distingue contexto de entrada, origem, parâmetros e comportamento de “voltar”?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.6",
+            topic: "Relações e rotas do fluxo",
+            text: "Você quer poder inserir e remover relações manualmente no JSON/visualizador, sem editar o HTML? Em qual seção isso deve ocorrer?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.7",
+            topic: "Relações e rotas do fluxo",
+            text: "O motor deve identificar rotas ainda inexistentes, ciclos, destinos temporários e transições sem ação visível? Como marcar pendências?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q07.8",
+            topic: "Relações e rotas do fluxo",
+            text: "Um clique sem navegação (salvar, abrir drawer, disparar serviço, exibir alerta) deve aparecer no grafo do flow como ação/estado, ou apenas nas especificações da tela?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q08.1",
+            topic: "Identidade e classificação",
+            text: "Quais metadados são obrigatórios: id, nome, descrição, tipo, versão, status, autoria, ordem, categoria, seção etc.?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q08.2",
+            topic: "Identidade e classificação",
+            text: "Uma tela terá uma pasta classificatória principal (shared, cliente, advogado...) e várias jornadas permitidas, ou só uma lista de jornadas?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q08.3",
+            topic: "Identidade e classificação",
+            text: "A hierarquia jornada → subjornada → fluxo → tela será declarada na tela, inferida pelo motor, ou combinada?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q08.4",
+            topic: "Identidade e classificação",
+            text: "Qual diferença no contrato entre papel/perfil, jornada ativa, área de estudante, permissão e pasta de classificação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q08.5",
+            topic: "Identidade e classificação",
+            text: "Quando uma tela for compartilhada, a árvore deverá exibi-la em cada jornada como referência ao mesmo ID ou apenas em shared, com vínculos de uso?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q08.6",
+            topic: "Identidade e classificação",
+            text: "A ordem das telas na árvore deve ser manual, por contexto/relacionamento ou gerada automaticamente por navegação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q09.1",
+            topic: "Dados, mocks e estados",
+            text: "Quais dados pertencem ao JSON como exemplo/mock, e quais apenas aparecem como contrato de fonte real (sessão, banco, serviço, API)?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q09.2",
+            topic: "Dados, mocks e estados",
+            text: "Como identificar a origem autoritativa de estados como situação da OAB, assinatura e autorização?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q09.3",
+            topic: "Dados, mocks e estados",
+            text: "Os mocks são por estado, por jornada ou por cenário combinando condições?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q09.4",
+            topic: "Dados, mocks e estados",
+            text: "Como representam-se parâmetros de entrada, dados fornecidos ao componente, validações e valores padrão?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q09.5",
+            topic: "Dados, mocks e estados",
+            text: "O que deve acontecer diante de valor ausente, desconhecido, erro ou carregamento de dados?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q09.6",
+            topic: "Dados, mocks e estados",
+            text: "Uma condição deve ser um objeto declarativo (comparações/composições) ou permitir expressões livres? Como controlar os riscos das expressões?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q10.1",
+            topic: "Projeções dos motores",
+            text: "Confirmar se não haverá seções independentes obrigatórias flow e prototype dentro do JSON da tela: motor deriva tudo de estrutura, estados e ações?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q10.2",
+            topic: "Projeções dos motores",
+            text: "O que o motor de Flow precisa mostrar: tela, ação, condições, estado, origem, destino, subfluxo e pendência?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q10.3",
+            topic: "Projeções dos motores",
+            text: "O que o motor de Protótipo deve fazer com a mesma fonte: renderizar HTML/CSS, selecionar mocks, executar ações simuladas, navegar entre JSONs?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q10.4",
+            topic: "Projeções dos motores",
+            text: "As saídas do motor são arquivos gerados (projeções) ou visualizações calculadas em tempo de uso — ou ambos?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q10.5",
+            topic: "Projeções dos motores",
+            text: "Quais metadados mínimos precisamos reservar para o mapa sem modelá-lo agora? Detalhamento adiado.",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q11.1",
+            topic: "Validação e governança",
+            text: "Quais seções/campos são obrigatórios, opcionais e condicionais para uma tela simples, compartilhada ou com múltiplos estados?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q11.2",
+            topic: "Validação e governança",
+            text: "O motor deve bloquear, avisar ou substituir por placeholder ao encontrar componente/estado/ação/destino não resolvido?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q11.3",
+            topic: "Validação e governança",
+            text: "Como tratar IDs duplicados, rotas sem destino, regras concorrentes e referências circulares?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q11.4",
+            topic: "Validação e governança",
+            text: "Como registrar versão do schema, versão da tela, status (proposta/aprovado) e mudanças compatíveis/incompatíveis?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q11.5",
+            topic: "Validação e governança",
+            text: "Precisaremos de validação estrutural automatizada (ex.: JSON Schema) e validação semântica das relações?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q12.1",
+            topic: "Componentes e autocontenção",
+            text: "Durante a edição, o componente deve continuar como um JSON próprio, referenciado por ID nas telas?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q12.2",
+            topic: "Componentes e autocontenção",
+            text: "No JSON exportado de uma tela, suas implementações HTML/CSS devem ser incorporadas integralmente, para atender ao requisito de autocontenção, ou haverá outro formato de pacote fechado?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q12.3",
+            topic: "Componentes e autocontenção",
+            text: "Se o componente aparece duas vezes na mesma tela, a definição deve existir uma vez e as instâncias serem múltiplas?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q12.4",
+            topic: "Componentes e autocontenção",
+            text: "Como lidar com atualização do componente compartilhado: todas as telas atualizam automaticamente na edição? A exportação vira um snapshot congelado?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q12.5",
+            topic: "Componentes e autocontenção",
+            text: "Que campos o componente expõe para a tela configurar: itens, rótulos, propriedades, eventos, slots internos, visibilidade, classes e dados?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q13.1",
+            topic: "Eventos e efeitos",
+            text: "Quais eventos serão padronizados (click, submit, change, load, ações de sistema, eventos de dados etc.)?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q13.2",
+            topic: "Eventos e efeitos",
+            text: "Como representar ações que não navegam, como abrir/fechar menu/modal, atualizar campo, alternar online e exibir toast?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q13.3",
+            topic: "Eventos e efeitos",
+            text: "Como uma ação chama serviço/backend sem embutir código executável arbitrário no JSON?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q13.4",
+            topic: "Eventos e efeitos",
+            text: "Como mapear sucesso, erro, cancelamento, confirmação e ações encadeadas?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q13.5",
+            topic: "Eventos e efeitos",
+            text: "O mesmo item pode ter destinos e rótulos diferentes conforme estado/jornada sem duplicá-lo? Qual sintaxe de exceção?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q14.1",
+            topic: "Montagem e responsividade",
+            text: "A posição de um componente será dada por slot e ordem, árvore hierárquica ou ambos?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q14.2",
+            topic: "Montagem e responsividade",
+            text: "É permitido ter repetição dinâmica de elementos (listas vindas dos dados) sem enumerar cada nó HTML no JSON?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q14.3",
+            topic: "Montagem e responsividade",
+            text: "Como o mesmo JSON descreve diferenças mobile/tablet/desktop?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q14.4",
+            topic: "Montagem e responsividade",
+            text: "Uma tela pode ter múltiplas instâncias do mesmo componente com ações diferentes?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q14.5",
+            topic: "Montagem e responsividade",
+            text: "O conteúdo HTML de um estado pode mudar sem exigir CSS duplicado? (Intenção já confirmada; falta formalizar a resolução.)",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q15.1",
+            topic: "Importação e exportação",
+            text: "A unidade canônica de armazenamento será um JSON de tela, com a coleção sendo só um invólucro de vários JSONs?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q15.2",
+            topic: "Importação e exportação",
+            text: "O visualizador deverá importar/editar/exportar cada tela separadamente, além de exportar uma coleção válida que preserve ordem e identidade?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q15.3",
+            topic: "Importação e exportação",
+            text: "Ao importar uma tela com o mesmo id, devemos substituir, versionar, mesclar ou impedir a duplicação?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q15.4",
+            topic: "Importação e exportação",
+            text: "O que exatamente o motor pode recalcular após cada importação: índice de telas, entradas, saídas, árvore, grafo e validações?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q15.5",
+            topic: "Importação e exportação",
+            text: "Precisamos distinguir JSON de componente, JSON de tela e JSON consolidado por um discriminador explícito de tipo?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q16.1",
+            topic: "Segurança e permissões",
+            text: "O motor de protótipo poderá simular qualquer estado mediante mock, distinguindo isso da verificação real de acesso?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q16.2",
+            topic: "Segurança e permissões",
+            text: "Estados como OAB aprovada e papel de administrador dependem de verificação do backend, não apenas de flag visual no cliente?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q16.3",
+            topic: "Segurança e permissões",
+            text: "O JSON exportado nunca deve conter credenciais, segredos, dados reais sensíveis nem código de autenticação privilegiado? Como registrar essa política?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q16.4",
+            topic: "Segurança e permissões",
+            text: "Quais ações exigem confirmação de servidor e quais são estritamente locais/visuais?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q17.1",
+            topic: "Testes e documentação",
+            text: "Cada tela deverá fornecer cenários mínimos para testar todos os estados/jornadas e os principais cliques?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q17.2",
+            topic: "Testes e documentação",
+            text: "Como documentar regras de negócio, pendências, decisões e critérios de aceite sem confundi-los com dados executáveis?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q17.3",
+            topic: "Testes e documentação",
+            text: "Deseja um relatório automático de cobertura: estados sem estrutura, itens sem ação, destinos ausentes, componentes sem estilo, mocks ausentes?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q17.4",
+            topic: "Testes e documentação",
+            text: "O visualizador em árvore deve mostrar blocos visuais, dados, ações e relações em uma sequência linear obrigatória?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q18.1",
+            topic: "Migração dos JSONs existentes",
+            text: "Qual arquivo existente será a referência de conteúdo visual e comportamento, sem automaticamente aprovar sua estrutura (home_advogado_autocontido, linear_v3, catálogo completo etc.)?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q18.2",
+            topic: "Migração dos JSONs existentes",
+            text: "Como converter nós de flow legados em ações e relações locais por tela, preservando múltiplos pontos de entrada?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q18.3",
+            topic: "Migração dos JSONs existentes",
+            text: "Na migração, o que fazer com atributos de origem (sourcePath, origem, pastas UI): manter somente como histórico, remover ou transformar em identificadores?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+          {
+            id: "Q18.4",
+            topic: "Migração dos JSONs existentes",
+            text: "Após as decisões, qual conjunto de telas-piloto validará o contrato: Entrar, Home Cliente e Home Profissional, incluindo OAB a validar/validada?",
+            hint: "Pergunta planejada no MD original; alternativas específicas ainda não aprovadas.",
+            options: [],
+            answer: null,
+            source: "pergunta_futura",
+          },
+        ],
+        notes:
+          "A estrutura de JSON sugerida no app é uma projeção não aprovada. Respostas podem ser desmarcadas.",
+      };
+    </script>
+    <script>
+      "use strict";
+      const FORMAT = "advogadoja.entrevista-json-tela.v1";
+      const STORE_KEY = "advogadoja.entrevista.contrato.v1.local";
+      const clone = (v) => JSON.parse(JSON.stringify(v));
+      const esc = (s) =>
+        String(s ?? "").replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+      const plain = (s) => String(s || "").trim();
+      const titleStatus = (q) =>
+        q.answer?.status === "APROVADA"
+          ? "Aprovada"
+          : q.answer?.status === "CONFIRMADA"
+            ? "Confirmada"
+            : q.answer?.status === "RECOMENDADA"
+              ? "Sugestão para revisar"
+              : q.source === "pergunta_ja_apresentada"
+                ? "Aguardando resposta"
+                : "Pendente";
+      const isAnswered = (q) =>
+        !!(q.answer && (q.answer.optionId || plain(q.answer.text)));
+      let project = clone(SEED_DATA);
+      let currentTab = "questions";
+      let selectedTopic = "all";
+      let filterStatus = "all";
+      let searchText = "";
+      let expanded = new Set(["Q03"]);
+      let showCode = "draft";
+      let toastTimer;
+
+      function restore() {
+        try {
+          const raw = localStorage.getItem(STORE_KEY);
+          if (raw) {
+            const obj = JSON.parse(raw);
+            if (isValid(obj)) {
+              project = normalize(obj);
+              return true;
+            }
+          }
+        } catch (e) {}
+        return false;
+      }
+      function persist() {
+        try {
+          localStorage.setItem(STORE_KEY, JSON.stringify(project));
+          document.getElementById("savedInfo").textContent =
+            "Salvo neste navegador";
+        } catch (e) {
+          document.getElementById("savedInfo").textContent =
+            "Use Exportar projeto para guardar";
+        }
+      }
+      function toast(message) {
+        const el = document.getElementById("toast");
+        el.textContent = message;
+        el.classList.remove("hidden");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.add("hidden"), 3800);
+      }
+      function download(name, text, mime = "application/json") {
+        const blob = new Blob([text], { type: mime + ";charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = name;
+        document.body.append(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+      }
+      function nowIso() {
+        return new Date().toISOString();
+      }
+      function optLabel(q) {
+        if (!q.answer?.optionId) return null;
+        const op = q.options.find((o) => o.id === q.answer.optionId);
+        return op
+          ? `${op.id} — ${op.label}`
+          : `Opção indisponível: ${q.answer.optionId}`;
+      }
+      function picked(q) {
+        if (!isAnswered(q)) return null;
+        return {
+          status: q.answer.status || "APROVADA",
+          selecionada: optLabel(q),
+          observacao: plain(q.answer.text) || null,
+        };
+      }
+      function getTopics() {
+        return [
+          "Decisões iniciais",
+          ...new Set(
+            project.questions
+              .map((q) => q.topic)
+              .filter((x) => x !== "Decisões iniciais"),
+          ),
+        ];
+      }
+      function stats() {
+        const approved = project.questions.filter(isAnswered).length;
+        return {
+          total: project.questions.length,
+          answered: approved,
+          pending: project.questions.length - approved,
+        };
+      }
+      function updateHeader() {
+        const s = stats();
+        document.getElementById("statTotal").textContent = s.total;
+        document.getElementById("statAnswered").textContent = s.answered;
+        document.getElementById("statPending").textContent = s.pending;
+        document.getElementById("progress").style.width =
+          `${s.total ? (100 * s.answered) / s.total : 0}%`;
+        document.getElementById("pct").textContent =
+          (s.total ? Math.round((100 * s.answered) / s.total) : 0) + "%";
+      }
+      function renderTopics() {
+        let html = `<button class="topic-btn ${selectedTopic === "all" ? "active" : ""}" data-topic="all"><span>Todas as questões</span><small>${project.questions.length}</small></button>`;
+        for (const t of getTopics()) {
+          const qs = project.questions.filter((q) => q.topic === t);
+          const ok = qs.filter(isAnswered).length;
+          html += `<button class="topic-btn ${selectedTopic === t ? "active" : ""}" data-topic="${esc(t)}"><span>${esc(t)}</span><small>${ok}/${qs.length}</small></button>`;
+        }
+        document.getElementById("topics").innerHTML = html;
+      }
+      function filteredQuestions() {
+        return project.questions.filter(
+          (q) =>
+            (selectedTopic === "all" || q.topic === selectedTopic) &&
+            (filterStatus === "all" ||
+              (filterStatus === "answered" ? isAnswered(q) : !isAnswered(q))) &&
+            (!searchText ||
+              [
+                q.id,
+                q.topic,
+                q.text,
+                q.hint,
+                ...q.options.map((o) => o.label),
+                q.answer?.text || "",
+              ]
+                .join(" ")
+                .toLocaleLowerCase("pt-BR")
+                .includes(searchText)),
+        );
+      }
+      function questionCard(q) {
+        const ans = isAnswered(q),
+          isOpen = expanded.has(q.id);
+        const statusText = titleStatus(q);
+        const statusClass =
+          q.answer?.status === "RECOMENDADA"
+            ? "suggested"
+            : ans
+              ? "approved"
+              : q.source === "pergunta_ja_apresentada"
+                ? "pending"
+                : "future";
+        let options = (q.options || [])
+          .map(
+            (o) =>
+              `<button type="button" class="opt ${q.answer?.optionId === o.id ? "selected" : ""}" data-select="${esc(q.id)}" data-option="${esc(o.id)}" aria-pressed="${q.answer?.optionId === o.id}"><span class="circle">${q.answer?.optionId === o.id ? "✓" : ""}</span><span class="opt-code">${esc(o.id)}</span><span>${esc(o.label)}</span></button>`,
+          )
+          .join("");
+        if (!options)
+          options = `<div class="inline-note">Esta pergunta não tinha alternativas no documento original. Você pode responder em texto ou criar alternativas abaixo.</div>`;
+        return `<article class="qcard ${ans ? "answered" : ""} ${q.id === "Q03" && !ans ? "current" : ""}" id="card-${esc(q.id)}">
+ <button type="button" class="qtop" data-toggle="${esc(q.id)}" aria-expanded="${isOpen}"><span class="qnum">${esc(q.id)}</span><span class="qtopcopy"><span class="qtitle">${esc(q.text)}</span><span class="micro">${esc(q.topic)}</span></span><span class="status ${statusClass}">${statusText}</span><span class="chev">${isOpen ? "⌄" : "›"}</span></button>
+ ${
+   isOpen
+     ? `<div class="qbody"><p class="hint">${esc(q.hint || "")}</p><div class="opts">${options}</div>
+ <label class="field-label" for="answer-${esc(q.id)}">${q.answer?.optionId ? "Observação / justificativa (opcional)" : "Resposta em texto livre"}</label><textarea class="ans-text" id="answer-${esc(q.id)}" data-draft="${esc(q.id)}" placeholder="Escreva sua escolha ou detalhe condições, exceções e exemplos...">${esc(q.answer?.text || "")}</textarea>
+ <div class="answer-tools"><button class="btn primary sm" data-save-answer="${esc(q.id)}">${ans ? "Atualizar resposta" : "Registrar resposta"}</button>${q.answer?.status === "RECOMENDADA" ? `<button class="btn sm" data-approve="${esc(q.id)}">✓ Aprovar sugestão</button>` : ""}<button class="btn sm" data-clear="${esc(q.id)}" ${ans ? "" : "disabled"}>Desmarcar resposta</button><span class="micro">${esc(q.source === "pergunta_futura" ? "Questão futura do documento V0.5" : q.source === "pergunta_respondida" ? "Resposta pré-carregada do histórico" : "Questão já apresentada na entrevista")}</span></div>
+ <details class="minipanel"><summary>Editar pergunta e alternativas</summary><label class="field-label" for="statement-${esc(q.id)}">Enunciado</label><textarea class="ans-text" id="statement-${esc(q.id)}">${esc(q.text)}</textarea><div class="mini-actions"><button class="btn sm" data-save-statement="${esc(q.id)}">Salvar enunciado</button><button class="btn sm" data-add-option="${esc(q.id)}">＋ Adicionar alternativa</button>${q.source === "personalizada" ? `<button class="btn sm danger" data-delete-question="${esc(q.id)}">Excluir pergunta</button>` : ""}</div>
+ <div class="settings-list" style="margin-top:9px">${q.options.map((o) => `<div class="settings-item" style="padding:9px"><strong class="tag">${esc(o.id)}</strong> <span class="micro">${esc(o.label)}</span><div class="mini-actions"><button class="btn sm" data-edit-option="${esc(q.id)}" data-option="${esc(o.id)}">Editar</button><button class="btn sm danger" data-remove-option="${esc(q.id)}" data-option="${esc(o.id)}">Remover</button></div></div>`).join("")}</div></details>
+ </div>`
+     : ""
+ }</article>`;
+      }
+      function renderQuestions() {
+        const list = filteredQuestions();
+        document.getElementById("questionList").innerHTML = list.length
+          ? list.map(questionCard).join("")
+          : '<div class="empty">Nenhuma pergunta corresponde aos filtros.</div>';
+        document.getElementById("visibleCount").textContent =
+          `${list.length} de ${project.questions.length} questões`;
+        document.getElementById("currentTopic").textContent =
+          selectedTopic === "all" ? "Entrevista completa" : selectedTopic;
+      }
+      function effectiveRequirementStatus(r) {
+        const linked = { R04: "Q01", R05: "Q01", R06: "Q02", R07: "Q02A" }[
+          r.id
+        ];
+        return linked && !isAnswered(findQ(linked))
+          ? "REABERTA NESTA SESSÃO"
+          : r.status;
+      }
+      function renderRequirements() {
+        document.getElementById("requirementList").innerHTML =
+          project.requirements
+            .map(
+              (r) =>
+                `<div class="req"><strong>${esc(r.id)}</strong> <span class="tag">${esc(effectiveRequirementStatus(r))}</span><div style="margin-top:5px">${esc(r.text)}</div></div>`,
+            )
+            .join("");
+      }
+
+      function buildDraft() {
+        const d = {
+          formato: "advogadoja.contrato-tela-em-construcao.v1",
+          status: "RASCUNHO_NAO_APROVADO",
+          aviso:
+            "Esta é uma projeção das respostas; não é o JSON definitivo de uma tela nem um schema executável. Os nomes dos campos são provisórios.",
+          origemEntrevista: project.source?.filename || "entrevista importada",
+          cobertura: { respondidas: stats().answered, total: stats().total },
+          modeloTelaEmDefinicao: {},
+          premissasConfirmadas: project.requirements
+            .filter((r) =>
+              ["CONFIRMADA", "APROVADA"].includes(
+                effectiveRequirementStatus(r),
+              ),
+            )
+            .map((r) => ({ id: r.id, descricao: r.text })),
+          decisoesRegistradas: {},
+          perguntasAindaAbertas: project.questions
+            .filter((q) => !isAnswered(q))
+            .map((q) => ({ id: q.id, tema: q.topic, pergunta: q.text })),
+        };
+        const map = Object.fromEntries(project.questions.map((q) => [q.id, q]));
+        const answered = (id) => !!(map[id] && isAnswered(map[id]));
+        const m = d.modeloTelaEmDefinicao;
+        // Projeção apenas do que foi realmente respondido ou expressamente confirmado no MD.
+        if (answered("Q01") && map.Q01.answer.optionId === "D") {
+          m.estados = {
+            intencao:
+              "Identificar estados da tela em seção própria; nomes exatos dos campos em aberto.",
+          };
+          m.gruposDeMontagem = {
+            intencao:
+              "Grupos de HTML/estrutura/componentes, CSS e ações podem possuir atributos de estado; o motor resolve os compatíveis.",
+            sintaxe: "PENDENTE_DE_DEFINICAO",
+          };
+        }
+        if (answered("Q02") && map.Q02.answer.optionId === "B") {
+          m.componentes = {
+            menu: {
+              reutilizavel: true,
+              htmlCssEComportamentoDeAbrirFechar: "definidos_uma_vez",
+              configuracaoPorTelaEEstado: "itens_rotulos_destinos",
+            },
+          };
+        }
+        if (answered("Q02A") && map.Q02A.answer.optionId === "B") {
+          m.componentes = m.componentes || {};
+          m.componentes.organizacaoDosItens = {
+            modo: "lista_unica",
+            criterio: "cada_item_indica_estados_compativeis",
+            sintaxeDefinitiva: "PENDENTE_DE_DEFINICAO",
+          };
+        }
+        if (answered("Q03")) {
+          const mapping = {
+            A: "tela_controla_todas_as_acoes",
+            B: "item_informa_destino_direto",
+            C: "destino_direto_ou_acao_referenciada",
+            D: "outra_forma_descrever_em_observacao",
+          };
+          m.responsabilidadeDasAcoes = {
+            modelo: mapping[map.Q03.answer.optionId] || "resposta_em_texto",
+            observacao: map.Q03.answer.text || null,
+          };
+        }
+        for (const q of project.questions) {
+          if (!isAnswered(q)) continue;
+          d.decisoesRegistradas[q.id] = {
+            tema: q.topic,
+            pergunta: q.text,
+            ...picked(q),
+          };
+        }
+        const group = {};
+        for (const q of project.questions) {
+          if (!isAnswered(q) || ["Q01", "Q02", "Q02A", "Q03"].includes(q.id))
+            continue;
+          (group[q.topic] ??= {})[q.id] = { pergunta: q.text, ...picked(q) };
+        }
+        if (Object.keys(group).length) d.especificacoesEmDefinicao = group;
+        return d;
+      }
+      function dataExport() {
+        return { ...clone(project), format: FORMAT, savedAt: nowIso() };
+      }
+      function renderCode() {
+        const s = stats();
+        const draft = buildDraft();
+        const displayed = showCode === "draft" ? draft : dataExport();
+        document.getElementById("jsonCode").textContent = JSON.stringify(
+          displayed,
+          null,
+          2,
+        );
+        document.getElementById("jsonInfo").textContent =
+          showCode === "draft"
+            ? `${s.answered} decisões registradas · ${s.pending} questões em aberto · projeção reversível`
+            : "Exportação integral: perguntas, alternativas, respostas, requisitos e metadados";
+        document
+          .querySelectorAll("[data-codeswitch]")
+          .forEach((b) =>
+            b.classList.toggle("active", b.dataset.codeswitch === showCode),
+          );
+      }
+      function renderReview() {
+        const s = stats();
+        document.getElementById("reviewStats").innerHTML =
+          `<div class="smallpanel"><strong>${s.total}</strong><p>Perguntas cadastradas</p></div><div class="smallpanel"><strong>${s.answered}</strong><p>Respondidas</p></div><div class="smallpanel"><strong>${s.pending}</strong><p>Em aberto</p></div>`;
+        document.getElementById("decisionList").innerHTML =
+          project.questions
+            .filter(isAnswered)
+            .map(
+              (q) =>
+                `<div class="settings-item"><h3>${esc(q.id)} · ${esc(q.text)}</h3><p>${esc(optLabel(q) || "Resposta livre")} ${q.answer?.text ? "— " + esc(q.answer.text) : ""}</p><span class="tag">${esc(q.answer.status)}</span> <button class="btn sm" data-jump="${esc(q.id)}">Editar resposta</button></div>`,
+            )
+            .join("") || '<p class="muted">Nenhuma decisão registrada.</p>';
+      }
+      function rerender() {
+        updateHeader();
+        renderTopics();
+        renderQuestions();
+        renderRequirements();
+        renderCode();
+        renderReview();
+      }
+      function updateProject() {
+        persist();
+        rerender();
+      }
+      function findQ(id) {
+        return project.questions.find((q) => q.id === id);
+      }
+      function setAnswerOption(id, option) {
+        const q = findQ(id);
+        if (!q) return;
+        const was = q.answer?.optionId === option;
+        const oldNote =
+          q.answer?.optionId && q.answer.optionId !== option
+            ? ""
+            : document.getElementById("answer-" + id)?.value ||
+              q.answer?.text ||
+              "";
+        q.answer = was
+          ? null
+          : {
+              optionId: option,
+              text: oldNote,
+              status:
+                q.answer?.status === "CONFIRMADA" ? "CONFIRMADA" : "APROVADA",
+            };
+        expanded.add(id);
+        updateProject();
+        toast(
+          was
+            ? "Resposta desmarcada. JSON atualizado."
+            : "Resposta selecionada. JSON atualizado.",
+        );
+      }
+      function saveAnswer(id) {
+        const q = findQ(id);
+        if (!q) return;
+        const note = plain(document.getElementById("answer-" + id)?.value);
+        const sel = q.answer?.optionId || null;
+        if (!note && !sel) {
+          toast("Informe uma resposta ou selecione uma alternativa.");
+          return;
+        }
+        q.answer = {
+          optionId: sel,
+          text: note,
+          status: q.answer?.status || "APROVADA",
+        };
+        updateProject();
+        toast("Resposta registrada. JSON atualizado.");
+      }
+      function approveSuggestion(id) {
+        const q = findQ(id);
+        if (!q || q.answer?.status !== "RECOMENDADA") return;
+        const note = plain(document.getElementById("answer-" + id)?.value);
+        q.answer = {
+          ...q.answer,
+          text: note || q.answer.text,
+          status: "APROVADA",
+          origemDecisao: "usuario_aprovou_sugestao",
+          revisao: "APROVADA_PELO_USUARIO",
+        };
+        updateProject();
+        toast("Recomendação aprovada por você.");
+      }
+      function clearAnswer(id) {
+        const q = findQ(id);
+        if (!q) return;
+        q.answer = null;
+        updateProject();
+        toast("Resposta desmarcada e removida do JSON em construção.");
+      }
+      function clearAll() {
+        if (
+          !confirm(
+            "Remover todas as respostas, inclusive as decisões anteriormente registradas? Exporte o projeto antes se quiser guardar uma cópia.",
+          )
+        )
+          return;
+        project.questions.forEach((q) => (q.answer = null));
+        updateProject();
+        toast("Todas as respostas desmarcadas.");
+      }
+      function editOption(id, optionId) {
+        const q = findQ(id);
+        const o = q?.options.find((i) => i.id === optionId);
+        if (!o) return;
+        const label = prompt("Editar o texto da alternativa:", o.label);
+        if (label === null) return;
+        if (!plain(label)) return alert("A alternativa não pode ficar vazia.");
+        o.label = plain(label);
+        updateProject();
+      }
+      function addOption(id) {
+        const q = findQ(id);
+        if (!q) return;
+        const label = prompt("Texto da nova alternativa:");
+        if (!plain(label)) return;
+        let i = 0;
+        let newId;
+        do {
+          newId = i < 26 ? String.fromCharCode(65 + i) : "OP" + (i + 1);
+          i++;
+        } while (q.options.some((o) => o.id === newId));
+        q.options.push({ id: newId, label: plain(label) });
+        expanded.add(id);
+        updateProject();
+      }
+      function deleteOption(id, optionId) {
+        const q = findQ(id);
+        if (
+          !q ||
+          !confirm(`Remover a alternativa ${optionId} da pergunta ${id}?`)
+        )
+          return;
+        q.options = q.options.filter((o) => o.id !== optionId);
+        if (q.answer?.optionId === optionId) {
+          q.answer = null;
+          toast("Alternativa e resposta correspondente removidas.");
+        }
+        updateProject();
+      }
+      function saveStatement(id) {
+        const q = findQ(id);
+        if (!q) return;
+        const val = plain(document.getElementById("statement-" + id)?.value);
+        if (!val) {
+          toast("A pergunta não pode estar vazia.");
+          return;
+        }
+        q.text = val;
+        updateProject();
+        toast("Enunciado atualizado.");
+      }
+      function jump(id) {
+        currentTab = "questions";
+        selectedTopic = "all";
+        searchText = "";
+        filterStatus = "all";
+        document.getElementById("searchInput").value = "";
+        document.getElementById("statusFilter").value = "all";
+        expanded.add(id);
+        setTab("questions");
+        requestAnimationFrame(() =>
+          document
+            .getElementById("card-" + id)
+            ?.scrollIntoView({ behavior: "smooth", block: "center" }),
+        );
+      }
+      function setTab(tab) {
+        currentTab = tab;
+        document.querySelectorAll("[data-main-tab]").forEach((b) => {
+          const active = b.dataset.mainTab === tab;
+          b.classList.toggle("active", active);
+          b.setAttribute("aria-selected", String(active));
+        });
+        document
+          .querySelectorAll("[data-panel]")
+          .forEach((x) =>
+            x.classList.toggle("hidden", x.dataset.panel !== tab),
+          );
+        document
+          .getElementById("interviewSidebar")
+          .classList.toggle("hidden", tab !== "questions");
+        document.getElementById("mainLayout").style.gridTemplateColumns =
+          tab === "questions" ? "" : "minmax(0,1fr)";
+        if (tab === "draft") renderCode();
+        if (tab === "review") renderReview();
+      }
+      function isValid(obj) {
+        return !!(
+          obj &&
+          typeof obj === "object" &&
+          obj.format === FORMAT &&
+          Array.isArray(obj.questions) &&
+          obj.questions.every(
+            (q) =>
+              typeof q.id === "string" &&
+              typeof q.text === "string" &&
+              Array.isArray(q.options) &&
+              q.options.every(
+                (o) => typeof o.id === "string" && typeof o.label === "string",
+              ),
+          ) &&
+          Array.isArray(obj.requirements)
+        );
+      }
+      function normalize(obj) {
+        const data = clone(obj);
+        data.questions = data.questions.map((q) => ({
+          ...q,
+          topic: plain(q.topic) || "Sem categoria",
+          answer: isAnswered(q)
+            ? { ...q.answer, status: q.answer.status || "APROVADA" }
+            : null,
+        }));
+        return data;
+      }
+      function mergeImport(input) {
+        const byId = new Map(project.questions.map((q) => [q.id, q]));
+        for (const q of input.questions) byId.set(q.id, clone(q));
+        project.questions = [...byId.values()];
+        const byReq = new Map(project.requirements.map((r) => [r.id, r]));
+        for (const r of input.requirements) byReq.set(r.id, clone(r));
+        project.requirements = [...byReq.values()];
+        updateProject();
+        toast(
+          "Projeto mesclado por ID. Perguntas não presentes foram preservadas.",
+        );
+      }
+      async function importFile(file) {
+        if (!file) return;
+        try {
+          const input = JSON.parse(await file.text());
+          if (!isValid(input))
+            throw new Error(
+              "Este não é um projeto válido do Entrevistador de JSONs (formato esperado: " +
+                FORMAT +
+                ").",
+            );
+          const replace = confirm(
+            "IMPORTAR PROJETO\n\nOK: SUBSTITUIR todo o projeto atual pelo importado.\nCancelar: continuar para opção de MESCLAR por ID.",
+          );
+          if (replace) {
+            project = normalize(input);
+            selectedTopic = "all";
+            expanded = new Set(["Q03"]);
+            updateProject();
+            toast("Projeto importado e substituído.");
+          } else if (
+            confirm(
+              "Deseja MESCLAR as perguntas por ID? (Questões existentes de mesmo ID serão atualizadas.)",
+            )
+          ) {
+            mergeImport(normalize(input));
+          }
+        } catch (e) {
+          alert("Não foi possível importar: " + e.message);
+        }
+        document.getElementById("importInput").value = "";
+      }
+      function projectToMd() {
+        const lines = [
+          "# Advogado Já — Entrevista editável do contrato JSON de tela",
+          "",
+          "**Exportação:** " + new Date().toLocaleString("pt-BR"),
+          "**Situação:** documento de trabalho; não é schema aprovado.",
+          "",
+          "## Requisitos registrados",
+          "",
+        ];
+        for (const r of project.requirements)
+          lines.push(`- **${r.id} [${r.status}]** ${r.text}`);
+        lines.push("", "## Perguntas e respostas", "");
+        for (const q of project.questions) {
+          lines.push(
+            `### ${q.id} — ${q.text}`,
+            "",
+            `**Tema:** ${q.topic}`,
+            `**Status:** ${isAnswered(q) ? q.answer.status : "PENDENTE"}`,
+            "",
+          );
+          for (const o of q.options)
+            lines.push(
+              `- ${q.answer?.optionId === o.id ? "[x]" : "[ ]"} **${o.id}:** ${o.label}`,
+            );
+          if (q.answer?.text)
+            lines.push("", "**Observação/resposta livre:** " + q.answer.text);
+          lines.push("");
+        }
+        return lines.join("\n");
+      }
+      function addQuestionDialog() {
+        const topics = getTopics();
+        document.getElementById("dialogCover").classList.remove("hidden");
+        document.getElementById("newTopic").innerHTML =
+          topics.map((t) => `<option>${esc(t)}</option>`).join("") +
+          '<option value="_nova">＋ Nova categoria</option>';
+        document.getElementById("newTopic").value =
+          selectedTopic === "all" ? "Decisões iniciais" : selectedTopic;
+        document.getElementById("newText").value = "";
+        document.getElementById("newQuestionId").value = "";
+        document.getElementById("newOptions").value = "";
+        document.getElementById("newTopicOther").value = "";
+        document
+          .getElementById("newTopicOtherWrap")
+          .classList.toggle(
+            "hidden",
+            document.getElementById("newTopic").value !== "_nova",
+          );
+      }
+      function closeDialog() {
+        document.getElementById("dialogCover").classList.add("hidden");
+      }
+      function saveNewQuestion() {
+        const text = plain(document.getElementById("newText").value);
+        if (!text) {
+          toast("Escreva a pergunta.");
+          return;
+        }
+        let id = plain(document.getElementById("newQuestionId").value);
+        if (!id) {
+          let count = 1;
+          while (findQ("CUSTOM" + String(count).padStart(2, "0"))) count++;
+          id = "CUSTOM" + String(count).padStart(2, "0");
+        }
+        if (findQ(id)) {
+          toast("Esse ID já está em uso.");
+          return;
+        }
+        const topicSel = document.getElementById("newTopic").value;
+        const topic =
+          topicSel === "_nova"
+            ? plain(document.getElementById("newTopicOther").value)
+            : topicSel;
+        if (!topic) {
+          toast("Informe a categoria.");
+          return;
+        }
+        const opts = document
+          .getElementById("newOptions")
+          .value.split("\n")
+          .map(plain)
+          .filter(Boolean)
+          .map((label, i) => ({
+            id: i < 26 ? String.fromCharCode(65 + i) : "OP" + (i + 1),
+            label,
+          }));
+        project.questions.push({
+          id,
+          topic,
+          text,
+          hint: "Pergunta adicionada manualmente.",
+          options: opts,
+          answer: null,
+          source: "personalizada",
+        });
+        selectedTopic = topic;
+        expanded.add(id);
+        closeDialog();
+        updateProject();
+        jump(id);
+        toast("Nova pergunta adicionada.");
+      }
+      function removeQuestion(id) {
+        const q = findQ(id);
+        if (q?.source !== "personalizada") return;
+        if (!confirm("Excluir pergunta personalizada " + id + "?")) return;
+        project.questions = project.questions.filter((q) => q.id !== id);
+        updateProject();
+      }
+      function resetFromSource() {
+        if (
+          !confirm(
+            "RESTAURAR BASE DO DOCUMENTO V0.5? Isso apagará suas respostas e edições locais. Exporte o projeto primeiro se necessário.",
+          )
+        )
+          return;
+        project = clone(SEED_DATA);
+        selectedTopic = "all";
+        filterStatus = "all";
+        searchText = "";
+        expanded = new Set(["Q03"]);
+        document.getElementById("statusFilter").value = "all";
+        document.getElementById("searchInput").value = "";
+        updateProject();
+        toast("Entrevista restaurada à base V0.5.");
+      }
+      function copyJSON() {
+        const obj = showCode === "draft" ? buildDraft() : dataExport();
+        const value = JSON.stringify(obj, null, 2);
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(value).then(
+            () => toast("JSON copiado."),
+            () => legacyCopy(value),
+          );
+        } else legacyCopy(value);
+      }
+      function legacyCopy(value) {
+        const text = document.getElementById("jsonCode");
+        const range = document.createRange();
+        range.selectNodeContents(text);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        try {
+          document.execCommand("copy");
+          toast("JSON copiado.");
+        } catch (e) {
+          toast("Selecione o JSON para copiar.");
+        }
+        selection.removeAllRanges();
+      }
+      function bind() {
+        document.addEventListener("click", (e) => {
+          const b = e.target.closest("button");
+          if (!b) return;
+          if (b.dataset.mainTab) {
+            setTab(b.dataset.mainTab);
+            return;
+          }
+          if (b.dataset.topic) {
+            selectedTopic = b.dataset.topic;
+            renderTopics();
+            renderQuestions();
+            return;
+          }
+          if (b.dataset.toggle) {
+            const id = b.dataset.toggle;
+            expanded.has(id) ? expanded.delete(id) : expanded.add(id);
+            renderQuestions();
+            return;
+          }
+          if (b.dataset.select) {
+            setAnswerOption(b.dataset.select, b.dataset.option);
+            return;
+          }
+          if (b.dataset.saveAnswer) {
+            saveAnswer(b.dataset.saveAnswer);
+            return;
+          }
+          if (b.dataset.approve) {
+            approveSuggestion(b.dataset.approve);
+            return;
+          }
+          if (b.dataset.clear) {
+            clearAnswer(b.dataset.clear);
+            return;
+          }
+          if (b.dataset.addOption) {
+            addOption(b.dataset.addOption);
+            return;
+          }
+          if (b.dataset.editOption) {
+            editOption(b.dataset.editOption, b.dataset.option);
+            return;
+          }
+          if (b.dataset.removeOption) {
+            deleteOption(b.dataset.removeOption, b.dataset.option);
+            return;
+          }
+          if (b.dataset.saveStatement) {
+            saveStatement(b.dataset.saveStatement);
+            return;
+          }
+          if (b.dataset.deleteQuestion) {
+            removeQuestion(b.dataset.deleteQuestion);
+            return;
+          }
+          if (b.dataset.jump) {
+            jump(b.dataset.jump);
+            return;
+          }
+          if (b.dataset.codeswitch) {
+            showCode = b.dataset.codeswitch;
+            renderCode();
+            return;
+          }
+          if (b.id === "btnImport") {
+            document.getElementById("importInput").click();
+            return;
+          }
+          if (b.id === "btnExport") {
+            download(
+              "entrevista_json_tela_projeto.json",
+              JSON.stringify(dataExport(), null, 2),
+            );
+            toast("Projeto exportado (perguntas, opções e respostas).");
+            return;
+          }
+          if (b.id === "btnExportDraft") {
+            download(
+              "json_tela_em_construcao.json",
+              JSON.stringify(buildDraft(), null, 2),
+            );
+            toast("Rascunho de JSON exportado.");
+            return;
+          }
+          if (b.id === "btnExportMd") {
+            download(
+              "entrevista_json_tela_respostas.md",
+              projectToMd(),
+              "text/markdown",
+            );
+            toast("Resumo Markdown exportado.");
+            return;
+          }
+          if (b.id === "btnCopy") {
+            copyJSON();
+            return;
+          }
+          if (b.id === "btnAddQ") {
+            addQuestionDialog();
+            return;
+          }
+          if (b.id === "dialogCancel") {
+            closeDialog();
+            return;
+          }
+          if (b.id === "dialogSave") {
+            saveNewQuestion();
+            return;
+          }
+          if (b.id === "btnClear") {
+            clearAll();
+            return;
+          }
+          if (b.id === "btnReset") {
+            resetFromSource();
+            return;
+          }
+        });
+        document
+          .getElementById("searchInput")
+          .addEventListener("input", (e) => {
+            searchText = e.target.value.toLocaleLowerCase("pt-BR");
+            renderQuestions();
+          });
+        document
+          .getElementById("statusFilter")
+          .addEventListener("change", (e) => {
+            filterStatus = e.target.value;
+            renderQuestions();
+          });
+        document
+          .getElementById("importInput")
+          .addEventListener("change", async (e) => {
+            await importFile(e.target.files?.[0]);
+          });
+        document
+          .getElementById("newTopic")
+          .addEventListener("change", (e) =>
+            document
+              .getElementById("newTopicOtherWrap")
+              .classList.toggle("hidden", e.target.value !== "_nova"),
+          );
+        document
+          .getElementById("dialogCover")
+          .addEventListener("click", (e) => {
+            if (e.target.id === "dialogCover") closeDialog();
+          });
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDialog();
+        });
+      }
+      restore();
+      bind();
+      rerender();
+      setTab("questions");
+    </script>
+  </body>
+</html>

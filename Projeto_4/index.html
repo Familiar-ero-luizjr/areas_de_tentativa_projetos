@@ -3,62 +3,196 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Laboratório e visualizadores JSON do Advogado Já." />
+    <meta
+      name="description"
+      content="Laboratório e visualizadores JSON do Advogado Já."
+    />
     <title>Projeto 4 — Catálogo HTML</title>
     <style>
-      :root { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; color: #172b46; background: #f2f6fb; }
-      * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; }
-      header { padding: 2rem max(1.25rem, calc((100vw - 1100px) / 2)); background: #112c4b; color: white; }
-      header a { color: #c8dcf7; } h1 { margin: .7rem 0 .45rem; font-size: clamp(1.9rem, 4vw, 3rem); }
-      header p { margin: 0; color: #c9d7e8; max-width: 60rem; line-height: 1.55; }
-      main { width: min(1100px, 100%); margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
-      .tools { display: flex; gap: .8rem; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1.25rem; }
-      input { width: min(30rem, 100%); border: 1px solid #becce0; border-radius: .7rem; padding: .75rem .9rem; font: inherit; }
-      #count { color: #52667e; font-size: .92rem; }
-      .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .85rem; }
-      .item { display: block; padding: 1rem; background: white; border: 1px solid #d6e0ed; border-radius: .8rem; color: inherit; text-decoration: none; box-shadow: 0 2px 12px #152f4a0a; }
-      .item:hover, .item:focus-visible { border-color: #3979c5; box-shadow: 0 8px 20px #152f4a1c; outline: 3px solid #9ac4fb; outline-offset: 2px; }
-      .name { display: block; font-weight: 750; overflow-wrap: anywhere; }
-      .path { display: block; margin-top: .45rem; color: #62758d; font: .76rem/1.45 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
-      .empty { color: #66788e; padding: 2rem 0; }
+      :root {
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: #172b46;
+        background: #f2f6fb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+      }
+      header {
+        padding: 2rem max(1.25rem, calc((100vw - 1100px) / 2));
+        background: #112c4b;
+        color: white;
+      }
+      header a {
+        color: #c8dcf7;
+      }
+      h1 {
+        margin: 0.7rem 0 0.45rem;
+        font-size: clamp(1.9rem, 4vw, 3rem);
+      }
+      header p {
+        margin: 0;
+        color: #c9d7e8;
+        max-width: 60rem;
+        line-height: 1.55;
+      }
+      main {
+        width: min(1100px, 100%);
+        margin: 0 auto;
+        padding: 1.5rem 1.25rem 3rem;
+      }
+      .tools {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 1.25rem;
+      }
+      input {
+        width: min(30rem, 100%);
+        border: 1px solid #becce0;
+        border-radius: 0.7rem;
+        padding: 0.75rem 0.9rem;
+        font: inherit;
+      }
+      #count {
+        color: #52667e;
+        font-size: 0.92rem;
+      }
+      .list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 0.85rem;
+      }
+      .item {
+        display: block;
+        padding: 1rem;
+        background: white;
+        border: 1px solid #d6e0ed;
+        border-radius: 0.8rem;
+        color: inherit;
+        text-decoration: none;
+        box-shadow: 0 2px 12px #152f4a0a;
+      }
+      .item:hover,
+      .item:focus-visible {
+        border-color: #3979c5;
+        box-shadow: 0 8px 20px #152f4a1c;
+        outline: 3px solid #9ac4fb;
+        outline-offset: 2px;
+      }
+      .name {
+        display: block;
+        font-weight: 750;
+        overflow-wrap: anywhere;
+      }
+      .path {
+        display: block;
+        margin-top: 0.45rem;
+        color: #62758d;
+        font:
+          0.76rem/1.45 ui-monospace,
+          Consolas,
+          monospace;
+        overflow-wrap: anywhere;
+      }
+      .empty {
+        color: #66788e;
+        padding: 2rem 0;
+      }
     </style>
   </head>
   <body>
     <header>
       <a href="../">← Todos os projetos</a>
       <h1>Projeto 4</h1>
-      <p>Laboratório e visualizadores JSON do Advogado Já. Selecione um arquivo para abri-lo em uma nova aba.</p>
+      <p>
+        Laboratório e visualizadores JSON do Advogado Já. Selecione um arquivo
+        para abri-lo em uma nova aba.
+      </p>
     </header>
     <main>
       <div class="tools">
-        <input id="filter" type="search" placeholder="Filtrar por nome ou caminho…" aria-label="Filtrar arquivos HTML" />
+        <input
+          id="filter"
+          type="search"
+          placeholder="Filtrar por nome ou caminho…"
+          aria-label="Filtrar arquivos HTML"
+        />
         <span id="count"></span>
       </div>
-      <section id="list" class="list" aria-label="Arquivos HTML publicados"></section>
-      <p id="empty" class="empty" hidden>Nenhum arquivo corresponde ao filtro.</p>
+      <section
+        id="list"
+        class="list"
+        aria-label="Arquivos HTML publicados"
+      ></section>
+      <p id="empty" class="empty" hidden>
+        Nenhum arquivo corresponde ao filtro.
+      </p>
     </main>
     <script>
-      const files = ["laboratorio_telas_json_v4_publicado.html","ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.html","ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.1.html","ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.2.html","AdvogadoJa_Visualizador_JSON_Completo.html","catalogo_home_profissional_json_unico.html","visualizador_json_abas_incremental.html"];
+      const files = [
+        "laboratorio_telas_json_v4_publicado.html",
+        "ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.html",
+        "ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.1.html",
+        "ADVOGADOJA_LABORATORIO_TELAS_JSON_V4.2.html",
+        "AdvogadoJa_Visualizador_JSON_Completo.html",
+        "catalogo_home_profissional_json_unico.html",
+        "visualizador_json_abas_incremental.html",
+        "ADVOGADOJA_ENTREVISTA/index.html",
+      ];
       const list = document.querySelector("#list");
       const filter = document.querySelector("#filter");
       const count = document.querySelector("#count");
       const empty = document.querySelector("#empty");
-      function label(path) { return path.split("/").pop().replace(/\.html$/i, "").replace(/[_-]+/g, " "); }
+      function label(path) {
+        const parts = path.split("/");
+        const fileName = parts.at(-1);
+        const name = fileName
+          .replace(/\.html$/i, "")
+          .replace(/[_-]+/g, " ");
+        // Arquivos de entrada em subpastas seriam exibidos apenas como "index".
+        // Use o nome da pasta para que a tela possa ser identificada no catálogo.
+        return /^index$/i.test(name) && parts.length > 1
+          ? parts.at(-2).replace(/[_-]+/g, " ")
+          : name;
+      }
       function render() {
         const term = filter.value.trim().toLocaleLowerCase("pt-BR");
-        const visible = files.filter((path) => path.toLocaleLowerCase("pt-BR").includes(term));
-        list.replaceChildren(...visible.map((path) => {
-          const link = document.createElement("a");
-          link.className = "item"; link.href = path; link.target = "_blank"; link.rel = "noopener";
-          const name = document.createElement("span"); name.className = "name"; name.textContent = label(path);
-          const detail = document.createElement("span"); detail.className = "path"; detail.textContent = path;
-          link.append(name, detail); return link;
-        }));
+        const visible = files.filter((path) =>
+          path.toLocaleLowerCase("pt-BR").includes(term),
+        );
+        list.replaceChildren(
+          ...visible.map((path) => {
+            const link = document.createElement("a");
+            link.className = "item";
+            link.href = path;
+            link.target = "_blank";
+            link.rel = "noopener";
+            const name = document.createElement("span");
+            name.className = "name";
+            name.textContent = label(path);
+            const detail = document.createElement("span");
+            detail.className = "path";
+            detail.textContent = path;
+            link.append(name, detail);
+            return link;
+          }),
+        );
         count.textContent = `${visible.length} de ${files.length} arquivos`;
         empty.hidden = visible.length !== 0;
       }
-      filter.addEventListener("input", render); render();
+      filter.addEventListener("input", render);
+      render();
     </script>
   </body>
 </html>
