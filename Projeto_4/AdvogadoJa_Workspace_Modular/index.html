@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="jornadas/painel.css">
 <link rel="stylesheet" href="banco/banco.css">
 <link rel="stylesheet" href="mapa/mapa.css">
+<link rel="stylesheet" href="modulo_contrato/contrato.css">
 </head>
 <body>
 <div class="app"><div class="shell">
@@ -62,7 +63,45 @@
 <div class="view" id="view-json"><div class="grid"><section class="panel"><div class="ph"><div><h2>Índice mestre (gerado)</h2><div class="hint">Projeção em memória; não é arquivo-fonte.</div></div><div class="controls"><button class="btn sm" id="downloadMaster">Baixar índice</button><button class="btn sm" id="copyMaster">Copiar</button></div></div><textarea id="masterJson" readonly class="editor" style="min-height:660px;border-radius:0;border:0"></textarea></section><section class="panel"><div class="ph"><div><h2>Pacote JSON da tela</h2><div class="hint">Um único <code>catalogo</code> contendo uma tela e todos os componentes necessários. O ZIP inclui pacotes de tela e definições únicas de componentes.</div></div><button class="btn sm" id="downloadPackage">Baixar pacote</button></div><div class="pb"><label class="label">Selecionar tela</label><select class="field" id="packageScreenChoice"></select></div><textarea id="packageJson" readonly class="editor" style="min-height:615px;border-radius:0 0 10px 10px;border:0"></textarea></section></div></div>
  <div class="view" id="view-banco"><div class="ph"><div><h2>Banco derivado das jornadas</h2><div class="hint">Não existe modelagem independente: entidades, campos e relações são agregados de <code>dados.persistencia</code> das telas.</div></div></div><div class="pills" id="bankMetrics" style="margin:15px"></div><div class="bank-layout"><section class="panel"><div class="ph"><h2>Entidades declaradas</h2></div><div class="bank-list" id="bankEntityList"></div></section><section class="panel" id="bankDetails"></section></div></div>
  <div class="view" id="view-mapa"><header class="map-head"><h2>Mapa integrado do catálogo</h2><p>Blocos, raias e setas são uma projeção dos JSONs canônicos: <code>classificacao</code> agrupa as telas e <code>acoes</code> + itens de componentes definem as conexões. Não há fonte paralela.</p></header><div class="pills" style="margin:14px 16px 0"><span class="pill emph" id="mapStatus">Carregando…</span></div><div class="map-canvas" id="mapCanvas"></div></div>
- <div class="view" id="view-contrato"><div class="grid"><section class="panel"><div class="ph"><h2>Contrato do pacote por tela + Flow</h2></div><div class="pb readme"><p><strong>Fonte de verdade:</strong> os componentes ficam separados no catálogo; a tela define suas instâncias, estados, jornadas, grupos HTML/CSS próprios e ações. Um pacote transporta as definições necessárias sem mudar seus IDs.</p><p><strong>Raiz obrigatória:</strong> <code>catalogo</code>. Contém <code>metadados</code>, <code>componentes[]</code> e <code>telas[]</code> (um registro no pacote unitário).</p><p><strong>Importação:</strong> ao ler um pacote o motor valida IDs, insere componentes novos, reutiliza componentes iguais e registra conflitos sem sobrescrever silenciosamente; depois insere/atualiza telas e recalcula índices.</p><p><strong>Associações:</strong> <code>aplicaA: {jornadas:[...], estados:[...]}</code> em grupos de estrutura, CSS, dados, mocks, instâncias, itens e ações. O valor <code>*</code> indica comum.</p><p><strong>Persistência:</strong> <code>dados.persistencia.entidades[]</code> e <code>dados.persistencia.relacoes[]</code> são declarações da necessidade da tela. A aba Banco somente agrega essas declarações; ela não possui tabelas próprias.</p><p><strong>Flow:</strong> navegação operacional em <code>acoes.grupos</code> e itens dos componentes. A apresentação no construtor é declarada por <code>flow.editor.entrypoint</code>, <code>rootSequenceId</code>, <code>occurrences[]</code> e <code>branches[]</code>. O motor produz sequências, entradas e grafo em memória, sem persistência paralela. Condições legadas são dados de auditoria até serem convertidas em regras executáveis.</p><p><strong>Importante:</strong> a montagem e o índice mestre são resultados gerados, não arquivos canônicos que precisem ser editados manualmente.</p><div class="okBox">Modelo de referência inicial: 79 telas do Flow V3 preservadas, com componentes reais V6 disponíveis para a Home Profissional; demais prévias dependem da importação dos respectivos componentes.</div></div></section><section class="panel"><div class="ph"><h2>Exemplo mínimo válido</h2><button class="btn sm" id="downloadTemplate2">Exportar template</button></div><textarea class="editor" id="templateJson" readonly style="border:0;border-radius:0;min-height:610px"></textarea></section></div></div>
+ <div class="view" id="view-contrato">
+  <div class="ct-head">
+   <div><div class="ct-eyebrow">MÓDULO AUTÔNOMO · PLANEJAMENTO E HOMOLOGAÇÃO</div><h2>Contrato evolutivo do Workspace</h2>
+    <p>Defina o comportamento desejado para telas, componentes e motores. Este módulo trabalha com um <strong>JSON exclusivo</strong> em <code>modulo_contrato/data/</code>. Não modifica o catálogo automaticamente.</p></div>
+   <div class="ct-actions"><span id="ctStatus" class="ct-status">Carregando contrato…</span><button class="btn" id="ctImportBtn">Importar JSON do contrato</button><button class="btn" id="ctExportBtn">Exportar JSON do contrato</button><button class="btn primary" id="ctSaveBtn">Salvar no disco</button><input type="file" id="ctImportFile" accept=".json,application/json" hidden></div>
+  </div>
+  <div class="ct-metrics" id="ctMetrics"></div>
+  <nav class="ct-nav" aria-label="Seções do contrato">
+    <button class="ct-tab active" data-ct-tab="objetivos">Objetivos</button>
+    <button class="ct-tab" data-ct-tab="areas">Contratos por área</button>
+    <button class="ct-tab" data-ct-tab="decisoes">Decisões</button>
+    <button class="ct-tab" data-ct-tab="json">JSON integral</button>
+  </nav>
+  <div id="ctPanelObjetivos" class="ct-panel">
+   <div class="ct-note">Os objetivos expressam as regras de direção atuais. Você pode revisá-los livremente; nenhum deles altera a Store até uma futura homologação e aplicação explícita.</div>
+   <div class="ct-objetivos" id="ctObjetivos"></div><div class="ct-controls"><button id="ctAddObjetivo" class="btn">+ Novo objetivo</button></div>
+  </div>
+  <div id="ctPanelAreas" class="ct-panel" hidden>
+   <div class="ct-columns">
+    <aside class="ct-areas-list" id="ctAreasNav" aria-label="Áreas de contrato"></aside>
+    <div class="ct-area-content"><div class="ct-area-form" id="ctAreaForm"></div>
+     <section class="ct-section"><div class="ct-section-head"><div><h3>Campos do contrato</h3><p>Aqui especificamos o significado e o nível de exigência de cada campo existente ou proposto.</p></div><button class="btn" id="ctAddCampo">+ Campo</button></div><div class="ct-field-list" id="ctCampoLista"></div><div class="ct-field-edit" id="ctCampoEditor"></div></section>
+     <section class="ct-section ct-section-texts" id="ctAreaLists"></section>
+    </div>
+   </div>
+  </div>
+  <div id="ctPanelDecisoes" class="ct-panel" hidden>
+    <div class="ct-note">Decisões propostas, ainda pendentes ou homologadas. Elas não são interpretadas automaticamente pelos motores.</div>
+    <div id="ctDecisoes" class="ct-decisions"></div><div class="ct-controls"><button class="btn" id="ctAddDecisao">+ Nova decisão</button></div>
+  </div>
+  <div id="ctPanelJson" class="ct-panel" hidden>
+    <div class="ct-note">Edite o documento completo <code>advogadoja.modulo_contrato.v1</code>. É um formato próprio; arquivos <code>catalogo</code> e JSONs de telas não são aceitos aqui.</div>
+    <textarea class="ct-json" id="ctJson" spellcheck="false" aria-label="Código JSON exclusivo do contrato"></textarea>
+    <div class="ct-controls"><button class="btn" id="ctFormatJson">Formatar</button><button class="btn primary" id="ctApplyJson">Validar e aplicar JSON</button><button class="btn" id="ctRevertJson">Descartar edição do código</button></div>
+  </div>
+  <button id="downloadTemplate2" hidden></button><textarea id="templateJson" hidden></textarea>
+  <p class="ct-message" id="ctMessage" role="status" aria-live="polite"></p>
+  <div class="ct-footer">Fonte do módulo: <code>modulo_contrato/data/contrato_workspace.json</code> · Fonte de telas/componentes: <code>catalogo/</code> · Documentação legada: <code>contratos/</code>. As três responsabilidades permanecem separadas.</div>
+ </div>
 </div></div>
 
 
@@ -79,5 +118,6 @@
 <script src="motor_fluxo/fluxo.js"></script>
 <script src="motor_simulacao/simulacao.js"></script>
 <script src="app/persistencia.js"></script>
+<script src="modulo_contrato/contrato.js"></script>
 <script src="app/bootstrap.js"></script>
 </body></html>

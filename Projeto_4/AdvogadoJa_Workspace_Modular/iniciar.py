@@ -10,6 +10,8 @@ from functools import partial
 
 ROOT = pathlib.Path(__file__).resolve().parent
 CATALOG = ROOT / 'catalogo'
+CONTRATO_PATH = ROOT / 'modulo_contrato' / 'data' / 'contrato_workspace.json'
+CONTRATO_SCHEMA = 'advogadoja.modulo_contrato.v1'
 ID_PATTERN = re.compile(r'^[a-z][a-z0-9_.-]+$')
 WRITE_LOCK = threading.RLock()
 
@@ -64,6 +66,51 @@ def scan_records():
             paths[key] = path
     return out, paths
 
+def validate_contrato(doc):
+    """Valida exclusivamente o documento evolutivo; nunca importa a Store."""
+    if not isinstance(doc, dict) or doc.get('schema') != CONTRATO_SCHEMA:
+        raise ValueError('JSON não pertence ao módulo Contrato; schema inválido')
+    meta=doc.get('metadados')
+    if not isinstance(meta, dict) or meta.get('id') != 'advogadoja.workspace.contrato' or not isinstance(meta.get('titulo'),str) or not isinstance(meta.get('versao'),str):
+        raise ValueError('Metadados do contrato inválidos')
+    for key in ('objetivos', 'areas', 'decisoes'):
+        if not isinstance(doc.get(key), list): raise ValueError(key+' precisa ser lista')
+    ctrl=doc.get('controle')
+    if not isinstance(ctrl,dict) or ctrl.get('aplicacaoAutomaticaNoCatalogo') is not False:
+        raise ValueError('Contrato de planejamento não pode aplicar alterações automaticamente no catálogo')
+    seen=set()
+    def uid(prefix,value):
+        if not isinstance(value,str) or not value.strip() or len(value)>120: raise ValueError('ID inválido no contrato')
+        key=prefix+':'+value
+        if key in seen: raise ValueError('ID duplicado no contrato: '+key)
+        seen.add(key)
+    for o in doc['objetivos']:
+        if not isinstance(o,dict) or not isinstance(o.get('titulo'),str) or not isinstance(o.get('descricao'),str):raise ValueError('Objetivo inválido')
+        uid('objetivo',o.get('id'))
+    for a in doc['areas']:
+        if not isinstance(a,dict) or not isinstance(a.get('titulo'),str) or not isinstance(a.get('objetivo'),str) or not isinstance(a.get('fonte'),str):raise ValueError('Área inválida')
+        uid('area',a.get('id'))
+        if a.get('situacao') not in ('proposto','em_revisao','homologado'): raise ValueError('Situação inválida em área')
+        for key in ('campos','regras','pendencias','criteriosAceite'):
+            if not isinstance(a.get(key),list):raise ValueError('Área requer lista '+key)
+        fields=set()
+        for c in a['campos']:
+            if not isinstance(c,dict) or not isinstance(c.get('campo'),str) or not c['campo'].strip() or not isinstance(c.get('finalidade'),str) or not isinstance(c.get('regra'),str) or c.get('exigencia') not in ('obrigatorio','opcional','condicional') or c.get('situacao') not in ('existente','proposto','em_revisao','pendente'):
+                raise ValueError('Campo inválido na área '+a['id'])
+            if c['campo'] in fields:raise ValueError('Campo duplicado na área '+a['id'])
+            fields.add(c['campo'])
+        for key in ('regras','pendencias','criteriosAceite'):
+            if any(not isinstance(v,str) for v in a[key]):raise ValueError('Lista '+key+' inválida em '+a['id'])
+    for d in doc['decisoes']:
+        if not isinstance(d,dict) or not isinstance(d.get('assunto'),str) or not isinstance(d.get('decisao'),str) or not isinstance(d.get('impacto'),str) or d.get('situacao') not in ('proposta','pendente','homologada'):
+            raise ValueError('Decisão inválida')
+        uid('decisao',d.get('id'))
+    return doc
+
+def read_contrato():
+    doc = validate_contrato(json.loads(CONTRATO_PATH.read_text(encoding='utf-8')))
+    return doc, hash_content(doc)
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -83,12 +130,39 @@ class Handler(SimpleHTTPRequestHandler):
                 try: self._json(200, scan_records()[0])
                 except Exception as exc: self._json(500, {'error': str(exc)})
             return
+        if path == '/api/contrato':
+            with WRITE_LOCK:
+                try:
+                    doc,version=read_contrato()
+                    self._json(200, {'doc':doc, 'version':version})
+                except Exception as exc: self._json(500, {'error':str(exc)})
+            return
         # Don't expose server code or internal metadata by URL
         if path.endswith('.py') or path.startswith('/.') or '/.' in path:
             self.send_error(403); return
         if path == '/': self.path = '/index.html'
         return super().do_GET()
     def do_POST(self):
+        if urlsplit(self.path).path == '/api/contrato/sync':
+            try:
+                n=int(self.headers.get('Content-Length','0'))
+                if n<2 or n>1_000_000: raise ValueError('Tamanho do contrato inválido')
+                payload=json.loads(self.rfile.read(n))
+                doc=validate_contrato(payload.get('doc'))
+                expected=payload.get('expected')
+                with WRITE_LOCK:
+                    old_doc,version=read_contrato()
+                    if expected != version:
+                        self._json(409, {'error':'Conflito de versão: o contrato mudou no disco. Exporte seu rascunho e recarregue antes de mesclar.'});return
+                    CONTRATO_PATH.parent.mkdir(parents=True,exist_ok=True)
+                    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=CONTRATO_PATH.parent,delete=False,suffix='.tmp') as tmp:
+                        json.dump(doc,tmp,ensure_ascii=False,indent=2)
+                        tmp.write('\n')
+                        tmp_path=pathlib.Path(tmp.name)
+                    os.replace(tmp_path, CONTRATO_PATH)
+                    self._json(200,{'ok':True, 'version':hash_content(doc)})
+            except Exception as exc:self._json(400,{'error':str(exc)})
+            return
         if urlsplit(self.path).path != '/api/catalogo/sync':
             self._json(404, {'error':'Rota desconhecida'}); return
         try:

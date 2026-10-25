@@ -1,0 +1,474 @@
+{
+  "schema": "advogadoja.modulo_contrato.v1",
+  "metadados": {
+    "id": "advogadoja.workspace.contrato",
+    "versao": "0.1.0",
+    "titulo": "Contrato evolutivo — Catálogo e motores",
+    "situacao": "rascunho",
+    "escopo": "Definir contratos antes de modificar a implementação canônica.",
+    "atualizadoEm": "2026-10-25"
+  },
+  "objetivos": [
+    {
+      "id": "O01",
+      "titulo": "Fonte única",
+      "descricao": "Telas e componentes são registros JSON individuais; módulos consumidores não duplicam definições."
+    },
+    {
+      "id": "O02",
+      "titulo": "Jornadas dinâmicas",
+      "descricao": "A classificação da própria tela determina as jornadas exibidas, inclusive jornadas novas e compartilhadas."
+    },
+    {
+      "id": "O03",
+      "titulo": "Ligações simples e reversíveis",
+      "descricao": "A origem declara saídas; o motor calcula entradas, resolve referências e permite criar/desfazer sem perda."
+    },
+    {
+      "id": "O04",
+      "titulo": "Montagem e Flow independentes",
+      "descricao": "Estrutura visual referencia componentes; Flow editorial mantém ocorrências e branches separadas da navegação operacional."
+    },
+    {
+      "id": "O05",
+      "titulo": "Simulação segura",
+      "descricao": "Cenários e estados podem ser simulados sem executar backend."
+    },
+    {
+      "id": "O06",
+      "titulo": "Evolução sem regressão",
+      "descricao": "Não renumerar IDs e preservar dados do Flow e do catálogo; mudanças estruturais exigem teste de regressão."
+    },
+    {
+      "id": "O07",
+      "titulo": "Contrato autônomo",
+      "descricao": "O módulo de contrato importa/exporta exclusivamente seu JSON, sem editar dados das telas por consequência."
+    }
+  ],
+  "areas": [
+    {
+      "id": "tela",
+      "titulo": "Contrato da tela",
+      "situacao": "em_revisao",
+      "objetivo": "Cada tela declara uma única identidade estável, as jornadas em que participa, os componentes que instancia, as ações e as posições no Flow. A tela é a fonte de seus próprios dados.",
+      "fonte": "catalogo/telas/**/*.json",
+      "campos": [
+        {
+          "campo": "identidade.id",
+          "finalidade": "Referência global estável; não renumerar ao mover a tela.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Usado para relacionar navegação, componentes e ocorrências editoriais."
+        },
+        {
+          "campo": "identidade.nome / tipo / versao",
+          "finalidade": "Identidade e versão editorial da tela.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "tipo = tela."
+        },
+        {
+          "campo": "classificacao.jornadas[]",
+          "finalidade": "Participação dinâmica em uma ou várias jornadas.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "* significa compartilhada; não gera aba própria."
+        },
+        {
+          "campo": "classificacao.subjornadas[]",
+          "finalidade": "Organizar agrupamentos dentro da jornada.",
+          "exigencia": "opcional",
+          "situacao": "existente",
+          "regra": "Não substitui o Flow editorial."
+        },
+        {
+          "campo": "classificacao.localizacaoArvore",
+          "finalidade": "Exibição/ordenação no catálogo.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Pasta física e ID não substituem os metadados de classificação."
+        },
+        {
+          "campo": "componentes.instancias[]",
+          "finalidade": "Referenciar por ID, slot, ordem, props e aplicaA.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Nunca copiar HTML/CSS do componente para a tela."
+        },
+        {
+          "campo": "estados",
+          "finalidade": "Fonte de estado, grupos, fallback e autoridade.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Precisamos aprovar a interpretação de estados autoritativos."
+        },
+        {
+          "campo": "estrutura / estilos",
+          "finalidade": "Layout próprio e composição por slots.",
+          "exigencia": "condicional",
+          "situacao": "existente",
+          "regra": "Estilos próprios não duplicam estilos dos componentes."
+        },
+        {
+          "campo": "acoes.grupos[]",
+          "finalidade": "Eventos/saídas/comandos a partir da origem.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Navegação executável não é a mesma coisa que ordenação editorial."
+        },
+        {
+          "campo": "dados / mocks",
+          "finalidade": "Dados, fontes, persistência e simulações.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Distinguir backend autoritativo de demonstrações."
+        },
+        {
+          "campo": "flow.editor",
+          "finalidade": "Ocorrências, sequências, branches e entrypoint.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Posição editorial não deve virar IDs de tela sequenciais."
+        }
+      ],
+      "regras": [
+        "Uma tela pode pertencer a mais de uma jornada sem cópia.",
+        "Entradas são derivadas pelo motor a partir de saídas das telas de origem.",
+        "Alterar identificadores estáveis exige migração explícita de referências."
+      ],
+      "pendencias": [
+        "Definir quais campos são sempre obrigatórios e quais são condicionais por tipo de tela.",
+        "Fechar semântica de estados e permissões, especialmente cadastro e administração."
+      ],
+      "criteriosAceite": [
+        "Nova tela é detectada no catálogo sem mudança de código nos motores.",
+        "Alteração em classificacao.jornadas gera/retira automaticamente a jornada na interface.",
+        "A tela conserva seus componentes e conexões após editar sua classificação."
+      ]
+    },
+    {
+      "id": "componente",
+      "titulo": "Contrato do componente",
+      "situacao": "em_revisao",
+      "objetivo": "O componente guarda sua estrutura, estilos e interface pública; é resolvido pela tela através de identidade.id e usado por vários contextos sem duplicar sua definição.",
+      "fonte": "catalogo/componentes/**/*.json",
+      "campos": [
+        {
+          "campo": "identidade.id / tipo / nome / versao",
+          "finalidade": "Identificação e versionamento.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "tipo = componente."
+        },
+        {
+          "campo": "classificacao.localizacaoArvore",
+          "finalidade": "Agrupamento na árvore do catálogo.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Localização independente do ID."
+        },
+        {
+          "campo": "classificacao.escopo / jornadas",
+          "finalidade": "Metadados e restrição de aplicação.",
+          "exigencia": "condicional",
+          "situacao": "existente",
+          "regra": "NÃO geram abas de jornada."
+        },
+        {
+          "campo": "estrutura.formato / arvore",
+          "finalidade": "Árvore visual declarativa do componente.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Componente não consulta o arquivo da tela."
+        },
+        {
+          "campo": "estilos.css",
+          "finalidade": "Estilos encapsulados do componente.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Motor compõe CSS sem cópia canônica."
+        },
+        {
+          "campo": "interface.propriedadesAceitas",
+          "finalidade": "Contrato de propriedades (props) recebidas.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Padronizar tipos, obrigatoriedade e valores padrão."
+        },
+        {
+          "campo": "interface.eventosEmitidos",
+          "finalidade": "Eventos emitidos que telas podem consumir.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Definir nome, payload e compatibilidade."
+        }
+      ],
+      "regras": [
+        "A tela declara instâncias por ref; componente não possui lista de telas consumidoras.",
+        "Props podem referenciar dados/mocks da própria tela sem copiar os componentes."
+      ],
+      "pendencias": [
+        "Formalizar payload e tipagem dos eventos emitidos.",
+        "Padronizar composição/repetição, CSS seguro e promoção local → reutilizável."
+      ],
+      "criteriosAceite": [
+        "Uma alteração de componente repercute nas telas consumidoras sem duplicar o arquivo.",
+        "Motor avisa se a ref de um componente não existir."
+      ]
+    },
+    {
+      "id": "catalogo",
+      "titulo": "Catálogo e jornadas",
+      "situacao": "em_revisao",
+      "objetivo": "Uma Store canônica composta pelos arquivos individuais de tela e componente. Todas as árvores, jornadas, índices e exportações são leituras derivadas.",
+      "fonte": "catalogo/ + classificacao dos registros",
+      "campos": [
+        {
+          "campo": "tela.classificacao.jornadas[]",
+          "finalidade": "Descoberta dinâmica das jornadas.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "União dos valores diferentes de *; normalização admin→administrador mantida por compatibilidade."
+        },
+        {
+          "campo": "tela.classificacao.localizacaoArvore",
+          "finalidade": "Organização hierárquica amigável.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Não depender de nomes de arquivo para montar as árvores."
+        },
+        {
+          "campo": "componente.identidade.id",
+          "finalidade": "Resolução canônica de referências visuais.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Não duplicar definição no pacote de tela."
+        },
+        {
+          "campo": "catalogo.metadados / telas[] / componentes[]",
+          "finalidade": "Formato de transporte de pacotes.",
+          "exigencia": "condicional",
+          "situacao": "existente",
+          "regra": "Pacote importável não é arquivo-fonte persistente."
+        }
+      ],
+      "regras": [
+        "Jornada é declarada pela tela; motor cria as abas ao encontrar novo ID.",
+        "* indica tela compartilhada; não cria uma aba chamada *.",
+        "Índices, mapas e árvores são projeções reconstruíveis."
+      ],
+      "pendencias": [
+        "Definir catálogo para novas jornadas ainda não representadas por telas.",
+        "Revisar nomes de escopos e subetapas sem modificar IDs estáveis."
+      ],
+      "criteriosAceite": [
+        "Nova jornada surge sem alteração no código do painel.",
+        "Mapa e árvore refletem alterações dos JSONs."
+      ]
+    },
+    {
+      "id": "montagem",
+      "titulo": "Motor de montagem",
+      "situacao": "em_revisao",
+      "objetivo": "Montar visualmente uma tela usando somente o JSON da própria tela, os componentes de catálogo e os filtros de jornada/estado.",
+      "fonte": "motor_montagem/ (somente código consumidor)",
+      "campos": [
+        {
+          "campo": "telaId / jornada / estado",
+          "finalidade": "Entradas do compilador.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "IDs resolvidos a partir dos JSONs."
+        },
+        {
+          "campo": "componentes.instancias[].ref",
+          "finalidade": "Resolver componente por ID.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Ausência gera diagnóstico."
+        },
+        {
+          "campo": "componentes.instancias[].props",
+          "finalidade": "Resolver propriedades e referências locais.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Referências devem apontar à própria tela."
+        },
+        {
+          "campo": "estrutura.grupos / aplicaA",
+          "finalidade": "Compor slots e filtrar grupos.",
+          "exigencia": "condicional",
+          "situacao": "existente",
+          "regra": "Respeitar estado e jornada."
+        },
+        {
+          "campo": "estilos.grupos",
+          "finalidade": "Compor CSS de tela e componentes.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "A prévia HTML não valida Flutter automaticamente."
+        }
+      ],
+      "regras": [
+        "Resultado da montagem é projeção, nunca a fonte canônica.",
+        "Não executar scripts embutidos em arquivos de componente importados."
+      ],
+      "pendencias": [
+        "Fechar semântica de binding, slots, estilos e atributos seguros.",
+        "Validar equivalência visual para futuras telas Flutter."
+      ],
+      "criteriosAceite": [
+        "Modificação em componente altera sua montagem consumidora.",
+        "Componente ausente produz aviso e não HTML inventado."
+      ]
+    },
+    {
+      "id": "flow",
+      "titulo": "Motor do Flow",
+      "situacao": "em_revisao",
+      "objetivo": "Reconstituir a árvore editorial a partir das ocorrências e bifurcações de cada tela; separadamente, calcular conexões operacionais a partir de ações e itens.",
+      "fonte": "tela.flow.editor e tela.acoes.grupos + componentes.instancias[].props.itens",
+      "campos": [
+        {
+          "campo": "flow.editor.entrypoint / rootSequenceId",
+          "finalidade": "Entrada única da árvore editorial.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Não gerar segundo workspace persistente."
+        },
+        {
+          "campo": "flow.editor.occurrences[]",
+          "finalidade": "Ocorrências por tela com sequenceId e order.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Uma tela pode aparecer muitas vezes."
+        },
+        {
+          "campo": "flow.editor.branches[] / paths[]",
+          "finalidade": "Bifurcações e sequências filhas.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Preservar os identificadores do Flow V3."
+        },
+        {
+          "campo": "acoes.grupos[].acoes[]",
+          "finalidade": "Declarações das saídas operacionais.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Contrato evento/regra/destino/efeito ainda precisa de decisão."
+        },
+        {
+          "campo": "componentes.instancias[].props.itens[].destino",
+          "finalidade": "Saídas de itens fornecidos pela tela.",
+          "exigencia": "condicional",
+          "situacao": "existente",
+          "regra": "Não declarar inbound na tela de destino."
+        }
+      ],
+      "regras": [
+        "Árvore editorial e navegação operacional são modelos distintos.",
+        "Criar ou desfazer conexão edita apenas a origem.",
+        "197 ocorrências, 33 branches, 114 caminhos e 408 saídas V3 são baseline de regressão da base recebida."
+      ],
+      "pendencias": [
+        "Contrato formal de gatilho, porta, condição tipada e prioridade.",
+        "Revisar seis caminhos editoriais vazios e uma tela ainda não posicionada; não preencher automaticamente."
+      ],
+      "criteriosAceite": [
+        "Alterar ordem no Flow altera apenas flow.editor da tela proprietária.",
+        "Relações e entradas se recalculam após mudança em uma ação."
+      ]
+    },
+    {
+      "id": "simulacao",
+      "titulo": "Motor de simulação",
+      "situacao": "em_revisao",
+      "objetivo": "Simular estados, jornadas, componentes, ações e destinos a partir dos mesmos dados canônicos, sem execução de backend ou autorização real.",
+      "fonte": "tela.estados / dados / mocks / acoes e motor_montagem",
+      "campos": [
+        {
+          "campo": "telaId / jornada / estado / cenarioId",
+          "finalidade": "Seleção do contexto simulado.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Fonte é a Store atual."
+        },
+        {
+          "campo": "mocks.cenarios",
+          "finalidade": "Cenários e massa de teste.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Não representa autoridade do backend."
+        },
+        {
+          "campo": "acoes.grupos[].acoes[].id",
+          "finalidade": "Ações simuláveis e saídas declaradas.",
+          "exigencia": "condicional",
+          "situacao": "em_revisao",
+          "regra": "Comando real não pode ser executado."
+        },
+        {
+          "campo": "trace / pendencias",
+          "finalidade": "Resultado de simulação temporário.",
+          "exigencia": "condicional",
+          "situacao": "proposto",
+          "regra": "Não persistir como segunda fonte de verdade."
+        }
+      ],
+      "regras": [
+        "Nunca executar ações reais de pagamento, autenticação, banco ou Firebase.",
+        "Condição legada não avaliada deve aparecer explicitamente como não executada."
+      ],
+      "pendencias": [
+        "Definir DSL de regras tipadas e determinísticas.",
+        "Definir asserts por cenário e percursos testáveis."
+      ],
+      "criteriosAceite": [
+        "Simulação pode ser iniciada sem backend.",
+        "Resultado diferencia navegação declarada de regra efetivamente executada."
+      ]
+    }
+  ],
+  "decisoes": [
+    {
+      "id": "D01",
+      "assunto": "Identidade estável",
+      "decisao": "Não codificar uma posição variável como parte da identidade.id; usar classificacao.localizacaoArvore para catálogo e flow.editor para posições.",
+      "situacao": "proposta",
+      "impacto": "tela, catalogo, flow"
+    },
+    {
+      "id": "D02",
+      "assunto": "Origem única de relação operacional",
+      "decisao": "Guardar a ação de saída na origem e derivar as entradas. Não persistir listas inbound no destino.",
+      "situacao": "proposta",
+      "impacto": "flow, simulacao"
+    },
+    {
+      "id": "D03",
+      "assunto": "Jornadas declarativas",
+      "decisao": "classificacao.jornadas[] da tela descobre jornadas; componentes não criam abas.",
+      "situacao": "proposta",
+      "impacto": "catalogo, montagem, jornadas"
+    },
+    {
+      "id": "D04",
+      "assunto": "Avaliação de condições legadas",
+      "decisao": "Conservar até definir representação tipada; não marcar condições textuais como executadas.",
+      "situacao": "pendente",
+      "impacto": "flow, simulacao"
+    },
+    {
+      "id": "D05",
+      "assunto": "Separação de contrato e dados da aplicação",
+      "decisao": "Salvar proposta do contrato em modulo_contrato/data/contrato_workspace.json; não alterar catálogo na importação desse contrato.",
+      "situacao": "proposta",
+      "impacto": "workspace"
+    }
+  ],
+  "controle": {
+    "modo": "planejamento",
+    "aplicacaoAutomaticaNoCatalogo": false,
+    "observacao": "Alterar este arquivo não migra telas/componentes nem executa regras de negócio. Homologação e aplicação aos motores são etapas posteriores."
+  }
+}

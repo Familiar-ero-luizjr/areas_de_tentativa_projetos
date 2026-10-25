@@ -2,3 +2,6 @@
 wire();
 simWire();
 restoreSeed();
+
+// Contrato possui fonte própria e nunca grava em catalogo/.
+contratoModuloInit();

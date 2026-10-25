@@ -11,3 +11,11 @@
 9. Jornadas são descobertas *somente* dos valores `classificacao.jornadas` dos JSONs de tela; não manter arrays estáticos de jornadas nas interfaces, mapas ou simulador. `*` é global; `admin` é alias legado de `administrador` no motor, mas os IDs de tela com `admin.` permanecem estáveis.
 10. Alterações de jornada ou subjornada não renomeiam `identidade.id`, não duplicam registros de tela e não recriam `flow.editor`. Uma nova jornada em qualquer tela deve gerar sua aba e raia no Mapa; remover a última participação deve retirar a aba sem apagar arquivos.
 11. `migracaoProjeto1`, `proveniencia` importada e rótulos de origem em `identidade.versao` pertencem aos arquivos técnicos de `verificacao/`, não aos contratos funcionais. Preservar históricos, mas nunca usá-los como dados de montagem.
+
+## Módulo Contrato (adicionado após V2)
+
+- `modulo_contrato/data/contrato_workspace.json` é a única fonte do **planejamento** e da homologação dos contratos; `catalogo/` continua sendo fonte exclusiva de telas/componentes.
+- Nunca aplicar automaticamente o planejamento na Store. `controle.aplicacaoAutomaticaNoCatalogo` deve continuar `false` enquanto não existir migração homologada.
+- O módulo só pode consumir `/api/contrato` e `/api/contrato/sync` para persistência. Exportação/importação usam `schema: advogadoja.modulo_contrato.v1`, nunca o pacote `catalogo`.
+- Conservar a distinção entre contrato de campo, contrato do motor, ação operacional e edição editorial. Revisar pendências e critérios antes de marcar área como homologada.
+- Validar mudança com `python verificacao/teste_modulo_contrato.py` e executar regressão do catálogo/Flow. Nunca alterar identificadores existentes apenas para melhorar ordenação.

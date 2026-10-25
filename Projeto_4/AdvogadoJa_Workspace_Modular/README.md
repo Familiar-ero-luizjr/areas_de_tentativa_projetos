@@ -109,3 +109,24 @@ A base original recebida foi preservada, com os ajustes aditivos descritos em `c
 A conciliação com variantes de componentes *já existentes no JSON de cada tela* completou 50 participações de jornada, sem gerar telas, componentes ou conexões. As quatro jornadas existentes agora são descobertas pelos dados (Cliente, Advogado, Estudante, Administrador). A fonte continua sendo o arquivo individual. As ações, o motor do Flow e as prévias continuam independentes da ordem ou do nome físico da pasta.
 
 A limpeza dos metadados históricos (`migracaoProjeto1`, `proveniencia`, versões com sufixos) é auditável em `verificacao/`. Nenhum histórico foi usado como fonte da interface. **Contratos ainda são propostas; esta alteração não autoriza políticas nem condições de negócio.**
+
+## Módulo Contrato evolutivo (V3 · adicional)
+
+A aba **Contrato** agora é um módulo funcional próprio em `modulo_contrato/`, com
+`data/contrato_workspace.json` como **única fonte de persistência** dos objetivos,
+campos, regras, pendências e decisões de contrato. Seus itens editáveis são
+agrupados em seis áreas: **Catálogo/jornadas, tela, componente, montagem, Flow
+editorial e simulação**. Esse documento é de **planejamento**: não migra nem
+altera automaticamente `catalogo/telas` e `catalogo/componentes`.
+
+Ao executar `python iniciar.py`, usar **Contrato → Objetivos / Contratos por área /
+Decisões / JSON integral**. O botão **Importar JSON do contrato** aceita apenas
+`advogadoja.modulo_contrato.v1` e substitui o rascunho após confirmação. O botão
+**Exportar JSON do contrato** gera `ADVOGADOJA_CONTRATO_WORKSPACE.json` **sem** telas,
+componentes ou índices. O botão **Salvar no disco** atualiza exclusivamente
+`modulo_contrato/data/contrato_workspace.json`, com detecção de conflito de versão.
+
+As rotas HTTP são `GET /api/contrato` e `POST /api/contrato/sync`; a API do
+catálogo e os JSONs existentes não foram substituídos. As decisões são propostas
+até homologação explícita. Veja `modulo_contrato/README.md` e
+`contratos/07_MODULO_CONTRATO_EVOLUTIVO_V1.md`.
