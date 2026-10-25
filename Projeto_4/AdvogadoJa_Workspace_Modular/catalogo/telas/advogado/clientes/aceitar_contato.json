@@ -1,0 +1,687 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "advogado.clientes.aceitar_contato",
+    "nome": "Aceitar contato",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/requests/professional/accept",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado",
+      "administrador",
+      "estudante"
+    ],
+    "subjornadas": [
+      "clientes"
+    ],
+    "compartilhada": true,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "advogado",
+        "clientes"
+      ],
+      "chave": "aceitar_contato",
+      "ordem": 3
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.projeto1.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.advogado.clientes.aceitar_contato.j1_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.projeto1.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.advogado.clientes.aceitar_contato.j1_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_estudante",
+        "ref": "style.jornadas.projeto1.estudante.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "ref": "cmp.advogado.clientes.aceitar_contato.j1_estudante.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ],
+    "contratoInstanciacao": {
+      "resolver": "ref por ID no catalogo",
+      "props": "props literais ou referências resolvidas pelo motor; componentes não carregam arquivos diretamente",
+      "filtragem": "aplicaA de grupo e instância por jornada e estado",
+      "semCopiaHTMLCSSNaTela": true,
+      "montagem": "CSS da tela + CSS dos componentes selecionados; HTML base + árvores dos componentes selecionados"
+    }
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_advogado_clientes_aceitar_contato",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"advogado.clientes.aceitar_contato\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_estudante",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_importada_flow_v3",
+        "origem": "flow_v3",
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s027-advogado.clientes.contato_liberado-1",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.clientes.contato_liberado",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.clientes.contato_liberado",
+            "prioridade": 1000,
+            "portasLegadas": {
+              "saida": "out-navigate-s027-advogado.clientes.contato_liberado-1",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s027-1"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s024-advogado.clientes.detalhe_solicitacao-2",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.clientes.detalhe_solicitacao",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.clientes.detalhe_solicitacao",
+            "prioridade": 999,
+            "portasLegadas": {
+              "saida": "out-navigate-s024-advogado.clientes.detalhe_solicitacao-2",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s024-2"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s022-advogado.home_advogado-3",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.home_advogado",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.home_advogado",
+            "prioridade": 998,
+            "portasLegadas": {
+              "saida": "out-navigate-s022-advogado.home_advogado-3",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s022-6"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s023-advogado.clientes.solicitacoes_recebidas-4",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.clientes.solicitacoes_recebidas",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.clientes.solicitacoes_recebidas",
+            "prioridade": 997,
+            "portasLegadas": {
+              "saida": "out-navigate-s023-advogado.clientes.solicitacoes_recebidas-4",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s023-4"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s028-advogado.disponibilidade-5",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.disponibilidade",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.disponibilidade",
+            "prioridade": 996,
+            "portasLegadas": {
+              "saida": "out-navigate-s028-advogado.disponibilidade-5",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s028-4"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s032-escritorio.gestao.escritorio-6",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "escritorio.gestao.escritorio",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino escritorio.gestao.escritorio",
+            "prioridade": 995,
+            "portasLegadas": {
+              "saida": "out-navigate-s032-escritorio.gestao.escritorio-6",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s032-6"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s031-advogado.perfil_profissional-7",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.perfil_profissional",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.perfil_profissional",
+            "prioridade": 994,
+            "portasLegadas": {
+              "saida": "out-navigate-s031-advogado.perfil_profissional-7",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s031-6"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s029-advogado.configuracao.agenda_semanal-8",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.configuracao.agenda_semanal",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.configuracao.agenda_semanal",
+            "prioridade": 993,
+            "portasLegadas": {
+              "saida": "out-navigate-s029-advogado.configuracao.agenda_semanal-8",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s029-4"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s036-advogado.assinatura.gestao_assinatura-9",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.assinatura.gestao_assinatura",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.assinatura.gestao_assinatura",
+            "prioridade": 992,
+            "portasLegadas": {
+              "saida": "out-navigate-s036-advogado.assinatura.gestao_assinatura-9",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s036-5"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s040-notificacoes.lista.notificacoes-10",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "notificacoes.lista.notificacoes",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino notificacoes.lista.notificacoes",
+            "prioridade": 991,
+            "portasLegadas": {
+              "saida": "out-navigate-s040-notificacoes.lista.notificacoes-10",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s040-4"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s041-advogado.configuracao.suporte-11",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.configuracao.suporte",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.configuracao.suporte",
+            "prioridade": 990,
+            "portasLegadas": {
+              "saida": "out-navigate-s041-advogado.configuracao.suporte-11",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s041-4"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s046-advogado.configuracao.termos_privacidade-12",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.configuracao.termos_privacidade",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino advogado.configuracao.termos_privacidade",
+            "prioridade": 989,
+            "portasLegadas": {
+              "saida": "out-navigate-s046-advogado.configuracao.termos_privacidade-12",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s046-4"
+            }
+          },
+          {
+            "id": "rel-advogado.clientes.aceitar_contato-navigate-s003-auth.sessao.entrar-13",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "auth.sessao.entrar",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino auth.sessao.entrar",
+            "prioridade": 988,
+            "portasLegadas": {
+              "saida": "out-navigate-s003-auth.sessao.entrar-13",
+              "entrada": "in-advogado.clientes.aceitar_contato-navigate-s003-10"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navegacao_jornadas_projeto1",
+        "origem": "Projeto_1/jornadas",
+        "aplicaA": {
+          "jornadas": [
+            "administrador",
+            "advogado",
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "j1-advogado-accept_contact-continuar",
+            "tipo": "navegacao_jornada",
+            "evento": "prosseguir",
+            "rotulo": "Prosseguir",
+            "aplicaA": {
+              "jornadas": [
+                "advogado"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "advogado",
+              "no": "accept_contact",
+              "destinoNo": "contact_released",
+              "observacao": "Confirmação antes de liberar o contato."
+            },
+            "destino": "advogado.clientes.contato_liberado"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "contact_requests",
+          "nome": "Solicitações Cliente ↔ Advogado",
+          "dominio": "client",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "client_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "subject",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "description",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "accepted_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closed_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closure_reason",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "contact_requests"
+          }
+        },
+        {
+          "id": "contact_request_status_history",
+          "nome": "Histórico da solicitação",
+          "dominio": "client",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "contact_request_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "from_status",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "to_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "reason",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "changed_by_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "contact_request_status_history"
+          }
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-client_profiles-client_profile_id-contact_requests",
+          "origem": {
+            "entidade": "client_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "client_profile_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
+          "origem": {
+            "entidade": "contact_requests"
+          },
+          "destino": {
+            "entidade": "contact_request_status_history"
+          },
+          "campoReferencia": "contact_request_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-contact_requests-contact_request_id-service_reviews",
+          "origem": {
+            "entidade": "contact_requests"
+          },
+          "destino": {
+            "entidade": "service_reviews"
+          },
+          "campoReferencia": "contact_request_id",
+          "cardinalidade": "1:0..1",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
+      "origemImportacao": {
+        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+        "screenKeyFonte": "advogado.clientes.aceitar_contato",
+        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
+      }
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-0127",
+          "sequenceId": "sequence-0132",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-0195",
+          "sequenceId": "sequence-0200",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-0367",
+          "sequenceId": "sequence-0372",
+          "order": 0,
+          "variant": "default"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

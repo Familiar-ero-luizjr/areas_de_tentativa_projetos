@@ -1,0 +1,738 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.assinaturas.assinaturas",
+    "nome": "Assinaturas",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/admin/subscriptions",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "admin",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "assinaturas"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin",
+        "assinaturas"
+      ],
+      "chave": "assinaturas",
+      "ordem": 5
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.projeto1.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.admin.assinaturas.assinaturas.j1_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ],
+    "contratoInstanciacao": {
+      "resolver": "ref por ID no catalogo",
+      "props": "props literais ou referências resolvidas pelo motor; componentes não carregam arquivos diretamente",
+      "filtragem": "aplicaA de grupo e instância por jornada e estado",
+      "semCopiaHTMLCSSNaTela": true,
+      "montagem": "CSS da tela + CSS dos componentes selecionados; HTML base + árvores dos componentes selecionados"
+    }
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_admin_assinaturas_assinaturas",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.assinaturas.assinaturas\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_importada_flow_v3",
+        "origem": "flow_v3",
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "rel-admin.assinaturas.assinaturas-navigate-s047-admin.dashboard.dashboard-1",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "admin.dashboard.dashboard",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino admin.dashboard.dashboard",
+            "prioridade": 1000,
+            "portasLegadas": {
+              "saida": "out-navigate-s047-admin.dashboard.dashboard-1",
+              "entrada": "in-admin.assinaturas.assinaturas-navigate-s047-1"
+            }
+          },
+          {
+            "id": "rel-admin.assinaturas.assinaturas-navigate-s048-admin.oab.validacao_oab-2",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "admin.oab.validacao_oab",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino admin.oab.validacao_oab",
+            "prioridade": 999,
+            "portasLegadas": {
+              "saida": "out-navigate-s048-admin.oab.validacao_oab-2",
+              "entrada": "in-admin.assinaturas.assinaturas-navigate-s048-1"
+            }
+          },
+          {
+            "id": "rel-admin.assinaturas.assinaturas-navigate-s049-admin.perfis.moderacao_perfis-3",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "admin.perfis.moderacao_perfis",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino admin.perfis.moderacao_perfis",
+            "prioridade": 998,
+            "portasLegadas": {
+              "saida": "out-navigate-s049-admin.perfis.moderacao_perfis-3",
+              "entrada": "in-admin.assinaturas.assinaturas-navigate-s049-1"
+            }
+          },
+          {
+            "id": "rel-admin.assinaturas.assinaturas-navigate-s050-admin.denuncias.denuncias-4",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "admin.denuncias.denuncias",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino admin.denuncias.denuncias",
+            "prioridade": 997,
+            "portasLegadas": {
+              "saida": "out-navigate-s050-admin.denuncias.denuncias-4",
+              "entrada": "in-admin.assinaturas.assinaturas-navigate-s050-1"
+            }
+          },
+          {
+            "id": "rel-admin.assinaturas.assinaturas-navigate-s052-admin.logs.logs_operacionais-5",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "admin.logs.logs_operacionais",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino admin.logs.logs_operacionais",
+            "prioridade": 996,
+            "portasLegadas": {
+              "saida": "out-navigate-s052-admin.logs.logs_operacionais-5",
+              "entrada": "in-admin.assinaturas.assinaturas-navigate-s052-1"
+            }
+          },
+          {
+            "id": "rel-admin.assinaturas.assinaturas-navigate-s003-auth.sessao.entrar-6",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "auth.sessao.entrar",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino auth.sessao.entrar",
+            "prioridade": 995,
+            "portasLegadas": {
+              "saida": "out-navigate-s003-auth.sessao.entrar-6",
+              "entrada": "in-admin.assinaturas.assinaturas-navigate-s003-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navegacao_jornadas_projeto1",
+        "origem": "Projeto_1/jornadas",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "j1-administrador-subscriptions-continuar",
+            "tipo": "navegacao_jornada",
+            "evento": "prosseguir",
+            "rotulo": "Prosseguir",
+            "aplicaA": {
+              "jornadas": [
+                "administrador"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "administrador",
+              "no": "subscriptions",
+              "destinoNo": "subscription_detail",
+              "observacao": "Consulta assinaturas de Advogados e Estudantes de Direito."
+            },
+            "destino": "admin.assinatura_detalhe"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "subscriptions",
+          "nome": "Assinaturas",
+          "dominio": "billing",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "plan_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "provider",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "provider_customer_id",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "provider_subscription_id",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "current_period_end",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "subscriptions"
+          }
+        },
+        {
+          "id": "plans",
+          "nome": "Planos",
+          "dominio": "billing",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "code",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "target_profile_type",
+              "tipo": "advogado|estudante",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "stripe_price_id",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "active",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "plans"
+          }
+        },
+        {
+          "id": "user_profiles",
+          "nome": "Perfis da identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_type",
+              "tipo": "cliente|advogado|estudante|admin",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "onboarding_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "user_profiles"
+          }
+        },
+        {
+          "id": "users",
+          "nome": "Usuários / identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "cpf",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "email",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "phone",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "password_hash",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "account_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "users"
+          }
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_addresses",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_addresses"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-user_id-user_profiles",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_profiles"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-user_contact_preferences",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "user_contact_preferences"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1/N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-user_id-notifications",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "notifications"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-author_user_id-support_ticket_messages",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "author_user_id",
+          "cardinalidade": "1:N?",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-client_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "client_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-lawyer_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-student_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "student_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-subscriptions",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-plans-plan_id-subscriptions",
+          "origem": {
+            "entidade": "plans"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "plan_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-subscriptions-subscription_id-subscription_events",
+          "origem": {
+            "entidade": "subscriptions"
+          },
+          "destino": {
+            "entidade": "subscription_events"
+          },
+          "campoReferencia": "subscription_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-plans-plan_id-plan_entitlements",
+          "origem": {
+            "entidade": "plans"
+          },
+          "destino": {
+            "entidade": "plan_entitlements"
+          },
+          "campoReferencia": "plan_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-user_id-external_account_links",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "external_account_links"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-user_profiles-admin_profile_id-admin_memberships",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "admin_memberships"
+          },
+          "campoReferencia": "admin_profile_id",
+          "cardinalidade": "1:0..1",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-admin_user_id-moderation_actions",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "moderation_actions"
+          },
+          "campoReferencia": "admin_user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-user_id-account_status_history",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "account_status_history"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-users-actor_user_id-audit_logs",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "audit_logs"
+          },
+          "campoReferencia": "actor_user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
+      "origemImportacao": {
+        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+        "screenKeyFonte": "admin.assinaturas",
+        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
+      }
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-0249",
+          "sequenceId": "sequence-0259",
+          "order": 0,
+          "variant": "default"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

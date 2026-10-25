@@ -1,0 +1,554 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "advogado.configuracao.validacao_oab",
+    "nome": "Validação da OAB",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/professional/settings/oab-validation",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado",
+      "administrador",
+      "estudante"
+    ],
+    "subjornadas": [
+      "configuracao"
+    ],
+    "compartilhada": true,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "advogado",
+        "configuracao"
+      ],
+      "chave": "validacao_oab",
+      "ordem": 3
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.projeto1.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.advogado.configuracao.validacao_oab.j1_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.projeto1.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.advogado.configuracao.validacao_oab.j1_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_estudante",
+        "ref": "style.jornadas.projeto1.estudante.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "ref": "cmp.advogado.configuracao.validacao_oab.j1_estudante.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ],
+    "contratoInstanciacao": {
+      "resolver": "ref por ID no catalogo",
+      "props": "props literais ou referências resolvidas pelo motor; componentes não carregam arquivos diretamente",
+      "filtragem": "aplicaA de grupo e instância por jornada e estado",
+      "semCopiaHTMLCSSNaTela": true,
+      "montagem": "CSS da tela + CSS dos componentes selecionados; HTML base + árvores dos componentes selecionados"
+    }
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_advogado_configuracao_validacao_oab",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"advogado.configuracao.validacao_oab\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_estudante",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_importada_flow_v3",
+        "origem": "flow_v3",
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "rel-advogado.configuracao.validacao_oab-back-settings-advogado.configuracao.configuracao-1",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.configuracao.configuracao",
+            "evento": "legacy-event",
+            "rotulo": "Voltar/Cancelar",
+            "prioridade": 1000,
+            "quandoLegado": {
+              "type": "legacy-expression",
+              "expression": "origem = configuracoes"
+            },
+            "portasLegadas": {
+              "saida": "out-back-settings-advogado.configuracao.configuracao-1",
+              "entrada": "in-advogado.configuracao.validacao_oab-back-settings-7"
+            }
+          },
+          {
+            "id": "rel-advogado.configuracao.validacao_oab-home-after-validation-advogado.home_advogado-2",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "advogado.home_advogado",
+            "evento": "legacy-event",
+            "rotulo": "Fluxo autorizado após validação",
+            "prioridade": 999,
+            "quandoLegado": {
+              "type": "legacy-expression",
+              "expression": "status = validated"
+            },
+            "portasLegadas": {
+              "saida": "out-home-after-validation-advogado.home_advogado-2",
+              "entrada": "in-advogado.configuracao.validacao_oab-home-after-validation-13"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navegacao_jornadas_projeto1",
+        "origem": "Projeto_1/jornadas",
+        "aplicaA": {
+          "jornadas": [
+            "administrador",
+            "advogado",
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "j1-advogado-oab_validation_area-data",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Informar / revisar dados da OAB",
+            "aplicaA": {
+              "jornadas": [
+                "advogado"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "advogado",
+              "no": "oab_validation_area",
+              "destinoNo": "oab_data",
+              "observacao": "Segue para os dados usados no processo de validação."
+            },
+            "destino": "advogado.dados_oab"
+          },
+          {
+            "id": "j1-advogado-oab_validation_area-return",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Voltar para a Home",
+            "aplicaA": {
+              "jornadas": [
+                "advogado"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "advogado",
+              "no": "oab_validation_area",
+              "destinoNo": "same_home_return",
+              "observacao": "Retorna para a mesma Home Profissional."
+            },
+            "efeito": {
+              "tipo": "estado_jornada",
+              "estado": "same_home_return",
+              "observacao": "Retorna para a mesma Home Profissional."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "lawyer_oab_records",
+          "nome": "Registro OAB",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "oab_number",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "oab_state",
+              "tipo": "char(2)",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "submitted_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "validated_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "last_checked_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "lawyer_oab_records"
+          }
+        },
+        {
+          "id": "oab_status_history",
+          "nome": "Histórico da OAB",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "oab_record_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "from_status",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "to_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "reason",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "actor_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "oab_status_history"
+          }
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_oab_records",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_oab_records"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:1",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-lawyer_oab_records-oab_record_id-oab_status_history",
+          "origem": {
+            "entidade": "lawyer_oab_records"
+          },
+          "destino": {
+            "entidade": "oab_status_history"
+          },
+          "campoReferencia": "oab_record_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
+      "origemImportacao": {
+        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+        "screenKeyFonte": "advogado.configuracao.validacao_oab",
+        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
+      }
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-edf8269b-0270-4720-afc8-68801a1ce7cc",
+          "sequenceId": "seq-b97e71bb-725d-4a79-9aa3-31864f137f3b",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-home-onboarding-menu-config-validacao-oab",
+          "sequenceId": "sequence-profissional-onboarding-menu-config",
+          "order": 2,
+          "variant": "default"
+        },
+        {
+          "id": "screen-home-cadastro-menu-config-validacao-oab",
+          "sequenceId": "sequence-profissional-cadastro-menu-config",
+          "order": 2,
+          "variant": "default"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

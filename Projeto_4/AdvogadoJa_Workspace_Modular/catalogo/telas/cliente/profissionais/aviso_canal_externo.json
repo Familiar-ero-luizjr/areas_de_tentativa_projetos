@@ -1,0 +1,518 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.profissionais.aviso_canal_externo",
+    "nome": "Cliente · Aviso antes do WhatsApp",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/contato/whatsapp",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente",
+      "administrador",
+      "advogado",
+      "estudante"
+    ],
+    "subjornadas": [
+      "profissionais"
+    ],
+    "compartilhada": true,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "profissionais"
+      ],
+      "chave": "aviso_canal_externo",
+      "ordem": 3
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.projeto1.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.cliente.profissionais.aviso_canal_externo.j1_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.projeto1.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.cliente.profissionais.aviso_canal_externo.j1_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.projeto1.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.profissionais.aviso_canal_externo.j1_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_estudante",
+        "ref": "style.jornadas.projeto1.estudante.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "ref": "cmp.cliente.profissionais.aviso_canal_externo.j1_estudante.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ],
+    "contratoInstanciacao": {
+      "resolver": "ref por ID no catalogo",
+      "props": "props literais ou referências resolvidas pelo motor; componentes não carregam arquivos diretamente",
+      "filtragem": "aplicaA de grupo e instância por jornada e estado",
+      "semCopiaHTMLCSSNaTela": true,
+      "montagem": "CSS da tela + CSS dos componentes selecionados; HTML base + árvores dos componentes selecionados"
+    }
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_profissionais_aviso_canal_externo",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.profissionais.aviso_canal_externo\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "cliente",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_estudante",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_importada_flow_v3",
+        "origem": "flow_v3",
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-s072-cliente.profissionais.detalhe_solicitacao-1",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.profissionais.detalhe_solicitacao",
+            "evento": "legacy-event",
+            "rotulo": "Elemento com destino cliente.profissionais.detalhe_solicitacao",
+            "prioridade": 1000,
+            "portasLegadas": {
+              "saida": "out-navigate-s072-cliente.profissionais.detalhe_solicitacao-1",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-s072-2"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-menu-inicio-cliente.home_cliente-2",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.home_cliente",
+            "evento": "legacy-event",
+            "rotulo": "Menu · Início",
+            "prioridade": 999,
+            "portasLegadas": {
+              "saida": "out-navigate-menu-inicio-cliente.home_cliente-2",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-menu-inicio-5"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-menu-minhas-cliente.profissionais.minhas_solicitacoes-3",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.profissionais.minhas_solicitacoes",
+            "evento": "legacy-event",
+            "rotulo": "Menu · Minhas solicitações",
+            "prioridade": 998,
+            "portasLegadas": {
+              "saida": "out-navigate-menu-minhas-cliente.profissionais.minhas_solicitacoes-3",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-menu-minhas-4"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-menu-contatos-cliente.profissionais.contatos_liberados-4",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.profissionais.contatos_liberados",
+            "evento": "legacy-event",
+            "rotulo": "Menu · Contatos liberados",
+            "prioridade": 997,
+            "portasLegadas": {
+              "saida": "out-navigate-menu-contatos-cliente.profissionais.contatos_liberados-4",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-menu-contatos-4"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-menu-perfil-cliente.perfil_cliente-5",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.perfil_cliente",
+            "evento": "legacy-event",
+            "rotulo": "Menu · Meu perfil",
+            "prioridade": 996,
+            "portasLegadas": {
+              "saida": "out-navigate-menu-perfil-cliente.perfil_cliente-5",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-menu-perfil-3"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-menu-config-cliente.configuracao.configuracao-6",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.configuracao",
+            "evento": "legacy-event",
+            "rotulo": "Menu · Configurações",
+            "prioridade": 995,
+            "portasLegadas": {
+              "saida": "out-navigate-menu-config-cliente.configuracao.configuracao-6",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-menu-config-7"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-notificacoes-notificacoes.lista.notificacoes-7",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "notificacoes.lista.notificacoes",
+            "evento": "legacy-event",
+            "rotulo": "Header · sino",
+            "prioridade": 994,
+            "portasLegadas": {
+              "saida": "out-navigate-notificacoes-notificacoes.lista.notificacoes-7",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-notificacoes-16"
+            }
+          },
+          {
+            "id": "rel-cliente.profissionais.aviso_canal_externo-navigate-sair-auth.sessao.entrar-8",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "auth.sessao.entrar",
+            "evento": "legacy-event",
+            "rotulo": "Menu · Sair",
+            "prioridade": 993,
+            "portasLegadas": {
+              "saida": "out-navigate-sair-auth.sessao.entrar-8",
+              "entrada": "in-cliente.profissionais.aviso_canal_externo-navigate-sair-22"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navegacao_jornadas_projeto1",
+        "origem": "Projeto_1/jornadas",
+        "aplicaA": {
+          "jornadas": [
+            "administrador",
+            "advogado",
+            "cliente",
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "j1-cliente-external_notice-continuar",
+            "tipo": "navegacao_jornada",
+            "evento": "prosseguir",
+            "rotulo": "Prosseguir",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "external_notice",
+              "destinoNo": "external_service",
+              "observacao": "Orienta que o atendimento seguirá fora da plataforma."
+            },
+            "destino": "cliente.profissionais.encerrar_solicitacao"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": [],
+      "contrato": "declarações de dados exigidas pela tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-home-direto-menu-minhas-aviso-canal-externo",
+          "sequenceId": "sequence-home-direto-menu-minhas",
+          "order": 2,
+          "variant": "default"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

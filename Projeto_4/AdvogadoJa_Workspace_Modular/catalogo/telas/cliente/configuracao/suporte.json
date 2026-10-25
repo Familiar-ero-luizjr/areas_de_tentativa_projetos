@@ -1,0 +1,411 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.configuracao.suporte",
+    "nome": "Suporte",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/configuracoes/suporte",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "configuracao"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "configuracao"
+      ],
+      "chave": "suporte",
+      "ordem": 30
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.projeto1.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.configuracao.suporte.j1_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ],
+    "contratoInstanciacao": {
+      "resolver": "ref por ID no catalogo",
+      "props": "props literais ou referências resolvidas pelo motor; componentes não carregam arquivos diretamente",
+      "filtragem": "aplicaA de grupo e instância por jornada e estado",
+      "semCopiaHTMLCSSNaTela": true,
+      "montagem": "CSS da tela + CSS dos componentes selecionados; HTML base + árvores dos componentes selecionados"
+    }
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_configuracao_suporte",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.configuracao.suporte\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "cliente"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_importada_flow_v3",
+        "origem": "flow_v3",
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "rel-cliente.configuracao.suporte-out-1-cliente.configuracao.configuracao-1",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.configuracao",
+            "evento": "legacy-event",
+            "rotulo": "Voltar às Configurações",
+            "prioridade": 1000,
+            "portasLegadas": {
+              "saida": "out-out-1-cliente.configuracao.configuracao-1",
+              "entrada": "in-cliente.configuracao.suporte-out-1-1"
+            }
+          },
+          {
+            "id": "rel-cliente.configuracao.suporte-out-2-cliente.configuracao.central_ajuda-2",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.central_ajuda",
+            "evento": "legacy-event",
+            "rotulo": "Central de ajuda",
+            "prioridade": 999,
+            "portasLegadas": {
+              "saida": "out-out-2-cliente.configuracao.central_ajuda-2",
+              "entrada": "in-cliente.configuracao.suporte-out-2-1"
+            }
+          },
+          {
+            "id": "rel-cliente.configuracao.suporte-out-3-cliente.configuracao.falar_suporte-3",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.falar_suporte",
+            "evento": "legacy-event",
+            "rotulo": "Falar com o suporte",
+            "prioridade": 998,
+            "portasLegadas": {
+              "saida": "out-out-3-cliente.configuracao.falar_suporte-3",
+              "entrada": "in-cliente.configuracao.suporte-out-3-2"
+            }
+          },
+          {
+            "id": "rel-cliente.configuracao.suporte-out-4-cliente.configuracao.meus_chamados-4",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.meus_chamados",
+            "evento": "legacy-event",
+            "rotulo": "Meus chamados",
+            "prioridade": 997,
+            "portasLegadas": {
+              "saida": "out-out-4-cliente.configuracao.meus_chamados-4",
+              "entrada": "in-cliente.configuracao.suporte-out-4-2"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navegacao_jornadas_projeto1",
+        "origem": "Projeto_1/jornadas",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "j1-cliente-support-help",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Central de ajuda",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "support",
+              "destinoNo": "help",
+              "observacao": "Perguntas e orientações."
+            },
+            "destino": "cliente.configuracao.central_ajuda"
+          },
+          {
+            "id": "j1-cliente-support-talk",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Falar com o suporte",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "support",
+              "destinoNo": "talk_support",
+              "observacao": "Abre o formulário de contato."
+            },
+            "destino": "cliente.configuracao.falar_suporte"
+          },
+          {
+            "id": "j1-cliente-support-tickets",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Meus chamados",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "support",
+              "destinoNo": "tickets",
+              "observacao": "Acompanha solicitações já abertas."
+            },
+            "destino": "cliente.configuracao.meus_chamados"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "support_tickets",
+          "nome": "Chamados de suporte",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "subject",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "category",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closed_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "support_tickets"
+          }
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-support_tickets-ticket_id-support_ticket_messages",
+          "origem": {
+            "entidade": "support_tickets"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "ticket_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
+      "origemImportacao": {
+        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+        "screenKeyFonte": "cliente.configuracao.suporte",
+        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
+      }
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-home-direto-config-suporte",
+          "sequenceId": "sequence-home-direto-config-suporte",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-home-onboarding-config-suporte",
+          "sequenceId": "sequence-home-onboarding-config-suporte",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-home-cadastro-config-suporte",
+          "sequenceId": "sequence-home-cadastro-config-suporte",
+          "order": 0,
+          "variant": "default"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "header.app-header.v04",
+    "nome": "Cabeçalho Profissional",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "app-header::0",
+        "tag": "header",
+        "atributos": {
+          "class": "app-header"
+        },
+        "filhos": [
+          {
+            "id": "app-header::[data-action=\"drawer.open\"]",
+            "tag": "button",
+            "atributos": {
+              "class": "app-menu-button",
+              "type": "button",
+              "data-action": "drawer.open",
+              "aria-label": {
+                "ref": "props.dados.menuLabel"
+              }
+            },
+            "filhos": [
+              {
+                "id": "app-header::0.0.0",
+                "tag": "span"
+              },
+              {
+                "id": "app-header::0.0.1",
+                "tag": "span"
+              },
+              {
+                "id": "app-header::0.0.2",
+                "tag": "span"
+              }
+            ]
+          },
+          {
+            "id": "app-header::0.1",
+            "tag": "div",
+            "atributos": {
+              "class": "app-brand"
+            },
+            "filhos": [
+              {
+                "id": "app-header::0.1.0",
+                "tag": "img",
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": "app-header::0.1.1",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-brand-copy"
+                },
+                "filhos": [
+                  {
+                    "id": "app-header::0.1.1.0",
+                    "tag": "strong",
+                    "filhos": [
+                      {
+                        "ref": "props.dados.brand"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "app-header::0.1.1.1",
+                    "tag": "small",
+                    "filhos": [
+                      {
+                        "ref": "props.dados.role"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "app-header::0.2",
+            "tag": "button",
+            "atributos": {
+              "class": "app-notifications",
+              "type": "button",
+              "aria-label": {
+                "ref": "props.dados.notificationsLabel"
+              },
+              "data-event-id": "selecionar_destino"
+            },
+            "filhos": [
+              {
+                "id": "app-header::0.2.0",
+                "tag": "svg",
+                "atributos": {
+                  "viewbox": "0 0 24 24",
+                  "aria-hidden": "true"
+                },
+                "filhos": [
+                  {
+                    "id": "app-header::0.2.0.0",
+                    "tag": "path",
+                    "atributos": {
+                      "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "app-header::0.2.1",
+                "tag": "span",
+                "atributos": {
+                  "class": "app-notifications-badge"
+                },
+                "filhos": [
+                  {
+                    "ref": "props.dados.unreadCount"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_header.app-header.v04"
+  },
+  "estilos": {
+    "css": ".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button { gap: 4px; }\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}\n.app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-brand-copy { min-width: 0; }\n.app-brand-copy strong,\n.app-brand-copy small { display:block; }\n.app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}\n.app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}\n.app-notifications {\n  position: relative;\n  justify-self: end;\n}\n.app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n.app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}\n",
+    "id": "css_header.app-header.v04"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [
+      "abrirMenu",
+      "abrirNotificacoes"
+    ],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "global",
+    "jornadas": [
+      "*"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "globais",
+        "headers"
+      ],
+      "chave": "app-header.v04"
+    }
+  }
+}

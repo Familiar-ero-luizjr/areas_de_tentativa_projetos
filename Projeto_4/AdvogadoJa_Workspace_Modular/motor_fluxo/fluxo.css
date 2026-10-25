@@ -1,0 +1,53 @@
+/* Flow visual gerado a partir de tela.flow.editor; escopo isolado. */
+#view-fluxovisual .fhead{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:13px}
+#view-fluxovisual .fhead h2{margin:0 0 3px;font-size:22px;letter-spacing:-.02em;color:#1b3152}
+#view-fluxovisual .fhead p{font-size:12px;color:#6c7c91;margin:0}
+#view-fluxovisual .f-toolbar{padding:12px 14px;background:white;border:1px solid #d7e3f1;border-radius:12px 12px 0 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#view-fluxovisual .f-toolbar .field{max-width:220px;width:220px}
+#view-fluxovisual .f-board{max-height:73vh;min-height:550px;overflow:auto;border:1px solid #d7e3f1;border-top:0;border-radius:0 0 12px 12px;background-color:#f8fbff;background-image:radial-gradient(#c6d6e9 .85px,transparent .85px);background-size:18px 18px;padding:24px 30px 60px;position:relative}
+#view-fluxovisual .f-scroller{width:max-content;min-width:100%;margin:auto}
+#view-fluxovisual .f-seq{display:flex;flex-direction:column;align-items:center;gap:0;min-width:max-content}
+#view-fluxovisual .f-node-wrap{display:flex;flex-direction:column;align-items:center;min-width:max-content}
+#view-fluxovisual .f-connector{width:2px;height:27px;background:#a8bfd8;position:relative;flex-shrink:0}
+#view-fluxovisual .f-connector:after{content:'▼';position:absolute;bottom:-7px;left:-5px;color:#7d9bbf;font-size:10px}
+#view-fluxovisual .f-card{width:258px;max-width:258px;overflow:hidden;border:1px solid #d0deee;border-top:4px solid #6186b2;border-radius:12px;background:#fff;box-shadow:0 3px 14px #10233f14;flex-shrink:0}
+#view-fluxovisual .f-card[data-feature=auth]{border-top-color:#6976be}#view-fluxovisual .f-card[data-feature=cliente]{border-top-color:#17a37e}#view-fluxovisual .f-card[data-feature=advogado]{border-top-color:#2e7abc}#view-fluxovisual .f-card[data-feature=estudante]{border-top-color:#a074c4}#view-fluxovisual .f-card[data-feature=admin]{border-top-color:#c2834c}
+#view-fluxovisual .f-card.focus{outline:3px solid #8cbcff;outline-offset:2px}
+#view-fluxovisual .f-card.found{box-shadow:0 0 0 4px #fbdf7b}
+#view-fluxovisual .f-card .f-card-top{padding:10px 12px 11px}
+#view-fluxovisual .f-card-head{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:800;color:#567398;text-transform:uppercase}
+#view-fluxovisual .f-card h3{margin:12px 0 3px;font-size:14px;color:#223b5a;line-height:1.2}
+#view-fluxovisual .f-card small{font:9.3px/1.4 ui-monospace,Consolas,monospace;color:#8998ac;overflow-wrap:anywhere}
+#view-fluxovisual .f-chip{padding:3px 8px;background:#eaf0fa;border:1px solid #d7e4f5;border-radius:20px;font-size:10px;color:#496d9a}
+#view-fluxovisual .f-preview{height:215px;background:linear-gradient(125deg,#183454,#334f76);overflow:hidden;display:grid;place-items:center;position:relative}
+#view-fluxovisual .f-preview-open{width:100%;height:100%;cursor:zoom-in;position:relative;display:block;outline:none}
+#view-fluxovisual .f-preview-open:focus-visible{box-shadow:inset 0 0 0 3px #9fcbff}
+#view-fluxovisual .f-preview-open:hover .f-preview-expand,#view-fluxovisual .f-preview-open:focus-visible .f-preview-expand{opacity:1;transform:translateY(0)}
+#view-fluxovisual .f-preview iframe{width:420px;height:600px;border:0;pointer-events:none;transform:scale(.61);transform-origin:0 0;position:absolute;top:0;left:0;overflow:hidden;background:#fff}
+#view-fluxovisual .f-preview-hint{height:100%;color:#e5ecf8;font-size:11px;padding:15px;text-align:center;line-height:1.6;display:grid;place-content:center}
+#view-fluxovisual .f-preview-hint b{display:block;font-size:12px;color:#fff}
+#view-fluxovisual .f-preview-hint span{display:block;margin-top:10px;font-weight:800;color:#b9dbff}
+#view-fluxovisual .f-preview-expand{position:absolute;right:9px;bottom:9px;padding:6px 9px;border-radius:7px;background:#102b4de8;color:#fff;font-size:10px;font-weight:800;opacity:0;transform:translateY(4px);transition:.15s}
+#view-fluxovisual .f-card-controls{display:flex;gap:4px;padding:6px;background:#fff;border-top:1px solid #dae5f0}
+#view-fluxovisual .f-card-controls button{min-width:0;flex:1;background:#f8fbff;border:1px solid #dce6f1;border-radius:5px;cursor:pointer;padding:6px 4px;font-size:10px;font-weight:800;color:#456889}
+#view-fluxovisual .f-card-controls button:hover{background:#e9f2ff}
+#view-fluxovisual .f-branch{width:max-content;min-width:270px;border:1px solid #d1deee;background:#eaf2fb;border-top:3px solid #bb8d41;border-radius:12px;padding:10px;box-shadow:0 3px 14px #10233f0b}
+#view-fluxovisual .f-branch>header{text-align:center;padding:4px 12px 12px}
+#view-fluxovisual .f-branch>header strong{display:block;color:#395979;font-size:12px}
+#view-fluxovisual .f-branch>header small{color:#7b8ba2;font-size:10px}
+#view-fluxovisual .f-path-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:0 0 10px}
+#view-fluxovisual .f-path-pills button{border:1px solid #c1d5ed;border-radius:7px;background:#fff;color:#4b6c92;font-size:10px;padding:6px 10px;font-weight:750}
+#view-fluxovisual .f-path-pills button.active{background:#244b78;color:#fff;border-color:#244b78}
+#view-fluxovisual .f-paths{display:flex;align-items:flex-start;justify-content:center;gap:12px}
+#view-fluxovisual .f-path{background:#ffffffa8;border:1px solid #d7e4f2;border-radius:10px;padding:10px 10px 14px;min-width:282px;display:flex;flex-direction:column;align-items:center}
+#view-fluxovisual .f-path-label{font-size:10px;font-weight:800;color:#54769c;padding:0 5px 10px;text-align:center}
+#view-fluxovisual .f-subtree-empty{font-size:11px;text-align:center;color:#8d9bb0;padding:10px 20px}
+#view-fluxovisual .f-small .f-preview{display:none}#view-fluxovisual .f-small .f-card{width:230px}#view-fluxovisual .f-small .f-card h3{margin-top:6px}
+#view-fluxovisual .f-note{font-size:11px;color:#72849a;margin:9px 0}
+#view-fluxovisual .f-diagnostics{padding:10px 14px;font-size:11px;border:1px solid #e4ebf5;background:#fff;max-height:150px;overflow:auto}
+#view-fluxovisual .f-error{color:#a65c21;padding:4px 0}
+#view-fluxovisual .f-landing{padding:30px;color:#7b8ba0;text-align:center}
+.f-preview-dialog{width:min(920px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:15px;box-shadow:0 24px 80px #0e213a66;color:#1d3554}.f-preview-dialog::backdrop{background:#0c1e34aa}.f-preview-dialog-head{padding:17px 20px 15px;display:flex;justify-content:space-between;align-items:flex-start;gap:15px;border-bottom:1px solid #dce6f1;background:#fbfdff}.f-preview-dialog-kicker{font-size:10px;font-weight:850;letter-spacing:.08em;color:#5d7fa7}.f-preview-dialog h2{font-size:18px;margin:4px 0}.f-preview-dialog p{margin:0;color:#6c7c91;font-size:12px}.f-preview-dialog-body{min-height:420px;background:#e9f0f8;padding:18px;display:grid;place-items:center}.f-preview-dialog-frame{width:min(430px,100%);height:650px;border:8px solid #16243b;border-radius:23px;background:#fff}.f-preview-unavailable{width:min(540px,100%);padding:28px;border:1px dashed #96b2d2;border-radius:13px;background:#fff;text-align:center}.f-preview-unavailable strong{font-size:16px;color:#244c79}.f-preview-unavailable p{line-height:1.55;margin:10px 0}.f-preview-unavailable dl{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0 4px}.f-preview-unavailable dl div{padding:10px;background:#f4f8fd;border-radius:8px}.f-preview-unavailable dt{font-size:10px;color:#6d8199}.f-preview-unavailable dd{margin:4px 0 0;font-size:15px;font-weight:800;color:#315b88}.f-preview-unavailable-note{font-size:11px!important;color:#63778f}@media(max-width:600px){.f-preview-dialog-body{padding:10px}.f-preview-dialog-frame{height:600px}.f-preview-unavailable dl{grid-template-columns:1fr}}
+@media(max-width:800px){#view-fluxovisual .f-board{min-height:490px;padding:15px 8px}#view-fluxovisual .f-toolbar .field{max-width:100%;flex:1 1 180px}#view-fluxovisual .f-card{width:220px}#view-fluxovisual .f-preview{height:170px}#view-fluxovisual .f-preview iframe{transform:scale(.5)}}
+
+#view-fluxovisual .f-add-path{margin-top:10px;border:1px dashed #a8c2de;background:#f6faff;color:#486b90;padding:6px 10px;border-radius:7px;font-size:10px;cursor:pointer}#view-fluxovisual .f-edit-branch{border:0;background:transparent;color:#6683a0;font-size:12px;cursor:pointer;padding:0 4px}

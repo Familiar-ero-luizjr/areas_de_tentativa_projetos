@@ -1,0 +1,233 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01",
+    "nome": "Meus chamados · jornada estudante",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::1",
+        "tag": "div",
+        "atributos": {
+          "class": "screen-runtime"
+        },
+        "filhos": [
+          {
+            "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::2",
+            "tag": "div",
+            "atributos": {
+              "class": "prototype-screen operational"
+            },
+            "filhos": [
+              {
+                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::3",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-header"
+                },
+                "filhos": [
+                  {
+                    "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::4",
+                    "tag": "div",
+                    "atributos": {},
+                    "filhos": []
+                  },
+                  {
+                    "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::5",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "app-brand"
+                    },
+                    "filhos": [
+                      {
+                        "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::6",
+                        "tag": "strong",
+                        "atributos": {},
+                        "filhos": [
+                          "AdvogadoJá"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::7",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "app-role"
+                    },
+                    "filhos": [
+                      "Advogado"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::8",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-titlebar"
+                },
+                "filhos": [
+                  "Meus chamados"
+                ]
+              },
+              {
+                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::9",
+                "tag": "div",
+                "atributos": {
+                  "class": "screen-layout"
+                },
+                "filhos": [
+                  {
+                    "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::10",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "screen-slot screen-slot--main"
+                    },
+                    "filhos": [
+                      {
+                        "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::11",
+                        "tag": "main",
+                        "atributos": {
+                          "class": "context-shell"
+                        },
+                        "filhos": [
+                          {
+                            "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::12",
+                            "tag": "button",
+                            "atributos": {
+                              "class": "context-back",
+                              "type": "button",
+                              "data-goto": "advogado.configuracao.suporte"
+                            },
+                            "filhos": [
+                              "Suporte"
+                            ]
+                          },
+                          {
+                            "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::13",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "context-head"
+                            },
+                            "filhos": [
+                              {
+                                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::14",
+                                "tag": "h1",
+                                "atributos": {},
+                                "filhos": [
+                                  "Meus chamados"
+                                ]
+                              },
+                              {
+                                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::15",
+                                "tag": "p",
+                                "atributos": {},
+                                "filhos": [
+                                  "Acompanhe as solicitações enviadas para o suporte"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::16",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "ticket-empty"
+                            },
+                            "filhos": [
+                              {
+                                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::17",
+                                "tag": "strong",
+                                "atributos": {},
+                                "filhos": [
+                                  "Nenhum chamado encontrado"
+                                ]
+                              },
+                              {
+                                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::18",
+                                "tag": "p",
+                                "atributos": {},
+                                "filhos": [
+                                  "Quando voce abrir um chamado ele aparecera aqui com o status e a"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::19",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "context-actions"
+                            },
+                            "filhos": [
+                              {
+                                "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::20",
+                                "tag": "button",
+                                "atributos": {
+                                  "class": "context-primary",
+                                  "type": "button",
+                                  "data-goto": "advogado.configuracao.falar_suporte"
+                                },
+                                "filhos": [
+                                  "Abrir novo chamado"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "cmp.advogado.configuracao.meus_chamados.j1_estudante.v01::21",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "op-toast",
+                              "role": "status",
+                              "aria-live": "polite"
+                            },
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_cmp.advogado.configuracao.meus_chamados.j1_estudante.v01"
+  },
+  "estilos": {
+    "css": "\n.context-shell{width:min(100%,760px);margin:0 auto;padding:28px 16px 40px}.context-back{display:inline-flex;align-items:center;gap:6px;margin:0 0 14px;padding:0;border:0;background:transparent;color:var(--primary);font-size:12px;font-weight:800}.context-head{margin:0 2px 14px}.context-head h1{margin:0;color:var(--primary);font-size:23px;letter-spacing:-.025em}.context-head p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}.context-grid{display:grid;gap:9px}.context-card{width:100%;display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:11px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;color:inherit;text-align:left;box-shadow:0 3px 10px rgba(16,35,63,.035)}.context-card:hover{border-color:#b8c6d8}.context-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#eef3f8;color:var(--primary);font-weight:900}.context-card strong,.context-card small{display:block}.context-card strong{color:var(--primary);font-size:13px}.context-card small{margin-top:3px;color:var(--muted);font-size:10px;line-height:1.4}.context-chevron{color:var(--gold);font-size:25px;font-weight:900}.context-panel{margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:15px;background:#fff;box-shadow:0 3px 10px rgba(16,35,63,.035)}.context-panel h2,.context-panel h3{margin:0;color:var(--primary)}.context-panel h2{font-size:16px}.context-panel h3{margin-top:14px;font-size:13px}.context-panel p,.context-panel li{color:var(--muted);font-size:11px;line-height:1.6}.context-panel ul{margin:7px 0 0;padding-left:18px}.context-form{display:grid;gap:11px}.context-field span{display:block;margin-bottom:5px;color:var(--primary);font-size:10px;font-weight:800}.context-field input,.context-field select,.context-field textarea{width:100%;min-height:43px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text);padding:10px 11px;font-size:11px}.context-field textarea{min-height:110px;resize:vertical}.context-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}.context-primary,.context-secondary{min-height:42px;border-radius:10px;padding:9px 14px;font-size:11px;font-weight:800}.context-primary{border:0;background:var(--primary);color:#fff}.context-secondary{border:1px solid var(--line);background:#fff;color:var(--primary)}.consent-list{display:grid;gap:8px}.consent-row{display:flex;align-items:flex-start;gap:10px;padding:11px;border:1px solid var(--line);border-radius:12px;background:#fff}.consent-row input{width:18px;height:18px;margin-top:1px;accent-color:var(--primary)}.consent-row strong,.consent-row small{display:block}.consent-row strong{color:var(--primary);font-size:11px}.consent-row small{margin-top:2px;color:var(--muted);font-size:9px;line-height:1.45}.faq{display:grid;gap:8px}.faq details{border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px}.faq summary{cursor:pointer;color:var(--primary);font-size:11px;font-weight:800}.faq p{margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.5}.ticket-empty{padding:24px 15px;text-align:center;border:1px dashed #cbd5e1;border-radius:14px;background:#fff}.ticket-empty strong{display:block;color:var(--primary);font-size:13px}.ticket-empty p{margin:5px 0 0;color:var(--muted);font-size:10px}.legal-note{margin-top:12px;padding:10px 11px;border:1px solid #d9e4f0;border-radius:11px;background:#f8fbff;color:#516273;font-size:9px;line-height:1.5}.op-toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;display:none;max-width:min(92vw,460px);padding:9px 13px;border-radius:10px;background:#172033;color:#fff;font-size:11px;box-shadow:0 10px 30px rgba(0,0,0,.25)}.op-toast.show{display:block}@media(max-width:520px){.context-shell{padding-left:13px;padding-right:13px}.context-actions{flex-direction:column-reverse}.context-actions button{width:100%}}\n",
+    "id": "css_cmp.advogado.configuracao.meus_chamados.j1_estudante.v01"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [
+      "interacao_simulada"
+    ],
+    "regraBinding": "Interações são interpretadas pelo motor de prévia a partir de atributos data-*; o componente não consulta arquivos externos."
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "importados",
+        "projeto1",
+        "advogado",
+        "configuracao",
+        "meus_chamados"
+      ],
+      "chave": "j1_estudante"
+    }
+  }
+}

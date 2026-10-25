@@ -4,17 +4,12 @@
     "id": "advogado.home_advogado",
     "nome": "Início Profissional",
     "tipo": "tela",
-    "status": "proposta",
-    "origem": "advogado_home_advogado_enxuta (1).json"
+    "status": "proposta"
   },
   "classificacao": {
     "pasta": "advogado",
-    "jornadas": [
-      "advogado"
-    ],
-    "subjornadas": [
-      "area_profissional"
-    ],
+    "jornadas": ["advogado"],
+    "subjornadas": ["area_profissional"],
     "compartilhada": false,
     "escopo": "advogado"
   },
@@ -131,9 +126,7 @@
               "nome": "Atendimentos",
               "destino": "advogado.atendimentos_advogado",
               "aplicaA": {
-                "estados": [
-                  "oab_aprovada"
-                ]
+                "estados": ["oab_aprovada"]
               },
               "icone": "M5 6h14M5 12h14M5 18h14"
             },
@@ -142,9 +135,7 @@
               "nome": "Assinatura",
               "destino": "advogado.assinatura.gestao_assinatura",
               "aplicaA": {
-                "estados": [
-                  "oab_aprovada"
-                ]
+                "estados": ["oab_aprovada"]
               },
               "icone": "M5 6h14M5 12h14M5 18h14"
             },
@@ -153,9 +144,7 @@
               "nome": "Escritório",
               "destino": "escritorio.gestao.escritorio",
               "aplicaA": {
-                "estados": [
-                  "oab_aprovada"
-                ]
+                "estados": ["oab_aprovada"]
               },
               "icone": "M5 6h14M5 12h14M5 18h14"
             },
@@ -173,9 +162,7 @@
           "disponibilidadeRef": "dados.textos.drawer",
           "mostrarDisponibilidade": {
             "quando": {
-              "estados": [
-                "oab_aprovada"
-              ]
+              "estados": ["oab_aprovada"]
             }
           }
         }
@@ -226,114 +213,70 @@
         "id": "comum_header",
         "slot": "header",
         "ordem": 10,
-        "instancias": [
-          "cabecalho",
-          "titulo"
-        ],
+        "instancias": ["cabecalho", "titulo"],
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "comum_main",
         "slot": "main",
         "ordem": 10,
-        "instancias": [
-          "introducao"
-        ],
+        "instancias": ["introducao"],
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "pendente_main",
         "slot": "main",
         "ordem": 20,
-        "instancias": [
-          "painel_oab"
-        ],
+        "instancias": ["painel_oab"],
         "aplicaA": {
-          "estados": [
-            "oab_pendente"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["oab_pendente"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "aprovada_main",
         "slot": "main",
         "ordem": 20,
-        "instancias": [
-          "disponibilidade",
-          "solicitacoes"
-        ],
+        "instancias": ["disponibilidade", "solicitacoes"],
         "aplicaA": {
-          "estados": [
-            "oab_aprovada"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["oab_aprovada"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "comum_menu",
         "slot": "menu",
         "ordem": 10,
-        "instancias": [
-          "menu_principal"
-        ],
+        "instancias": ["menu_principal"],
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "comum_modal",
         "slot": "modal",
         "ordem": 10,
-        "instancias": [
-          "modal_rotas"
-        ],
+        "instancias": ["modal_rotas"],
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "comum_popup",
         "slot": "popup",
         "ordem": 10,
-        "instancias": [
-          "notificacao_toast"
-        ],
+        "instancias": ["notificacao_toast"],
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       }
     ]
@@ -355,35 +298,23 @@
         "id": "home_base",
         "css": ".home-profissional {min-height:100dvh; max-width:720px; margin-inline:auto;} ",
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "home_pendente",
         "aplicaA": {
-          "estados": [
-            "oab_pendente"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["oab_pendente"],
+          "jornadas": ["advogado"]
         },
         "css": ".home-profissional.oab-pendente{background:var(--page);}"
       },
       {
         "id": "home_aprovada",
         "aplicaA": {
-          "estados": [
-            "oab_aprovada"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["oab_aprovada"],
+          "jornadas": ["advogado"]
         },
         "css": ".home-profissional.oab-aprovada{background:var(--page);}"
       }
@@ -444,23 +375,15 @@
           }
         ],
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["*"],
+          "jornadas": ["advogado"]
         }
       },
       {
         "id": "acoes_pendentes",
         "aplicaA": {
-          "estados": [
-            "oab_pendente"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["oab_pendente"],
+          "jornadas": ["advogado"]
         },
         "acoes": [
           {
@@ -475,12 +398,8 @@
       {
         "id": "acoes_aprovadas",
         "aplicaA": {
-          "estados": [
-            "oab_aprovada"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
+          "estados": ["oab_aprovada"],
+          "jornadas": ["advogado"]
         },
         "acoes": [
           {

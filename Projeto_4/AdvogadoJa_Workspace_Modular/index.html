@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AdvogadoJá — Workspace modular · catálogo canônico</title><link rel="stylesheet" href="app/estilos/base.css">
+<link rel="stylesheet" href="motor_fluxo/fluxo.css">
+<link rel="stylesheet" href="motor_simulacao/simulacao.css">
+<link rel="stylesheet" href="jornadas/painel.css">
+<link rel="stylesheet" href="banco/banco.css">
+<link rel="stylesheet" href="mapa/mapa.css">
+</head>
+<body>
+<div class="app"><div class="shell">
+ <header class="header">
+  <div><div class="tiny">ADVOGADO JÁ · CONSTRUTOR MODULAR</div><h1>Catálogo Workspace <span style="color:#94baf5">Modular · Store única</span></h1><p>Motor incremental por identificadores e fluxo visual reconstruído dos JSONs individuais. Importe pacotes de telas com <code>catalogo → componentes + telas</code>, reutilize os componentes existentes e acompanhe automaticamente as relações entre telas.</p></div>
+  <div class="actions">
+   <button class="btn dark" id="importBtn">Importar JSON(s) para Store</button><button class="btn dark" id="folderBtn">Carregar pasta</button><button class="btn dark" id="createScreen">+ Tela</button><button class="btn dark" id="createComponent">+ Componente</button><button class="btn dark" id="downloadTemplate">Modelo vazio</button><button class="btn primary" id="exportZip">Exportar catálogo ZIP</button><span id="diskStatus" class="disk-status">Carregando arquivos…</span>
+   <input type="file" id="fileInput" accept=".json,application/json" multiple hidden><input type="file" id="folderInput" webkitdirectory multiple hidden>
+  </div>
+ </header>
+ <nav class="tabs"><button class="tab" data-tab="simulacao">Motor da simulação</button><button class="tab" data-tab="fluxovisual">Árvore do Flow</button><button class="tab" data-tab="relacoes">Flow &amp; referências</button><button class="tab" data-tab="jornadas">Jornadas</button><button class="tab active" data-tab="catalogo">Árvore do catálogo</button><button class="tab" data-tab="montagem">Motor de montagem</button><button class="tab" data-tab="contrato">Contrato</button><button class="tab" data-tab="json">Gestão &amp; exportação</button><button class="tab" data-tab="banco">Banco</button><button class="tab" data-tab="mapa">Mapa integrado</button></nav>
+ <div class="view active" id="view-catalogo">
+  <div class="pills" id="stats"></div>
+  <div class="grid">
+   <section class="panel"><div class="ph"><div><h2>Catálogo/</h2><div class="hint">Árvore gerada por <code>localizacaoArvore</code> gravada no JSON, não por nome de arquivo.</div></div><div class="controls"><input class="field search" id="filter" placeholder="Buscar tela ou componente"><button class="btn sm" id="openAll">+</button><button class="btn sm" id="closeAll">−</button></div></div><div class="pb tree-wrap"><div class="tree" id="catalogTree"></div></div></section>
+   <section class="panel"><div class="ph"><div><h2 id="selTitle">Inspecionar JSON</h2><div class="hint" id="selPath">Selecione um arquivo na árvore.</div></div><div class="controls"><button class="btn sm" id="exportSelected" disabled>Exportar item</button><button class="btn sm" id="exportScreenPack" disabled>Pacote da tela</button></div></div><div class="pb"><div id="selectionSummary" class="muted">Abra um componente ou uma tela para visualizar e editar sua definição.</div><div class="rowline"><button class="btn sm" id="modeTree">Árvore JSON</button><button class="btn sm" id="modeEdit">Editar código JSON</button></div><div id="selectedTree" class="treejson"><div class="empty">Nenhum item selecionado.</div></div><div id="editSection" style="display:none"><textarea id="itemEditor" class="editor" spellcheck="false"></textarea><div class="rowline"><button class="btn primary sm" id="applyEdit">Validar e salvar</button><button class="btn sm" id="formatEdit">Formatar</button><button class="btn sm" id="discardEdit">Descartar alterações</button></div><p id="editMsg" class="msg"></p></div></div></section>
+  </div>
+  <div style="margin-top:14px" class="panel"><div class="ph"><div><h2>Importação incremental</h2><div class="hint">Arquivos JSON ficam em catálogo/telas e catálogo/componentes. O mesmo ID divergente gera conflito visível.</div></div><div class="controls"><button class="btn sm" id="addDemo">Importar segunda tela (demonstração)</button><button class="btn sm" id="resetCatalog">Recarregar arquivos do disco</button></div></div><div class="pb"><div id="dropZone" class="empty" style="cursor:pointer">Arraste aqui pacotes JSON, telas e componentes individuais</div><div class="rowline" id="lastImport"></div><div id="conflicts"></div></div></div>
+ </div>
+ <div class="view" id="view-jornadas"><header class="journey-workspace-head"><p class="tiny">JORNADAS · VISUALIZAÇÃO DO CATÁLOGO</p><h2>Jornadas renderizadas pelo motor modular</h2><p>As subabas usam as mesmas telas, instâncias, CSS, imagens e relações canônicas de <code>catalogo/</code>. Nenhuma jornada carrega uma cópia da tela.</p></header><div id="journeySubtabs" class="journey-subtabs"></div><div class="journey-workspace-grid"><aside class="panel"><div class="ph"><div><h2>Telas da jornada</h2><div class="hint">Filtradas por jornada e instâncias compatíveis.</div></div><span class="pill emph" id="journeyCatalogStatus">Carregando…</span></div><div class="journey-screen-list" id="journeyScreenList"></div></aside><section class="panel"><div class="ph"><div><h2 id="journeyScreenTitle">Montando tela…</h2><div class="hint">Montagem resolvida pelo mesmo motor da aba ao lado.</div></div><span class="tag">Store única</span></div><div class="journey-metadata" id="journeyMetadata"></div><iframe class="journey-device" id="journeyPreview" sandbox="allow-scripts" title="Prévia da jornada selecionada"></iframe><div class="journey-routes" id="journeyRoutes"></div></section></div></div>
+ <div class="view" id="view-montagem">
+  <div class="modebar"><div><label class="label">Tela</label><select id="screenChoice" class="field"></select></div><div><label class="label">Jornada</label><select id="journeyChoice" class="field"></select></div><div><label class="label">Estado</label><select id="stateChoice" class="field"></select></div><button class="btn primary" id="rebuild">Montar</button><button class="btn" id="exportResolved">Baixar montagem JSON</button></div>
+  <div class="pills" id="mountStats"></div>
+  <div class="split"><section class="panel"><div class="ph"><div><h2>Prévia estrutural</h2><div class="hint">HTML/CSS de componentes; ações são simuladas pelo mesmo runtime do motor.</div></div><button class="btn sm" id="toggleDrawer">Abrir / fechar menu</button></div><div class="pb"><div class="device"><iframe sandbox="allow-scripts" title="Prévia da tela por estado" id="preview"></iframe></div><div class="miniInfo">A prévia é isolada. Apenas o runtime gerado pelo motor pode tratar atributos declarativos de interação; scripts das jornadas não são importados.</div></div></section>
+  <section class="panel"><div class="ph"><div><h2>Montagem resolvida pelo motor</h2><div class="hint">Instâncias, grupos HTML/CSS, dados e ações selecionados pelo estado/jornada.</div></div><button class="btn sm" id="copyResolved">Copiar JSON</button></div><textarea class="editor" id="resolvedJson" readonly style="min-height:730px;border-radius:0;border:0"></textarea></section></div>
+ </div>
+ 
+  <div class="view" id="view-fluxovisual">
+   <div class="fhead"><div><h2>Fluxo de telas e bifurcações</h2><p>O motor recompõe a mesma árvore de sequências do Flow V3 a partir de <code>telas[].flow.editor</code>. Não existe arquivo de grafo ou workspace persistido.</p></div><button class="btn primary" id="fExportRuntime">Exportar projeção calculada</button></div>
+   <div class="pills" id="fMetrics"></div>
+   <div class="f-toolbar"><input class="field" id="flowSearch" type="search" placeholder="Destacar tela ou ID…"/><button class="btn sm" id="fToggleCompact">Compacto</button><button class="btn sm" id="fTogglePaths">Mostrar todos os caminhos</button><button class="btn sm" id="fResetFlow">Reiniciar visão</button></div>
+   <div class="f-board" id="flowBoard"><div class="f-scroller" id="flowBoardContent"></div></div>
+   <p id="flowSummary" class="f-note"></p><div id="fDiagnostics" class="f-diagnostics"></div>
+   <p class="f-note">↑ ↓ mudam a ordem na sequência; ＋ insere uma ocorrência; ⑂ cria bifurcação. Cada edição grava somente no <code>flow.editor</code> da tela envolvida. As prévias visuais dependem dos componentes efetivamente importados na Store.</p>
+  </div>
+<div class="view" id="view-relacoes"><div class="pills" id="flowStats"></div><div class="grid"><section class="panel"><div class="ph"><div><h2>Relações descobertas nas telas</h2><div class="hint">Saídas extraídas de ações e itens; entradas derivadas automaticamente.</div></div><button class="btn sm" id="exportFlow">Exportar relações</button></div><div class="pb"><div id="flowList"></div></div></section><section class="panel"><div class="ph"><div><h2>Inspecionar uma tela</h2><div class="hint">Uma nova importação pode resolver destinos pendentes sem alterar o JSON original.</div></div></div><div class="pb"><label class="label">Tela de origem</label><select id="flowScreenChoice" class="field"></select><div class="rowline"><button class="btn sm primary" id="addRelation">+ Conectar outra tela</button></div><div class="hr"></div><h3 class="sectiontitle">Saídas</h3><div id="outgoing"></div><h3 class="sectiontitle">Entradas descobertas</h3><div id="incoming"></div><div class="warnBox">As entradas são uma projeção calculada pelo motor, nunca uma cópia gravada nas outras telas. Isso evita duas fontes de verdade.</div></div></section></div></div>
+ 
+<div class="view" id="view-simulacao">
+  <div class="panel"><div class="ph"><div><h2>Simulação de estados e caminhos</h2><div class="hint">Somente leitura dos JSONs da Store; cenários, ações e navegações são projetados sem acionar backend.</div></div><button class="btn sm" id="simReset">Reiniciar simulação</button></div><div class="pb">
+  <div class="sim-grid">
+   <section><label class="label">Tela</label><select class="field" id="simScreen"></select></section>
+   <section><label class="label">Jornada</label><select class="field" id="simJourney"></select></section>
+   <section><label class="label">Estado</label><select class="field" id="simState"></select></section>
+   <section><label class="label">Cenário / mock</label><select class="field" id="simScenario"></select></section>
+  </div>
+  <div class="sim-grid" style="margin-top:13px;grid-template-columns:minmax(250px,2fr) minmax(150px,1fr)">
+   <section><label class="label">Ação declarada na tela</label><select class="field" id="simAction"></select></section>
+   <section style="align-self:end"><button class="btn primary" id="simRun">Simular ação</button></section>
+  </div>
+  <div class="grid" style="margin-top:16px"><section class="panel"><div class="ph"><h2>Prévia da tela</h2></div><div class="pb"><div class="device"><iframe id="simPreview" sandbox="allow-scripts" title="Simulação da tela"></iframe></div></div></section>
+  <section class="panel"><div class="ph"><h2>Registro da simulação</h2></div><div class="pb"><div id="simStatus" class="miniInfo">Selecione uma tela.</div><div class="hr"></div><div id="simLog"></div><div class="hr"></div><p class="muted">A simulação não valida autenticação, backend, regras legadas ou execução de comandos. Ações importadas do Flow V3 podem ser inspecionadas como saltos declarativos, não executadas como condições de negócio.</p></div></section></div>
+  </div></div>
+</div>
+
+<div class="view" id="view-json"><div class="grid"><section class="panel"><div class="ph"><div><h2>Índice mestre (gerado)</h2><div class="hint">Projeção em memória; não é arquivo-fonte.</div></div><div class="controls"><button class="btn sm" id="downloadMaster">Baixar índice</button><button class="btn sm" id="copyMaster">Copiar</button></div></div><textarea id="masterJson" readonly class="editor" style="min-height:660px;border-radius:0;border:0"></textarea></section><section class="panel"><div class="ph"><div><h2>Pacote JSON da tela</h2><div class="hint">Um único <code>catalogo</code> contendo uma tela e todos os componentes necessários. O ZIP inclui pacotes de tela e definições únicas de componentes.</div></div><button class="btn sm" id="downloadPackage">Baixar pacote</button></div><div class="pb"><label class="label">Selecionar tela</label><select class="field" id="packageScreenChoice"></select></div><textarea id="packageJson" readonly class="editor" style="min-height:615px;border-radius:0 0 10px 10px;border:0"></textarea></section></div></div>
+ <div class="view" id="view-banco"><div class="ph"><div><h2>Banco derivado das jornadas</h2><div class="hint">Não existe modelagem independente: entidades, campos e relações são agregados de <code>dados.persistencia</code> das telas.</div></div></div><div class="pills" id="bankMetrics" style="margin:15px"></div><div class="bank-layout"><section class="panel"><div class="ph"><h2>Entidades declaradas</h2></div><div class="bank-list" id="bankEntityList"></div></section><section class="panel" id="bankDetails"></section></div></div>
+ <div class="view" id="view-mapa"><header class="map-head"><h2>Mapa integrado do catálogo</h2><p>Blocos, raias e setas são uma projeção dos JSONs canônicos: <code>classificacao</code> agrupa as telas e <code>acoes</code> + itens de componentes definem as conexões. Não há fonte paralela.</p></header><div class="pills" style="margin:14px 16px 0"><span class="pill emph" id="mapStatus">Carregando…</span></div><div class="map-canvas" id="mapCanvas"></div></div>
+ <div class="view" id="view-contrato"><div class="grid"><section class="panel"><div class="ph"><h2>Contrato do pacote por tela + Flow</h2></div><div class="pb readme"><p><strong>Fonte de verdade:</strong> os componentes ficam separados no catálogo; a tela define suas instâncias, estados, jornadas, grupos HTML/CSS próprios e ações. Um pacote transporta as definições necessárias sem mudar seus IDs.</p><p><strong>Raiz obrigatória:</strong> <code>catalogo</code>. Contém <code>metadados</code>, <code>componentes[]</code> e <code>telas[]</code> (um registro no pacote unitário).</p><p><strong>Importação:</strong> ao ler um pacote o motor valida IDs, insere componentes novos, reutiliza componentes iguais e registra conflitos sem sobrescrever silenciosamente; depois insere/atualiza telas e recalcula índices.</p><p><strong>Associações:</strong> <code>aplicaA: {jornadas:[...], estados:[...]}</code> em grupos de estrutura, CSS, dados, mocks, instâncias, itens e ações. O valor <code>*</code> indica comum.</p><p><strong>Persistência:</strong> <code>dados.persistencia.entidades[]</code> e <code>dados.persistencia.relacoes[]</code> são declarações da necessidade da tela. A aba Banco somente agrega essas declarações; ela não possui tabelas próprias.</p><p><strong>Flow:</strong> navegação operacional em <code>acoes.grupos</code> e itens dos componentes. A apresentação no construtor é declarada por <code>flow.editor.entrypoint</code>, <code>rootSequenceId</code>, <code>occurrences[]</code> e <code>branches[]</code>. O motor produz sequências, entradas e grafo em memória, sem persistência paralela. Condições legadas são dados de auditoria até serem convertidas em regras executáveis.</p><p><strong>Importante:</strong> a montagem e o índice mestre são resultados gerados, não arquivos canônicos que precisem ser editados manualmente.</p><div class="okBox">Modelo de referência inicial: 79 telas do Flow V3 preservadas, com componentes reais V6 disponíveis para a Home Profissional; demais prévias dependem da importação dos respectivos componentes.</div></div></section><section class="panel"><div class="ph"><h2>Exemplo mínimo válido</h2><button class="btn sm" id="downloadTemplate2">Exportar template</button></div><textarea class="editor" id="templateJson" readonly style="border:0;border-radius:0;min-height:610px"></textarea></section></div></div>
+</div></div>
+
+
+<script src="app/catalogo-arquivos.js"></script>
+<script src="app/core.js"></script>
+<script src="arvore_catalogo/arvore.js"></script>
+<script src="arvore_relacoes/relacoes.js"></script>
+<script src="arvore_exportacao/exportacao.js"></script>
+<script src="motor_montagem/montagem.js"></script>
+<script src="jornadas/painel.js"></script>
+<script src="banco/banco.js"></script>
+<script src="mapa/mapa.js"></script>
+<script src="app/interface.js"></script>
+<script src="motor_fluxo/fluxo.js"></script>
+<script src="motor_simulacao/simulacao.js"></script>
+<script src="app/persistencia.js"></script>
+<script src="app/bootstrap.js"></script>
+</body></html>

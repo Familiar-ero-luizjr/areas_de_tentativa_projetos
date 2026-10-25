@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:advogadoja:workspace:contrato:tela:proposto-v1",
+  "title": "AdvogadoJá - tela modular (proposta evolutiva)",
+  "type": "object",
+  "required": [
+    "schema",
+    "identidade",
+    "classificacao",
+    "estados",
+    "componentes",
+    "estrutura",
+    "estilos",
+    "acoes",
+    "dados",
+    "mocks",
+    "flow"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string"
+    },
+    "identidade": {
+      "type": "object",
+      "required": [
+        "id",
+        "nome",
+        "tipo"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.-]+$"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "tipo": {
+          "const": "tela"
+        },
+        "versao": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Versão técnica sem rótulos importado, migrado ou proposta. Estado de homologação fica no contrato e no status."
+        },
+        "rota": {
+          "type": "string"
+        }
+      }
+    },
+    "classificacao": {
+      "type": "object",
+      "required": [
+        "jornadas",
+        "localizacaoArvore"
+      ],
+      "properties": {
+        "jornadas": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "IDs livres e estáveis definidos na própria tela; * indica tela comum a todas as jornadas. Sem enum fixo.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(\\*|[a-z][a-z0-9_.-]*)$"
+          }
+        },
+        "localizacaoArvore": {
+          "$ref": "#/$defs/localizacao"
+        },
+        "subjornadas": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "compartilhada": {
+          "type": "boolean",
+          "description": "Leitura editorial: tela usada em mais de uma jornada ou em todas."
+        }
+      }
+    },
+    "estados": {
+      "type": "object"
+    },
+    "componentes": {
+      "type": "object",
+      "required": [
+        "instancias"
+      ],
+      "properties": {
+        "instancias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "ref"
+            ]
+          }
+        }
+      }
+    },
+    "estrutura": {
+      "type": "object",
+      "required": [
+        "base",
+        "grupos"
+      ]
+    },
+    "estilos": {
+      "type": "object"
+    },
+    "acoes": {
+      "type": "object",
+      "required": [
+        "grupos"
+      ],
+      "properties": {
+        "grupos": {
+          "type": "array"
+        }
+      }
+    },
+    "dados": {
+      "type": "object"
+    },
+    "mocks": {
+      "type": "object"
+    },
+    "flow": {
+      "type": "object",
+      "required": [
+        "editor"
+      ],
+      "properties": {
+        "editor": {
+          "type": "object",
+          "required": [
+            "entrypoint",
+            "rootSequenceId",
+            "occurrences",
+            "branches"
+          ],
+          "properties": {
+            "entrypoint": {
+              "type": "boolean"
+            },
+            "rootSequenceId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "occurrences": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/occurrence"
+              }
+            },
+            "branches": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/branch"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localizacao": {
+      "type": "object",
+      "required": [
+        "segmentos",
+        "chave"
+      ],
+      "properties": {
+        "segmentos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "chave": {
+          "type": "string"
+        }
+      }
+    },
+    "occurrence": {
+      "type": "object",
+      "required": [
+        "id",
+        "sequenceId",
+        "order"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "sequenceId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "variant": {
+          "type": "string"
+        }
+      }
+    },
+    "branch": {
+      "type": "object",
+      "required": [
+        "id",
+        "sequenceId",
+        "order",
+        "paths"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "sequenceId": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "title": {
+          "type": "string"
+        },
+        "paths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        }
+      }
+    },
+    "path": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "sequenceId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "sequenceId": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

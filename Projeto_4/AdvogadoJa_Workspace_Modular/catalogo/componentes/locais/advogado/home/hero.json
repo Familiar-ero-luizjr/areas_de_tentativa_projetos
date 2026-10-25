@@ -1,0 +1,78 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp_advogado_home_advogado_main_hero",
+    "nome": "Apresentação Profissional",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "hero::0",
+        "tag": "section",
+        "atributos": {
+          "class": "home-intro"
+        },
+        "filhos": [
+          {
+            "id": "hero::0.0",
+            "tag": "span",
+            "atributos": {
+              "class": "home-eyebrow"
+            },
+            "filhos": [
+              {
+                "ref": "props.dados.eyebrow"
+              }
+            ]
+          },
+          {
+            "id": "hero::0.1",
+            "tag": "h1",
+            "filhos": [
+              {
+                "ref": "props.dados.title"
+              }
+            ]
+          },
+          {
+            "id": "hero::0.2",
+            "tag": "p",
+            "filhos": [
+              {
+                "ref": "props.dados.subtitle"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_cmp_advogado_home_advogado_main_hero"
+  },
+  "estilos": {
+    "css": ".home-intro {\n  padding: 2px 2px 4px;\n}\n.home-eyebrow {\n  display:block;\n  margin-bottom:6px;\n  color:var(--gold);\n  font-size:11px;\n  font-weight:900;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n}\n.home-intro h1 {\n  margin:0;\n  color:var(--primary);\n  font-size:24px;\n  line-height:1.15;\n  letter-spacing:-.025em;\n}\n.home-intro p {\n  max-width:560px;\n  margin:8px 0 0;\n  color:var(--muted);\n  font-size:14px;\n  line-height:1.5;\n}\n",
+    "id": "css_cmp_advogado_home_advogado_main_hero"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "local",
+    "jornadas": [
+      "advogado"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "locais",
+        "advogado",
+        "home"
+      ],
+      "chave": "hero"
+    }
+  }
+}

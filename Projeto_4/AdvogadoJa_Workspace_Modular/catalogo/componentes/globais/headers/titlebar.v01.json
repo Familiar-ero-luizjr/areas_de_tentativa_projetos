@@ -1,0 +1,56 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "header.titlebar.v01",
+    "nome": "Barra de título",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "titlebar::0",
+        "tag": "div",
+        "atributos": {
+          "class": "app-titlebar"
+        },
+        "filhos": [
+          {
+            "id": "titlebar::0.0",
+            "tag": "strong",
+            "filhos": [
+              {
+                "ref": "props.dados.title"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_header.titlebar.v01"
+  },
+  "estilos": {
+    "css": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}\n",
+    "id": "css_header.titlebar.v01"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "global",
+    "jornadas": [
+      "*"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "globais",
+        "headers"
+      ],
+      "chave": "titlebar.v01"
+    }
+  }
+}

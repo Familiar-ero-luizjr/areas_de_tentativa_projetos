@@ -1,0 +1,324 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp_advogado_home_advogado_main_actions",
+    "nome": "Novas solicitações",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "actions::0",
+        "tag": "section",
+        "atributos": {
+          "class": "requests-block",
+          "aria-labelledby": "requests-title"
+        },
+        "filhos": [
+          {
+            "id": "actions::0.0",
+            "tag": "div",
+            "atributos": {
+              "class": "requests-heading"
+            },
+            "filhos": [
+              {
+                "id": "actions::0.0.0",
+                "tag": "div",
+                "filhos": [
+                  {
+                    "id": "actions::#requests-title",
+                    "tag": "h2",
+                    "atributos": {
+                      "id": "requests-title"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "props.dados.title"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.0.0.1",
+                    "tag": "p",
+                    "filhos": [
+                      {
+                        "ref": "props.dados.count"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "actions::0.1",
+            "tag": "div",
+            "atributos": {
+              "class": "requests-list"
+            },
+            "filhos": [
+              {
+                "id": "actions::0.1.0",
+                "tag": "button",
+                "atributos": {
+                  "class": "request-card",
+                  "type": "button",
+                  "data-event-id": "selecionar_destino"
+                },
+                "filhos": [
+                  {
+                    "id": "actions::0.1.0.0",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "request-top"
+                    },
+                    "filhos": [
+                      {
+                        "id": "actions::0.1.0.0.0",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "request-priority"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.dados.items.0.priority"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.0.0.1",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "request-time"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.dados.items.0.time"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.0.1",
+                    "tag": "h3",
+                    "filhos": [
+                      {
+                        "ref": "props.dados.items.0.area"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.0.2",
+                    "tag": "p",
+                    "atributos": {
+                      "class": "request-meta"
+                    },
+                    "filhos": [
+                      {
+                        "partes": [
+                          {
+                            "ref": "props.dados.items.0.requestType"
+                          },
+                          " · ",
+                          {
+                            "ref": "props.dados.items.0.location"
+                          },
+                          " · ",
+                          {
+                            "ref": "props.dados.items.0.mode"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.0.3",
+                    "tag": "p",
+                    "atributos": {
+                      "class": "request-summary"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "props.dados.items.0.summary"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.0.4",
+                    "tag": "span",
+                    "atributos": {
+                      "class": "request-open"
+                    },
+                    "filhos": [
+                      {
+                        "partes": [
+                          {
+                            "ref": "props.textos.ver_solicitacao"
+                          },
+                          " "
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.0.4.0",
+                        "tag": "b",
+                        "filhos": [
+                          "›"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "actions::0.1.1",
+                "tag": "button",
+                "atributos": {
+                  "class": "request-card",
+                  "type": "button",
+                  "data-event-id": "selecionar_destino"
+                },
+                "filhos": [
+                  {
+                    "id": "actions::0.1.1.0",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "request-top"
+                    },
+                    "filhos": [
+                      {
+                        "id": "actions::0.1.1.0.0",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "request-priority"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.dados.items.1.priority"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.1.0.1",
+                        "tag": "span",
+                        "atributos": {
+                          "class": "request-time"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.dados.items.1.time"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.1.1",
+                    "tag": "h3",
+                    "filhos": [
+                      {
+                        "ref": "props.dados.items.1.area"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.1.2",
+                    "tag": "p",
+                    "atributos": {
+                      "class": "request-meta"
+                    },
+                    "filhos": [
+                      {
+                        "partes": [
+                          {
+                            "ref": "props.dados.items.1.requestType"
+                          },
+                          " · ",
+                          {
+                            "ref": "props.dados.items.1.location"
+                          },
+                          " · ",
+                          {
+                            "ref": "props.dados.items.1.mode"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.1.3",
+                    "tag": "p",
+                    "atributos": {
+                      "class": "request-summary"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "props.dados.items.1.summary"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "actions::0.1.1.4",
+                    "tag": "span",
+                    "atributos": {
+                      "class": "request-open"
+                    },
+                    "filhos": [
+                      {
+                        "partes": [
+                          {
+                            "ref": "props.textos.ver_solicitacao"
+                          },
+                          " "
+                        ]
+                      },
+                      {
+                        "id": "actions::0.1.1.4.0",
+                        "tag": "b",
+                        "filhos": [
+                          "›"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_cmp_advogado_home_advogado_main_actions"
+  },
+  "estilos": {
+    "css": ".requests-block { display:grid; gap:12px; }\n.requests-heading {\n  display:flex;\n  justify-content:space-between;\n  gap:12px;\n  align-items:end;\n}\n.requests-heading h2 {\n  margin:0;\n  color:var(--primary);\n  font-size:18px;\n  letter-spacing:-.015em;\n}\n.requests-heading p {\n  margin:4px 0 0;\n  color:var(--muted);\n  font-size:12px;\n}\n.requests-list { display:grid; gap:10px; }\n.request-card {\n  width:100%;\n  display:block;\n  padding:15px;\n  border:1px solid var(--line);\n  border-radius:16px;\n  background:#fff;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n  box-shadow:0 2px 7px rgba(16,35,63,.035);\n}\n.request-card:hover { border-color:#bac7d8; }\n.request-top {\n  display:flex;\n  justify-content:space-between;\n  gap:10px;\n  align-items:center;\n}\n.request-priority {\n  display:inline-flex;\n  align-items:center;\n  min-height:24px;\n  padding:3px 9px;\n  border-radius:999px;\n  background:#fff7e8;\n  color:#8a5a08;\n  font-size:10px;\n  font-weight:900;\n  text-transform:uppercase;\n  letter-spacing:.045em;\n}\n.request-time {\n  color:var(--muted);\n  font-size:11px;\n}\n.request-card h3 {\n  margin:12px 0 0;\n  color:var(--primary);\n  font-size:16px;\n}\n.request-meta {\n  margin:5px 0 0;\n  color:var(--muted);\n  font-size:12px;\n  line-height:1.45;\n}\n.request-summary {\n  margin:11px 0 0;\n  color:#344054;\n  font-size:13px;\n  line-height:1.5;\n}\n.request-open {\n  margin-top:13px;\n  display:flex;\n  justify-content:flex-end;\n  gap:6px;\n  align-items:center;\n  color:var(--primary-soft);\n  font-size:12px;\n  font-weight:800;\n}\n.request-open b {\n  color:var(--gold);\n  font-size:20px;\n  line-height:1;\n}\n@media(min-width:680px) {\n  .requests-list { grid-template-columns:1fr 1fr; }\n  .request-card:first-child { grid-column:1 / -1; }\n}\n",
+    "id": "css_cmp_advogado_home_advogado_main_actions"
+  },
+  "interface": {
+    "propriedadesAceitas": [
+      "solicitacoes"
+    ],
+    "eventosEmitidos": [
+      "solicitacaoSelecionada"
+    ],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "local",
+    "jornadas": [
+      "advogado"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "locais",
+        "advogado",
+        "home"
+      ],
+      "chave": "actions"
+    }
+  }
+}

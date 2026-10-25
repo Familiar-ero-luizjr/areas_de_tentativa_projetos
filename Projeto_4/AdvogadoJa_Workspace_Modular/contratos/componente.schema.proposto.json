@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:advogadoja:workspace:contrato:componente:proposto-v1",
+  "title": "AdvogadoJá - componente (proposta evolutiva)",
+  "type": "object",
+  "required": ["schema", "identidade", "classificacao", "estrutura", "estilos", "interface"],
+  "properties": {
+    "schema": {"type": "string"},
+    "identidade": {"type": "object", "required": ["id", "nome", "tipo"], "properties": {"id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"}, "nome": {"type": "string"}, "tipo": {"const": "componente"}}},
+    "classificacao": {"type": "object", "required": ["localizacaoArvore"], "properties": {"localizacaoArvore": {"type": "object", "required": ["segmentos", "chave"]}}},
+    "estrutura": {"type": "object", "required": ["arvore"]},
+    "estilos": {"type": "object", "required": ["css"]},
+    "interface": {"type": "object", "required": ["propriedadesAceitas", "eventosEmitidos"]}
+  }
+}

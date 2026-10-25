@@ -1,0 +1,442 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.configuracao.termos_privacidade",
+    "nome": "Termos e privacidade",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/configuracoes/legal",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "configuracao"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "configuracao"
+      ],
+      "chave": "termos_privacidade",
+      "ordem": 20
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.projeto1.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.configuracao.termos_privacidade.j1_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ],
+    "contratoInstanciacao": {
+      "resolver": "ref por ID no catalogo",
+      "props": "props literais ou referências resolvidas pelo motor; componentes não carregam arquivos diretamente",
+      "filtragem": "aplicaA de grupo e instância por jornada e estado",
+      "semCopiaHTMLCSSNaTela": true,
+      "montagem": "CSS da tela + CSS dos componentes selecionados; HTML base + árvores dos componentes selecionados"
+    }
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_configuracao_termos_privacidade",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.configuracao.termos_privacidade\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "cliente"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_importada_flow_v3",
+        "origem": "flow_v3",
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "rel-cliente.configuracao.termos_privacidade-out-1-cliente.configuracao.configuracao-1",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.configuracao",
+            "evento": "legacy-event",
+            "rotulo": "Voltar às Configurações",
+            "prioridade": 1000,
+            "portasLegadas": {
+              "saida": "out-out-1-cliente.configuracao.configuracao-1",
+              "entrada": "in-cliente.configuracao.termos_privacidade-out-1-2"
+            }
+          },
+          {
+            "id": "rel-cliente.configuracao.termos_privacidade-out-2-cliente.configuracao.termos_uso-2",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.termos_uso",
+            "evento": "legacy-event",
+            "rotulo": "Termos de uso",
+            "prioridade": 999,
+            "portasLegadas": {
+              "saida": "out-out-2-cliente.configuracao.termos_uso-2",
+              "entrada": "in-cliente.configuracao.termos_privacidade-out-2-1"
+            }
+          },
+          {
+            "id": "rel-cliente.configuracao.termos_privacidade-out-3-cliente.configuracao.politica_privacidade-3",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.politica_privacidade",
+            "evento": "legacy-event",
+            "rotulo": "Política de privacidade",
+            "prioridade": 998,
+            "portasLegadas": {
+              "saida": "out-out-3-cliente.configuracao.politica_privacidade-3",
+              "entrada": "in-cliente.configuracao.termos_privacidade-out-3-1"
+            }
+          },
+          {
+            "id": "rel-cliente.configuracao.termos_privacidade-out-4-cliente.configuracao.consentimentos-4",
+            "tipo": "ligacao_flow_migrada",
+            "destino": "cliente.configuracao.consentimentos",
+            "evento": "legacy-event",
+            "rotulo": "Consentimentos",
+            "prioridade": 997,
+            "portasLegadas": {
+              "saida": "out-out-4-cliente.configuracao.consentimentos-4",
+              "entrada": "in-cliente.configuracao.termos_privacidade-out-4-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "navegacao_jornadas_projeto1",
+        "origem": "Projeto_1/jornadas",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "j1-cliente-legal-terms",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Termos de uso",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "legal",
+              "destinoNo": "terms",
+              "observacao": "Documento legal."
+            },
+            "destino": "cliente.configuracao.termos_uso"
+          },
+          {
+            "id": "j1-cliente-legal-privacy",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Política de privacidade",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "legal",
+              "destinoNo": "privacy",
+              "observacao": "Documento legal."
+            },
+            "destino": "cliente.configuracao.politica_privacidade"
+          },
+          {
+            "id": "j1-cliente-legal-consents",
+            "tipo": "navegacao_jornada",
+            "evento": "selecionar_rota",
+            "rotulo": "Consentimentos",
+            "aplicaA": {
+              "jornadas": [
+                "cliente"
+              ],
+              "estados": [
+                "*"
+              ]
+            },
+            "origemJornada": {
+              "arquivo": "cliente",
+              "no": "legal",
+              "destinoNo": "consents",
+              "observacao": "Gestão dos consentimentos da conta."
+            },
+            "destino": "cliente.configuracao.consentimentos"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "legal_documents",
+          "nome": "Documentos legais",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "document_type",
+              "tipo": "terms|privacy",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "version",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "content_url",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "published_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "active",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "legal_documents"
+          }
+        },
+        {
+          "id": "user_consents",
+          "nome": "Consentimentos",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "legal_document_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "consent_key",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "granted",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "recorded_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ],
+          "origemImportacao": {
+            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+            "tabela": "user_consents"
+          }
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        },
+        {
+          "id": "rel-legal_documents-legal_document_id-user_consents",
+          "origem": {
+            "entidade": "legal_documents"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "legal_document_id",
+          "cardinalidade": "1:N",
+          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
+      "origemImportacao": {
+        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
+        "screenKeyFonte": "cliente.configuracao.termos_privacidade",
+        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
+      }
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-home-direto-config-legal",
+          "sequenceId": "sequence-home-direto-config-legal",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-home-onboarding-config-legal",
+          "sequenceId": "sequence-home-onboarding-config-legal",
+          "order": 0,
+          "variant": "default"
+        },
+        {
+          "id": "screen-home-cadastro-config-legal",
+          "sequenceId": "sequence-home-cadastro-config-legal",
+          "order": 0,
+          "variant": "default"
+        }
+      ],
+      "branches": []
+    }
+  }
+}
