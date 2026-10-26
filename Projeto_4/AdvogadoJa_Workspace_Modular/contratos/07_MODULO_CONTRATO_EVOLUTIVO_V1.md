@@ -3,7 +3,7 @@
 ## Objetivo
 
 Este módulo serve para **definir e homologar as regras** que o Catálogo, a Tela, o
-Componente, a Montagem, o Flow e a Simulação deverão seguir. É o lugar certo
+Componente, a Montagem, o Flow e o Protótipo deverão seguir. É o lugar certo
 para discutir, comparar e aprovar mudanças **antes** de implementá-las nos
 motores. Não introduz outro cadastro de telas, outras relações, nem regras
 executáveis.

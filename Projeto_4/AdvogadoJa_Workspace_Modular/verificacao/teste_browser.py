@@ -35,7 +35,7 @@ with tempfile.TemporaryDirectory() as td:
    test_html=re.sub(r'<link rel="stylesheet"[^>]+>','',test_html)
    page.set_content(test_html,wait_until='domcontentloaded')
    page.evaluate("""window.fetch=async (path,opts={})=>{const r=await window.pyFetch(path,opts.method||'GET',opts.body||null);return {ok:r.status>=200&&r.status<300,status:r.status,headers:{get:name=>name.toLowerCase()==='content-type'?'application/json':null},json:async()=>JSON.parse(r.body)};};undefined""")
-   for css in ['app/estilos/base.css','motor_fluxo/fluxo.css','motor_simulacao/simulacao.css']:
+   for css in ['app/estilos/base.css','motor_fluxo/fluxo.css','motor_prototipo/prototipo.css']:
     page.add_style_tag(content=(work/css).read_text())
    import re
    for script in re.findall(r'<script src="([^"]+)"', (work/'index.html').read_text()):
@@ -45,7 +45,7 @@ with tempfile.TemporaryDirectory() as td:
    page.wait_for_function('Object.keys(model.screens).length===79',timeout=8000)
    page.wait_for_timeout(500)
    print('PAGE',page.title())
-   print('STATS',page.evaluate('({screens: allScreens().length,components:allComponents().length,occ:compileFlowStructure().occurrences,br:compileFlowStructure().branches,paths:compileFlowStructure().paths,links:collectEdges().length,simReady:typeof simRender})'))
+   print('STATS',page.evaluate('({screens: allScreens().length,components:allComponents().length,occ:compileFlowStructure().occurrences,br:compileFlowStructure().branches,paths:compileFlowStructure().paths,links:collectEdges().length,protReady:typeof protRender})'))
    assert not errors,errors
    # Jornadas e mapa sao dinamicos: declaracao de uma tela cria uma nova aba.
    baseline=page.evaluate('journeyCatalog().map(x=>x.id)')
@@ -65,17 +65,23 @@ with tempfile.TemporaryDirectory() as td:
    print('CARDS',page.locator('[data-occ-id]').count(),'BIFURCACOES',page.locator('.f-branch').count())
    assert page.locator('[data-occ-id]').count()==197
    assert page.locator('.f-branch').count()==33
-   # simulation
-   page.locator('[data-tab="simulacao"]').click()
-   page.wait_for_timeout(250)
-   print('SIM OPTIONS',page.locator('#simScreen option').count(),page.locator('#simAction option').count())
-   assert page.locator('#simScreen option').count()==79
-   page.locator('#simScreen').select_option('admin.dashboard.dashboard')
-   assert page.locator('#simAction option').count()>0
-   page.locator('#simRun').click()
-   page.wait_for_timeout(250)
-   print('SIM TRACE',page.locator('#simLog .sim-activity').count())
-   assert page.locator('#simLog .sim-activity').count()>0
+   # Protótipo: journeys from the Store and navigation based on flow.editor.
+   page.locator('[data-tab="prototipo"]').click()
+   page.wait_for_timeout(200)
+   assert page.locator('#protJourneyTabs [data-prot-journey]').count()==4
+   page.locator('#protJourneyTabs [data-prot-journey="cliente"]').click()
+   assert page.locator('#protPoints [data-prot-index]').count()>8
+   assert page.locator('#protPreview').get_attribute('srcdoc').startswith('<!doctype html>')
+   total=page.locator('#protPoints [data-prot-index]').count()
+   page.locator('#protNext').click()
+   assert page.locator('#protSummary').inner_text().startswith('2 de')
+   page.locator('#protBack').click()
+   assert page.locator('#protSummary').inner_text().startswith('1 de')
+   page.locator('#protSearch').fill('cadastro')
+   assert page.locator('#protPoints [data-prot-index]').count()>0
+   page.locator('#protReset').click()
+   assert page.locator('#protPoints [data-prot-index]').count()==total
+   print('PROTOTIPO',len(baseline),'jornadas, pontos navegaveis',total)
    # Operational connection is created/removed ONLY in source screen JSON.
    page.locator('[data-tab="relacoes"]').click()
    page.locator('#flowScreenChoice').select_option('admin.dashboard.dashboard')

@@ -11,4 +11,8 @@ O documento tem `schema: advogadoja.modulo_contrato.v1` e serve **para planejame
 - Sem servidor Python (abrindo `index.html` diretamente), permite visualizar o JSON inicial e exportar, mas não salvar; usar `python iniciar.py` para persistência.
 - Proteção: verificações de schema, unicidade, paths imutáveis e conflito de versão.
 
-Base de referência: `contratos/00..06_*.md` e o catálogo atual. **Propostas pendentes não são regras homologadas**.
+Base de referência: `contratos/00..08_*.md` e o catálogo atual. **Propostas pendentes não são regras homologadas**.
+
+## Área Protótipo (V5)
+
+O documento possui agora a área `prototipo` (substitui `simulacao` no planejamento). **O esquema raiz continua V1**; o servidor continua aceitando `advogadoja.modulo_contrato.v1`. Esta é uma mudança de conteúdo do contrato autônomo, não uma migração dos 79 JSONs de tela. Veja `contratos/04_CONTRATO_MOTOR_PROTOTIPO.md`.

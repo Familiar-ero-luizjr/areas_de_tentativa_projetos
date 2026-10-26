@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AdvogadoJá — Workspace modular · catálogo canônico</title><link rel="stylesheet" href="app/estilos/base.css">
 <link rel="stylesheet" href="motor_fluxo/fluxo.css">
-<link rel="stylesheet" href="motor_simulacao/simulacao.css">
+<link rel="stylesheet" href="motor_prototipo/prototipo.css">
 <link rel="stylesheet" href="jornadas/painel.css">
 <link rel="stylesheet" href="banco/banco.css">
 <link rel="stylesheet" href="mapa/mapa.css">
@@ -16,7 +16,7 @@
    <input type="file" id="fileInput" accept=".json,application/json" multiple hidden><input type="file" id="folderInput" webkitdirectory multiple hidden>
   </div>
  </header>
- <nav class="tabs"><button class="tab" data-tab="simulacao">Motor da simulação</button><button class="tab" data-tab="fluxovisual">Árvore do Flow</button><button class="tab" data-tab="relacoes">Flow &amp; referências</button><button class="tab" data-tab="jornadas">Jornadas</button><button class="tab active" data-tab="catalogo">Árvore do catálogo</button><button class="tab" data-tab="montagem">Motor de montagem</button><button class="tab" data-tab="contrato">Contrato</button><button class="tab" data-tab="json">Gestão &amp; exportação</button><button class="tab" data-tab="banco">Banco</button><button class="tab" data-tab="mapa">Mapa integrado</button></nav>
+ <nav class="tabs"><button class="tab" data-tab="prototipo">Protótipo</button><button class="tab" data-tab="fluxovisual">Árvore do Flow</button><button class="tab" data-tab="relacoes">Flow &amp; referências</button><button class="tab" data-tab="jornadas">Jornadas</button><button class="tab active" data-tab="catalogo">Árvore do catálogo</button><button class="tab" data-tab="montagem">Motor de montagem</button><button class="tab" data-tab="contrato">Contrato</button><button class="tab" data-tab="json">Gestão &amp; exportação</button><button class="tab" data-tab="banco">Banco</button><button class="tab" data-tab="mapa">Mapa integrado</button></nav>
  <div class="view active" id="view-catalogo">
   <div class="pills" id="stats"></div>
   <div class="grid">
@@ -29,7 +29,7 @@
  <div class="view" id="view-montagem">
   <div class="modebar"><div><label class="label">Tela</label><select id="screenChoice" class="field"></select></div><div><label class="label">Jornada</label><select id="journeyChoice" class="field"></select></div><div><label class="label">Estado</label><select id="stateChoice" class="field"></select></div><button class="btn primary" id="rebuild">Montar</button><button class="btn" id="exportResolved">Baixar montagem JSON</button></div>
   <div class="pills" id="mountStats"></div>
-  <div class="split"><section class="panel"><div class="ph"><div><h2>Prévia estrutural</h2><div class="hint">HTML/CSS de componentes; ações são simuladas pelo mesmo runtime do motor.</div></div><button class="btn sm" id="toggleDrawer">Abrir / fechar menu</button></div><div class="pb"><div class="device"><iframe sandbox="allow-scripts" title="Prévia da tela por estado" id="preview"></iframe></div><div class="miniInfo">A prévia é isolada. Apenas o runtime gerado pelo motor pode tratar atributos declarativos de interação; scripts das jornadas não são importados.</div></div></section>
+  <div class="split"><section class="panel"><div class="ph"><div><h2>Prévia estrutural</h2><div class="hint">HTML/CSS de componentes; ações demonstrativas não executam processos reais.</div></div><button class="btn sm" id="toggleDrawer">Abrir / fechar menu</button></div><div class="pb"><div class="device"><iframe sandbox="allow-scripts" title="Prévia da tela por estado" id="preview"></iframe></div><div class="miniInfo">A prévia é isolada. Apenas o runtime gerado pelo motor pode tratar atributos declarativos de interação; scripts das jornadas não são importados.</div></div></section>
   <section class="panel"><div class="ph"><div><h2>Montagem resolvida pelo motor</h2><div class="hint">Instâncias, grupos HTML/CSS, dados e ações selecionados pelo estado/jornada.</div></div><button class="btn sm" id="copyResolved">Copiar JSON</button></div><textarea class="editor" id="resolvedJson" readonly style="min-height:730px;border-radius:0;border:0"></textarea></section></div>
  </div>
  
@@ -43,21 +43,42 @@
   </div>
 <div class="view" id="view-relacoes"><div class="pills" id="flowStats"></div><div class="grid"><section class="panel"><div class="ph"><div><h2>Relações descobertas nas telas</h2><div class="hint">Saídas extraídas de ações e itens; entradas derivadas automaticamente.</div></div><button class="btn sm" id="exportFlow">Exportar relações</button></div><div class="pb"><div id="flowList"></div></div></section><section class="panel"><div class="ph"><div><h2>Inspecionar uma tela</h2><div class="hint">Uma nova importação pode resolver destinos pendentes sem alterar o JSON original.</div></div></div><div class="pb"><label class="label">Tela de origem</label><select id="flowScreenChoice" class="field"></select><div class="rowline"><button class="btn sm primary" id="addRelation">+ Conectar outra tela</button></div><div class="hr"></div><h3 class="sectiontitle">Saídas</h3><div id="outgoing"></div><h3 class="sectiontitle">Entradas descobertas</h3><div id="incoming"></div><div class="warnBox">As entradas são uma projeção calculada pelo motor, nunca uma cópia gravada nas outras telas. Isso evita duas fontes de verdade.</div></div></section></div></div>
  
-<div class="view" id="view-simulacao">
-  <div class="panel"><div class="ph"><div><h2>Simulação de estados e caminhos</h2><div class="hint">Somente leitura dos JSONs da Store; cenários, ações e navegações são projetados sem acionar backend.</div></div><button class="btn sm" id="simReset">Reiniciar simulação</button></div><div class="pb">
-  <div class="sim-grid">
-   <section><label class="label">Tela</label><select class="field" id="simScreen"></select></section>
-   <section><label class="label">Jornada</label><select class="field" id="simJourney"></select></section>
-   <section><label class="label">Estado</label><select class="field" id="simState"></select></section>
-   <section><label class="label">Cenário / mock</label><select class="field" id="simScenario"></select></section>
+<div class="view" id="view-prototipo">
+  <div class="prot-topbar"><div class="prot-brand">ADVOGADO JÁ PLUS <small>· Protótipo navegável</small></div><button class="prot-lablink" id="protBackLab">Voltar ao laboratório</button></div>
+  <div class="prot-shell">
+    <aside class="prot-sidebar">
+      <div>
+        <div class="prot-block-label">Experiência</div>
+        <div class="prot-meta"><h2>Escolha uma jornada</h2><p class="prot-intro">Caminhos e telas preservados do laboratório atual.</p></div>
+      </div>
+      <div id="protJourneyTabs" class="prot-journey-grid" aria-label="Jornadas do protótipo"></div>
+      <div class="prot-block-label">Pontos da jornada</div>
+      <input class="prot-search" id="protSearch" type="search" placeholder="Buscar tela ou etapa">
+      <div id="protPoints" class="prot-points"></div>
+    </aside>
+    <main class="prot-main">
+      <div class="prot-content">
+        <div class="prot-header-row">
+          <div>
+            <div class="tiny" id="protPersonaKicker">CLIENTE · MARIA</div>
+            <h2 id="protScreenTitle">Carregando…</h2>
+            <div class="hint" id="protScreenId">Tela: —</div>
+          </div>
+          <div class="prot-controls">
+            <button class="btn" id="protBack">← Voltar</button>
+            <button class="btn primary" id="protNext">Avançar →</button>
+            <button class="btn" id="protReset">Reiniciar</button>
+          </div>
+        </div>
+        <div class="prot-banner">Modo demonstração: os caminhos de navegação refletem as jornadas existentes. As telas são prévias visuais estáticas; botões dentro delas não executam processos reais. Use Avançar e as opções de decisão para navegar.</div>
+        <div class="prot-preview-card">
+          <div class="prot-summary" id="protSummary"></div>
+          <div class="prot-device"><iframe id="protPreview" sandbox="allow-scripts" title="Protótipo navegável"></iframe></div>
+          <div class="prot-caption" id="protNote">Montagem inicial do protótipo.</div>
+        </div>
+      </div>
+    </main>
   </div>
-  <div class="sim-grid" style="margin-top:13px;grid-template-columns:minmax(250px,2fr) minmax(150px,1fr)">
-   <section><label class="label">Ação declarada na tela</label><select class="field" id="simAction"></select></section>
-   <section style="align-self:end"><button class="btn primary" id="simRun">Simular ação</button></section>
-  </div>
-  <div class="grid" style="margin-top:16px"><section class="panel"><div class="ph"><h2>Prévia da tela</h2></div><div class="pb"><div class="device"><iframe id="simPreview" sandbox="allow-scripts" title="Simulação da tela"></iframe></div></div></section>
-  <section class="panel"><div class="ph"><h2>Registro da simulação</h2></div><div class="pb"><div id="simStatus" class="miniInfo">Selecione uma tela.</div><div class="hr"></div><div id="simLog"></div><div class="hr"></div><p class="muted">A simulação não valida autenticação, backend, regras legadas ou execução de comandos. Ações importadas do Flow V3 podem ser inspecionadas como saltos declarativos, não executadas como condições de negócio.</p></div></section></div>
-  </div></div>
 </div>
 
 <div class="view" id="view-json"><div class="grid"><section class="panel"><div class="ph"><div><h2>Índice mestre (gerado)</h2><div class="hint">Projeção em memória; não é arquivo-fonte.</div></div><div class="controls"><button class="btn sm" id="downloadMaster">Baixar índice</button><button class="btn sm" id="copyMaster">Copiar</button></div></div><textarea id="masterJson" readonly class="editor" style="min-height:660px;border-radius:0;border:0"></textarea></section><section class="panel"><div class="ph"><div><h2>Pacote JSON da tela</h2><div class="hint">Um único <code>catalogo</code> contendo uma tela e todos os componentes necessários. O ZIP inclui pacotes de tela e definições únicas de componentes.</div></div><button class="btn sm" id="downloadPackage">Baixar pacote</button></div><div class="pb"><label class="label">Selecionar tela</label><select class="field" id="packageScreenChoice"></select></div><textarea id="packageJson" readonly class="editor" style="min-height:615px;border-radius:0 0 10px 10px;border:0"></textarea></section></div></div>
@@ -116,7 +137,7 @@
 <script src="mapa/mapa.js"></script>
 <script src="app/interface.js"></script>
 <script src="motor_fluxo/fluxo.js"></script>
-<script src="motor_simulacao/simulacao.js"></script>
+<script src="motor_prototipo/prototipo.js"></script>
 <script src="app/persistencia.js"></script>
 <script src="modulo_contrato/contrato.js"></script>
 <script src="app/bootstrap.js"></script>

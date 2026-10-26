@@ -1,8 +1,8 @@
-# AdvogadoJá — Workspace Modular / Store única (proposta V1)
+# AdvogadoJá — Workspace Modular / Store única · Protótipo V5
 
 ## Objetivo
 
-Ter uma **única fonte editável** para cada tela e para cada componente, com pastas especializadas em **ler, montar, relacionar e simular** essas definições. A antiga página HTML autocontida **não é** a fonte persistente. Nenhuma pasta de motor guarda uma cópia de telas, componentes, conexões ou do grafo geral.
+Ter uma **única fonte editável** para cada tela e para cada componente, com pastas especializadas em **ler, montar, relacionar e apresentar um protótipo navegável** dessas definições. A antiga página HTML autocontida **não é** a fonte persistente. Nenhuma pasta de motor guarda uma cópia de telas, componentes, conexões ou do grafo geral.
 
 ## Começar
 
@@ -37,12 +37,12 @@ advogadoja_workspace_modular/
 │   │   └── ...                    # 79 definições individuais
 │   └── componentes/
 │       ├── globais/headers/app-header.v04.json
-│       └── ...                    # 9 definições reais
+│       └── ...                    # 234 definições (9 originais + 225 importadas)
 ├── arvore_catalogo/               # organização e editor dos registros
 ├── motor_montagem/                # motor visual de componentes, CSS, slots, estados
 ├── motor_fluxo/                   # árvore com sequências/ocorrências/bifurcações
 ├── arvore_relacoes/               # relações operacionais; entradas derivadas
-├── motor_simulacao/               # estados, cenários, simulação declarativa
+├── motor_prototipo/                # protótipo navegável das jornadas
 ├── arvore_exportacao/             # pacotes, índice e exportação como projeções
 ├── app/                           # cola UI + persistência, sem dados canônicos
 ├── contratos/                     # documentação e contrato canônico PROPOSTO
@@ -60,7 +60,7 @@ catalogo/telas/**/*.json ─────────────┬──> arvor
                                      ├──> motor_fluxo (sequências e bifurcações)
                                      ├──> arvore_relacoes (grafo derivado das ações)
                                      ├──> motor_montagem (estrutura e componentes)
-                                     ├──> motor_simulacao (cenários e rastros)
+                                     ├──> motor_prototipo (protótipo navegável)
                                      └──> arvore_exportacao (índice/pacotes derivados)
 catalogo/componentes/**/*.json ───────┤
                                      └──> resolvidos por identidade.id
@@ -89,11 +89,11 @@ compatíveis; a prévia vem de `estrutura.arvore`, `estilos.css` e
 
 A migração preserva 79 telas, 197 ocorrências, 33 bifurcações, 114 caminhos e 408 saídas originais do Flow V3. Há 234 componentes: os nove originais da Home Profissional e 225 componentes em árvore importados das jornadas do Projeto 1. As páginas de jornada e o Workspace montam essas definições pelo mesmo contrato. Há ainda uma tela sem posição herdada na árvore (`advogado.disponibilidade.raio_atendimento`) e uma tela (`auth.cadastro.tipo_conta`) referenciada pelas jornadas, porém sem definição visual no material-fonte.
 
-A implementação fornece simulação de navegação declarativa (sem execução de backend), e o contrato de simulação é uma **proposta de evolução**, não um simulador funcional de regras de negócios.
+A aba **Protótipo** mostra a experiência de navegação pelas jornadas do Flow, com tela grande, pontos pesquisáveis e controles Voltar/Avançar/Reiniciar. Os ramos compatíveis são linearizados; **a escolha interativa de bifurcação ainda não está disponível**. A prévia não executa backend.
 
 ## Próximos passos para fechar os contratos
 
-Ler `contratos/01_CONTRATO_CATALOGO_TELA.md`, `02_CONTRATO_CATALOGO_COMPONENTE.md`, `03_CONTRATO_MOTOR_FLOW.md` e `04_CONTRATO_MOTOR_SIMULACAO.md`. Os arquivos separam **o que já existe** das decisões ainda pendentes. Primeiro aprovar o contrato, depois completar tela a tela os componentes faltantes e migrar condições de navegação textuais para regras executáveis, de forma incremental.
+Ler `contratos/01_CONTRATO_CATALOGO_TELA.md`, `02_CONTRATO_CATALOGO_COMPONENTE.md`, `03_CONTRATO_MOTOR_FLOW.md` e `04_CONTRATO_MOTOR_PROTOTIPO.md`. Os arquivos separam **o que já existe** das decisões ainda pendentes. Primeiro aprovar o contrato, depois completar tela a tela os componentes faltantes e migrar condições de navegação textuais para regras executáveis, de forma incremental.
 
 ## Auditoria e testes
 
@@ -116,7 +116,7 @@ A aba **Contrato** agora é um módulo funcional próprio em `modulo_contrato/`,
 `data/contrato_workspace.json` como **única fonte de persistência** dos objetivos,
 campos, regras, pendências e decisões de contrato. Seus itens editáveis são
 agrupados em seis áreas: **Catálogo/jornadas, tela, componente, montagem, Flow
-editorial e simulação**. Esse documento é de **planejamento**: não migra nem
+editorial e Protótipo**. Esse documento é de **planejamento**: não migra nem
 altera automaticamente `catalogo/telas` e `catalogo/componentes`.
 
 Ao executar `python iniciar.py`, usar **Contrato → Objetivos / Contratos por área /
@@ -130,3 +130,13 @@ As rotas HTTP são `GET /api/contrato` e `POST /api/contrato/sync`; a API do
 catálogo e os JSONs existentes não foram substituídos. As decisões são propostas
 até homologação explícita. Veja `modulo_contrato/README.md` e
 `contratos/07_MODULO_CONTRATO_EVOLUTIVO_V1.md`.
+
+## Consolidação V5 — Protótipo
+
+O antigo módulo `motor_simulacao/` não participa mais do Workspace. A aba chama-se **Protótipo**, com o código `motor_prototipo/`. A área `simulacao` do JSON **de planejamento** foi substituída por `prototipo` e o objetivo `O05` foi atualizado. O esquema do JSON autônomo permanece `advogadoja.modulo_contrato.v1`, assim como todas as identidades das telas/componentes e o desenho do Flow.
+
+Referência vigente (ainda **proposta**): `contratos/04_CONTRATO_MOTOR_PROTOTIPO.md`. Mapeamento completo, limitações e histórico em `contratos/08_MIGRACAO_NOMENCLATURA_PROTOTIPO_V5.md`. O documento original da simulação foi arquivado em `verificacao/legado/`; não se deve considerá-lo contrato operacional.
+
+O Protótipo percorre sequências e prévias demonstrativas sem executar backend; ramos compatíveis ainda são linearizados, de modo que **escolher a decisão de uma bifurcação continua pendente**. A ausência de componentes deve ser indicada como pendência visual, não ocultada.
+
+Verificações: `python verificacao/auditar_catalogo.py` (79 telas, 234 componentes, 197 ocorrências, 33 bifurcações), `python verificacao/teste_prototipo.py`, `python verificacao/teste_browser.py` e `python verificacao/teste_modulo_contrato.py`. Os testes de interface exigem Playwright e Chromium.

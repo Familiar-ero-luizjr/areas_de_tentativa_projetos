@@ -2,7 +2,7 @@
   "schema": "advogadoja.modulo_contrato.v1",
   "metadados": {
     "id": "advogadoja.workspace.contrato",
-    "versao": "0.1.0",
+    "versao": "0.2.0",
     "titulo": "Contrato evolutivo — Catálogo e motores",
     "situacao": "rascunho",
     "escopo": "Definir contratos antes de modificar a implementação canônica.",
@@ -31,8 +31,8 @@
     },
     {
       "id": "O05",
-      "titulo": "Simulação segura",
-      "descricao": "Cenários e estados podem ser simulados sem executar backend."
+      "titulo": "Protótipo navegável e seguro",
+      "descricao": "Exibir e percorrer jornadas descobertas nos JSONs, preservando o Flow e renderizando prévias de tela sem acionar backend, permissões ou efeitos reais."
     },
     {
       "id": "O06",
@@ -380,52 +380,80 @@
       ]
     },
     {
-      "id": "simulacao",
-      "titulo": "Motor de simulação",
+      "id": "prototipo",
+      "titulo": "Módulo Protótipo",
       "situacao": "em_revisao",
-      "objetivo": "Simular estados, jornadas, componentes, ações e destinos a partir dos mesmos dados canônicos, sem execução de backend ou autorização real.",
-      "fonte": "tela.estados / dados / mocks / acoes e motor_montagem",
+      "objetivo": "Exibir jornadas navegáveis com lista de pontos, busca, prévia de telas e controles Voltar/Avançar/Reiniciar, derivados da Store sem executar regras ou backend.",
+      "fonte": "catalogo/telas (classificacao.jornadas, identidade, flow.editor, estrutura, componentes, estilos, estados) + catalogo/componentes + motor_montagem",
       "campos": [
         {
-          "campo": "telaId / jornada / estado / cenarioId",
-          "finalidade": "Seleção do contexto simulado.",
+          "campo": "classificacao.jornadas[]",
+          "finalidade": "Descobrir automaticamente as jornadas disponíveis, incluindo telas globais.",
           "exigencia": "obrigatorio",
           "situacao": "existente",
-          "regra": "Fonte é a Store atual."
+          "regra": "Somente os JSONs de tela criam jornadas; o valor * participa das jornadas existentes."
         },
         {
-          "campo": "mocks.cenarios",
-          "finalidade": "Cenários e massa de teste.",
+          "campo": "identidade.id / identidade.nome",
+          "finalidade": "Identificar os pontos e exibir seus títulos sem renumerar telas.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "ID da tela é estável; o índice da lista é apenas posição visual."
+        },
+        {
+          "campo": "flow.editor.occurrences[] / branches[].paths[]",
+          "finalidade": "Reconstruir a ordem editorial e os pontos repetidos do percurso.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "A montagem editorial é lida, não duplicada nem regravada no Protótipo."
+        },
+        {
+          "campo": "estrutura / componentes.instancias / estilos",
+          "finalidade": "Montar a prévia visual de cada tela a partir dos componentes.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Usar compile + previewHTML do motor_montagem; não replicar HTML ou CSS."
+        },
+        {
+          "campo": "estados.fallbackSeguro",
+          "finalidade": "Determinar o estado demonstrativo usado na prévia.",
+          "exigencia": "condicional",
+          "situacao": "existente",
+          "regra": "Se ausente, usar o primeiro estado disponível ou padrao; nunca autenticar."
+        },
+        {
+          "campo": "acoes.grupos[].acoes / componentes.instancias[].props.itens",
+          "finalidade": "Futuro suporte a decisões navegáveis por ação declarada.",
           "exigencia": "condicional",
           "situacao": "em_revisao",
-          "regra": "Não representa autoridade do backend."
+          "regra": "Hoje o Protótipo lineariza os ramos; a navegação por ação/condição tipada ainda não foi implementada."
         },
         {
-          "campo": "acoes.grupos[].acoes[].id",
-          "finalidade": "Ações simuláveis e saídas declaradas.",
-          "exigencia": "condicional",
-          "situacao": "em_revisao",
-          "regra": "Comando real não pode ser executado."
-        },
-        {
-          "campo": "trace / pendencias",
-          "finalidade": "Resultado de simulação temporário.",
-          "exigencia": "condicional",
-          "situacao": "proposto",
-          "regra": "Não persistir como segunda fonte de verdade."
+          "campo": "prototipo.jornada / prototipo.ponto / prototipo.busca",
+          "finalidade": "Estado transitório de exibição e navegação da aba Protótipo.",
+          "exigencia": "obrigatorio",
+          "situacao": "existente",
+          "regra": "Estado apenas em memória; não criar esses campos no JSON das telas."
         }
       ],
       "regras": [
-        "Nunca executar ações reais de pagamento, autenticação, banco ou Firebase.",
-        "Condição legada não avaliada deve aparecer explicitamente como não executada."
+        "A aba visível e o módulo chamam-se Protótipo; não reaproveitar os controles da antiga simulação técnica.",
+        "Jornadas são descobertas a partir de classificacao.jornadas[]; não manter cadastro fixo de jornadas.",
+        "A lista de pontos preserva flow.editor.occurrences e caminhos; múltiplos ramos hoje aparecem linearizados.",
+        "Prévia monta somente componentes reais do catálogo. Não inventar conteúdo quando não houver visuais.",
+        "Voltar, Avançar e Reiniciar mudam apenas o estado transitório da UI.",
+        "Nunca executar autenticação real, backend, pagamentos, permissões ou avaliar quandoLegado como condição executável."
       ],
       "pendencias": [
-        "Definir DSL de regras tipadas e determinísticas.",
-        "Definir asserts por cenário e percursos testáveis."
+        "Definir seleção interativa de bifurcação (paths[]) e sua ligação com eventos/condições tipadas.",
+        "Definir opcionalmente estados e cenários visuais por ponto, sem dar autoridade aos mocks.",
+        "Homologar visualmente cada tela a partir de seus componentes e do design de referência."
       ],
       "criteriosAceite": [
-        "Simulação pode ser iniciada sem backend.",
-        "Resultado diferencia navegação declarada de regra efetivamente executada."
+        "Uma jornada nova declarada em uma tela aparece na aba Protótipo sem alterar o código.",
+        "A navegação linear mantém os pontos derivados do Flow e não altera arquivos de catálogo.",
+        "A prévia usa o motor de montagem e não executa backend.",
+        "A interface mostra claramente que decisões condicionais ainda não são avaliadas."
       ]
     }
   ],
@@ -442,7 +470,7 @@
       "assunto": "Origem única de relação operacional",
       "decisao": "Guardar a ação de saída na origem e derivar as entradas. Não persistir listas inbound no destino.",
       "situacao": "proposta",
-      "impacto": "flow, simulacao"
+      "impacto": "flow, prototipo"
     },
     {
       "id": "D03",
@@ -454,9 +482,9 @@
     {
       "id": "D04",
       "assunto": "Avaliação de condições legadas",
-      "decisao": "Conservar até definir representação tipada; não marcar condições textuais como executadas.",
+      "decisao": "Conservar condições textuais até representação tipada aprovada; o Protótipo não as avalia nem considera seus caminhos automaticamente validados.",
       "situacao": "pendente",
-      "impacto": "flow, simulacao"
+      "impacto": "flow, prototipo"
     },
     {
       "id": "D05",
@@ -464,6 +492,13 @@
       "decisao": "Salvar proposta do contrato em modulo_contrato/data/contrato_workspace.json; não alterar catálogo na importação desse contrato.",
       "situacao": "proposta",
       "impacto": "workspace"
+    },
+    {
+      "id": "D06",
+      "assunto": "Módulo de experiência navegável denominado Protótipo",
+      "decisao": "Renomear e reorientar a antiga aba de simulação para Protótipo; a prévia é demonstrativa, alimentada por classificacao.jornadas, flow.editor e motor de montagem, sem backend. Seleção interativa de ramos segue pendente.",
+      "situacao": "proposta",
+      "impacto": "prototipo, catalogo, montagem, flow, contrato"
     }
   ],
   "controle": {

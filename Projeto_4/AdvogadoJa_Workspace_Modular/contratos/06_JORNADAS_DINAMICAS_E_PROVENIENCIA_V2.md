@@ -32,7 +32,7 @@ A árvore de catálogo continua usando `classificacao.localizacaoArvore`, indepe
 - `componentes.instancias[].slot`, `ordem`, `props` e `aplicaA` regulam o posicionamento, estado e jornada da instância.
 - `acoes.grupos[].acoes[].destino` (e destinos condicionais) e `componentes.instancias[].props.itens[].destino` são **saídas operacionais**; o grafo do Flow, a lista de próximas telas e todas as **entradas** são recalculados deles.
 - `flow.editor` guarda somente a posição editorial no Flow: entrada, ocorrências e bifurcações. Não deduzir uma transição operacional porque duas telas estão lado a lado na árvore.
-- O painel Jornadas, Mapa, Árvore do catálogo, Motor de montagem, Flow e Simulação leem os mesmos objetos de tela em memória, carregados dos JSONs físicos.
+- O painel Jornadas, Mapa, Árvore do catálogo, Motor de montagem, Flow e Protótipo leem os mesmos objetos de tela em memória, carregados dos JSONs físicos.
 
 ## Conciliação efetuada sem inventar telas
 

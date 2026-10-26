@@ -43,7 +43,7 @@ with tempfile.TemporaryDirectory() as td:
             html=(work/'index.html').read_text()
             page.set_content(re.sub(r'<script src="[^\"]+"></script>','',re.sub(r'<link rel="stylesheet"[^>]+>','',html)))
             page.evaluate('''window.fetch=async(path,opt={})=>{const x=await window.pyFetch(path,opt.method||'GET',opt.body||null);return {ok:x.status>=200&&x.status<300,status:x.status,json:async()=>JSON.parse(x.body)};};undefined''')
-            for css in ['app/estilos/base.css','motor_fluxo/fluxo.css','motor_simulacao/simulacao.css','modulo_contrato/contrato.css']:
+            for css in ['app/estilos/base.css','motor_fluxo/fluxo.css','motor_prototipo/prototipo.css','modulo_contrato/contrato.css']:
                 page.add_style_tag(content=(work/css).read_text())
             for script in re.findall(r'<script src="([^\"]+)"',html):page.add_script_tag(content=(work/script).read_text())
             try:page.wait_for_function("typeof ctState!=='undefined' && ctState.doc && Object.keys(model.screens).length===79",timeout=15000)
@@ -55,6 +55,8 @@ with tempfile.TemporaryDirectory() as td:
             assert page.locator('#ctMetrics .ct-metric').count()==4
             page.locator('[data-ct-tab="areas"]').click()
             assert page.locator('.ct-area-btn').count()==6
+            assert page.evaluate('ctState.doc.areas.some(a=>a.id==="prototipo")')
+            assert not page.evaluate('ctState.doc.areas.some(a=>a.id==="simulacao")')
             assert page.locator('#ctCampoLista .ct-field-pill').count()>5
             # Make a new objective; save only module, never a catalog record.
             page.locator('[data-ct-tab="objetivos"]').click()
