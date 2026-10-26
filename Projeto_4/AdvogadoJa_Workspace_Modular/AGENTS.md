@@ -29,3 +29,11 @@
 - O protótipo da versão atual lineariza os caminhos compatíveis, **não** executa decisão de branch. Não apresentar navegação condicional como implementada.
 - Nova jornada gera uma aba quando uma tela a declara; preferências de nomes de persona nunca devem servir como fonte de jornada.
 - Executar as regressões de `verificacao/` antes de publicar mudanças na aba Protótipo.
+
+
+## Regras de Modelos e intercâmbio
+
+- `modelos/` é documentação derivada dos schemas de `contratos/`: sem Store paralela nem regra específica de tela. Informar que schemas `.proposto` não foram homologados.
+- `jornadas/intercambio.js` exporta projeções transitórias da Store; toda importação exige comparação de diferenças e confirmação explícita das divergências.
+- Não persistir índice mestre de jornada nem duplicar telas por persona; todos os motores leem referências estáveis por ID.
+- Manter carregamento sob demanda e não executar textos de condições legadas como código.

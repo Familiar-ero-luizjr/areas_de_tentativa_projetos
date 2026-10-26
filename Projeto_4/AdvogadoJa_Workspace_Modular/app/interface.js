@@ -23,7 +23,7 @@ function renderAll(){
  // motores são projeções e só são montados quando a respectiva aba é aberta.
  renderTree();renderStats();renderSelected();renderSelectors();renderCurrentTab();
 }
-function switchTab(t){ui.tab=t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+t));renderCurrentTab();}
+function switchTab(t){if(t==='modelos' && typeof mdlRender==='function')mdlRender();ui.tab=t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+t));renderCurrentTab();}
 function downloadText(filename,text,mime='application/json'){const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 async function copyText(text){try{await navigator.clipboard.writeText(text);notice('Texto copiado.');}catch(e){notice('Cópia não suportada em arquivo local; utilize o botão de exportar.','warn');}}
 async function importFiles(files){const records=[],errors=[];
