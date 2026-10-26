@@ -3,7 +3,7 @@
 Iniciar: python iniciar.py  (abre http://127.0.0.1:8765)
 """
 from __future__ import annotations
-import hashlib, json, os, pathlib, re, sys, tempfile, threading, webbrowser
+import gzip, hashlib, json, os, pathlib, re, sys, tempfile, threading, webbrowser
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlsplit
 from functools import partial
@@ -118,11 +118,19 @@ class Handler(SimpleHTTPRequestHandler):
         sys.stderr.write('Workspace: ' + fmt % args + '\n')
     def _json(self, code, payload):
         content = json.dumps(payload, ensure_ascii=False).encode('utf-8')
+        # Compressão é negociada pelo navegador; o documento canônico e a
+        # resposta JSON permanecem exatamente os mesmos após descompressão.
+        gzip_ok = 'gzip' in self.headers.get('Accept-Encoding', '').lower()
+        compressed = gzip.compress(content, compresslevel=6) if gzip_ok and len(content) >= 1024 else content
+        use_gzip = gzip_ok and len(compressed) < len(content)
+        body = compressed if use_gzip else content
         self.send_response(code)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Cache-Control', 'no-store')
-        self.send_header('Content-Length', str(len(content)))
-        self.end_headers(); self.wfile.write(content)
+        self.send_header('Vary', 'Accept-Encoding')
+        if use_gzip: self.send_header('Content-Encoding', 'gzip')
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers(); self.wfile.write(body)
     def do_GET(self):
         path = urlsplit(self.path).path
         if path == '/api/catalogo':

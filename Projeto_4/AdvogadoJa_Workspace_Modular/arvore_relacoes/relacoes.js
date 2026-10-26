@@ -1,4 +1,5 @@
-function collectEdges(){const edges=[],seen=new Set();
+let edgeCacheRevision=-1,edgeCache=[];
+function buildEdges(){const edges=[],seen=new Set();
  function add(origin,destination,kind,sourceId,rule){if(typeof destination!=='string'||!destination.trim())return;const key=JSON.stringify([origin,destination,kind,sourceId,rule]);if(seen.has(key))return;seen.add(key);edges.push({origem:origin,destino:destination,tipo:kind,origemAcao:sourceId,aplicaA:rule||{jornadas:['*'],estados:['*']},resolvida:!!model.screens[destination]});}
  for(const t of allScreens()){
   const origin=idOf(t);
@@ -16,6 +17,10 @@ function collectEdges(){const edges=[],seen=new Set();
  }
  return edges;
 }
+function collectEdges(){
+ if(edgeCacheRevision===catalogRevision)return edgeCache;
+ edgeCache=buildEdges();edgeCacheRevision=catalogRevision;return edgeCache;
+}
 function renderFlow(){const edges=collectEdges();$('flowStats').innerHTML=[['Conexões',edges.length],['Destinos localizados',edges.filter(e=>e.resolvida).length],['Destinos ainda ausentes',edges.filter(e=>!e.resolvida).length]].map(([n,v])=>`<span class="pill ${n.includes('ausentes')&&v?'warn':'emph'}">${n}: <b>${v}</b></span>`).join('');
  $('flowList').innerHTML=edges.length?edges.map(e=>`<div class="relItem"><code>${escapeHtml(e.origem)}</code><span class="arrow">→</span><code>${escapeHtml(e.destino)}</code><span class="pill ${e.resolvida?'ok':'warn'}">${e.resolvida?'no catálogo':'aguarda tela'}</span><span class="tag">${escapeHtml(e.origemAcao)}</span></div>`).join(''):'<div class="empty">Nenhuma ação com destino declarada.</div>';
  const id=$('flowScreenChoice').value,outs=edges.filter(e=>e.origem===id),ins=edges.filter(e=>e.destino===id);
@@ -32,7 +37,7 @@ function addRelation(){
  const groupId='navegacao_editor_relacoes';let group=arr(t.acoes?.grupos).find(g=>g.id===groupId);
  if(!group){t.acoes??={grupos:[]};t.acoes.grupos??=[];group={id:groupId,aplicaA:{jornadas:['*'],estados:['*']},acoes:[]};t.acoes.grupos.push(group);}
  group.acoes.push({id:'rel-manual-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7),tipo:'ligacao_flow_manual',evento:'referencia_manual',rotulo:label||('Navegar: '+to),destino:to});
- save();renderAll();notice('Conexão declarada no JSON de '+origin+'.');
+ invalidateCatalogProjections();save();renderAll();notice('Conexão declarada no JSON de '+origin+'.');
 }
 function removeRelation(origin,sourceId,kind){
  const t=model.screens[origin];if(!t)return;
@@ -52,5 +57,5 @@ function removeRelation(origin,sourceId,kind){
  else if(kind==='rota_condicional'){
   alert('A conexão é rota condicional; edite a ação diretamente no JSON para escolher qual alternativa remover sem ambiguidade.');return;
  }else return;
- save();renderAll();notice('Conexão removida da tela de origem; as entradas foram recalculadas.');
+ invalidateCatalogProjections();save();renderAll();notice('Conexão removida da tela de origem; as entradas foram recalculadas.');
 }

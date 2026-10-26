@@ -39,6 +39,10 @@ const valueAt=(root,path) => String(path||'').split('.').reduce((v,k)=>v?.[k],ro
 let model = {components:{},screens:{},conflicts:[],history:[],selection:null};
 let ui={tab:'catalogo',jsonMode:'tree',journey:'',state:'',screen:'',drawer:false,flowScreen:''};
 let lastMount=null;
+// Índices derivados nunca são fonte de verdade. Esta versão sobe somente
+// quando uma definição canônica efetivamente muda.
+let catalogRevision=0;
+function invalidateCatalogProjections(){catalogRevision++;}
 async function loadStaticCatalog(){
  const files=globalThis.ADVOGADOJA_CATALOGO_ARQUIVOS;
  if(!Array.isArray(files)||!files.length)throw Error('Índice estático de arquivos do catálogo não foi encontrado.');
@@ -93,7 +97,7 @@ function snapshot(){return {components:model.components,screens:model.screens,co
 function save(){queueDiskSave();}
 function load(){return false;}
 function notice(msg,mode='good'){$('lastImport').innerHTML=`<span class="pill ${mode==='error'?'bad':mode==='warn'?'warn':'ok'}">${escapeHtml(msg)}</span>`;}
-function importPack(pack,origin='importação'){
+function importPack(pack,origin='importação',{defer=false}={}){
  const {componentes,telas}=normalizeInput(pack);
  // Pré-validação integral antes de alterar o catálogo.
  for(const c of componentes)validateRecord('components',c);
@@ -108,7 +112,19 @@ function importPack(pack,origin='importação'){
   counts.conflicts++;
  }
  model.history.unshift({origin,em:new Date().toISOString(),...counts});
- save();renderAll();return counts;
+ const changed=counts.addedComponents+counts.addedScreens>0;
+ if(changed)invalidateCatalogProjections();
+ if(!defer){if(changed)save();renderAll();}
+ return counts;
+}
+function importPacks(packs,origin='importação em lote'){
+ // Primeiro normaliza e valida todo o lote; nenhum registro é aplicado se
+ // qualquer arquivo válido não respeitar o contrato.
+ const merged={catalogo:{metadados:{schema:CONTRACT,tipo:'pacote_tela'},componentes:[],telas:[]}};
+ for(const pack of packs){const normalized=normalizeInput(pack);for(const c of normalized.componentes)validateRecord('components',c);for(const t of normalized.telas)validateRecord('screens',t);merged.catalogo.componentes.push(...normalized.componentes);merged.catalogo.telas.push(...normalized.telas);}
+ const counts=importPack(merged,origin,{defer:true});
+ if(counts.addedComponents+counts.addedScreens)save();
+ renderAll();return counts;
 }
 function displayCounts(counts,label){notice(`${label}: +${counts.addedComponents} componentes, ${counts.reusedComponents} reutilizados; +${counts.addedScreens} telas, ${counts.reusedScreens} reutilizadas; ${counts.conflicts} conflitos`,counts.conflicts?'warn':'good');}
 async function restoreSeed(force=false){
@@ -126,12 +142,12 @@ async function restoreSeed(force=false){
    }
    model={components:data.components,screens:data.screens,conflicts:[],history:[],selection:null};
    diskVersions=data.versions;diskAck={screens:deepClone(data.screens),components:deepClone(data.components)};
-   diskReadOnly=staticMode;diskDirty=false;renderAll();setDiskStatus(staticMode
+   diskReadOnly=staticMode;diskDirty=false;invalidateCatalogProjections();renderAll();setDiskStatus(staticMode
     ?'Catálogo carregado em modo leitura: '+allScreens().length+' telas · '+allComponents().length+' componentes. Para editar, use iniciar.py.'
     :'Store carregada: '+allScreens().length+' telas · '+allComponents().length+' componentes');
  }catch(e){setDiskStatus('Erro ao carregar catálogo: '+e.message,'error');notice(e.message,'error');}
 }
-function resolveConflict(index,replace){const c=model.conflicts[index];if(!c)return;if(replace)model[c.kind][c.id]=deepClone(c.incoming);model.conflicts.splice(index,1);model.history.unshift({origin:replace?'Conflito substituído: '+c.id:'Conflito mantido: '+c.id,em:new Date().toISOString()});save();renderAll();notice(replace?'Definição substituída; relações recalculadas.':'Definição existente mantida.');}
+function resolveConflict(index,replace){const c=model.conflicts[index];if(!c)return;if(replace){model[c.kind][c.id]=deepClone(c.incoming);invalidateCatalogProjections();}model.conflicts.splice(index,1);model.history.unshift({origin:replace?'Conflito substituído: '+c.id:'Conflito mantido: '+c.id,em:new Date().toISOString()});if(replace)save();renderAll();notice(replace?'Definição substituída; relações recalculadas.':'Definição existente mantida.');}
 function allScreens(){return Object.values(model.screens).sort((a,b)=>idOf(a).localeCompare(idOf(b)));}
 function allComponents(){return Object.values(model.components).sort((a,b)=>idOf(a).localeCompare(idOf(b)));}
 function screenPaths(t){return pathOf(t,'screen');}

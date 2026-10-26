@@ -1,12 +1,30 @@
-function renderAll(){renderTree();renderStats();renderSelected();renderSelectors();renderFlow();renderJson();renderMount();flowRenderStructure();if(typeof protRender==='function')protRender({refreshRoute:true});if(typeof jornadasRender==='function')jornadasRender();if(typeof bancoRender==='function')bancoRender();if(typeof mapaRender==='function')mapaRender();}
-function switchTab(t){ui.tab=t;if(t==='contrato' && typeof contratoRender==='function')contratoRender();if(t==='prototipo' && typeof protRender==='function')protRender();if(t==='fluxovisual')requestAnimationFrame(()=>{flowCenter();});if(t==='jornadas'&&typeof jornadasRender==='function')jornadasRender();if(t==='banco'&&typeof bancoRender==='function')bancoRender();if(t==='mapa'&&typeof mapaRender==='function')mapaRender();document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+t));}
+function renderCurrentTab(){
+ switch(ui.tab){
+  case 'relacoes':renderFlow();break;
+  case 'json':renderJson();break;
+  case 'montagem':renderMount();break;
+  case 'fluxovisual':flowRenderStructure();requestAnimationFrame(flowCenter);break;
+  case 'prototipo':if(typeof protRender==='function')protRender({refreshRoute:true});break;
+  case 'jornadas':if(typeof jornadasRender==='function')jornadasRender();break;
+  case 'banco':if(typeof bancoRender==='function')bancoRender();break;
+  case 'mapa':if(typeof mapaRender==='function')mapaRender();break;
+  case 'contrato':if(typeof contratoRender==='function')contratoRender();break;
+ }
+}
+function renderAll(){
+ // A aba Catálogo é o único custo necessário para abrir a Store. Os demais
+ // motores são projeções e só são montados quando a respectiva aba é aberta.
+ renderTree();renderStats();renderSelected();renderSelectors();renderCurrentTab();
+}
+function switchTab(t){ui.tab=t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+t));renderCurrentTab();}
 function downloadText(filename,text,mime='application/json'){const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 async function copyText(text){try{await navigator.clipboard.writeText(text);notice('Texto copiado.');}catch(e){notice('Cópia não suportada em arquivo local; utilize o botão de exportar.','warn');}}
-async function importFiles(files){const stats={addedComponents:0,reusedComponents:0,addedScreens:0,reusedScreens:0,conflicts:0};let imported=0;const errors=[];
- for(const f of [...files])if(f.name.toLowerCase().endsWith('.json'))try{
-  const j=JSON.parse(await f.text());const r=importPack(j,f.webkitRelativePath||f.name);Object.keys(stats).forEach(k=>stats[k]+=r[k]);imported++;
- }catch(e){errors.push(f.name+': '+e.message);}
- if(imported)displayCounts(stats,imported+' JSON(s)');if(errors.length)notice(errors.join(' | '),'error');
+async function importFiles(files){const records=[],errors=[];
+ for(const file of [...files])if(file.name.toLowerCase().endsWith('.json'))try{records.push(JSON.parse(await file.text()));}catch(e){errors.push(file.name+': '+e.message);}
+ // A operação é atômica no navegador: se houver falha de leitura/contrato,
+ // nada do lote é aplicado e o catálogo em memória permanece consistente.
+ if(errors.length){notice(errors.join(' | '),'error');return;}
+ try{if(records.length)displayCounts(importPacks(records,'Importação de '+records.length+' JSON(s)'),records.length+' JSON(s)');}catch(e){notice('Lote não importado: '+e.message,'error');}
 }
 const crcTab=(()=>{let a=[];for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=(c&1)?0xedb88320^(c>>>1):c>>>1;a.push(c>>>0);}return a;})();
 function u16(n){return Uint8Array.from([n&255,n>>>8&255])}function u32(n){return Uint8Array.from([n&255,n>>>8&255,n>>>16&255,n>>>24&255])}

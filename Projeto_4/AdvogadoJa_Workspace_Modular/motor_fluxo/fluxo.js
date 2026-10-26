@@ -75,7 +75,9 @@ function flowRenderStructure(){
     const feat=t?.classificacao?.escopo||'outros';const matched=q&&(name+' '+node.screenKey).toLowerCase().includes(q);
     let thumbnail='<div class="f-preview-open f-preview-pending" role="button" tabindex="0" data-flow-preview-open="'+flowEscapeAttr(node.screenKey)+'" aria-label="Ver detalhes da prévia de '+flowEscapeAttr(name)+'"><div class="f-preview-hint"><b>Prévia estrutural pendente</b>Componentes visuais ainda não disponíveis.<span>Ver detalhes</span></div></div>';
     if(flowHasRenderablePreview(t)){
-     thumbnail='<div class="f-preview-open" role="button" tabindex="0" data-flow-preview-open="'+flowEscapeAttr(node.screenKey)+'" aria-label="Expandir prévia de '+flowEscapeAttr(name)+'"><iframe sandbox="allow-scripts" loading="lazy" title="Prévia de '+flowEscapeAttr(name)+'" data-f-preview="'+flowEscapeAttr(node.screenKey)+'"></iframe><span class="f-preview-expand">Expandir prévia</span></div>';
+     // Iframes são caros: o cartão informa disponibilidade e a prévia real
+     // só é montada ao clicar, no diálogo reutilizável flowOpenPreview().
+     thumbnail='<div class="f-preview-open f-preview-ready" role="button" tabindex="0" data-flow-preview-open="'+flowEscapeAttr(node.screenKey)+'" aria-label="Abrir prévia de '+flowEscapeAttr(name)+'"><div class="f-preview-hint"><b>Prévia visual disponível</b>Montada a partir do catálogo quando aberta.<span>Abrir prévia</span></div></div>';
     }
     content=`<article class="f-card ${matched?'found':''} ${flowUi.selected===node.id?'focus':''}" data-feature="${flowEscapeAttr(feat)}" data-occ-id="${flowEscapeAttr(node.id)}"><div class="f-card-top"><div class="f-card-head"><span>▣ Tela</span><span class="f-chip">${flowEscapeAttr(feat)}</span></div><h3>${flowEscapeAttr(name)}</h3><small>${flowEscapeAttr(node.screenKey)} · ${flowEscapeAttr(node.id)}</small></div><div class="f-preview">${thumbnail}</div><div class="f-card-controls"><button data-flow-command="open" data-node-id="${flowEscapeAttr(node.id)}" data-key="${flowEscapeAttr(node.screenKey)}">Editar</button><button title="Subir" data-flow-command="up" data-node-id="${flowEscapeAttr(node.id)}">↑</button><button title="Descer" data-flow-command="down" data-node-id="${flowEscapeAttr(node.id)}">↓</button><button title="Inserir após" data-flow-command="add" data-node-id="${flowEscapeAttr(node.id)}">＋</button><button title="Bifurcação após" data-flow-command="branch" data-node-id="${flowEscapeAttr(node.id)}">⑂</button><button title="Remover esta ocorrência" data-flow-command="delete" data-node-id="${flowEscapeAttr(node.id)}">×</button></div></article>`;
    }else{
@@ -93,9 +95,7 @@ function flowRenderStructure(){
  $('fDiagnostics').innerHTML=b.warnings.length?'<b>Diagnósticos da montagem</b> · '+b.warnings.length+'<div>'+b.warnings.slice(0,80).map(x=>'<div class="f-error">⚠ '+flowEscapeAttr(x)+'</div>').join('')+'</div>':'<span style="color:#16805c">✓ Sequências e bifurcações recompostas sem inconsistências estruturais detectadas.</span>';
  $('flowSummary').textContent=`Entrada: ${b.entryId||'não definida'} · raiz ${b.rootSequenceId||'—'} · ${cardCount} cartões e ${branchCount} bifurcações exibidos`;
  $('fToggleCompact').classList.toggle('active',flowUi.compact);$('fTogglePaths').classList.toggle('active',flowUi.showAll);
- // Carrega somente previews que possuem componentes reais na Store, sem scripts externos.
- const previewFrames=[...$('flowBoardContent').querySelectorAll('[data-f-preview]')];
- for(const frame of previewFrames){const t=model.screens[frame.dataset.fPreview];if(!t)continue;try{const journey=applicableJourneys(t)[0]||'';const state=t.estados?.fallbackSeguro||arr(t.estados?.grupos)[0]?.id||'padrao';frame.srcdoc=previewHTML(compile(t,journey,state),false);}catch(e){frame.replaceWith(document.createTextNode('Prévia pendente: '+e.message));}}
+ // Não há iframes nesta árvore: cada prévia é criada sob demanda no diálogo.
 }
 function flowFindNode(id){for(const t of allScreens()){const ed=t.flow?.editor;if(!ed)continue;const o=arr(ed.occurrences).find(x=>x.id===id);if(o)return {owner:t,record:o,type:'screen'};const b=arr(ed.branches).find(x=>x.id===id);if(b)return {owner:t,record:b,type:'branch'};}return null;}
 function flowSequenceItems(seq){const items=[];for(const t of allScreens()){const ed=t.flow?.editor;if(!ed)continue;for(const o of arr(ed.occurrences))if(o.sequenceId===seq)items.push(o);for(const b of arr(ed.branches))if(b.sequenceId===seq)items.push(b);}return items.sort((a,b)=>a.order-b.order);}
@@ -109,7 +109,7 @@ function flowEnsureEntrypoint(){
  }
  const next=first(rootId);if(next&&next!==current){current.flow.editor.entrypoint=false;current.flow.editor.rootSequenceId=null;next.flow.editor.entrypoint=true;next.flow.editor.rootSequenceId=rootId;}
 }
-function flowPersist(){flowEnsureEntrypoint();save();renderAll();}
+function flowPersist(){flowEnsureEntrypoint();invalidateCatalogProjections();save();renderAll();}
 function flowMove(id,dir){const target=flowFindNode(id);if(!target)return;const items=flowSequenceItems(target.record.sequenceId),i=items.indexOf(target.record),j=i+dir;if(j<0||j>=items.length){$('flowSummary').textContent='O elemento já está no início/fim da sequência.';return;}const v=items[i].order;items[i].order=items[j].order;items[j].order=v;flowUi.selected=id;flowPersist();}
 function flowInsert(id,asBranch=false){const current=flowFindNode(id);if(!current)return;const src=current.record,seq=src.sequenceId;
  if(asBranch){const idb=flowNodeId(),pa=flowNodeId(),pb=flowNodeId();const count=prompt('Título da nova bifurcação','Nova bifurcação');if(count===null)return;for(const n of flowSequenceItems(seq))if(n.order>src.order)n.order++;
