@@ -15,6 +15,24 @@ function mdlExample(kind){
  if(kind==='catalogo')return emptyTemplate();
  return {schema:'advogadoja.jornada.intercambio.v1',versao:'1.0.0',jornada:'exemplo',modo:'referencias',telas:[],componentes:[]};
 }
+function mdlFilledExample(kind){
+ const doc=mdlExample(kind);
+ if(kind==='tela'){
+  doc.identidade.id='exemplo.confirmacao';doc.identidade.nome='Confirmar atendimento (ilustrativo)';
+  doc.classificacao.escopo='cliente';doc.classificacao.jornadas=['cliente'];doc.classificacao.compartilhada=false;
+  doc.classificacao.subjornadas=['atendimento'];doc.classificacao.localizacaoArvore.segmentos=['cliente'];
+  doc.classificacao.localizacaoArvore.chave='confirmacao';
+ }else if(kind==='componente'){
+  doc.identidade.id='componente.aviso.v01';doc.identidade.nome='Aviso reutilizável (ilustrativo)';
+  doc.estrutura.arvore=[{id:'aviso',tag:'div',atributos:{class:'aviso-exemplo'},filhos:['Mensagem informativa']}];
+  doc.estilos.css='.aviso-exemplo{padding:12px;border-radius:8px}';
+ }else if(kind==='jornada'){
+  doc.jornada='cliente';doc.telas=[{id:'exemplo.confirmacao'}];
+ }else if(kind==='catalogo'){
+  doc.catalogo.telas=[mdlFilledExample('tela')];
+ }
+ return doc;
+}
 function mdlResolve(schema,root){
  if(!schema?.$ref)return schema||{};
  if(!schema.$ref.startsWith('#/'))return schema;
@@ -115,7 +133,7 @@ function mdlWire(){
  navigation.onclick=e=>{const b=e.target.closest('[data-mdl-type]');if(b)mdlSelect(b.dataset.mdlType);};
  $('mdlTree').onclick=e=>{const b=e.target.closest('[data-mdl-path]');if(!b)return;mdlDetail(b.dataset.mdlPath);const children=b.nextElementSibling;if(children?.classList.contains('mdl-tree-children')){children.hidden=!children.hidden;b.querySelector('.mdl-chevron').textContent=children.hidden?'▸':'▾';}};
  $('mdlEmpty').onclick=()=>{$('mdlEditor').value=JSON.stringify(mdlExample(mdlState.type),null,2);};
- $('mdlExample').onclick=()=>{$('mdlEditor').value=JSON.stringify(mdlExample(mdlState.type),null,2);};
+ $('mdlExample').onclick=()=>{$('mdlEditor').value=JSON.stringify(mdlFilledExample(mdlState.type),null,2);};
  $('mdlCheck').onclick=mdlValidate;
  $('mdlExport').onclick=()=>downloadText('advogadoja_modelo_'+mdlState.type+'.json',$('mdlEditor').value);
  $('mdlUpload').onclick=()=>$('mdlFile').click();
