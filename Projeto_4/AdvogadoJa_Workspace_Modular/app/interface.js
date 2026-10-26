@@ -1,3 +1,9 @@
+function planejamentoRender(){
+ const frame=$('planningFrame'),loading=$('planningLoading');
+ if(!frame||frame.dataset.loaded)return;
+ frame.dataset.loaded='true';frame.src=frame.dataset.src;frame.hidden=false;
+ frame.addEventListener('load',()=>{if(loading)loading.hidden=true;},{once:true});
+}
 function renderCurrentTab(){
  switch(ui.tab){
   case 'relacoes':renderFlow();break;
@@ -9,6 +15,7 @@ function renderCurrentTab(){
   case 'banco':if(typeof bancoRender==='function')bancoRender();break;
   case 'mapa':if(typeof mapaRender==='function')mapaRender();break;
   case 'contrato':if(typeof contratoRender==='function')contratoRender();break;
+  case 'planejamento':planejamentoRender();break;
  }
 }
 function renderAll(){
@@ -71,6 +78,10 @@ function wire(){
  $('downloadTemplate').onclick=$('downloadTemplate2').onclick=()=>downloadText('MODELO_PACOTE_TELA.json',JSON.stringify(emptyTemplate(),null,2));
  $('createScreen').onclick=()=>createRecord('screen');$('createComponent').onclick=()=>createRecord('component');
  $('exportZip').onclick=exportZip;$('filter').oninput=renderTree;
+ $('catalogJump').onchange=()=>{const id=$('catalogJump').value;if(id)chooseItem('screen',id);};
+ $('catalogPreviewJourney').onchange=()=>{ui.catalogPreviewJourney=$('catalogPreviewJourney').value;renderCatalogPreview();};
+ $('catalogPreviewState').onchange=()=>{ui.catalogPreviewState=$('catalogPreviewState').value;renderCatalogPreview();};
+ $('catalogPreviewRefresh').onclick=()=>{if(model.selection?.type!=='screen'){notice('Selecione uma tela para abrir a prévia.','warn');return;}ui.catalogPreviewShowing=!ui.catalogPreviewShowing;renderCatalogPreview();};
  $('openAll').onclick=()=>document.querySelectorAll('#catalogTree details').forEach(e=>e.open=true);
  $('closeAll').onclick=()=>document.querySelectorAll('#catalogTree details').forEach(e=>e.open=false);
  $('modeTree').onclick=()=>showEditMode('tree');$('modeEdit').onclick=()=>showEditMode('edit');$('applyEdit').onclick=applyEdit;

@@ -1,0 +1,2537 @@
+{
+  "schema": "advogadoja.plano.visual",
+  "version": 1,
+  "title": "Advogado Já — Plano único de evolução do Workspace",
+  "description": "Plano completo de evolução do Workspace Advogado Já, atualizado com auditoria do código V5 e especificação V6 proposta para telas independentes, jornadas componíveis, renderização única e adaptadores de ações por motor. Mantém todo o conteúdo do JSON recebido.",
+  "createdAt": "2026-10-26T02:50:30.725Z",
+  "updatedAt": "2026-10-26T12:00:00.000Z",
+  "sections": [
+    {
+      "id": "apresentacao",
+      "title": "Apresentação",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_eee8ac6a-c6b7-48ee-8570-ffabbd3351a4",
+          "type": "text",
+          "content": "**Versão:** 1.0 — documento explicativo para discussão, não implementação  \n**Situação:** proposta; nenhuma mudança automática no catálogo ou nos motores  \n**Base consultada:** Workspace Modular V5 (README, AGENTS e contratos existentes), catálogo V6 discutido na conversa e objetivos expressos durante o planejamento."
+        }
+      ]
+    },
+    {
+      "id": "estado_atual_verificado",
+      "title": "0. Estado atual verificado do Workspace recebido",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "audit_fotografia_fonte",
+          "type": "text",
+          "content": "**Fonte da auditoria:** `AdvogadoJa_Workspace_Modular.zip` enviado em 26/10/2026. Os resultados abaixo vêm de arquivos e funções executados dessa cópia; não são exemplos imaginados. A base `planejamento_inicial.json` foi preservada e recebeu subseções de documentação técnica sem alterar os registros operacionais do ZIP."
+        },
+        {
+          "id": "audit_fotografia_metricas",
+          "type": "table",
+          "headers": ["Indicador", "Resultado comprovado", "Fonte/verificação"],
+          "rows": [
+            [
+              "Telas canônicas",
+              "79",
+              "`catalogo/telas/**/*.json` e `verificacao/auditar_catalogo.py`"
+            ],
+            [
+              "Componentes canônicos",
+              "234",
+              "`catalogo/componentes/**/*.json`"
+            ],
+            [
+              "Jornadas detectadas",
+              "4: administrador, advogado, cliente e estudante",
+              "`journeyCatalog()` em `app/core.js`"
+            ],
+            [
+              "Ocorrências editoriais",
+              "197",
+              "`flow.editor.occurrences[]` e `compileFlowStructure()`"
+            ],
+            [
+              "Branches / caminhos",
+              "33 / 114",
+              "`flow.editor.branches[].paths[]`"
+            ],
+            ["Ações herdadas Flow V3", "408", "Grupos `origem: flow_v3`"],
+            [
+              "Arestas operacionais derivadas",
+              "532",
+              "`collectEdges()` do módulo Relações"
+            ],
+            [
+              "Arestas com destino não localizado",
+              "11",
+              "`collectEdges().filter(!resolvida)`"
+            ],
+            [
+              "Diagnóstico do auditor",
+              "0 erros e 6 avisos",
+              "`python3 verificacao/auditar_catalogo.py`"
+            ],
+            [
+              "Tela fora da árvore editorial",
+              "`advogado.disponibilidade.raio_atendimento`",
+              "`compileFlowStructure()`"
+            ]
+          ]
+        },
+        {
+          "id": "audit_fotografia_pipeline",
+          "type": "diagram",
+          "title": "Leitura real da Store e composição dos módulos",
+          "nodes": [
+            {
+              "id": "files",
+              "title": "79 telas + 234 componentes",
+              "x": 45,
+              "y": 170,
+              "kind": "source"
+            },
+            {
+              "id": "store",
+              "title": "Store em memória por ID",
+              "x": 315,
+              "y": 170,
+              "kind": "source"
+            },
+            {
+              "id": "flow",
+              "title": "Flow / Relações",
+              "x": 618,
+              "y": 50,
+              "kind": "output"
+            },
+            {
+              "id": "mount",
+              "title": "Montagem / Jornadas",
+              "x": 618,
+              "y": 175,
+              "kind": "output"
+            },
+            {
+              "id": "prot",
+              "title": "Protótipo / Mapa / Banco",
+              "x": 618,
+              "y": 300,
+              "kind": "output"
+            }
+          ],
+          "edges": [
+            {
+              "id": "audit_edge_fotografia_pipeline_0",
+              "from": "files",
+              "to": "store"
+            },
+            {
+              "id": "audit_edge_fotografia_pipeline_1",
+              "from": "store",
+              "to": "flow"
+            },
+            {
+              "id": "audit_edge_fotografia_pipeline_2",
+              "from": "store",
+              "to": "mount"
+            },
+            {
+              "id": "audit_edge_fotografia_pipeline_3",
+              "from": "store",
+              "to": "prot"
+            }
+          ]
+        },
+        {
+          "id": "audit_fotografia_implementacao",
+          "type": "table",
+          "headers": [
+            "Parte",
+            "O que existe na cópia recebida",
+            "O que ainda não existe/foi comprovado"
+          ],
+          "rows": [
+            [
+              "Modelo de tela",
+              "11 seções canônicas; todos os 79 arquivos usam `advogadoja.tela.modular.v4-proposta`",
+              "Contrato definitivo homologado"
+            ],
+            [
+              "Montagem",
+              "Compilação de grupos, refs, props, CSS, dados, ações e mocks por tela/estado",
+              "Execução de regras backend e estado OAB autoritativo"
+            ],
+            [
+              "Relações",
+              "Saídas e entradas por inversão, calculadas sem inbound persistente",
+              "Resolução dos 11 destinos ausentes"
+            ],
+            [
+              "Flow",
+              "Montagem editorial a partir das ocorrências e branches reais",
+              "Interpretação executável de `quandoLegado`"
+            ],
+            [
+              "Protótipo",
+              "Jornadas dinâmicas e sequência linear de pontos com prévia HTML",
+              "Seleção de cenário global, coerência de mocks entre telas e escolha condicional de ramo"
+            ],
+            [
+              "Banco/Mapa",
+              "Projeções de `dados.persistencia`, classificação e ações",
+              "Homologação do modelo de dados e das regras operacionais"
+            ]
+          ]
+        },
+        {
+          "id": "audit_fotografia_separacao",
+          "type": "quote",
+          "content": "**Leitura correta:** “Campo existente no JSON”, “motor que o consome”, “comportamento implementado”, “contrato proposto” e “funcionalidade desejada” são cinco estados diferentes. As seções seguintes tornam essas diferenças rastreáveis por arquivo e função."
+        }
+      ]
+    },
+    {
+      "id": "o-que-queremos-construir",
+      "title": "1. O que queremos construir",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_e80a2bc5-8d60-400c-bf25-3e5487e90500",
+          "type": "text",
+          "content": "O Workspace não deve ser um segundo aplicativo nem um conjunto de ferramentas que precisem de configuração manual toda vez que uma tela mudar. Ele é o **ambiente de definição do Advogado Já**."
+        },
+        {
+          "id": "bloco_402df71f-061a-4a74-8a0e-776d40eaa108",
+          "type": "text",
+          "content": "O trabalho principal acontece nos **dados estruturados**: descrevemos uma tela, seu comportamento, seus componentes, suas jornadas e suas relações; o Workspace interpreta os registros e monta automaticamente as visões correspondentes."
+        },
+        {
+          "id": "bloco_8c6811a9-1962-4c82-8162-71fdbaf746bf",
+          "type": "text",
+          "content": "A intenção é permitir este processo simples:"
+        },
+        {
+          "id": "bloco_dbe87aa7-1859-48e0-acdb-b786bbe489ec",
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Discutimos uma jornada do produto.",
+            "Incluímos, removemos ou alteramos suas telas por JSON, sem reescrever motores.",
+            "O catálogo valida os documentos e registra cada tela e componente em seu arquivo canônico.",
+            "As abas Jornadas, Flow, Relações, Montagem, Protótipo, Mapa e Banco passam a mostrar projeções consistentes dessa mesma base.",
+            "Registramos decisões e pendências no módulo Contrato; itens não homologados continuam identificados."
+          ]
+        },
+        {
+          "id": "bloco_b19548ef-764c-43e2-8c12-03de66e09fca",
+          "type": "text",
+          "content": "**Regra mais importante:** colocar a inteligência descritiva no contrato de dados; deixar os motores pequenos, genéricos e previsíveis. Isso não significa colocar programação arbitrária no JSON. O JSON descreve fatos e regras em formatos aprovados; o motor só reconhece esses formatos, valida e os interpreta."
+        }
+      ]
+    },
+    {
+      "id": "diferenca-entre-catalogo-tela-componente-jornada-e-contrato",
+      "title": "2. Diferença entre catálogo, tela, componente, jornada e contrato",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_b145530b-c5a5-4296-b2c7-83de9c6fe0bf",
+          "type": "text",
+          "content": "Esses termos representam responsabilidades diferentes, não cinco cópias da aplicação:"
+        },
+        {
+          "id": "bloco_36bba3a1-5a6a-4021-a42e-520d34e6cb08",
+          "type": "table",
+          "headers": [
+            "Conceito",
+            "O que representa",
+            "Onde fica a fonte persistente"
+          ],
+          "rows": [
+            [
+              "**Catálogo**",
+              "Conjunto organizado das definições disponíveis",
+              "Pastas `catalogo/telas` e `catalogo/componentes`"
+            ],
+            [
+              "**Tela**",
+              "Uma unidade funcional, com identidade, variantes, componentes, dados e ações",
+              "Um JSON por tela"
+            ],
+            [
+              "**Componente**",
+              "Uma peça visual ou reutilizável, com interface e estilos próprios",
+              "Um JSON por componente"
+            ],
+            [
+              "**Jornada**",
+              "Composição própria de referências para telas e outras jornadas, com ordem, regras e caminhos condicionais; não é a dona das telas.",
+              "Contrato-alvo: JSON individual de jornada em `catalogo/jornadas/<id>.json` (proposta). Hoje a participação está espalhada em `classificacao.jornadas`, `aplicaA` e `flow.editor`."
+            ],
+            [
+              "**Contexto**",
+              "Perfil, plano, permissões, sessão e atributos usados na decisão do que pode aparecer",
+              "Definições de cenário/usuário e contexto transitório do protótipo; sem cópias de tela"
+            ],
+            [
+              "**Cenário**",
+              "Conjunto coerente de mocks, estado inicial e resultados simulados para testar uma jornada",
+              "JSON de cenário identificado e mocks locais referenciados por ID"
+            ],
+            [
+              "**Contrato**",
+              "O significado aprovado de cada campo, formato e comportamento dos motores",
+              "Planejamento no `modulo_contrato/data/contrato_workspace.json`, com documentos explicativos/schemas versionados"
+            ]
+          ]
+        },
+        {
+          "id": "bloco_e4517d23-edd6-4918-9233-32fecb5dc27e",
+          "type": "text",
+          "content": "Exemplo simples: a tela “Entrar” pode participar das jornadas Cliente, Advogado, Estudante e Administrador sem que sejam gerados quatro JSONs de tela iguais. O conjunto de componentes referenciados também é reutilizado, respeitando as variantes declaradas."
+        },
+        {
+          "id": "arch_historico_jornada",
+          "type": "text",
+          "content": "**Revisão de arquitetura (26/10/2026):** a definição anterior chamava Jornada de \"Um recorte das telas e de suas ligações, conforme perfil/contexto e sequência\" e tratava sua persistência como \"**Projeção** dos atributos e relações das telas; arquivo importado é pacote de intercâmbio, não banco paralelo\". Isso continua descrevendo a implementação V5 observada, **mas foi substituído como alvo** por uma composição declarativa independente. Jornada individual não é um \"master\" redundante: é dona apenas da sua ordem, condições e referências. A tela segue dona do visual e de suas ações."
+        }
+      ]
+    },
+    {
+      "id": "catalogo_real_arquivos",
+      "title": "2.1 Catálogo real: arquivos e IDs observados",
+      "parentId": "diferenca-entre-catalogo-tela-componente-jornada-e-contrato",
+      "blocks": [
+        {
+          "id": "audit_catalogo_real_intro",
+          "type": "text",
+          "content": "**Na cópia recebida**, telas são arquivos individuais em `catalogo/telas/`, componentes em `catalogo/componentes/`, e o plano dos contratos evolutivos fica em `modulo_contrato/data/contrato_workspace.json`. Uma jornada é derivada de `classificacao.jornadas`, não um JSON mestre persistente."
+        },
+        {
+          "id": "audit_catalogo_pastas",
+          "type": "code",
+          "language": "text",
+          "content": "catalogo/telas/comum/auth/entrar.json\n  identidade.id = auth.sessao.entrar\n  classificacao.jornadas = [\"*\"]\n\ncatalogo/telas/advogado/home_advogado.json\n  identidade.id = advogado.home_advogado\n  classificacao.jornadas = [\"advogado\"]\n\ncatalogo/componentes/globais/headers/app-header.v04.json\n  identidade.id = header.app-header.v04\n\nNa Home: componentes.instancias[id=\"cabecalho\"].ref\n  = \"header.app-header.v04\"\n\nEm memória: model.screens[\"advogado.home_advogado\"]\n            model.components[\"header.app-header.v04\"]"
+        },
+        {
+          "id": "audit_catalogo_papeis",
+          "type": "table",
+          "headers": [
+            "Objeto",
+            "Fonte proprietária",
+            "Referência usada pelos consumidores"
+          ],
+          "rows": [
+            ["Tela", "`catalogo/telas/.../*.json`", "`identidade.id` estável"],
+            [
+              "Componente",
+              "`catalogo/componentes/.../*.json`",
+              "`instancia.ref` para `identidade.id` do componente"
+            ],
+            [
+              "Jornada",
+              "`classificacao.jornadas` nas telas",
+              "`journeyCatalog()` calcula abas e filtros"
+            ],
+            [
+              "Flow",
+              "`flow.editor` de cada tela",
+              "IDs de ocorrência e `sequenceId`"
+            ],
+            [
+              "Navegação",
+              "`acoes.grupos[].acoes[]` e itens do componente instanciado",
+              "`destino` da tela de origem"
+            ],
+            [
+              "Contrato de planejamento",
+              "`modulo_contrato/data/contrato_workspace.json`",
+              "Não aplica mudanças automáticas à Store"
+            ]
+          ]
+        },
+        {
+          "id": "audit_catalogo_paths",
+          "type": "quote",
+          "content": "IDs e caminhos físicos não são a mesma coisa. O motor consulta por ID; `classificacao.localizacaoArvore` organiza o arquivo e a interface. Os caminhos citados acima existem nesta cópia; não são placeholders."
+        }
+      ]
+    },
+    {
+      "id": "json_tela_real",
+      "title": "2.2 Exemplo REAL de tela: Entrar (recorte fiel)",
+      "parentId": "diferenca-entre-catalogo-tela-componente-jornada-e-contrato",
+      "blocks": [
+        {
+          "id": "audit_json_tela_real_intro",
+          "type": "text",
+          "content": "**Extraído de** `catalogo/telas/comum/auth/entrar.json`. O recorte mantém os valores originais mostrados e omite os demais grupos por brevidade; **não** é um arquivo completo pronto para importação."
+        },
+        {
+          "id": "audit_json_entrar_real",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.tela.modular.v4-proposta\",\n  \"identidade\": {\n    \"id\": \"auth.sessao.entrar\",\n    \"nome\": \"Entrar\",\n    \"tipo\": \"tela\",\n    \"versao\": \"3.0.0\",\n    \"rota\": \"/entrar\",\n    \"status\": \"modelo-em-validacao\"\n  },\n  \"classificacao\": {\n    \"escopo\": \"comum\",\n    \"jornadas\": [\n      \"*\"\n    ],\n    \"subjornadas\": [\n      \"sessao\"\n    ],\n    \"compartilhada\": true,\n    \"localizacaoArvore\": {\n      \"secao\": \"Telas\",\n      \"segmentos\": [\n        \"comum\",\n        \"auth\"\n      ],\n      \"chave\": \"entrar\",\n      \"ordem\": 3\n    }\n  },\n  \"estados\": {\n    \"fonte\": \"contexto.estado\",\n    \"fallbackSeguro\": \"padrao\",\n    \"grupos\": [\n      {\n        \"id\": \"padrao\",\n        \"nome\": \"Padrão\"\n      }\n    ]\n  },\n  \"componentes\": {\n    \"instancias\": [\n      {\n        \"id\": \"estilos_base_administrador\",\n        \"ref\": \"style.jornadas.projeto1.administrador.v01\",\n        \"slot\": \"styles\",\n        \"ordem\": 0,\n        \"props\": {},\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"administrador\"\n          ],\n          \"estados\": [\n            \"*\"\n          ]\n        }\n      },\n      {\n        \"id\": \"conteudo_administrador\",\n        \"ref\": \"cmp.auth.sessao.entrar.j1_administrador.v01\",\n        \"slot\": \"main\",\n        \"ordem\": 10,\n        \"props\": {},\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"administrador\"\n          ],\n          \"estados\": [\n            \"*\"\n          ]\n        }\n      }\n    ]\n  },\n  \"estrutura\": {\n    \"base\": {\n      \"id\": \"html_base_auth_sessao_entrar\",\n      \"slots\": [\n        \"styles\",\n        \"main\"\n      ]\n    },\n    \"grupos\": [\n      {\n        \"id\": \"estilos_administrador\",\n        \"slot\": \"styles\",\n        \"instancias\": [\n          \"estilos_base_administrador\"\n        ],\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"administrador\"\n          ],\n          \"estados\": [\n            \"*\"\n          ]\n        }\n      },\n      {\n        \"id\": \"conteudo_administrador\",\n        \"slot\": \"main\",\n        \"instancias\": [\n          \"conteudo_administrador\"\n        ],\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"administrador\"\n          ],\n          \"estados\": [\n            \"*\"\n          ]\n        }\n      }\n    ]\n  }\n}"
+        },
+        {
+          "id": "audit_json_tela_real_leitura",
+          "type": "text",
+          "content": "A tela `auth.sessao.entrar` é compartilhada (`jornadas: [\"*\"]`) e possui um estado de fallback `padrao`. `estrutura.grupos` lista **IDs de instâncias**; cada instância usa `ref` para resolver seu JSON de componente. `dados`, `mocks`, `acoes` e `flow` continuam no próprio arquivo da tela, mesmo quando não aparecem no recorte."
+        },
+        {
+          "id": "audit_json_tela_real_campos",
+          "type": "table",
+          "headers": [
+            "Grupo canônico",
+            "Formato observado",
+            "Consumidores reais"
+          ],
+          "rows": [
+            [
+              "`identidade`",
+              "Objeto (`id`,`nome`,`tipo`,`versao`,`rota`,`status`)",
+              "Catálogo, Jornadas, Flow, Relações, Protótipo"
+            ],
+            [
+              "`classificacao`",
+              "Objeto com `jornadas[]`, `subjornadas[]`, `localizacaoArvore`",
+              "Catálogo, Jornadas, Mapa, Protótipo"
+            ],
+            [
+              "`estados`",
+              "Objeto `fonte`, `fallbackSeguro`, `grupos[]`",
+              "Montagem/Jornadas/Protótipo (fallback, sem avaliar backend)"
+            ],
+            [
+              "`estrutura`",
+              "`base` com HTML e `grupos[]` com slots/IDs",
+              "Montagem"
+            ],
+            [
+              "`estilos`",
+              "`tema` e `grupos[]` com CSS e `aplicaA`",
+              "Montagem"
+            ],
+            [
+              "`componentes`",
+              "`instancias[]` com ID, ref, slot, props e `aplicaA`",
+              "Montagem e Relações (itens de menu)"
+            ],
+            [
+              "`acoes`",
+              "`grupos[].acoes[]` com destinos/efeitos",
+              "Relações e interfaces de navegação"
+            ],
+            [
+              "`dados`",
+              "`grupos`, `fontes`, `persistencia`",
+              "Montagem/props e Banco"
+            ],
+            [
+              "`mocks`",
+              "`grupos` e `cenarios`",
+              "Montagem lê, mas Protótipo ainda não coordena cenários"
+            ],
+            [
+              "`flow`",
+              "`editor.entrypoint`, `rootSequenceId`, `occurrences[]`, `branches[]`",
+              "Flow editorial e Protótipo"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "json_componente_real",
+      "title": "2.3 Exemplo REAL de componente e sua referência",
+      "parentId": "diferenca-entre-catalogo-tela-componente-jornada-e-contrato",
+      "blocks": [
+        {
+          "id": "audit_json_componente_real_intro",
+          "type": "text",
+          "content": "**Extraído de** `catalogo/componentes/globais/headers/app-header.v04.json`, com apenas a primeira parte da árvore (sem incorporar o SVG grande da marca). O componente possui sua própria identidade, árvore de elementos, CSS e interface de eventos; a tela o instancia por `ref`."
+        },
+        {
+          "id": "audit_json_header_real",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.componente.reutilizavel.v2-proposta\",\n  \"identidade\": {\n    \"id\": \"header.app-header.v04\",\n    \"nome\": \"Cabeçalho Profissional\",\n    \"tipo\": \"componente\",\n    \"versao\": \"1.0.0\"\n  },\n  \"estrutura\": {\n    \"formato\": \"arvore_elementos\",\n    \"arvore\": [\n      {\n        \"id\": \"app-header::0\",\n        \"tag\": \"header\",\n        \"atributos\": {\n          \"class\": \"app-header\"\n        },\n        \"filhos\": [\n          {\n            \"id\": \"app-header::[data-action=\\\"drawer.open\\\"]\",\n            \"tag\": \"button\",\n            \"atributos\": {\n              \"class\": \"app-menu-button\",\n              \"type\": \"button\",\n              \"data-action\": \"drawer.open\",\n              \"aria-label\": {\n                \"ref\": \"props.dados.menuLabel\"\n              }\n            },\n            \"filhos\": [\n              {\n                \"id\": \"app-header::0.0.0\",\n                \"tag\": \"span\"\n              },\n              {\n                \"id\": \"app-header::0.0.1\",\n                \"tag\": \"span\"\n              },\n              {\n                \"id\": \"app-header::0.0.2\",\n                \"tag\": \"span\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"estilos\": {\n    \"id\": \"css_header.app-header.v04\",\n    \"css\": \"[CSS existente omitido neste recorte]\"\n  },\n  \"interface\": {\n    \"propriedadesAceitas\": [],\n    \"eventosEmitidos\": [\n      \"abrirMenu\",\n      \"abrirNotificacoes\"\n    ],\n    \"regraBinding\": \"props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente\"\n  }\n}"
+        },
+        {
+          "id": "audit_json_instancia_home",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"id\": \"cabecalho\",\n  \"ref\": \"header.app-header.v04\",\n  \"slot\": \"header\",\n  \"ordem\": 10,\n  \"props\": {\n    \"dadosRef\": \"mocks.grupos.app-header.valor\"\n  },\n  \"aplicaA\": {\n    \"jornadas\": [\n      \"advogado\"\n    ],\n    \"estados\": [\n      \"*\"\n    ]\n  }\n}"
+        },
+        {
+          "id": "audit_json_componente_bind",
+          "type": "text",
+          "content": "Na função `resolvedProps()` em `motor_montagem/montagem.js`, `dadosRef: \"mocks.grupos.app-header.valor\"` é resolvido com `valueAt(tela, caminho)`. A árvore do componente usa expressões como `{ \"ref\": \"props.dados.brand\" }`; `renderV()` lê esses valores do contexto de props. O componente **não procura o JSON da tela no disco por conta própria**."
+        }
+      ]
+    },
+    {
+      "id": "dominios_independentes",
+      "title": "2.4 Modelo de entidades independentes e relações explícitas",
+      "parentId": "diferenca-entre-catalogo-tela-componente-jornada-e-contrato",
+      "blocks": [
+        {
+          "id": "arch_dominios_intro",
+          "type": "text",
+          "content": "**Regra arquitetural:** identidade, localização no disco, participação em jornada, perfil, plano e estado são conceitos distintos. A árvore do Catálogo organiza arquivos; ela não define a quem uma tela pertence. Cada entidade tem um único proprietário e os relacionamentos são referências por IDs estáveis."
+        },
+        {
+          "id": "arch_dominios_tabela",
+          "type": "table",
+          "headers": [
+            "Entidade",
+            "Responsabilidade canônica",
+            "Não deve conter como dependência fixa"
+          ],
+          "rows": [
+            [
+              "Tela",
+              "Estrutura, estilos, instâncias de componentes, ações, dados, estado e mocks locais",
+              "A identidade de uma jornada ou a URL como chave primária"
+            ],
+            [
+              "Componente",
+              "Árvore visual, estilo reutilizável, props e eventos semânticos",
+              "Fluxo de negócio ou motor específico"
+            ],
+            [
+              "Jornada",
+              "Sequência, desvios, condições, pontos de entrada e referências a telas/outras jornadas",
+              "Cópia do JSON visual de cada tela"
+            ],
+            [
+              "Perfil",
+              "Papéis e permissões do usuário",
+              "A ordem das telas ou qualificação comercial de plano"
+            ],
+            [
+              "Plano",
+              "Benefícios, funcionalidades e elegibilidades",
+              "Identidade do usuário ou HTML duplicado"
+            ],
+            [
+              "Cenário",
+              "Seed, variáveis compartilhadas e resultados simulados de uma execução",
+              "Cópias de tela ou estado persistente paralelo por motor"
+            ],
+            [
+              "Ação",
+              "Evento, validações, condição, efeito e destino semântico",
+              "Código exclusivo de Flow ou Protótipo"
+            ]
+          ]
+        },
+        {
+          "id": "arch_dominios_grafo",
+          "type": "diagram",
+          "title": "Relações por referências, sem proprietários cruzados",
+          "nodes": [
+            {
+              "id": "usuario",
+              "title": "Contexto usuário / plano",
+              "x": 270,
+              "y": 20,
+              "kind": "source"
+            },
+            {
+              "id": "jornada",
+              "title": "Jornada composta",
+              "x": 270,
+              "y": 125,
+              "kind": "source"
+            },
+            {
+              "id": "tela",
+              "title": "Tela independente",
+              "x": 270,
+              "y": 230,
+              "kind": "source"
+            },
+            {
+              "id": "cmp",
+              "title": "Componentes",
+              "x": 40,
+              "y": 340,
+              "kind": "default"
+            },
+            {
+              "id": "action",
+              "title": "Ações semânticas",
+              "x": 275,
+              "y": 340,
+              "kind": "default"
+            },
+            {
+              "id": "mock",
+              "title": "Mocks e estados",
+              "x": 530,
+              "y": 340,
+              "kind": "default"
+            }
+          ],
+          "edges": [
+            {
+              "id": "dominios_grafo_edge_1",
+              "from": "usuario",
+              "to": "jornada"
+            },
+            {
+              "id": "dominios_grafo_edge_2",
+              "from": "jornada",
+              "to": "tela"
+            },
+            {
+              "id": "dominios_grafo_edge_3",
+              "from": "tela",
+              "to": "cmp"
+            },
+            {
+              "id": "dominios_grafo_edge_4",
+              "from": "tela",
+              "to": "action"
+            },
+            {
+              "id": "dominios_grafo_edge_5",
+              "from": "tela",
+              "to": "mock"
+            }
+          ]
+        },
+        {
+          "id": "arch_dominios_regra",
+          "type": "quote",
+          "content": "**Critério:** mover uma tela de Cliente para Advogado, reutilizar Login em quatro jornadas ou encaixar uma jornada inteira em outra **não pode exigir copiar ou reescrever o JSON visual da tela**. Pode exigir validação automática de permissões, dados exigidos e destinos."
+        }
+      ]
+    },
+    {
+      "id": "identidade_referencias_integridade",
+      "title": "2.5 IDs estáveis, referências e integridade entre arquivos",
+      "parentId": "diferenca-entre-catalogo-tela-componente-jornada-e-contrato",
+      "blocks": [
+        {
+          "id": "arch_integridade_regras",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "`identidade.id` é o nome lógico imutável da tela; o caminho da pasta é metadado editorial e pode mudar.",
+            "Os vínculos entre jornadas e telas apontam para `telaId`; os eventos visuais apontam para `acaoId`; componentes apontam para `componenteId`.",
+            "Cada motor usa resolução de referências por um índice em memória **derivado** dos arquivos canônicos, nunca uma segunda Store persistente.",
+            "O resolvedor detecta referências ausentes, circularidade entre jornadas, condições inválidas e incompatibilidade de entrada/saída.",
+            "O destino de uma navegação é normalmente um ID de tela; URLs são resolvidas pelo roteador e podem variar por ambiente, canal ou versão.",
+            "Uma jornada pode usar a mesma tela em mais de um ponto: a **ocorrência** possui ID próprio e pode carregar parâmetros/overrides sem duplicar a tela."
+          ]
+        },
+        {
+          "id": "arch_integridade_ocorrencia",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"id\": \"cliente.cadastro_completo\",\n  \"entradas\": [\n    {\n      \"id\": \"inicio\",\n      \"telaId\": \"auth.sessao.entrar\"\n    }\n  ],\n  \"ocorrencias\": [\n    {\n      \"id\": \"etapa_dados\",\n      \"telaId\": \"cadastro.dados_pessoais\",\n      \"ordem\": 10\n    },\n    {\n      \"id\": \"etapa_academica\",\n      \"telaId\": \"academico.dados_academicos\",\n      \"ordem\": 20,\n      \"quando\": {\n        \"plano\": \"estudante\"\n      }\n    }\n  ]\n}"
+        },
+        {
+          "id": "arch_integridade_exemplo",
+          "type": "text",
+          "content": "A ocorrência `etapa_academica` pertence à jornada e referencia `academico.dados_academicos`; a tela nunca recebe um novo campo indicando que foi incorporada ao Cliente. Para outro perfil, cria-se uma ocorrência referencial em outra jornada."
+        }
+      ]
+    },
+    {
+      "id": "fonte-unica-de-verdade-e-o-que-atualizara-automaticamente",
+      "title": "3. Fonte única de verdade — e o que atualizará automaticamente",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_8685e883-1893-4256-b00b-6fb754a0bb5a",
+          "type": "diagram",
+          "title": "Fonte única de verdade e visões derivadas",
+          "nodes": [
+            {
+              "id": "contrato",
+              "title": "Contrato",
+              "x": 372,
+              "y": 26,
+              "kind": "source"
+            },
+            {
+              "id": "homologacao",
+              "title": "Validação / homologação",
+              "x": 360,
+              "y": 120,
+              "kind": "default"
+            },
+            {
+              "id": "catalogo",
+              "title": "Catálogo canônico",
+              "x": 360,
+              "y": 216,
+              "kind": "source"
+            },
+            {
+              "id": "jornadas",
+              "title": "Jornadas / Flow",
+              "x": 90,
+              "y": 330,
+              "kind": "output"
+            },
+            {
+              "id": "montagem",
+              "title": "Montagem / Protótipo",
+              "x": 353,
+              "y": 330,
+              "kind": "output"
+            },
+            {
+              "id": "mapa",
+              "title": "Mapa / Banco",
+              "x": 655,
+              "y": 330,
+              "kind": "output"
+            }
+          ],
+          "edges": [
+            {
+              "id": "aresta_3947ebe7-ab4e-49e3-8728-b28d897ec0d1",
+              "from": "contrato",
+              "to": "homologacao"
+            },
+            {
+              "id": "aresta_f0150d5b-f4a6-4222-a09d-8fabec093ab6",
+              "from": "homologacao",
+              "to": "catalogo"
+            },
+            {
+              "id": "aresta_7520ee23-6feb-4119-bb59-b2200ef10717",
+              "from": "catalogo",
+              "to": "jornadas"
+            },
+            {
+              "id": "aresta_33593660-3c2d-4965-9e30-e84a6338ae67",
+              "from": "catalogo",
+              "to": "montagem"
+            },
+            {
+              "id": "aresta_efdce18b-840a-4168-a8b7-6a0289d8b69a",
+              "from": "catalogo",
+              "to": "mapa"
+            }
+          ]
+        },
+        {
+          "id": "bloco_f443a782-0aeb-4da5-87e8-eb9209ec4a0a",
+          "type": "text",
+          "content": "Ao alterar um JSON de tela válido, **os motores podem refletir as mudanças quando a Store em memória for atualizada ou recarregada**. Não devemos afirmar que qualquer edição feita diretamente no disco já aparece instantaneamente: o Workspace atual requer atualização/recarregamento quando os arquivos são editados fora da interface. A atualização automática contínua de arquivos externos é uma melhoria futura, caso desejada."
+        },
+        {
+          "id": "bloco_f0d6f7a3-ed80-4042-a8dd-cd19b7dffcb0",
+          "type": "text",
+          "content": "Não devem existir `flow_master`, `screens_master`, listas persistentes de entradas calculadas, coleções duplicadas de telas por jornada, nem cópias de componentes nas pastas dos motores."
+        }
+      ]
+    },
+    {
+      "id": "a-nova-area-modelos-uma-tela-que-ensina-o-sistema",
+      "title": "4. A nova área “Modelos”: uma tela que ensina o sistema",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_fbf8a872-3aec-489a-8ef6-c03fa4f2f604",
+          "type": "text",
+          "content": "A proposta é uma **aba Modelos**, diferente da aba Catálogo. Enquanto o Catálogo mostra os arquivos reais, a aba Modelos explica **como deve ser qualquer arquivo** e oferece modelos vazios, válidos e prontos para adaptação."
+        }
+      ]
+    },
+    {
+      "id": "como-essa-tela-sera-organizada",
+      "title": "Como essa tela será organizada",
+      "parentId": "a-nova-area-modelos-uma-tela-que-ensina-o-sistema",
+      "blocks": [
+        {
+          "id": "bloco_7bea6180-d680-4c91-afaa-3efaa1097092",
+          "type": "text",
+          "content": "**À esquerda:** uma navegação com os tipos de documento: **Catálogo/Pacote**, **Tela**, **Componente**, **Jornada (pacote de intercâmbio)** e **Relações/Regras**, este último apenas quando houver contrato específico aprovado. Os três primeiros serão os fundamentos. Jornada será apresentada como um pacote que referencia telas, não como nova Store."
+        },
+        {
+          "id": "bloco_3785aca2-5890-44e7-b3f4-702c92c30cea",
+          "type": "text",
+          "content": "**No centro:** uma representação em árvore do modelo selecionado. Cada grupo mostra o nome do campo, o significado, o tipo esperado, se é obrigatório/condicional/opcional, o valor padrão, exemplos e dependências. Um campo pode ser expandido sem precisar ler milhares de linhas JSON."
+        },
+        {
+          "id": "bloco_a9e5a4c1-4cb5-4d2e-acb4-efb51dd8e744",
+          "type": "text",
+          "content": "**À direita:** uma explicação simples do que esse campo produz nas outras abas: “ao preencher `classificacao.jornadas`, a tela passa a aparecer nessas jornadas”; “ao indicar `componentes.instancias[].ref`, a Montagem resolve o componente”; “ao declarar `acoes...destino`, Relações conhece a saída”; “ao informar `flow.editor`, a Árvore do Flow posiciona a ocorrência”."
+        },
+        {
+          "id": "bloco_185d73f6-fb88-4889-bfe3-d0223595bfe3",
+          "type": "text",
+          "content": "**Na parte superior:** ações **Ver modelo vazio**, **Ver exemplo**, **Validar meu JSON**, **Exportar modelo** e **Importar para validar**. Importar para validar **não altera imediatamente o catálogo**. Depois de validar, uma ação separada confirma a incorporação."
+        }
+      ]
+    },
+    {
+      "id": "o-que-a-aba-modelos-nao-deve-fazer",
+      "title": "O que a aba Modelos não deve fazer",
+      "parentId": "a-nova-area-modelos-uma-tela-que-ensina-o-sistema",
+      "blocks": [
+        {
+          "id": "bloco_794bc075-75c9-45fe-8fde-ba806677cd91",
+          "type": "text",
+          "content": "Ela não inventa identificadores, não duplica telas, não modifica decisões homologadas, não se torna uma segunda biblioteca editável de registros e não depende de copiar um JSON real como “padrão”. Os exemplos são didáticos; os schemas/contratos aprovados definem a validação de verdade."
+        }
+      ]
+    },
+    {
+      "id": "modelo-de-tela-o-que-o-json-precisa-responder",
+      "title": "5. Modelo de tela — o que o JSON precisa responder",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_d63f15de-b454-4121-860f-bd20c837708a",
+          "type": "text",
+          "content": "Cada tela deve responder, de forma explícita e auditável:"
+        },
+        {
+          "id": "bloco_7311766a-790e-4653-8c27-ba8dab8dc149",
+          "type": "table",
+          "headers": [
+            "Grupo",
+            "Pergunta respondida",
+            "Campos já usados como base"
+          ],
+          "rows": [
+            [
+              "Identidade",
+              "Qual tela é esta?",
+              "`identidade.id`, `nome`, `tipo`, `versao`, `rota`, `status`"
+            ],
+            [
+              "Classificação",
+              "Onde aparece e de quais jornadas participa?",
+              "`classificacao.jornadas`, `subjornadas`, `compartilhada`, `localizacaoArvore`"
+            ],
+            [
+              "Estados",
+              "Como se comporta em situações diferentes?",
+              "`estados.fonte`, `fallbackSeguro`, `grupos`"
+            ],
+            [
+              "Composição",
+              "Quais peças visuais usa?",
+              "`componentes.instancias[].ref`, `slot`, `props`, `aplicaA`"
+            ],
+            [
+              "Estrutura/estilos",
+              "Como o motor monta a tela?",
+              "`estrutura.base`, `estrutura.grupos`, `estilos`"
+            ],
+            [
+              "Ações e destinos",
+              "O que acontece quando o usuário age?",
+              "`acoes.grupos[].acoes`, `destino`, rotas/condições declaradas"
+            ],
+            [
+              "Dados",
+              "Que entidades e informações a tela exige?",
+              "`dados.grupos`, `fontes`, `persistencia`"
+            ],
+            [
+              "Prévia",
+              "Com que dados e estados o Protótipo pode exibi-la?",
+              "`mocks`, estados declarados"
+            ],
+            [
+              "Edição do Flow",
+              "Em quais pontos a tela aparece na árvore?",
+              "`flow.editor.occurrences`, `branches`, `paths`"
+            ]
+          ]
+        },
+        {
+          "id": "bloco_cdb4f68b-86e1-4544-8bb9-2a2093cc3f6a",
+          "type": "text",
+          "content": "**Importante:** o identificador da tela permanece estável mesmo quando ela muda de ordem, muda de jornada ou aparece várias vezes no Flow. IDs do tipo `J1`, `J2` podem ser usados como rótulos de leitura, se aprovados, mas nunca devem substituir a identidade única da tela nem sua referência nas conexões."
+        }
+      ]
+    },
+    {
+      "id": "template_real_tela",
+      "title": "5.1 Modelo vazio realmente gerado pelo código do Workspace",
+      "parentId": "modelo-de-tela-o-que-o-json-precisa-responder",
+      "blocks": [
+        {
+          "id": "audit_template_real_intro",
+          "type": "text",
+          "content": "O botão de modelo vazio usa `emptyTemplate()` em `app/core.js`. Abaixo está **o objeto de tela produzido por essa função na cópia recebida**, e não um exemplo inventado. O modelo usa `schema: advogadoja.tela.modular.v4-proposta` e é evolutivo, ainda sem homologação definitiva."
+        },
+        {
+          "id": "audit_json_template_atual",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.tela.modular.v4-proposta\",\n  \"identidade\": {\n    \"id\": \"exemplo.nova_tela\",\n    \"nome\": \"Nova tela\",\n    \"tipo\": \"tela\",\n    \"versao\": \"0.1.0\"\n  },\n  \"classificacao\": {\n    \"escopo\": \"shared\",\n    \"jornadas\": [\n      \"*\"\n    ],\n    \"subjornadas\": [],\n    \"compartilhada\": true,\n    \"localizacaoArvore\": {\n      \"secao\": \"Telas\",\n      \"segmentos\": [\n        \"shared\"\n      ],\n      \"chave\": \"nova_tela\",\n      \"ordem\": 10\n    }\n  },\n  \"estados\": {\n    \"fonte\": \"contexto.estado\",\n    \"fallbackSeguro\": \"padrao\",\n    \"grupos\": [\n      {\n        \"id\": \"padrao\",\n        \"nome\": \"Padrão\"\n      }\n    ]\n  },\n  \"componentes\": {\n    \"instancias\": []\n  },\n  \"estrutura\": {\n    \"base\": {\n      \"id\": \"base\",\n      \"html\": \"<div class=\\\"tela\\\"><main data-slot=\\\"main\\\"></main></div>\",\n      \"aplicaA\": {\n        \"jornadas\": [\n          \"*\"\n        ],\n        \"estados\": [\n          \"*\"\n        ]\n      }\n    },\n    \"grupos\": []\n  },\n  \"estilos\": {\n    \"tema\": {\n      \"--page\": \"#f4f6fa\"\n    },\n    \"grupos\": [\n      {\n        \"id\": \"estilo_base\",\n        \"css\": \".tela{min-height:100dvh;background:var(--page)}\",\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"*\"\n          ],\n          \"estados\": [\n            \"*\"\n          ]\n        }\n      }\n    ]\n  },\n  \"acoes\": {\n    \"grupos\": []\n  },\n  \"dados\": {\n    \"grupos\": {},\n    \"fontes\": [],\n    \"persistencia\": {\n      \"entidades\": [],\n      \"relacoes\": [],\n      \"contrato\": \"declarações de dados exigidas pela tela; Banco é projeção agregada destas declarações\"\n    }\n  },\n  \"mocks\": {\n    \"grupos\": {},\n    \"cenarios\": {\n      \"padrao\": {\n        \"id\": \"padrao\"\n      }\n    }\n  },\n  \"flow\": {\n    \"editor\": {\n      \"entrypoint\": false,\n      \"rootSequenceId\": null,\n      \"occurrences\": [],\n      \"branches\": []\n    }\n  }\n}"
+        },
+        {
+          "id": "audit_template_limites",
+          "type": "quote",
+          "content": "A validação em tempo de execução (`validateRecord`) exige alguns grupos e formatos, mas é mais superficial que os schemas propostos em `contratos/`. Portanto, passar nessa validação não prova que todos os motores aceitarão qualquer combinação de campos ou de estados."
+        }
+      ]
+    },
+    {
+      "id": "home_advogado_real",
+      "title": "5.2 Home Profissional REAL: OAB pendente e aprovada",
+      "parentId": "modelo-de-tela-o-que-o-json-precisa-responder",
+      "blocks": [
+        {
+          "id": "audit_home_real_intro",
+          "type": "text",
+          "content": "Esta é uma única tela real: `advogado.home_advogado`. Ela declara `estados.fonte = sessao.profissional.oab.status`, `fallbackSeguro = oab_pendente`, grupos de estrutura e instâncias filtrados por `aplicaA`. A montagem não duplica o JSON para cada estado."
+        },
+        {
+          "id": "audit_json_home_recorte",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"identidade\": {\n    \"id\": \"advogado.home_advogado\",\n    \"nome\": \"Início Profissional\",\n    \"tipo\": \"tela\",\n    \"versao\": \"3.0.0\",\n    \"rota\": \"/professional/home\",\n    \"status\": \"rascunho-evolutivo\"\n  },\n  \"estados\": {\n    \"fonte\": \"sessao.profissional.oab.status\",\n    \"autoritativa\": \"backend\",\n    \"grupos\": [\n      {\n        \"id\": \"oab_pendente\",\n        \"nome\": \"OAB não aprovada\",\n        \"quando\": {\n          \"operador\": \"diferente\",\n          \"valor\": \"aprovada\"\n        },\n        \"observacao\": \"Inclui nao_enviada, em_analise, rejeitada ou outro estado conhecido não aprovado\"\n      },\n      {\n        \"id\": \"oab_aprovada\",\n        \"nome\": \"OAB aprovada\",\n        \"quando\": {\n          \"operador\": \"igual\",\n          \"valor\": \"aprovada\"\n        }\n      }\n    ],\n    \"indefinido\": \"bloquear_ate_verificacao\",\n    \"fallbackSeguro\": \"oab_pendente\"\n  },\n  \"estrutura\": {\n    \"grupos\": [\n      {\n        \"id\": \"pendente_main\",\n        \"slot\": \"main\",\n        \"ordem\": 20,\n        \"instancias\": [\n          \"painel_oab\"\n        ],\n        \"aplicaA\": {\n          \"estados\": [\n            \"oab_pendente\"\n          ],\n          \"jornadas\": [\n            \"advogado\"\n          ]\n        }\n      },\n      {\n        \"id\": \"aprovada_main\",\n        \"slot\": \"main\",\n        \"ordem\": 20,\n        \"instancias\": [\n          \"disponibilidade\",\n          \"solicitacoes\"\n        ],\n        \"aplicaA\": {\n          \"estados\": [\n            \"oab_aprovada\"\n          ],\n          \"jornadas\": [\n            \"advogado\"\n          ]\n        }\n      }\n    ]\n  },\n  \"componentes\": {\n    \"instancias\": [\n      {\n        \"id\": \"painel_oab\",\n        \"ref\": \"cmp_advogado_home_advogado_main_oab_validation_panel\",\n        \"slot\": \"main\",\n        \"ordem\": 20,\n        \"props\": {\n          \"dadosRef\": \"dados.grupos.texto_oab.valor\"\n        },\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"advogado\"\n          ],\n          \"estados\": [\n            \"oab_pendente\"\n          ]\n        }\n      },\n      {\n        \"id\": \"disponibilidade\",\n        \"ref\": \"cmp_advogado_home_advogado_main_online_status\",\n        \"slot\": \"main\",\n        \"ordem\": 20,\n        \"props\": {\n          \"dadosRef\": \"mocks.grupos.online-status.valor\",\n          \"textosRef\": \"dados.grupos.texto_online-status.valor\"\n        },\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"advogado\"\n          ],\n          \"estados\": [\n            \"oab_aprovada\"\n          ]\n        }\n      },\n      {\n        \"id\": \"solicitacoes\",\n        \"ref\": \"cmp_advogado_home_advogado_main_actions\",\n        \"slot\": \"main\",\n        \"ordem\": 30,\n        \"props\": {\n          \"dadosRef\": \"mocks.grupos.actions.valor\",\n          \"textosRef\": \"dados.grupos.texto_actions.valor\"\n        },\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"advogado\"\n          ],\n          \"estados\": [\n            \"oab_aprovada\"\n          ]\n        }\n      }\n    ]\n  },\n  \"mocks\": {\n    \"cenarios\": {\n      \"oab_pendente\": {\n        \"sessao\": {\n          \"profissional\": {\n            \"id\": \"advogado-teste\",\n            \"oab\": {\n              \"status\": \"em_analise\"\n            }\n          }\n        },\n        \"sobrescrever\": {\n          \"hero.subtitle\": \"Sua Home ficará disponível após a validação da OAB.\"\n        },\n        \"id\": \"oab_pendente\",\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"advogado\"\n          ],\n          \"estados\": [\n            \"oab_pendente\"\n          ]\n        },\n        \"estadoRef\": \"oab_pendente\"\n      },\n      \"oab_aprovada\": {\n        \"sessao\": {\n          \"profissional\": {\n            \"id\": \"advogado-teste\",\n            \"oab\": {\n              \"status\": \"aprovada\"\n            }\n          }\n        },\n        \"id\": \"oab_aprovada\",\n        \"aplicaA\": {\n          \"jornadas\": [\n            \"advogado\"\n          ],\n          \"estados\": [\n            \"oab_aprovada\"\n          ]\n        },\n        \"estadoRef\": \"oab_aprovada\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "id": "audit_home_montagem_real",
+          "type": "table",
+          "headers": [
+            "Resultado de `compile()`",
+            "OAB pendente",
+            "OAB aprovada"
+          ],
+          "rows": [
+            [
+              "Grupos de estrutura",
+              "comum_header, comum_main, comum_menu, comum_modal, comum_popup, pendente_main",
+              "comum_header, comum_main, comum_menu, comum_modal, comum_popup, aprovada_main"
+            ],
+            [
+              "Instâncias resolvidas",
+              "7 (cabecalho, titulo, introducao, menu_principal, modal_rotas, notificacao_toast, painel_oab)",
+              "8 (cabecalho, titulo, introducao, menu_principal, modal_rotas, notificacao_toast, disponibilidade, solicitacoes)"
+            ],
+            [
+              "Estilos selecionados",
+              "css_estrutura_base, home_base, home_pendente",
+              "css_estrutura_base, home_base, home_aprovada"
+            ],
+            ["Ações presentes no resultado", "13", "14"],
+            [
+              "Cenário retornado pelo compilador",
+              "oab_pendente",
+              "oab_aprovada"
+            ],
+            ["Refs visuais ausentes", "0", "0"]
+          ]
+        },
+        {
+          "id": "audit_home_alerta",
+          "type": "quote",
+          "content": "O motor de Montagem seleciona o estado **recebido como parâmetro**. Ele não consulta o backend para avaliar `sessao.profissional.oab.status`. O Protótipo chama a Montagem com `fallbackSeguro`, portanto não alterna automaticamente entre os estados OAB durante a navegação."
+        }
+      ]
+    },
+    {
+      "id": "contrato_tela_v6",
+      "title": "5.3 Contrato-alvo: tela autônoma, linear e reutilizável (exemplo V6)",
+      "parentId": "modelo-de-tela-o-que-o-json-precisa-responder",
+      "blocks": [
+        {
+          "id": "arch_contrato_tela_v6_intro",
+          "type": "text",
+          "content": "**PROPOSTA — ainda não suportada diretamente pela V5.** Todos os blocos da tela preservam responsabilidade própria. Estrutura contém apenas a disposição; componentes instanciados são referências; estilos são regras; ações são definições semânticas; mocks locais se associam a estados. Não há `jornadas` como obrigação dentro da tela."
+        },
+        {
+          "id": "arch_contrato_tela_v6_json",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.tela.modular.v6-proposta\",\n  \"identidade\": {\n    \"id\": \"academico.dados_academicos\",\n    \"nome\": \"Dados acadêmicos\",\n    \"rota\": \"/academico/dados\"\n  },\n  \"estados\": {\n    \"fallbackSeguro\": \"inicial\",\n    \"grupos\": [\n      {\n        \"id\": \"inicial\"\n      },\n      {\n        \"id\": \"preenchido\"\n      },\n      {\n        \"id\": \"erro\"\n      }\n    ]\n  },\n  \"estrutura\": {\n    \"base\": {\n      \"slots\": [\n        \"cabecalho\",\n        \"principal\"\n      ]\n    },\n    \"grupos\": [\n      {\n        \"id\": \"cabecalho\",\n        \"slot\": \"cabecalho\",\n        \"ordem\": 10,\n        \"instancias\": [\n          \"app_header\"\n        ]\n      },\n      {\n        \"id\": \"formulario\",\n        \"slot\": \"principal\",\n        \"ordem\": 20,\n        \"instancias\": [\n          \"formulario_academico\",\n          \"continuar\"\n        ]\n      }\n    ]\n  },\n  \"estilos\": {\n    \"tema\": \"tema_padrao\",\n    \"grupos\": [\n      {\n        \"id\": \"layout\",\n        \"cssRef\": \"style.formulario.padrao\"\n      }\n    ]\n  },\n  \"componentes\": {\n    \"instancias\": [\n      {\n        \"id\": \"app_header\",\n        \"ref\": \"header.app-header.v04\",\n        \"props\": {}\n      },\n      {\n        \"id\": \"formulario_academico\",\n        \"ref\": \"cmp.form.academico.v01\",\n        \"props\": {\n          \"dadosRef\": \"dados.formulario\"\n        }\n      },\n      {\n        \"id\": \"continuar\",\n        \"ref\": \"cmp.botao.primario.v01\",\n        \"props\": {\n          \"texto\": \"Continuar\",\n          \"acaoRef\": \"academico.continuar\"\n        }\n      }\n    ]\n  },\n  \"acoes\": {\n    \"grupos\": [\n      {\n        \"id\": \"principal\",\n        \"acoes\": [\n          {\n            \"id\": \"academico.continuar\",\n            \"evento\": \"click\",\n            \"tipo\": \"validar_e_navegar\",\n            \"validar\": [\n              \"instituicao\",\n              \"curso\"\n            ],\n            \"efeitos\": [\n              {\n                \"tipo\": \"atribuir\",\n                \"destinoRef\": \"sessao.academico.preenchido\",\n                \"valor\": true\n              }\n            ],\n            \"destino\": \"cadastro.confirmacao\"\n          }\n        ]\n      }\n    ]\n  },\n  \"dados\": {\n    \"formulario\": {\n      \"instituicao\": \"\",\n      \"curso\": \"\"\n    }\n  },\n  \"mocks\": {\n    \"grupos\": {\n      \"inicial\": {\n        \"instituicao\": \"Faculdade Exemplo\",\n        \"curso\": \"Direito\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "id": "arch_contrato_tela_v6_tabela",
+          "type": "table",
+          "headers": ["Bloco", "Consumido por", "Regra de independência"],
+          "rows": [
+            [
+              "identidade",
+              "Catálogo, roteador, jornadas e indexador",
+              "ID estável; caminho e URL secundários"
+            ],
+            [
+              "estados",
+              "Resolvedor e todos os previews",
+              "Estado vem de contexto/seleção, não do motor em si"
+            ],
+            [
+              "estrutura",
+              "Renderizador visual único",
+              "Slots + ordem + instâncias, sem lógica de navegação"
+            ],
+            [
+              "estilos",
+              "Renderizador visual único",
+              "CSS/tema único, com variantes de estado quando necessário"
+            ],
+            [
+              "componentes",
+              "Resolvedor e renderizador",
+              "Referências reutilizáveis e props ligadas a dados"
+            ],
+            [
+              "acoes",
+              "Flow, Mapa, executor do Protótipo",
+              "Definição da intenção e efeitos, nunca implementação de motor"
+            ],
+            [
+              "dados e mocks",
+              "Renderizador, cenários e protótipo",
+              "Dados locais definidos uma vez; contexto global compartilhado"
+            ]
+          ]
+        },
+        {
+          "id": "arch_contrato_tela_v6_aviso",
+          "type": "quote",
+          "content": "**Importante:** os IDs de componentes e o JSON desta seção são ilustrativos, não foram confirmados como existentes no catálogo V5. O exemplo real de `auth.sessao.entrar` e o template atual continuam documentados nas seções 2.2 e 5.1."
+        }
+      ]
+    },
+    {
+      "id": "modelo-de-componente-o-que-o-json-precisa-responder",
+      "title": "6. Modelo de componente — o que o JSON precisa responder",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_bc9caad8-3f37-403d-993b-1dcddc08442c",
+          "type": "text",
+          "content": "Um componente deve declarar sua identidade, classificação, árvore visual, estilos e interface: propriedades aceitas, eventos que emite e dados que precisa. A tela usa o componente **por referência**, passando propriedades/estado. Se dez telas usam o mesmo componente, sua implementação canônica não deve ser copiada dez vezes."
+        },
+        {
+          "id": "bloco_0c7b9ee5-05ca-4d60-8a71-e3e9c5da98fc",
+          "type": "text",
+          "content": "O modelo deve separar cuidadosamente **componente visual** de **regra de navegação**: um botão pode emitir uma intenção/evento, mas o destino funcional deve ser resolvido por uma declaração validada e pelo contexto da tela."
+        }
+      ]
+    },
+    {
+      "id": "importacao-e-exportacao-de-jornadas-experiencia-proposta",
+      "title": "7. Importação e exportação de jornadas — experiência proposta",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_3e4204a0-09d7-4eaf-8cef-984421c80496",
+          "type": "text",
+          "content": "A aba **Jornadas** deve ter ações **Importar jornada (JSON)**, **Exportar jornada (JSON)** e **Ver estrutura da jornada**."
+        },
+        {
+          "id": "bloco_775225bc-684e-45ba-953f-78da8fc0e701",
+          "type": "text",
+          "content": "Fluxo desejado ao importar:"
+        },
+        {
+          "id": "bloco_6a937a22-b481-4fe8-8c36-bab294b55c09",
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Usuário seleciona um JSON de jornada ou pacote de telas de uma jornada.",
+            "O sistema valida a versão, o formato, as telas referenciadas e os componentes necessários.",
+            "Mostra uma prévia do impacto: telas novas, telas reutilizadas, campos alterados, jornadas adicionadas, relações novas e conflitos de IDs.",
+            "Em caso de registros divergentes, pede uma decisão explícita; nunca sobrescreve silenciosamente.",
+            "Após confirmação, distribui cada definição nos **arquivos individuais da Store**, preservando os IDs estáveis.",
+            "Recalcula as projeções de Jornada, Flow, Mapa, Protótipo e outras abas interessadas."
+          ]
+        },
+        {
+          "id": "bloco_dabb274b-ca81-4140-8bbf-6663486ec028",
+          "type": "text",
+          "content": "Ao exportar, o Workspace pode montar um documento de intercâmbio contendo `schema`, versão, ID da jornada, lista de referências às telas, um manifesto de dependências e, se solicitado, as definições necessárias para importar em outro ambiente. **Esse pacote não fica salvo como cadastro paralelo de jornada.**"
+        },
+        {
+          "id": "bloco_7de44533-4a32-4af4-98c6-645229f8ab12",
+          "type": "text",
+          "content": "**Questão que precisa ser decidida antes da implementação:** o pacote será apenas um manifesto referencial (mais leve) ou também poderá carregar as definições das telas/componentes (mais portátil)? Minha proposta é oferecer os dois modos, identificados no arquivo e validados pelo mesmo importador."
+        },
+        {
+          "id": "arch_importacao_ownership",
+          "type": "text",
+          "content": "**Adendo de arquitetura:** no novo contrato, a importação grava a composição em um JSON canônico **da própria jornada**, além de novas telas/componentes somente quando o pacote realmente os inclui. Não grava a lista de jornadas como cópia dentro de cada tela. A exportação leve contém referências; a exportação portátil inclui um manifesto explícito de dependências. O destino e o impacto devem ser mostrados antes da confirmação."
+        }
+      ]
+    },
+    {
+      "id": "jornada_composicao_v6",
+      "title": "7.1 Jornada como composição canônica de telas e outras jornadas",
+      "parentId": "importacao-e-exportacao-de-jornadas-experiencia-proposta",
+      "blocks": [
+        {
+          "id": "arch_jornada_composicao_intro",
+          "type": "text",
+          "content": "A relação jornada → tela pertence ao **JSON da jornada**, e não ao JSON da tela. A mesma tela pode aparecer quantas vezes fizer sentido, cada ocorrência com ID, ordem, condição, parâmetros e transições próprias. A composição é canônica porque ninguém mantém simultaneamente uma segunda lista de pertencimento dentro da tela."
+        },
+        {
+          "id": "arch_jornada_composicao_json",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.jornada.composta.v1-proposta\",\n  \"id\": \"cliente\",\n  \"nome\": \"Jornada Cliente\",\n  \"entrada\": \"login\",\n  \"sequencia\": [\n    {\n      \"id\": \"login\",\n      \"tipo\": \"tela\",\n      \"telaId\": \"auth.sessao.entrar\"\n    },\n    {\n      \"id\": \"academico\",\n      \"tipo\": \"jornada\",\n      \"jornadaId\": \"cadastro.academico\",\n      \"quando\": {\n        \"plano\": \"estudante\"\n      }\n    },\n    {\n      \"id\": \"home\",\n      \"tipo\": \"tela\",\n      \"telaId\": \"cliente.home_cliente\"\n    }\n  ]\n}"
+        },
+        {
+          "id": "arch_jornada_academica_json",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.jornada.composta.v1-proposta\",\n  \"id\": \"cadastro.academico\",\n  \"nome\": \"Módulo acadêmico reutilizável\",\n  \"entrada\": \"dados_academicos\",\n  \"sequencia\": [\n    {\n      \"id\": \"dados_academicos\",\n      \"tipo\": \"tela\",\n      \"telaId\": \"academico.dados_academicos\"\n    },\n    {\n      \"id\": \"validacao_academica\",\n      \"tipo\": \"tela\",\n      \"telaId\": \"academico.validacao\"\n    }\n  ]\n}"
+        },
+        {
+          "id": "arch_jornada_composicao_regras",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Inserir, remover ou deslocar uma ocorrência é uma alteração **apenas na jornada**, desde que a tela já exista e suas dependências sejam atendidas.",
+            "Jornadas aninhadas são expandidas pelo mesmo resolvedor; ciclos como A → B → A são erros de validação.",
+            "A sequência editorial e a navegação por ação não são sinônimos: o Flow apresenta ambos; o Protótipo segue o destino disparado ou a transição configurada.",
+            "Não substituir ações existentes por `next` implícito só porque a tela foi reordenada; qualquer desvio precisa ser explícito.",
+            "O pacote de exportação pode ser um manifesto leve ou conter dependências completas; em ambos os modos os IDs permanecem os mesmos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "estudante_plano_exemplo",
+      "title": "7.2 Exemplo completo: Estudante deixa de ser jornada isolada e vira plano",
+      "parentId": "importacao-e-exportacao-de-jornadas-experiencia-proposta",
+      "blocks": [
+        {
+          "id": "arch_estudante_plano_intro",
+          "type": "text",
+          "content": "**Cenário de produto hipotético, ainda não decidido:** Estudante deixa de ser um tipo de pessoa no seletor de jornadas e passa a ser um `plano` ou atributo. O usuário continua Cliente (ou outro perfil definido pelo negócio) e recebe etapas acadêmicas por uma condição. Essa configuração exemplifica a flexibilidade desejada sem afirmar que a decisão comercial já foi tomada."
+        },
+        {
+          "id": "arch_estudante_plano_tabela",
+          "type": "table",
+          "headers": ["Aspecto", "V5 observada", "Modelo proposto"],
+          "rows": [
+            [
+              "Pessoa / perfil",
+              "`estudante` é uma das quatro jornadas detectadas",
+              "Perfil e atributos independentes (`cliente`, `plano: estudante`)"
+            ],
+            [
+              "Relação tela-jornada",
+              "`classificacao.jornadas` e `aplicaA` espalhados",
+              "Ocorrências em JSONs de jornada"
+            ],
+            [
+              "Etapas acadêmicas",
+              "Telas associadas à participação Estudante",
+              "Subjornada `cadastro.academico` incorporável"
+            ],
+            [
+              "Home",
+              "Jornada linearizada e fallback por tela",
+              "Tela de destino decidida pelas ações e pelo contexto"
+            ],
+            [
+              "Mudança futura",
+              "Revisões de vínculos legados e de lógica dos motores",
+              "Editar contexto/manifesto e validar referências"
+            ]
+          ]
+        },
+        {
+          "id": "arch_estudante_plano_contexto",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"cenarioId\": \"cliente-plano-estudante\",\n  \"sessao\": {\n    \"usuarioId\": \"cliente_mock_01\",\n    \"perfil\": \"cliente\",\n    \"plano\": \"estudante\",\n    \"autenticado\": true\n  },\n  \"regras\": {\n    \"incluirJornada\": \"cadastro.academico\"\n  }\n}"
+        },
+        {
+          "id": "arch_estudante_plano_fluxo",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Criar o contrato da jornada acadêmica apontando para IDs de telas já existentes. Nenhuma cópia de estrutura/estilo.",
+            "Declarar no Cliente a inclusão condicional da jornada acadêmica; configurar o cenário `plano: estudante`.",
+            "Executar o resolvedor e verificar dependências, entrada/saída, ações e permissões.",
+            "Para converter a base V5 **uma única vez**, identificar usos atuais de `estudante`, construir manifestos equivalentes e comparar comportamento. Isso é adaptação técnica de dados legados, não uma exigência para cada mudança futura.",
+            "Após a adaptação, transferências e inserções de jornadas devem acontecer por edição pontual de referências, com auditoria automática."
+          ]
+        },
+        {
+          "id": "arch_estudante_plano_decisao",
+          "type": "quote",
+          "content": "**Mudança importante de entendimento:** “migração controlada” descreve só a transição do Workspace atual para o novo contrato; **não** deve virar uma operação repetitiva para realocar telas. Uma arquitetura padronizada torna essas alterações triviais do ponto de vista dos JSONs."
+        }
+      ]
+    },
+    {
+      "id": "funcao-de-cada-modulo-do-workspace",
+      "title": "8. Função de cada módulo do Workspace",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_b6fbbaca-2db9-4e51-b9bc-55523f6c424d",
+          "type": "table",
+          "headers": [
+            "Módulo / aba",
+            "Responsabilidade principal",
+            "O que não deve fazer"
+          ],
+          "rows": [
+            [
+              "**Árvore do Catálogo**",
+              "Exibir, localizar, inspecionar, criar e editar os JSONs reais de telas/componentes",
+              "Guardar uma Store paralela"
+            ],
+            [
+              "**Modelos (proposta)**",
+              "Ensinar os modelos oficiais, explicar campos, validar e fornecer exemplos vazios",
+              "Alterar registros sem confirmação"
+            ],
+            [
+              "**Contrato**",
+              "Registrar objetivos, campos, regras, pendências e decisões para homologação",
+              "Executar automaticamente mudanças no catálogo"
+            ],
+            [
+              "**Jornadas**",
+              "Mostrar dinamicamente as telas por jornada e permitir trabalhar com seus percursos; futuramente importar/exportar jornada",
+              "Duplicar telas por persona"
+            ],
+            [
+              "**Árvore do Flow**",
+              "Montar visualmente sequências, ocorrências e bifurcações de `flow.editor`",
+              "Ser a fonte operacional de todas as ações"
+            ],
+            [
+              "**Flow & referências**",
+              "Apresentar saídas declaradas e entradas calculadas; editar vínculos seguros na tela de origem",
+              "Salvar um `inbound` ou grafo duplicado"
+            ],
+            [
+              "**Motor de Montagem**",
+              "Resolver instâncias, slots, estilos, estados e propriedades para montar uma tela",
+              "Decidir regras de negócio que não constam no contrato"
+            ],
+            [
+              "**Protótipo**",
+              "Exibir a experiência navegável das jornadas e prévias visuais",
+              "Executar autenticação, pagamento ou backend real"
+            ],
+            [
+              "**Mapa integrado**",
+              "Mostrar visão geral derivada das classificações e relações",
+              "Manter seu próprio cadastro de telas e ligações"
+            ],
+            [
+              "**Banco**",
+              "Projetar entidades e relações declaradas em `dados.persistencia`",
+              "Inventar modelagem independente da Store"
+            ],
+            [
+              "**Gestão & exportação**",
+              "Gerar pacotes, manifestos e índices transitórios para intercâmbio",
+              "Transformar exportações em fontes mestras"
+            ],
+            [
+              "**Infraestrutura `app/` + servidor**",
+              "Carregar, validar, atualizar em memória, persistir com proteção contra conflitos e comunicar alterações",
+              "Inserir regras específicas de cada jornada no código"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "motores_codigo_real",
+      "title": "8.1 Mapa de funções REAIS: qual código lê cada bloco",
+      "parentId": "funcao-de-cada-modulo-do-workspace",
+      "blocks": [
+        {
+          "id": "audit_motores_codigo_intro",
+          "type": "text",
+          "content": "A tabela relaciona diretamente **caminho do arquivo → função real → campos lidos → saída produzida**, extraídos do ZIP. Isso é a fotografia operacional que faltava no planejamento. Os dados sempre entram pela Store em memória montada em `app/core.js`."
+        },
+        {
+          "id": "audit_motores_codigo_tabela",
+          "type": "table",
+          "headers": [
+            "Módulo e função",
+            "Entradas canônicas consultadas",
+            "Junção / projeção efetiva"
+          ],
+          "rows": [
+            [
+              "`app/core.js` → `restoreSeed()`, `journeyCatalog()`, `compat()`",
+              "Arquivos canônicos, IDs, `classificacao.jornadas`, `aplicaA`",
+              "Carrega Store por ID, descobre jornadas e testa jornada/estado"
+            ],
+            [
+              "`motor_montagem/montagem.js` → `compile()`",
+              "`estrutura`, `componentes`, `estilos`, `acoes`, `dados`, `mocks`",
+              "Filtra grupos, resolve `inst.ref`, calcula props, reúne conteúdo por estado"
+            ],
+            [
+              "`motor_montagem/montagem.js` → `previewHTML()` / `renderV()`",
+              "`estrutura.base.html`, árvores dos componentes, CSS e props",
+              "Insere HTML nos slots e renderiza prévia isolada"
+            ],
+            [
+              "`motor_fluxo/fluxo.js` → `compileFlowStructure()`",
+              "`flow.editor` de **todas** as telas",
+              "Índice temporário de sequências, ocorrências e branches"
+            ],
+            [
+              "`arvore_relacoes/relacoes.js` → `buildEdges()` / `collectEdges()`",
+              "Destinos em ações e itens de componentes instanciados",
+              "Arestas de saída e entrada calculada; cache pela revisão do catálogo"
+            ],
+            [
+              "`jornadas/painel.js` → `jornadasRender()`",
+              "Jornadas, estado fallback, montagem e arestas",
+              "Abas dinâmicas, prévia e botões para destinos declarados"
+            ],
+            [
+              "`motor_prototipo/prototipo.js` → `protBuildRouteForJourney()`",
+              "Flow compilado e filtro de jornada",
+              "Lista linear de ocorrências compatíveis"
+            ],
+            [
+              "`motor_prototipo/prototipo.js` → `protPreviewHtml()`",
+              "Tela atual, fallback, `compile()` e `previewHTML()`",
+              "Prévia individual sem contexto global de sessão"
+            ],
+            [
+              "`mapa/mapa.js` → `mapaBuild()`",
+              "Classificação, subjornadas e `collectEdges()`",
+              "Blocos e setas agregados no mapa"
+            ],
+            [
+              "`banco/banco.js` → `bancoAggregate()`",
+              "`dados.persistencia.entidades[]` e `.relacoes[]`",
+              "Entidades/campos/relacionamentos agregados"
+            ],
+            [
+              "`app/persistencia.js` → `queueDiskSave()`",
+              "Registros da Store alterados e hashes conhecidos",
+              "POST `/api/catalogo/sync` para atualizar arquivos canônicos"
+            ]
+          ]
+        },
+        {
+          "id": "audit_motores_leituras",
+          "type": "diagram",
+          "title": "Projeções da Store, sem cópias por motor",
+          "nodes": [
+            {
+              "id": "store_real",
+              "title": "Store: telas + componentes",
+              "x": 38,
+              "y": 170,
+              "kind": "source"
+            },
+            {
+              "id": "editor_real",
+              "title": "Editores → sync em disco",
+              "x": 326,
+              "y": 40,
+              "kind": "default"
+            },
+            {
+              "id": "flow_real",
+              "title": "Flow + Relações",
+              "x": 330,
+              "y": 165,
+              "kind": "default"
+            },
+            {
+              "id": "mount_real",
+              "title": "Montagem + dados",
+              "x": 328,
+              "y": 290,
+              "kind": "default"
+            },
+            {
+              "id": "prototype_real",
+              "title": "Protótipo usa Flow + Montagem",
+              "x": 650,
+              "y": 170,
+              "kind": "output"
+            }
+          ],
+          "edges": [
+            {
+              "id": "audit_edge_motores_leituras_0",
+              "from": "store_real",
+              "to": "editor_real"
+            },
+            {
+              "id": "audit_edge_motores_leituras_1",
+              "from": "store_real",
+              "to": "flow_real"
+            },
+            {
+              "id": "audit_edge_motores_leituras_2",
+              "from": "store_real",
+              "to": "mount_real"
+            },
+            {
+              "id": "audit_edge_motores_leituras_3",
+              "from": "flow_real",
+              "to": "prototype_real"
+            },
+            {
+              "id": "audit_edge_motores_leituras_4",
+              "from": "mount_real",
+              "to": "prototype_real"
+            }
+          ]
+        },
+        {
+          "id": "audit_motores_escrita",
+          "type": "quote",
+          "content": "A escrita não pertence ao Protótipo, Mapa ou Banco. Editores alteram o registro canônico e `app/persistencia.js` envia diferenças para `/api/catalogo/sync`, com versões/hash. A atualização de projeções usa `invalidateCatalogProjections()`; alterações externas no disco exigem recarga."
+        }
+      ]
+    },
+    {
+      "id": "renderizacao_unica",
+      "title": "8.2 Renderização única, resultados reutilizados em todos os módulos",
+      "parentId": "funcao-de-cada-modulo-do-workspace",
+      "blocks": [
+        {
+          "id": "arch_render_unico_intro",
+          "type": "text",
+          "content": "A renderização de uma tela acontece por um **serviço comum**: resolve a identidade, o estado, os componentes, os slots, os estilos e os dados. O resultado visual é compartilhável por Montagem, Flow, Mapa, Catálogo e Protótipo. Cada consumidor usa a mesma saída e escolhe como apresentar ou reagir às ações."
+        },
+        {
+          "id": "arch_render_unico_grafo",
+          "type": "diagram",
+          "title": "Uma definição visual; vários interpretadores",
+          "nodes": [
+            {
+              "id": "json",
+              "title": "Tela JSON + Componentes",
+              "x": 270,
+              "y": 10,
+              "kind": "source"
+            },
+            {
+              "id": "resolver",
+              "title": "Resolvedor de contexto/estado",
+              "x": 270,
+              "y": 105,
+              "kind": "default"
+            },
+            {
+              "id": "renderer",
+              "title": "Renderizador único",
+              "x": 270,
+              "y": 200,
+              "kind": "source"
+            },
+            {
+              "id": "flow",
+              "title": "Flow: explicar ações",
+              "x": 35,
+              "y": 315,
+              "kind": "output"
+            },
+            {
+              "id": "proto",
+              "title": "Protótipo: executá-las",
+              "x": 270,
+              "y": 315,
+              "kind": "output"
+            },
+            {
+              "id": "montagem",
+              "title": "Montagem: inspecionar",
+              "x": 525,
+              "y": 315,
+              "kind": "output"
+            }
+          ],
+          "edges": [
+            {
+              "id": "render_unico_grafo_edge_1",
+              "from": "json",
+              "to": "resolver"
+            },
+            {
+              "id": "render_unico_grafo_edge_2",
+              "from": "resolver",
+              "to": "renderer"
+            },
+            {
+              "id": "render_unico_grafo_edge_3",
+              "from": "renderer",
+              "to": "flow"
+            },
+            {
+              "id": "render_unico_grafo_edge_4",
+              "from": "renderer",
+              "to": "proto"
+            },
+            {
+              "id": "render_unico_grafo_edge_5",
+              "from": "renderer",
+              "to": "montagem"
+            }
+          ]
+        },
+        {
+          "id": "arch_render_unico_tabela",
+          "type": "table",
+          "headers": [
+            "Consumidor",
+            "O que recebe da montagem",
+            "O que faz além do renderizador"
+          ],
+          "rows": [
+            [
+              "Catálogo",
+              "Miniatura ou prévia sob demanda",
+              "Indexa e edita metadados/definições canônicas"
+            ],
+            [
+              "Montagem",
+              "HTML/CSS/árvore e diagnóstico de instâncias",
+              "Inspeciona refs, estado e props; não simula login real"
+            ],
+            [
+              "Flow",
+              "Mesma prévia visual de tela para o estado escolhido",
+              "Mostra em modal ação, destino, sucesso/erro e ligações; não muda sessão"
+            ],
+            [
+              "Mapa",
+              "Prévia opcional ou miniatura reutilizada",
+              "Projeta relações entre IDs e dependências"
+            ],
+            [
+              "Protótipo",
+              "A mesma árvore visual, com dados do cenário ativo",
+              "Intercepta eventos, executa ações simuladas, altera contexto e navega"
+            ]
+          ]
+        },
+        {
+          "id": "arch_render_unico_regra",
+          "type": "quote",
+          "content": "Renderizar a tela e decidir o efeito de um clique são responsabilidades separadas. Não incluir `if (motor === \"flow\")` dentro da definição visual do botão; o ambiente escolhe o **adaptador de ações**."
+        }
+      ]
+    },
+    {
+      "id": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "title": "9. Contrato mínimo de todos os motores: simples, específicos e sem redundância",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_13d8ea8b-9d51-45f3-a9ec-6ab369aa8297",
+          "type": "text",
+          "content": "Um motor deve funcionar como uma **função genérica de interpretação**:"
+        },
+        {
+          "id": "bloco_97bd4ed1-c507-4d2d-b2aa-defa5cce6c8f",
+          "type": "text",
+          "content": "**Entrada:** seleção do usuário (jornada, tela, estado etc.) + registros canônicos necessários.  \n**Processamento:** procurar IDs, validar referências, filtrar regras declaradas, organizar dados e gerar a projeção correspondente.  \n**Saída:** visualização, montagem, índice transitório ou diagnóstico de inconsistência.  \n**Escrita:** somente se for um editor autorizado, no JSON proprietário daquela informação."
+        },
+        {
+          "id": "bloco_d5bbfab4-5bef-4e68-b5d3-4b0d9384dcb7",
+          "type": "text",
+          "content": "Exemplos práticos:"
+        },
+        {
+          "id": "bloco_40aca154-da39-476c-bde5-b05e6a86e321",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Jornadas:** procura em `classificacao.jornadas` e agrupa; se surgir uma nova jornada, cria a aba visual sem mudança no motor.",
+            "**Montagem:** recebe `telaId`, `jornada`, `estado`; busca tela, resolve `componentes.instancias[].ref`, aplica `aplicaA` e monta HTML/CSS.",
+            "**Relações:** lê `acoes...destino` e destinos dos itens declarados; descobre todas as saídas e calcula entradas por inversão. Não grava entradas.",
+            "**Flow:** busca `flow.editor` em cada tela e reconstrói sequências, bifurcações e ocorrências. Não mantém JSON mestre.",
+            "**Protótipo:** combina jornada + Flow + montagem; navega de forma demonstrativa sem executar efeitos reais.",
+            "**Banco:** agrega definições de persistência das telas e evidencia colisões/inconsistências, em vez de manter outra modelagem."
+          ]
+        },
+        {
+          "id": "arch_motores_distinguir_status",
+          "type": "text",
+          "content": "**Leitura correta da lista acima:** aqueles exemplos descrevem a implementação atual; **não são a especificação futura**. O alvo elimina `classificacao.jornadas` como chave de participação obrigatória e desloca a composição editorial de `flow.editor` embutido na tela para a definição individual da jornada, consumida pelo resolvedor comum. Cada motor usa o mesmo resultado normalizado e um adaptador de comportamento específico."
+        }
+      ]
+    },
+    {
+      "id": "montagem_passo_a_passo",
+      "title": "9.1 Montagem real: como estrutura, estilo, componente e mock se juntam",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "audit_montagem_passos",
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "`compile(tela,jornada,estado)` filtra `estrutura.grupos` por `aplicaA` e os ordena por `ordem`.",
+            "Cria um mapa de `componentes.instancias` pelo ID de instância; cada grupo lista esses IDs, não cópias visuais.",
+            "Para cada instância compatível, procura `model.components[inst.ref]` pelo ID do componente; se faltar, adiciona pendência.",
+            "`resolvedProps()` resolve chaves terminadas em `Ref` (como `dadosRef` e `textosRef`) com `valueAt(tela, caminho)`, inclusive caminhos em `mocks.grupos`.",
+            "Lê `estrutura.arvore` e `estilos.css` do componente; filtra `estilos.grupos` da tela pelo mesmo contexto.",
+            "Filtra `acoes.grupos`, `dados.grupos` e `mocks.grupos`; retorna também `mocks.cenarios[estado]` como objeto `cenario`.",
+            "Consulta `collectEdges()` para saídas e entradas relacionadas à tela; produz um objeto temporário com grupos, componentes, estilos, dados, mocks, ações e diagnósticos.",
+            "`previewHTML()` pega `estrutura.base.html`, encontra os `data-slot`, chama `renderV(arvore,{props})` e injeta HTML e CSS na prévia."
+          ]
+        },
+        {
+          "id": "audit_montagem_resultado",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"telaId\": \"advogado.home_advogado\",\n  \"jornada\": \"advogado\",\n  \"estado\": \"oab_pendente\",\n  \"grupos\": [\n    \"comum_header\",\n    \"comum_main\",\n    \"comum_menu\",\n    \"comum_modal\",\n    \"comum_popup\",\n    \"pendente_main\"\n  ],\n  \"componentes\": [\n    \"cabecalho\",\n    \"titulo\",\n    \"introducao\",\n    \"menu_principal\",\n    \"modal_rotas\",\n    \"notificacao_toast\",\n    \"painel_oab\"\n  ],\n  \"estilos\": [\n    \"css_estrutura_base\",\n    \"home_base\",\n    \"home_pendente\"\n  ],\n  \"acoes\": 13,\n  \"cenario\": \"oab_pendente\",\n  \"pendencias\": []\n}"
+        },
+        {
+          "id": "audit_montagem_mocks_gap",
+          "type": "quote",
+          "content": "**Limite real importante:** embora `compile()` retorne `cenario`, `previewHTML()` renderiza os valores de props resolvidos e **não aplica automaticamente** `cenario.sobrescrever` nem mantém contexto global entre telas. O estado é argumento do compilador; a prévia não avalia a regra OAB no backend."
+        }
+      ]
+    },
+    {
+      "id": "flow_relacoes_reais",
+      "title": "9.2 Flow editorial versus Relações operacionais: leitura real",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "audit_flow_real_intro",
+          "type": "text",
+          "content": "São duas leituras da **mesma base**, mas com semânticas diferentes: `compileFlowStructure()` lê ocorrências/branches de `flow.editor`; `buildEdges()` lê destinos de ações e itens de componentes. O primeiro desenha onde a tela aparece; o segundo calcula para onde uma ação aponta."
+        },
+        {
+          "id": "audit_flow_recorte",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"telaId\": \"advogado.home_advogado\",\n  \"flowEditor\": {\n    \"entrypoint\": false,\n    \"occurrences\": [\n      {\n        \"id\": \"screen-0124\",\n        \"sequenceId\": \"sequence-0268\",\n        \"order\": 0,\n        \"variant\": \"default\"\n      },\n      {\n        \"id\": \"screen-profissional-direto-menu-inicio\",\n        \"sequenceId\": \"sequence-profissional-direto-menu-inicio\",\n        \"order\": 0,\n        \"variant\": \"default\"\n      }\n    ],\n    \"branches\": [\n      {\n        \"id\": \"branch-0160\",\n        \"sequenceId\": \"sequence-0268\",\n        \"order\": 1,\n        \"title\": \"Profissional · ações a partir da Home\",\n        \"paths\": [\n          {\n            \"id\": \"path-0161\",\n            \"label\": \"Home · abrir solicitação\",\n            \"isDefault\": true,\n            \"sequenceId\": \"sequence-0162\"\n          },\n          {\n            \"id\": \"path-profissional-direto-menu\",\n            \"label\": \"Home · abrir menu\",\n            \"isDefault\": false,\n            \"sequenceId\": \"sequence-profissional-direto-menu\"\n          }\n        ]\n      }\n    ]\n  },\n  \"acaoOrigem\": {\n    \"id\": \"abrir_solicitacao\",\n    \"evento\": \"solicitacaoSelecionada\",\n    \"destino\": \"advogado.clientes.detalhe_solicitacao\"\n  }\n}"
+        },
+        {
+          "id": "audit_flow_relacoes_criterios",
+          "type": "table",
+          "headers": ["Aspecto", "Implementação atual", "Consequência"],
+          "rows": [
+            [
+              "Posição no Flow",
+              "`occurrences[].sequenceId` + `order`",
+              "A mesma tela pode aparecer em várias posições sem ID novo"
+            ],
+            [
+              "Branches",
+              "`branches[].paths[].sequenceId`",
+              "Árvore editorial mostra caminhos; condição legada não é executada"
+            ],
+            [
+              "Saída de ação",
+              "`acoes[].destino`, `seSucesso`, `seErro`, `rotas[]`",
+              "Origem é dona da ligação"
+            ],
+            [
+              "Saída de menu",
+              "`componentes.instancias[].props.itens[].destino`",
+              "Relação pertence à configuração do item na tela"
+            ],
+            [
+              "Entrada (inbound)",
+              "Filtro de `collectEdges()` por `destino`",
+              "Calculada, não gravada na tela destino"
+            ],
+            [
+              "Diagnóstico atual",
+              "11 arestas sem destino encontrado",
+              "Corrigir referências/definições antes de afirmar navegação completa"
+            ]
+          ]
+        },
+        {
+          "id": "audit_flow_unresolved",
+          "type": "text",
+          "content": "Destinos ainda sem tela no catálogo: `admin.assinatura_detalhe`, `admin.administradores`, `admin.configuracoes`, `admin.seletor_perfil`, `admin.denuncia_detalhe`, `admin.log_detalhe`, `admin.oab_detalhe`, `admin.perfil_detalhe`, `advogado.oab.validacao`, `estudante.onboarding.dados_academicos`, `estudante.home_estudante`."
+        },
+        {
+          "id": "audit_flow_aviso",
+          "type": "quote",
+          "content": "Não usar a ordem editorial como prova de navegação operacional. Flow mostra percursos declarados; destino de ação pode apontar para outra tela e a prévia usa uma camada demonstrativa."
+        }
+      ]
+    },
+    {
+      "id": "prototipo_as_is_real",
+      "title": "9.3 Protótipo atual: o que executa e o que NÃO executa",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "audit_proto_as_is",
+          "type": "text",
+          "content": "A função `protBuildRouteForJourney()` usa `compileFlowStructure()`, percorre **todos os paths compatíveis** em cada branch e acumula uma lista linear de pontos. `protSelectJourney()` seleciona a jornada, e `protRender()` controla busca/Voltar/Avançar/Reiniciar. Para cada ponto, `protPreviewHtml()` chama `compile(tela,jornada,fallbackSeguro)` e `previewHTML()`. Não há sessão compartilhada ou seletor de cenário global nesse módulo."
+        },
+        {
+          "id": "audit_proto_comparativo",
+          "type": "table",
+          "headers": ["Comportamento", "Estado no ZIP", "Evolução desejada"],
+          "rows": [
+            [
+              "Seleção de jornada",
+              "**Implementado:** dinâmica por `journeyCatalog()`",
+              "Manter"
+            ],
+            [
+              "Percurso",
+              "**Implementado:** percorre todas as branches compatíveis, linearizando",
+              "Escolher branch pela ação/decisão declarada"
+            ],
+            [
+              "Estado da tela",
+              "**Implementado:** usa `fallbackSeguro` ou primeiro estado",
+              "Resolver estado por contexto de cenário, com fallback validado"
+            ],
+            [
+              "Mocks por tela",
+              "**Parcial:** `compile()` coleta `mocks.grupos` e um `cenario` local",
+              "Selecionar e aplicar cenários de cada tela"
+            ],
+            [
+              "Contexto compartilhado",
+              "**Não implementado** no Protótipo",
+              "Persistir em memória perfil, plano, autenticação e efeitos simulados durante o percurso"
+            ],
+            [
+              "Navegação por botão interno",
+              "**Não implementado** como transição real de pontos; a prévia mostra modal demonstrativo",
+              "Mapear evento tipado → ação/destino → próxima ocorrência"
+            ],
+            [
+              "Backend/autorizações",
+              "**Fora do escopo do Protótipo**",
+              "Continuar sem executar backend; autorização verdadeira pertence ao app real"
+            ]
+          ]
+        },
+        {
+          "id": "audit_proto_medidas",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"jornadas\": [\n    \"administrador\",\n    \"advogado\",\n    \"cliente\",\n    \"estudante\"\n  ],\n  \"pontosComPercursosLinearizados\": {\n    \"cliente\": 82,\n    \"estudante\": 167\n  },\n  \"primeirasTelasCliente\": [\n    \"auth.inicializacao.splash\",\n    \"auth.inicializacao.boas_vindas\",\n    \"auth.sessao.entrar\"\n  ],\n  \"primeirasTelasEstudante\": [\n    \"auth.inicializacao.splash\",\n    \"auth.inicializacao.boas_vindas\",\n    \"auth.sessao.entrar\"\n  ]\n}"
+        },
+        {
+          "id": "audit_proto_nao_confundir",
+          "type": "quote",
+          "content": "**82 pontos de Cliente e 167 de Estudante não significam 82 e 167 telas únicas nem percursos condicionais executados.** São ocorrências acumuladas pelo percurso linearizado, inclusive por branches da árvore editorial."
+        }
+      ]
+    },
+    {
+      "id": "prototipo_cenario_proposta",
+      "title": "9.4 Proposta separada: cenários compartilhados e mocks coerentes",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "audit_proto_proposta_intro",
+          "type": "text",
+          "content": "Esta seção é uma **proposta baseada nas lacunas verificadas**. Ao iniciar a jornada, o Protótipo poderia selecionar um `cenarioId` e criar um contexto transitório. Em cada tela, resolveria estado e mock local a partir desse contexto, preservando valores compartilhados. Isso **não** existe atualmente em `motor_prototipo/prototipo.js`."
+        },
+        {
+          "id": "audit_proto_contexto_proposto",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"jornadaId\": \"cliente\",\n  \"cenarioId\": \"cliente-plano-estudante\",\n  \"contexto\": {\n    \"usuario\": {\n      \"perfil\": \"cliente\",\n      \"plano\": \"estudante\"\n    },\n    \"sessao\": {\n      \"autenticado\": true\n    }\n  },\n  \"mockPorTela\": {\n    \"cliente.home_cliente\": \"padrao\"\n  },\n  \"observacao\": \"FORMATO PROPOSTO, ainda não suportado pelo motor V5\"\n}"
+        },
+        {
+          "id": "audit_proto_proposta_regras",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Separar **perfil**, **plano**, **estado** e **jornada**, sem usar esses termos como sinônimos.",
+            "Definir contrato e precedência entre cenário global e mocks locais da tela; conflitos devem ser diagnosticados.",
+            "Resolver o estado por regras tipadas e testáveis, sem avaliar `quandoLegado` como JavaScript livre.",
+            "Atualizar contexto temporário quando ações simuladas produzirem efeitos; próximas telas leem o mesmo contexto.",
+            "Preservar IDs e referências atuais. Novo cenário não cria cópia da tela nem Store por motor.",
+            "Se “Estudante” virar plano, mapear as 50 declarações de jornada antes de migrar; hoje `estudante` é jornada independente detectada nos dados."
+          ]
+        },
+        {
+          "id": "audit_proto_decisao",
+          "type": "quote",
+          "content": "**Decisão de produto pendente:** confirmar se Estudante representa persona, jornada, benefício ou plano. Atualmente é uma das quatro jornadas reais. Não removê-la dos JSONs sem plano de migração e testes de regressão."
+        }
+      ]
+    },
+    {
+      "id": "acao_semantica",
+      "title": "9.5 Contrato de ação semântica separado do componente visual",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "arch_acao_semantica_intro",
+          "type": "text",
+          "content": "O elemento visual informa `acaoRef`; a declaração de ação informa evento, validações, condições, efeitos e destinos. **A tela não cadastra “ação de Flow” e “ação de Protótipo” separadamente.** O motor apenas escolhe o que fazer com a declaração. Um ID de tela é mais estável do que sua URL e permite verificação de destino existente."
+        },
+        {
+          "id": "arch_acao_botao",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"id\": \"botao_entrar\",\n  \"componenteRef\": \"cmp.button.primary\",\n  \"props\": {\n    \"texto\": \"Entrar\",\n    \"acaoRef\": \"auth.entrar\"\n  }\n}"
+        },
+        {
+          "id": "arch_acao_contrato_json",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"id\": \"auth.entrar\",\n  \"evento\": \"click\",\n  \"tipo\": \"autenticacao\",\n  \"entrada\": {\n    \"email\": \"form.email\",\n    \"senha\": \"form.senha\"\n  },\n  \"validar\": [\n    \"email_obrigatorio\",\n    \"senha_obrigatoria\"\n  ],\n  \"mock\": {\n    \"resultadoRef\": \"cenario.autenticacao.resultado\"\n  },\n  \"seSucesso\": {\n    \"efeitos\": [\n      {\n        \"tipo\": \"atribuir\",\n        \"destinoRef\": \"sessao.autenticado\",\n        \"valor\": true\n      }\n    ],\n    \"destino\": {\n      \"tipo\": \"tela\",\n      \"telaId\": \"cliente.home_cliente\"\n    }\n  },\n  \"seErro\": {\n    \"efeitos\": [\n      {\n        \"tipo\": \"alterar_estado\",\n        \"estadoId\": \"credenciais_invalidas\"\n      }\n    ]\n  }\n}"
+        },
+        {
+          "id": "arch_acao_semantica_seguranca",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Não avaliar expressões arbitrárias/`quandoLegado` como JavaScript livre. Condições e efeitos devem usar operadores tipados, documentados e testáveis.",
+            "O executor do Protótipo é simulado: não deve chamar autenticação ou APIs de produção salvo uma capacidade explícita, autorizada e isolada.",
+            "Eventos de componente e ações da tela usam IDs rastreáveis. Clique no botão → localiza `acaoRef` → encontra contrato → entrega ao adaptador.",
+            "Quando há `seSucesso`, `seErro` ou rotas condicionais, o Flow mostra todas as possibilidades; o Protótipo escolhe apenas o resultado do contexto atual."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adaptadores_motores",
+      "title": "9.6 Adaptadores de ação: Flow explica; Protótipo executa",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "arch_adaptadores_tabela",
+          "type": "table",
+          "headers": ["Passo", "Flow", "Protótipo"],
+          "rows": [
+            [
+              "Clicar no botão",
+              "Intercepta `acaoRef` da prévia",
+              "Intercepta o mesmo `acaoRef`"
+            ],
+            [
+              "Resolver ação",
+              "Localiza declaração e alternativas",
+              "Localiza declaração e avalia as condições do cenário"
+            ],
+            [
+              "Validação",
+              "Exibe o que seria validado",
+              "Executa as validações simuladas"
+            ],
+            [
+              "Efeitos",
+              "Mostra mudanças previstas, sem gravar",
+              "Aplica mudanças no contexto transitório"
+            ],
+            [
+              "Destino",
+              "Modal com ID, rota resolvida e conexões possíveis",
+              "Navega para a tela realmente selecionada"
+            ],
+            [
+              "Erro",
+              "Mostra ramo `seErro`",
+              "Muda estado/exibe feedback da tela"
+            ],
+            [
+              "Mocks",
+              "Pode exibir dados de exemplo sem alterá-los",
+              "Compartilha cenário e atualizações entre telas"
+            ]
+          ]
+        },
+        {
+          "id": "arch_adaptadores_pseudo",
+          "type": "code",
+          "language": "javascript",
+          "content": "const resolvido = resolverTela({ telaId, contexto, cenarioId });\nconst visual = renderizarTela(resolvido);\nvisual.aoAcionar((acaoId, entrada) => {\n  const acao = resolverAcao(resolvido, acaoId);\n  if (motor === \"flow\") return mostrarExplicacao(acao);\n  if (motor === \"prototipo\") return executarSimulacao(acao, entrada, sessaoSimulada);\n  return inspecionarAcao(acao);\n});"
+        },
+        {
+          "id": "arch_adaptadores_atual",
+          "type": "text",
+          "content": "**COMPARAÇÃO COM O CÓDIGO REAL:** `motor_montagem/montagem.js` já contém `compile()` e `previewHTML()`. Porém `previewRuntime()` hoje injeta um modal genérico para `[data-goto]`, `[data-action]` e `[data-destino]`. O Protótipo usa esse mesmo comportamento e avança principalmente via `protMove`; ele ainda não executa efeitos semânticos da ação. Portanto, a separação entre adaptadores é uma evolução **não implementada**."
+        },
+        {
+          "id": "arch_adaptadores_restricao",
+          "type": "quote",
+          "content": "Nenhum motor precisa duplicar CSS ou HTML. Uma diferença de comportamento deve aparecer no adaptador de ação, não em um segundo renderizador visual."
+        }
+      ]
+    },
+    {
+      "id": "contexto_cenarios",
+      "title": "9.7 Contexto de execução, estados e mocks compartilhados",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "arch_contexto_cenarios_intro",
+          "type": "text",
+          "content": "No Protótipo, selecionar uma jornada e cenário inicializa **uma única sessão de simulação**. O estado do usuário, o plano e dados persistidos na navegação vivem nessa sessão; cada tela lê seus campos por referência e mantém mocks próprios para valores locais. Quando uma ação atualiza o contexto, as próximas telas percebem a mudança."
+        },
+        {
+          "id": "arch_contexto_cenario_json",
+          "type": "code",
+          "language": "json",
+          "content": "{\n  \"schema\": \"advogadoja.cenario.v1-proposta\",\n  \"id\": \"cliente-estudante-aprovado\",\n  \"jornadaId\": \"cliente\",\n  \"contextoInicial\": {\n    \"usuario\": {\n      \"id\": \"cli-01\",\n      \"perfil\": \"cliente\",\n      \"plano\": \"estudante\"\n    },\n    \"sessao\": {\n      \"autenticado\": false\n    },\n    \"academico\": {\n      \"instituicao\": \"Faculdade Exemplo\",\n      \"curso\": \"Direito\"\n    }\n  },\n  \"resultadosMock\": {\n    \"auth.entrar\": \"sucesso\"\n  },\n  \"overridesPorTela\": {\n    \"academico.dados_academicos\": {\n      \"estadoInicial\": \"preenchido\"\n    }\n  }\n}"
+        },
+        {
+          "id": "arch_contexto_cenario_precedencia",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "O cenário inicial fornece um seed; efeitos das ações atualizam o contexto transitório sem reescrever arquivos do catálogo.",
+            "Precedência proposta: estado explicitamente escolhido no teste → estado calculado a partir do contexto → override de cenário válido → fallback seguro da tela. Essa regra deve virar teste automatizado.",
+            "Mocks de tela não sobrescrevem silenciosamente dados compartilhados. Conflitos geram diagnóstico com o nome do campo e sua origem.",
+            "Ao reiniciar, restaurar o seed completo da jornada; ao voltar, definir política documentada de manter ou restaurar efeitos (decisão a homologar).",
+            "Cada ação altera o estado e os dados necessários; a navegação seguinte não pode depender de avanço sequencial automático da lista editorial.",
+            "O Flow pode pré-visualizar um cenário, mas nunca altera a sessão ao clicar numa ação."
+          ]
+        },
+        {
+          "id": "arch_contexto_cenario_real",
+          "type": "quote",
+          "content": "**ESTADO V5:** `mocks.cenarios` pode existir no JSON e `compile()` devolve `cenario`; o `previewHTML()` não aplica automaticamente seus efeitos ao contexto. O motor atual do Protótipo não mantém uma sessão de mocks compartilhados com transições."
+        }
+      ]
+    },
+    {
+      "id": "estado_visual",
+      "title": "9.8 Estrutura visual comum e variantes legítimas por estado",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "arch_estado_visual_intro",
+          "type": "text",
+          "content": "Chamar estrutura, estilo e componentes de “parte estática” significa que são a **definição visual canônica**, não que o resultado jamais muda. Uma única tela pode variar sua composição por estado e regras declarativas. O renderizador resolve qual variante se aplica; Flow e Protótipo recebem a mesma variante se o contexto for igual."
+        },
+        {
+          "id": "arch_estado_visual_matriz",
+          "type": "table",
+          "headers": ["Tela", "Estado", "Componentes que mudam", "Quem decide"],
+          "rows": [
+            [
+              "`advogado.home_advogado` (REAL)",
+              "`oab_pendente`",
+              "Painel de pendência OAB, além dos componentes comuns",
+              "V5: estado selecionado/fallback; alvo: resolvedor com contexto"
+            ],
+            [
+              "`advogado.home_advogado` (REAL)",
+              "`oab_aprovada`",
+              "Disponibilidade e solicitações, além dos componentes comuns",
+              "V5: estado selecionado/fallback; alvo: resolvedor com contexto"
+            ],
+            [
+              "`academico.dados_academicos` (PROPOSTA)",
+              "`preenchido`",
+              "Mesma estrutura com valores preenchidos e elementos condicionais",
+              "Seed + ações + estado local"
+            ]
+          ]
+        },
+        {
+          "id": "arch_estado_visual_real",
+          "type": "text",
+          "content": "Na auditoria, `compile()` devolveu 7 instâncias de componentes para OAB pendente e 8 para aprovada, **sem referências visuais ausentes**; portanto o mecanismo de variantes visuais já existe. O que ainda falta é o Protótipo selecionar automaticamente o estado pela regra de negócio (`sessao.profissional.oab.status`) e executar as transições."
+        },
+        {
+          "id": "arch_estado_visual_principio",
+          "type": "quote",
+          "content": "Diferença visual por estado pertence à tela; **diferença de comportamento entre Flow e Protótipo pertence ao motor**. Não confundir esses dois eixos."
+        }
+      ]
+    },
+    {
+      "id": "rotas_destinos",
+      "title": "9.9 Destinos por IDs semânticos; URLs como resolução de rota",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "arch_rotas_intro",
+          "type": "text",
+          "content": "No Flow, ao clicar em uma ação, a interface pode mostrar o destino **e também** a URL correspondente. Mas a URL não deve ser o elo principal: a relação operacional é `origemAcao → telaId de destino`. O roteador converte `telaId` para URL quando necessário."
+        },
+        {
+          "id": "arch_rotas_tabela",
+          "type": "table",
+          "headers": ["Campo", "Uso correto", "Problema evitado"],
+          "rows": [
+            [
+              "`acaoId`",
+              "Identifica a intenção semântica associada a um elemento visual",
+              "Duplicar comportamento por motor"
+            ],
+            [
+              "`destino.telaId`",
+              "Estabelece a relação entre telas por ID estável",
+              "Quebra por renomear URL ou pasta"
+            ],
+            [
+              "`identidade.rota`",
+              "Endereço navegável resolvido pelo roteador",
+              "URL tratada como ID universal"
+            ],
+            [
+              "`ocorrenciaId`",
+              "Identifica o ponto de uso da tela dentro de uma jornada",
+              "Confundir a mesma tela usada duas vezes"
+            ],
+            [
+              "`acao.contexto`",
+              "Payload de entrada e efeitos tipados",
+              "Perda de dados entre telas"
+            ]
+          ]
+        },
+        {
+          "id": "arch_rotas_validacoes",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Exibir erro de compilação quando um destino referencia um ID inexistente; não abrir tela vazia silenciosamente.",
+            "Mostrar no Flow conexões condicionais de sucesso, erro e menus; no Protótipo somente seguir a escolhida pela ação simulada.",
+            "Permitir navegação externa por URL absoluta apenas em ações explicitamente declaradas e com política própria; não confundir com rota interna.",
+            "Ao mover uma tela de jornada, suas ações intrínsecas continuam as mesmas. Um contexto que requer saída diferente usa parâmetro/override de ocorrência aprovado ou decisão de estado tipada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "regras-de-implementacao-para-preservar-a-simplicidade",
+      "title": "Regras de implementação para preservar a simplicidade",
+      "parentId": "contrato-minimo-de-todos-os-motores-simples-especificos-e-se",
+      "blocks": [
+        {
+          "id": "bloco_c1721984-3ac0-4d68-8fd6-76daaa590efe",
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**Um dado, um proprietário.** Destino de ação pertence à tela que a declara; componente pertence ao catálogo de componentes; contrato de planejamento pertence ao módulo Contrato.",
+            "**Consulta por ID, não por endereço físico.** Pastas e ordem visual são detalhes de organização; os relacionamentos usam IDs.",
+            "**Sem exceções por tela no motor.** Uma tela nova deve funcionar somente pela descrição aceita pelo contrato.",
+            "**Sem adivinhação de regras.** Se uma condição é texto legado ou ainda não foi homologada, o motor sinaliza a limitação. Não transforma texto em lógica executável por interpretação livre.",
+            "**Campos obrigatórios claros.** A nova aba Modelos mostra o mínimo necessário para uma tela válida; os campos opcionais aparecem quando usados.",
+            "**Sem reprocessamento total desnecessário.** O motor atualiza apenas projeções afetadas pelos arquivos alterados e renderiza a aba sob demanda.",
+            "**Diagnósticos em vez de correções invisíveis.** Destino ausente, branch incompleta, componente não encontrado ou campo incompatível são relatados.",
+            "**Teste por contrato.** Cada módulo deve provar que interpreta um registro novo válido sem receber alterações de código específicas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fluxo-de-trabalho-ilustrado-adicionar-uma-nova-tela-numa-jor",
+      "title": "10. Fluxo de trabalho ilustrado — adicionar uma nova tela numa jornada",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_f26b462b-d143-4977-b0b8-90af12e80af8",
+          "type": "text",
+          "content": "**Exemplo hipotético:** durante a revisão da jornada Cliente, decidimos introduzir “Confirmar atendimento”."
+        },
+        {
+          "id": "bloco_11ac2788-4362-4384-9b68-d3a265d97fff",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Consultamos **Modelos → Tela** e criamos um JSON a partir do modelo vazio.",
+            "A tela recebe identidade estável, participação em `cliente`, componentes necessários, estados e ações com destinos.",
+            "Importamos esse JSON pelo **Catálogo** ou pelo futuro importador da aba **Jornadas**.",
+            "O Catálogo valida e registra o arquivo individual. Componentes já existentes são referenciados, sem cópias.",
+            "O Flow recebe a nova ocorrência na sequência adequada (automaticamente apenas quando a posição estiver declarada; caso contrário, usuário escolhe o ponto de inserção).",
+            "Relações e Mapa passam a mostrar os vínculos declarados; Protótipo exibe a nova tela quando existir posição válida no percurso; Banco mostra as necessidades de dados existentes.",
+            "Quando algo estiver faltando, a interface informa: “falta destino”, “falta ocorrência no Flow”, “prévia sem componente”, em vez de inventar."
+          ]
+        },
+        {
+          "id": "bloco_a1ef37bc-d650-4668-b70f-cd69b8542341",
+          "type": "text",
+          "content": "**Resultado:** não precisamos adicionar um caso específico a cada motor para fazer a tela aparecer."
+        }
+      ]
+    },
+    {
+      "id": "o-que-ja-existe-e-o-que-ainda-e-proposta",
+      "title": "11. O que já existe e o que ainda é proposta",
+      "parentId": null,
+      "blocks": []
+    },
+    {
+      "id": "diagnosticos_zip",
+      "title": "11.1 Auditoria da cópia recebida: problemas confirmados",
+      "parentId": "o-que-ja-existe-e-o-que-ainda-e-proposta",
+      "blocks": [
+        {
+          "id": "audit_diagnosticos_resultado",
+          "type": "text",
+          "content": "Execução de `python3 verificacao/auditar_catalogo.py`: **0 erros e 6 avisos**, todos relativos a caminhos editoriais sem nós. A função `compileFlowStructure()` também sinaliza a tela `advogado.disponibilidade.raio_atendimento` fora da árvore. Em execução JavaScript, `collectEdges()` retornou **532 arestas, 11 não resolvidas**. São diagnósticos distintos e devem ser acompanhados separadamente."
+        },
+        {
+          "id": "audit_diagnosticos_tabela",
+          "type": "table",
+          "headers": ["Tipo", "Quantidade", "Detalhe"],
+          "rows": [
+            [
+              "Caminhos vazios no auditor",
+              "6",
+              "`sequence-0190`, `sequence-0362`, `sequence-0428`, `sequence-home-direto-perfil-solicitar`, `sequence-home-onboarding-perfil-solicitar`, `sequence-home-cadastro-perfil-solicitar`"
+            ],
+            [
+              "Tela sem ocorrência editorial",
+              "1",
+              "`advogado.disponibilidade.raio_atendimento`"
+            ],
+            [
+              "Destinos operacionais ausentes",
+              "11",
+              "Lista completa na seção 9.2"
+            ],
+            [
+              "Componentes faltantes na Home OAB pendente/aprovada",
+              "0 / 0",
+              "Execução de `compile()` sobre a cópia"
+            ],
+            [
+              "Diferenças de esquema",
+              "79 telas usando `v4-proposta`",
+              "Contrato formal permanece proposto, não homologado"
+            ]
+          ]
+        },
+        {
+          "id": "audit_diagnosticos_limite",
+          "type": "quote",
+          "content": "Os testes de auditoria e as funções de montagem/Flow foram executados sobre os arquivos; **não foi realizado teste visual de navegador completo** neste ambiente. Portanto, fidelidade de interface e cliques reais permanecem sem validação aqui."
+        }
+      ]
+    },
+    {
+      "id": "lacunas_alvo",
+      "title": "11.2 Matriz: comportamento confirmado na V5 versus contrato-alvo",
+      "parentId": "o-que-ja-existe-e-o-que-ainda-e-proposta",
+      "blocks": [
+        {
+          "id": "arch_lacunas_matriz",
+          "type": "table",
+          "headers": [
+            "Tema",
+            "Existe na base recebida",
+            "Contrato futuro",
+            "Tipo de mudança"
+          ],
+          "rows": [
+            [
+              "Tela reutilizável",
+              "JSON único e componentes por refs",
+              "Independente de jornada proprietária",
+              "Desacoplar classificação e compatibilidade"
+            ],
+            [
+              "Pertencimento",
+              "Listas `classificacao.jornadas` + `aplicaA` + `flow.editor`",
+              "Jornada individual com ocorrências/referências",
+              "Novo resolvedor e contrato de jornada"
+            ],
+            [
+              "Montagem",
+              "`compile()` monta variantes por estado",
+              "Resolver visual comum e estável",
+              "Extrair serviço e padronizar entrada"
+            ],
+            [
+              "Preview de ação",
+              "`previewRuntime()` abre modal genérico",
+              "Adaptador de Flow explica destinos/efeitos",
+              "Separar callbacks/interpretação"
+            ],
+            [
+              "Protótipo",
+              "Percurso editorial linearizado e `protMove`",
+              "Execução condicional de ações e navegação real simulada",
+              "Executor de ações"
+            ],
+            [
+              "Mocks",
+              "Grupos locais e cenários por estado",
+              "Seed de jornada e contexto compartilhado",
+              "Sessão transitória de simulação"
+            ],
+            [
+              "Estados",
+              "Filtro explícito + fallback",
+              "Resolução automática declarativa + fallback",
+              "Resolvedor de regras tipadas"
+            ],
+            [
+              "Rotas",
+              "Destinos `acoes` e links de componentes",
+              "IDs de tela e roteamento separado",
+              "Padronização e diagnóstico"
+            ],
+            [
+              "Fluxo/Mesa/Mapa",
+              "Motores reconstroem parcialmente cada leitura",
+              "Todos consomem uma composição resolvida",
+              "Adaptadores compartilhando contrato"
+            ]
+          ]
+        },
+        {
+          "id": "arch_lacunas_matriz_evidencia",
+          "type": "text",
+          "content": "**Fontes técnicas verificadas:** `app/core.js`, `motor_montagem/montagem.js`, `motor_fluxo/fluxo.js`, `motor_prototipo/prototipo.js`, `arvore_relacoes/relacoes.js`, `jornadas/painel.js` e exemplos de `catalogo/telas`. A auditoria catalogou 79 telas, 234 componentes e 11 destinos de navegação não resolvidos na cópia recebida. Essas contagens não são funcionalidades propostas nem uma análise de produção."
+        },
+        {
+          "id": "arch_lacunas_escopo",
+          "type": "quote",
+          "content": "Esta documentação altera **o contrato desejado** e compara com a implementação atual; **não significa que os motores ou os JSONs de tela do ZIP tenham sido modificados**."
+        }
+      ]
+    },
+    {
+      "id": "ja-implementado-ou-previsto-nos-contratos-atuais-da-v5",
+      "title": "Já implementado ou previsto nos contratos atuais da V5",
+      "parentId": "o-que-ja-existe-e-o-que-ainda-e-proposta",
+      "blocks": [
+        {
+          "id": "bloco_8958c593-b668-4095-a1fb-dd6446d0411c",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "JSON canônico por tela e componente.",
+            "Jornadas descobertas dinamicamente a partir das telas.",
+            "Árvore editorial em `flow.editor`, com telas reutilizáveis.",
+            "Montagem visual por componentes referenciados.",
+            "Relações operacionais calculadas dos JSONs.",
+            "Protótipo navegável com avanço, retorno e reinício; ainda lineariza caminhos de bifurcação.",
+            "Módulo Contrato com JSON exclusivo de planejamento e exportação/importação própria."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "propostas-descritas-aqui-ainda-nao-implementadas",
+      "title": "Propostas descritas aqui, ainda não implementadas",
+      "parentId": "o-que-ja-existe-e-o-que-ainda-e-proposta",
+      "blocks": [
+        {
+          "id": "bloco_403a366e-eb2a-482b-af66-02a8430168c0",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Nova aba **Modelos** com árvore didática de campos, schemas, exemplos e validação.",
+            "Importação/exportação de **jornada completa** com prévia de diferenças, conflitos e confirmação.",
+            "Atualizações incrementais dos módulos sem recriar todas as prévias ao carregar.",
+            "Escolha interativa de bifurcações no Protótipo a partir de condições homologadas.",
+            "Recarregamento automático quando arquivos externos forem modificados, caso aprovado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pendencias-da-base-que-nao-devemos-esconder",
+      "title": "Pendências da base que não devemos esconder",
+      "parentId": "o-que-ja-existe-e-o-que-ainda-e-proposta",
+      "blocks": [
+        {
+          "id": "bloco_be46f1b9-7156-47cf-8de8-186014fab43c",
+          "type": "text",
+          "content": "A auditoria anterior identificou destinos de ação ainda ausentes, caminhos vazios e ao menos uma tela fora da árvore editorial. Esses pontos precisam aparecer no diagnóstico e ser resolvidos no processo de revisão de jornadas; não são motivo para o motor fabricar registros ou corrigir o Flow sem decisão."
+        }
+      ]
+    },
+    {
+      "id": "plano-de-execucao-em-etapas-curtas",
+      "title": "12. Plano de execução em etapas curtas",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_d33b424b-4e3d-4abb-a624-ee829d85f514",
+          "type": "text",
+          "content": "**Etapa A — Especificar e homologar Modelos:** definir os modelos oficiais (catálogo/pacote, tela, componente e jornada de intercâmbio), obrigatoriedade e validação, sem tocar nos JSONs existentes."
+        },
+        {
+          "id": "bloco_0728b8d7-b0ca-4be6-89cc-4fa3d7aba6b4",
+          "type": "text",
+          "content": "**Etapa B — Implementar a aba Modelos:** criar a interface explicativa, exemplos, árvore de campos e validação de JSON. Confirmar que os modelos refletem os contratos aprovados, não telas específicas."
+        },
+        {
+          "id": "bloco_576449c2-436c-4db5-bfa1-38be4bb26fbe",
+          "type": "text",
+          "content": "**Etapa C — Introduzir importação/exportação de jornadas:** validar referências, comparar diferenças, apresentar conflitos, confirmar e gravar exclusivamente nos registros canônicos."
+        },
+        {
+          "id": "bloco_8d4ba242-ebda-4d49-b777-119e42b9f1f5",
+          "type": "text",
+          "content": "**Etapa D — Simplificar e otimizar motores:** abstrair busca e resolução comuns, reduzir recálculos, renderizar por demanda e evitar materializar imagens/iframes antes da hora; não mudar regras de negócio durante a otimização."
+        },
+        {
+          "id": "bloco_4bb71a90-30f4-440c-b47f-bf5d02d0a3ef",
+          "type": "text",
+          "content": "**Etapa E — Usar o Workspace para o objetivo principal:** revisar jornadas reais, localizar telas ausentes ou duplicadas, complementar onboarding e administração, homologar relações e estados e finalizar os fluxos do produto."
+        },
+        {
+          "id": "arch_etapa_f",
+          "type": "text",
+          "content": "**Etapa F — Desacoplamento estrutural:** executar um inventário automático de vínculos existentes; criar os novos contratos independentes de tela, jornada, contexto, cenário e ação; implementar resolvedor/renderizador compartilhados; adaptar Flow e Protótipo; validar equivalência de rotas e estados antes de retirar as regras V5 obsoletas. Depois disso, mover telas entre jornadas torna-se configuração por referências."
+        }
+      ]
+    },
+    {
+      "id": "etapas_motores_auditados",
+      "title": "12.1 Próximas decisões a partir do código atual",
+      "parentId": "plano-de-execucao-em-etapas-curtas",
+      "blocks": [
+        {
+          "id": "audit_etapas_prioridade",
+          "type": "table",
+          "headers": ["Prioridade", "Ação específica", "Critério de aceite"],
+          "rows": [
+            [
+              "P0 — contrato real",
+              "Confrontar `emptyTemplate()`, `validateRecord()` e schemas propostos",
+              "Um exemplo oficial de tela/componente validado e interpretado pelos consumidores"
+            ],
+            [
+              "P0 — diagnósticos",
+              "Resolver ou documentar 11 destinos, 6 caminhos vazios e 1 tela órfã",
+              "Auditorias sem pendência não intencional"
+            ],
+            [
+              "P1 — protótipo",
+              "Adicionar seleção de cenário + contexto compartilhado + aplicação de mocks locais",
+              "Cliente percorre várias telas com mesmo usuário/estado, sem conflito"
+            ],
+            [
+              "P1 — navegação",
+              "Conectar eventos tipados de componente à ação/destino e branch do Flow",
+              "Clique demonstrativo seleciona caminho válido; faltas geram diagnóstico"
+            ],
+            [
+              "P1 — estados",
+              "Homologar avaliação tipada de estado, fallback e `aplicaA`",
+              "Home Advogado alterna OAB pendente/aprovada por cenário testado"
+            ],
+            [
+              "P2 — papéis e planos",
+              "Decidir se Estudante vira plano de Cliente",
+              "Matriz de migração das 50 participações existentes sem perda de jornada"
+            ],
+            [
+              "P2 — performance",
+              "Atualizar projeções só quando entradas relevantes mudarem",
+              "Mudança de estilo não reconstrói Flow sem necessidade"
+            ]
+          ]
+        },
+        {
+          "id": "audit_etapas_diferenca",
+          "type": "text",
+          "content": "**Regra de evolução:** cadastrar nova tela válida não deve exigir mudança em cada motor. Criar uma capacidade nova (como resolver cenários compartilhados) exige alterar **um contrato explícito e o motor consumidor apropriado**, com testes e sem exceções por ID de tela."
+        }
+      ]
+    },
+    {
+      "id": "plano_execucao_padroes",
+      "title": "12.2 Sequência recomendada para padronizar sem recriar o legado",
+      "parentId": "plano-de-execucao-em-etapas-curtas",
+      "blocks": [
+        {
+          "id": "arch_execucao_nova",
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**1. Congelar evidências:** manter snapshot dos JSONs V5 e relatórios de relações, telas, componentes, cenários e destinos (somente leitura).",
+            "**2. Contratos V6:** formalizar arquivos de tela, componente, jornada, contexto, cenário e ação com schemas e exemplos completos.",
+            "**3. Índice/resolvedor único:** construir resolução canônica `telaId → definição`, `jornadaId → ocorrências`, `acaoId → intenção`, `contexto → estado`, com detecção de ciclos/ref ausente.",
+            "**4. Renderização compartilhada:** aproveitar `compile()`/`renderV()` e criar uma única saída visual parametrizada por tela + contexto + cenário.",
+            "**5. Adaptadores:** Flow apresenta modal e relações; Protótipo executa condições, efeitos e navegação; Montagem inspeciona a compilação.",
+            "**6. Importação/evolução da base:** extrair a composição das jornadas atuais **uma única vez**, confrontar equivalência de telas/ações e registrar alterações; não duplicar definições.",
+            "**7. Testes fim a fim:** Login sucesso/erro; Home OAB pendente/aprovada; reutilização de tela em duas jornadas; encaixe da jornada acadêmica; atualização de mock compartilhado.",
+            "**8. Simplificação final:** somente após equivalência, remover leituras redundantes de `classificacao.jornadas`/`flow.editor` como fonte canônica e encerrar caminhos de compatibilidade legados."
+          ]
+        },
+        {
+          "id": "arch_execucao_nova_prio",
+          "type": "table",
+          "headers": ["Prioridade", "Entregável", "Prova de conclusão"],
+          "rows": [
+            [
+              "P0",
+              "Schema V6 e composição de jornada aprovados",
+              "Exemplos válidos e relações sem ambiguidade"
+            ],
+            [
+              "P0",
+              "Resolvedor de referências/estados",
+              "Testes de IDs, ciclos, prioridades e destinos"
+            ],
+            [
+              "P1",
+              "Renderizador comum e ações separadas",
+              "Flow/Protótipo exibem a mesma aparência para mesmo contexto"
+            ],
+            [
+              "P1",
+              "Executor de protótipo + cenário",
+              "Clique navega por ação e preserva dados entre telas"
+            ],
+            [
+              "P2",
+              "Importador/conversor da base atual",
+              "Diferenças verificadas, sem perda nem criação de Store paralela"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "criterios-de-aceite-da-arquitetura",
+      "title": "13. Critérios de aceite da arquitetura",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_da973182-2be7-472c-b211-d87cfe8c6d7a",
+          "type": "text",
+          "content": "O plano só estará bem aplicado quando for possível demonstrar estes cenários:"
+        },
+        {
+          "id": "bloco_9e4020ee-8c23-4271-b50e-cb50e95ab396",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Uma nova tela válida, importada por JSON, entra no catálogo **sem mudança no código dos motores**.",
+            "Uma jornada nova declarada por telas ganha sua visão correspondente sem cadastro manual de abas.",
+            "Um componente alterado é refletido nas telas que o referenciam após sincronização/recarregamento, sem JSONs duplicados.",
+            "Uma saída adicionada na tela de origem aparece nas relações, sem gravar entrada na tela de destino.",
+            "Uma ocorrência adicionada ao Flow passa a aparecer na sequência correta, preservando ocorrências já existentes.",
+            "O Protótipo monta a prévia usando o catálogo e deixa claro quando a navegação condicional não está homologada.",
+            "Um JSON de jornada pode ser **validado e comparado antes da importação**, e conflitos não sobrescrevem silenciosamente a base.",
+            "A aba Modelos responde “qual é a estrutura esperada?” sem obrigar o usuário a abrir uma tela real.",
+            "Nenhuma atualização no módulo Contrato aplica mudanças ao catálogo sem implementação/homologação específica.",
+            "O carregamento inicial não precisa reconstruir todas as abas, todos os caminhos e todas as prévias do Flow."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aceite_refatoracao",
+      "title": "13.1 Critérios de aceite específicos desta padronização",
+      "parentId": "criterios-de-aceite-da-arquitetura",
+      "blocks": [
+        {
+          "id": "arch_aceite_refatoracao_lista",
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Adicionar `academico.dados_academicos` à jornada Cliente altera o manifesto da jornada e não altera o JSON da tela.",
+            "Usar a mesma tela duas vezes em jornadas distintas não copia `estrutura`, `estilos`, `componentes` ou `acoes`.",
+            "Alterar um CSS de componente atualiza automaticamente as prévias de Montagem, Flow e Protótipo ao recarregar a Store.",
+            "Com estado/contexto iguais, Flow e Protótipo exibem a **mesma tela visual**, incluindo componentes condicionais.",
+            "Clicar numa ação no Flow mostra ID, destino, rota, condições e efeitos **sem** modificar contexto da sessão.",
+            "Clicar na mesma ação no Protótipo valida entrada, seleciona sucesso/erro, aplica efeitos e navega por `telaId`.",
+            "Iniciar cenário `cliente-plano-estudante` incorpora a jornada acadêmica e mantém seus dados nas telas seguintes.",
+            "Uma variável de OAB alterna `oab_pendente`/`oab_aprovada` sem copiar duas Homes e sem lógica especial codificada no Protótipo.",
+            "O importador acusa destino inexistente, ID duplicado, dependência ausente e ciclo de jornada antes de aplicar alterações.",
+            "Todos os motores compartilham os índices derivados e nenhum passa a persistir um banco alternativo de telas, ações ou jornadas.",
+            "O editor visual consegue importar/exportar esse plano inteiro e mostrar todas as seções/diagramas em “Documento completo” sem perda."
+          ]
+        },
+        {
+          "id": "arch_aceite_refatoracao_resultado",
+          "type": "quote",
+          "content": "**Resultado esperado:** depois da adaptação inicial do código existente, rearranjar telas, incorporar módulos de jornada e trocar perfil/plano são operações de **configuração declarativa**, com validação automática — não um projeto novo de migração a cada mudança."
+        }
+      ]
+    },
+    {
+      "id": "decisao-orientadora-final",
+      "title": "14. Decisão orientadora final",
+      "parentId": null,
+      "blocks": [
+        {
+          "id": "bloco_e905aac7-9ce7-466a-b563-141cc5391722",
+          "type": "quote",
+          "content": "**O catálogo descreve o produto. Os modelos explicam como descrevê-lo. O módulo Contrato define e homologa as regras. Os motores interpretam essas descrições. As demais abas mostram diferentes leituras da mesma verdade.**"
+        },
+        {
+          "id": "bloco_a35365b9-9fd4-4a56-a64c-05cea7570820",
+          "type": "text",
+          "content": "Esse é o fundamento que permite voltar ao objetivo principal: **construir e revisar as jornadas e telas do Advogado Já**, em vez de gastar mais tempo recriando ferramentas."
+        }
+      ]
+    },
+    {
+      "id": "decisao_integrada",
+      "title": "14.1 Princípios consolidados e decisões ainda abertas",
+      "parentId": "decisao-orientadora-final",
+      "blocks": [
+        {
+          "id": "arch_decisao_integrada_tabela",
+          "type": "table",
+          "headers": ["Princípio", "Situação", "Observação"],
+          "rows": [
+            [
+              "Tela autônoma",
+              "Diretriz de arquitetura",
+              "Não pertence obrigatoriamente a um perfil/jornada"
+            ],
+            [
+              "Jornada referencial e componível",
+              "Diretriz de arquitetura",
+              "JSON proprietário da ordem, condições e ocorrências"
+            ],
+            [
+              "Definição visual única",
+              "Diretriz de arquitetura",
+              "Mesmo renderizador para todas as prévias"
+            ],
+            [
+              "Ações semânticas únicas",
+              "Diretriz de arquitetura",
+              "Flow explica; Protótipo simula; ambos usam `acaoRef`"
+            ],
+            [
+              "Contexto/estado/mock coordenados",
+              "Diretriz de arquitetura",
+              "Sessão compartilhada de protótipo com mocks por tela"
+            ],
+            [
+              "Estudante como plano comercial",
+              "Hipótese a confirmar",
+              "Exemplo didático; não alterar regra de negócio sem confirmação"
+            ],
+            [
+              "Política de voltar/desfazer na simulação",
+              "Decisão pendente",
+              "Definir retenção ou restauração dos efeitos"
+            ],
+            [
+              "Formato de exportação de jornada",
+              "Decisão pendente",
+              "Referencial e pacote portátil com dependências"
+            ],
+            [
+              "Implementação no código V5",
+              "Não executada neste documento",
+              "Exige adaptação e testes concretos"
+            ]
+          ]
+        },
+        {
+          "id": "arch_decisao_integrada_resumo",
+          "type": "quote",
+          "content": "**Regra-mãe:** telas, componentes, ações, estados e jornadas são unidades independentes e referenciáveis. Um resolvedor monta dados e visual de modo uniforme; cada motor interpreta o mesmo contrato segundo sua função. Mudar relações não implica duplicar telas nem reprogramar motores."
+        }
+      ]
+    }
+  ]
+}

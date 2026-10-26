@@ -6694,7 +6694,7 @@
           style +
           '</style></head><body class="' +
           (modo === "editor" ? "lab-select" : "") +
-          '"><div id="lab-root"></div></body></html>'
+          '"><div id="lab-root"></div></' + 'body></html>'
         );
       }
       function setAttr(el, key, val) {
@@ -8195,7 +8195,7 @@
         const rootCss=':root{'+Object.entries(tokens).map(([k,v])=>k+':'+v).join(';')+'}';
         const styleGroups=(screen.estilos?.grupos||[]).filter(x=>modularAplica(x.aplicaA,state,journey)).map(x=>x.css||'');
         const cssAll=[rootCss,screen.estilos?.globalDaTela||'',...css,...styleGroups,'.screen-slot--menu{position:relative}.prototype-drawer.open{display:block!important}'].join('\n').replace(/<\/style/ig,'');
-        frame.srcdoc='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>'+cssAll+'</style></head><body>'+markup+'</body></html>';
+        frame.srcdoc='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>'+cssAll+'</style></head><body>'+markup+'</'+'body></html>';
         info.textContent=(buckets.header?.length||0)+(buckets.main?.length||0)+(buckets.menu?.length||0)+(buckets.modal?.length||0)+(buckets.popup?.length||0)+' instâncias · '+state+' · '+missing.length+' referência(s) faltante(s)';
         frame.onload=()=>{
           const doc=frame.contentDocument;if(!doc)return;

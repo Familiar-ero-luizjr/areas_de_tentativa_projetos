@@ -6,12 +6,15 @@ function renderTree(){
   let n=root;for(const piece of path.split('/').slice(0,-1)){n.children[piece]??={children:{},items:[]};n=n.children[piece];}
   n.items.push({type,id:idOf(item),name:path.split('/').at(-1),path});
  }
- function folder(node,name,level){let body='';for(const [k,v] of Object.entries(node.children).sort(([a],[b])=>a.localeCompare(b)))body+=folder(v,k,level+1);
-  for(const x of node.items.sort((a,b)=>a.name.localeCompare(b.name)))body+=`<li class="leaf ${model.selection?.id===x.id&&model.selection?.type===x.type?'selected':''}" data-sel-type="${x.type}" data-sel-id="${escapeHtml(x.id)}" title="${escapeHtml(x.path)}"><span class="json">◆</span><span class="label-file">${escapeHtml(x.name)}</span><small>${x.type==='screen'?'tela':'comp.'}</small></li>`;
-  return `<li><details ${level<2?'open':''}><summary><span class="fold">📁</span>${escapeHtml(name)}</summary><ul>${body}</ul></details></li>`;
+ function folder(node,name,level){let body='';for(const [k,v] of Object.entries(node.children).sort(([a],[b])=>a.localeCompare(b,'pt-BR')))body+=folder(v,k,level+1);
+  for(const x of node.items.sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')))body+=`<button type="button" class="${model.selection?.id===x.id&&model.selection?.type===x.type?'selected':''}" data-sel-type="${x.type}" data-sel-id="${escapeHtml(x.id)}" title="${escapeHtml(x.id)}"><span class="modular-node-icon">▣</span>${escapeHtml(x.name.replace(/\.json$/,''))}</button>`;
+  return `<details ${level<2?'open':''}><summary>${escapeHtml(name.replace(/\.json$/,''))} /</summary><button type="button" data-catalog-folder="${escapeHtml(name)}"><span class="modular-node-icon">◈</span> Ver seção ${escapeHtml(name.replace(/\.json$/,''))}</button>${body}</details>`;
  }
- $('catalogTree').innerHTML='<ul>'+folder(root,'Catálogo/',0)+'</ul>';
+ $('catalogTree').innerHTML='<button type="button" class="'+(!model.selection?'selected':'')+'" data-catalog-root><span class="modular-node-icon">◈</span> Catálogo completo</button>'+folder(root,'Catálogo',0);
  document.querySelectorAll('[data-sel-id]').forEach(el=>el.addEventListener('click',()=>chooseItem(el.dataset.selType,el.dataset.selId)));
+ document.querySelectorAll('[data-catalog-root],[data-catalog-folder]').forEach(el=>el.addEventListener('click',()=>{model.selection=null;ui.jsonMode='tree';renderTree();renderSelected();}));
+ const count=$('catalogTreeCount');if(count)count.textContent=allComponents().length+' componentes · '+allScreens().length+' telas';
+ renderCatalogJump();
 }
 function treeJson(v,depth=0){
  if(depth>25)return '<span class="muted">Profundidade máxima</span>';
@@ -24,15 +27,43 @@ function treeJson(v,depth=0){
 }
 function chooseItem(type,id){model.selection={type,id};ui.jsonMode='tree';renderTree();renderSelected();}
 function currentItem(){const {type,id}=model.selection||{};return model[type==='screen'?'screens':'components']?.[id]||null;}
+function renderCatalogJump(){
+ const select=$('catalogJump');if(!select)return;
+ const old=select.value, screens=allScreens();
+ select.innerHTML='<option value="">Ir diretamente para uma tela…</option>'+screens.map(t=>`<option value="${escapeHtml(idOf(t))}">${escapeHtml(t.identidade.nome||idOf(t))} · ${escapeHtml(idOf(t))}</option>`).join('');
+ const selected=model.selection?.type==='screen'?model.selection.id:old;
+ if(screens.some(t=>idOf(t)===selected))select.value=selected;
+}
+function renderCatalogPreview(){
+ const panel=$('catalogPreviewPanel'),frame=$('catalogPreview'),note=$('catalogPreviewNote'),title=$('selTitle'),toggle=$('catalogPreviewRefresh');
+ const item=currentItem(),isScreen=model.selection?.type==='screen';
+ if(!isScreen||!item){panel.hidden=true;frame.srcdoc='';toggle.textContent='Mostrar prévia';return;}
+ const screenId=idOf(item),journeys=applicableJourneys(item),states=arr(item.estados?.grupos);
+ const journeyOptions=(journeys.length?journeys:['*']).map(j=>({value:j,label:journeyName(j)}));
+ const stateOptions=(states.length?states:[{id:item.estados?.fallbackSeguro||'padrao',nome:'Padrão'}]).map(s=>({value:s.id,label:s.nome||s.id}));
+ if(ui.catalogPreviewScreen!==screenId){ui.catalogPreviewScreen=screenId;ui.catalogPreviewJourney=journeyOptions[0].value;ui.catalogPreviewState=stateOptions[0].value;}
+ if(!journeyOptions.some(o=>o.value===ui.catalogPreviewJourney))ui.catalogPreviewJourney=journeyOptions[0].value;
+ if(!stateOptions.some(o=>o.value===ui.catalogPreviewState))ui.catalogPreviewState=stateOptions[0].value;
+ const journey=$('catalogPreviewJourney'),state=$('catalogPreviewState');
+ journey.innerHTML=journeyOptions.map(o=>`<option value="${escapeHtml(o.value)}">${escapeHtml(o.label)}</option>`).join('');state.innerHTML=stateOptions.map(o=>`<option value="${escapeHtml(o.value)}">${escapeHtml(o.label)}</option>`).join('');
+ journey.value=ui.catalogPreviewJourney;state.value=ui.catalogPreviewState;
+ title.textContent='Prévia de montagem · '+(item.identidade.nome||screenId);
+ if(!ui.catalogPreviewShowing){panel.hidden=true;frame.srcdoc='';toggle.textContent='Mostrar prévia';return;}
+ const mounted=compile(item,ui.catalogPreviewJourney,ui.catalogPreviewState);
+ frame.srcdoc=previewHTML(mounted,false);toggle.textContent='Ocultar prévia';
+ note.textContent=`${mounted.componentes.length} componente(s) montado(s) · ${mounted.grupos.length} grupo(s) HTML · ${mounted.acoes.length} ação(ões) · ${mounted.pendencias.length?mounted.pendencias.length+' referência(s) pendente(s)':'nenhuma referência pendente'}.`;
+ panel.hidden=false;
+}
+function catalogIndexView(){return {catalogo:{metadados:{schema:CONTRACT,tipo:'indice_visual_do_catalogo',fonte:'catalogo/telas + catalogo/componentes'},resumo:{componentes:allComponents().length,telas:allScreens().length},componentes:allComponents().map(c=>({id:idOf(c),nome:c.identidade.nome,localizacao:pathOf(c,'component')})),telas:allScreens().map(t=>({id:idOf(t),nome:t.identidade.nome,jornadas:arr(t.classificacao?.jornadas),localizacao:pathOf(t,'screen')}))}};}
 function renderSelected(){
  const item=currentItem(),isScreen=model.selection?.type==='screen';
  $('exportSelected').disabled=!item;$('exportScreenPack').disabled=!item||!isScreen;
- if(!item){$('selTitle').textContent='Inspecionar JSON';$('selPath').textContent='Selecione um item na árvore.';$('selectionSummary').textContent='Nenhum item selecionado.';$('selectedTree').innerHTML='<div class="empty">Escolha uma tela ou componente.</div>';$('editSection').style.display='none';return;}
- $('selTitle').textContent=item.identidade.nome||idOf(item);$('selPath').textContent=pathOf(item,isScreen?'screen':'component');
+ if(!item){$('selTitle').textContent='Prévia de montagem';$('selPath').textContent='catalogo_modular.indice.json';$('selectionSummary').textContent=allComponents().length+' componentes · '+allScreens().length+' telas · selecione um nó para inspecionar seu JSON integral.';$('selectedTree').value=JSON.stringify(catalogIndexView(),null,2);$('editSection').style.display='none';renderCatalogPreview();return;}
+ $('selTitle').textContent=item.identidade.nome||idOf(item);$('selPath').textContent='Catálogo / '+pathOf(item,isScreen?'screen':'component');
  const refs=isScreen?arr(item.componentes?.instancias).map(i=>i.ref):[];
- $('selectionSummary').innerHTML=`<div class="rowline"><span class="tag">${isScreen?'TELA':'COMPONENTE'}</span><code>${escapeHtml(idOf(item))}</code></div>${isScreen?`<div class="muted">${refs.length} instâncias · ${new Set(refs).size} componentes únicos · ${arr(item.classificacao.jornadas).join(', ')} · ${arr(item.estados?.grupos).length} estados</div>`:'<div class="muted">Definição reutilizável: árvore HTML e CSS mantidos neste arquivo.</div>'}`;
- $('selectedTree').innerHTML=treeJson(item);$('itemEditor').value=JSON.stringify(item,null,2);
- showEditMode(ui.jsonMode);
+ $('selectionSummary').textContent=isScreen?`TELA · ${idOf(item)} · ${refs.length} instâncias · ${new Set(refs).size} componentes únicos · ${arr(item.classificacao.jornadas).join(', ')} · ${arr(item.estados?.grupos).length} estados`:`COMPONENTE · ${idOf(item)} · definição reutilizável no documento canônico.`;
+ $('selectedTree').value=JSON.stringify(item,null,2);$('selectedTree').scrollTop=0;$('itemEditor').value=JSON.stringify(item,null,2);
+ renderCatalogPreview();showEditMode(ui.jsonMode);
 }
 function showEditMode(mode){ui.jsonMode=mode;$('selectedTree').style.display=mode==='tree'?'block':'none';$('editSection').style.display=mode==='edit'?'block':'none';}
 function applyEdit(){const old=currentItem();if(!old)return;try{const item=JSON.parse($('itemEditor').value),kind=model.selection.type==='screen'?'screens':'components';validateRecord(kind,item);if(idOf(item)!==idOf(old))throw Error('Não é permitido trocar o ID pelo editor: exporte e reimporte como novo item.');model[kind][idOf(item)]=item;invalidateCatalogProjections();save();renderAll();showEditMode('edit');$('editMsg').className='msg good';$('editMsg').textContent='JSON validado e aplicado. Todas as projeções foram recalculadas.';}catch(e){$('editMsg').className='msg error';$('editMsg').textContent=e.message;}}
