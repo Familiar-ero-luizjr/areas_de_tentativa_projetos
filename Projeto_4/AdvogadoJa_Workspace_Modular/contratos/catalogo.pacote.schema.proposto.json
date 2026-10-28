@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:advogadoja:workspace:contrato:pacote-proposto-v1",
+  "title": "Advogado Já — pacote de intercâmbio (proposta)",
+  "type": "object",
+  "required": ["catalogo"],
+  "properties": {
+    "catalogo": {
+      "type": "object",
+      "description": "Contêiner temporário de importação/exportação, não uma Store persistente.",
+      "required": ["metadados", "telas", "componentes"],
+      "properties": {
+        "metadados": {"type": "object", "required": ["schema", "tipo"], "properties": {
+          "schema": {"const": "advogadoja.catalogo.pacote-tela.v1"},
+          "tipo": {"type": "string"}, "versao": {"type": "string"}
+        }},
+        "telas": {"type": "array", "description": "Telas canônicas completas; o ID permanece único.", "items": {"type": "object"}},
+        "componentes": {"type": "array", "description": "Componentes canônicos incluídos apenas quando necessários.", "items": {"type": "object"}}
+      }
+    }
+  }
+}

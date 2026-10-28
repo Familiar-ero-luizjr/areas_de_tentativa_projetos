@@ -140,3 +140,8 @@ Referência vigente (ainda **proposta**): `contratos/04_CONTRATO_MOTOR_PROTOTIPO
 O Protótipo percorre sequências e prévias demonstrativas sem executar backend; ramos compatíveis ainda são linearizados, de modo que **escolher a decisão de uma bifurcação continua pendente**. A ausência de componentes deve ser indicada como pendência visual, não ocultada.
 
 Verificações: `python verificacao/auditar_catalogo.py` (79 telas, 234 componentes, 197 ocorrências, 33 bifurcações), `python verificacao/teste_prototipo.py`, `python verificacao/teste_browser.py` e `python verificacao/teste_modulo_contrato.py`. Os testes de interface exigem Playwright e Chromium.
+
+
+## Modelos e intercâmbio por jornada
+
+A aba **Modelos** apresenta os formatos propostos sem usar tela específica como modelo. A aba **Jornadas** exporta referências ou um pacote completo e apresenta diferenças antes da importação. Veja `contratos/08_MODELOS_JORNADAS_E_MOTORES.md` e o plano único na raiz.

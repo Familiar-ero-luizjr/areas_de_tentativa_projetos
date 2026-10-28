@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:advogadoja:workspace:contrato:jornada-intercambio-proposto-v1",
+  "title": "Advogado Já — jornada para intercâmbio (proposta)",
+  "type": "object",
+  "required": ["schema", "versao", "jornada", "modo"],
+  "properties": {
+    "schema": {"const": "advogadoja.jornada.intercambio.v1"},
+    "versao": {"type": "string", "description": "Versão do formato de intercâmbio."},
+    "jornada": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$", "description": "ID da jornada descoberta pelas telas. Nunca cria uma Store separada."},
+    "modo": {"enum": ["referencias", "completo"], "description": "Referências só conferem IDs; completo inclui dados para incorporação na Store."},
+    "telas": {"type": "array", "items": {"type": "object", "required": ["id"], "properties": {"id": {"type": "string"}}}, "description": "Lista de IDs no modo referências."},
+    "componentes": {"type": "array", "items": {"type": "object", "required": ["id"], "properties": {"id": {"type": "string"}}}, "description": "IDs dos componentes dependentes no modo referências."},
+    "catalogo": {"type": "object", "description": "Obrigatório no modo completo: metadados, telas e componentes canônicos, sem índice persistente.", "properties": {
+      "metadados": {"type": "object"}, "telas": {"type": "array", "items": {"type": "object"}}, "componentes": {"type": "array", "items": {"type": "object"}}
+    }}
+  }
+}

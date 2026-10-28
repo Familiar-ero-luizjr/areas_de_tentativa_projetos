@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="jornadas/painel.css">
 <link rel="stylesheet" href="banco/banco.css">
 <link rel="stylesheet" href="mapa/mapa.css">
+<link rel="stylesheet" href="modelos/modelos.css">
 <link rel="stylesheet" href="modulo_contrato/contrato.css">
 <link rel="stylesheet" href="planejamento/workspace.css">
 </head>
@@ -19,7 +20,7 @@
    <input type="file" id="fileInput" accept=".json,application/json" multiple hidden><input type="file" id="folderInput" webkitdirectory multiple hidden>
   </div>
  </header>
- <nav class="tabs"><button class="tab" data-tab="prototipo">Protótipo</button><button class="tab" data-tab="fluxovisual">Árvore do Flow</button><button class="tab" data-tab="relacoes">Flow &amp; referências</button><button class="tab" data-tab="jornadas">Jornadas</button><button class="tab active" data-tab="catalogo">Árvore do catálogo</button><button class="tab" data-tab="montagem">Motor de montagem</button><button class="tab" data-tab="contrato">Contrato</button><button class="tab" data-tab="planejamento">Planejamento</button><button class="tab" data-tab="json">Gestão &amp; exportação</button><button class="tab" data-tab="banco">Banco</button><button class="tab" data-tab="mapa">Mapa integrado</button></nav>
+ <nav class="tabs"><button class="tab" data-tab="prototipo">Protótipo</button><button class="tab" data-tab="fluxovisual">Árvore do Flow</button><button class="tab" data-tab="relacoes">Flow &amp; referências</button><button class="tab" data-tab="jornadas">Jornadas</button><button class="tab" data-tab="modelos">Modelos</button><button class="tab active" data-tab="catalogo">Árvore do catálogo</button><button class="tab" data-tab="montagem">Motor de montagem</button><button class="tab" data-tab="contrato">Contrato</button><button class="tab" data-tab="planejamento">Planejamento</button><button class="tab" data-tab="json">Gestão &amp; exportação</button><button class="tab" data-tab="banco">Banco</button><button class="tab" data-tab="mapa">Mapa integrado</button></nav>
  <div class="view active" id="view-catalogo">
   <section class="catalog-workspace-page" aria-labelledby="catalog-page-heading">
    <div class="catalog-workspace-head"><div><div class="catalog-kicker">CATÁLOGO MODULAR · CONTRATO POR REFERÊNCIAS</div><h2 id="catalog-page-heading">Catálogo · Componentes e Telas</h2><p>Um único catálogo visual, montado das definições canônicas. Cada tela contém estrutura, estilos, dados, estados, ações e as referências de componentes.</p></div><div class="catalog-head-actions"><button class="btn sm" id="exportSelected" disabled>↓ Exportar nó</button><button class="btn primary sm" id="exportScreenPack" disabled>↓ Pacote da tela</button></div></div>
@@ -31,7 +32,16 @@
   </section>
   <div style="margin-top:14px" class="panel"><div class="ph"><div><h2>Importação incremental</h2><div class="hint">Arquivos JSON ficam em catálogo/telas e catálogo/componentes. O mesmo ID divergente gera conflito visível.</div></div><div class="controls"><button class="btn sm" id="addDemo">Importar segunda tela (demonstração)</button><button class="btn sm" id="resetCatalog">Recarregar arquivos do disco</button></div></div><div class="pb"><div id="dropZone" class="empty" style="cursor:pointer">Arraste aqui pacotes JSON, telas e componentes individuais</div><div class="rowline" id="lastImport"></div><div id="conflicts"></div></div></div>
  </div>
- <div class="view" id="view-jornadas"><header class="journey-workspace-head"><p class="tiny">JORNADAS · VISUALIZAÇÃO DO CATÁLOGO</p><h2>Jornadas renderizadas pelo motor modular</h2><p>As subabas usam as mesmas telas, instâncias, CSS, imagens e relações canônicas de <code>catalogo/</code>. Nenhuma jornada carrega uma cópia da tela.</p></header><div id="journeySubtabs" class="journey-subtabs"></div><div class="journey-workspace-grid"><aside class="panel"><div class="ph"><div><h2>Telas da jornada</h2><div class="hint">Filtradas por jornada e instâncias compatíveis.</div></div><span class="pill emph" id="journeyCatalogStatus">Carregando…</span></div><div class="journey-screen-list" id="journeyScreenList"></div></aside><section class="panel"><div class="ph"><div><h2 id="journeyScreenTitle">Montando tela…</h2><div class="hint">Montagem resolvida pelo mesmo motor da aba ao lado.</div></div><span class="tag">Store única</span></div><div class="journey-metadata" id="journeyMetadata"></div><iframe class="journey-device" id="journeyPreview" sandbox="allow-scripts" title="Prévia da jornada selecionada"></iframe><div class="journey-routes" id="journeyRoutes"></div></section></div></div>
+ <div class="view" id="view-modelos">
+ <section class="mdl-head"><div class="tiny">MODELOS · CONTRATOS PROPOSTOS</div><h2>Como são definidos os arquivos do Workspace</h2><p>Modelos didáticos independentes das telas reais. Consulte os campos, entenda o significado e valide um documento antes de importá-lo no Catálogo ou em Jornadas. A validação é estrutural e não homologa regras de negócio.</p></section>
+ <div class="mdl-layout">
+  <aside class="mdl-card"><h3>Tipo de documento</h3><nav class="mdl-nav" id="mdlTypeNav"></nav></aside>
+  <section class="mdl-card"><h3 id="mdlHeading">Tela</h3><div class="mdl-tree-list"><div id="mdlSchemaLabel" class="hint">Schema proposto</div><div id="mdlTree"></div></div></section>
+  <aside class="mdl-card"><h3>O que significa?</h3><div class="mdl-details"><p id="mdlHint"></p><div id="mdlDetails"></div></div></aside>
+ </div>
+ <section class="mdl-editor-section"><div class="mdl-tools"><p>Modelo de referência · código JSON</p><button class="btn sm" id="mdlEmpty">Ver modelo vazio</button><button class="btn sm" id="mdlExample">Ver exemplo</button><button class="btn sm" id="mdlUpload">Importar para validar</button><button class="btn sm" id="mdlExport">Exportar modelo</button><button class="btn primary sm" id="mdlCheck">Validar meu JSON</button><input type="file" hidden accept=".json,application/json" id="mdlFile"></div><textarea class="mdl-json" id="mdlEditor" spellcheck="false" aria-label="Documento JSON a conferir"></textarea><div id="mdlValidation" class="mdl-validation">Selecione um tipo para consultar seu modelo.</div></section>
+</div>
+<div class="view" id="view-jornadas"><header class="journey-workspace-head"><p class="tiny">JORNADAS · VISUALIZAÇÃO DO CATÁLOGO</p><h2>Jornadas renderizadas pelo motor modular</h2><p>As subabas usam as mesmas telas, instâncias, CSS, imagens e relações canônicas de <code>catalogo/</code>. Nenhuma jornada carrega uma cópia da tela.</p></header><div class="jio-tools" aria-label="Importar e exportar jornada"><label class="label" for="jioMode">Intercâmbio:</label><select id="jioMode" class="jio-mode"><option value="referencias">Referências (IDs)</option><option value="completo">Completo (telas e componentes)</option></select><button class="btn sm" id="jioExport" type="button">Exportar jornada JSON</button><button class="btn sm primary" id="jioImport" type="button">Importar jornada JSON</button><input id="jioFile" type="file" accept=".json,application/json" hidden><small id="jioStatus" class="hint" role="status">Intercâmbio sem arquivo mestre: usa as telas canônicas da jornada selecionada.</small></div><div id="jioReview" class="jio-review" hidden></div><div id="journeySubtabs" class="journey-subtabs"></div><div class="journey-workspace-grid"><aside class="panel"><div class="ph"><div><h2>Telas da jornada</h2><div class="hint">Filtradas por jornada e instâncias compatíveis.</div></div><span class="pill emph" id="journeyCatalogStatus">Carregando…</span></div><div class="journey-screen-list" id="journeyScreenList"></div></aside><section class="panel"><div class="ph"><div><h2 id="journeyScreenTitle">Montando tela…</h2><div class="hint">Montagem resolvida pelo mesmo motor da aba ao lado.</div></div><span class="tag">Store única</span></div><div class="journey-metadata" id="journeyMetadata"></div><iframe class="journey-device" id="journeyPreview" sandbox="allow-scripts" title="Prévia da jornada selecionada"></iframe><div class="journey-routes" id="journeyRoutes"></div></section></div></div>
  <div class="view" id="view-montagem">
   <div class="modebar"><div><label class="label">Tela</label><select id="screenChoice" class="field"></select></div><div><label class="label">Jornada</label><select id="journeyChoice" class="field"></select></div><div><label class="label">Estado</label><select id="stateChoice" class="field"></select></div><button class="btn primary" id="rebuild">Montar</button><button class="btn" id="exportResolved">Baixar montagem JSON</button></div>
   <div class="pills" id="mountStats"></div>
@@ -141,6 +151,7 @@
 <script src="arvore_exportacao/exportacao.js"></script>
 <script src="motor_montagem/montagem.js"></script>
 <script src="jornadas/painel.js"></script>
+<script src="jornadas/intercambio.js"></script>
 <script src="banco/banco.js"></script>
 <script src="mapa/mapa.js"></script>
 <script src="app/interface.js"></script>
@@ -148,5 +159,6 @@
 <script src="motor_prototipo/prototipo.js"></script>
 <script src="app/persistencia.js"></script>
 <script src="modulo_contrato/contrato.js"></script>
+<script src="modelos/modelos.js"></script>
 <script src="app/bootstrap.js"></script>
 </body></html>
