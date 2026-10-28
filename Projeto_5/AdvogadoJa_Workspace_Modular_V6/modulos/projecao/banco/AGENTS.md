@@ -1,39 +1,20 @@
-# Módulo banco — Advogado Já V6
+# AGENTS.md — Banco (Workspace V6)
 
-**Isolamento:** HTML, CSS, JavaScript, motor e auxiliares estão todos nesta pasta. Nenhum import de código externo é permitido.
-A única fonte compartilhada de dados é `../../../catalogo/indice.json` e os JSONs de tela e componente referenciados por ele.
-O acervo pendente não participa da execução. O índice geral é só navegação e pode ser alterado sem afetar este módulo.
+## Escopo
+Este módulo é um laboratório de interface/estruturas do Banco, com mock local. Alterar somente esta pasta, sem afetar os outros módulos.
 
-## Arquivos
+## Arquitetura
+- **Menu geral** no cabeçalho: alterna módulos do Workspace, implementado localmente em `index.html` e `style.css`.
+- **Submenu Banco** lateral: alterna diagramas/domínios/relacionamentos/catálogos/SQL; não deve ser transformado em outro menu global.
+- `index.html` é a estrutura; `style.css` é o visual; `app.js` é a interface; `motor.js` é o resolvedor privado; `mock.js` é a única fonte nesta fase.
+- Não ler `catalogo/`, `acervo_pendente/` ou modelagem histórica do Projeto 1; não importar `catalogo.js` e `ui.js` do módulo antigo.
+- `referencia_visual_mock_autocontida.html` é somente backup da aparência e não fonte funcional da versão modular.
+- Não declarar dados fictícios, SQL ou relações como modelagem homologada ou serviço real.
+- Preservar zoom, busca, filtros, seleção, inspetor, FK/PK, relações e exportações.
 
-- `index.html`: interface do módulo; links para outros módulos são navegação opcional, não dependências.
-- `style.css`: CSS completo deste módulo, incluindo seu tema base; personalize livremente.
-- `app.js`: eventos e interações da interface.
-- `motor.js`: processamento e projeção do módulo; os JSONs canônicos são imutáveis até o usuário confirmar uma edição.
-- `catalogo.js`: código auxiliar privado deste módulo.
-- `ui.js`: código auxiliar privado deste módulo.
-
-## Interação com o catálogo
-
-O carregador local `catalogo.js` lê `../../../catalogo/indice.json` e os registros nele listados. A API HTTP `/api/catalogo/` (opcional, no `iniciar.py`) apenas grava alterações depois de validar; não é um motor compartilhado.
-Com Live Server, alterações podem permanecer como rascunhos locais deste módulo: outros módulos só enxergam mudanças quando os arquivos JSON físicos são alterados.
-
-## Evolução de contratos
-
-Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
-A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
-
-## Responsabilidade exclusiva — Banco
-
-- **Objetivo:** Projetar necessidades de dados sem executar banco de dados.
-- **Fonte lida:** dados.operacoes, dados.persistencia, dados.fontes no Catálogo ativo.
-- **Processamento implementado:** projetar() agrega declarações de operações, entidades e fontes por tela.
-- **Limite conhecido:** Se os campos não descrevem schema suficiente, exibir aviso; não inventar tabelas.
-- **Regra adicional:** Não criar esquema a partir de mocks; não executar migrações nem gravações em serviço real.
-
-## Verificação específica
-
-- Checar rastreabilidade de cada entidade à tela e avisos para ausência de requisitos.
-- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
-- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
-- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.
+## Validação
+- Testar 12 tabelas, 14 relações e cinco interfaces do mock; início em modo mock.
+- Testar menu geral e submenu em celular e desktop, Escape, foco e indicadores de página.
+- Testar Catálogo (futuro) como placeholder sem `fetch` de JSONs.
+- Rodar `node --check` em `app.js`, `motor.js` e `mock.js`, e verificar carregamento por HTTP.
+- Futuras integrações com Catálogo deverão ser aprovadas separadamente.

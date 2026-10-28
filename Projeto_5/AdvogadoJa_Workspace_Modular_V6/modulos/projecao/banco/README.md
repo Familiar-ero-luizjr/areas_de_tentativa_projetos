@@ -1,32 +1,25 @@
-# Banco — Workspace V6
+# Banco — módulo independente do Workspace V6
 
-## Finalidade
-Projetar necessidades de dados sem executar banco de dados.
+Este módulo reproduz o **Banco visual** aprovado no laboratório, preservando o desenho de diagramas, tabelas, zoom, filtros, SQL e inspetor. A referência completa está no arquivo `referencia_visual_mock_autocontida.html`.
 
-## O que existe hoje
-projetar() agrega declarações de operações, entidades e fontes por tela.
+## Arquivos
+- `index.html`: interface, com menu superior de módulos e submenu de Banco.
+- `style.css`: CSS integral de modelagem e estilos do menu do Workspace; sem CSS externo.
+- `app.js`: ações e renderização SVG, filtros, inspeção, modos e exportação.
+- `motor.js`: motor local de relações, classificação, consultas e rastreabilidade.
+- `mock.js`: 12 tabelas, 14 relações, cinco interfaces e SQL *fictícios*.
+- `referencia_visual_mock_autocontida.html`: referência visual original e isolada, não é usada pelos motores.
+- `AGENTS.md`: orientações de manutenção.
 
-**Entradas canônicas:** dados.operacoes, dados.persistencia, dados.fontes. Os dados vêm somente de `../../../catalogo/indice.json` e dos JSONs ativos que ele enumera. O motor não consulta o acervo antigo.
+## Menus independentes
+1. **Menu geral do Workspace:** no cabeçalho, troca entre os 12 módulos.
+2. **Submenu do Banco:** na lateral (ou botão de menu no celular), alterna Visão geral, Diagramas, domínios, Relacionamentos, interfaces, tabelas e SQL.
 
-## Arquivos locais
-- `index.html` — interface HTML deste módulo
-- `style.css` — estilos exclusivos
-- `app.js` — interação e controles
-- `motor.js` — transformação/projeção própria
-- `catalogo.js` — auxiliar local; sem import de outro módulo
-- `ui.js` — auxiliar local; sem import de outro módulo
-- `AGENTS.md` — regras de desenvolvimento
-- `README.md` — este guia
+## Modos
+O padrão é **Modo mock**. O botão **Catálogo (futuro)** é apenas reserva visual e não busca qualquer JSON do Catálogo, das cinco telas ou do legado. **Nenhuma tabela real/histórica está incluída.**
 
-## Como verificar
-1. Execute `python iniciar.py` na raiz `AdvogadoJa_Workspace_Modular_V6`.
-2. Abra `modulos/projecao/banco/index.html` a partir do Workspace ou pelo servidor HTTP.
-3. Checar rastreabilidade de cada entidade à tela e avisos para ausência de requisitos.
-4. Modifique HTML/CSS/JS/motor **somente nesta pasta** e confirme os imports internos.
+## Execução
+Abra via servidor HTTP (p.ex. `python iniciar.py` na raiz do Workspace) ou GitHub Pages. Como há módulos JS locais (`type="module"`), abrir apenas o `index.html` com `file://` pode falhar. O arquivo `referencia_visual_mock_autocontida.html` preserva a demonstração original que abre diretamente.
 
-## Limites e próxima evolução
-Se os campos não descrevem schema suficiente, exibir aviso; não inventar tabelas.
-
-**Regra especial:** Não criar esquema a partir de mocks; não executar migrações nem gravações em serviço real.
-
-Outros módulos podem interpretar os mesmos dados, mas não importam código deste módulo. A mudança no contrato JSON compartilhado requer teste de conformidade dos consumidores. GitHub Pages fornece leitura estática; salvar arquivos físicos exige o servidor local ou exportação controlada.
+## Próxima fase
+Somente após aprovação visual, discutir um resolvedor próprio que leia `catalogo/indice.json` e as declarações em `dados` das telas canônicas. Não sincronizar funções entre módulos e não inferir entidades, cardinalidades ou campos não declarados.
