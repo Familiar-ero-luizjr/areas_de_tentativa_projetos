@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10233f">
+  <meta name="description" content="Projeto 6 — acesso aos laboratórios de prototipação do Advogado Já.">
+  <title>Projeto 6 | Advogado Já · Protótipos</title>
+  <style>
+    :root { color-scheme: light; --navy:#10233f; --navy2:#193a62; --blue:#2563eb; --bg:#f1f5fa; --white:#fff; --text:#17283d; --muted:#617388; --line:#dce5ef; --shadow:0 16px 46px rgba(16,35,63,.08) }
+    *{box-sizing:border-box} html,body{margin:0;min-height:100%} body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:var(--bg);font-size:14px;line-height:1.5}
+    a{color:inherit;text-decoration:none} button{font:inherit;cursor:pointer} a:focus-visible,button:focus-visible{outline:3px solid #77b1ff;outline-offset:3px}
+    .layout{min-height:100dvh;display:grid;grid-template-columns:258px minmax(0,1fr)}
+    .sidebar{background:var(--navy);color:#fff;display:flex;flex-direction:column;min-width:0;position:sticky;top:0;height:100dvh}
+    .brand{display:flex;align-items:center;gap:12px;padding:28px 22px 24px;border-bottom:1px solid #ffffff1d}
+    .brand-icon{display:grid;place-items:center;background:#ffffff22;width:43px;height:43px;border-radius:13px;font-weight:900;font-size:17px;flex-shrink:0}
+    .brand strong{font-size:16px;display:block;letter-spacing:.01em}.brand small{display:block;font-size:11px;color:#a9c5e1}
+    .side-label{margin:24px 18px 9px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:#97b2d1}
+    .nav{display:grid;gap:6px;padding:0 12px}.nav a{border:1px solid transparent;border-radius:11px;padding:13px 12px;display:flex;gap:12px;align-items:center;color:#d7e6f7;transition:.14s}
+    .nav a:hover,.nav a:focus-visible{background:#ffffff14;border-color:#ffffff12;color:#fff}.nav .glyph{width:28px;height:28px;background:#ffffff12;border-radius:8px;display:grid;place-items:center;font-size:15px;flex-shrink:0}
+    .nav strong{font-size:12px;display:block}.nav small{display:block;color:#9eb9d8;font-size:10px}
+    .foot{margin-top:auto;border-top:1px solid #ffffff1d;padding:18px 22px 23px;font-size:11px;color:#a9bfdb}
+    .content{min-width:0}.topbar{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 clamp(18px,4vw,52px);gap:12px}
+    .breadcrumbs{font-size:12px;color:var(--muted)}.breadcrumbs b{color:var(--text)}.status{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800;color:#186e54;background:#e9f8f1;border:1px solid #c5e9d9;padding:7px 11px;border-radius:50px}
+    .status:before{content:"";width:7px;height:7px;border-radius:50%;background:#1b9a72}
+    .main{max-width:1180px;padding:clamp(26px,5vw,64px) clamp(18px,4vw,52px) 70px;margin:auto}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:900;color:#3967a3;margin:0 0 10px}
+    h1{font-size:clamp(30px,4.2vw,48px);line-height:1.12;letter-spacing:-.042em;margin:0 0 15px;color:#10233f} .lead{color:#667b90;max-width:710px;font-size:15px;line-height:1.75;margin:0 0 36px}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);min-width:0}
+    .banner{background:linear-gradient(135deg,#10233f,#24598a);padding:27px 26px;color:white;min-height:153px;position:relative;overflow:hidden}
+    .banner::after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff25;border-radius:50%;right:-42px;top:-88px;box-shadow:0 0 0 35px #ffffff07,0 0 0 75px #ffffff07}
+    .card:nth-child(2) .banner{background:linear-gradient(135deg,#0b3341,#146b72)}
+    .banner-tag{font-size:10px;font-weight:850;display:inline-flex;padding:5px 9px;background:#ffffff24;border:1px solid #ffffff22;border-radius:99px;letter-spacing:.05em;position:relative;z-index:1}
+    .banner h2{position:relative;z-index:1;font-size:clamp(19px,2.5vw,24px);line-height:1.2;letter-spacing:-.02em;margin:17px 0 6px}.banner p{margin:0;color:#d3e5f4;font-size:12px;position:relative;z-index:1}
+    .card-body{display:flex;flex-direction:column;gap:20px;padding:25px;flex:1}.card-body p{color:var(--muted);margin:0;font-size:13px;line-height:1.7;flex:1}
+    .actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.action{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 15px;min-height:43px;border-radius:10px;font-size:12px;font-weight:800;border:1px solid #d6e1ed}
+    .action.primary{color:white;background:var(--blue);border-color:var(--blue)}.action.primary:hover{background:#1c54c6}.action.secondary{color:#23466d;background:white}.action.secondary:hover{background:#f1f6ff}
+    .tip{margin-top:29px;padding:17px 19px;border:1px solid #d5e3f1;background:#f8fbff;border-radius:12px;color:#59708a;font-size:12px;line-height:1.7}.tip strong{color:#254a75}
+    .menu-toggle{display:none;background:#eaf1fa;border:1px solid #d5e0ef;border-radius:9px;width:40px;height:40px;font-size:20px;color:var(--navy)}
+    .backdrop{display:none}
+    @media(max-width:940px){.layout{grid-template-columns:220px minmax(0,1fr)} .cards{grid-template-columns:1fr}.banner{min-height:130px}}
+    @media(max-width:670px){.layout{display:block}.sidebar{position:fixed;z-index:50;inset:0 auto 0 0;width:min(285px,86vw);transform:translateX(-103%);transition:transform .2s;height:100dvh}.sidebar.open{transform:translateX(0)}.backdrop.open{display:block;position:fixed;z-index:49;inset:0;background:#07182e88}.menu-toggle{display:block}.topbar{height:62px;padding:0 15px}.main{padding:27px 16px 52px}.lead{font-size:13px;margin-bottom:24px}.banner{padding:23px;min-height:130px}.card-body{padding:22px}.actions .action{flex:1}.status{font-size:10px;padding:5px 8px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+<div class="backdrop" id="backdrop"></div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Menu de protótipos">
+    <div class="brand"><span class="brand-icon">AJ</span><span><strong>ADVOGADO JÁ</strong><small>Projeto 6 · Protótipos</small></span></div>
+    <div class="side-label">Abrir laboratório</div>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="AdvogadoJa_Prototipo_Laboratorio_Modular_V2.html"><span class="glyph">◈</span><span><strong>Laboratório Modular V2</strong><small>Jornadas e sequências</small></span></a>
+      <a href="AdvogadoJa_Laboratorio_Cliente_Interativo_V3.html"><span class="glyph">◉</span><span><strong>Laboratório Cliente V3</strong><small>Cadastro e estados dinâmicos</small></span></a>
+    </nav>
+    <div class="foot">Dois laboratórios independentes. Arquivos locais, sem instalação nem conexão com a internet.</div>
+  </aside>
+  <div class="content">
+    <header class="topbar"><button class="menu-toggle" type="button" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button><span class="breadcrumbs">Advogado Já <span aria-hidden="true">/</span> <b>Projeto 6</b></span><span class="status">Offline</span></header>
+    <main class="main">
+      <p class="eyebrow">Biblioteca de demonstrações</p>
+      <h1>Escolha o protótipo que deseja explorar.</h1>
+      <p class="lead">O Projeto 6 reúne os dois laboratórios do Advogado Já em uma única pasta. Use o menu ou os cartões abaixo para abrir uma experiência completa, em desktop ou celular.</p>
+      <div class="cards">
+        <article class="card"><div class="banner"><span class="banner-tag">VERSÃO 2</span><h2>Laboratório Modular</h2><p>Jornadas, sequências e relações</p></div><div class="card-body"><p>Explore os cenários de cliente e advogado, configure estados e execute sequências de apresentação. Importação e exportação de JSON no próprio laboratório.</p><div class="actions"><a class="action primary" href="AdvogadoJa_Prototipo_Laboratorio_Modular_V2.html">Abrir protótipo <span aria-hidden="true">→</span></a><a class="action secondary" href="AdvogadoJa_Prototipo_Laboratorio_Modular_V2.html" target="_blank" rel="noopener">Nova aba ↗</a></div></div></article>
+        <article class="card"><div class="banner"><span class="banner-tag">VERSÃO 3</span><h2>Laboratório Cliente</h2><p>Jornada interativa e simulação de dados</p></div><div class="card-body"><p>Explore as telas do cliente, faça cadastro, complete campos vazios com mocks, controle o estado das solicitações e navegue livremente.</p><div class="actions"><a class="action primary" href="AdvogadoJa_Laboratorio_Cliente_Interativo_V3.html">Abrir protótipo <span aria-hidden="true">→</span></a><a class="action secondary" href="AdvogadoJa_Laboratorio_Cliente_Interativo_V3.html" target="_blank" rel="noopener">Nova aba ↗</a></div></div></article>
+      </div>
+      <p class="tip"><strong>Como usar:</strong> extraia o ZIP e abra <code>index.html</code>. Os três arquivos HTML devem permanecer na mesma pasta para que os links continuem funcionando. Para voltar a este índice, use o botão Voltar do navegador, ou abra o outro protótipo em uma nova aba.</p>
+    </main>
+  </div>
+</div>
+<script>
+  const sidebar=document.getElementById('sidebar');
+  const backdrop=document.getElementById('backdrop');
+  const toggle=document.getElementById('menuToggle');
+  function menu(open){sidebar.classList.toggle('open',open);backdrop.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));}
+  toggle.addEventListener('click',()=>menu(!sidebar.classList.contains('open')));
+  backdrop.addEventListener('click',()=>menu(false));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') menu(false)});
+</script>
+</body>
+</html>

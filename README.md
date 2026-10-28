@@ -15,6 +15,7 @@ Cada projeto pode ser aberto sem depender dos demais:
 - [Projeto 3 — Arquitetura HTML Autocontido](./Projeto_3/)
 - [Projeto 4 — Laboratório de Telas JSON](./Projeto_4/)
 - [Projeto 5 — Advogado Já · Workspace Modular V6](./Projeto_5/)
+- [Projeto 6 — Advogado Já · Laboratórios de protótipos](./Projeto_6/)
 
 ## Organização e trabalho com IA
 
