@@ -2,20 +2,45 @@ import {iniciar,$,esc,pre,option,aviso} from './ui.js';
 import {montarTela} from './montagem.js';
 import {projetar,resolverTransicao} from './motor.js';
 import {baixar,stringify} from './catalogo.js';
-let c,telaId='cliente.home',participacaoId='part.cliente.home',estado='pronto',mock='',historico=[],mode='experiencia',perspectiva='cliente',sequencias=[],relacoesLocais=[],eventos=[],intervalo=1500,timer=null,seqAtual='',dadosTemporarios={};
+let c,telaId='cliente.home',participacaoId='part.cliente.home',estado='pronto',mock='',historico=[],mode='experiencia',perspectiva='cliente',sequencias=[],relacoesLocais=[],eventos=[],intervalo=1500,timer=null,seqAtual='',dadosTemporarios={},rascunhosPorTela={};
 const registrar=(tipo,valor)=>{eventos.unshift({tipo,valor,hora:new Date().toLocaleTimeString('pt-BR')});eventos=eventos.slice(0,120)};
 const parar=()=>{if(timer!==null){clearTimeout(timer);timer=null}};
 function abrir(t,p){parar();registrar('tela',t);if(!c.telas[t]){aviso('Tela ausente: '+t);return}historico.push({telaId,participacaoId,estado,mock});telaId=t;participacaoId=p||c.telas[t].navegacao?.participacoes?.[0]?.id||'';estado=c.telas[t].estados?.fallbackSeguro||'padrao';mock='';render()}
 function executar(id){registrar('acao',id);const t=c.telas[telaId],m=t.mocks?.cenarios?.find(x=>x.id===mock),resultado=resolverTransicao(c,{telaId,participacaoId,acaoId:id,dados:{...(m?.dados||{}),...dadosTemporarios},estado});if(resultado.destino?.telaId){abrir(resultado.destino.telaId,resultado.destino.participacaoId);return}if(resultado.efeito?.tipo==='estado'){estado=resultado.efeito.estado;render();return}if(resultado.semCorrespondencia?.estado){estado=resultado.semCorrespondencia.estado;render();aviso(resultado.erro);return}if(resultado.efeito?.tipo==='permanecer'){aviso('Permanecer na tela atual');return}aviso(resultado.erro||'Ação simulada sem destino')}
 function render(){const t=c.telas[telaId];if(!t){telaId='app.splash';return render()}
  const parts=t.navegacao?.participacoes||[],states=t.estados?.possiveis||[],mocks=t.mocks?.cenarios||[];
- $('main').innerHTML=`<div class="section-head"><div><h2>Cliente Interativo V3 · experiência simulada</h2><p class="sub">Lê o Catálogo ativo e usa motor e resolvedor próprios desta pasta; ações e estados continuam declarados nos contratos.</p></div><div class="row"><button id="back" class="btn" ${historico.length?'':'disabled'}>← Voltar</button><button id="restart" class="btn">Recomeçar</button></div></div><div class="lab-perspectives"><strong>Cliente Interativo V3</strong><span class="tag">Preenchimento HTML, dados, estados, eventos e rastreamento · Catálogo ativo</span></div><div class="lab-tabs" style="margin-bottom:15px">${[["experiencia","◉ Experiência"],["dados","✦ Dados e cenários"],["estados","◈ Estados"],["eventos","⚡ Eventos"],["telas","▦ Telas"],["configuracao","⚙ Configuração"],["percurso","☷ Rastreio"],["motor","{ } Motor / JSON"]].map(([id,n])=>`<button class="btn ${mode===id?'primary':''}" data-mode="${id}">${n}</button>`).join('')}</div><div class="cols"><div class="panel"><label class="label">Tela</label><select class="form-control" id="telaSel">${Object.values(c.telas).map(s=>option(s.identidade.id,s.identidade.nome,telaId)).join('')}</select><label class="label">Participação</label><select class="form-control" id="partSel">${parts.map(p=>option(p.id,p.id,participacaoId)).join('')}</select><label class="label">Estado</label><select class="form-control" id="estadoSel">${states.map(s=>option(s.id,s.nome||s.id,estado)).join('')}</select><label class="label">Mock</label><select class="form-control" id="mockSel">${option('','Sem mock',mock)}${mocks.map(m=>option(m.id,m.nome||m.id,mock)).join('')}</select><div class="notice" style="margin-top:15px">Este protótipo não chama autenticação, APIs ou banco reais. O resultado do login depende do cenário mock selecionado.</div></div><section class="panel" id="protoBody"></section></div>`;
+ $('main').innerHTML=`<div class="section-head"><div><h2>Cliente Interativo V3 · experiência simulada</h2><p class="sub">Lê o Catálogo ativo e usa motor e resolvedor próprios desta pasta; ações e estados continuam declarados nos contratos.</p></div><div class="row"><button id="back" class="btn" ${historico.length?'':'disabled'}>← Voltar</button><button id="restart" class="btn">Recomeçar</button></div></div><div class="lab-perspectives"><strong>Cliente Interativo V3</strong><span class="tag">Preenchimento HTML, dados, estados, eventos e rastreamento · Catálogo ativo</span></div><div class="lab-tabs" style="margin-bottom:15px">${[["experiencia","◉ Experiência"],["dados","✦ Dados e cenários"],["estados","◈ Estados"],["eventos","⚡ Eventos"],["telas","▦ Telas"],["sequencias","⇄ Sequências"],["relacoes","⌁ Relações"],["configuracao","⚙ Configuração"],["percurso","☷ Rastreio"],["motor","{ } Motor / JSON"]].map(([id,n])=>`<button class="btn ${mode===id?'primary':''}" data-mode="${id}">${n}</button>`).join('')}</div><div class="cols"><div class="panel"><label class="label">Tela</label><select class="form-control" id="telaSel">${Object.values(c.telas).map(s=>option(s.identidade.id,s.identidade.nome,telaId)).join('')}</select><label class="label">Participação</label><select class="form-control" id="partSel">${parts.map(p=>option(p.id,p.id,participacaoId)).join('')}</select><label class="label">Estado</label><select class="form-control" id="estadoSel">${states.map(s=>option(s.id,s.nome||s.id,estado)).join('')}</select><label class="label">Mock</label><select class="form-control" id="mockSel">${option('','Sem mock',mock)}${mocks.map(m=>option(m.id,m.nome||m.id,mock)).join('')}</select><div class="notice" style="margin-top:15px">Este protótipo não chama autenticação, APIs ou banco reais. O resultado do login depende do cenário mock selecionado.</div></div><section class="panel" id="protoBody"></section></div>`;
  document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{parar();mode=b.dataset.mode;render()});$('telaSel').onchange=e=>{telaId=e.target.value;participacaoId=c.telas[telaId].navegacao?.participacoes?.[0]?.id;estado=c.telas[telaId].estados?.fallbackSeguro;mock='';render()};$('partSel').onchange=e=>{participacaoId=e.target.value;render()};$('estadoSel').onchange=e=>{estado=e.target.value;render()};$('mockSel').onchange=e=>{mock=e.target.value;render()};$('back').onclick=()=>{const prev=historico.pop();if(prev)({telaId,participacaoId,estado,mock}=prev);render()};$('restart').onclick=()=>{historico=[];telaId='cliente.home';participacaoId='part.cliente.home';estado='pronto';mock='';render()};
- const proj=projetar(c,telaId,participacaoId,estado,mock);if(mode==='motor'){$('protoBody').innerHTML=pre(proj);return}if(mode==='cenarios'){$('protoBody').innerHTML=`<h3>Estados e cenários</h3><p>Estado atual: <b>${esc(estado)}</b> · Mock: <b>${esc(mock||'nenhum')}</b></p>${pre({estados:t.estados,mocks:t.mocks,variantesAplicaveis:proj.variantes})}`;return}
+ const proj=projetar(c,telaId,participacaoId,estado,mock,dadosTemporarios);if(mode==='motor'){$('protoBody').innerHTML=pre(proj);return}if(mode==='cenarios'){$('protoBody').innerHTML=`<h3>Estados e cenários</h3><p>Estado atual: <b>${esc(estado)}</b> · Mock: <b>${esc(mock||'nenhum')}</b></p>${pre({estados:t.estados,mocks:t.mocks,variantesAplicaveis:proj.variantes})}`;return}
  if(!['experiencia','cenarios','motor'].includes(mode)){renderExtra(proj);return}
  $('protoBody').innerHTML=`<div class="row between"><h3>${esc(t.identidade.nome)}</h3><span class="tag">${esc(participacaoId)}</span></div><div class="shadow-wrap" id="screen"></div><h3 style="margin-top:17px">Ações declaradas</h3><div class="row" id="actions">${(t.acoes?.itens||[]).map(a=>`<button class="btn" data-act="${esc(a.id)}">${esc(a.evento||a.id)}</button>`).join('')||'<span class="small">Sem ação</span>'}</div><div class="small" style="margin-top:12px">Variantes ativas: ${esc(proj.variantes.map(v=>v.id).join(', ')||'nenhuma')}</div>`;
- try{const v=montarTela(c,telaId,{participacaoId,estado,dados:proj.contexto,callback:acao=>{if(acao)executar(acao);else aviso('Evento do componente sem ação vinculada')}});$('screen').append(v.host)}catch(e){aviso(e.message)}
+ try{const v=montarTela(c,telaId,{participacaoId,estado,dados:proj.contexto,callback:acao=>{if(acao)executar(acao);else aviso('Evento do componente sem ação vinculada')}});$('screen').append(v.host);vincularCamposHTML(v.host)}catch(e){aviso(e.message)}
  $('actions').onclick=e=>{const b=e.target.closest('[data-act]');if(b)executar(b.dataset.act)};
+}
+
+
+/** Guarda os campos HTML na sessão, sem escrever no catálogo.
+ * IDs e nomes são preferidos; placeholder identifica campos sem name.
+ */
+function vincularCamposHTML(host){
+ const root=host.shadowRoot;if(!root)return;
+ const fields=Array.from(root.querySelectorAll('input,textarea,select')).filter(el=>!['hidden','button','submit'].includes(el.type));
+ const draft=rascunhosPorTela[telaId]||(rascunhosPorTela[telaId]={});
+ const scenario=c.telas[telaId]?.mocks?.cenarios?.find(x=>x.id===mock);
+ const source={...(scenario?.dados||{}),...dadosTemporarios};
+ fields.forEach((el,i)=>{
+   const k=el.name||el.id||el.getAttribute('placeholder')||'campo_'+i;
+   const val=Object.prototype.hasOwnProperty.call(draft,k)?draft[k]:source[k];
+   if(val!==undefined&&val!==null){
+      if(el.type==='checkbox'||el.type==='radio')el.checked=Boolean(val);
+      else if(el.value===''||Object.prototype.hasOwnProperty.call(draft,k))el.value=String(val);
+   }
+   const store=()=>{
+      draft[k]=(el.type==='checkbox'||el.type==='radio')?el.checked:el.value;
+      registrar('campo',k+' · valor omitido');
+   };
+   el.addEventListener('input',store);el.addEventListener('change',store);
+ });
 }
 
 const telas=()=>Object.values(c.telas);

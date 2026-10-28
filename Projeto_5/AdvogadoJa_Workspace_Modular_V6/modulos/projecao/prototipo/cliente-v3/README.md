@@ -12,6 +12,8 @@ Lê somente `catalogo/indice.json`, `catalogo/telas/` e `catalogo/componentes/` 
 - ◈ Estados
 - ⚡ Eventos
 - ▦ Telas
+- ⇄ Sequências
+- ⌁ Relações
 - ⚙ Configuração
 - ☷ Rastreio
 - { } Motor / JSON
@@ -21,3 +23,7 @@ Os laboratórios de referência do Projeto 6 contêm muito mais telas; aqui as o
 
 ## Regras
 Leia `AGENTS.md`, teste as ações e a abertura por HTTP. Não importe arquivos JS/CSS de outros módulos. O menu geral permanece no próprio HTML; o submenu apenas alterna entre os dois laboratórios.
+
+## Campos de formulário HTML
+
+Os campos do DOM renderizado mantêm valores digitados ao alternar estados e telas durante **a sessão atual**. O preenchimento utiliza somente dados declarados em `mocks.cenarios` da tela, respeitando o que já foi digitado. O histórico registra a referência do campo sem copiar seu valor; credenciais não são exportadas. O motor recebe dados temporários em `contexto` para avaliar variantes; nada é salvo no Catálogo.
