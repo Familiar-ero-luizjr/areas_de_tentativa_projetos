@@ -41,3 +41,10 @@ As recomendações pendentes do questionário não são fixadas automaticamente.
 ## Documentação de cada módulo
 
 Os 12 módulos agora mantêm **README.md** e **AGENTS.md** específicos em suas pastas. Leia-os antes de alterar o motor ou o design. Consulte também o [portal do Projeto 5](../index.html) e o [README do projeto](../README.md). GitHub Pages é somente leitura; alterações persistidas requerem o servidor Python local.
+
+
+## Como abrir o Workspace (menu compacto)
+
+Abra `Projeto_5/index.html` para entrar **diretamente no Catálogo**, ou execute `python iniciar.py` nesta pasta e abra `http://localhost:8765`; o `index.html` da V6 redireciona ao mesmo módulo, por compatibilidade.
+
+Cada módulo tem no cabeçalho um menu ☰ com todos os 12 módulos agrupados nas áreas Definição, Construção, Projeção e validação, Ferramentas. Não há mais uma barra com todas as abas nem uma página intermediária de cartões. A navegação HTML/CSS é repetida intencionalmente em cada pasta para preservar a **independência de código**.

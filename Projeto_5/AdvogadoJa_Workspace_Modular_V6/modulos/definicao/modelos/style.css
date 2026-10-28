@@ -5,3 +5,14 @@
 /* Customizações exclusivas deste módulo */
 /* Layout local do módulo; tokens e estrutura comuns em nucleo/ui.css */
 #links{max-height:520px;overflow:auto}#links .item-btn{border-bottom:1px solid var(--line)}
+
+
+/* Menu de módulos: CSS privado deste módulo; não depende de recursos compartilhados. */
+.top{padding:11px 18px}.topline{flex-wrap:nowrap;align-items:center;gap:12px}.top h1{font-size:19px;line-height:1.2;margin:2px 0 0}.top .eyebrow{font-size:9px;letter-spacing:.09em}.workspace-menu{position:relative;flex:none;z-index:80}
+.workspace-menu>summary{display:flex;align-items:center;justify-content:center;gap:9px;list-style:none;cursor:pointer;min-height:40px;border:1px solid #5e7ca6;border-radius:9px;padding:8px 13px;font-weight:750;font-size:13px;color:#fff;background:#1c3961;user-select:none}
+.workspace-menu>summary::-webkit-details-marker{display:none}.workspace-menu>summary:hover,.workspace-menu[open]>summary{background:#2c4b76;border-color:#91b2df}.workspace-menu>summary:focus-visible{outline:3px solid #90baf8;outline-offset:2px}
+.workspace-menu .menu-icon{font-size:21px;line-height:1}.workspace-menu .menu-panel{position:absolute;top:calc(100% + 9px);right:0;width:min(340px,calc(100vw - 24px));max-height:min(74vh,650px);overflow:auto;background:#fff;border:1px solid #c9d8ea;border-radius:14px;padding:10px;box-shadow:0 18px 50px #0b203958;color:#1c324d}
+.workspace-menu .menu-group{padding:7px 3px}.workspace-menu .menu-group+.menu-group{border-top:1px solid #e5ebf5}.workspace-menu .menu-heading{margin:4px 8px 6px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:850;color:#687c97}
+.workspace-menu .menu-link{display:block;padding:10px 11px;border-radius:8px;color:#263c5b;text-decoration:none;font-size:13px;font-weight:650}.workspace-menu .menu-link:hover,.workspace-menu .menu-link:focus-visible{background:#edf3fc;color:#154b93;outline-offset:1px}.workspace-menu .menu-link[aria-current="page"]{background:#e7f0ff;color:#1352b1;font-weight:800}
+.workspace-menu .menu-extras{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-top:1px solid #e5ebf5;padding:10px 3px 3px}.workspace-menu .menu-extras a{color:#2f5d99;text-align:center;text-decoration:none;font-size:11px;padding:8px;border-radius:7px;background:#f2f6fc}
+@media(max-width:650px){.top{padding:10px 12px}.top h1{font-size:18px}.topline{gap:9px}.workspace-menu>summary{min-height:38px;padding:7px 10px}.workspace-menu>summary .menu-word{display:none}.workspace-menu .menu-panel{right:-2px}.content{padding-top:13px}}

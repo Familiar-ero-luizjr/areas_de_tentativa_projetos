@@ -59,3 +59,12 @@ O novo contrato de tela **não possui seção `flow`**. O Flow usa `navegacao` e
 As cinco telas formam um **laboratório**, sem autenticação real ou migração automática do acervo. A transferência Estudante → Cliente é requisito de reorganização futura, não resultado já aplicado. O questionário distingue recomendações provisórias de aprovações explícitas.
 
 Antes de alterar um módulo, leia `README.md` e `AGENTS.md` na pasta específica. Não misture com `Projeto_1` a `Projeto_4`.
+
+
+## Entrada direta e menu compacto (atualização)
+
+- O endereço `Projeto_5/` abre **diretamente o módulo Catálogo do Workspace**; não existe um portal adicional para escolher o Workspace.
+- O antigo `AdvogadoJa_Workspace_Modular_V6/index.html` permanece apenas como **atalho de compatibilidade** para o mesmo Catálogo, sem índice duplicado.
+- O menu ☰ no cabeçalho de **cada um dos 12 módulos** permite alternar entre Modelos, Contrato, Planejamento, Catálogo, Jornadas, Flow, Protótipo, Banco, Mapa de Interações, Auditoria, Arquivos e Questionário.
+- O índice geral do repositório continua separado para acessar os demais projetos. O menu de cada módulo oferece o link “Outros projetos”.
+- A navegação é parte do HTML/CSS **local** de cada módulo, sem núcleo compartilhado. Cada pasta continua independente; o catálogo JSON continua sendo a única fonte comum de dados.

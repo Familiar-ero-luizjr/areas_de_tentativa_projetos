@@ -23,3 +23,12 @@
 - `iniciar.py` é infraestrutura de arquivos e gravação validada, não um motor central.
 - GitHub Pages só permite leitura estática; não prometer gravação persistente.
 - Documentar claramente o que está implementado versus requisito futuro ou recomendação provisória.
+
+
+## Navegação do Workspace
+
+- O ponto de entrada oficial `Projeto_5/index.html` deve encaminhar diretamente ao módulo inicial (Catálogo), sem portal de cartões intermediário.
+- O alias `AdvogadoJa_Workspace_Modular_V6/index.html` existe apenas para preservar links anteriores e deve apontar à mesma entrada.
+- Cada módulo mantém seu **menu de navegação próprio** em `index.html` e estilos correspondentes em `style.css`. Não importar menu JS/CSS de outro módulo; manter destinos relativos válidos.
+- Ao incluir/remover um módulo, revisar os menus locais e seus links, sem criar um componente de código global.
+- Conferir navegação no celular: menu ☰ compacto, conteúdo da tela visível, foco de teclado, fechamento por Escape e clique fora.

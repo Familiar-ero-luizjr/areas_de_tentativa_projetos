@@ -15,3 +15,11 @@
 ## Guia local obrigatório
 
 Leia também o README.md da pasta do módulo antes de alterar código. Ele documenta o que seu motor efetivamente implementa, seus campos de entrada, limitações e testes. Mudanças em contratos JSON compartilhados exigem verificar todos os consumidores sem criar motor compartilhado.
+
+
+## Regra de acesso único e menu privado por módulo
+
+- A entrada pública `../index.html` e o alias `index.html` encaminham para `modulos/construcao/catalogo/index.html`.
+- Não recriar páginas intermediárias de índice no Projeto 5 nem no Workspace.
+- O menu ☰ de navegação é implementado **localmente no index.html e style.css de cada módulo**; sem CSS/JS compartilhado e sem impacto nos motores.
+- Manter os links relativos entre módulos e a indicação visual do módulo atual; testar responsividade e acessibilidade do menu.
