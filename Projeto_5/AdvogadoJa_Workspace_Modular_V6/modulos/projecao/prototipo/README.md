@@ -1,16 +1,20 @@
-# Protótipo HTML — Workspace V6
+# Protótipo — Workspace V6 · dois submódulos reais
 
-## Referências do Projeto 6
-Integra conceitos dos dois laboratórios: Modular V2 (experiência, sequências, relações, execução automática, apresentação, importação/exportação, percurso) e Cliente V3 (configuração, dados, preenchimento, estados, eventos, inventário e rastreio).
+## Objetivo
+O Protótipo é composto por **dois laboratórios independentes**, adaptados ao Projeto 5 com HTML, CSS e JS. O `index.html` desta pasta é somente o seletor de entrada. Não existe mais a alternância interna entre perspectivas num único motor.
 
-## Fonte real
-Lê apenas os cinco contratos ativos e seus componentes por `catalogo.js`; o renderer `montagem.js` gera visualização HTML/CSS isolada em Shadow DOM. Não copia os arquivos gigantes históricos do Projeto 6, não usa Flutter e não cria outra fonte de telas.
+| Laboratório | Responsabilidade | Pasta |
+|---|---|---|
+| Modular V2 | Experiência, sequências, relações, percurso, apresentação | `modular-v2/` |
+| Cliente Interativo V3 | Telas HTML, dados, preenchimento, estados, eventos e rastreio | `cliente-v3/` |
 
-## Subabas e perspectivas
-Perspectivas **Modular V2** e **Cliente V3**: organizam o trabalho no mesmo módulo. Subabas: Experiência, Configuração, Dados e cenários, Estados, Eventos, Telas, Sequências, Relações, Percurso, Motor/JSON. As sequências, notas de relações e dados editados são temporários e não reescrevem `acoes` nem o catálogo. Exportação/importação gera apenas sessão de laboratório.
+Cada submódulo tem `index.html`, `style.css`, `app.js`, `motor.js`, `catalogo.js`, `montagem.js`, `resolvedor.js`, `regras.js`, `ui.js`, `README.md`, `AGENTS.md` e `manifesto.modulo.json` próprios.
 
-## Arquivos
-`index.html`, `style.css`, `app.js`, `motor.js`, `montagem.js`, `catalogo.js`, `regras.js`, `resolvedor.js`, `ui.js`, `AGENTS.md`, `README.md`, `manifesto.modulo.json`. Todo código é local.
+## Fonte única
+Ambos leem `catalogo/indice.json` e registros indexados de `catalogo/telas/` e `catalogo/componentes/`. Não carregam diretamente os arquivos HTML do Projeto 6, nem o acervo pendente. **Mocks de cenários** só existem quando declarados em `mocks.cenarios` das telas canônicas.
 
-## Limites
-As funcionalidades que no Projeto 6 dependiam de 31+ telas, solicitações e estados específicos não são inventadas; a versão do Projeto 5 tem cinco telas de laboratório. Transições reais só vêm de ações declaradas, e autenticação/API real não é executada.
+## Instruções
+Abra a raiz do Workspace por HTTP usando `python iniciar.py`, navegue para Protótipo pelo menu e selecione um dos dois laboratórios. GitHub Pages também pode servir a aplicação em modo leitura/simulação.
+
+## Limitações atuais
+A referência funcional é o Projeto 6, mas a origem canônica do Projeto 5 tem cinco telas. Recursos dependentes de telas ausentes não devem ser artificialmente completados. Somente ações declaradas definem rotas funcionais; sequências editoriais não são rotas. No futuro, os dois laboratórios poderão evoluir independentemente com seus contratos.

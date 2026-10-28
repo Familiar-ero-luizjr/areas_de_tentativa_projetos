@@ -24,3 +24,16 @@ Somente `catalogo/indice.json`, os JSONs ativos de telas e os JSONs de component
 3. Verificar que nenhuma operação grava dados derivados sobre telas sem confirmação.
 4. Verificar o comportamento real de estados vazios; a ausência de dados não autoriza inventá-los.
 5. Distinguir capacidades presentes de objetivos e propostas nos READMEs e AGENTS.
+
+## Protótipo: dois laboratórios autônomos (atualização)
+
+O Protótipo mantém um único módulo no menu geral, porém contém **dois submódulos de execução distintos**:
+
+- `modulos/projecao/prototipo/modular-v2/`: experiência HTML/CSS, ações, sequências, relações, percurso, apresentação e Motor/JSON.
+- `modulos/projecao/prototipo/cliente-v3/`: experiência HTML/CSS, configuração, preenchimento de dados de cenário, estados, eventos, inventário, rastreio e Motor/JSON.
+
+Cada um tem seu próprio `index.html`, `style.css`, `app.js`, `motor.js`, `catalogo.js`, `montagem.js`, `regras.js`, `resolvedor.js`, `ui.js`, `README.md`, `AGENTS.md` e `manifesto.modulo.json`. A raiz de `prototipo/` é somente o **seletor com estrutura padrão** e não executa as telas.
+
+O submenu do Protótipo alterna os dois laboratórios; não fundir seus motores. Ambos só leem a fonte canônica ativa, sem incorporar os HTMLs históricos do Projeto 6. Manter **12 módulos no menu geral**, com **dois filhos** dentro de Protótipo.
+
+O Banco permanece derivado do Catálogo ativo, **sem mock**. Caso os contratos não declarem entidades ou relações, informar os dados insuficientes e não renderizar uma modelagem fictícia.

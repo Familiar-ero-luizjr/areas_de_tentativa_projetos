@@ -1,0 +1,20 @@
+import {selecionarVariantes,contexto} from './regras.js';
+const tags=new Set('div span p h1 h2 h3 h4 main nav section ul li button form input label article aside header footer strong small em'.split(' '));
+function safeHtml(raw){const t=document.createElement('template');t.innerHTML=String(raw||'');t.content.querySelectorAll('*').forEach(el=>{if(!tags.has(el.tagName.toLowerCase())){el.replaceWith(document.createTextNode(el.textContent||''));return}for(const att of [...el.attributes])if(att.name.startsWith('on')||!['class','id','data-slot','role','title','aria-label','type','placeholder','name','value'].includes(att.name))el.removeAttribute(att.name)});return t.content}
+function nodes(arvore,props,callback,item){const frag=document.createDocumentFragment();for(const n of arvore||[]){if(n.repetir){const list=n.repetir==='props.itens'?props.itens||[]:[];if(n.tag==='ul'||n.tag==='ol'){const listEl=document.createElement(n.tag);for(const [k,v] of Object.entries(n.atributos||{}))if(['class','id','aria-label'].includes(k))listEl.setAttribute(k,v);for(const li of list)listEl.append(nodes(n.filhos,props,callback,li));frag.append(listEl)}else for(const li of list)frag.append(nodes([{...n,repetir:undefined}],props,callback,li));continue}
+ const tag=tags.has(n.tag)?n.tag:'div';const el=document.createElement(tag);for(const [key,val] of Object.entries(n.atributos||{}))if(!key.startsWith('on')&&['class','id','type','placeholder','aria-label','name'].includes(key))el.setAttribute(key,val);
+ const text=n.textoRef==='item.texto'?item?.texto:n.textoRef==='props.rotulo'?props.rotulo:n.textoRef==='props.botao'?props.botao:n.textoRef==='props.titulo'?props.titulo:null;if(text!=null)el.textContent=String(text);
+ if(n.eventoEmitido){if(tag==='button'&&!el.getAttribute('type'))el.type='button';el.addEventListener('click',e=>{e.preventDefault();callback?.(item?.acaoRef||props.acaoRef||null,n.eventoEmitido)})}
+ if(tag==='form')el.addEventListener('submit',e=>{e.preventDefault();callback?.(props.acaoRef||'login.enviar','formulario.enviar')});
+ el.append(nodes(n.filhos,props,callback,item));frag.append(el)}return frag}
+export function montarTela(c,telaId,{participacaoId,estado,dados={},callback}={}){
+ const tela=c.telas[telaId];if(!tela)throw Error('Tela ausente '+telaId);
+ const part=tela.navegacao?.participacoes?.find(p=>p.id===participacaoId)||tela.navegacao?.participacoes?.[0];
+ const active=selecionarVariantes(tela,contexto(part,estado||tela.estados?.fallbackSeguro,dados));
+ const host=document.createElement('div');host.className='screen-shadow-host';const shadow=host.attachShadow({mode:'open'});
+ const style=document.createElement('style');style.textContent=`:host{display:block;--primary:#2865df;font:14px/1.55 system-ui,sans-serif;color:#142945}.screen{border-radius:16px;background:#fff;min-height:220px;padding:24px;border:1px solid #d5dfeb}.screen h2{margin:6px 0 11px}.screen button{cursor:pointer}.screen input{display:block;width:100%}.menu-principal{padding:0;list-style:none}.menu-principal ul{list-style:none;padding:0}.menu-principal button{font-weight:600;background:#eaf1fb;border:0;margin:2px 0;width:100%;text-align:left}.screen .brand-mark{display:inline-block;background:#14325d;color:white;font-weight:bold}`+(tela.estilos?.base?.css||'')+Object.values(c.componentes).map(k=>k.estilos?.base?.css||'').join('\n');shadow.append(style);
+ const body=document.createElement('div');body.className='screen';body.append(safeHtml(tela.estrutura?.base?.html));shadow.append(body);
+ for(const inst of tela.componentes?.instancias||[]){const cmp=c.componentes[inst.ref];if(!cmp)continue;const mount=body.querySelector(`[data-slot="${inst.slot}"]`)||body;mount.append(nodes(cmp.estrutura?.base?.arvore,inst.props||{},callback));}
+ for(const v of active){for(const patch of tela.estrutura?.variantes||[]){if(patch.varianteRef!==v.id)continue;const el=body.querySelector(`[data-slot="${patch.alvo}"]`);if(el&&typeof patch.substituirHtml==='string')el.replaceChildren(safeHtml(patch.substituirHtml))}}
+ return {host,ativos:active.map(v=>({id:v.id,prioridade:v.prioridade})),participacao:part?.id,estado};
+}

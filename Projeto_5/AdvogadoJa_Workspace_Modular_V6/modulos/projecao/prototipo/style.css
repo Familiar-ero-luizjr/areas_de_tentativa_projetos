@@ -20,3 +20,12 @@
 /* Protótipo HTML: duas perspectivas e navegação funcional derivada do Projeto 6. */
 .lab-perspectives{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:11px}.lab-tabs{display:flex;gap:6px;overflow-x:auto;padding:7px 1px 13px}.lab-tabs .btn{white-space:nowrap}.lab-subpanel{padding:10px 0;display:grid;gap:12px}.lab-line{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid #dbe4ef;padding:10px 5px}.lab-line span{color:#60788f}.lab-tools{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid #dbe4ef;padding-top:15px;margin-top:15px}.lab-screen{display:block;background:#f9fbff;border:1px solid #d8e5f1;border-radius:11px;padding:13px;margin:6px 0;width:100%;text-align:left}.lab-screen strong,.lab-screen small{display:block}.lab-screen small{color:#6b7d94}.lab-screen:hover{background:#eaf3ff}
 @media(max-width:650px){.lab-tabs{max-width:calc(100vw - 34px)}.lab-perspectives{justify-content:flex-start}.lab-subpanel .row{gap:7px}}
+
+
+/* Somente a página seletora do Protótipo; filhos têm seus próprios estilos. */
+.proto-select{max-width:1160px;margin:0 auto;padding:22px 8px 42px}
+.proto-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.proto-card{display:block;border:1px solid var(--line);background:#fff;border-radius:15px;text-decoration:none;padding:22px;color:var(--text);box-shadow:0 8px 24px #193b6411}
+.proto-card:hover,.proto-card:focus-visible{outline:2px solid #2865df;outline-offset:2px}
+.proto-card strong{display:block;font-size:20px;margin:10px 0;color:#19395c}.proto-card p{font-size:13px;color:#5d7290;line-height:1.6}.proto-card span:first-child{font-size:11px;font-weight:800;color:#2765b4}
+@media(max-width:680px){.proto-cards{grid-template-columns:1fr}.proto-select{padding:8px 1px 26px}}

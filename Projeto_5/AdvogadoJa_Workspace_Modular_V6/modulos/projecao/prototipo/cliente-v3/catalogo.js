@@ -1,7 +1,7 @@
 // Código próprio deste módulo. Compartilha somente os JSONs do Catálogo ativo.
 // Se mover esta pasta para outra profundidade, ajuste apenas a constante ROOT abaixo.
 // Única porta de leitura/escrita do catálogo ativo. Acervo pendente nunca é consultado aqui.
-const ROOT=new URL('../../../',import.meta.url);
+const ROOT=new URL('../../../../',import.meta.url);
 const KEY='advogadoja.v6.prototipo.rascunho.';
 const fetchJSON=async path=>{const r=await fetch(new URL(path,ROOT),{cache:'no-store'});if(!r.ok)throw Error(`${r.status} · ${path}`);return r.json()};
 export const urlRaiz=ROOT;

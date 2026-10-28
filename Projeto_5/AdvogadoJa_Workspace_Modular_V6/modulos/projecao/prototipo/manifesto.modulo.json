@@ -1,7 +1,7 @@
 {
   "schema": "advogadoja.workspace.modulo.v1",
   "id": "projecao/prototipo",
-  "nome": "Protótipo",
+  "nome": "Protótipo — dois laboratórios",
   "versao": "V6",
   "independente": true,
   "estrutura": {
@@ -12,26 +12,20 @@
     "documentacao": "README.md",
     "orientacoes": "AGENTS.md"
   },
+  "submodulos": [
+    "modular-v2",
+    "cliente-v3"
+  ],
   "menus": {
     "global": "cabeçalho local",
-    "interno": "subabas e controles locais"
+    "interno": "seletor de laboratório"
   },
   "dados": {
     "fonteCanonica": "catalogo/indice.json e registros ativos",
-    "secoesConsumidas": [
-      "identidade",
-      "estrutura",
-      "estilos",
-      "componentes",
-      "navegacao",
-      "acoes",
-      "estados",
-      "variantes",
-      "mocks"
-    ],
+    "secoesConsumidas": [],
     "arquivosLocais": [],
     "acervoPendente": false
   },
-  "saida": "HTML/CSS simulado, estados e sequências",
-  "observacoes": "Perspectivas V2/V3 inspiradas no Projeto 6, somente HTML/CSS dos contratos."
+  "saida": "Acesso aos laboratórios Modular V2 e Cliente V3",
+  "observacoes": "Cada submódulo implementa seu próprio motor, renderização e leitor de dados."
 }

@@ -1,4 +1,5 @@
-import {resolverTransicao} from './resolvedor.js';
-import {selecionarVariantes,contexto} from './regras.js';
-export function projetar(c,telaId,participacaoId,estado,mock){const t=c.telas[telaId];const p=t?.navegacao?.participacoes?.find(x=>x.id===participacaoId);const m=t?.mocks?.cenarios?.find(x=>x.id===mock);return {telaId,participacaoId,estado,mock,contexto:contexto(p,estado,m?.dados||{}),variantes:selecionarVariantes(t,contexto(p,estado,m?.dados||{})),acoes:(t?.acoes?.itens||[]).map(a=>({id:a.id,evento:a.evento,operacao:a.operacaoRef||null,possiveisDestinos:[a.destino,...(a.rotas||[]).map(r=>r.destino)].filter(Boolean)})),fonte:['navegacao','estados','estrutura','estilos','componentes','acoes','mocks']}}
-export {resolverTransicao};
+/** Registro local dos dois submódulos do Protótipo. Sem dados de telas duplicados. */
+export const LABORATORIOS=Object.freeze([
+{id:'modular-v2',titulo:'Laboratório Modular V2',descricao:'Experiência, sequências editoriais, relações, percurso, apresentação e Motor/JSON.',recursos:['Experiência','Sequências','Relações','Percurso','Apresentação','Motor/JSON'],href:'modular-v2/index.html'},
+{id:'cliente-v3',titulo:'Cliente Interativo V3',descricao:'Telas HTML, preenchimento, dados e cenários, estados, eventos, inventário e rastreio.',recursos:['Experiência','Dados e cenários','Estados','Eventos','Telas','Rastreio','Motor/JSON'],href:'cliente-v3/index.html'}
+]);
