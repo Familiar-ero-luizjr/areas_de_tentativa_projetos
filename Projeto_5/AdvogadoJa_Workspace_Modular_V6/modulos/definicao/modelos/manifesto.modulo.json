@@ -1,0 +1,35 @@
+{
+  "schema": "advogadoja.workspace.modulo.v1",
+  "id": "definicao/modelos",
+  "nome": "Modelos JSON",
+  "versao": "V6",
+  "independente": true,
+  "estrutura": {
+    "interface": "index.html",
+    "estilos": "style.css",
+    "interacoes": "app.js",
+    "motor": "motor.js",
+    "documentacao": "README.md",
+    "orientacoes": "AGENTS.md"
+  },
+  "menus": {
+    "global": "cabeçalho local",
+    "interno": "subabas e controles locais"
+  },
+  "dados": {
+    "fonteCanonica": "catalogo/indice.json e registros ativos",
+    "secoesConsumidas": [
+      "schema",
+      "identidade",
+      "componentes",
+      "estrutura",
+      "estilos",
+      "acoes",
+      "dados"
+    ],
+    "arquivosLocais": [],
+    "acervoPendente": false
+  },
+  "saida": "modelo e árvore de campos",
+  "observacoes": "Motor e interface locais, sem importar código funcional de outro módulo."
+}

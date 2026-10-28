@@ -23,3 +23,7 @@ Leia também o README.md da pasta do módulo antes de alterar código. Ele docum
 - Não recriar páginas intermediárias de índice no Projeto 5 nem no Workspace.
 - O menu ☰ de navegação é implementado **localmente no index.html e style.css de cada módulo**; sem CSS/JS compartilhado e sem impacto nos motores.
 - Manter os links relativos entre módulos e a indicação visual do módulo atual; testar responsividade e acessibilidade do menu.
+
+## Padronização dos módulos · 2026-10-28
+
+Todos os módulos incluem `manifesto.modulo.json` e os seis arquivos de interface, motor e orientação definidos em `documentacao/PADRAO_ESTRUTURA_MODULOS_V6.md`. O Banco não pode usar mock nem catálogo histórico. O Protótipo pode utilizar `mocks.cenarios` dos próprios JSONs de tela, sem copiar dados históricos do Projeto 6 ou redefinir rotas canônicas. Subabas e menu do módulo são locais.

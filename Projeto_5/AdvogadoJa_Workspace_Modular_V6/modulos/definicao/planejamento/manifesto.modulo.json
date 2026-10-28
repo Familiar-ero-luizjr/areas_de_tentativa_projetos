@@ -1,0 +1,30 @@
+{
+  "schema": "advogadoja.workspace.modulo.v1",
+  "id": "definicao/planejamento",
+  "nome": "Planejamento",
+  "versao": "V6",
+  "independente": true,
+  "estrutura": {
+    "interface": "index.html",
+    "estilos": "style.css",
+    "interacoes": "app.js",
+    "motor": "motor.js",
+    "documentacao": "README.md",
+    "orientacoes": "AGENTS.md"
+  },
+  "menus": {
+    "global": "cabeçalho local",
+    "interno": "subabas e controles locais"
+  },
+  "dados": {
+    "fonteCanonica": "catalogo/indice.json e registros ativos",
+    "secoesConsumidas": [
+      "identidade",
+      "navegacao"
+    ],
+    "arquivosLocais": [],
+    "acervoPendente": false
+  },
+  "saida": "etapas e pendências",
+  "observacoes": "Motor e interface locais, sem importar código funcional de outro módulo."
+}

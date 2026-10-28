@@ -1,0 +1,32 @@
+{
+  "schema": "advogadoja.workspace.modulo.v1",
+  "id": "ferramentas/importacao-exportacao",
+  "nome": "Importação e Exportação",
+  "versao": "V6",
+  "independente": true,
+  "estrutura": {
+    "interface": "index.html",
+    "estilos": "style.css",
+    "interacoes": "app.js",
+    "motor": "motor.js",
+    "documentacao": "README.md",
+    "orientacoes": "AGENTS.md"
+  },
+  "menus": {
+    "global": "cabeçalho local",
+    "interno": "subabas e controles locais"
+  },
+  "dados": {
+    "fonteCanonica": "catalogo/indice.json e registros ativos",
+    "secoesConsumidas": [
+      "identidade",
+      "componentes",
+      "navegacao",
+      "acoes"
+    ],
+    "arquivosLocais": [],
+    "acervoPendente": false
+  },
+  "saida": "intercâmbio por IDs",
+  "observacoes": "Motor e interface locais, sem importar código funcional de outro módulo."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "advogadoja.workspace.modulo.v1",
+  "id": "construcao/catalogo",
+  "nome": "Catálogo",
+  "versao": "V6",
+  "independente": true,
+  "estrutura": {
+    "interface": "index.html",
+    "estilos": "style.css",
+    "interacoes": "app.js",
+    "motor": "motor.js",
+    "documentacao": "README.md",
+    "orientacoes": "AGENTS.md"
+  },
+  "menus": {
+    "global": "cabeçalho local",
+    "interno": "subabas e controles locais"
+  },
+  "dados": {
+    "fonteCanonica": "catalogo/indice.json e registros ativos",
+    "secoesConsumidas": [
+      "identidade",
+      "componentes",
+      "estrutura",
+      "estilos",
+      "estados",
+      "variantes",
+      "acoes",
+      "dados",
+      "mocks",
+      "navegacao"
+    ],
+    "arquivosLocais": [],
+    "acervoPendente": false
+  },
+  "saida": "árvore, edição e montagem",
+  "observacoes": "Motor e interface locais, sem importar código funcional de outro módulo."
+}

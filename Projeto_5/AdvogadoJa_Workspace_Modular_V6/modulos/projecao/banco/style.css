@@ -36,3 +36,13 @@
 .workspace-menu .menu-extras{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-top:1px solid #e5ebf5;padding:10px 3px 3px}.workspace-menu .menu-extras a{color:#2f5d99;text-align:center;text-decoration:none;font-size:11px;padding:8px;border-radius:7px;background:#f2f6fc}
 #mockMode .sidebar{top:123px;height:calc(100vh - 123px)}#mockMode .inspector{top:138px}
 @media(max-width:740px){.workspace-global-header{padding:8px 11px;min-height:55px}.workspace-global-brand strong{font-size:17px}.workspace-menu .menu-word{display:none}.workspace-menu>summary{min-height:37px;padding:7px 10px}#mockMode .sidebar{top:0;height:100vh}#mockMode .inspector{top:70px}}
+
+/* Adaptações para a projeção canônica: sem mock, sem modo reservado. */
+.workspace-global-header{position:relative;z-index:120}.shell{min-height:calc(100dvh - 61px)}
+.sidebar{top:61px;height:calc(100vh - 61px)}.bank-body{padding:16px}.empty-contract{padding:28px;border-radius:13px;border:1px dashed #c0d5e9;background:#fff;color:#324961;max-width:850px}.empty-contract h2{font-size:20px}
+.bank-graph-scroll{position:relative;overflow:auto;min-height:360px;max-height:76vh;background:radial-gradient(circle,#dbe6f1 .8px,transparent 1px) 0 0/18px 18px,#fbfdff}
+.bank-graph-spacer{position:relative}.bank-graph-board{position:absolute;inset:0;transform-origin:0 0}.bank-graph-board svg{position:absolute;inset:0;pointer-events:none}
+.bank-node{position:absolute;z-index:1;border:1px solid #bed0e4;border-top:3px solid #317ac1;background:#fff;border-radius:10px;padding:12px;text-align:left;box-shadow:0 6px 18px #0e315220;max-height:215px;overflow:auto}
+.bank-node strong{display:block}.bank-node small{display:block;color:#5e7894}.bank-node p{margin:5px 0;border-top:1px solid #e8eff8}
+.view{display:block;max-width:1350px}.sidebar .nav-btn:focus-visible,.workspace-menu a:focus-visible{outline:3px solid #83bfff;outline-offset:2px}
+@media(max-width:740px){.sidebar{top:0;height:100dvh}.workspace{min-width:0}.view{padding:17px 12px 40px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}

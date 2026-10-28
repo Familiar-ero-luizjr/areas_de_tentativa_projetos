@@ -1,35 +1,16 @@
-# Protótipo — Workspace V6
+# Protótipo HTML — Workspace V6
 
-## Finalidade
-Simular navegação, estados, mocks e variantes sobre as cinco telas.
+## Referências do Projeto 6
+Integra conceitos dos dois laboratórios: Modular V2 (experiência, sequências, relações, execução automática, apresentação, importação/exportação, percurso) e Cliente V3 (configuração, dados, preenchimento, estados, eventos, inventário e rastreio).
 
-## O que existe hoje
-projetar() e resolverTransicao() usam participação e cenário; montarTela() produz a prévia.
+## Fonte real
+Lê apenas os cinco contratos ativos e seus componentes por `catalogo.js`; o renderer `montagem.js` gera visualização HTML/CSS isolada em Shadow DOM. Não copia os arquivos gigantes históricos do Projeto 6, não usa Flutter e não cria outra fonte de telas.
 
-**Entradas canônicas:** componentes, estrutura, estilos, estados, mocks, navegacao, acoes, variantes. Os dados vêm somente de `../../../catalogo/indice.json` e dos JSONs ativos que ele enumera. O motor não consulta o acervo antigo.
+## Subabas e perspectivas
+Perspectivas **Modular V2** e **Cliente V3**: organizam o trabalho no mesmo módulo. Subabas: Experiência, Configuração, Dados e cenários, Estados, Eventos, Telas, Sequências, Relações, Percurso, Motor/JSON. As sequências, notas de relações e dados editados são temporários e não reescrevem `acoes` nem o catálogo. Exportação/importação gera apenas sessão de laboratório.
 
-## Arquivos locais
-- `index.html` — interface HTML deste módulo
-- `style.css` — estilos exclusivos
-- `app.js` — interação e controles
-- `motor.js` — transformação/projeção própria
-- `catalogo.js` — auxiliar local; sem import de outro módulo
-- `montagem.js` — auxiliar local; sem import de outro módulo
-- `regras.js` — auxiliar local; sem import de outro módulo
-- `resolvedor.js` — auxiliar local; sem import de outro módulo
-- `ui.js` — auxiliar local; sem import de outro módulo
-- `AGENTS.md` — regras de desenvolvimento
-- `README.md` — este guia
+## Arquivos
+`index.html`, `style.css`, `app.js`, `motor.js`, `montagem.js`, `catalogo.js`, `regras.js`, `resolvedor.js`, `ui.js`, `AGENTS.md`, `README.md`, `manifesto.modulo.json`. Todo código é local.
 
-## Como verificar
-1. Execute `python iniciar.py` na raiz `AdvogadoJa_Workspace_Modular_V6`.
-2. Abra `modulos/projecao/prototipo/index.html` a partir do Workspace ou pelo servidor HTTP.
-3. Testar Splash, Boas-vindas, Entrar e Homes com variações e retorno.
-4. Modifique HTML/CSS/JS/motor **somente nesta pasta** e confirme os imports internos.
-
-## Limites e próxima evolução
-Login e demais serviços são simulados, nunca transações reais.
-
-**Regra especial:** Mocks pertencem às telas; aplicar base e alterações visuais contextuais; herdar invólucro visual sem herdar permissão.
-
-Outros módulos podem interpretar os mesmos dados, mas não importam código deste módulo. A mudança no contrato JSON compartilhado requer teste de conformidade dos consumidores. GitHub Pages fornece leitura estática; salvar arquivos físicos exige o servidor local ou exportação controlada.
+## Limites
+As funcionalidades que no Projeto 6 dependiam de 31+ telas, solicitações e estados específicos não são inventadas; a versão do Projeto 5 tem cinco telas de laboratório. Transições reais só vêm de ações declaradas, e autenticação/API real não é executada.

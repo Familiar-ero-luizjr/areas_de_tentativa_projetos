@@ -48,3 +48,11 @@ Os 12 módulos agora mantêm **README.md** e **AGENTS.md** específicos em suas 
 Abra `Projeto_5/index.html` para entrar **diretamente no Catálogo**, ou execute `python iniciar.py` nesta pasta e abra `http://localhost:8765`; o `index.html` da V6 redireciona ao mesmo módulo, por compatibilidade.
 
 Cada módulo tem no cabeçalho um menu ☰ com todos os 12 módulos agrupados nas áreas Definição, Construção, Projeção e validação, Ferramentas. Não há mais uma barra com todas as abas nem uma página intermediária de cartões. A navegação HTML/CSS é repetida intencionalmente em cada pasta para preservar a **independência de código**.
+
+## Padrão de módulo e evolução do Protótipo/Banco
+
+Leia [PADRAO_ESTRUTURA_MODULOS_V6.md](./documentacao/PADRAO_ESTRUTURA_MODULOS_V6.md). Os 12 módulos têm manifesto próprio, index, estilos, app, motor, README e AGENTS; auxiliares privados permanecem locais.
+
+**Banco**: projeção em tempo de leitura do catálogo ativo, sem mock ou fonte histórica. Os cinco contratos atuais resultam em zero entidades declaradas e um aviso de informação insuficiente. Isso não significa que o motor esteja com problema.
+
+**Protótipo**: preserva o rendering HTML/CSS das telas canônicas e adiciona perspectivas Modular V2/Cliente V3 para simulação, sequência, dados, estados, eventos e percurso. Funcionalidades que no Projeto 6 exigiam telas adicionais estão condicionadas à futura padronização dos contratos, não são clonadas como uma segunda fonte.

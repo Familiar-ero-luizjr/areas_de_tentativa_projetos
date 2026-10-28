@@ -1,20 +1,9 @@
-# AGENTS.md — Banco (Workspace V6)
+# AGENTS.md — Banco do Workspace V6
 
-## Escopo
-Este módulo é um laboratório de interface/estruturas do Banco, com mock local. Alterar somente esta pasta, sem afetar os outros módulos.
-
-## Arquitetura
-- **Menu geral** no cabeçalho: alterna módulos do Workspace, implementado localmente em `index.html` e `style.css`.
-- **Submenu Banco** lateral: alterna diagramas/domínios/relacionamentos/catálogos/SQL; não deve ser transformado em outro menu global.
-- `index.html` é a estrutura; `style.css` é o visual; `app.js` é a interface; `motor.js` é o resolvedor privado; `mock.js` é a única fonte nesta fase.
-- Não ler `catalogo/`, `acervo_pendente/` ou modelagem histórica do Projeto 1; não importar `catalogo.js` e `ui.js` do módulo antigo.
-- `referencia_visual_mock_autocontida.html` é somente backup da aparência e não fonte funcional da versão modular.
-- Não declarar dados fictícios, SQL ou relações como modelagem homologada ou serviço real.
-- Preservar zoom, busca, filtros, seleção, inspetor, FK/PK, relações e exportações.
-
-## Validação
-- Testar 12 tabelas, 14 relações e cinco interfaces do mock; início em modo mock.
-- Testar menu geral e submenu em celular e desktop, Escape, foco e indicadores de página.
-- Testar Catálogo (futuro) como placeholder sem `fetch` de JSONs.
-- Rodar `node --check` em `app.js`, `motor.js` e `mock.js`, e verificar carregamento por HTTP.
-- Futuras integrações com Catálogo deverão ser aprovadas separadamente.
+1. A fonte de dados é exclusivamente o catálogo canônico ativo; acervo, Projeto 1 e mocks não são consultados.
+2. Não criar `mock.js`, `flow` nas telas, modelagem paralela nem um motor global.
+3. O motor **projeta** entidades, campos e relacionamentos **declarados**, nunca os inventa. Divergências e campos ausentes geram avisos.
+4. O menu superior troca de módulo; o menu lateral é o submenu privado do Banco.
+5. Manter HTML, CSS, JS, motor e carregador dentro desta pasta. Preservar a acessibilidade dos controles e a opção Motor/JSON.
+6. Antes de propor geração de SQL, precisar de contrato explícito de tipos, chaves, cardinalidades, índices e integridade.
+7. Testar por HTTP: catálogo ativo, estado vazio, exportação, navegação, diagrama e inspector, quando houver informações suficientes.

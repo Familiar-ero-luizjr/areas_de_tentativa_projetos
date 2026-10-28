@@ -68,3 +68,9 @@ Antes de alterar um módulo, leia `README.md` e `AGENTS.md` na pasta específica
 - O menu ☰ no cabeçalho de **cada um dos 12 módulos** permite alternar entre Modelos, Contrato, Planejamento, Catálogo, Jornadas, Flow, Protótipo, Banco, Mapa de Interações, Auditoria, Arquivos e Questionário.
 - O índice geral do repositório continua separado para acessar os demais projetos. O menu de cada módulo oferece o link “Outros projetos”.
 - A navegação é parte do HTML/CSS **local** de cada módulo, sem núcleo compartilhado. Cada pasta continua independente; o catálogo JSON continua sendo a única fonte comum de dados.
+
+## Atualização de padronização dos módulos (28/10/2026)
+
+Os 12 módulos passam a ter `manifesto.modulo.json` além do padrão `index.html`, `style.css`, `app.js`, `motor.js`, `README.md`, `AGENTS.md`. Consulte [Padrão de estrutura](./AdvogadoJa_Workspace_Modular_V6/documentacao/PADRAO_ESTRUTURA_MODULOS_V6.md).
+
+**Banco:** agora lê somente o Catálogo ativo, sem mock e sem cópia da modelagem histórica. Mostra aviso quando os contratos ainda não declaram entidades/campos/relacionamentos. **Protótipo:** duas perspectivas baseadas nas capacidades dos laboratórios V2 e V3 do Projeto 6, redesenhadas para as cinco telas canônicas HTML/CSS do Projeto 5, com subabas de simulação. Nenhum dado histórico do Projeto 6 foi incorporado.

@@ -1,0 +1,33 @@
+{
+  "schema": "advogadoja.workspace.modulo.v1",
+  "id": "ferramentas/auditoria",
+  "nome": "Auditoria",
+  "versao": "V6",
+  "independente": true,
+  "estrutura": {
+    "interface": "index.html",
+    "estilos": "style.css",
+    "interacoes": "app.js",
+    "motor": "motor.js",
+    "documentacao": "README.md",
+    "orientacoes": "AGENTS.md"
+  },
+  "menus": {
+    "global": "cabeçalho local",
+    "interno": "subabas e controles locais"
+  },
+  "dados": {
+    "fonteCanonica": "catalogo/indice.json e registros ativos",
+    "secoesConsumidas": [
+      "identidade",
+      "navegacao",
+      "acoes",
+      "componentes",
+      "estados"
+    ],
+    "arquivosLocais": [],
+    "acervoPendente": false
+  },
+  "saida": "diagnósticos do contrato",
+  "observacoes": "Motor e interface locais, sem importar código funcional de outro módulo."
+}
