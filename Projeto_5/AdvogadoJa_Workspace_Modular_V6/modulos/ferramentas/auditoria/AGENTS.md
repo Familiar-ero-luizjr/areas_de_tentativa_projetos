@@ -25,3 +25,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Auditoria
+
+- **Objetivo:** Inspecionar consistência, IDs e referências do catálogo ativo.
+- **Fonte lida:** identidade, componentes, navegacao, acoes, estados e dados no Catálogo ativo.
+- **Processamento implementado:** motor.js expõe auditar() de validador.js privado.
+- **Limite conhecido:** Zero erro no laboratório não significa homologação total ou auditoria do acervo.
+- **Regra adicional:** Não corrigir silenciosamente, não incluir o acervo e apresentar origem de cada problema.
+
+## Verificação específica
+
+- Checar contagens; introduzir referência inválida em rascunho e verificar aviso.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

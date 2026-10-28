@@ -37,3 +37,7 @@ Cada pasta de módulo pode ser modificada e substituída isoladamente. Para exec
 
 As cinco telas são exemplos de contrato ainda provisório; ações, variantes e dados não equivalem a serviços de produção. O gráfico Flow é auto-organizado, sem x/y persistidos, e os módulos não são o aplicativo mobile real. Banco só projeta dados declarados. A transferência Estudante → Cliente é ilustrativa e não mexe no acervo.
 As recomendações pendentes do questionário não são fixadas automaticamente.
+
+## Documentação de cada módulo
+
+Os 12 módulos agora mantêm **README.md** e **AGENTS.md** específicos em suas pastas. Leia-os antes de alterar o motor ou o design. Consulte também o [portal do Projeto 5](../index.html) e o [README do projeto](../README.md). GitHub Pages é somente leitura; alterações persistidas requerem o servidor Python local.

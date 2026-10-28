@@ -22,3 +22,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Mapa de Interações
+
+- **Objetivo:** Relacionar gatilhos, serviços, estados e efeitos das ações, sem duplicar o Flow.
+- **Fonte lida:** acoes.itens, rotas, estados e dados no Catálogo ativo.
+- **Processamento implementado:** projetar() mostra tela, ação, evento, operação referenciada, estados e possíveis destinos.
+- **Limite conhecido:** Referência de operação não comprova chamada real de API ou backend.
+- **Regra adicional:** Não inventar chamadas ao Maps/autenticação; distinguir evento de transição e serviço de projeção.
+
+## Verificação específica
+
+- Conferir que cada interação visível existe em acoes e que faltas são sinalizadas.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

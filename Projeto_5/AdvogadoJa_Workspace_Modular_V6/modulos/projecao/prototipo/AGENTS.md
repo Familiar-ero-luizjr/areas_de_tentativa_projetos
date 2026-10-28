@@ -25,3 +25,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Protótipo
+
+- **Objetivo:** Simular navegação, estados, mocks e variantes sobre as cinco telas.
+- **Fonte lida:** componentes, estrutura, estilos, estados, mocks, navegacao, acoes, variantes no Catálogo ativo.
+- **Processamento implementado:** projetar() e resolverTransicao() usam participação e cenário; montarTela() produz a prévia.
+- **Limite conhecido:** Login e demais serviços são simulados, nunca transações reais.
+- **Regra adicional:** Mocks pertencem às telas; aplicar base e alterações visuais contextuais; herdar invólucro visual sem herdar permissão.
+
+## Verificação específica
+
+- Testar Splash, Boas-vindas, Entrar e Homes com variações e retorno.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

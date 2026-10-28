@@ -23,3 +23,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Importação e Exportação
+
+- **Objetivo:** Trocar pacotes completos de telas/componentes e comparar alterações por ID.
+- **Fonte lida:** catálogo ativo inteiro, índice e pacotes JSON/ZIP no Catálogo ativo.
+- **Processamento implementado:** exportacao() monta pacote; comparar() distingue novos, iguais e alterados e calcula impacto de componentes.
+- **Limite conhecido:** Reconciliar campos complexos e mover jornada ainda exigem contratos adicionais.
+- **Regra adicional:** Nunca apagar ausentes, não sobrescrever compartilhados sem revisão, impedir alterações não autorizadas.
+
+## Verificação específica
+
+- Exportar/importar pacote sem mudanças; examinar diferenças e confirmar gravação validada.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

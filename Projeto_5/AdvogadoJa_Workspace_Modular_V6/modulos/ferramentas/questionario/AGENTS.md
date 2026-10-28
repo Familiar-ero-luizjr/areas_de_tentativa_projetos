@@ -23,3 +23,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Questionário
+
+- **Objetivo:** Apresentar respostas aprovadas e recomendações provisórias separadamente.
+- **Fonte lida:** questionario.json local, respostas de usuário e catálogo para contexto no Catálogo ativo.
+- **Processamento implementado:** resumo() distingue aprovações, respostas confirmadas e recomendações usadas apenas como base.
+- **Limite conhecido:** Opção recomendada não foi homologada; não altera automaticamente JSONs ou regras.
+- **Regra adicional:** Não promover recomendação a aprovação sem consentimento explícito; preservar observações.
+
+## Verificação específica
+
+- Alterar proposta, exportar resposta e confirmar que status permanece provisório.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

@@ -26,3 +26,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Catálogo
+
+- **Objetivo:** Editar e inspecionar os JSONs de tela e componente com montagem visual.
+- **Fonte lida:** identidade, componentes, estrutura, estilos, estados, variantes, mocks e navegação no Catálogo ativo.
+- **Processamento implementado:** projetar() apresenta referências, participações e auditoria; a interface tem Árvore e JSON, Montagem visual e Motor/JSON.
+- **Limite conhecido:** A prévia é laboratório; não equivale a app Flutter ou produto homologado.
+- **Regra adicional:** Não copiar definições de componentes; revisar impactos de componentes compartilhados; não incluir acervo no índice.
+
+## Verificação específica
+
+- Abrir tela e componente, conferir ref, editar em rascunho, validar e só então salvar.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

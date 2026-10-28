@@ -11,3 +11,7 @@
 - Importações são revisadas por ID, especialmente alterações de componentes compartilhados. Ausência no pacote não causa exclusão.
 - O código dos motores pode divergir internamente, mas a semântica dos dados canônicos precisa ser coerente. Testar conformidade entre motores ao alterar contratos.
 - Não chamar o legado de migrado nem atribuir homologação de produção ao laboratório.
+
+## Guia local obrigatório
+
+Leia também o README.md da pasta do módulo antes de alterar código. Ele documenta o que seu motor efetivamente implementa, seus campos de entrada, limitações e testes. Mudanças em contratos JSON compartilhados exigem verificar todos os consumidores sem criar motor compartilhado.

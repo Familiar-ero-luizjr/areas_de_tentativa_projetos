@@ -24,3 +24,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Jornadas
+
+- **Objetivo:** Agrupar participações, ordenar os percursos e exportar conjuntos completos.
+- **Fonte lida:** navegacao.participacoes, navegacao.entradas, acoes e componentes referenciados no Catálogo ativo.
+- **Processamento implementado:** projetar() filtra nós por jornada, calcula arestas e dependências para pacote.
+- **Limite conhecido:** A transferência definitiva Estudante → Cliente foi definida como objetivo, mas não está concluída no motor atual.
+- **Regra adicional:** Não clonar telas nem reescrever relações internas válidas; preservar IDs; não inventar modalidade paralela de incorporação temporária.
+
+## Verificação específica
+
+- Verificar três ordens explícitas e exportação com dependências sem criar links implícitos.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

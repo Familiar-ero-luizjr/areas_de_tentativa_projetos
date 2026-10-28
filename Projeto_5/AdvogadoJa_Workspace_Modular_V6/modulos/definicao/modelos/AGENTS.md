@@ -22,3 +22,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Modelos JSON
+
+- **Objetivo:** Inspecionar JSONs atuais de tela e componente, suas seções e exemplos, sem homologar automaticamente o schema.
+- **Fonte lida:** schema, identidade e todas as seções dos registros ativos no Catálogo ativo.
+- **Processamento implementado:** campos() e modelo() em motor.js calculam campos observados e detalham o registro selecionado.
+- **Limite conhecido:** A inspeção não substitui validação de schema aprovado.
+- **Regra adicional:** Não transformar ocorrência de campo em obrigatoriedade; respeitar exemplos e versão de contrato.
+
+## Verificação específica
+
+- Verificar que a árvore corresponde ao JSON real e não apresenta flow como campo novo.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.

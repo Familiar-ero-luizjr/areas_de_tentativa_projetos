@@ -24,3 +24,18 @@ Com Live Server, alterações podem permanecer como rascunhos locais deste módu
 
 Cada motor interpreta as mesmas convenções dos JSONs, mas sua implementação é **privada**. Alterar uma regra do contrato requer teste de conformidade dos consumidores, não edição de um arquivo JS compartilhado.
 A seção `flow` é proibida nos JSONs canônicos das cinco telas. O Flow projeta `navegacao` e `acoes`.
+
+## Responsabilidade exclusiva — Flow Editor
+
+- **Objetivo:** Desenhar e editar ligações de navegação sem persistir grafo separado.
+- **Fonte lida:** identidade, navegacao.participacoes, navegacao.entradas, acoes.itens e rotas no Catálogo ativo.
+- **Processamento implementado:** compilarRelacoes() e ordenarParticipacoes() desenham nós/arestas; o app permite alterar ação de origem.
+- **Limite conhecido:** Layout é derivado e depende das conexões realmente declaradas.
+- **Regra adicional:** Não recriar flow.editor, não salvar posições x/y, não deduzir destino pela ordem editorial.
+
+## Verificação específica
+
+- Comparar arestas com ações e alterar uma ligação de rascunho com confirmação.
+- Conferir referências internas de JS/CSS; não depender de arquivos de código de outros módulos.
+- Diferenciar dados do catálogo ativo de acervo pendente e decisões aprovadas de recomendações provisórias.
+- Antes de editar, ler o README.md desta pasta. A alteração em um contrato JSON requer revalidar os consumidores, sem sincronizar motores automaticamente.
