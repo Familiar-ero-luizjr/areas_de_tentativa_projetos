@@ -2,7 +2,7 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "cliente.profissionais.minhas_solicitacoes",
-    "nome": "Cliente · Minhas solicitações",
+    "nome": "Minhas solicitações",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/cliente/solicitacoes",
@@ -11,15 +11,12 @@
   "classificacao": {
     "escopo": "cliente",
     "jornadas": [
-      "cliente",
-      "administrador",
-      "advogado",
-      "estudante"
+      "cliente"
     ],
     "subjornadas": [
       "profissionais"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -27,7 +24,7 @@
         "profissionais"
       ],
       "chave": "minhas_solicitacoes",
-      "ordem": 0
+      "ordem": 16
     }
   },
   "estados": {
@@ -37,74 +34,44 @@
       {
         "id": "padrao",
         "nome": "Padrão"
+      },
+      {
+        "id": "cliente_waiting_state",
+        "nome": "Aguardando resposta",
+        "jornada": "cliente",
+        "origemNo": "waiting_state"
+      },
+      {
+        "id": "cliente_rejected_state",
+        "nome": "Solicitação recusada",
+        "jornada": "cliente",
+        "origemNo": "rejected_state"
+      },
+      {
+        "id": "cliente_noanswer_state",
+        "nome": "Solicitação sem resposta",
+        "jornada": "cliente",
+        "origemNo": "noanswer_state"
+      },
+      {
+        "id": "cliente_expired_state",
+        "nome": "Solicitação expirada",
+        "jornada": "cliente",
+        "origemNo": "expired_state"
+      },
+      {
+        "id": "cliente_return_home",
+        "nome": "Retorno à Home",
+        "jornada": "cliente",
+        "origemNo": "return_home"
       }
     ]
   },
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.cliente.profissionais.minhas_solicitacoes.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "ref": "cmp.cliente.profissionais.minhas_solicitacoes.j1_advogado.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -119,43 +86,13 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.profissionais.minhas_solicitacoes.j1_cliente.v01",
+        "ref": "cmp.cliente.profissionais.minhas_solicitacoes.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "cliente"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.cliente.profissionais.minhas_solicitacoes.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -191,70 +128,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_advogado",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_cliente",
         "slot": "styles",
         "ordem": 0,
@@ -285,38 +158,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -327,11 +168,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_cliente_requests",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "cliente"
           ],
           "estados": [
             "*"
@@ -339,88 +180,61 @@
         },
         "acoes": [
           {
-            "id": "rel-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.profissionais.detalhe_s",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.profissionais.detalhe_solicitacao",
-            "evento": "legacy-event",
-            "rotulo": "",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-edge_cliente.profissionais.minhas_solicitacoes_cliente.profissionais.detalhe_solicitacao-cliente.profissionais.detalhe_s",
-              "entrada": "in-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.profissionais.detalhe_s"
-            }
+            "id": "requests_waiting_termino",
+            "tipo": "estado_final",
+            "evento": "waiting",
+            "rotulo": "Aguardando resposta",
+            "estado": "waiting_state",
+            "detalhe": "Permanece em acompanhamento.",
+            "contextoJornada": "cliente"
           },
           {
-            "id": "rel-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_notificacoes.lista.notificacoes",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "notificacoes.lista.notificacoes",
-            "evento": "legacy-event",
-            "rotulo": "",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-edge_cliente.profissionais.minhas_solicitacoes_notificacoes.lista.notificacoes-notificacoes.lista.notificacoes-2",
-              "entrada": "in-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_notificacoes.lista.notificacoes"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.home_cliente-cliente.ho",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.home_cliente",
-            "evento": "legacy-event",
-            "rotulo": "",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-edge_cliente.profissionais.minhas_solicitacoes_cliente.home_cliente-cliente.home_cliente-3",
-              "entrada": "in-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.home_cliente-9"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.profissionais.contatos_",
-            "tipo": "ligacao_flow_migrada",
+            "id": "requests_accepted_cliente.profissionais.contatos_liberados",
+            "tipo": "navegacao_declarada",
+            "evento": "accepted",
+            "rotulo": "Aceita",
             "destino": "cliente.profissionais.contatos_liberados",
-            "evento": "legacy-event",
-            "rotulo": "",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-edge_cliente.profissionais.minhas_solicitacoes_cliente.profissionais.contatos_liberados-cliente.profissionais.contatos_l",
-              "entrada": "in-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.profissionais.contatos_"
-            }
+            "contextoJornada": "cliente",
+            "origemNo": "requests",
+            "caminho": "accepted",
+            "estadosIntermediarios": [],
+            "detalhe": "Libera os dados de contato."
           },
           {
-            "id": "rel-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.perfil_cliente-cliente.",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.perfil_cliente",
-            "evento": "legacy-event",
-            "rotulo": "",
-            "prioridade": 996,
-            "portasLegadas": {
-              "saida": "out-edge_cliente.profissionais.minhas_solicitacoes_cliente.perfil_cliente-cliente.perfil_cliente-5",
-              "entrada": "in-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.perfil_cliente-7"
-            }
+            "id": "requests_rejected_termino",
+            "tipo": "estado_final",
+            "evento": "rejected",
+            "rotulo": "Recusada",
+            "estado": "rejected_state",
+            "detalhe": "Estado da própria solicitação.",
+            "contextoJornada": "cliente"
           },
           {
-            "id": "rel-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.configuracao.configurac",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "",
-            "prioridade": 995,
-            "portasLegadas": {
-              "saida": "out-edge_cliente.profissionais.minhas_solicitacoes_cliente.configuracao.configuracao-cliente.configuracao.configuracao-6",
-              "entrada": "in-cliente.profissionais.minhas_solicitacoes-edge_cliente.profissionais.minhas_solicitacoes_cliente.configuracao.configurac"
-            }
+            "id": "requests_noanswer_termino",
+            "tipo": "estado_final",
+            "evento": "noanswer",
+            "rotulo": "Sem resposta",
+            "estado": "noanswer_state",
+            "detalhe": "Estado da própria solicitação.",
+            "contextoJornada": "cliente"
+          },
+          {
+            "id": "requests_expired_termino",
+            "tipo": "estado_final",
+            "evento": "expired",
+            "rotulo": "Expirada",
+            "estado": "expired_state",
+            "detalhe": "Estado da própria solicitação.",
+            "contextoJornada": "cliente"
           }
         ]
       },
       {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
+        "id": "navegacao_cliente_requests_closed",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "administrador",
-            "advogado",
-            "cliente",
-            "estudante"
+            "cliente"
           ],
           "estados": [
             "*"
@@ -428,150 +242,13 @@
         },
         "acoes": [
           {
-            "id": "j1-cliente-requests-waiting",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Aguardando resposta",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "requests",
-              "destinoNo": "waiting_state",
-              "observacao": "Permanece em acompanhamento."
-            },
-            "efeito": {
-              "tipo": "estado_jornada",
-              "estado": "waiting_state",
-              "observacao": "Permanece em acompanhamento."
-            }
-          },
-          {
-            "id": "j1-cliente-requests-accepted",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Aceita",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "requests",
-              "destinoNo": "contacts",
-              "observacao": "Libera os dados de contato."
-            },
-            "destino": "cliente.profissionais.contatos_liberados"
-          },
-          {
-            "id": "j1-cliente-requests-rejected",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Recusada",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "requests",
-              "destinoNo": "rejected_state",
-              "observacao": "Estado da própria solicitação."
-            },
-            "efeito": {
-              "tipo": "estado_jornada",
-              "estado": "rejected_state",
-              "observacao": "Estado da própria solicitação."
-            }
-          },
-          {
-            "id": "j1-cliente-requests-noanswer",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Sem resposta",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "requests",
-              "destinoNo": "noanswer_state",
-              "observacao": "Estado da própria solicitação."
-            },
-            "efeito": {
-              "tipo": "estado_jornada",
-              "estado": "noanswer_state",
-              "observacao": "Estado da própria solicitação."
-            }
-          },
-          {
-            "id": "j1-cliente-requests-expired",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Expirada",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "requests",
-              "destinoNo": "expired_state",
-              "observacao": "Estado da própria solicitação."
-            },
-            "efeito": {
-              "tipo": "estado_jornada",
-              "estado": "expired_state",
-              "observacao": "Estado da própria solicitação."
-            }
-          },
-          {
-            "id": "j1-cliente-requests_closed-continuar",
-            "tipo": "navegacao_jornada",
-            "evento": "prosseguir",
-            "rotulo": "Prosseguir",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "requests_closed",
-              "destinoNo": "return_home",
-              "observacao": "A solicitação passa a aparecer como encerrada."
-            },
-            "efeito": {
-              "tipo": "estado_jornada",
-              "estado": "return_home",
-              "observacao": "A solicitação passa a aparecer como encerrada."
-            }
+            "id": "requests_closed_continua_termino",
+            "tipo": "estado_final",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "estado": "return_home",
+            "detalhe": "",
+            "contextoJornada": "cliente"
           }
         ]
       }
@@ -637,11 +314,7 @@
               "tipo": "varchar?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "contact_requests"
-          }
+          ]
         },
         {
           "id": "contact_request_status_history",
@@ -683,11 +356,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "contact_request_status_history"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -700,8 +369,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
@@ -712,8 +380,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
@@ -724,8 +391,7 @@
             "entidade": "contact_request_status_history"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-service_reviews",
@@ -736,16 +402,10 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:0..1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:0..1"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.profissionais.minhas_solicitacoes",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -753,6 +413,21 @@
     "cenarios": {
       "padrao": {
         "id": "padrao"
+      },
+      "cliente_waiting_state": {
+        "id": "cliente_waiting_state"
+      },
+      "cliente_rejected_state": {
+        "id": "cliente_rejected_state"
+      },
+      "cliente_noanswer_state": {
+        "id": "cliente_noanswer_state"
+      },
+      "cliente_expired_state": {
+        "id": "cliente_expired_state"
+      },
+      "cliente_return_home": {
+        "id": "cliente_return_home"
       }
     }
   },
@@ -762,22 +437,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-home-direto-menu-minhas",
-          "sequenceId": "sequence-home-direto-menu-minhas",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-onboarding-menu-minhas",
-          "sequenceId": "sequence-home-onboarding-menu-minhas",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-cadastro-menu-minhas",
-          "sequenceId": "sequence-home-cadastro-menu-minhas",
-          "order": 0,
-          "variant": "default"
+          "id": "screen-modelo-cliente-requests",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 12,
+          "variant": "padrao"
         }
       ],
       "branches": []

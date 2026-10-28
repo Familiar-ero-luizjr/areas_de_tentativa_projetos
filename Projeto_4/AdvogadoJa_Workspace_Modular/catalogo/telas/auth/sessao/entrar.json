@@ -1,0 +1,1033 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "auth.sessao.entrar",
+    "nome": "Entrar / Criar conta",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/entrar",
+    "status": "modelo-em-validacao"
+  },
+  "classificacao": {
+    "escopo": "comum",
+    "jornadas": [
+      "cliente",
+      "advogado",
+      "estudante",
+      "administrador"
+    ],
+    "subjornadas": [
+      "sessao"
+    ],
+    "compartilhada": true,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "auth",
+        "sessao"
+      ],
+      "chave": "entrar",
+      "ordem": 3
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_admin_role_check",
+        "nome": "Verificação do papel Administrador",
+        "jornada": "administrador",
+        "origemNo": "admin_role_check"
+      },
+      {
+        "id": "administrador_profiles_gate",
+        "nome": "Perfis disponíveis na identidade",
+        "jornada": "administrador",
+        "origemNo": "profiles_gate"
+      },
+      {
+        "id": "administrador_admin_policy_note",
+        "nome": "Política pré-Home ainda não fechada",
+        "jornada": "administrador",
+        "origemNo": "admin_policy_note"
+      },
+      {
+        "id": "administrador_admin_access_denied",
+        "nome": "Acesso Administrador indisponível",
+        "jornada": "administrador",
+        "origemNo": "admin_access_denied"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.modular.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.auth.sessao.entrar.perfil_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.modular.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.auth.sessao.entrar.perfil_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.modular.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.auth.sessao.entrar.perfil_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_base_estudante",
+        "ref": "style.jornadas.modular.estudante.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "ref": "cmp.auth.sessao.entrar.perfil_estudante.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_auth_sessao_entrar",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"auth.sessao.entrar\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "cliente",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "estilos_estudante",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_estudante",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_estudante"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_cliente_enter",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "enter_new_auth.cadastro.identificacao",
+            "tipo": "navegacao_declarada",
+            "evento": "new",
+            "rotulo": "Criar conta · cliente novo",
+            "destino": "auth.cadastro.identificacao",
+            "contextoJornada": "cliente",
+            "origemNo": "enter",
+            "caminho": "new",
+            "estadosIntermediarios": [],
+            "detalhe": "Segue pelo cadastro comum completo."
+          },
+          {
+            "id": "enter_pending_cliente.onboarding.localizacao",
+            "tipo": "navegacao_declarada",
+            "evento": "pending",
+            "rotulo": "Já cadastrada · onboarding pendente",
+            "destino": "cliente.onboarding.localizacao",
+            "contextoJornada": "cliente",
+            "origemNo": "enter",
+            "caminho": "pending",
+            "estadosIntermediarios": [],
+            "detalhe": "Pula o cadastro e continua a ativação do perfil."
+          },
+          {
+            "id": "enter_active_cliente.home_cliente",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Conta ativa · entrar",
+            "destino": "cliente.home_cliente",
+            "contextoJornada": "cliente",
+            "origemNo": "enter",
+            "caminho": "active",
+            "estadosIntermediarios": [],
+            "detalhe": "Autentica e segue diretamente para a área do Cliente."
+          }
+        ]
+      },
+      {
+        "id": "navegacao_advogado_enter",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "enter_new_auth.cadastro.identificacao",
+            "tipo": "navegacao_declarada",
+            "evento": "new",
+            "rotulo": "Criar conta · advogado novo",
+            "destino": "auth.cadastro.identificacao",
+            "contextoJornada": "advogado",
+            "origemNo": "enter",
+            "caminho": "new",
+            "estadosIntermediarios": [],
+            "detalhe": "Cria a conta pelo cadastro comum; depois faz login para iniciar o onboarding."
+          },
+          {
+            "id": "enter_pending_auth.sessao.entrar",
+            "tipo": "navegacao_declarada",
+            "evento": "pending",
+            "rotulo": "Já cadastrado · onboarding pendente",
+            "destino": "auth.sessao.entrar",
+            "contextoJornada": "advogado",
+            "origemNo": "enter",
+            "caminho": "pending",
+            "estadosIntermediarios": [],
+            "detalhe": "Faz login e continua o onboarding profissional."
+          },
+          {
+            "id": "enter_active_auth.sessao.entrar",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Advogado já onboardado · entrar",
+            "destino": "auth.sessao.entrar",
+            "contextoJornada": "advogado",
+            "origemNo": "enter",
+            "caminho": "active",
+            "estadosIntermediarios": [],
+            "detalhe": "Faz login e segue para a mesma Home Profissional."
+          }
+        ]
+      },
+      {
+        "id": "navegacao_advogado_onboarding_login",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "onboarding_login_continua_advogado.onboarding.dados_academicos",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "advogado.onboarding.dados_academicos",
+            "contextoJornada": "advogado",
+            "origemNo": "onboarding_login",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      },
+      {
+        "id": "navegacao_advogado_active_login",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "active_login_continua_advogado.home_advogado",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "advogado.home_advogado",
+            "contextoJornada": "advogado",
+            "origemNo": "active_login",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      },
+      {
+        "id": "navegacao_estudante_enter",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "enter_new_auth.cadastro.identificacao",
+            "tipo": "navegacao_declarada",
+            "evento": "new",
+            "rotulo": "Criar conta · estudante novo",
+            "destino": "auth.cadastro.identificacao",
+            "contextoJornada": "estudante",
+            "origemNo": "enter",
+            "caminho": "new",
+            "estadosIntermediarios": [],
+            "detalhe": "Cadastro comum → Login → Onboarding Estudante de Direito."
+          },
+          {
+            "id": "enter_pending_auth.sessao.entrar",
+            "tipo": "navegacao_declarada",
+            "evento": "pending",
+            "rotulo": "Já cadastrada · onboarding pendente",
+            "destino": "auth.sessao.entrar",
+            "contextoJornada": "estudante",
+            "origemNo": "enter",
+            "caminho": "pending",
+            "estadosIntermediarios": [],
+            "detalhe": "Faz login e continua o onboarding acadêmico."
+          },
+          {
+            "id": "enter_active_auth.sessao.entrar",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Estudante já onboardada · entrar",
+            "destino": "auth.sessao.entrar",
+            "contextoJornada": "estudante",
+            "origemNo": "enter",
+            "caminho": "active",
+            "estadosIntermediarios": [],
+            "detalhe": "Faz login e segue para a mesma Home Estudante."
+          }
+        ]
+      },
+      {
+        "id": "navegacao_estudante_onboarding_login",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "onboarding_login_continua_estudante.onboarding.dados_academicos",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "estudante.onboarding.dados_academicos",
+            "contextoJornada": "estudante",
+            "origemNo": "onboarding_login",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      },
+      {
+        "id": "navegacao_estudante_active_login",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "active_login_continua_estudante.home_estudante",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "estudante.home_estudante",
+            "contextoJornada": "estudante",
+            "origemNo": "active_login",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      },
+      {
+        "id": "navegacao_administrador_login",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "login_continua_admin.seletor_perfil",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "admin.seletor_perfil",
+            "contextoJornada": "administrador",
+            "origemNo": "login",
+            "caminho": "continua",
+            "estadosIntermediarios": [
+              {
+                "id": "admin_role_check",
+                "title": "Verificação do papel Administrador"
+              },
+              {
+                "id": "profiles_gate",
+                "title": "Perfis disponíveis na identidade"
+              }
+            ],
+            "detalhe": ""
+          },
+          {
+            "id": "login_continua_admin.dashboard",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "admin.dashboard",
+            "contextoJornada": "administrador",
+            "origemNo": "login",
+            "caminho": "continua",
+            "estadosIntermediarios": [
+              {
+                "id": "admin_role_check",
+                "title": "Verificação do papel Administrador"
+              },
+              {
+                "id": "profiles_gate",
+                "title": "Perfis disponíveis na identidade"
+              },
+              {
+                "id": "admin_policy_note",
+                "title": "Política pré-Home ainda não fechada"
+              }
+            ],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "users",
+          "nome": "Usuários / identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "cpf",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "email",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "phone",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "password_hash",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "account_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "user_profiles",
+          "nome": "Perfis da identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_type",
+              "tipo": "cliente|advogado|estudante|admin",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "onboarding_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_addresses",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_addresses"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-user_profiles",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_profiles"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-user_contact_preferences",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "user_contact_preferences"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1/N"
+        },
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-notifications",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "notifications"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-author_user_id-support_ticket_messages",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "author_user_id",
+          "cardinalidade": "1:N?"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-client_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "client_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-lawyer_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-student_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "student_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-subscriptions",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-external_account_links",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "external_account_links"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-admin_profile_id-admin_memberships",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "admin_memberships"
+          },
+          "campoReferencia": "admin_profile_id",
+          "cardinalidade": "1:0..1"
+        },
+        {
+          "id": "rel-users-admin_user_id-moderation_actions",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "moderation_actions"
+          },
+          "campoReferencia": "admin_user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-account_status_history",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "account_status_history"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-actor_user_id-audit_logs",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "audit_logs"
+          },
+          "campoReferencia": "actor_user_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_admin_role_check": {
+        "id": "administrador_admin_role_check"
+      },
+      "administrador_profiles_gate": {
+        "id": "administrador_profiles_gate"
+      },
+      "administrador_admin_policy_note": {
+        "id": "administrador_admin_policy_note"
+      },
+      "administrador_admin_access_denied": {
+        "id": "administrador_admin_access_denied"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-comum-3",
+          "sequenceId": "sequence-modelo-raiz",
+          "order": 2,
+          "variant": "padrao"
+        }
+      ],
+      "branches": [
+        {
+          "id": "branch-modelo-perfis",
+          "sequenceId": "sequence-modelo-raiz",
+          "order": 3,
+          "title": "Escolher jornada / perfil",
+          "paths": [
+            {
+              "id": "path-modelo-cliente",
+              "label": "Cliente",
+              "isDefault": false,
+              "sequenceId": "sequence-modelo-cliente",
+              "condicao": {
+                "campo": "contexto.perfilAtivo",
+                "operador": "igual",
+                "valor": "cliente"
+              }
+            },
+            {
+              "id": "path-modelo-advogado",
+              "label": "Advogado",
+              "isDefault": false,
+              "sequenceId": "sequence-modelo-advogado",
+              "condicao": {
+                "campo": "contexto.perfilAtivo",
+                "operador": "igual",
+                "valor": "advogado"
+              }
+            },
+            {
+              "id": "path-modelo-estudante",
+              "label": "Estudante",
+              "isDefault": false,
+              "sequenceId": "sequence-modelo-estudante",
+              "condicao": {
+                "campo": "contexto.perfilAtivo",
+                "operador": "igual",
+                "valor": "estudante"
+              }
+            },
+            {
+              "id": "path-modelo-administrador",
+              "label": "Administrador",
+              "isDefault": false,
+              "sequenceId": "sequence-modelo-administrador",
+              "condicao": {
+                "campo": "contexto.perfilAtivo",
+                "operador": "igual",
+                "valor": "administrador"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

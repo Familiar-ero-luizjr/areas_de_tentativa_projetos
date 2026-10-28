@@ -1,0 +1,825 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.dashboard",
+    "nome": "Home / Dashboard Administrador",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/admin",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "dashboard"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "dashboard",
+      "ordem": 8
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_logout",
+        "nome": "Sessão encerrada",
+        "jornada": "administrador",
+        "origemNo": "logout"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.modular.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.admin.dashboard.perfil_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_admin_dashboard",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.dashboard\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_admin_home",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "admin_home_profiles_admin.perfis",
+            "tipo": "navegacao_declarada",
+            "evento": "profiles",
+            "rotulo": "Perfis e usuários",
+            "destino": "admin.perfis",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "profiles",
+            "estadosIntermediarios": [],
+            "detalhe": "Identidades, perfis e estados da conta."
+          },
+          {
+            "id": "admin_home_oab_admin.oab",
+            "tipo": "navegacao_declarada",
+            "evento": "oab",
+            "rotulo": "Validação da OAB",
+            "destino": "admin.oab",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "oab",
+            "estadosIntermediarios": [],
+            "detalhe": "Fila própria de validação profissional."
+          },
+          {
+            "id": "admin_home_reports_admin.denuncias",
+            "tipo": "navegacao_declarada",
+            "evento": "reports",
+            "rotulo": "Denúncias",
+            "destino": "admin.denuncias",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "reports",
+            "estadosIntermediarios": [],
+            "detalhe": "Fila de moderação."
+          },
+          {
+            "id": "admin_home_subscriptions_admin.assinaturas",
+            "tipo": "navegacao_declarada",
+            "evento": "subscriptions",
+            "rotulo": "Assinaturas",
+            "destino": "admin.assinaturas",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "subscriptions",
+            "estadosIntermediarios": [],
+            "detalhe": "Estados de assinatura e acesso."
+          },
+          {
+            "id": "admin_home_logs_admin.logs",
+            "tipo": "navegacao_declarada",
+            "evento": "logs",
+            "rotulo": "Logs",
+            "destino": "admin.logs",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "logs",
+            "estadosIntermediarios": [],
+            "detalhe": "Auditoria e rastreabilidade."
+          },
+          {
+            "id": "admin_home_admins_admin.administradores",
+            "tipo": "navegacao_declarada",
+            "evento": "admins",
+            "rotulo": "Administradores",
+            "destino": "admin.administradores",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "admins",
+            "estadosIntermediarios": [],
+            "detalhe": "Governança do papel Admin — regras ainda pendentes."
+          },
+          {
+            "id": "admin_home_settings_admin.configuracoes",
+            "tipo": "navegacao_declarada",
+            "evento": "settings",
+            "rotulo": "Configurações",
+            "destino": "admin.configuracoes",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "settings",
+            "estadosIntermediarios": [],
+            "detalhe": "Configurações administrativas."
+          },
+          {
+            "id": "admin_home_notifications_notificacoes.lista.notificacoes",
+            "tipo": "navegacao_declarada",
+            "evento": "notifications",
+            "rotulo": "Notificações",
+            "destino": "notificacoes.lista.notificacoes",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "notifications",
+            "estadosIntermediarios": [],
+            "detalhe": "Central compartilhada."
+          },
+          {
+            "id": "admin_home_switch_admin.seletor_perfil",
+            "tipo": "navegacao_declarada",
+            "evento": "switch",
+            "rotulo": "Trocar perfil",
+            "destino": "admin.seletor_perfil",
+            "contextoJornada": "administrador",
+            "origemNo": "admin_home",
+            "caminho": "switch",
+            "estadosIntermediarios": [],
+            "detalhe": "Mantém a autenticação e volta ao seletor."
+          },
+          {
+            "id": "admin_home_logout_termino",
+            "tipo": "estado_final",
+            "evento": "logout",
+            "rotulo": "Sair",
+            "estado": "logout",
+            "detalhe": "Encerra a sessão.",
+            "contextoJornada": "administrador"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "users",
+          "nome": "Usuários / identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "cpf",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "email",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "phone",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "password_hash",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "account_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "user_profiles",
+          "nome": "Perfis da identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_type",
+              "tipo": "cliente|advogado|estudante|admin",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "onboarding_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "lawyer_oab_records",
+          "nome": "Registro OAB",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "oab_number",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "oab_state",
+              "tipo": "char(2)",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "submitted_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "validated_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "last_checked_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "moderation_reports",
+          "nome": "Denúncias",
+          "dominio": "admin",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "reporter_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "target_type",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "target_id",
+              "tipo": "uuid?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "category",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "description",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "subscriptions",
+          "nome": "Assinaturas",
+          "dominio": "billing",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "plan_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "provider",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "provider_customer_id",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "provider_subscription_id",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "current_period_end",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "audit_logs",
+          "nome": "Logs / auditoria",
+          "dominio": "admin",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "actor_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "event_key",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "entity_type",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "entity_id",
+              "tipo": "uuid?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "metadata_json",
+              "tipo": "jsonb?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_addresses",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_addresses"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-user_profiles",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_profiles"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-user_contact_preferences",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "user_contact_preferences"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1/N"
+        },
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-notifications",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "notifications"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-author_user_id-support_ticket_messages",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "author_user_id",
+          "cardinalidade": "1:N?"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-client_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "client_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-lawyer_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_oab_records",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_oab_records"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-lawyer_oab_records-oab_record_id-oab_status_history",
+          "origem": {
+            "entidade": "lawyer_oab_records"
+          },
+          "destino": {
+            "entidade": "oab_status_history"
+          },
+          "campoReferencia": "oab_record_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-student_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "student_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-subscriptions",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-plans-plan_id-subscriptions",
+          "origem": {
+            "entidade": "plans"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "plan_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-subscriptions-subscription_id-subscription_events",
+          "origem": {
+            "entidade": "subscriptions"
+          },
+          "destino": {
+            "entidade": "subscription_events"
+          },
+          "campoReferencia": "subscription_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-external_account_links",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "external_account_links"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-admin_profile_id-admin_memberships",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "admin_memberships"
+          },
+          "campoReferencia": "admin_profile_id",
+          "cardinalidade": "1:0..1"
+        },
+        {
+          "id": "rel-moderation_reports-report_id-moderation_actions",
+          "origem": {
+            "entidade": "moderation_reports"
+          },
+          "destino": {
+            "entidade": "moderation_actions"
+          },
+          "campoReferencia": "report_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-admin_user_id-moderation_actions",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "moderation_actions"
+          },
+          "campoReferencia": "admin_user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-account_status_history",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "account_status_history"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-actor_user_id-audit_logs",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "audit_logs"
+          },
+          "campoReferencia": "actor_user_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_logout": {
+        "id": "administrador_logout"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-admin_home",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 1,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

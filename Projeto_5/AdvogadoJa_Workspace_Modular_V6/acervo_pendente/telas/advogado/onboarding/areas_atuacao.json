@@ -1,0 +1,267 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "advogado.onboarding.areas_atuacao",
+    "nome": "Áreas de atuação",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/onboarding/advogado/areas-de-atuacao",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado"
+    ],
+    "subjornadas": [
+      "onboarding"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "advogado",
+        "onboarding"
+      ],
+      "chave": "areas_atuacao",
+      "ordem": 12
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.modular.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.advogado.onboarding.areas_atuacao.perfil_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_advogado_onboarding_areas_atuacao",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"advogado.onboarding.areas_atuacao\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_advogado_pro_areas",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "pro_areas_continua_advogado.onboarding.perfil_profissional",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "advogado.onboarding.perfil_profissional",
+            "contextoJornada": "advogado",
+            "origemNo": "pro_areas",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "practice_areas",
+          "nome": "Áreas de atuação",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "active",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "lawyer_practice_areas",
+          "nome": "Advogado × área",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "practice_area_id",
+              "tipo": "uuid · FK · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "is_primary",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_practice_areas",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_practice_areas"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-practice_areas-practice_area_id-lawyer_practice_areas",
+          "origem": {
+            "entidade": "practice_areas"
+          },
+          "destino": {
+            "entidade": "lawyer_practice_areas"
+          },
+          "campoReferencia": "practice_area_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-advogado-pro_areas",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 8,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "cliente.onboarding.localizacao",
-    "nome": "Cliente · Onboarding · Localização",
+    "nome": "Localização",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/onboarding/cliente/localizacao",
@@ -11,15 +11,12 @@
   "classificacao": {
     "escopo": "cliente",
     "jornadas": [
-      "cliente",
-      "administrador",
-      "advogado",
-      "estudante"
+      "cliente"
     ],
     "subjornadas": [
       "onboarding"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -27,7 +24,7 @@
         "onboarding"
       ],
       "chave": "localizacao",
-      "ordem": 1
+      "ordem": 10
     }
   },
   "estados": {
@@ -43,68 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.cliente.onboarding.localizacao.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "ref": "cmp.cliente.onboarding.localizacao.j1_advogado.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -119,43 +56,13 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.onboarding.localizacao.j1_cliente.v01",
+        "ref": "cmp.cliente.onboarding.localizacao.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "cliente"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.cliente.onboarding.localizacao.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -191,70 +98,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_advogado",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_cliente",
         "slot": "styles",
         "ordem": 0,
@@ -285,38 +128,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -327,11 +138,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_cliente_on_loc",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "cliente"
           ],
           "estados": [
             "*"
@@ -339,54 +150,16 @@
         },
         "acoes": [
           {
-            "id": "rel-cliente.onboarding.localizacao-navigate-s054-cliente.onboarding.preferencias_contato-1",
-            "tipo": "ligacao_flow_migrada",
+            "id": "on_loc_continua_cliente.onboarding.preferencias_contato",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
             "destino": "cliente.onboarding.preferencias_contato",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino cliente.onboarding.preferencias_contato",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-navigate-s054-cliente.onboarding.preferencias_contato-1",
-              "entrada": "in-cliente.onboarding.localizacao-navigate-s054-2"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "cliente",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-cliente-on_loc-continuar",
-            "tipo": "navegacao_jornada",
-            "evento": "prosseguir",
-            "rotulo": "Prosseguir",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "on_loc",
-              "destinoNo": "on_pref",
-              "observacao": "Onboarding do Cliente."
-            },
-            "destino": "cliente.onboarding.preferencias_contato"
+            "contextoJornada": "cliente",
+            "origemNo": "on_loc",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
           }
         ]
       }
@@ -432,11 +205,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "client_profiles"
-          }
+          ]
         },
         {
           "id": "user_addresses",
@@ -498,11 +267,7 @@
               "tipo": "numeric?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "user_addresses"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -515,8 +280,7 @@
             "entidade": "user_addresses"
           },
           "campoReferencia": "user_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-user_profiles-user_profile_id-client_profiles",
@@ -527,8 +291,7 @@
             "entidade": "client_profiles"
           },
           "campoReferencia": "user_profile_id",
-          "cardinalidade": "1:1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:1"
         },
         {
           "id": "rel-client_profiles-client_profile_id-contact_requests",
@@ -539,8 +302,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-client_profiles-client_profile_id-service_reviews",
@@ -551,16 +313,10 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.onboarding.localizacao",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -577,16 +333,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-0063",
-          "sequenceId": "sequence-0266",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0281",
-          "sequenceId": "sequence-0419",
-          "order": 7,
-          "variant": "default"
+          "id": "screen-modelo-cliente-on_loc",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 6,
+          "variant": "padrao"
         }
       ],
       "branches": []

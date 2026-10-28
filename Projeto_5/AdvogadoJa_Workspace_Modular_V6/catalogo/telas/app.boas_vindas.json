@@ -1,0 +1,96 @@
+{
+  "schema": "advogadoja.tela.lab.v0-provisorio",
+  "identidade": {
+    "id": "app.boas_vindas",
+    "nome": "Boas-vindas",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "comum"
+  },
+  "navegacao": {
+    "participacoes": [
+      {
+        "id": "part.boas.inicial",
+        "jornada": {
+          "id": "app",
+          "nome": "Aplicativo",
+          "ordem": 0
+        },
+        "subjornada": {
+          "id": "app.inicializacao",
+          "nome": "Inicialização",
+          "ordem": 1
+        },
+        "ordemTela": 2,
+        "contexto": {
+          "modo": "apresentacao"
+        }
+      }
+    ],
+    "entradas": []
+  },
+  "estados": {
+    "possiveis": [
+      {
+        "id": "pronto",
+        "nome": "Pronto"
+      },
+      {
+        "id": "carregando",
+        "nome": "Carregando"
+      }
+    ],
+    "fallbackSeguro": "pronto"
+  },
+  "variantes": {
+    "regras": []
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "botao_continuar",
+        "ref": "botao.primario",
+        "slot": "acoes",
+        "props": {
+          "rotulo": "Continuar",
+          "acaoRef": "boas.continuar"
+        }
+      }
+    ],
+    "variantes": []
+  },
+  "estrutura": {
+    "base": {
+      "html": "<h2>Bem-vindo ao Advogado Já</h2><p>Seu acesso começa aqui.</p><div data-slot=\"acoes\"></div>"
+    },
+    "variantes": []
+  },
+  "estilos": {
+    "base": {
+      "css": ".welcome{padding:20px}"
+    },
+    "variantes": []
+  },
+  "acoes": {
+    "itens": [
+      {
+        "id": "boas.continuar",
+        "evento": "botao.continuar",
+        "destino": {
+          "tipo": "tela",
+          "telaId": "auth.entrar",
+          "participacaoId": "part.entrar.inicial"
+        }
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": [],
+    "persistencia": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

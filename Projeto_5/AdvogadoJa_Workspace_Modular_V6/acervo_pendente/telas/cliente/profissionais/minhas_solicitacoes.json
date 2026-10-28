@@ -1,0 +1,449 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.profissionais.minhas_solicitacoes",
+    "nome": "Minhas solicitações",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/solicitacoes",
+    "status": "rascunho"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "profissionais"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "profissionais"
+      ],
+      "chave": "minhas_solicitacoes",
+      "ordem": 16
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "cliente_waiting_state",
+        "nome": "Aguardando resposta",
+        "jornada": "cliente",
+        "origemNo": "waiting_state"
+      },
+      {
+        "id": "cliente_rejected_state",
+        "nome": "Solicitação recusada",
+        "jornada": "cliente",
+        "origemNo": "rejected_state"
+      },
+      {
+        "id": "cliente_noanswer_state",
+        "nome": "Solicitação sem resposta",
+        "jornada": "cliente",
+        "origemNo": "noanswer_state"
+      },
+      {
+        "id": "cliente_expired_state",
+        "nome": "Solicitação expirada",
+        "jornada": "cliente",
+        "origemNo": "expired_state"
+      },
+      {
+        "id": "cliente_return_home",
+        "nome": "Retorno à Home",
+        "jornada": "cliente",
+        "origemNo": "return_home"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.modular.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.profissionais.minhas_solicitacoes.perfil_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_profissionais_minhas_solicitacoes",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.profissionais.minhas_solicitacoes\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "cliente",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_cliente_requests",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "requests_waiting_termino",
+            "tipo": "estado_final",
+            "evento": "waiting",
+            "rotulo": "Aguardando resposta",
+            "estado": "waiting_state",
+            "detalhe": "Permanece em acompanhamento.",
+            "contextoJornada": "cliente"
+          },
+          {
+            "id": "requests_accepted_cliente.profissionais.contatos_liberados",
+            "tipo": "navegacao_declarada",
+            "evento": "accepted",
+            "rotulo": "Aceita",
+            "destino": "cliente.profissionais.contatos_liberados",
+            "contextoJornada": "cliente",
+            "origemNo": "requests",
+            "caminho": "accepted",
+            "estadosIntermediarios": [],
+            "detalhe": "Libera os dados de contato."
+          },
+          {
+            "id": "requests_rejected_termino",
+            "tipo": "estado_final",
+            "evento": "rejected",
+            "rotulo": "Recusada",
+            "estado": "rejected_state",
+            "detalhe": "Estado da própria solicitação.",
+            "contextoJornada": "cliente"
+          },
+          {
+            "id": "requests_noanswer_termino",
+            "tipo": "estado_final",
+            "evento": "noanswer",
+            "rotulo": "Sem resposta",
+            "estado": "noanswer_state",
+            "detalhe": "Estado da própria solicitação.",
+            "contextoJornada": "cliente"
+          },
+          {
+            "id": "requests_expired_termino",
+            "tipo": "estado_final",
+            "evento": "expired",
+            "rotulo": "Expirada",
+            "estado": "expired_state",
+            "detalhe": "Estado da própria solicitação.",
+            "contextoJornada": "cliente"
+          }
+        ]
+      },
+      {
+        "id": "navegacao_cliente_requests_closed",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "requests_closed_continua_termino",
+            "tipo": "estado_final",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "estado": "return_home",
+            "detalhe": "",
+            "contextoJornada": "cliente"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "contact_requests",
+          "nome": "Solicitações Cliente ↔ Advogado",
+          "dominio": "client",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "client_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "subject",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "description",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "accepted_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closed_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closure_reason",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "contact_request_status_history",
+          "nome": "Histórico da solicitação",
+          "dominio": "client",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "contact_request_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "from_status",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "to_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "reason",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "changed_by_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-client_profiles-client_profile_id-contact_requests",
+          "origem": {
+            "entidade": "client_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "client_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
+          "origem": {
+            "entidade": "contact_requests"
+          },
+          "destino": {
+            "entidade": "contact_request_status_history"
+          },
+          "campoReferencia": "contact_request_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-contact_requests-contact_request_id-service_reviews",
+          "origem": {
+            "entidade": "contact_requests"
+          },
+          "destino": {
+            "entidade": "service_reviews"
+          },
+          "campoReferencia": "contact_request_id",
+          "cardinalidade": "1:0..1"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "cliente_waiting_state": {
+        "id": "cliente_waiting_state"
+      },
+      "cliente_rejected_state": {
+        "id": "cliente_rejected_state"
+      },
+      "cliente_noanswer_state": {
+        "id": "cliente_noanswer_state"
+      },
+      "cliente_expired_state": {
+        "id": "cliente_expired_state"
+      },
+      "cliente_return_home": {
+        "id": "cliente_return_home"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-cliente-requests",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 12,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

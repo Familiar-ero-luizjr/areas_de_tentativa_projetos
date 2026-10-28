@@ -1,0 +1,325 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "advogado.disponibilidade",
+    "nome": "Disponibilidade",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/professional/availability",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado"
+    ],
+    "subjornadas": [
+      "disponibilidade"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "advogado"
+      ],
+      "chave": "disponibilidade",
+      "ordem": 26
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.modular.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.advogado.disponibilidade.perfil_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_advogado_disponibilidade",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"advogado.disponibilidade\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_advogado_availability",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "availability_schedule_advogado.configuracao.agenda_semanal",
+            "tipo": "navegacao_declarada",
+            "evento": "schedule",
+            "rotulo": "Agenda semanal",
+            "destino": "advogado.configuracao.agenda_semanal",
+            "contextoJornada": "advogado",
+            "origemNo": "availability",
+            "caminho": "schedule",
+            "estadosIntermediarios": [],
+            "detalhe": "Dias, horários e indisponibilidades."
+          },
+          {
+            "id": "availability_radius_advogado.disponibilidade.raio_atendimento",
+            "tipo": "navegacao_declarada",
+            "evento": "radius",
+            "rotulo": "Raio de atendimento",
+            "destino": "advogado.disponibilidade.raio_atendimento",
+            "contextoJornada": "advogado",
+            "origemNo": "availability",
+            "caminho": "radius",
+            "estadosIntermediarios": [],
+            "detalhe": "Distância para atendimentos presenciais."
+          },
+          {
+            "id": "availability_preferences_advogado.configuracao.preferencias_atendimento",
+            "tipo": "navegacao_declarada",
+            "evento": "preferences",
+            "rotulo": "Preferências de atendimento",
+            "destino": "advogado.configuracao.preferencias_atendimento",
+            "contextoJornada": "advogado",
+            "origemNo": "availability",
+            "caminho": "preferences",
+            "estadosIntermediarios": [],
+            "detalhe": "Modalidades, região, raio e especialidades."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "lawyer_availability",
+          "nome": "Disponibilidade profissional",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "is_online",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "accept_online",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "accept_in_person",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "service_radius_km",
+              "tipo": "numeric?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "lawyer_weekly_schedule",
+          "nome": "Agenda semanal",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "weekday",
+              "tipo": "smallint",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "start_time",
+              "tipo": "time",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "end_time",
+              "tipo": "time",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "active",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_availability",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_availability"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_weekly_schedule",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_weekly_schedule"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-advogado-availability",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 21,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

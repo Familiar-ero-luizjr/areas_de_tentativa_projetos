@@ -1,0 +1,175 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.seletor_perfil",
+    "nome": "Selecionar perfil",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/admin/seletor_perfil",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "seletor_perfil"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "seletor_perfil",
+      "ordem": 6
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_admin_policy_note",
+        "nome": "Política pré-Home ainda não fechada",
+        "jornada": "administrador",
+        "origemNo": "admin_policy_note"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.admin.seletor_perfil.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_admin.seletor_perfil",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.seletor_perfil\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_profile_selector",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "profile_selector_continua_admin.dashboard",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "admin.dashboard",
+            "contextoJornada": "administrador",
+            "origemNo": "profile_selector",
+            "caminho": "continua",
+            "estadosIntermediarios": [
+              {
+                "id": "admin_policy_note",
+                "title": "Política pré-Home ainda não fechada"
+              }
+            ],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_admin_policy_note": {
+        "id": "administrador_admin_policy_note"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-profile_selector",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 0,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

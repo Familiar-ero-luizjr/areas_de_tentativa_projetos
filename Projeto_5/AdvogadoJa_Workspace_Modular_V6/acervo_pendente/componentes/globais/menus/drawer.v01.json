@@ -1,0 +1,350 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "menu.drawer.v01",
+    "nome": "Menu lateral Profissional",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_com_repeticao_de_itens",
+    "arvore": [
+      {
+        "tag": "aside",
+        "atributos": {
+          "class": "prototype-drawer",
+          "data-overlay-root": "",
+          "aria-hidden": "true"
+        },
+        "filhos": [
+          {
+            "tag": "button",
+            "atributos": {
+              "class": "drawer-backdrop",
+              "type": "button",
+              "aria-label": {
+                "ref": "props.rotulos.fechar_menu_aria_label"
+              }
+            },
+            "eventoEmitido": "fecharMenu"
+          },
+          {
+            "tag": "div",
+            "atributos": {
+              "class": "drawer-panel"
+            },
+            "filhos": [
+              {
+                "tag": "div",
+                "atributos": {
+                  "class": "drawer-top"
+                },
+                "filhos": [
+                  {
+                    "tag": "div",
+                    "atributos": {
+                      "class": "drawer-identity"
+                    },
+                    "filhos": [
+                      {
+                        "tag": "div",
+                        "atributos": {
+                          "class": "drawer-avatar"
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.perfil.avatar"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "atributos": {
+                          "class": "drawer-profile"
+                        },
+                        "filhos": [
+                          {
+                            "tag": "strong",
+                            "filhos": [
+                              {
+                                "ref": "props.perfil.name"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "small",
+                            "filhos": [
+                              {
+                                "ref": "props.perfil.subtitle"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "button",
+                "atributos": {
+                  "class": "drawer-online",
+                  "type": "button",
+                  "data-online-root": ""
+                },
+                "vinculos": {
+                  "classePorEstado": {
+                    "estado": "online",
+                    "quandoFalso": "is-offline"
+                  }
+                },
+                "filhos": [
+                  {
+                    "tag": "span",
+                    "atributos": {
+                      "class": "online-dot"
+                    }
+                  },
+                  {
+                    "tag": "span",
+                    "atributos": {
+                      "class": "drawer-online-copy"
+                    },
+                    "filhos": [
+                      {
+                        "tag": "strong",
+                        "atributos": {
+                          "data-online-status": ""
+                        },
+                        "vinculos": {
+                          "textoPorEstado": {
+                            "estado": "online",
+                            "verdadeiro": "Online",
+                            "falso": "Offline"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.disponibilidade.online"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "small",
+                        "atributos": {
+                          "data-online-copy": ""
+                        },
+                        "vinculos": {
+                          "textoPorEstado": {
+                            "estado": "online",
+                            "verdadeiro": "Recebendo novas solicitações",
+                            "falso": "Indisponível para novas solicitações"
+                          }
+                        },
+                        "filhos": [
+                          {
+                            "ref": "props.disponibilidade.recebendo_novas_solicitacoes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "i",
+                    "atributos": {
+                      "class": "online-switch"
+                    },
+                    "filhos": [
+                      {
+                        "tag": "b"
+                      }
+                    ]
+                  }
+                ],
+                "eventoEmitido": "alternarDisponibilidade",
+                "aplicaA": {
+                  "propsVerdadeiras": [
+                    "mostrarDisponibilidade"
+                  ]
+                }
+              },
+              {
+                "tag": "nav",
+                "atributos": {
+                  "class": "drawer-nav",
+                  "aria-label": {
+                    "ref": "props.rotulos.menu_principal_aria_label"
+                  }
+                },
+                "filhos": [],
+                "repetir": {
+                  "colecaoRef": "props.itens",
+                  "chave": "id",
+                  "elemento": {
+                    "tag": "button",
+                    "atributos": {
+                      "type": "button",
+                      "data-item-id": {
+                        "ref": "item.id"
+                      },
+                      "data-event-id": "itemSelecionado"
+                    },
+                    "filhos": [
+                      {
+                        "tag": "svg",
+                        "atributos": {
+                          "class": "drawer-icon",
+                          "viewBox": "0 0 24 24",
+                          "fill": "none",
+                          "stroke": "currentColor",
+                          "stroke-width": "1.5",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "aria-hidden": "true"
+                        },
+                        "filhos": [
+                          {
+                            "tag": "path",
+                            "atributos": {
+                              "d": {
+                                "ref": "item.icone"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "span",
+                        "filhos": [
+                          {
+                            "ref": "item.nome"
+                          }
+                        ]
+                      }
+                    ],
+                    "eventoEmitido": "itemSelecionado"
+                  }
+                }
+              },
+              {
+                "tag": "div",
+                "atributos": {
+                  "class": "drawer-footer"
+                },
+                "filhos": [
+                  {
+                    "tag": "div",
+                    "atributos": {
+                      "class": "drawer-footer-top"
+                    },
+                    "filhos": [
+                      {
+                        "tag": "button",
+                        "atributos": {
+                          "class": "drawer-logout",
+                          "type": "button"
+                        },
+                        "filhos": [
+                          {
+                            "tag": "svg",
+                            "atributos": {
+                              "class": "drawer-icon",
+                              "viewbox": "0 0 24 24",
+                              "fill": "none",
+                              "stroke": "currentColor",
+                              "stroke-width": "1.5",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "aria-hidden": "true"
+                            },
+                            "filhos": [
+                              {
+                                "tag": "path",
+                                "atributos": {
+                                  "d": "M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "span",
+                            "filhos": [
+                              {
+                                "ref": "props.rodape.logoutLabel"
+                              }
+                            ]
+                          }
+                        ],
+                        "eventoEmitido": "sairSolicitado"
+                      },
+                      {
+                        "tag": "small",
+                        "filhos": [
+                          {
+                            "ref": "props.rodape.footer"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "button",
+                    "atributos": {
+                      "class": "drawer-emergency",
+                      "type": "button"
+                    },
+                    "filhos": [
+                      {
+                        "ref": "props.rodape.emergencyLabel"
+                      }
+                    ],
+                    "eventoEmitido": "contatoPrioritario"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_menu.drawer.v01"
+  },
+  "estilos": {
+    "css": ".prototype-drawer {\n  position: fixed;\n  z-index: 40;\n  inset: 0;\n  display: none;\n}\n\n.prototype-drawer.open { display: block; }\n\n.drawer-backdrop {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: rgba(7, 16, 30, .60);\n}\n\n.drawer-panel {\n  position: absolute;\n  inset: 0 auto 0 0;\n  width: min(80vw, 360px);\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  background: #3b4a7d;\n  color: #fff;\n  box-shadow: 12px 0 30px rgba(0, 0, 0, .32);\n}\n\n.drawer-top {\n  flex: 0 0 auto;\n  min-height: 106px;\n  padding: 30px 22px 20px;\n  display: flex;\n  align-items: center;\n}\n\n.drawer-identity {\n  min-width: 0;\n  display: flex;\n  gap: 14px;\n  align-items: center;\n}\n\n.drawer-avatar {\n  flex: 0 0 56px;\n  width: 56px;\n  height: 56px;\n  display: grid;\n  place-items: center;\n  border: 2px solid rgba(255, 255, 255, .20);\n  border-radius: 50%;\n  background: #dbeafe;\n  color: #1e3a8a;\n  font-size: 20px;\n  font-weight: 800;\n}\n\n.drawer-profile { min-width: 0; }\n.drawer-profile strong,\n.drawer-profile small { display: block; }\n.drawer-profile strong {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 16px;\n  font-weight: 600;\n}\n.drawer-profile small {\n  margin-top: 2px;\n  color: #bfdbfe;\n  font-size: 11px;\n  font-weight: 400;\n  text-transform: lowercase;\n}\n\n.drawer-online {\n  flex: 0 0 auto;\n  width: calc(100% - 44px);\n  margin: 0 22px 10px;\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 10px;\n  align-items: center;\n  border: 1px solid rgba(255, 255, 255, .18);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: rgba(255, 255, 255, .08);\n  color: #fff;\n  text-align: left;\n  cursor: pointer;\n}\n.drawer-online-copy strong,\n.drawer-online-copy small { display: block; }\n.drawer-online-copy strong { font-size: 13px; }\n.drawer-online-copy small { margin-top: 2px; color: #bfdbfe; font-size: 10px; }\n.online-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background: #4ade80;\n  box-shadow: 0 0 0 4px rgba(74, 222, 128, .14);\n}\n.drawer-online.is-offline .online-dot { background: #98a2b3; box-shadow: none; }\n.online-switch { position: relative; width: 38px; height: 22px; border-radius: 999px; background: #22c55e; }\n.online-switch b { position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }\n.drawer-online.is-offline .online-switch { background: #64748b; }\n.drawer-online.is-offline .online-switch b { right: 19px; }\n\n.drawer-nav {\n  flex: 1 1 auto;\n  min-height: 0;\n  display: block;\n  margin: 0;\n  padding: 0 0 8px;\n  overflow-x: hidden;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  -webkit-overflow-scrolling: touch;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(255, 255, 255, .35) transparent;\n}\n.drawer-nav::-webkit-scrollbar { width: 5px; }\n.drawer-nav::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(255, 255, 255, .35); }\n\n.drawer-nav button {\n  width: 100%;\n  min-height: 51px;\n  padding: 14px 22px;\n  border: 0;\n  border-bottom: 1px solid rgba(255, 255, 255, .10);\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  text-align: left;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n}\n.drawer-nav button:hover { background: rgba(255, 255, 255, .08); }\n.drawer-icon { flex: 0 0 20px; width: 20px; height: 20px; color: #aebee5; }\n\n.drawer-footer {\n  flex: 0 0 auto;\n  margin-top: 0;\n  padding: 16px 22px 30px;\n  display: flex;\n  flex-direction: column;\n  gap: 22px;\n  background: rgba(0, 0, 0, .10);\n}\n.drawer-footer-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }\n.drawer-logout {\n  min-height: 32px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  font-size: 14px;\n  cursor: pointer;\n}\n.drawer-logout svg { width: 18px; height: 18px; color: #aebee5; }\n.drawer-footer small { color: #aebee5; font-size: 10px; }\n.drawer-emergency {\n  min-height: 41px;\n  border: 1px solid rgba(255, 255, 255, .54);\n  border-radius: 999px;\n  background: transparent;\n  color: #fff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n}\n.drawer-emergency:hover { background: rgba(255, 255, 255, .08); }\n\n@media (max-width: 420px) {\n  .drawer-panel { width: 80vw; }\n  .drawer-top { padding-top: 24px; }\n}\n",
+    "id": "css_menu.drawer.v01"
+  },
+  "interface": {
+    "propriedadesAceitas": [
+      "itens",
+      "perfil",
+      "rodape",
+      "rotulos",
+      "disponibilidade",
+      "mostrarDisponibilidade",
+      "aberto"
+    ],
+    "eventosEmitidos": [
+      "fecharMenu",
+      "itemSelecionado",
+      "alternarDisponibilidade",
+      "sairSolicitado",
+      "contatoPrioritario"
+    ],
+    "contratoItens": "Lista unica fornecida pela tela; item {id,nome,icone,destino|acaoRef,aplicaA}; motor filtra antes de renderizar.",
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "global",
+    "jornadas": [
+      "*"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "globais",
+        "menus"
+      ],
+      "chave": "drawer.v01"
+    }
+  }
+}

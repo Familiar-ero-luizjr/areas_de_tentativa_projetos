@@ -1,0 +1,185 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.perfil_detalhe",
+    "nome": "Detalhe do usuário",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/admin/perfil_detalhe",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "perfil_detalhe"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "perfil_detalhe",
+      "ordem": 10
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_profile_view_state",
+        "nome": "Consulta concluída",
+        "jornada": "administrador",
+        "origemNo": "profile_view_state"
+      },
+      {
+        "id": "administrador_profile_action_pending",
+        "nome": "Regra de ação sobre usuário pendente",
+        "jornada": "administrador",
+        "origemNo": "profile_action_pending"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.admin.perfil_detalhe.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_admin.perfil_detalhe",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.perfil_detalhe\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_profile_detail",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "profile_detail_view_termino",
+            "tipo": "estado_final",
+            "evento": "view",
+            "rotulo": "Somente consultar",
+            "estado": "profile_view_state",
+            "detalhe": "Nenhuma alteração de estado.",
+            "contextoJornada": "administrador"
+          },
+          {
+            "id": "profile_detail_action_termino",
+            "tipo": "estado_final",
+            "evento": "action",
+            "rotulo": "Alterar estado / perfil",
+            "estado": "profile_action_pending",
+            "detalhe": "Ação possível, mas regras ainda precisam ser fechadas.",
+            "contextoJornada": "administrador"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_profile_view_state": {
+        "id": "administrador_profile_view_state"
+      },
+      "administrador_profile_action_pending": {
+        "id": "administrador_profile_action_pending"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-profile_detail",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 3,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

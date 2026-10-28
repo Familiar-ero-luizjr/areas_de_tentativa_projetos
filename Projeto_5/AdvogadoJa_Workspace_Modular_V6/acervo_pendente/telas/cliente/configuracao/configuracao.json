@@ -1,0 +1,404 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.configuracao.configuracao",
+    "nome": "Configurações",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/configuracoes",
+    "status": "rascunho"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "configuracao"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "configuracao"
+      ],
+      "chave": "configuracao",
+      "ordem": 33
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.modular.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.configuracao.configuracao.perfil_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_configuracao_configuracao",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.configuracao.configuracao\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "cliente"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_cliente_settings",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "settings_contactprefs_cliente.onboarding.preferencias_contato",
+            "tipo": "navegacao_declarada",
+            "evento": "contactprefs",
+            "rotulo": "Preferências de contato",
+            "destino": "cliente.onboarding.preferencias_contato",
+            "contextoJornada": "cliente",
+            "origemNo": "settings",
+            "caminho": "contactprefs",
+            "estadosIntermediarios": [],
+            "detalhe": "Reaproveita a tela de preferências."
+          },
+          {
+            "id": "settings_legal_cliente.configuracao.termos_privacidade",
+            "tipo": "navegacao_declarada",
+            "evento": "legal",
+            "rotulo": "Termos e privacidade",
+            "destino": "cliente.configuracao.termos_privacidade",
+            "contextoJornada": "cliente",
+            "origemNo": "settings",
+            "caminho": "legal",
+            "estadosIntermediarios": [],
+            "detalhe": "Abre a central de documentos legais."
+          },
+          {
+            "id": "settings_support_cliente.configuracao.suporte",
+            "tipo": "navegacao_declarada",
+            "evento": "support",
+            "rotulo": "Suporte",
+            "destino": "cliente.configuracao.suporte",
+            "contextoJornada": "cliente",
+            "origemNo": "settings",
+            "caminho": "support",
+            "estadosIntermediarios": [],
+            "detalhe": "Abre ajuda, contato e chamados."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "user_contact_preferences",
+          "nome": "Preferências de contato",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "allow_email",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "allow_phone",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "allow_whatsapp",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "allow_push",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "user_consents",
+          "nome": "Consentimentos",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "legal_document_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "consent_key",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "granted",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "recorded_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "support_tickets",
+          "nome": "Chamados de suporte",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "subject",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "category",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closed_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-user_profiles-user_profile_id-user_contact_preferences",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "user_contact_preferences"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1/N"
+        },
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-legal_documents-legal_document_id-user_consents",
+          "origem": {
+            "entidade": "legal_documents"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "legal_document_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-support_tickets-ticket_id-support_ticket_messages",
+          "origem": {
+            "entidade": "support_tickets"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "ticket_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-cliente-settings",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 18,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

@@ -24,7 +24,7 @@
         "configuracao"
       ],
       "chave": "termos_privacidade",
-      "ordem": 20
+      "ordem": 35
     }
   },
   "estados": {
@@ -41,7 +41,7 @@
     "instancias": [
       {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -56,7 +56,7 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.configuracao.termos_privacidade.j1_cliente.v01",
+        "ref": "cmp.cliente.configuracao.termos_privacidade.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
@@ -135,70 +135,8 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
-        "aplicaA": {
-          "jornadas": [
-            "*"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "rel-cliente.configuracao.termos_privacidade-out-1-cliente.configuracao.configuracao-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Voltar às Configurações",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-out-1-cliente.configuracao.configuracao-1",
-              "entrada": "in-cliente.configuracao.termos_privacidade-out-1-2"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.termos_privacidade-out-2-cliente.configuracao.termos_uso-2",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.termos_uso",
-            "evento": "legacy-event",
-            "rotulo": "Termos de uso",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-out-2-cliente.configuracao.termos_uso-2",
-              "entrada": "in-cliente.configuracao.termos_privacidade-out-2-1"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.termos_privacidade-out-3-cliente.configuracao.politica_privacidade-3",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.politica_privacidade",
-            "evento": "legacy-event",
-            "rotulo": "Política de privacidade",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-out-3-cliente.configuracao.politica_privacidade-3",
-              "entrada": "in-cliente.configuracao.termos_privacidade-out-3-1"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.termos_privacidade-out-4-cliente.configuracao.consentimentos-4",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.consentimentos",
-            "evento": "legacy-event",
-            "rotulo": "Consentimentos",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-out-4-cliente.configuracao.consentimentos-4",
-              "entrada": "in-cliente.configuracao.termos_privacidade-out-4-1"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
+        "id": "navegacao_cliente_legal",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
             "cliente"
@@ -209,67 +147,40 @@
         },
         "acoes": [
           {
-            "id": "j1-cliente-legal-terms",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "legal_terms_cliente.configuracao.termos_uso",
+            "tipo": "navegacao_declarada",
+            "evento": "terms",
             "rotulo": "Termos de uso",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "legal",
-              "destinoNo": "terms",
-              "observacao": "Documento legal."
-            },
-            "destino": "cliente.configuracao.termos_uso"
+            "destino": "cliente.configuracao.termos_uso",
+            "contextoJornada": "cliente",
+            "origemNo": "legal",
+            "caminho": "terms",
+            "estadosIntermediarios": [],
+            "detalhe": "Documento legal."
           },
           {
-            "id": "j1-cliente-legal-privacy",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "legal_privacy_cliente.configuracao.politica_privacidade",
+            "tipo": "navegacao_declarada",
+            "evento": "privacy",
             "rotulo": "Política de privacidade",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "legal",
-              "destinoNo": "privacy",
-              "observacao": "Documento legal."
-            },
-            "destino": "cliente.configuracao.politica_privacidade"
+            "destino": "cliente.configuracao.politica_privacidade",
+            "contextoJornada": "cliente",
+            "origemNo": "legal",
+            "caminho": "privacy",
+            "estadosIntermediarios": [],
+            "detalhe": "Documento legal."
           },
           {
-            "id": "j1-cliente-legal-consents",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "legal_consents_cliente.configuracao.consentimentos",
+            "tipo": "navegacao_declarada",
+            "evento": "consents",
             "rotulo": "Consentimentos",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "legal",
-              "destinoNo": "consents",
-              "observacao": "Gestão dos consentimentos da conta."
-            },
-            "destino": "cliente.configuracao.consentimentos"
+            "destino": "cliente.configuracao.consentimentos",
+            "contextoJornada": "cliente",
+            "origemNo": "legal",
+            "caminho": "consents",
+            "estadosIntermediarios": [],
+            "detalhe": "Gestão dos consentimentos da conta."
           }
         ]
       }
@@ -315,11 +226,7 @@
               "tipo": "boolean",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "legal_documents"
-          }
+          ]
         },
         {
           "id": "user_consents",
@@ -356,11 +263,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "user_consents"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -373,8 +276,7 @@
             "entidade": "user_consents"
           },
           "campoReferencia": "user_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-legal_documents-legal_document_id-user_consents",
@@ -385,16 +287,10 @@
             "entidade": "user_consents"
           },
           "campoReferencia": "legal_document_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.configuracao.termos_privacidade",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -411,22 +307,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-home-direto-config-legal",
-          "sequenceId": "sequence-home-direto-config-legal",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-onboarding-config-legal",
-          "sequenceId": "sequence-home-onboarding-config-legal",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-cadastro-config-legal",
-          "sequenceId": "sequence-home-cadastro-config-legal",
-          "order": 0,
-          "variant": "default"
+          "id": "screen-modelo-cliente-legal",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 19,
+          "variant": "padrao"
         }
       ],
       "branches": []

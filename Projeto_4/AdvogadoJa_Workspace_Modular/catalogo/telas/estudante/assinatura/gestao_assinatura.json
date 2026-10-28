@@ -1,0 +1,174 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.assinatura.gestao_assinatura",
+    "nome": "Gestão da assinatura",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/assinatura/gestao_assinatura",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "assinatura"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante",
+        "assinatura"
+      ],
+      "chave": "gestao_assinatura",
+      "ordem": 31
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.assinatura.gestao_assinatura.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.assinatura.gestao_assinatura",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.assinatura.gestao_assinatura\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_subscription_manage",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "subscription_manage_plans_estudante.assinatura.planos",
+            "tipo": "navegacao_declarada",
+            "evento": "plans",
+            "rotulo": "Alterar / contratar plano",
+            "destino": "estudante.assinatura.planos",
+            "contextoJornada": "estudante",
+            "origemNo": "subscription_manage",
+            "caminho": "plans",
+            "estadosIntermediarios": [],
+            "detalhe": "Segue para Planos."
+          },
+          {
+            "id": "subscription_manage_history_estudante.assinatura.historico_assinatura",
+            "tipo": "navegacao_declarada",
+            "evento": "history",
+            "rotulo": "Histórico",
+            "destino": "estudante.assinatura.historico_assinatura",
+            "contextoJornada": "estudante",
+            "origemNo": "subscription_manage",
+            "caminho": "history",
+            "estadosIntermediarios": [],
+            "detalhe": "Consulta cobranças e mudanças de plano."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-subscription_manage",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 14,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

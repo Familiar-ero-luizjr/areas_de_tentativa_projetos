@@ -2,23 +2,21 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "escritorio.onboarding.vinculo_escritorio",
-    "nome": "Onboarding Advogado · Escritório",
+    "nome": "Vínculo com escritório",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/onboarding/advogado/escritorio",
     "status": "rascunho-evolutivo"
   },
   "classificacao": {
-    "escopo": "escritorio",
+    "escopo": "advogado",
     "jornadas": [
-      "advogado",
-      "administrador",
-      "estudante"
+      "advogado"
     ],
     "subjornadas": [
       "onboarding"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -26,7 +24,7 @@
         "onboarding"
       ],
       "chave": "vinculo_escritorio",
-      "ordem": 1
+      "ordem": 15
     }
   },
   "estados": {
@@ -42,38 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.escritorio.onboarding.vinculo_escritorio.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
+        "ref": "style.jornadas.modular.advogado.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -88,43 +56,13 @@
       },
       {
         "id": "conteudo_advogado",
-        "ref": "cmp.escritorio.onboarding.vinculo_escritorio.j1_advogado.v01",
+        "ref": "cmp.escritorio.onboarding.vinculo_escritorio.perfil_advogado.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.escritorio.onboarding.vinculo_escritorio.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -159,38 +97,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_advogado",
         "slot": "styles",
         "ordem": 0,
@@ -221,38 +127,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -263,11 +137,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_advogado_office_intent",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "advogado"
           ],
           "estados": [
             "*"
@@ -275,74 +149,28 @@
         },
         "acoes": [
           {
-            "id": "rel-escritorio.onboarding.vinculo_escritorio-navigate-s017-advogado.onboarding.disponibilidade-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.onboarding.disponibilidade",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino advogado.onboarding.disponibilidade",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-navigate-s017-advogado.onboarding.disponibilidade-1",
-              "entrada": "in-escritorio.onboarding.vinculo_escritorio-navigate-s017-3"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-advogado-office_intent-individual",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "office_intent_individual_advogado.onboarding.revisao_profissional",
+            "tipo": "navegacao_declarada",
+            "evento": "individual",
             "rotulo": "Atuar individualmente",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "office_intent",
-              "destinoNo": "pro_review",
-              "observacao": "Sem escritório agora; poderá criar ou entrar depois."
-            },
-            "destino": "advogado.onboarding.revisao_profissional"
+            "destino": "advogado.onboarding.revisao_profissional",
+            "contextoJornada": "advogado",
+            "origemNo": "office_intent",
+            "caminho": "individual",
+            "estadosIntermediarios": [],
+            "detalhe": "Sem escritório agora; poderá criar ou entrar depois."
           },
           {
-            "id": "j1-advogado-office_intent-owner",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "office_intent_owner_escritorio.onboarding.cadastro_escritorio",
+            "tipo": "navegacao_declarada",
+            "evento": "owner",
             "rotulo": "Cadastrar meu escritório",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "office_intent",
-              "destinoNo": "office_register",
-              "observacao": "João cria o escritório e será o proprietário."
-            },
-            "destino": "escritorio.onboarding.cadastro_escritorio"
+            "destino": "escritorio.onboarding.cadastro_escritorio",
+            "contextoJornada": "advogado",
+            "origemNo": "office_intent",
+            "caminho": "owner",
+            "estadosIntermediarios": [],
+            "detalhe": "João cria o escritório e será o proprietário."
           }
         ]
       }
@@ -388,11 +216,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "law_offices"
-          }
+          ]
         },
         {
           "id": "office_members",
@@ -429,11 +253,7 @@
               "tipo": "timestamptz?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "office_members"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -446,8 +266,7 @@
             "entidade": "law_offices"
           },
           "campoReferencia": "owner_lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-law_offices-office_id-office_members",
@@ -458,8 +277,7 @@
             "entidade": "office_members"
           },
           "campoReferencia": "office_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-office_members",
@@ -470,8 +288,7 @@
             "entidade": "office_members"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-law_offices-office_id-office_invites",
@@ -482,8 +299,7 @@
             "entidade": "office_invites"
           },
           "campoReferencia": "office_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-law_offices-office_id-office_distribution_rules",
@@ -494,16 +310,10 @@
             "entidade": "office_distribution_rules"
           },
           "campoReferencia": "office_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "escritorio.onboarding.vinculo_escritorio",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -520,60 +330,13 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-0184",
-          "sequenceId": "sequence-0270",
-          "order": 7,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0356",
-          "sequenceId": "sequence-0421",
-          "order": 14,
-          "variant": "default"
+          "id": "screen-modelo-advogado-office_intent",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 11,
+          "variant": "padrao"
         }
       ],
-      "branches": [
-        {
-          "id": "branch-0186",
-          "sequenceId": "sequence-0270",
-          "order": 8,
-          "title": "Vínculo com escritório",
-          "paths": [
-            {
-              "id": "path-0187",
-              "label": "Criar escritório",
-              "isDefault": true,
-              "sequenceId": "sequence-0188"
-            },
-            {
-              "id": "path-0189",
-              "label": "Continuar sem escritório",
-              "isDefault": false,
-              "sequenceId": "sequence-0190"
-            }
-          ]
-        },
-        {
-          "id": "branch-0358",
-          "sequenceId": "sequence-0421",
-          "order": 15,
-          "title": "Vínculo com escritório",
-          "paths": [
-            {
-              "id": "path-0359",
-              "label": "Criar escritório",
-              "isDefault": true,
-              "sequenceId": "sequence-0360"
-            },
-            {
-              "id": "path-0361",
-              "label": "Continuar sem escritório",
-              "isDefault": false,
-              "sequenceId": "sequence-0362"
-            }
-          ]
-        }
-      ]
+      "branches": []
     }
   }
 }

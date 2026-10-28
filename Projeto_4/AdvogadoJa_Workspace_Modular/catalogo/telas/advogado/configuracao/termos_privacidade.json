@@ -11,14 +11,12 @@
   "classificacao": {
     "escopo": "advogado",
     "jornadas": [
-      "advogado",
-      "administrador",
-      "estudante"
+      "advogado"
     ],
     "subjornadas": [
       "configuracao"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -26,7 +24,7 @@
         "configuracao"
       ],
       "chave": "termos_privacidade",
-      "ordem": 20
+      "ordem": 47
     }
   },
   "estados": {
@@ -42,38 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.advogado.configuracao.termos_privacidade.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
+        "ref": "style.jornadas.modular.advogado.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -88,43 +56,13 @@
       },
       {
         "id": "conteudo_advogado",
-        "ref": "cmp.advogado.configuracao.termos_privacidade.j1_advogado.v01",
+        "ref": "cmp.advogado.configuracao.termos_privacidade.perfil_advogado.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.advogado.configuracao.termos_privacidade.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -159,38 +97,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_advogado",
         "slot": "styles",
         "ordem": 0,
@@ -221,38 +127,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -263,11 +137,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_advogado_legal",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "advogado"
           ],
           "estados": [
             "*"
@@ -275,131 +149,40 @@
         },
         "acoes": [
           {
-            "id": "rel-advogado.configuracao.termos_privacidade-out-1-advogado.configuracao.configuracao-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Voltar às Configurações",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-out-1-advogado.configuracao.configuracao-1",
-              "entrada": "in-advogado.configuracao.termos_privacidade-out-1-6"
-            }
-          },
-          {
-            "id": "rel-advogado.configuracao.termos_privacidade-out-2-advogado.configuracao.termos_uso-2",
-            "tipo": "ligacao_flow_migrada",
+            "id": "legal_terms_advogado.configuracao.termos_uso",
+            "tipo": "navegacao_declarada",
+            "evento": "terms",
+            "rotulo": "Termos de uso",
             "destino": "advogado.configuracao.termos_uso",
-            "evento": "legacy-event",
-            "rotulo": "Termos de uso",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-out-2-advogado.configuracao.termos_uso-2",
-              "entrada": "in-advogado.configuracao.termos_privacidade-out-2-1"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "legal",
+            "caminho": "terms",
+            "estadosIntermediarios": [],
+            "detalhe": "Documento legal."
           },
           {
-            "id": "rel-advogado.configuracao.termos_privacidade-out-3-advogado.configuracao.politica_privacidade-3",
-            "tipo": "ligacao_flow_migrada",
+            "id": "legal_privacy_advogado.configuracao.politica_privacidade",
+            "tipo": "navegacao_declarada",
+            "evento": "privacy",
+            "rotulo": "Política de privacidade",
             "destino": "advogado.configuracao.politica_privacidade",
-            "evento": "legacy-event",
-            "rotulo": "Política de privacidade",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-out-3-advogado.configuracao.politica_privacidade-3",
-              "entrada": "in-advogado.configuracao.termos_privacidade-out-3-1"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "legal",
+            "caminho": "privacy",
+            "estadosIntermediarios": [],
+            "detalhe": "Documento legal."
           },
           {
-            "id": "rel-advogado.configuracao.termos_privacidade-out-4-advogado.configuracao.consentimentos-4",
-            "tipo": "ligacao_flow_migrada",
+            "id": "legal_consents_advogado.configuracao.consentimentos",
+            "tipo": "navegacao_declarada",
+            "evento": "consents",
+            "rotulo": "Consentimentos",
             "destino": "advogado.configuracao.consentimentos",
-            "evento": "legacy-event",
-            "rotulo": "Consentimentos",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-out-4-advogado.configuracao.consentimentos-4",
-              "entrada": "in-advogado.configuracao.termos_privacidade-out-4-1"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-advogado-legal-terms",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Termos de uso",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "legal",
-              "destinoNo": "terms",
-              "observacao": "Documento legal."
-            },
-            "destino": "advogado.configuracao.termos_uso"
-          },
-          {
-            "id": "j1-advogado-legal-privacy",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Política de privacidade",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "legal",
-              "destinoNo": "privacy",
-              "observacao": "Documento legal."
-            },
-            "destino": "advogado.configuracao.politica_privacidade"
-          },
-          {
-            "id": "j1-advogado-legal-consents",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Consentimentos",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "legal",
-              "destinoNo": "consents",
-              "observacao": "Gestão de consentimentos."
-            },
-            "destino": "advogado.configuracao.consentimentos"
+            "contextoJornada": "advogado",
+            "origemNo": "legal",
+            "caminho": "consents",
+            "estadosIntermediarios": [],
+            "detalhe": "Gestão de consentimentos."
           }
         ]
       }
@@ -445,11 +228,7 @@
               "tipo": "boolean",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "legal_documents"
-          }
+          ]
         },
         {
           "id": "user_consents",
@@ -486,11 +265,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "user_consents"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -503,8 +278,7 @@
             "entidade": "user_consents"
           },
           "campoReferencia": "user_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-legal_documents-legal_document_id-user_consents",
@@ -515,16 +289,10 @@
             "entidade": "user_consents"
           },
           "campoReferencia": "legal_document_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "advogado.configuracao.termos_privacidade",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -541,52 +309,13 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-479ec7f8-7c14-44a6-9adf-596720a2027f",
-          "sequenceId": "seq-47284dd7-982d-4555-9c33-a397184361e4",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-onboarding-menu-legal-termos-privacidade",
-          "sequenceId": "sequence-profissional-onboarding-menu-config",
-          "order": 10,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-cadastro-menu-legal-termos-privacidade",
-          "sequenceId": "sequence-profissional-cadastro-menu-config",
-          "order": 10,
-          "variant": "default"
+          "id": "screen-modelo-advogado-legal",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 36,
+          "variant": "padrao"
         }
       ],
-      "branches": [
-        {
-          "id": "branch-ee0830ad-59d9-4ea2-92f4-3d8f1458b49f",
-          "sequenceId": "seq-47284dd7-982d-4555-9c33-a397184361e4",
-          "order": 1,
-          "title": "Bifurcação",
-          "paths": [
-            {
-              "id": "path-ecd9ef07-179f-4007-9e4b-b44f4f368308",
-              "label": "Caminho 1",
-              "isDefault": true,
-              "sequenceId": "seq-32669b43-e33d-4ab0-b776-4d9ff3fe9672"
-            },
-            {
-              "id": "path-6de72537-c18d-421d-a44d-b5810db6a425",
-              "label": "Caminho 2",
-              "isDefault": false,
-              "sequenceId": "seq-7c914b74-3cfa-453e-883e-4caabd7bad55"
-            },
-            {
-              "id": "path-79691a2d-456a-40bf-8cc2-c8f821bd82a8",
-              "label": "Caminho 3",
-              "isDefault": false,
-              "sequenceId": "seq-0ac48f57-5bba-4d9e-aec1-1118e5f04a8c"
-            }
-          ]
-        }
-      ]
+      "branches": []
     }
   }
 }

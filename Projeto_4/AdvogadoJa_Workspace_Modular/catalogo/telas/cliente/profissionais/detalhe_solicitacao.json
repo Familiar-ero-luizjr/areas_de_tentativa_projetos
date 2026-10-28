@@ -2,7 +2,7 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "cliente.profissionais.detalhe_solicitacao",
-    "nome": "Cliente · Solicitação · Detalhe",
+    "nome": "Detalhe da solicitação",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/cliente/solicitacoes/detalhe",
@@ -11,15 +11,12 @@
   "classificacao": {
     "escopo": "cliente",
     "jornadas": [
-      "cliente",
-      "administrador",
-      "advogado",
-      "estudante"
+      "cliente"
     ],
     "subjornadas": [
       "profissionais"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -27,7 +24,7 @@
         "profissionais"
       ],
       "chave": "detalhe_solicitacao",
-      "ordem": 5
+      "ordem": 15
     }
   },
   "estados": {
@@ -43,68 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.cliente.profissionais.detalhe_solicitacao.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "ref": "cmp.cliente.profissionais.detalhe_solicitacao.j1_advogado.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -119,43 +56,13 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.profissionais.detalhe_solicitacao.j1_cliente.v01",
+        "ref": "cmp.cliente.profissionais.detalhe_solicitacao.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "cliente"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.cliente.profissionais.detalhe_solicitacao.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -191,70 +98,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_advogado",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_cliente",
         "slot": "styles",
         "ordem": 0,
@@ -285,38 +128,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -327,11 +138,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_cliente_request_detail",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "cliente"
           ],
           "estados": [
             "*"
@@ -339,162 +150,16 @@
         },
         "acoes": [
           {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-s070-cliente.profissionais.aviso_canal_externo-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.profissionais.aviso_canal_externo",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino cliente.profissionais.aviso_canal_externo",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-navigate-s070-cliente.profissionais.aviso_canal_externo-1",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-s070-1"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-s041-cliente.configuracao.suporte-2",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.suporte",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino cliente.configuracao.suporte",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-navigate-s041-cliente.configuracao.suporte-2",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-s041-5"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-s073-cliente.profissionais.encerrar_solicitacao-3",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.profissionais.encerrar_solicitacao",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino cliente.profissionais.encerrar_solicitacao",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-navigate-s073-cliente.profissionais.encerrar_solicitacao-3",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-s073-1"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-menu-inicio-cliente.home_cliente-4",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.home_cliente",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Início",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-inicio-cliente.home_cliente-4",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-menu-inicio-7"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-menu-minhas-cliente.profissionais.minhas_solicitacoes-5",
-            "tipo": "ligacao_flow_migrada",
+            "id": "request_detail_continua_cliente.profissionais.minhas_solicitacoes",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
             "destino": "cliente.profissionais.minhas_solicitacoes",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Minhas solicitações",
-            "prioridade": 996,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-minhas-cliente.profissionais.minhas_solicitacoes-5",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-menu-minhas-6"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-menu-contatos-cliente.profissionais.contatos_liberados-6",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.profissionais.contatos_liberados",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Contatos liberados",
-            "prioridade": 995,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-contatos-cliente.profissionais.contatos_liberados-6",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-menu-contatos-6"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-menu-perfil-cliente.perfil_cliente-7",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.perfil_cliente",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Meu perfil",
-            "prioridade": 994,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-perfil-cliente.perfil_cliente-7",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-menu-perfil-5"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-menu-config-cliente.configuracao.configuracao-8",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Configurações",
-            "prioridade": 993,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-config-cliente.configuracao.configuracao-8",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-menu-config-9"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-notificacoes-notificacoes.lista.notificacoes-9",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "notificacoes.lista.notificacoes",
-            "evento": "legacy-event",
-            "rotulo": "Header · sino",
-            "prioridade": 992,
-            "portasLegadas": {
-              "saida": "out-navigate-notificacoes-notificacoes.lista.notificacoes-9",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-notificacoes-18"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.detalhe_solicitacao-navigate-sair-auth.sessao.entrar-10",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "auth.sessao.entrar",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Sair",
-            "prioridade": 991,
-            "portasLegadas": {
-              "saida": "out-navigate-sair-auth.sessao.entrar-10",
-              "entrada": "in-cliente.profissionais.detalhe_solicitacao-navigate-sair-24"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "cliente",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-cliente-request_detail-continuar",
-            "tipo": "navegacao_jornada",
-            "evento": "prosseguir",
-            "rotulo": "Prosseguir",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "request_detail",
-              "destinoNo": "requests",
-              "observacao": "O envio da solicitação acontece nesta própria tela."
-            },
-            "destino": "cliente.profissionais.minhas_solicitacoes"
+            "contextoJornada": "cliente",
+            "origemNo": "request_detail",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
           }
         ]
       }
@@ -560,11 +225,7 @@
               "tipo": "varchar?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "contact_requests"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -577,8 +238,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
@@ -589,8 +249,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
@@ -601,8 +260,7 @@
             "entidade": "contact_request_status_history"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-service_reviews",
@@ -613,16 +271,10 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:0..1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:0..1"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.profissionais.detalhe_solicitacao",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -639,22 +291,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-home-direto-menu-minhas-detalhe",
-          "sequenceId": "sequence-home-direto-menu-minhas",
-          "order": 1,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-onboarding-menu-minhas-detalhe",
-          "sequenceId": "sequence-home-onboarding-menu-minhas",
-          "order": 1,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-cadastro-menu-minhas-detalhe",
-          "sequenceId": "sequence-home-cadastro-menu-minhas",
-          "order": 1,
-          "variant": "default"
+          "id": "screen-modelo-cliente-request_detail",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 11,
+          "variant": "padrao"
         }
       ],
       "branches": []

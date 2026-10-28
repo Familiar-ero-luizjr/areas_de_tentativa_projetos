@@ -1,0 +1,145 @@
+{
+  "schema": "advogadoja.tela.lab.v0-provisorio",
+  "identidade": {
+    "id": "cliente.home",
+    "nome": "Home Cliente",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "cliente"
+  },
+  "navegacao": {
+    "participacoes": [
+      {
+        "id": "part.cliente.home",
+        "jornada": {
+          "id": "cliente",
+          "nome": "Cliente",
+          "ordem": 1
+        },
+        "subjornada": {
+          "id": "cliente.pos_home",
+          "nome": "Operação Cliente",
+          "ordem": 3
+        },
+        "ordemTela": 1,
+        "contexto": {
+          "modo": "principal"
+        }
+      }
+    ],
+    "entradas": [
+      {
+        "id": "cliente.pos_home",
+        "participacaoId": "part.cliente.home",
+        "tipo": "subjornada"
+      }
+    ]
+  },
+  "estados": {
+    "possiveis": [
+      {
+        "id": "pronto",
+        "nome": "Pronto"
+      },
+      {
+        "id": "carregando",
+        "nome": "Carregando"
+      },
+      {
+        "id": "erro",
+        "nome": "Erro"
+      }
+    ],
+    "fallbackSeguro": "pronto"
+  },
+  "variantes": {
+    "regras": [
+      {
+        "id": "cliente.carregando",
+        "prioridade": 90,
+        "quando": {
+          "campo": "estado.id",
+          "operador": "igual",
+          "valor": "carregando"
+        }
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "menu_principal",
+        "ref": "menu.drawer.padrao",
+        "slot": "menu",
+        "props": {
+          "titulo": "Cliente",
+          "itens": [
+            {
+              "id": "inicio",
+              "texto": "Início",
+              "acaoRef": "cliente.inicio"
+            },
+            {
+              "id": "sair",
+              "texto": "Sair",
+              "acaoRef": "cliente.sair"
+            }
+          ]
+        }
+      }
+    ],
+    "variantes": []
+  },
+  "estrutura": {
+    "base": {
+      "html": "<section data-slot=\"menu\"></section><main><h2>Olá, Cliente</h2><p data-slot=\"conteudo\">Painel de atendimento</p></main>"
+    },
+    "variantes": [
+      {
+        "varianteRef": "cliente.carregando",
+        "alvo": "conteudo",
+        "substituirHtml": "<p>Carregando informações...</p>"
+      }
+    ]
+  },
+  "estilos": {
+    "base": {
+      "css": ".home-cliente{padding:16px}"
+    },
+    "variantes": [
+      {
+        "varianteRef": "cliente.carregando",
+        "css": ".conteudo{opacity:.65}"
+      }
+    ]
+  },
+  "acoes": {
+    "itens": [
+      {
+        "id": "cliente.inicio",
+        "evento": "menu.inicio",
+        "efeito": {
+          "tipo": "permanecer"
+        }
+      },
+      {
+        "id": "cliente.sair",
+        "evento": "menu.sair",
+        "destino": {
+          "tipo": "tela",
+          "telaId": "auth.entrar",
+          "participacaoId": "part.entrar.inicial"
+        }
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": [],
+    "persistencia": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

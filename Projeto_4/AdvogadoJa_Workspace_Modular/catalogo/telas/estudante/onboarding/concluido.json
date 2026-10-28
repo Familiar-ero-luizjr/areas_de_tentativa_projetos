@@ -1,0 +1,162 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.onboarding.concluido",
+    "nome": "Conclusão do onboarding",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/onboarding/concluido",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "onboarding"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante",
+        "onboarding"
+      ],
+      "chave": "concluido",
+      "ordem": 13
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.onboarding.concluido.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.onboarding.concluido",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.onboarding.concluido\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_student_onboarding_done",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "student_onboarding_done_continua_estudante.home_estudante",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "estudante.home_estudante",
+            "contextoJornada": "estudante",
+            "origemNo": "student_onboarding_done",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-student_onboarding_done",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 7,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.perfil_estudante",
+    "nome": "Perfil do Estudante",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/perfil_estudante",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "perfil_estudante"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante"
+      ],
+      "chave": "perfil_estudante",
+      "ordem": 33
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "estudante_student_profile_view",
+        "nome": "Perfil consultado",
+        "jornada": "estudante",
+        "origemNo": "student_profile_view"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.perfil_estudante.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.perfil_estudante",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.perfil_estudante\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_student_profile",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "student_profile_academic_estudante.perfil.editar_academicos",
+            "tipo": "navegacao_declarada",
+            "evento": "academic",
+            "rotulo": "Editar dados acadêmicos",
+            "destino": "estudante.perfil.editar_academicos",
+            "contextoJornada": "estudante",
+            "origemNo": "student_profile",
+            "caminho": "academic",
+            "estadosIntermediarios": [],
+            "detalhe": "Atualiza instituição/situação acadêmica."
+          },
+          {
+            "id": "student_profile_view_termino",
+            "tipo": "estado_final",
+            "evento": "view",
+            "rotulo": "Consultar perfil",
+            "estado": "student_profile_view",
+            "detalhe": "Permanece no perfil.",
+            "contextoJornada": "estudante"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "estudante_student_profile_view": {
+        "id": "estudante_student_profile_view"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-student_profile",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 16,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

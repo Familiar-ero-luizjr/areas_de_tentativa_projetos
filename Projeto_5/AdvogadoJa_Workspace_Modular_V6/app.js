@@ -1,0 +1,4 @@
+// Índice V6: funcionalidade própria; não importa módulos nem motores.
+fetch('./catalogo/indice.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(i=>{
+const el=document.getElementById('metricas');el.innerHTML=`<div class=panel><div class=metric>${i.telas.length}</div><b>Telas ativas</b><div class=small>Carregadas pelo índice canônico</div></div><div class=panel><div class=metric>${i.componentes.length}</div><b>Componentes ativos</b><div class=small>Referências únicas, sem clones</div></div><div class=panel><div class=metric>248</div><b>Registros preservados</b><div class=small>106 telas + 142 componentes no acervo pendente</div></div>`;
+}).catch(e=>{document.getElementById('metricas').textContent='Falha ao ler catálogo: '+e.message+' — inicie o servidor local ou Live Server.'});

@@ -1,0 +1,101 @@
+{
+  "schema": "advogadoja.tela.lab.v0-provisorio",
+  "identidade": {
+    "id": "app.splash",
+    "nome": "Splash",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "comum"
+  },
+  "navegacao": {
+    "participacoes": [
+      {
+        "id": "part.splash.inicio",
+        "jornada": {
+          "id": "app",
+          "nome": "Aplicativo",
+          "ordem": 0
+        },
+        "subjornada": {
+          "id": "app.inicializacao",
+          "nome": "Inicialização",
+          "ordem": 1
+        },
+        "ordemTela": 1,
+        "contexto": {
+          "modo": "inicio"
+        }
+      }
+    ],
+    "entradas": [
+      {
+        "id": "app.inicio",
+        "participacaoId": "part.splash.inicio",
+        "tipo": "jornada"
+      }
+    ]
+  },
+  "estados": {
+    "possiveis": [
+      {
+        "id": "inicial",
+        "nome": "Inicial"
+      },
+      {
+        "id": "carregando",
+        "nome": "Carregando"
+      },
+      {
+        "id": "erro",
+        "nome": "Erro"
+      }
+    ],
+    "fallbackSeguro": "inicial"
+  },
+  "variantes": {
+    "regras": []
+  },
+  "componentes": {
+    "instancias": [],
+    "variantes": []
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"brand-mark\">AJ</div><h2>Advogado Já</h2><p data-slot=\"mensagem\">Inicializando aplicativo</p>"
+    },
+    "variantes": []
+  },
+  "estilos": {
+    "base": {
+      "css": ".brand-mark{border-radius:20px;padding:18px}"
+    },
+    "variantes": []
+  },
+  "acoes": {
+    "itens": [
+      {
+        "id": "splash.continuar",
+        "evento": "sistema.inicializado",
+        "destino": {
+          "tipo": "tela",
+          "telaId": "app.boas_vindas",
+          "participacaoId": "part.boas.inicial"
+        }
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": [],
+    "persistencia": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "demo.inicio",
+        "nome": "Entrada demonstrativa"
+      }
+    ]
+  }
+}

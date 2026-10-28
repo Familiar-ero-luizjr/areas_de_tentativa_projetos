@@ -1,0 +1,45 @@
+{
+  "schema": "advogadoja.componente.lab.v0-provisorio",
+  "identidade": {
+    "id": "botao.primario",
+    "nome": "Botão primário",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "global"
+  },
+  "estrutura": {
+    "base": {
+      "arvore": [
+        {
+          "tag": "button",
+          "textoRef": "props.rotulo",
+          "eventoEmitido": "botao.acionado"
+        }
+      ]
+    },
+    "variantes": []
+  },
+  "estilos": {
+    "base": {
+      "css": "button{background:#2865df;color:white;border-radius:9px;padding:12px}"
+    },
+    "variantes": []
+  },
+  "variantes": {
+    "regras": []
+  },
+  "interface": {
+    "props": {
+      "rotulo": {
+        "tipo": "texto"
+      },
+      "acaoRef": {
+        "tipo": "id"
+      }
+    },
+    "eventos": [
+      "botao.acionado"
+    ]
+  }
+}

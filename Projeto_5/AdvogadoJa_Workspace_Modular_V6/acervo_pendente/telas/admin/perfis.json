@@ -1,0 +1,505 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.perfis",
+    "nome": "Perfis e usuários",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/admin/profiles",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "perfis"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "perfis",
+      "ordem": 9
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_administrador",
+        "ref": "style.jornadas.modular.administrador.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "ref": "cmp.admin.perfis.perfil_administrador.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_admin_perfis",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.perfis\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_administrador",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_administrador",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_administrador"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_profiles",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "profiles_continua_admin.perfil_detalhe",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "admin.perfil_detalhe",
+            "contextoJornada": "administrador",
+            "origemNo": "profiles",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "users",
+          "nome": "Usuários / identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "cpf",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "email",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "phone",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "password_hash",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "account_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "user_profiles",
+          "nome": "Perfis da identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_type",
+              "tipo": "cliente|advogado|estudante|admin",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "onboarding_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "profile_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "account_status_history",
+          "nome": "Histórico de estado da conta",
+          "dominio": "admin",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "from_status",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "to_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "reason",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "actor_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_addresses",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_addresses"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-user_profiles",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_profiles"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-user_contact_preferences",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "user_contact_preferences"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1/N"
+        },
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-notifications",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "notifications"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-author_user_id-support_ticket_messages",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "author_user_id",
+          "cardinalidade": "1:N?"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-client_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "client_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-lawyer_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-student_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "student_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-subscriptions",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-external_account_links",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "external_account_links"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-admin_profile_id-admin_memberships",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "admin_memberships"
+          },
+          "campoReferencia": "admin_profile_id",
+          "cardinalidade": "1:0..1"
+        },
+        {
+          "id": "rel-users-admin_user_id-moderation_actions",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "moderation_actions"
+          },
+          "campoReferencia": "admin_user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-account_status_history",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "account_status_history"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-actor_user_id-audit_logs",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "audit_logs"
+          },
+          "campoReferencia": "actor_user_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-profiles",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 2,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

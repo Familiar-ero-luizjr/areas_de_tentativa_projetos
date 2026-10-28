@@ -1,0 +1,121 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "modal.route-modal.v02",
+    "nome": "Modal de navegação simulada",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "route-modal::0",
+        "tag": "div",
+        "atributos": {
+          "class": "route-modal",
+          "data-overlay-root": "",
+          "aria-hidden": "true",
+          "role": "dialog",
+          "aria-modal": "true",
+          "aria-label": {
+            "ref": "props.textos.navegacao_simulada_aria_label"
+          }
+        },
+        "filhos": [
+          {
+            "id": "route-modal::0.0",
+            "tag": "div",
+            "atributos": {
+              "class": "route-card"
+            },
+            "filhos": [
+              {
+                "id": "route-modal::0.0.0",
+                "tag": "p",
+                "atributos": {
+                  "class": "kicker"
+                },
+                "filhos": [
+                  {
+                    "ref": "props.textos.tela_modular_navegacao_simulada"
+                  }
+                ]
+              },
+              {
+                "id": "route-modal::0.0.1",
+                "tag": "h2",
+                "atributos": {
+                  "data-route-title": ""
+                },
+                "filhos": [
+                  {
+                    "ref": "props.textos.navegacao_simulada"
+                  }
+                ]
+              },
+              {
+                "id": "route-modal::0.0.2",
+                "tag": "p",
+                "atributos": {
+                  "data-route-text": ""
+                },
+                "filhos": [
+                  {
+                    "ref": "props.textos.esta_acao_nao_abre_outra_tela_nesta_biblioteca"
+                  }
+                ]
+              },
+              {
+                "id": "route-modal::0.0.3",
+                "tag": "code",
+                "atributos": {
+                  "data-route-code": ""
+                }
+              },
+              {
+                "id": "route-modal::[data-action=\"route.close\"]",
+                "tag": "button",
+                "atributos": {
+                  "type": "button",
+                  "data-action": "route.close"
+                },
+                "filhos": [
+                  {
+                    "ref": "props.textos.fechar"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_modal.route-modal.v02"
+  },
+  "estilos": {
+    "css": ".route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}.route-modal.open{display:flex}.route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}.kicker{margin:0 0 7px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.route-card h2{margin:0 0 8px;color:var(--primary);font-size:20px}.route-card p:not(.kicker){margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.5}.route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:var(--primary);font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}\n\n",
+    "id": "css_modal.route-modal.v02"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [
+      "fecharModal"
+    ],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "global",
+    "jornadas": [
+      "*"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "globais",
+        "modais"
+      ],
+      "chave": "route-modal.v02"
+    }
+  }
+}

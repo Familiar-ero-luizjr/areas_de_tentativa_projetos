@@ -1,0 +1,606 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.profissionais.contatos_liberados",
+    "nome": "Contatos liberados",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/contatos",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "profissionais"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "profissionais"
+      ],
+      "chave": "contatos_liberados",
+      "ordem": 21
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.modular.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.profissionais.contatos_liberados.perfil_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_profissionais_contatos_liberados",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.profissionais.contatos_liberados\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "cliente",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_cliente_contacts",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "contacts_continua_cliente.profissionais.aviso_canal_externo",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "cliente.profissionais.aviso_canal_externo",
+            "contextoJornada": "cliente",
+            "origemNo": "contacts",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "contact_requests",
+          "nome": "Solicitações Cliente ↔ Advogado",
+          "dominio": "client",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "client_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "subject",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "description",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "accepted_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closed_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closure_reason",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "lawyer_profiles",
+          "nome": "Perfil Advogado",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "headline",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "bio",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "years_experience",
+              "tipo": "smallint?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "public_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "users",
+          "nome": "Usuários / identidade",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "cpf",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "email",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "phone",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "password_hash",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "account_status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_addresses",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_addresses"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-user_profiles",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_profiles"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-user_consents",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_consents"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-notifications",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "notifications"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-author_user_id-support_ticket_messages",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "author_user_id",
+          "cardinalidade": "1:N?"
+        },
+        {
+          "id": "rel-client_profiles-client_profile_id-contact_requests",
+          "origem": {
+            "entidade": "client_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "client_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
+          "origem": {
+            "entidade": "contact_requests"
+          },
+          "destino": {
+            "entidade": "contact_request_status_history"
+          },
+          "campoReferencia": "contact_request_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-contact_requests-contact_request_id-service_reviews",
+          "origem": {
+            "entidade": "contact_requests"
+          },
+          "destino": {
+            "entidade": "service_reviews"
+          },
+          "campoReferencia": "contact_request_id",
+          "cardinalidade": "1:0..1"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-service_reviews",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "service_reviews"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-lawyer_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_academic_records",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_academic_records"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_practice_areas",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_practice_areas"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_availability",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_availability"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_weekly_schedule",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_weekly_schedule"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_oab_records",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "lawyer_oab_records"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-lawyer_profiles-owner_lawyer_profile_id-law_offices",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "law_offices"
+          },
+          "campoReferencia": "owner_lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-office_members",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "office_members"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-external_account_links",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "external_account_links"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-admin_user_id-moderation_actions",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "moderation_actions"
+          },
+          "campoReferencia": "admin_user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-user_id-account_status_history",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "account_status_history"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-actor_user_id-audit_logs",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "audit_logs"
+          },
+          "campoReferencia": "actor_user_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-cliente-contacts",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 13,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

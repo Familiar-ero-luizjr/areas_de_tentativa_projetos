@@ -1,0 +1,127 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp_advogado_home_advogado_main_online_status",
+    "nome": "Status Online",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "online-status::[data-action=\"online.toggle\"]",
+        "tag": "button",
+        "atributos": {
+          "class": "online-card",
+          "type": "button",
+          "data-online-root": "",
+          "data-event-id": "online.toggle"
+        },
+        "filhos": [
+          {
+            "id": "online-status::0.0",
+            "tag": "span",
+            "atributos": {
+              "class": "online-dot"
+            }
+          },
+          {
+            "id": "online-status::0.1",
+            "tag": "span",
+            "atributos": {
+              "class": "online-copy"
+            },
+            "filhos": [
+              {
+                "id": "online-status::0.1.0",
+                "tag": "strong",
+                "atributos": {
+                  "data-online-status": ""
+                },
+                "filhos": [
+                  {
+                    "ref": "props.textos.online"
+                  }
+                ],
+                "vinculos": {
+                  "textoPorEstado": {
+                    "estado": "online",
+                    "verdadeiro": "Online",
+                    "falso": "Offline"
+                  }
+                }
+              },
+              {
+                "id": "online-status::0.1.1",
+                "tag": "small",
+                "atributos": {
+                  "data-online-copy": ""
+                },
+                "filhos": [
+                  {
+                    "ref": "props.textos.recebendo_novas_solicitacoes"
+                  }
+                ],
+                "vinculos": {
+                  "textoPorEstado": {
+                    "estado": "online",
+                    "verdadeiro": "Recebendo novas solicitações",
+                    "falso": "Indisponível para novas solicitações"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "online-status::0.2",
+            "tag": "span",
+            "atributos": {
+              "class": "online-switch",
+              "aria-hidden": "true"
+            },
+            "filhos": [
+              {
+                "id": "online-status::0.2.0",
+                "tag": "b"
+              }
+            ]
+          }
+        ],
+        "vinculos": {
+          "classePorEstado": {
+            "estado": "online",
+            "quandoFalso": "is-offline"
+          }
+        }
+      }
+    ],
+    "id": "html_cmp_advogado_home_advogado_main_online_status"
+  },
+  "estilos": {
+    "css": ".online-card {\n  width:100%;\n  display:grid;\n  grid-template-columns:auto minmax(0,1fr) auto;\n  gap:12px;\n  align-items:center;\n  padding:14px 15px;\n  border:1px solid #a8dfc8;\n  border-radius:16px;\n  background:#f1fbf6;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n}\n.online-card.is-offline {\n  border-color:var(--line);\n  background:#f8fafc;\n}\n.online-dot {\n  width:10px;\n  height:10px;\n  border-radius:50%;\n  background:#15945e;\n  box-shadow:0 0 0 4px rgba(21,148,94,.12);\n}\n.is-offline .online-dot {\n  background:#98a2b3;\n  box-shadow:none;\n}\n.online-copy strong,\n.online-copy small { display:block; }\n.online-copy strong {\n  color:var(--primary);\n  font-size:14px;\n}\n.online-copy small {\n  margin-top:3px;\n  color:var(--muted);\n  font-size:12px;\n}\n.online-switch {\n  position:relative;\n  width:40px;\n  height:23px;\n  border-radius:999px;\n  background:#22c55e;\n}\n.online-switch b {\n  position:absolute;\n  top:3px;\n  right:3px;\n  width:17px;\n  height:17px;\n  border-radius:50%;\n  background:#fff;\n}\n.is-offline .online-switch { background:#98a2b3; }\n.is-offline .online-switch b { right:20px; }\n",
+    "id": "css_cmp_advogado_home_advogado_main_online_status"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [
+      "alternarDisponibilidade"
+    ],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "local",
+    "jornadas": [
+      "advogado"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "locais",
+        "advogado",
+        "home"
+      ],
+      "chave": "online-status"
+    }
+  }
+}

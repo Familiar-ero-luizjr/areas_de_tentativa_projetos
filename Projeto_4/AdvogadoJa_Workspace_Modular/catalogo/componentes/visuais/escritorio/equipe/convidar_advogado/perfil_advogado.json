@@ -1,0 +1,227 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01",
+    "nome": "Convidar advogado · jornada advogado",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::1",
+        "tag": "div",
+        "atributos": {
+          "class": "screen-runtime"
+        },
+        "filhos": [
+          {
+            "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::2",
+            "tag": "div",
+            "atributos": {
+              "class": "prototype-screen operational"
+            },
+            "filhos": [
+              {
+                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::3",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-header"
+                },
+                "filhos": [
+                  {
+                    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::4",
+                    "tag": "div",
+                    "atributos": {},
+                    "filhos": []
+                  },
+                  {
+                    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::5",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "app-brand"
+                    },
+                    "filhos": [
+                      {
+                        "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::6",
+                        "tag": "strong",
+                        "atributos": {},
+                        "filhos": [
+                          "AdvogadoJá"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::7",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "app-role"
+                    },
+                    "filhos": [
+                      "Advogado"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::8",
+                "tag": "div",
+                "atributos": {
+                  "class": "app-titlebar"
+                },
+                "filhos": [
+                  "Convidar advogado"
+                ]
+              },
+              {
+                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::9",
+                "tag": "div",
+                "atributos": {
+                  "class": "screen-layout"
+                },
+                "filhos": [
+                  {
+                    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::10",
+                    "tag": "div",
+                    "atributos": {
+                      "class": "screen-slot screen-slot--main"
+                    },
+                    "filhos": [
+                      {
+                        "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::11",
+                        "tag": "main",
+                        "atributos": {
+                          "class": "op-shell"
+                        },
+                        "filhos": [
+                          {
+                            "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::12",
+                            "tag": "form",
+                            "atributos": {
+                              "class": "op-card op-form",
+                              "data-prototype-form": "",
+                              "data-success-message": "Convite enviado na simulação."
+                            },
+                            "filhos": [
+                              {
+                                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::13",
+                                "tag": "h2",
+                                "atributos": {},
+                                "filhos": [
+                                  "Convidar para a equipe"
+                                ]
+                              },
+                              {
+                                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::14",
+                                "tag": "label",
+                                "atributos": {},
+                                "filhos": [
+                                  "E mail",
+                                  {
+                                    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::15",
+                                    "tag": "input",
+                                    "atributos": {
+                                      "type": "email",
+                                      "placeholder": "Advogado exemplo com placeholder",
+                                      "required": ""
+                                    },
+                                    "filhos": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::16",
+                                "tag": "label",
+                                "atributos": {},
+                                "filhos": [
+                                  "OAB",
+                                  {
+                                    "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::17",
+                                    "tag": "input",
+                                    "atributos": {
+                                      "type": "text",
+                                      "placeholder": "Texto 000123 sp placeholder",
+                                      "required": ""
+                                    },
+                                    "filhos": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::18",
+                                "tag": "button",
+                                "atributos": {
+                                  "class": "button",
+                                  "type": "submit"
+                                },
+                                "filhos": [
+                                  "Enviar convite"
+                                ]
+                              },
+                              {
+                                "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::19",
+                                "tag": "button",
+                                "atributos": {
+                                  "class": "op-secondary",
+                                  "type": "button",
+                                  "data-goto": "escritorio.equipe.equipe"
+                                },
+                                "filhos": [
+                                  "Voltar"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01::20",
+                            "tag": "div",
+                            "atributos": {
+                              "class": "op-toast",
+                              "role": "status",
+                              "aria-live": "polite"
+                            },
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01"
+  },
+  "estilos": {
+    "css": "/* escritorio.equipe.convidar_advogado · Adicionar advogado */\n\n/* arquivo local da tela; mantenha aqui apenas ajustes específicos deste HTML isolado */\n",
+    "id": "css_cmp.escritorio.equipe.convidar_advogado.perfil_advogado.v01"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [
+      "interacao_simulada"
+    ],
+    "regraBinding": "Interações são interpretadas pelo motor de prévia a partir de atributos data-*; o componente não consulta arquivos externos."
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "visuais",
+        "escritorio",
+        "equipe",
+        "convidar_advogado"
+      ],
+      "chave": "perfil_advogado"
+    }
+  }
+}

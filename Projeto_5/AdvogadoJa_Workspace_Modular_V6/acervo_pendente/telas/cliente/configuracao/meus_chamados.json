@@ -1,0 +1,334 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.configuracao.meus_chamados",
+    "nome": "Meus chamados",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/cliente/configuracoes/suporte/chamados",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "configuracao"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "configuracao"
+      ],
+      "chave": "meus_chamados",
+      "ordem": 42
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "cliente_tickets_view",
+        "nome": "Chamados consultados",
+        "jornada": "cliente",
+        "origemNo": "tickets_view"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.modular.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.configuracao.meus_chamados.perfil_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_configuracao_meus_chamados",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.configuracao.meus_chamados\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "cliente"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_cliente_tickets",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "tickets_view_termino",
+            "tipo": "estado_final",
+            "evento": "view",
+            "rotulo": "Consultar chamados",
+            "estado": "tickets_view",
+            "detalhe": "Permanece na lista.",
+            "contextoJornada": "cliente"
+          },
+          {
+            "id": "tickets_new_cliente.configuracao.falar_suporte",
+            "tipo": "navegacao_declarada",
+            "evento": "new",
+            "rotulo": "Abrir novo chamado",
+            "destino": "cliente.configuracao.falar_suporte",
+            "contextoJornada": "cliente",
+            "origemNo": "tickets",
+            "caminho": "new",
+            "estadosIntermediarios": [],
+            "detalhe": "Segue para Falar com o suporte."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "support_tickets",
+          "nome": "Chamados de suporte",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "subject",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "category",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "closed_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "support_ticket_messages",
+          "nome": "Mensagens do chamado",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "ticket_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "author_user_id",
+              "tipo": "uuid · FK?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "author_kind",
+              "tipo": "user|support",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "message",
+              "tipo": "text",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-support_tickets",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_tickets"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-support_tickets-ticket_id-support_ticket_messages",
+          "origem": {
+            "entidade": "support_tickets"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "ticket_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-users-author_user_id-support_ticket_messages",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "support_ticket_messages"
+          },
+          "campoReferencia": "author_user_id",
+          "cardinalidade": "1:N?"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "cliente_tickets_view": {
+        "id": "cliente_tickets_view"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-cliente-tickets",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 26,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

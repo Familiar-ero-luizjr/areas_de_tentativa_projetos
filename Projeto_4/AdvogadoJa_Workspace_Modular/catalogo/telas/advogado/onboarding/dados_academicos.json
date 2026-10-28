@@ -2,7 +2,7 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "advogado.onboarding.dados_academicos",
-    "nome": "Onboarding Advogado · Dados acadêmicos",
+    "nome": "Dados acadêmicos",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/onboarding/advogado/dados-academicos",
@@ -11,14 +11,12 @@
   "classificacao": {
     "escopo": "advogado",
     "jornadas": [
-      "advogado",
-      "administrador",
-      "estudante"
+      "advogado"
     ],
     "subjornadas": [
       "onboarding"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -26,7 +24,7 @@
         "onboarding"
       ],
       "chave": "dados_academicos",
-      "ordem": 1
+      "ordem": 10
     }
   },
   "estados": {
@@ -42,38 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.advogado.onboarding.dados_academicos.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
+        "ref": "style.jornadas.modular.advogado.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -88,43 +56,13 @@
       },
       {
         "id": "conteudo_advogado",
-        "ref": "cmp.advogado.onboarding.dados_academicos.j1_advogado.v01",
+        "ref": "cmp.advogado.onboarding.dados_academicos.perfil_advogado.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.advogado.onboarding.dados_academicos.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -159,38 +97,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_advogado",
         "slot": "styles",
         "ordem": 0,
@@ -221,38 +127,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -263,11 +137,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_advogado_pro_academic",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "advogado"
           ],
           "estados": [
             "*"
@@ -275,65 +149,16 @@
         },
         "acoes": [
           {
-            "id": "rel-advogado.onboarding.dados_academicos-navigate-s011-auth.cadastro.concluido-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "auth.cadastro.concluido",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino auth.cadastro.concluido",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-navigate-s011-auth.cadastro.concluido-1",
-              "entrada": "in-advogado.onboarding.dados_academicos-navigate-s011-1"
-            }
-          },
-          {
-            "id": "rel-advogado.onboarding.dados_academicos-navigate-s013-advogado.onboarding.dados_profissionais-2",
-            "tipo": "ligacao_flow_migrada",
+            "id": "pro_academic_continua_advogado.onboarding.dados_profissionais",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
             "destino": "advogado.onboarding.dados_profissionais",
-            "evento": "legacy-event",
-            "rotulo": "Elemento com destino advogado.onboarding.dados_profissionais",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-navigate-s013-advogado.onboarding.dados_profissionais-2",
-              "entrada": "in-advogado.onboarding.dados_academicos-navigate-s013-2"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-advogado-pro_academic-continuar",
-            "tipo": "navegacao_jornada",
-            "evento": "prosseguir",
-            "rotulo": "Prosseguir",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "pro_academic",
-              "destinoNo": "pro_data",
-              "observacao": "Onboarding profissional · etapa 1."
-            },
-            "destino": "advogado.onboarding.dados_profissionais"
+            "contextoJornada": "advogado",
+            "origemNo": "pro_academic",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
           }
         ]
       }
@@ -379,11 +204,7 @@
               "tipo": "smallint?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "lawyer_academic_records"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -396,16 +217,10 @@
             "entidade": "lawyer_academic_records"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "advogado.onboarding.dados_academicos",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -422,16 +237,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-0177",
-          "sequenceId": "sequence-0270",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0349",
-          "sequenceId": "sequence-0421",
-          "order": 7,
-          "variant": "default"
+          "id": "screen-modelo-advogado-pro_academic",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 6,
+          "variant": "padrao"
         }
       ],
       "branches": []

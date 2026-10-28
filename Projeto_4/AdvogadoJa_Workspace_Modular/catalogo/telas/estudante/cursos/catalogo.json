@@ -1,0 +1,162 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.cursos.catalogo",
+    "nome": "Catálogo de cursos",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/cursos/catalogo",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "cursos"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante",
+        "cursos"
+      ],
+      "chave": "catalogo",
+      "ordem": 19
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.cursos.catalogo.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.cursos.catalogo",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.cursos.catalogo\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_course_catalog",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "course_catalog_continua_estudante.cursos.detalhe",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "estudante.cursos.detalhe",
+            "contextoJornada": "estudante",
+            "origemNo": "course_catalog",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-course_catalog",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 9,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

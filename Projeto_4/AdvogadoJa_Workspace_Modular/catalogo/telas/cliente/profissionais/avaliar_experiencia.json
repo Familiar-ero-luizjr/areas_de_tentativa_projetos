@@ -2,7 +2,7 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "cliente.profissionais.avaliar_experiencia",
-    "nome": "Cliente · Avaliar experiência",
+    "nome": "Avaliar experiência",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/cliente/avaliacao",
@@ -11,15 +11,12 @@
   "classificacao": {
     "escopo": "cliente",
     "jornadas": [
-      "cliente",
-      "administrador",
-      "advogado",
-      "estudante"
+      "cliente"
     ],
     "subjornadas": [
       "profissionais"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -27,7 +24,7 @@
         "profissionais"
       ],
       "chave": "avaliar_experiencia",
-      "ordem": 7
+      "ordem": 25
     }
   },
   "estados": {
@@ -43,68 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.cliente.profissionais.avaliar_experiencia.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "ref": "cmp.cliente.profissionais.avaliar_experiencia.j1_advogado.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -119,43 +56,13 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.profissionais.avaliar_experiencia.j1_cliente.v01",
+        "ref": "cmp.cliente.profissionais.avaliar_experiencia.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "cliente"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.cliente.profissionais.avaliar_experiencia.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -191,70 +98,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_advogado",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_advogado",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_advogado"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_cliente",
         "slot": "styles",
         "ordem": 0,
@@ -285,38 +128,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -327,11 +138,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_cliente_rate",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "cliente"
           ],
           "estados": [
             "*"
@@ -339,142 +150,16 @@
         },
         "acoes": [
           {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-evaluation-submit-detail-cliente.profissionais.detalhe_solicitacao-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.profissionais.detalhe_solicitacao",
-            "evento": "legacy-event",
-            "rotulo": "Enviar avaliação",
-            "prioridade": 1000,
-            "quandoLegado": {
-              "type": "legacy-expression",
-              "expression": "três notas obrigatórias preenchidas"
-            },
-            "portasLegadas": {
-              "saida": "out-evaluation-submit-detail-cliente.profissionais.detalhe_solicitacao-1",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-evaluation-submit-detail-1"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-menu-inicio-cliente.home_cliente-2",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.home_cliente",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Início",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-inicio-cliente.home_cliente-2",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-menu-inicio-4"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-menu-minhas-cliente.profissionais.minhas_solicitacoes-3",
-            "tipo": "ligacao_flow_migrada",
+            "id": "rate_continua_cliente.profissionais.minhas_solicitacoes",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
             "destino": "cliente.profissionais.minhas_solicitacoes",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Minhas solicitações",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-minhas-cliente.profissionais.minhas_solicitacoes-3",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-menu-minhas-3"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-menu-contatos-cliente.profissionais.contatos_liberados-4",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.profissionais.contatos_liberados",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Contatos liberados",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-contatos-cliente.profissionais.contatos_liberados-4",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-menu-contatos-3"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-menu-perfil-cliente.perfil_cliente-5",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.perfil_cliente",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Meu perfil",
-            "prioridade": 996,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-perfil-cliente.perfil_cliente-5",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-menu-perfil-2"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-menu-config-cliente.configuracao.configuracao-6",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Configurações",
-            "prioridade": 995,
-            "portasLegadas": {
-              "saida": "out-navigate-menu-config-cliente.configuracao.configuracao-6",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-menu-config-6"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-notificacoes-notificacoes.lista.notificacoes-7",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "notificacoes.lista.notificacoes",
-            "evento": "legacy-event",
-            "rotulo": "Header · sino",
-            "prioridade": 994,
-            "portasLegadas": {
-              "saida": "out-navigate-notificacoes-notificacoes.lista.notificacoes-7",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-notificacoes-15"
-            }
-          },
-          {
-            "id": "rel-cliente.profissionais.avaliar_experiencia-navigate-sair-auth.sessao.entrar-8",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "auth.sessao.entrar",
-            "evento": "legacy-event",
-            "rotulo": "Menu · Sair",
-            "prioridade": 993,
-            "portasLegadas": {
-              "saida": "out-navigate-sair-auth.sessao.entrar-8",
-              "entrada": "in-cliente.profissionais.avaliar_experiencia-navigate-sair-21"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "cliente",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-cliente-rate-continuar",
-            "tipo": "navegacao_jornada",
-            "evento": "prosseguir",
-            "rotulo": "Prosseguir",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "rate",
-              "destinoNo": "requests_closed",
-              "observacao": "Avaliação após o encerramento."
-            },
-            "destino": "cliente.profissionais.minhas_solicitacoes"
+            "contextoJornada": "cliente",
+            "origemNo": "rate",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
           }
         ]
       }
@@ -525,11 +210,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "service_reviews"
-          }
+          ]
         },
         {
           "id": "contact_requests",
@@ -586,11 +267,7 @@
               "tipo": "varchar?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "contact_requests"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -603,8 +280,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
@@ -615,8 +291,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
@@ -627,8 +302,7 @@
             "entidade": "contact_request_status_history"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-service_reviews",
@@ -639,8 +313,7 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:0..1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:0..1"
         },
         {
           "id": "rel-client_profiles-client_profile_id-service_reviews",
@@ -651,8 +324,7 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-service_reviews",
@@ -663,16 +335,10 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.profissionais.avaliar_experiencia",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -689,22 +355,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-home-direto-avaliar",
-          "sequenceId": "sequence-home-direto-perfil-encerrar",
-          "order": 1,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-onboarding-avaliar",
-          "sequenceId": "sequence-home-onboarding-perfil-encerrar",
-          "order": 1,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-cadastro-avaliar",
-          "sequenceId": "sequence-home-cadastro-perfil-encerrar",
-          "order": 1,
-          "variant": "default"
+          "id": "screen-modelo-cliente-rate",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 16,
+          "variant": "padrao"
         }
       ],
       "branches": []

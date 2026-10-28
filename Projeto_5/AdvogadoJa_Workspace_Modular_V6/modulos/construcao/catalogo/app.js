@@ -1,0 +1,21 @@
+import {iniciar,$,esc,pre,tag,option,aviso} from './ui.js';
+import {salvarRegistro,baixar,stringify} from './catalogo.js';
+import {montarTela} from './montagem.js';
+import {projetar} from './motor.js';
+let c,kind='telas',selected='auth.entrar',mode='json',state='pronto';
+const ids=()=>Object.keys(kind==='telas'?c.telas:c.componentes);
+function render(){const doc=(kind==='telas'?c.telas:c.componentes)[selected];if(!doc){selected=ids()[0];return render()}
+ $('main').innerHTML=`<div class="section-head"><div><h2>Catálogo ativo</h2><p class="sub">5 telas e 3 componentes · fonte real no índice JSON · edição por ID (sem converter legado)</p></div><div class="row"><button class="btn" id="exportOne">Exportar JSON</button><button class="btn primary" id="saveOne">Salvar alterações</button></div></div><div class="cols"><section class="panel"><h3>Registros por ID</h3><label class="label">Tipo</label><select class="form-control" id="kind"><option value="telas" ${kind==='telas'?'selected':''}>Telas</option><option value="componentes" ${kind==='componentes'?'selected':''}>Componentes</option></select><div id="records" style="margin-top:12px">${ids().map(id=>`<button class="item-btn ${id===selected?'selected':''}" data-id="${esc(id)}"><b>${esc((kind==='telas'?c.telas:c.componentes)[id].identidade.nome)}</b><div class="small mono">${esc(id)}</div></button>`).join('')}</div></section><section class="panel"><div class="row between"><div><h3>${esc(doc.identidade.nome)}</h3>${tag(doc.schema||'sem schema','info')}</div><div class="row">${[['json','Árvore e JSON'],['visual','Montagem visual'],['motor','Motor/JSON']].map(([v,t])=>`<button class="btn ${mode===v?'primary':''}" data-mode="${v}">${t}</button>`).join('')}</div></div><div id="detail"></div></section></div>`;
+ $('kind').onchange=e=>{kind=e.target.value;selected=ids()[0];mode='json';render()};$('records').onclick=e=>{const b=e.target.closest('[data-id]');if(b){selected=b.dataset.id;state='pronto';render()}};
+ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;render()});
+ $('exportOne').onclick=()=>baixar(selected+'.json',stringify(doc));$('saveOne').onclick=async()=>{if(mode!=='json'){aviso('Abra Árvore e JSON para editar antes de salvar.');return}try{const parsed=JSON.parse($('editor').value);if(parsed.identidade?.id!==selected)throw Error('Não altere o ID neste editor; referências precisam ser revisadas.');const r=await salvarRegistro(kind,selected,parsed);(kind==='telas'?c.telas:c.componentes)[selected]=parsed;aviso(r.mensagem);render()}catch(e){aviso('Erro: '+e.message)}};
+ renderDetail(doc);
+}
+function renderDetail(doc){const detail=$('detail');if(mode==='json'){detail.innerHTML=`<p class="sub" style="margin-top:12px">Estrutura integral editável. <b>Salvar alterações</b> grava no JSON físico somente usando <code>python iniciar.py</code>; no Live Server salva rascunho no navegador.</p><textarea id="editor" class="codeinput" aria-label="JSON do registro">${esc(stringify(doc))}</textarea>`;return}
+ if(mode==='motor'){detail.innerHTML=`<p class="sub">Entradas, referências resolvidas e projeção temporária. Sem novos arquivos mestres.</p>${pre(projetar(c,kind,selected))}`;return}
+ if(kind!=='telas'){detail.innerHTML=`<div class="notice">Componente compartilhado: a prévia completa aparece quando é montado em uma tela. Abaixo estão suas referências reais.</div>${pre(projetar(c,kind,selected))}`;return}
+ let ops=doc.estados?.possiveis||[];if(!ops.some(x=>x.id===state))state=doc.estados?.fallbackSeguro||ops[0]?.id||'';
+ detail.innerHTML=`<div class="row"><label class="label" for="status">Estado</label><select class="form-control" style="max-width:240px" id="status">${ops.map(x=>option(x.id,x.nome||x.id,state)).join('')}</select></div><div id="preview" class="shadow-wrap" style="margin-top:12px"></div><div id="variants"></div>`;
+ const p=doc.navegacao?.participacoes?.[0];let preview=montarTela(c,selected,{participacaoId:p?.id,estado:state});$('preview').append(preview.host);$('variants').innerHTML=`<p class="small">Participação: ${esc(p?.id||'—')} · Variantes ativas: ${esc(preview.ativos.map(v=>v.id).join(', ')||'nenhuma')}</p>`;$('status').onchange=e=>{state=e.target.value;renderDetail(doc)};
+}
+iniciar(async data=>{c=data;render()});

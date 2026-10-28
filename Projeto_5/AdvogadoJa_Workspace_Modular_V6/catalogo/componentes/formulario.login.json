@@ -1,0 +1,68 @@
+{
+  "schema": "advogadoja.componente.lab.v0-provisorio",
+  "identidade": {
+    "id": "formulario.login",
+    "nome": "Formulário de acesso",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "global"
+  },
+  "estrutura": {
+    "base": {
+      "arvore": [
+        {
+          "tag": "form",
+          "filhos": [
+            {
+              "tag": "input",
+              "atributos": {
+                "type": "email",
+                "placeholder": "E-mail"
+              }
+            },
+            {
+              "tag": "input",
+              "atributos": {
+                "type": "password",
+                "placeholder": "Senha"
+              }
+            },
+            {
+              "tag": "button",
+              "textoRef": "props.botao",
+              "eventoEmitido": "formulario.enviar"
+            }
+          ]
+        }
+      ]
+    },
+    "variantes": []
+  },
+  "estilos": {
+    "base": {
+      "css": "form{display:grid;gap:12px}input{padding:10px;border:1px solid #cfd8e5}"
+    },
+    "variantes": []
+  },
+  "variantes": {
+    "regras": []
+  },
+  "interface": {
+    "props": {
+      "titulo": {
+        "tipo": "texto"
+      },
+      "botao": {
+        "tipo": "texto"
+      },
+      "subtitulo": {
+        "tipo": "texto",
+        "obrigatorio": false
+      }
+    },
+    "eventos": [
+      "formulario.enviar"
+    ]
+  }
+}

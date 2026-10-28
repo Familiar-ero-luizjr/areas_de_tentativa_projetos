@@ -1,0 +1,67 @@
+{
+  "schema": "advogadoja.componente.lab.v0-provisorio",
+  "identidade": {
+    "id": "menu.drawer.padrao",
+    "nome": "Menu lateral reutilizável",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "global"
+  },
+  "estrutura": {
+    "base": {
+      "arvore": [
+        {
+          "tag": "nav",
+          "atributos": {
+            "class": "menu-principal",
+            "aria-label": "Navegação principal"
+          },
+          "filhos": [
+            {
+              "tag": "ul",
+              "repetir": "props.itens",
+              "filhos": [
+                {
+                  "tag": "li",
+                  "filhos": [
+                    {
+                      "tag": "button",
+                      "textoRef": "item.texto",
+                      "eventoEmitido": "menu.itemSelecionado",
+                      "acaoRef": "item.acaoRef"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "variantes": []
+  },
+  "estilos": {
+    "base": {
+      "css": ".menu-principal{display:flex;flex-direction:column;gap:8px}.menu-principal button{padding:10px;border-radius:8px}"
+    },
+    "variantes": []
+  },
+  "variantes": {
+    "regras": []
+  },
+  "interface": {
+    "props": {
+      "titulo": {
+        "tipo": "texto"
+      },
+      "itens": {
+        "tipo": "lista",
+        "obrigatorio": true
+      }
+    },
+    "eventos": [
+      "menu.itemSelecionado"
+    ]
+  }
+}

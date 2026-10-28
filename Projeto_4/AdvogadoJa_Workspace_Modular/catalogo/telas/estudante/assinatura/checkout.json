@@ -1,0 +1,186 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.assinatura.checkout",
+    "nome": "Checkout",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/assinatura/checkout",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "assinatura"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante",
+        "assinatura"
+      ],
+      "chave": "checkout",
+      "ordem": 27
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "estudante_stripe_processing",
+        "nome": "Pagamento processado",
+        "jornada": "estudante",
+        "origemNo": "stripe_processing"
+      },
+      {
+        "id": "estudante_subscription_entitlements",
+        "nome": "Backend atualiza assinatura + entitlements",
+        "jornada": "estudante",
+        "origemNo": "subscription_entitlements"
+      },
+      {
+        "id": "estudante_same_student_home",
+        "nome": "Retorno à mesma Home Estudante",
+        "jornada": "estudante",
+        "origemNo": "same_student_home"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.assinatura.checkout.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.assinatura.checkout",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.assinatura.checkout\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_checkout",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "checkout_continua_termino",
+            "tipo": "estado_final",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "estado": "stripe_processing",
+            "detalhe": "",
+            "contextoJornada": "estudante"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "estudante_stripe_processing": {
+        "id": "estudante_stripe_processing"
+      },
+      "estudante_subscription_entitlements": {
+        "id": "estudante_subscription_entitlements"
+      },
+      "estudante_same_student_home": {
+        "id": "estudante_same_student_home"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-checkout",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 13,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

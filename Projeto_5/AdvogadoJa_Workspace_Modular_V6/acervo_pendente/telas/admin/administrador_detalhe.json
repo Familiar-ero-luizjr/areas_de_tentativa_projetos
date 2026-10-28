@@ -1,0 +1,185 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.administrador_detalhe",
+    "nome": "Permissões administrativas",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/admin/administrador_detalhe",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "administrador_detalhe"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "administrador_detalhe",
+      "ordem": 28
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_admin_permissions_view",
+        "nome": "Escopo administrativo consultado",
+        "jornada": "administrador",
+        "origemNo": "admin_permissions_view"
+      },
+      {
+        "id": "administrador_admin_governance_pending",
+        "nome": "Governança de Administradores a definir",
+        "jornada": "administrador",
+        "origemNo": "admin_governance_pending"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.admin.administrador_detalhe.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_admin.administrador_detalhe",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.administrador_detalhe\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_admin_detail",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "admin_detail_inspect_termino",
+            "tipo": "estado_final",
+            "evento": "inspect",
+            "rotulo": "Consultar escopo",
+            "estado": "admin_permissions_view",
+            "detalhe": "Somente consulta.",
+            "contextoJornada": "administrador"
+          },
+          {
+            "id": "admin_detail_change_termino",
+            "tipo": "estado_final",
+            "evento": "change",
+            "rotulo": "Alterar papel/permissão",
+            "estado": "admin_governance_pending",
+            "detalhe": "Quem pode promover/remover e os níveis ainda estão pendentes.",
+            "contextoJornada": "administrador"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_admin_permissions_view": {
+        "id": "administrador_admin_permissions_view"
+      },
+      "administrador_admin_governance_pending": {
+        "id": "administrador_admin_governance_pending"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-admin_detail",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 13,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

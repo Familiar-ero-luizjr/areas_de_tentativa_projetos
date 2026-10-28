@@ -1,0 +1,345 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "cliente.onboarding.localizacao",
+    "nome": "Localização",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/onboarding/cliente/localizacao",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "cliente",
+    "jornadas": [
+      "cliente"
+    ],
+    "subjornadas": [
+      "onboarding"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "cliente",
+        "onboarding"
+      ],
+      "chave": "localizacao",
+      "ordem": 10
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_cliente",
+        "ref": "style.jornadas.modular.cliente.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "ref": "cmp.cliente.onboarding.localizacao.perfil_cliente.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_cliente_onboarding_localizacao",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"cliente.onboarding.localizacao\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "cliente",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_cliente",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_cliente",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_cliente"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_cliente_on_loc",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "cliente"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "on_loc_continua_cliente.onboarding.preferencias_contato",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "cliente.onboarding.preferencias_contato",
+            "contextoJornada": "cliente",
+            "origemNo": "on_loc",
+            "caminho": "continua",
+            "estadosIntermediarios": [],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "client_profiles",
+          "nome": "Perfil Cliente",
+          "dominio": "client",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_profile_id",
+              "tipo": "uuid · FK · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "search_latitude",
+              "tipo": "numeric?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "search_longitude",
+              "tipo": "numeric?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "search_radius_km",
+              "tipo": "numeric?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "updated_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "user_addresses",
+          "nome": "Endereços",
+          "dominio": "core",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "user_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "zip_code",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "street",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "number",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "complement",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "district",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "city",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "state",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "latitude",
+              "tipo": "numeric?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "longitude",
+              "tipo": "numeric?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-users-user_id-user_addresses",
+          "origem": {
+            "entidade": "users"
+          },
+          "destino": {
+            "entidade": "user_addresses"
+          },
+          "campoReferencia": "user_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-user_profiles-user_profile_id-client_profiles",
+          "origem": {
+            "entidade": "user_profiles"
+          },
+          "destino": {
+            "entidade": "client_profiles"
+          },
+          "campoReferencia": "user_profile_id",
+          "cardinalidade": "1:1"
+        },
+        {
+          "id": "rel-client_profiles-client_profile_id-contact_requests",
+          "origem": {
+            "entidade": "client_profiles"
+          },
+          "destino": {
+            "entidade": "contact_requests"
+          },
+          "campoReferencia": "client_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-client_profiles-client_profile_id-service_reviews",
+          "origem": {
+            "entidade": "client_profiles"
+          },
+          "destino": {
+            "entidade": "service_reviews"
+          },
+          "campoReferencia": "client_profile_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-cliente-on_loc",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 6,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

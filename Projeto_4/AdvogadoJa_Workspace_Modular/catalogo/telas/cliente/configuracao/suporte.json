@@ -24,7 +24,7 @@
         "configuracao"
       ],
       "chave": "suporte",
-      "ordem": 30
+      "ordem": 39
     }
   },
   "estados": {
@@ -41,7 +41,7 @@
     "instancias": [
       {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -56,7 +56,7 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.configuracao.suporte.j1_cliente.v01",
+        "ref": "cmp.cliente.configuracao.suporte.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
@@ -135,70 +135,8 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
-        "aplicaA": {
-          "jornadas": [
-            "*"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "rel-cliente.configuracao.suporte-out-1-cliente.configuracao.configuracao-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Voltar às Configurações",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-out-1-cliente.configuracao.configuracao-1",
-              "entrada": "in-cliente.configuracao.suporte-out-1-1"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.suporte-out-2-cliente.configuracao.central_ajuda-2",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.central_ajuda",
-            "evento": "legacy-event",
-            "rotulo": "Central de ajuda",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-out-2-cliente.configuracao.central_ajuda-2",
-              "entrada": "in-cliente.configuracao.suporte-out-2-1"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.suporte-out-3-cliente.configuracao.falar_suporte-3",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.falar_suporte",
-            "evento": "legacy-event",
-            "rotulo": "Falar com o suporte",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-out-3-cliente.configuracao.falar_suporte-3",
-              "entrada": "in-cliente.configuracao.suporte-out-3-2"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.suporte-out-4-cliente.configuracao.meus_chamados-4",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.meus_chamados",
-            "evento": "legacy-event",
-            "rotulo": "Meus chamados",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-out-4-cliente.configuracao.meus_chamados-4",
-              "entrada": "in-cliente.configuracao.suporte-out-4-2"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
+        "id": "navegacao_cliente_support",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
             "cliente"
@@ -209,67 +147,40 @@
         },
         "acoes": [
           {
-            "id": "j1-cliente-support-help",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "support_help_cliente.configuracao.central_ajuda",
+            "tipo": "navegacao_declarada",
+            "evento": "help",
             "rotulo": "Central de ajuda",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "support",
-              "destinoNo": "help",
-              "observacao": "Perguntas e orientações."
-            },
-            "destino": "cliente.configuracao.central_ajuda"
+            "destino": "cliente.configuracao.central_ajuda",
+            "contextoJornada": "cliente",
+            "origemNo": "support",
+            "caminho": "help",
+            "estadosIntermediarios": [],
+            "detalhe": "Perguntas e orientações."
           },
           {
-            "id": "j1-cliente-support-talk",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "support_talk_cliente.configuracao.falar_suporte",
+            "tipo": "navegacao_declarada",
+            "evento": "talk",
             "rotulo": "Falar com o suporte",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "support",
-              "destinoNo": "talk_support",
-              "observacao": "Abre o formulário de contato."
-            },
-            "destino": "cliente.configuracao.falar_suporte"
+            "destino": "cliente.configuracao.falar_suporte",
+            "contextoJornada": "cliente",
+            "origemNo": "support",
+            "caminho": "talk",
+            "estadosIntermediarios": [],
+            "detalhe": "Abre o formulário de contato."
           },
           {
-            "id": "j1-cliente-support-tickets",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "support_tickets_cliente.configuracao.meus_chamados",
+            "tipo": "navegacao_declarada",
+            "evento": "tickets",
             "rotulo": "Meus chamados",
-            "aplicaA": {
-              "jornadas": [
-                "cliente"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "cliente",
-              "no": "support",
-              "destinoNo": "tickets",
-              "observacao": "Acompanha solicitações já abertas."
-            },
-            "destino": "cliente.configuracao.meus_chamados"
+            "destino": "cliente.configuracao.meus_chamados",
+            "contextoJornada": "cliente",
+            "origemNo": "support",
+            "caminho": "tickets",
+            "estadosIntermediarios": [],
+            "detalhe": "Acompanha solicitações já abertas."
           }
         ]
       }
@@ -325,11 +236,7 @@
               "tipo": "timestamptz?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "support_tickets"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -342,8 +249,7 @@
             "entidade": "support_tickets"
           },
           "campoReferencia": "user_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-support_tickets-ticket_id-support_ticket_messages",
@@ -354,16 +260,10 @@
             "entidade": "support_ticket_messages"
           },
           "campoReferencia": "ticket_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.configuracao.suporte",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -380,22 +280,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-home-direto-config-suporte",
-          "sequenceId": "sequence-home-direto-config-suporte",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-onboarding-config-suporte",
-          "sequenceId": "sequence-home-onboarding-config-suporte",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-home-cadastro-config-suporte",
-          "sequenceId": "sequence-home-cadastro-config-suporte",
-          "order": 0,
-          "variant": "default"
+          "id": "screen-modelo-cliente-support",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 23,
+          "variant": "padrao"
         }
       ],
       "branches": []

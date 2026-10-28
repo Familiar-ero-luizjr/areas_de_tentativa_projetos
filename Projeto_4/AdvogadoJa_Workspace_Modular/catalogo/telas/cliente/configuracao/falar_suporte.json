@@ -24,7 +24,7 @@
         "configuracao"
       ],
       "chave": "falar_suporte",
-      "ordem": 32
+      "ordem": 41
     }
   },
   "estados": {
@@ -41,7 +41,7 @@
     "instancias": [
       {
         "id": "estilos_base_cliente",
-        "ref": "style.jornadas.projeto1.cliente.v01",
+        "ref": "style.jornadas.modular.cliente.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -56,7 +56,7 @@
       },
       {
         "id": "conteudo_cliente",
-        "ref": "cmp.cliente.configuracao.falar_suporte.j1_cliente.v01",
+        "ref": "cmp.cliente.configuracao.falar_suporte.perfil_cliente.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
@@ -133,59 +133,7 @@
     "grupos": []
   },
   "acoes": {
-    "grupos": [
-      {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
-        "aplicaA": {
-          "jornadas": [
-            "*"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "rel-cliente.configuracao.falar_suporte-out-1-cliente.configuracao.suporte-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.suporte",
-            "evento": "legacy-event",
-            "rotulo": "Suporte",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-out-1-cliente.configuracao.suporte-1",
-              "entrada": "in-cliente.configuracao.falar_suporte-out-1-3"
-            }
-          },
-          {
-            "id": "rel-cliente.configuracao.falar_suporte-out-2-cliente.configuracao.meus_chamados-2",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "cliente.configuracao.meus_chamados",
-            "evento": "legacy-event",
-            "rotulo": "Meus chamados",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-out-2-cliente.configuracao.meus_chamados-2",
-              "entrada": "in-cliente.configuracao.falar_suporte-out-2-1"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "cliente"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": []
-      }
-    ]
+    "grupos": []
   },
   "dados": {
     "grupos": {},
@@ -237,11 +185,7 @@
               "tipo": "timestamptz?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "support_tickets"
-          }
+          ]
         },
         {
           "id": "support_ticket_messages",
@@ -278,11 +222,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "support_ticket_messages"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -295,8 +235,7 @@
             "entidade": "support_tickets"
           },
           "campoReferencia": "user_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-support_tickets-ticket_id-support_ticket_messages",
@@ -307,8 +246,7 @@
             "entidade": "support_ticket_messages"
           },
           "campoReferencia": "ticket_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-users-author_user_id-support_ticket_messages",
@@ -319,16 +257,10 @@
             "entidade": "support_ticket_messages"
           },
           "campoReferencia": "author_user_id",
-          "cardinalidade": "1:N?",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N?"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "cliente.configuracao.falar_suporte",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -345,10 +277,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-home-direto-config-suporte-falar",
-          "sequenceId": "sequence-home-direto-config-suporte",
-          "order": 2,
-          "variant": "default"
+          "id": "screen-modelo-cliente-talk_support",
+          "sequenceId": "sequence-modelo-cliente",
+          "order": 25,
+          "variant": "padrao"
         }
       ],
       "branches": []

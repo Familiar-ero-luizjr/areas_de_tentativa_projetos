@@ -1,0 +1,407 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.home_estudante",
+    "nome": "Home Estudante",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/home_estudante",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "home_estudante"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante"
+      ],
+      "chave": "home_estudante",
+      "ordem": 14
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "estudante_sub_none",
+        "nome": "Capabilities · sem assinatura ativa",
+        "jornada": "estudante",
+        "origemNo": "sub_none"
+      },
+      {
+        "id": "estudante_sub_active",
+        "nome": "Capabilities · assinatura ativa",
+        "jornada": "estudante",
+        "origemNo": "sub_active"
+      },
+      {
+        "id": "estudante_sub_inactive",
+        "nome": "Capabilities · assinatura restrita",
+        "jornada": "estudante",
+        "origemNo": "sub_inactive"
+      },
+      {
+        "id": "estudante_sub_unknown",
+        "nome": "Capabilities · assinatura desconhecida",
+        "jornada": "estudante",
+        "origemNo": "sub_unknown"
+      },
+      {
+        "id": "estudante_logout",
+        "nome": "Sessão encerrada",
+        "jornada": "estudante",
+        "origemNo": "logout"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.home_estudante.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.home_estudante",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.home_estudante\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_student_home",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "student_home_none_estudante.cursos.catalogo",
+            "tipo": "navegacao_declarada",
+            "evento": "none",
+            "rotulo": "Sem assinatura ativa",
+            "destino": "estudante.cursos.catalogo",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "none",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_none",
+                "title": "Capabilities · sem assinatura ativa"
+              }
+            ],
+            "detalhe": "Catálogo pode ser exibido, mas conteúdos protegidos ficam bloqueados."
+          },
+          {
+            "id": "student_home_none_estudante.assinatura.planos",
+            "tipo": "navegacao_declarada",
+            "evento": "none",
+            "rotulo": "Sem assinatura ativa",
+            "destino": "estudante.assinatura.planos",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "none",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_none",
+                "title": "Capabilities · sem assinatura ativa"
+              }
+            ],
+            "detalhe": "Catálogo pode ser exibido, mas conteúdos protegidos ficam bloqueados."
+          },
+          {
+            "id": "student_home_none_estudante.perfil_estudante",
+            "tipo": "navegacao_declarada",
+            "evento": "none",
+            "rotulo": "Sem assinatura ativa",
+            "destino": "estudante.perfil_estudante",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "none",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_none",
+                "title": "Capabilities · sem assinatura ativa"
+              }
+            ],
+            "detalhe": "Catálogo pode ser exibido, mas conteúdos protegidos ficam bloqueados."
+          },
+          {
+            "id": "student_home_none_estudante.configuracao.configuracao",
+            "tipo": "navegacao_declarada",
+            "evento": "none",
+            "rotulo": "Sem assinatura ativa",
+            "destino": "estudante.configuracao.configuracao",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "none",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_none",
+                "title": "Capabilities · sem assinatura ativa"
+              }
+            ],
+            "detalhe": "Catálogo pode ser exibido, mas conteúdos protegidos ficam bloqueados."
+          },
+          {
+            "id": "student_home_active_estudante.cursos.catalogo",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Assinatura ativa",
+            "destino": "estudante.cursos.catalogo",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "active",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_active",
+                "title": "Capabilities · assinatura ativa"
+              }
+            ],
+            "detalhe": "Plano e entitlements são carregados; acessos permitidos são liberados."
+          },
+          {
+            "id": "student_home_active_estudante.cursos.meus_cursos",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Assinatura ativa",
+            "destino": "estudante.cursos.meus_cursos",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "active",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_active",
+                "title": "Capabilities · assinatura ativa"
+              }
+            ],
+            "detalhe": "Plano e entitlements são carregados; acessos permitidos são liberados."
+          },
+          {
+            "id": "student_home_active_estudante.assinatura.gestao_assinatura",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Assinatura ativa",
+            "destino": "estudante.assinatura.gestao_assinatura",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "active",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_active",
+                "title": "Capabilities · assinatura ativa"
+              }
+            ],
+            "detalhe": "Plano e entitlements são carregados; acessos permitidos são liberados."
+          },
+          {
+            "id": "student_home_active_estudante.perfil_estudante",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Assinatura ativa",
+            "destino": "estudante.perfil_estudante",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "active",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_active",
+                "title": "Capabilities · assinatura ativa"
+              }
+            ],
+            "detalhe": "Plano e entitlements são carregados; acessos permitidos são liberados."
+          },
+          {
+            "id": "student_home_active_estudante.configuracao.configuracao",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Assinatura ativa",
+            "destino": "estudante.configuracao.configuracao",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "active",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_active",
+                "title": "Capabilities · assinatura ativa"
+              }
+            ],
+            "detalhe": "Plano e entitlements são carregados; acessos permitidos são liberados."
+          },
+          {
+            "id": "student_home_active_notificacoes.lista.notificacoes",
+            "tipo": "navegacao_declarada",
+            "evento": "active",
+            "rotulo": "Assinatura ativa",
+            "destino": "notificacoes.lista.notificacoes",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "active",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_active",
+                "title": "Capabilities · assinatura ativa"
+              }
+            ],
+            "detalhe": "Plano e entitlements são carregados; acessos permitidos são liberados."
+          },
+          {
+            "id": "student_home_inactive_estudante.assinatura.gestao_assinatura",
+            "tipo": "navegacao_declarada",
+            "evento": "inactive",
+            "rotulo": "Cancelada / expirada / pagamento pendente",
+            "destino": "estudante.assinatura.gestao_assinatura",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "inactive",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_inactive",
+                "title": "Capabilities · assinatura restrita"
+              }
+            ],
+            "detalhe": "A Home permanece a mesma, mas acessos protegidos ficam restritos."
+          },
+          {
+            "id": "student_home_inactive_estudante.cursos.catalogo",
+            "tipo": "navegacao_declarada",
+            "evento": "inactive",
+            "rotulo": "Cancelada / expirada / pagamento pendente",
+            "destino": "estudante.cursos.catalogo",
+            "contextoJornada": "estudante",
+            "origemNo": "student_home",
+            "caminho": "inactive",
+            "estadosIntermediarios": [
+              {
+                "id": "sub_inactive",
+                "title": "Capabilities · assinatura restrita"
+              }
+            ],
+            "detalhe": "A Home permanece a mesma, mas acessos protegidos ficam restritos."
+          },
+          {
+            "id": "student_home_unknown_termino",
+            "tipo": "estado_final",
+            "evento": "unknown",
+            "rotulo": "Estado técnico desconhecido",
+            "estado": "sub_unknown",
+            "detalhe": "Por segurança, conteúdos pagos não são liberados até o estado ser resolvido.",
+            "contextoJornada": "estudante"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "estudante_sub_none": {
+        "id": "estudante_sub_none"
+      },
+      "estudante_sub_active": {
+        "id": "estudante_sub_active"
+      },
+      "estudante_sub_inactive": {
+        "id": "estudante_sub_inactive"
+      },
+      "estudante_sub_unknown": {
+        "id": "estudante_sub_unknown"
+      },
+      "estudante_logout": {
+        "id": "estudante_logout"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-student_home",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 8,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

@@ -1,0 +1,227 @@
+[
+  {
+    "n": 1,
+    "title": "Jornada e subjornada explícitas por participação",
+    "options": [
+      "A · Só subjornada, jornada deduzida",
+      "B · Jornada e subjornada explícitas, cada uma com ID e nome",
+      "C · Somente lista de IDs"
+    ],
+    "recommended": 1,
+    "status": "aprovado",
+    "note": "IDs/nome de jornada e subjornada explícitos; ID individual para cada participação."
+  },
+  {
+    "n": 2,
+    "title": "Nomes e IDs repetidos nos registros participantes",
+    "options": [
+      "A · Só uma tela declara o nome",
+      "B · Repetir ID + nome em cada participação e validar consistência",
+      "C · Arquivo mestre separado obrigatório"
+    ],
+    "recommended": 1,
+    "status": "aprovado",
+    "note": "Repetição legível, sempre relacionada ao ID; validador deve verificar divergências."
+  },
+  {
+    "n": 3,
+    "title": "Três ordens editoriais explícitas",
+    "options": [
+      "A · Jornada, subjornada e tela",
+      "B · Só jornada e subjornada",
+      "C · Somente ordem de Catálogo"
+    ],
+    "recommended": 0,
+    "status": "aprovado",
+    "note": "Três ordens; não criam transições."
+  },
+  {
+    "n": 4,
+    "title": "Reutilização da mesma tela e origem de acesso",
+    "options": [
+      "A · Participações por utilização funcional; origem registrada em tempo de execução",
+      "B · Nova participação a cada visita",
+      "C · Participação única por subjornada"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": "A origem Boas-vindas ou pós-cadastro é conhecida pela ação anterior; detalhe do critério de nova participação ainda ajustável."
+  },
+  {
+    "n": 5,
+    "title": "Transferência Estudante → Cliente",
+    "options": [
+      "A · Transferência definitiva atualizando referências, entradas e participações",
+      "B · Incorporação paralela por referência",
+      "C · Clonagem de todas as telas"
+    ],
+    "recommended": 0,
+    "status": "aprovado",
+    "note": "A jornada passa a integrar Cliente, retirando entrada antiga indevida, sem duplicar telas e mantendo relações internas válidas."
+  },
+  {
+    "n": 6,
+    "title": "Retorno de uma subjornada",
+    "options": [
+      "A · Retornar ao chamador",
+      "B · Destino fixo",
+      "C · Ambos, conforme ação explícita"
+    ],
+    "recommended": 2,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 7,
+    "title": "Contrato das ações",
+    "options": [
+      "A · Uma ação com evento, operação opcional, condições e resultados",
+      "B · Coleções separadas por tipo de ação",
+      "C · Lista genérica de instruções"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 8,
+    "title": "Onde ficam serviços e operações",
+    "options": [
+      "A · Dados declara contratos, ações referenciam; serviços reutilizáveis por ID",
+      "B · Seção separada operacoes",
+      "C · Contrato todo dentro de cada ação"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 9,
+    "title": "Formato das condições",
+    "options": [
+      "A · Objetos tipados com E, OU e NÃO",
+      "B · Só condições simples",
+      "C · Expressões textuais livres"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 10,
+    "title": "Ações com múltiplos efeitos",
+    "options": [
+      "A · Fases e resultados da ação",
+      "B · Ação independente para cada efeito",
+      "C · Lista linear sem fases"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 11,
+    "title": "Contexto fornecido ao Resolvedor no Protótipo",
+    "options": [
+      "A · Tela, participação, evento, estado, contexto, dados; mock fornece resultados",
+      "B · Só tela e evento"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 12,
+    "title": "Conexão desenhada no Flow",
+    "options": [
+      "A · Criar rascunho de ação e pedir evento/condição/destino",
+      "B · Criar ação automaticamente",
+      "C · Apenas visualizar; editar manualmente JSON"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 13,
+    "title": "Formato de exportação de jornada",
+    "options": [
+      "A · JSON autocontido",
+      "B · ZIP de JSONs individuais",
+      "C · Oferecer ambos"
+    ],
+    "recommended": 2,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 14,
+    "title": "Confirmação da importação",
+    "options": [
+      "A · Validar lote e aplicar atomicamente",
+      "B · Aplicar individualmente apesar de falhas"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 15,
+    "title": "Exportação de trechos do Flow",
+    "options": [
+      "A · Jornada, subjornada ou seleção com dependências",
+      "B · Só jornadas/subjornadas completas"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 16,
+    "title": "Campos desconhecidos no contrato novo",
+    "options": [
+      "A · Contrato estrito, rejeitar campos não previstos",
+      "B · Permitir e avisar",
+      "C · Permitir em extensões declaradas"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": ""
+  },
+  {
+    "n": 17,
+    "title": "Próximo HTML de trabalho",
+    "options": [
+      "A · Atualizar este laboratório autocontido e usar cinco telas novas",
+      "B · Alterar o Workspace V3 diretamente",
+      "C · Criar laboratório menor isolado"
+    ],
+    "recommended": 0,
+    "status": "aprovado",
+    "note": "Pedido atual: trabalhar neste HTML anexado, não converter o catálogo legado."
+  },
+  {
+    "n": 18,
+    "title": "Prioridade entre variantes ativas",
+    "options": [
+      "A · Precedência fixa por dimensão",
+      "B · Prioridade numérica explícita",
+      "C · Prioridade automática ajustável"
+    ],
+    "recommended": 1,
+    "status": "provisorio",
+    "note": "Modelo híbrido aprovado; prioridade numérica ainda não homologada."
+  },
+  {
+    "n": 19,
+    "title": "Local das condições que selecionam variantes",
+    "options": [
+      "A · Registro central por ID, referenciado por HTML/CSS/componentes",
+      "B · Cada seção repete condições",
+      "C · Tudo por estado"
+    ],
+    "recommended": 0,
+    "status": "provisorio",
+    "note": "Seletor central é recomendação; não está fixado como schema definitivo."
+  }
+]

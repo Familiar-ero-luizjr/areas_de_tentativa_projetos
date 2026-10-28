@@ -1,0 +1,353 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "advogado.assinatura.planos",
+    "nome": "Planos",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/subscription/plans",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado"
+    ],
+    "subjornadas": [
+      "assinatura"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "advogado",
+        "assinatura"
+      ],
+      "chave": "planos",
+      "ordem": 32
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.modular.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.advogado.assinatura.planos.perfil_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_advogado_assinatura_planos",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"advogado.assinatura.planos\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_advogado_plans",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "plans_checkout_advogado.assinatura.checkout",
+            "tipo": "navegacao_declarada",
+            "evento": "checkout",
+            "rotulo": "Escolher plano",
+            "destino": "advogado.assinatura.checkout",
+            "contextoJornada": "advogado",
+            "origemNo": "plans",
+            "caminho": "checkout",
+            "estadosIntermediarios": [],
+            "detalhe": "Segue para o checkout."
+          },
+          {
+            "id": "plans_manage_advogado.assinatura.gestao_assinatura",
+            "tipo": "navegacao_declarada",
+            "evento": "manage",
+            "rotulo": "Voltar à gestão",
+            "destino": "advogado.assinatura.gestao_assinatura",
+            "contextoJornada": "advogado",
+            "origemNo": "plans",
+            "caminho": "manage",
+            "estadosIntermediarios": [],
+            "detalhe": "Retorna à gestão da assinatura."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "plans",
+          "nome": "Planos",
+          "dominio": "billing",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "code",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "target_profile_type",
+              "tipo": "advogado|estudante",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "stripe_price_id",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "active",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "plan_entitlements",
+          "nome": "Plano × entitlement",
+          "dominio": "billing",
+          "campos": [
+            {
+              "id": "plan_id",
+              "tipo": "uuid · FK · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "entitlement_id",
+              "tipo": "uuid · FK · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "config_json",
+              "tipo": "jsonb?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "entitlements",
+          "nome": "Capabilities / acessos",
+          "dominio": "billing",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "key",
+              "tipo": "varchar · UNIQUE",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "scope",
+              "tipo": "app|dmembers",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "description",
+              "tipo": "text?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "active",
+              "tipo": "boolean",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-plans-plan_id-subscriptions",
+          "origem": {
+            "entidade": "plans"
+          },
+          "destino": {
+            "entidade": "subscriptions"
+          },
+          "campoReferencia": "plan_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-plans-plan_id-plan_entitlements",
+          "origem": {
+            "entidade": "plans"
+          },
+          "destino": {
+            "entidade": "plan_entitlements"
+          },
+          "campoReferencia": "plan_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-entitlements-entitlement_id-plan_entitlements",
+          "origem": {
+            "entidade": "entitlements"
+          },
+          "destino": {
+            "entidade": "plan_entitlements"
+          },
+          "campoReferencia": "entitlement_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-entitlements-required_entitlement_id-content_items",
+          "origem": {
+            "entidade": "entitlements"
+          },
+          "destino": {
+            "entidade": "content_items"
+          },
+          "campoReferencia": "required_entitlement_id",
+          "cardinalidade": "1:N?"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-advogado-plans",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 27,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

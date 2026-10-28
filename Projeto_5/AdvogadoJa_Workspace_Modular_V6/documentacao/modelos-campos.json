@@ -1,0 +1,564 @@
+{
+  "tela": [
+    {
+      "path": "schema",
+      "status": "Proposto",
+      "description": "Versão do contrato da tela. O marcador de laboratório não é um schema homologado.",
+      "readers": "Validador / Catálogo",
+      "example": "advogadoja.tela.lab.v0-provisorio",
+      "notes": ""
+    },
+    {
+      "path": "identidade",
+      "status": "Definido em princípio",
+      "description": "Identidade própria da tela, independente de pasta, ordem e jornada.",
+      "readers": "Todos",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "identidade.id",
+      "status": "Definido em princípio",
+      "description": "Identificador estável da definição da tela; não precisa mudar ao transferir de jornada.",
+      "readers": "Todos",
+      "example": "auth.entrar",
+      "notes": ""
+    },
+    {
+      "path": "identidade.nome",
+      "status": "Definido em princípio",
+      "description": "Nome editorial da tela. Textos apresentados podem variar pelo contexto.",
+      "readers": "Catálogo / Jornadas",
+      "example": "Entrar",
+      "notes": ""
+    },
+    {
+      "path": "identidade.versao",
+      "status": "Proposto",
+      "description": "Versão da definição individual para conciliação de atualizações.",
+      "readers": "Catálogo / Importação",
+      "example": "0.1-lab",
+      "notes": ""
+    },
+    {
+      "path": "classificacao",
+      "status": "Definido em princípio",
+      "description": "Classificação editorial; não duplicar participações operacionais.",
+      "readers": "Catálogo",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "classificacao.escopo",
+      "status": "Proposto",
+      "description": "Categoria de organização: comum, cliente, advogado, global etc.; não concede acesso.",
+      "readers": "Catálogo",
+      "example": "comum",
+      "notes": ""
+    },
+    {
+      "path": "navegacao",
+      "status": "Aprovado — seção",
+      "description": "Participações, identificadores de jornada/subjornada, entradas e referências compartilhadas. Não registra de novo o destino de cada ação.",
+      "readers": "Resolvedor / Flow / Jornadas / Protótipo",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes",
+      "status": "Aprovado — conceito",
+      "description": "Lista de utilizações funcionais da tela, com IDs individuais. Forma dos subcampos ainda demonstrativa.",
+      "readers": "Resolvedor / Jornadas",
+      "example": "[{\"id\":\"part.entrar.inicial\", \"jornada\":{...}, \"subjornada\":{...}}]",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].id",
+      "status": "Aprovado — conceito",
+      "description": "ID da participação. Permanece estável em transferências sempre que a utilização funcional se mantém.",
+      "readers": "Todos os leitores de percurso",
+      "example": "part.entrar.inicial",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].jornada.id",
+      "status": "Aprovado — conceito",
+      "description": "ID explícito da jornada, repetido onde a participação existe. Não depende de dedução por pasta.",
+      "readers": "Jornadas / Flow",
+      "example": "cliente",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].jornada.nome",
+      "status": "Aprovado — conceito",
+      "description": "Nome legível repetido associado ao ID; validador verifica consistência.",
+      "readers": "Jornadas / Catálogo",
+      "example": "Cliente",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].jornada.ordem",
+      "status": "Aprovado — três ordens",
+      "description": "Ordem editorial da jornada, não determina uma transição automática.",
+      "readers": "Catálogo / Jornadas",
+      "example": 1,
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].subjornada.id",
+      "status": "Aprovado — conceito",
+      "description": "Identificação explícita da subjornada da participação.",
+      "readers": "Jornadas / Resolvedor",
+      "example": "cliente.pos_home",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].subjornada.nome",
+      "status": "Aprovado — conceito",
+      "description": "Nome legível de subjornada, vinculado ao seu ID.",
+      "readers": "Catálogo / Jornadas",
+      "example": "Operação Cliente",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].subjornada.ordem",
+      "status": "Aprovado — três ordens",
+      "description": "Ordenação explícita de subjornada na jornada.",
+      "readers": "Catálogo / Jornadas",
+      "example": 2,
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].ordemTela",
+      "status": "Aprovado — três ordens",
+      "description": "Ordem editorial da tela na subjornada. Não substitui arestas declaradas em ações.",
+      "readers": "Jornadas / Catálogo",
+      "example": 1,
+      "notes": ""
+    },
+    {
+      "path": "navegacao.participacoes[].contexto",
+      "status": "Proposto",
+      "description": "Contexto funcional da utilização, como inicial, pós-cadastro, edição ou consulta.",
+      "readers": "Montagem / Protótipo",
+      "example": {
+        "modo": "inicial"
+      },
+      "notes": ""
+    },
+    {
+      "path": "navegacao.entradas",
+      "status": "Aprovado — conceito",
+      "description": "Pontos de entrada identificados de jornadas/subjornadas. Formato interno em exame.",
+      "readers": "Resolvedor / Jornadas",
+      "example": "[{\"id\":\"cliente.pos_home\",\"participacaoId\":\"part.cliente.home\"}]",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.entradas[].id",
+      "status": "Proposto",
+      "description": "ID da entrada reutilizável, não posição no Flow.",
+      "readers": "Resolvedor",
+      "example": "cliente.pos_home",
+      "notes": ""
+    },
+    {
+      "path": "navegacao.entradas[].participacaoId",
+      "status": "Proposto",
+      "description": "Qual participação é ativada ao iniciar a sequência.",
+      "readers": "Resolvedor",
+      "example": "part.cliente.home",
+      "notes": ""
+    },
+    {
+      "path": "estados",
+      "status": "Aprovado — princípio",
+      "description": "Declara estados possíveis da tela. Ações referenciam estados, não os recriam.",
+      "readers": "Protótipo / Montagem / Mapa",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estados.possiveis",
+      "status": "Proposto — forma",
+      "description": "Estados padronizados aplicáveis e estados específicos da tela.",
+      "readers": "Protótipo / Validador",
+      "example": "[{\"id\":\"pronto\"},{\"id\":\"carregando\"}]",
+      "notes": ""
+    },
+    {
+      "path": "estados.fallbackSeguro",
+      "status": "Definido em princípio",
+      "description": "Estado a mostrar quando não for possível selecionar corretamente um estado.",
+      "readers": "Montagem / Protótipo",
+      "example": "pronto",
+      "notes": ""
+    },
+    {
+      "path": "variantes",
+      "status": "Aprovado — conceito; localização provisória",
+      "description": "Modelo híbrido já aprovado. Registro central de seletores e prioridades é apenas recomendação-base da pergunta 19.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "variantes.regras",
+      "status": "Proposto — Q19",
+      "description": "Regras selecionadas uma vez e referenciadas pelas seções visuais.",
+      "readers": "Montagem",
+      "example": "[{\"id\":\"adv.pendente\",\"quando\":{...},\"prioridade\":40}]",
+      "notes": ""
+    },
+    {
+      "path": "variantes.regras[].id",
+      "status": "Proposto",
+      "description": "Identificador estável da variante a usar nas alterações de estrutura, estilos e componentes.",
+      "readers": "Montagem",
+      "example": "adv.pendente",
+      "notes": ""
+    },
+    {
+      "path": "variantes.regras[].quando",
+      "status": "Proposto — Q9/Q19",
+      "description": "Condição tipada sobre participação, contexto, estado ou dados.",
+      "readers": "Resolvedor de variantes",
+      "example": {
+        "campo": "estado.id",
+        "operador": "igual",
+        "valor": "pendente"
+      },
+      "notes": ""
+    },
+    {
+      "path": "variantes.regras[].prioridade",
+      "status": "Recomendado, não homologado — Q18",
+      "description": "Número explícito. Maior prioridade sobrepõe mesma propriedade após ordenação.",
+      "readers": "Montagem",
+      "example": 40,
+      "notes": ""
+    },
+    {
+      "path": "componentes",
+      "status": "Aprovado — princípio",
+      "description": "Instâncias dos componentes canônicos por referência; nenhuma clonagem de menu.",
+      "readers": "Montagem / Catálogo",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "componentes.instancias",
+      "status": "Aprovado — princípio",
+      "description": "Instâncias identificadas individualmente para encaixe nos slots.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "componentes.instancias[].id",
+      "status": "Aprovado — princípio",
+      "description": "Identificador da instância local à tela.",
+      "readers": "Montagem",
+      "example": "menu_principal",
+      "notes": ""
+    },
+    {
+      "path": "componentes.instancias[].ref",
+      "status": "Aprovado — princípio",
+      "description": "ID global de componente do catálogo.",
+      "readers": "Montagem",
+      "example": "menu.drawer.padrao",
+      "notes": ""
+    },
+    {
+      "path": "componentes.instancias[].slot",
+      "status": "Aprovado — princípio",
+      "description": "Posição estrutural de montagem.",
+      "readers": "Montagem",
+      "example": "menu",
+      "notes": ""
+    },
+    {
+      "path": "componentes.instancias[].props",
+      "status": "Proposto — formato",
+      "description": "Rótulos, itens, dados e referências de ações para o componente.",
+      "readers": "Montagem / Protótipo",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "componentes.variantes",
+      "status": "Aprovado — variação; formato provisório",
+      "description": "Variações de props por ID de regra. Ações/destinos não são copiados para o HTML.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estrutura",
+      "status": "Aprovado — separação",
+      "description": "Estrutura HTML e encaixe separados de CSS, ações e dados.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estrutura.base",
+      "status": "Aprovado — modelo híbrido",
+      "description": "Estrutura reutilizada como ponto de partida.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estrutura.base.html",
+      "status": "Aprovado — conceito",
+      "description": "HTML estrutural e slots; a marcação literal é alternativa demonstrativa, não decisão sobre parser.",
+      "readers": "Montagem",
+      "example": "<main data-slot=\"conteudo\"></main>",
+      "notes": ""
+    },
+    {
+      "path": "estrutura.variantes",
+      "status": "Aprovado — variação; formato provisório",
+      "description": "Patches por referência de variante; podem substituir um bloco inteiro quando necessário.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estilos",
+      "status": "Aprovado — separação",
+      "description": "CSS visual separado da hierarquia de elementos.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estilos.base.css",
+      "status": "Aprovado — modelo híbrido",
+      "description": "CSS padrão da tela, separado do HTML.",
+      "readers": "Montagem",
+      "example": ".home{padding:16px}",
+      "notes": ""
+    },
+    {
+      "path": "estilos.variantes",
+      "status": "Aprovado — variação; formato provisório",
+      "description": "Patches CSS relacionados ao ID da variante, sem repetir condições.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "acoes",
+      "status": "Aprovado — propriedade conceitual",
+      "description": "Evento, operação opcional, mudança de estado, condições, navegação e retorno.",
+      "readers": "Resolvedor / Flow / Protótipo / Mapa",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "acoes.itens",
+      "status": "Recomendado — Q7",
+      "description": "Coleção demonstrativa de ações. Contrato de fases/efeitos ainda não homologado.",
+      "readers": "Resolvedor",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "acoes.itens[].id",
+      "status": "Proposto",
+      "description": "Identificação individual da ação, para vínculos e revisão em lote.",
+      "readers": "Resolvedor",
+      "example": "login.enviar",
+      "notes": ""
+    },
+    {
+      "path": "acoes.itens[].evento",
+      "status": "Recomendado — Q7",
+      "description": "Gatilho emitido por componente/sistema, sem destino embutido no HTML.",
+      "readers": "Resolvedor",
+      "example": "formulario.enviar",
+      "notes": ""
+    },
+    {
+      "path": "acoes.itens[].operacaoRef",
+      "status": "Recomendado — Q8",
+      "description": "Referência a contrato de operação; a ação não duplica API.",
+      "readers": "Mapa / Banco / Resolvedor",
+      "example": "auth.login",
+      "notes": ""
+    },
+    {
+      "path": "acoes.itens[].rotas",
+      "status": "Recomendado — Q9/Q10",
+      "description": "Saídas condicionais tipadas (inclusive E, OU, NÃO); sem escolher a primeira automaticamente.",
+      "readers": "Resolvedor / Flow",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "acoes.itens[].destino",
+      "status": "Aprovado — princípio; formato provisório",
+      "description": "Destino pode identificar tela e participação, ou entrada de subjornada; a origem é conhecida em tempo de execução.",
+      "readers": "Resolvedor / Flow",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "dados",
+      "status": "Aprovado — princípio",
+      "description": "Fontes, campos e contratos de operação/persistência. Mocks não criam esquema.",
+      "readers": "Banco / Mapa / Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "dados.fontes",
+      "status": "Proposto",
+      "description": "Fontes utilizadas pela tela (sessão, API, etc.).",
+      "readers": "Banco / Mapa",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "dados.operacoes",
+      "status": "Recomendado — Q8",
+      "description": "Contratos de operação declarados ou referenciados por ID para ações.",
+      "readers": "Banco / Mapa / Validador",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "dados.persistencia",
+      "status": "Proposto",
+      "description": "Entidades, relações e campos de armazenamento; insumo do motor Banco.",
+      "readers": "Banco",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "mocks",
+      "status": "Aprovado — princípio",
+      "description": "Resultados simulados do Protótipo; jamais fonte real da sessão.",
+      "readers": "Protótipo",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "mocks.cenarios",
+      "status": "Aprovado — princípio",
+      "description": "Dados para simular estados, condições, operações e resultados.",
+      "readers": "Protótipo",
+      "example": "",
+      "notes": ""
+    }
+  ],
+  "componente": [
+    {
+      "path": "schema",
+      "status": "Proposto",
+      "description": "Versão do contrato de componente.",
+      "readers": "Validador",
+      "example": "advogadoja.componente.lab.v0-provisorio",
+      "notes": ""
+    },
+    {
+      "path": "identidade.id",
+      "status": "Aprovado — princípio",
+      "description": "ID único do componente, reutilizado por várias telas.",
+      "readers": "Montagem / Catálogo",
+      "example": "menu.drawer.padrao",
+      "notes": ""
+    },
+    {
+      "path": "identidade.nome",
+      "status": "Aprovado — princípio",
+      "description": "Nome editorial do componente.",
+      "readers": "Catálogo",
+      "example": "Menu lateral",
+      "notes": ""
+    },
+    {
+      "path": "identidade.versao",
+      "status": "Proposto",
+      "description": "Versão para evolução e importação controlada.",
+      "readers": "Validador",
+      "example": "0.1-lab",
+      "notes": ""
+    },
+    {
+      "path": "classificacao.escopo",
+      "status": "Proposto",
+      "description": "A organização editorial do componente não define uma jornada dona.",
+      "readers": "Catálogo",
+      "example": "global",
+      "notes": ""
+    },
+    {
+      "path": "estrutura",
+      "status": "Aprovado — separação",
+      "description": "HTML/árvore visual interna e slots do componente. Não é a árvore de pastas.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estrutura.base.arvore",
+      "status": "Aprovado — conceito",
+      "description": "Estrutura sem destinos de navegação.",
+      "readers": "Montagem",
+      "example": "[{\"tag\":\"nav\",\"filhos\":[]}]",
+      "notes": ""
+    },
+    {
+      "path": "estrutura.variantes",
+      "status": "Aprovado — variação, formato provisório",
+      "description": "Patches de estrutura vinculados por ID de variante quando necessário.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "estilos.base.css",
+      "status": "Aprovado — separação",
+      "description": "Visual padrão compartilhado em todas as instâncias.",
+      "readers": "Montagem",
+      "example": ".menu{display:flex}",
+      "notes": ""
+    },
+    {
+      "path": "estilos.variantes",
+      "status": "Aprovado — variação, formato provisório",
+      "description": "Estilos específicos ativados por seletor declarado.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "interface.props",
+      "status": "Proposto — tipagem pendente",
+      "description": "Propriedades aceitas, preferencialmente declaradas por tipo e obrigatório/opcional.",
+      "readers": "Validador / Montagem",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "interface.eventos",
+      "status": "Proposto — tipagem pendente",
+      "description": "Eventos emitidos pelo componente. A tela contém as ações correspondentes.",
+      "readers": "Validador / Resolvedor",
+      "example": "",
+      "notes": ""
+    },
+    {
+      "path": "variantes.regras",
+      "status": "Proposto — Q19",
+      "description": "Seletor único quando componente possuir variantes internas; usar esquema compartilhado com as telas.",
+      "readers": "Montagem",
+      "example": "",
+      "notes": ""
+    }
+  ]
+}

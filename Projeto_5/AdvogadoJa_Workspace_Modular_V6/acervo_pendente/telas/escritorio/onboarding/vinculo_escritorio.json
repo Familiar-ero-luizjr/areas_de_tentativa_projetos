@@ -1,0 +1,342 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "escritorio.onboarding.vinculo_escritorio",
+    "nome": "Vínculo com escritório",
+    "tipo": "tela",
+    "versao": "3.0.0",
+    "rota": "/onboarding/advogado/escritorio",
+    "status": "rascunho-evolutivo"
+  },
+  "classificacao": {
+    "escopo": "advogado",
+    "jornadas": [
+      "advogado"
+    ],
+    "subjornadas": [
+      "onboarding"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "escritorio",
+        "onboarding"
+      ],
+      "chave": "vinculo_escritorio",
+      "ordem": 15
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "estilos_base_advogado",
+        "ref": "style.jornadas.modular.advogado.v01",
+        "slot": "styles",
+        "ordem": 0,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "ref": "cmp.escritorio.onboarding.vinculo_escritorio.perfil_advogado.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "html_base_escritorio_onboarding_vinculo_escritorio",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"escritorio.onboarding.vinculo_escritorio\"><div data-slot=\"styles\"></div><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "larguraConteudo": "100%",
+        "slots": [
+          "styles",
+          "main"
+        ],
+        "resolucao": "cada grupo de estrutura insere instâncias no slot data-slot correspondente"
+      },
+      "aplicaA": {
+        "jornadas": [
+          "administrador",
+          "advogado",
+          "estudante"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "estilos_advogado",
+        "slot": "styles",
+        "ordem": 0,
+        "instancias": [
+          "estilos_base_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "conteudo_advogado",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_advogado"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_advogado_office_intent",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "advogado"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "office_intent_individual_advogado.onboarding.revisao_profissional",
+            "tipo": "navegacao_declarada",
+            "evento": "individual",
+            "rotulo": "Atuar individualmente",
+            "destino": "advogado.onboarding.revisao_profissional",
+            "contextoJornada": "advogado",
+            "origemNo": "office_intent",
+            "caminho": "individual",
+            "estadosIntermediarios": [],
+            "detalhe": "Sem escritório agora; poderá criar ou entrar depois."
+          },
+          {
+            "id": "office_intent_owner_escritorio.onboarding.cadastro_escritorio",
+            "tipo": "navegacao_declarada",
+            "evento": "owner",
+            "rotulo": "Cadastrar meu escritório",
+            "destino": "escritorio.onboarding.cadastro_escritorio",
+            "contextoJornada": "advogado",
+            "origemNo": "office_intent",
+            "caminho": "owner",
+            "estadosIntermediarios": [],
+            "detalhe": "João cria o escritório e será o proprietário."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [
+        {
+          "id": "law_offices",
+          "nome": "Escritórios",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "owner_lawyer_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "name",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "document_number",
+              "tipo": "varchar?",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "created_at",
+              "tipo": "timestamptz",
+              "acesso": "a_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "office_members",
+          "nome": "Equipe do escritório",
+          "dominio": "lawyer",
+          "campos": [
+            {
+              "id": "id",
+              "tipo": "uuid · PK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "office_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "lawyer_profile_id",
+              "tipo": "uuid · FK",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "role",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "status",
+              "tipo": "varchar",
+              "acesso": "a_confirmar"
+            },
+            {
+              "id": "joined_at",
+              "tipo": "timestamptz?",
+              "acesso": "a_confirmar"
+            }
+          ]
+        }
+      ],
+      "relacoes": [
+        {
+          "id": "rel-lawyer_profiles-owner_lawyer_profile_id-law_offices",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "law_offices"
+          },
+          "campoReferencia": "owner_lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-law_offices-office_id-office_members",
+          "origem": {
+            "entidade": "law_offices"
+          },
+          "destino": {
+            "entidade": "office_members"
+          },
+          "campoReferencia": "office_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-lawyer_profiles-lawyer_profile_id-office_members",
+          "origem": {
+            "entidade": "lawyer_profiles"
+          },
+          "destino": {
+            "entidade": "office_members"
+          },
+          "campoReferencia": "lawyer_profile_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-law_offices-office_id-office_invites",
+          "origem": {
+            "entidade": "law_offices"
+          },
+          "destino": {
+            "entidade": "office_invites"
+          },
+          "campoReferencia": "office_id",
+          "cardinalidade": "1:N"
+        },
+        {
+          "id": "rel-law_offices-office_id-office_distribution_rules",
+          "origem": {
+            "entidade": "law_offices"
+          },
+          "destino": {
+            "entidade": "office_distribution_rules"
+          },
+          "campoReferencia": "office_id",
+          "cardinalidade": "1:N"
+        }
+      ],
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-advogado-office_intent",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 11,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

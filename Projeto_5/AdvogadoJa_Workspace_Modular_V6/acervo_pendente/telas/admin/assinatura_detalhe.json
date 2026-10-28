@@ -1,0 +1,185 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.assinatura_detalhe",
+    "nome": "Detalhe da assinatura",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/admin/assinatura_detalhe",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "assinatura_detalhe"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "assinatura_detalhe",
+      "ordem": 22
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_subscription_view_state",
+        "nome": "Consulta de assinatura concluída",
+        "jornada": "administrador",
+        "origemNo": "subscription_view_state"
+      },
+      {
+        "id": "administrador_payment_action_pending",
+        "nome": "Ação financeira administrativa a definir",
+        "jornada": "administrador",
+        "origemNo": "payment_action_pending"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.admin.assinatura_detalhe.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_admin.assinatura_detalhe",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.assinatura_detalhe\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_subscription_detail",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "subscription_detail_view_termino",
+            "tipo": "estado_final",
+            "evento": "view",
+            "rotulo": "Somente consultar",
+            "estado": "subscription_view_state",
+            "detalhe": "Consulta sem alteração.",
+            "contextoJornada": "administrador"
+          },
+          {
+            "id": "subscription_detail_manage_termino",
+            "tipo": "estado_final",
+            "evento": "manage",
+            "rotulo": "Tratar pagamento / assinatura",
+            "estado": "payment_action_pending",
+            "detalhe": "A entrevista ainda não definiu se o Admin pode executar essas ações.",
+            "contextoJornada": "administrador"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_subscription_view_state": {
+        "id": "administrador_subscription_view_state"
+      },
+      "administrador_payment_action_pending": {
+        "id": "administrador_payment_action_pending"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-subscription_detail",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 9,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

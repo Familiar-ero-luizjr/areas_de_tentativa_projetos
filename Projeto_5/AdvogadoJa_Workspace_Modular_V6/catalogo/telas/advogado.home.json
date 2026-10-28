@@ -1,0 +1,222 @@
+{
+  "schema": "advogadoja.tela.lab.v0-provisorio",
+  "identidade": {
+    "id": "advogado.home",
+    "nome": "Home Advogado",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "advogado"
+  },
+  "navegacao": {
+    "participacoes": [
+      {
+        "id": "part.advogado.home",
+        "jornada": {
+          "id": "advogado",
+          "nome": "Advogado",
+          "ordem": 2
+        },
+        "subjornada": {
+          "id": "advogado.pos_home",
+          "nome": "Operação Advogado",
+          "ordem": 3
+        },
+        "ordemTela": 1,
+        "contexto": {
+          "modo": "principal"
+        }
+      }
+    ],
+    "entradas": [
+      {
+        "id": "advogado.pos_home",
+        "participacaoId": "part.advogado.home",
+        "tipo": "subjornada"
+      }
+    ]
+  },
+  "estados": {
+    "possiveis": [
+      {
+        "id": "ativo",
+        "nome": "Ativo"
+      },
+      {
+        "id": "pendente",
+        "nome": "Pendente"
+      },
+      {
+        "id": "carregando",
+        "nome": "Carregando"
+      },
+      {
+        "id": "erro",
+        "nome": "Erro"
+      }
+    ],
+    "fallbackSeguro": "ativo"
+  },
+  "variantes": {
+    "regras": [
+      {
+        "id": "adv.pendente",
+        "prioridade": 40,
+        "quando": {
+          "campo": "estado.id",
+          "operador": "igual",
+          "valor": "pendente"
+        }
+      },
+      {
+        "id": "adv.ativo",
+        "prioridade": 20,
+        "quando": {
+          "campo": "estado.id",
+          "operador": "igual",
+          "valor": "ativo"
+        }
+      },
+      {
+        "id": "adv.carregando",
+        "prioridade": 90,
+        "quando": {
+          "campo": "estado.id",
+          "operador": "igual",
+          "valor": "carregando"
+        }
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "menu_principal",
+        "ref": "menu.drawer.padrao",
+        "slot": "menu",
+        "props": {
+          "titulo": "Advogado",
+          "itens": [
+            {
+              "id": "inicio",
+              "texto": "Painel",
+              "acaoRef": "advogado.inicio"
+            },
+            {
+              "id": "sair",
+              "texto": "Sair",
+              "acaoRef": "advogado.sair"
+            }
+          ]
+        }
+      }
+    ],
+    "variantes": [
+      {
+        "varianteRef": "adv.pendente",
+        "instanciaId": "menu_principal",
+        "props": {
+          "itens": [
+            {
+              "id": "pendencias",
+              "texto": "Completar cadastro",
+              "acaoRef": "advogado.pendencias"
+            },
+            {
+              "id": "sair",
+              "texto": "Sair",
+              "acaoRef": "advogado.sair"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "html": "<section data-slot=\"menu\"></section><main><h2>Painel profissional</h2><p data-slot=\"conteudo\">Visão geral do atendimento</p></main>"
+    },
+    "variantes": [
+      {
+        "varianteRef": "adv.pendente",
+        "alvo": "conteudo",
+        "substituirHtml": "<p>Dados profissionais pendentes</p>"
+      },
+      {
+        "varianteRef": "adv.carregando",
+        "alvo": "conteudo",
+        "substituirHtml": "<p>Carregando painel...</p>"
+      }
+    ]
+  },
+  "estilos": {
+    "base": {
+      "css": ".home-advogado{padding:16px}"
+    },
+    "variantes": [
+      {
+        "varianteRef": "adv.pendente",
+        "css": ".pendencia{padding:16px;border:1px solid #e0b96a}"
+      },
+      {
+        "varianteRef": "adv.ativo",
+        "css": ".painel{padding:16px}"
+      },
+      {
+        "varianteRef": "adv.carregando",
+        "css": ".painel{opacity:.55}"
+      }
+    ]
+  },
+  "acoes": {
+    "itens": [
+      {
+        "id": "advogado.inicio",
+        "evento": "menu.inicio",
+        "efeito": {
+          "tipo": "permanecer"
+        }
+      },
+      {
+        "id": "advogado.sair",
+        "evento": "menu.sair",
+        "destino": {
+          "tipo": "tela",
+          "telaId": "auth.entrar",
+          "participacaoId": "part.entrar.inicial"
+        }
+      },
+      {
+        "id": "advogado.pendencias",
+        "evento": "menu.pendencias",
+        "efeito": {
+          "tipo": "estado",
+          "estado": "pendente"
+        }
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": [],
+    "persistencia": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "ativo",
+        "nome": "Operação ativa",
+        "dados": {
+          "cadastro.status": "completo"
+        }
+      },
+      {
+        "id": "pendente",
+        "nome": "Cadastro pendente",
+        "dados": {
+          "cadastro.status": "pendente"
+        }
+      }
+    ]
+  }
+}

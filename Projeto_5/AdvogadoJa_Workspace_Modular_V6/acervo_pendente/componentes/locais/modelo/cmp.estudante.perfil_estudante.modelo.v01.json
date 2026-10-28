@@ -1,0 +1,80 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp.estudante.perfil_estudante.modelo.v01",
+    "nome": "Estrutura inicial · Perfil do Estudante",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "classificacao": {
+    "escopo": "local",
+    "jornadas": [
+      "estudante"
+    ],
+    "familia": "conteudo",
+    "reutilizavel": false,
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "locais",
+        "modelo"
+      ],
+      "chave": "cmp.estudante.perfil_estudante.modelo.v01"
+    }
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "cmp.estudante.perfil_estudante.modelo.v01_root",
+        "tag": "section",
+        "atributos": {
+          "class": "modelo-screen-card"
+        },
+        "filhos": [
+          {
+            "id": "cmp.estudante.perfil_estudante.modelo.v01_eyebrow",
+            "tag": "small",
+            "atributos": {
+              "class": "modelo-kicker"
+            },
+            "filhos": [
+              "ADVOGADO JÁ · ESTUDANTE"
+            ]
+          },
+          {
+            "id": "cmp.estudante.perfil_estudante.modelo.v01_title",
+            "tag": "h1",
+            "filhos": [
+              "Perfil do Estudante"
+            ]
+          },
+          {
+            "id": "cmp.estudante.perfil_estudante.modelo.v01_notice",
+            "tag": "p",
+            "filhos": [
+              "Dados pessoais e acadêmicos; os campos acadêmicos são opcionais."
+            ]
+          },
+          {
+            "id": "cmp.estudante.perfil_estudante.modelo.v01_pending",
+            "tag": "p",
+            "atributos": {
+              "class": "modelo-pendente"
+            },
+            "filhos": [
+              "Aguardando definição visual dos componentes desta tela."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "estilos": {
+    "css": ".modelo-screen-card{min-height:260px;padding:48px 32px;border-radius:22px;background:linear-gradient(140deg,#0d2343,#214a7b);color:white;font-family:Arial,sans-serif}.modelo-kicker{letter-spacing:.12em;color:#b6d1f4;font-weight:700}.modelo-screen-card h1{font-size:32px;line-height:1.2;margin:18px 0}.modelo-screen-card p{line-height:1.6;color:#e4ecf6}.modelo-pendente{margin-top:30px;padding:12px;border:1px dashed #a2bedf;border-radius:10px;font-size:12px}"
+  },
+  "interface": {
+    "props": {},
+    "eventos": []
+  }
+}

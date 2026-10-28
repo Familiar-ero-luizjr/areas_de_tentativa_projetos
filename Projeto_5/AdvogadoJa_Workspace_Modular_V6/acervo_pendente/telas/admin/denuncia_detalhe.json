@@ -1,0 +1,185 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "admin.denuncia_detalhe",
+    "nome": "Detalhe da denúncia",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/admin/denuncia_detalhe",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "administrador",
+    "jornadas": [
+      "administrador"
+    ],
+    "subjornadas": [
+      "denuncia_detalhe"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "admin"
+      ],
+      "chave": "denuncia_detalhe",
+      "ordem": 18
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "administrador_moderation_pending",
+        "nome": "Resultado da moderação a definir",
+        "jornada": "administrador",
+        "origemNo": "moderation_pending"
+      },
+      {
+        "id": "administrador_reports_back_state",
+        "nome": "Retorno à fila de denúncias",
+        "jornada": "administrador",
+        "origemNo": "reports_back_state"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.admin.denuncia_detalhe.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_admin.denuncia_detalhe",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"admin.denuncia_detalhe\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_administrador_report_detail",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "administrador"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "report_detail_record_termino",
+            "tipo": "estado_final",
+            "evento": "record",
+            "rotulo": "Registrar análise",
+            "estado": "moderation_pending",
+            "detalhe": "Sanções e regras finais ainda não estão fechadas.",
+            "contextoJornada": "administrador"
+          },
+          {
+            "id": "report_detail_back_termino",
+            "tipo": "estado_final",
+            "evento": "back",
+            "rotulo": "Voltar à fila",
+            "estado": "reports_back_state",
+            "detalhe": "Retorna sem concluir a análise.",
+            "contextoJornada": "administrador"
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "administrador_moderation_pending": {
+        "id": "administrador_moderation_pending"
+      },
+      "administrador_reports_back_state": {
+        "id": "administrador_reports_back_state"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-administrador-report_detail",
+          "sequenceId": "sequence-modelo-administrador",
+          "order": 7,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

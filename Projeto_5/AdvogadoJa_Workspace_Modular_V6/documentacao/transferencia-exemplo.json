@@ -1,0 +1,31 @@
+{
+  "antes": {
+    "jornada": {
+      "id": "estudante",
+      "nome": "Estudante"
+    },
+    "subjornada": {
+      "id": "estudante.pos_home",
+      "nome": "Área Estudante"
+    },
+    "entrada": "entrada.estudante.inicial",
+    "origem": "jornada Estudante / percurso inicial",
+    "menu": "Menu Estudante",
+    "relacoesInternas": "preservadas"
+  },
+  "depois": {
+    "jornada": {
+      "id": "cliente",
+      "nome": "Cliente"
+    },
+    "subjornada": {
+      "id": "cliente.estudos",
+      "nome": "Estudos"
+    },
+    "entrada": "entrada.cliente.estudos",
+    "origem": "Home Cliente → Menu Estudos",
+    "menu": "Menu Cliente (shell herdado)",
+    "relacoesInternas": "preservadas"
+  },
+  "observacao": "Simulação de alterações de referências. Não há JSONs padronizados da antiga jornada Estudante neste laboratório."
+}

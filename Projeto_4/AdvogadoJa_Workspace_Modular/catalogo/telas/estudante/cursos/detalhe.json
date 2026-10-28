@@ -1,0 +1,207 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.cursos.detalhe",
+    "nome": "Curso / conteúdo selecionado",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/cursos/detalhe",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "cursos"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante",
+        "cursos"
+      ],
+      "chave": "detalhe",
+      "ordem": 20
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
+      {
+        "id": "estudante_entitlement_check",
+        "nome": "Backend verifica plano e entitlement",
+        "jornada": "estudante",
+        "origemNo": "entitlement_check"
+      },
+      {
+        "id": "estudante_dmembers_handoff",
+        "nome": "Handoff seguro para DMembers",
+        "jornada": "estudante",
+        "origemNo": "dmembers_handoff"
+      },
+      {
+        "id": "estudante_dmembers_external",
+        "nome": "DMembers · consumo do curso",
+        "jornada": "estudante",
+        "origemNo": "dmembers_external"
+      },
+      {
+        "id": "estudante_access_blocked",
+        "nome": "Conteúdo bloqueado pelo plano atual",
+        "jornada": "estudante",
+        "origemNo": "access_blocked"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.cursos.detalhe.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.cursos.detalhe",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.cursos.detalhe\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_course_detail",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "course_detail_continua_estudante.assinatura.planos",
+            "tipo": "navegacao_declarada",
+            "evento": "continua",
+            "rotulo": "Continuar",
+            "destino": "estudante.assinatura.planos",
+            "contextoJornada": "estudante",
+            "origemNo": "course_detail",
+            "caminho": "continua",
+            "estadosIntermediarios": [
+              {
+                "id": "entitlement_check",
+                "title": "Backend verifica plano e entitlement"
+              },
+              {
+                "id": "access_blocked",
+                "title": "Conteúdo bloqueado pelo plano atual"
+              }
+            ],
+            "detalhe": ""
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      },
+      "estudante_entitlement_check": {
+        "id": "estudante_entitlement_check"
+      },
+      "estudante_dmembers_handoff": {
+        "id": "estudante_dmembers_handoff"
+      },
+      "estudante_dmembers_external": {
+        "id": "estudante_dmembers_external"
+      },
+      "estudante_access_blocked": {
+        "id": "estudante_access_blocked"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-course_detail",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 10,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

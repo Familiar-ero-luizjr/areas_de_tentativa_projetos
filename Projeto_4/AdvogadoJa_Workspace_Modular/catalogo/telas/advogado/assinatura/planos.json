@@ -11,14 +11,12 @@
   "classificacao": {
     "escopo": "advogado",
     "jornadas": [
-      "advogado",
-      "administrador",
-      "estudante"
+      "advogado"
     ],
     "subjornadas": [
       "assinatura"
     ],
-    "compartilhada": true,
+    "compartilhada": false,
     "localizacaoArvore": {
       "secao": "Telas",
       "segmentos": [
@@ -26,7 +24,7 @@
         "assinatura"
       ],
       "chave": "planos",
-      "ordem": 2
+      "ordem": 32
     }
   },
   "estados": {
@@ -42,38 +40,8 @@
   "componentes": {
     "instancias": [
       {
-        "id": "estilos_base_administrador",
-        "ref": "style.jornadas.projeto1.administrador.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "ref": "cmp.advogado.assinatura.planos.j1_administrador.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_base_advogado",
-        "ref": "style.jornadas.projeto1.advogado.v01",
+        "ref": "style.jornadas.modular.advogado.v01",
         "slot": "styles",
         "ordem": 0,
         "props": {},
@@ -88,43 +56,13 @@
       },
       {
         "id": "conteudo_advogado",
-        "ref": "cmp.advogado.assinatura.planos.j1_advogado.v01",
+        "ref": "cmp.advogado.assinatura.planos.perfil_advogado.v01",
         "slot": "main",
         "ordem": 10,
         "props": {},
         "aplicaA": {
           "jornadas": [
             "advogado"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "estilos_base_estudante",
-        "ref": "style.jornadas.projeto1.estudante.v01",
-        "slot": "styles",
-        "ordem": 0,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "ref": "cmp.advogado.assinatura.planos.j1_estudante.v01",
-        "slot": "main",
-        "ordem": 10,
-        "props": {},
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
           ],
           "estados": [
             "*"
@@ -159,38 +97,6 @@
     },
     "grupos": [
       {
-        "id": "estilos_administrador",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_administrador",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_administrador"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "administrador"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
         "id": "estilos_advogado",
         "slot": "styles",
         "ordem": 0,
@@ -221,38 +127,6 @@
             "*"
           ]
         }
-      },
-      {
-        "id": "estilos_estudante",
-        "slot": "styles",
-        "ordem": 0,
-        "instancias": [
-          "estilos_base_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
-      },
-      {
-        "id": "conteudo_estudante",
-        "slot": "main",
-        "ordem": 10,
-        "instancias": [
-          "conteudo_estudante"
-        ],
-        "aplicaA": {
-          "jornadas": [
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        }
       }
     ]
   },
@@ -263,11 +137,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
+        "id": "navegacao_advogado_plans",
+        "origem": "jornada_modelo",
         "aplicaA": {
           "jornadas": [
-            "*"
+            "advogado"
           ],
           "estados": [
             "*"
@@ -275,154 +149,28 @@
         },
         "acoes": [
           {
-            "id": "rel-advogado.assinatura.planos-select-plan-advogado.assinatura.checkout-1",
-            "tipo": "ligacao_flow_migrada",
+            "id": "plans_checkout_advogado.assinatura.checkout",
+            "tipo": "navegacao_declarada",
+            "evento": "checkout",
+            "rotulo": "Escolher plano",
             "destino": "advogado.assinatura.checkout",
-            "evento": "legacy-event",
-            "rotulo": "Escolher plano",
-            "prioridade": 1000,
-            "quandoLegado": {
-              "type": "legacy-expression",
-              "expression": "plano selecionado diferente do atual"
-            },
-            "portasLegadas": {
-              "saida": "out-select-plan-advogado.assinatura.checkout-1",
-              "entrada": "in-advogado.assinatura.planos-select-plan-1"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "plans",
+            "caminho": "checkout",
+            "estadosIntermediarios": [],
+            "detalhe": "Segue para o checkout."
           },
           {
-            "id": "rel-advogado.assinatura.planos-manage-current-advogado.assinatura.gestao_assinatura-2",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.assinatura.gestao_assinatura",
-            "evento": "legacy-event",
-            "rotulo": "Gerenciar assinatura",
-            "prioridade": 999,
-            "quandoLegado": {
-              "type": "legacy-expression",
-              "expression": "assinatura ativa"
-            },
-            "portasLegadas": {
-              "saida": "out-manage-current-advogado.assinatura.gestao_assinatura-2",
-              "entrada": "in-advogado.assinatura.planos-manage-current-3"
-            }
-          },
-          {
-            "id": "rel-advogado.assinatura.planos-menu-home-advogado.home_advogado-3",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.home_advogado",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Início",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-menu-home-advogado.home_advogado-3",
-              "entrada": "in-advogado.assinatura.planos-menu-home-4"
-            }
-          },
-          {
-            "id": "rel-advogado.assinatura.planos-menu-appointments-advogado.atendimentos_advogado-4",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.atendimentos_advogado",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Atendimentos",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-menu-appointments-advogado.atendimentos_advogado-4",
-              "entrada": "in-advogado.assinatura.planos-menu-appointments-1"
-            }
-          },
-          {
-            "id": "rel-advogado.assinatura.planos-menu-profile-advogado.perfil_profissional-5",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.perfil_profissional",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Meu Perfil",
-            "prioridade": 996,
-            "portasLegadas": {
-              "saida": "out-menu-profile-advogado.perfil_profissional-5",
-              "entrada": "in-advogado.assinatura.planos-menu-profile-4"
-            }
-          },
-          {
-            "id": "rel-advogado.assinatura.planos-menu-office-escritorio.gestao.escritorio-6",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "escritorio.gestao.escritorio",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Escritório",
-            "prioridade": 995,
-            "portasLegadas": {
-              "saida": "out-menu-office-escritorio.gestao.escritorio-6",
-              "entrada": "in-advogado.assinatura.planos-menu-office-4"
-            }
-          },
-          {
-            "id": "rel-advogado.assinatura.planos-menu-settings-advogado.configuracao.configuracao-7",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Configurações",
-            "prioridade": 994,
-            "portasLegadas": {
-              "saida": "out-menu-settings-advogado.configuracao.configuracao-7",
-              "entrada": "in-advogado.assinatura.planos-menu-settings-1"
-            }
-          }
-        ]
-      },
-      {
-        "id": "navegacao_jornadas_projeto1",
-        "origem": "Projeto_1/jornadas",
-        "aplicaA": {
-          "jornadas": [
-            "administrador",
-            "advogado",
-            "estudante"
-          ],
-          "estados": [
-            "*"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "j1-advogado-plans-checkout",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
-            "rotulo": "Escolher plano",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "plans",
-              "destinoNo": "checkout",
-              "observacao": "Segue para o checkout."
-            },
-            "destino": "advogado.assinatura.checkout"
-          },
-          {
-            "id": "j1-advogado-plans-manage",
-            "tipo": "navegacao_jornada",
-            "evento": "selecionar_rota",
+            "id": "plans_manage_advogado.assinatura.gestao_assinatura",
+            "tipo": "navegacao_declarada",
+            "evento": "manage",
             "rotulo": "Voltar à gestão",
-            "aplicaA": {
-              "jornadas": [
-                "advogado"
-              ],
-              "estados": [
-                "*"
-              ]
-            },
-            "origemJornada": {
-              "arquivo": "advogado",
-              "no": "plans",
-              "destinoNo": "subscription_management_state",
-              "observacao": "Retorna à gestão da assinatura."
-            },
-            "destino": "advogado.assinatura.gestao_assinatura"
+            "destino": "advogado.assinatura.gestao_assinatura",
+            "contextoJornada": "advogado",
+            "origemNo": "plans",
+            "caminho": "manage",
+            "estadosIntermediarios": [],
+            "detalhe": "Retorna à gestão da assinatura."
           }
         ]
       }
@@ -473,11 +221,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "plans"
-          }
+          ]
         },
         {
           "id": "plan_entitlements",
@@ -499,11 +243,7 @@
               "tipo": "jsonb?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "plan_entitlements"
-          }
+          ]
         },
         {
           "id": "entitlements",
@@ -535,11 +275,7 @@
               "tipo": "boolean",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "entitlements"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -552,8 +288,7 @@
             "entidade": "subscriptions"
           },
           "campoReferencia": "plan_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-plans-plan_id-plan_entitlements",
@@ -564,8 +299,7 @@
             "entidade": "plan_entitlements"
           },
           "campoReferencia": "plan_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-entitlements-entitlement_id-plan_entitlements",
@@ -576,8 +310,7 @@
             "entidade": "plan_entitlements"
           },
           "campoReferencia": "entitlement_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-entitlements-required_entitlement_id-content_items",
@@ -588,16 +321,10 @@
             "entidade": "content_items"
           },
           "campoReferencia": "required_entitlement_id",
-          "cardinalidade": "1:N?",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N?"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "advogado.assinatura.planos",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -614,22 +341,10 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-0140",
-          "sequenceId": "sequence-0168",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0208",
-          "sequenceId": "sequence-0236",
-          "order": 1,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0380",
-          "sequenceId": "sequence-0408",
-          "order": 1,
-          "variant": "default"
+          "id": "screen-modelo-advogado-plans",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 27,
+          "variant": "padrao"
         }
       ],
       "branches": []

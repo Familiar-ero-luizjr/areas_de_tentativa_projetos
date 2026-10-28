@@ -1,0 +1,220 @@
+{
+  "schema": "advogadoja.tela.lab.v0-provisorio",
+  "identidade": {
+    "id": "auth.entrar",
+    "nome": "Entrar",
+    "versao": "0.1-lab"
+  },
+  "classificacao": {
+    "escopo": "comum"
+  },
+  "navegacao": {
+    "participacoes": [
+      {
+        "id": "part.entrar.inicial",
+        "jornada": {
+          "id": "app",
+          "nome": "Aplicativo",
+          "ordem": 0
+        },
+        "subjornada": {
+          "id": "app.autenticacao",
+          "nome": "Autenticação",
+          "ordem": 2
+        },
+        "ordemTela": 1,
+        "contexto": {
+          "modo": "entrada_inicial"
+        }
+      },
+      {
+        "id": "part.entrar.pos_cadastro",
+        "jornada": {
+          "id": "cliente",
+          "nome": "Cliente",
+          "ordem": 1
+        },
+        "subjornada": {
+          "id": "cliente.onboarding",
+          "nome": "Onboarding",
+          "ordem": 1
+        },
+        "ordemTela": 9,
+        "contexto": {
+          "modo": "pos_cadastro"
+        }
+      }
+    ],
+    "entradas": [
+      {
+        "id": "app.autenticacao",
+        "participacaoId": "part.entrar.inicial",
+        "tipo": "subjornada"
+      }
+    ]
+  },
+  "estados": {
+    "possiveis": [
+      {
+        "id": "pronto",
+        "nome": "Pronto"
+      },
+      {
+        "id": "autenticando",
+        "nome": "Autenticando"
+      },
+      {
+        "id": "erro",
+        "nome": "Erro"
+      },
+      {
+        "id": "autenticado",
+        "nome": "Autenticado"
+      }
+    ],
+    "fallbackSeguro": "pronto"
+  },
+  "variantes": {
+    "regras": [
+      {
+        "id": "entrar.pos_cadastro",
+        "prioridade": 30,
+        "quando": {
+          "campo": "participacao.id",
+          "operador": "igual",
+          "valor": "part.entrar.pos_cadastro"
+        }
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "formulario_login",
+        "ref": "formulario.login",
+        "slot": "conteudo",
+        "props": {
+          "titulo": "Entrar",
+          "botao": "Entrar",
+          "acaoRef": "login.enviar"
+        }
+      }
+    ],
+    "variantes": [
+      {
+        "varianteRef": "entrar.pos_cadastro",
+        "instanciaId": "formulario_login",
+        "props": {
+          "titulo": "Cadastro concluído",
+          "subtitulo": "Faça login para continuar"
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "html": "<h2 data-slot=\"titulo\">Entrar</h2><div data-slot=\"conteudo\"></div>"
+    },
+    "variantes": []
+  },
+  "estilos": {
+    "base": {
+      "css": ".entrar{padding:18px}"
+    },
+    "variantes": []
+  },
+  "acoes": {
+    "itens": [
+      {
+        "id": "login.enviar",
+        "evento": "formulario.enviar",
+        "operacaoRef": "auth.login",
+        "aoIniciar": {
+          "estado": "autenticando"
+        },
+        "aoErro": {
+          "estado": "erro"
+        },
+        "rotas": [
+          {
+            "id": "cliente",
+            "quando": {
+              "campo": "sessao.perfil",
+              "operador": "igual",
+              "valor": "cliente"
+            },
+            "destino": {
+              "tipo": "tela",
+              "telaId": "cliente.home",
+              "participacaoId": "part.cliente.home"
+            }
+          },
+          {
+            "id": "advogado",
+            "quando": {
+              "campo": "sessao.perfil",
+              "operador": "igual",
+              "valor": "advogado"
+            },
+            "destino": {
+              "tipo": "tela",
+              "telaId": "advogado.home",
+              "participacaoId": "part.advogado.home"
+            }
+          }
+        ],
+        "semCorrespondencia": {
+          "estado": "erro"
+        }
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [
+      {
+        "id": "sessao",
+        "tipo": "sessao",
+        "exemplo": true
+      }
+    ],
+    "operacoes": [
+      {
+        "id": "auth.login",
+        "servico": "autenticacao (contrato demonstrativo)",
+        "entradas": [
+          "credenciais"
+        ],
+        "saidas": [
+          "sessao.perfil"
+        ],
+        "execucaoReal": false
+      }
+    ],
+    "persistencia": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "cliente",
+        "nome": "Login de Cliente (mock)",
+        "dados": {
+          "sessao.perfil": "cliente"
+        }
+      },
+      {
+        "id": "advogado",
+        "nome": "Login de Advogado (mock)",
+        "dados": {
+          "sessao.perfil": "advogado"
+        }
+      },
+      {
+        "id": "falha",
+        "nome": "Erro de autenticação (mock)",
+        "dados": {
+          "erro": true
+        }
+      }
+    ]
+  }
+}

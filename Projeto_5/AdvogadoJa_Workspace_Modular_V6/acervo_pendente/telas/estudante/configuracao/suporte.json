@@ -1,0 +1,186 @@
+{
+  "schema": "advogadoja.tela.modular.v4-proposta",
+  "identidade": {
+    "id": "estudante.configuracao.suporte",
+    "nome": "Suporte",
+    "tipo": "tela",
+    "versao": "1.0.0",
+    "rota": "/estudante/configuracao/suporte",
+    "status": "pendente_definicao_visual"
+  },
+  "classificacao": {
+    "escopo": "estudante",
+    "jornadas": [
+      "estudante"
+    ],
+    "subjornadas": [
+      "configuracao"
+    ],
+    "compartilhada": false,
+    "localizacaoArvore": {
+      "secao": "Telas",
+      "segmentos": [
+        "estudante",
+        "configuracao"
+      ],
+      "chave": "suporte",
+      "ordem": 41
+    }
+  },
+  "estados": {
+    "fonte": "contexto.estado",
+    "fallbackSeguro": "padrao",
+    "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      }
+    ]
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "conteudo_principal",
+        "ref": "cmp.estudante.configuracao.suporte.modelo.v01",
+        "slot": "main",
+        "ordem": 10,
+        "props": {},
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estrutura": {
+    "base": {
+      "id": "base_estudante.configuracao.suporte",
+      "html": "<div class=\"prototype-screen\" data-screen-id=\"estudante.configuracao.suporte\"><main data-slot=\"main\"></main></div>",
+      "raiz": "prototype-screen",
+      "layout": {
+        "slots": [
+          "main"
+        ]
+      },
+      "aplicaA": {
+        "jornadas": [
+          "*"
+        ],
+        "estados": [
+          "*"
+        ]
+      }
+    },
+    "grupos": [
+      {
+        "id": "conteudo_principal",
+        "slot": "main",
+        "ordem": 10,
+        "instancias": [
+          "conteudo_principal"
+        ],
+        "aplicaA": {
+          "jornadas": [
+            "*"
+          ],
+          "estados": [
+            "*"
+          ]
+        }
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "grupos": []
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "navegacao_estudante_student_support",
+        "origem": "jornada_modelo",
+        "aplicaA": {
+          "jornadas": [
+            "estudante"
+          ],
+          "estados": [
+            "*"
+          ]
+        },
+        "acoes": [
+          {
+            "id": "student_support_help_estudante.configuracao.central_ajuda",
+            "tipo": "navegacao_declarada",
+            "evento": "help",
+            "rotulo": "Central de ajuda",
+            "destino": "estudante.configuracao.central_ajuda",
+            "contextoJornada": "estudante",
+            "origemNo": "student_support",
+            "caminho": "help",
+            "estadosIntermediarios": [],
+            "detalhe": "Perguntas e orientações."
+          },
+          {
+            "id": "student_support_talk_estudante.configuracao.falar_suporte",
+            "tipo": "navegacao_declarada",
+            "evento": "talk",
+            "rotulo": "Falar com o suporte",
+            "destino": "estudante.configuracao.falar_suporte",
+            "contextoJornada": "estudante",
+            "origemNo": "student_support",
+            "caminho": "talk",
+            "estadosIntermediarios": [],
+            "detalhe": "Abre novo chamado."
+          },
+          {
+            "id": "student_support_tickets_estudante.configuracao.meus_chamados",
+            "tipo": "navegacao_declarada",
+            "evento": "tickets",
+            "rotulo": "Meus chamados",
+            "destino": "estudante.configuracao.meus_chamados",
+            "contextoJornada": "estudante",
+            "origemNo": "student_support",
+            "caminho": "tickets",
+            "estadosIntermediarios": [],
+            "detalhe": "Acompanha chamados."
+          }
+        ]
+      }
+    ]
+  },
+  "dados": {
+    "grupos": {},
+    "fontes": [],
+    "persistencia": {
+      "entidades": [],
+      "relacoes": []
+    }
+  },
+  "mocks": {
+    "grupos": {},
+    "cenarios": {
+      "padrao": {
+        "id": "padrao"
+      }
+    }
+  },
+  "flow": {
+    "editor": {
+      "entrypoint": false,
+      "rootSequenceId": null,
+      "occurrences": [
+        {
+          "id": "screen-modelo-estudante-student_support",
+          "sequenceId": "sequence-modelo-estudante",
+          "order": 23,
+          "variant": "padrao"
+        }
+      ],
+      "branches": []
+    }
+  }
+}

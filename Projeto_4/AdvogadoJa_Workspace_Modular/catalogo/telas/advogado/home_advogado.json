@@ -2,7 +2,7 @@
   "schema": "advogadoja.tela.modular.v4-proposta",
   "identidade": {
     "id": "advogado.home_advogado",
-    "nome": "Início Profissional",
+    "nome": "Home Profissional",
     "tipo": "tela",
     "versao": "3.0.0",
     "rota": "/professional/home",
@@ -23,13 +23,17 @@
         "advogado"
       ],
       "chave": "home_advogado",
-      "ordem": 10
+      "ordem": 18
     }
   },
   "estados": {
     "fonte": "sessao.profissional.oab.status",
     "autoritativa": "backend",
     "grupos": [
+      {
+        "id": "padrao",
+        "nome": "Padrão"
+      },
       {
         "id": "oab_pendente",
         "nome": "OAB não aprovada",
@@ -46,6 +50,54 @@
           "operador": "igual",
           "valor": "aprovada"
         }
+      },
+      {
+        "id": "advogado_online_state",
+        "nome": "Status de disponibilidade alterado",
+        "jornada": "advogado",
+        "origemNo": "online_state"
+      },
+      {
+        "id": "advogado_logout",
+        "nome": "Sessão encerrada",
+        "jornada": "advogado",
+        "origemNo": "logout"
+      },
+      {
+        "id": "advogado_oab_pending_capabilities",
+        "nome": "Capabilities · Home restrita",
+        "jornada": "advogado",
+        "origemNo": "oab_pending_capabilities"
+      },
+      {
+        "id": "advogado_oab_validating_capabilities",
+        "nome": "Capabilities · OAB em validação",
+        "jornada": "advogado",
+        "origemNo": "oab_validating_capabilities"
+      },
+      {
+        "id": "advogado_oab_enabled_capabilities",
+        "nome": "Capabilities · profissional habilitado",
+        "jornada": "advogado",
+        "origemNo": "oab_enabled_capabilities"
+      },
+      {
+        "id": "advogado_professional_actions",
+        "nome": "Ações profissionais liberadas na mesma Home",
+        "jornada": "advogado",
+        "origemNo": "professional_actions"
+      },
+      {
+        "id": "advogado_oab_restricted_capabilities",
+        "nome": "Capabilities · OAB com restrição",
+        "jornada": "advogado",
+        "origemNo": "oab_restricted_capabilities"
+      },
+      {
+        "id": "advogado_oab_unknown_capabilities",
+        "nome": "Capabilities · estado da OAB desconhecido",
+        "jornada": "advogado",
+        "origemNo": "oab_unknown_capabilities"
       }
     ],
     "indefinido": "bloquear_ate_verificacao",
@@ -528,110 +580,11 @@
   "acoes": {
     "grupos": [
       {
-        "id": "acoes_comuns",
-        "acoes": [
-          {
-            "id": "abrir_menu",
-            "evento": "abrirMenu",
-            "efeito": {
-              "tipo": "estado_local",
-              "campo": "menuAberto",
-              "valor": true
-            }
-          },
-          {
-            "id": "fechar_menu",
-            "evento": "fecharMenu",
-            "efeito": {
-              "tipo": "estado_local",
-              "campo": "menuAberto",
-              "valor": false
-            }
-          },
-          {
-            "id": "navegar_item_menu",
-            "evento": "itemSelecionado",
-            "efeito": {
-              "tipo": "resolver_item",
-              "colecaoRef": "componentes.instancias.menu_principal.props.itens"
-            }
-          },
-          {
-            "id": "abrir_notificacoes",
-            "evento": "abrirNotificacoes",
-            "destino": "notificacoes.lista.notificacoes"
-          },
-          {
-            "id": "encerrar_sessao",
-            "tipo": "comando",
-            "comandoRef": "auth.sign_out",
-            "seSucesso": {
-              "destino": "auth.sessao.entrar"
-            },
-            "seErro": {
-              "tipo": "mostrar_erro"
-            },
-            "statusContrato": "proposto"
-          }
-        ],
+        "id": "navegacao_advogado_home",
+        "origem": "jornada_modelo",
         "aplicaA": {
-          "estados": [
-            "*"
-          ],
           "jornadas": [
             "advogado"
-          ]
-        }
-      },
-      {
-        "id": "acoes_pendentes",
-        "aplicaA": {
-          "estados": [
-            "oab_pendente"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "solicitar_validacao_oab",
-            "evento": "solicitarValidacaoOab",
-            "destino": "advogado.oab.validacao",
-            "statusDestino": "a_confirmar"
-          }
-        ]
-      },
-      {
-        "id": "acoes_aprovadas",
-        "aplicaA": {
-          "estados": [
-            "oab_aprovada"
-          ],
-          "jornadas": [
-            "advogado"
-          ]
-        },
-        "acoes": [
-          {
-            "id": "alternar_disponibilidade",
-            "evento": "alternarDisponibilidade",
-            "comandoRef": "profissional.alternar_online",
-            "statusContrato": "proposto"
-          },
-          {
-            "id": "abrir_solicitacao",
-            "evento": "solicitacaoSelecionada",
-            "destino": "advogado.clientes.detalhe_solicitacao"
-          }
-        ]
-      },
-      {
-        "id": "navegacao_importada_flow_v3",
-        "origem": "flow_v3",
-        "aplicaA": {
-          "jornadas": [
-            "*"
           ],
           "estados": [
             "*"
@@ -639,88 +592,232 @@
         },
         "acoes": [
           {
-            "id": "rel-advogado.home_advogado-open-request-detail-advogado.clientes.detalhe_solicitacao-1",
-            "tipo": "ligacao_flow_migrada",
-            "destino": "advogado.clientes.detalhe_solicitacao",
-            "evento": "legacy-event",
-            "rotulo": "Selecionar uma solicitação",
-            "prioridade": 1000,
-            "portasLegadas": {
-              "saida": "out-open-request-detail-advogado.clientes.detalhe_solicitacao-1",
-              "entrada": "in-advogado.home_advogado-open-request-detail-5"
-            }
+            "id": "home_pending_advogado.configuracao.validacao_oab",
+            "tipo": "navegacao_declarada",
+            "evento": "pending",
+            "rotulo": "OAB não validada / pendente",
+            "destino": "advogado.configuracao.validacao_oab",
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "pending",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_pending_capabilities",
+                "title": "Capabilities · Home restrita"
+              }
+            ],
+            "detalhe": "Home restrita; mostra pendência e CTA para validar OAB."
           },
           {
-            "id": "rel-advogado.home_advogado-menu-atendimentos-advogado.atendimentos_advogado-2",
-            "tipo": "ligacao_flow_migrada",
+            "id": "home_validating_advogado.configuracao.validacao_oab",
+            "tipo": "navegacao_declarada",
+            "evento": "validating",
+            "rotulo": "OAB em validação",
+            "destino": "advogado.configuracao.validacao_oab",
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "validating",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_validating_capabilities",
+                "title": "Capabilities · OAB em validação"
+              }
+            ],
+            "detalhe": "Continua na mesma Home, ainda restrita."
+          },
+          {
+            "id": "home_enabled_advogado.clientes.solicitacoes_recebidas",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
+            "destino": "advogado.clientes.solicitacoes_recebidas",
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
+          },
+          {
+            "id": "home_enabled_advogado.atendimentos_advogado",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
             "destino": "advogado.atendimentos_advogado",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Atendimentos",
-            "prioridade": 999,
-            "portasLegadas": {
-              "saida": "out-menu-atendimentos-advogado.atendimentos_advogado-2",
-              "entrada": "in-advogado.home_advogado-menu-atendimentos-4"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
           },
           {
-            "id": "rel-advogado.home_advogado-menu-profile-advogado.perfil_profissional-3",
-            "tipo": "ligacao_flow_migrada",
+            "id": "home_enabled_advogado.disponibilidade",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
+            "destino": "advogado.disponibilidade",
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
+          },
+          {
+            "id": "home_enabled_advogado.perfil_profissional",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
             "destino": "advogado.perfil_profissional",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Meu Perfil",
-            "prioridade": 998,
-            "portasLegadas": {
-              "saida": "out-menu-profile-advogado.perfil_profissional-3",
-              "entrada": "in-advogado.home_advogado-menu-profile-15"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
           },
           {
-            "id": "rel-advogado.home_advogado-menu-plans-advogado.assinatura.gestao_assinatura-4",
-            "tipo": "ligacao_flow_migrada",
+            "id": "home_enabled_advogado.assinatura.gestao_assinatura",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
             "destino": "advogado.assinatura.gestao_assinatura",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Planos",
-            "prioridade": 997,
-            "portasLegadas": {
-              "saida": "out-menu-plans-advogado.assinatura.gestao_assinatura-4",
-              "entrada": "in-advogado.home_advogado-menu-plans-12"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
           },
           {
-            "id": "rel-advogado.home_advogado-menu-office-escritorio.gestao.escritorio-5",
-            "tipo": "ligacao_flow_migrada",
+            "id": "home_enabled_escritorio.gestao.escritorio",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
             "destino": "escritorio.gestao.escritorio",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Escritório",
-            "prioridade": 996,
-            "portasLegadas": {
-              "saida": "out-menu-office-escritorio.gestao.escritorio-5",
-              "entrada": "in-advogado.home_advogado-menu-office-15"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
           },
           {
-            "id": "rel-advogado.home_advogado-menu-settings-advogado.configuracao.configuracao-6",
-            "tipo": "ligacao_flow_migrada",
+            "id": "home_enabled_advogado.configuracao.configuracao",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
             "destino": "advogado.configuracao.configuracao",
-            "evento": "legacy-event",
-            "rotulo": "Menu > Configurações",
-            "prioridade": 995,
-            "portasLegadas": {
-              "saida": "out-menu-settings-advogado.configuracao.configuracao-6",
-              "entrada": "in-advogado.home_advogado-menu-settings-8"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
           },
           {
-            "id": "rel-advogado.home_advogado-header-notifications-notificacoes.lista.notificacoes-7",
-            "tipo": "ligacao_flow_migrada",
+            "id": "home_enabled_notificacoes.lista.notificacoes",
+            "tipo": "navegacao_declarada",
+            "evento": "enabled",
+            "rotulo": "OAB validada / habilitada",
             "destino": "notificacoes.lista.notificacoes",
-            "evento": "legacy-event",
-            "rotulo": "Sino de notificações",
-            "prioridade": 994,
-            "portasLegadas": {
-              "saida": "out-header-notifications-notificacoes.lista.notificacoes-7",
-              "entrada": "in-advogado.home_advogado-header-notifications-11"
-            }
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "enabled",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_enabled_capabilities",
+                "title": "Capabilities · profissional habilitado"
+              },
+              {
+                "id": "professional_actions",
+                "title": "Ações profissionais liberadas na mesma Home"
+              }
+            ],
+            "detalhe": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
+          },
+          {
+            "id": "home_restricted_advogado.configuracao.validacao_oab",
+            "tipo": "navegacao_declarada",
+            "evento": "restricted",
+            "rotulo": "Recusada / suspensa / expirada",
+            "destino": "advogado.configuracao.validacao_oab",
+            "contextoJornada": "advogado",
+            "origemNo": "home",
+            "caminho": "restricted",
+            "estadosIntermediarios": [
+              {
+                "id": "oab_restricted_capabilities",
+                "title": "Capabilities · OAB com restrição"
+              }
+            ],
+            "detalhe": "Pode gerar restrições diferentes; regra exata de cada estado ainda não está fechada."
+          },
+          {
+            "id": "home_unknown_termino",
+            "tipo": "estado_final",
+            "evento": "unknown",
+            "rotulo": "Erro técnico / estado desconhecido",
+            "estado": "oab_unknown_capabilities",
+            "detalhe": "Não equivale a não validada; operações protegidas permanecem bloqueadas por segurança.",
+            "contextoJornada": "advogado"
           }
         ]
       }
@@ -912,11 +1009,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "lawyer_profiles"
-          }
+          ]
         },
         {
           "id": "lawyer_oab_records",
@@ -963,11 +1056,7 @@
               "tipo": "timestamptz?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "lawyer_oab_records"
-          }
+          ]
         },
         {
           "id": "contact_requests",
@@ -1024,11 +1113,7 @@
               "tipo": "varchar?",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "contact_requests"
-          }
+          ]
         },
         {
           "id": "lawyer_availability",
@@ -1070,11 +1155,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "lawyer_availability"
-          }
+          ]
         },
         {
           "id": "subscriptions",
@@ -1131,11 +1212,7 @@
               "tipo": "timestamptz",
               "acesso": "a_confirmar"
             }
-          ],
-          "origemImportacao": {
-            "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-            "tabela": "subscriptions"
-          }
+          ]
         }
       ],
       "relacoes": [
@@ -1148,8 +1225,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "client_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-contact_requests",
@@ -1160,8 +1236,7 @@
             "entidade": "contact_requests"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-contact_request_status_history",
@@ -1172,8 +1247,7 @@
             "entidade": "contact_request_status_history"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-contact_requests-contact_request_id-service_reviews",
@@ -1184,8 +1258,7 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "contact_request_id",
-          "cardinalidade": "1:0..1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:0..1"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-service_reviews",
@@ -1196,8 +1269,7 @@
             "entidade": "service_reviews"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-user_profiles-user_profile_id-lawyer_profiles",
@@ -1208,8 +1280,7 @@
             "entidade": "lawyer_profiles"
           },
           "campoReferencia": "user_profile_id",
-          "cardinalidade": "1:1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:1"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_academic_records",
@@ -1220,8 +1291,7 @@
             "entidade": "lawyer_academic_records"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_practice_areas",
@@ -1232,8 +1302,7 @@
             "entidade": "lawyer_practice_areas"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_availability",
@@ -1244,8 +1313,7 @@
             "entidade": "lawyer_availability"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:1"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_weekly_schedule",
@@ -1256,8 +1324,7 @@
             "entidade": "lawyer_weekly_schedule"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-lawyer_oab_records",
@@ -1268,8 +1335,7 @@
             "entidade": "lawyer_oab_records"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:1",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:1"
         },
         {
           "id": "rel-lawyer_oab_records-oab_record_id-oab_status_history",
@@ -1280,8 +1346,7 @@
             "entidade": "oab_status_history"
           },
           "campoReferencia": "oab_record_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-owner_lawyer_profile_id-law_offices",
@@ -1292,8 +1357,7 @@
             "entidade": "law_offices"
           },
           "campoReferencia": "owner_lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-lawyer_profiles-lawyer_profile_id-office_members",
@@ -1304,8 +1368,7 @@
             "entidade": "office_members"
           },
           "campoReferencia": "lawyer_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-user_profiles-user_profile_id-subscriptions",
@@ -1316,8 +1379,7 @@
             "entidade": "subscriptions"
           },
           "campoReferencia": "user_profile_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-plans-plan_id-subscriptions",
@@ -1328,8 +1390,7 @@
             "entidade": "subscriptions"
           },
           "campoReferencia": "plan_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         },
         {
           "id": "rel-subscriptions-subscription_id-subscription_events",
@@ -1340,16 +1401,10 @@
             "entidade": "subscription_events"
           },
           "campoReferencia": "subscription_id",
-          "cardinalidade": "1:N",
-          "origemImportacao": "Projeto_1/modelos/modelagem_banco_todas_telas.html"
+          "cardinalidade": "1:N"
         }
       ],
-      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações",
-      "origemImportacao": {
-        "artefato": "Projeto_1/modelos/modelagem_banco_todas_telas.html",
-        "screenKeyFonte": "advogado.home_advogado",
-        "statusCampos": "campos da entidade importados; operações por tela a confirmar nas jornadas"
-      }
+      "contrato": "declarações canônicas da tela; Banco é projeção agregada destas declarações"
     }
   },
   "mocks": {
@@ -1515,6 +1570,33 @@
           ]
         },
         "estadoRef": "oab_aprovada"
+      },
+      "padrao": {
+        "id": "padrao"
+      },
+      "advogado_online_state": {
+        "id": "advogado_online_state"
+      },
+      "advogado_logout": {
+        "id": "advogado_logout"
+      },
+      "advogado_oab_pending_capabilities": {
+        "id": "advogado_oab_pending_capabilities"
+      },
+      "advogado_oab_validating_capabilities": {
+        "id": "advogado_oab_validating_capabilities"
+      },
+      "advogado_oab_enabled_capabilities": {
+        "id": "advogado_oab_enabled_capabilities"
+      },
+      "advogado_professional_actions": {
+        "id": "advogado_professional_actions"
+      },
+      "advogado_oab_restricted_capabilities": {
+        "id": "advogado_oab_restricted_capabilities"
+      },
+      "advogado_oab_unknown_capabilities": {
+        "id": "advogado_oab_unknown_capabilities"
       }
     },
     "uso": "apenas simulação; nao autoriza recursos em producao"
@@ -1525,272 +1607,13 @@
       "rootSequenceId": null,
       "occurrences": [
         {
-          "id": "screen-0124",
-          "sequenceId": "sequence-0268",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-profissional-direto-menu-inicio",
-          "sequenceId": "sequence-profissional-direto-menu-inicio",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0192",
-          "sequenceId": "sequence-0270",
-          "order": 10,
-          "variant": "default"
-        },
-        {
-          "id": "screen-profissional-onboarding-menu-inicio",
-          "sequenceId": "sequence-profissional-onboarding-menu-inicio",
-          "order": 0,
-          "variant": "default"
-        },
-        {
-          "id": "screen-0364",
-          "sequenceId": "sequence-0421",
-          "order": 17,
-          "variant": "default"
-        },
-        {
-          "id": "screen-profissional-cadastro-menu-inicio",
-          "sequenceId": "sequence-profissional-cadastro-menu-inicio",
-          "order": 0,
-          "variant": "default"
+          "id": "screen-modelo-advogado-home",
+          "sequenceId": "sequence-modelo-advogado",
+          "order": 14,
+          "variant": "padrao"
         }
       ],
-      "branches": [
-        {
-          "id": "branch-0160",
-          "sequenceId": "sequence-0268",
-          "order": 1,
-          "title": "Profissional · ações a partir da Home",
-          "paths": [
-            {
-              "id": "path-0161",
-              "label": "Home · abrir solicitação",
-              "isDefault": true,
-              "sequenceId": "sequence-0162"
-            },
-            {
-              "id": "path-profissional-direto-menu",
-              "label": "Home · abrir menu",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-direto-menu"
-            },
-            {
-              "id": "path-0171",
-              "label": "Header · notificações",
-              "isDefault": false,
-              "sequenceId": "sequence-0172"
-            }
-          ]
-        },
-        {
-          "id": "branch-profissional-direto-menu-itens",
-          "sequenceId": "sequence-profissional-direto-menu",
-          "order": 0,
-          "title": "Profissional · opções do menu lateral",
-          "paths": [
-            {
-              "id": "path-profissional-direto-menu-inicio",
-              "label": "Início",
-              "isDefault": true,
-              "sequenceId": "sequence-profissional-direto-menu-inicio"
-            },
-            {
-              "id": "path-profissional-direto-menu-atendimentos",
-              "label": "Atendimentos",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-direto-menu-atendimentos"
-            },
-            {
-              "id": "path-0165",
-              "label": "Meu Perfil",
-              "isDefault": false,
-              "sequenceId": "sequence-0166"
-            },
-            {
-              "id": "path-0167",
-              "label": "Planos",
-              "isDefault": false,
-              "sequenceId": "sequence-0168"
-            },
-            {
-              "id": "path-0169",
-              "label": "Escritório",
-              "isDefault": false,
-              "sequenceId": "sequence-0170"
-            },
-            {
-              "id": "path-profissional-direto-menu-config",
-              "label": "Configurações",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-direto-menu-config"
-            },
-            {
-              "id": "path-profissional-direto-menu-sair",
-              "label": "Sair",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-direto-menu-sair"
-            }
-          ]
-        },
-        {
-          "id": "branch-0228",
-          "sequenceId": "sequence-0270",
-          "order": 11,
-          "title": "Profissional · ações a partir da Home",
-          "paths": [
-            {
-              "id": "path-0229",
-              "label": "Home · abrir solicitação",
-              "isDefault": true,
-              "sequenceId": "sequence-0230"
-            },
-            {
-              "id": "path-profissional-onboarding-menu",
-              "label": "Home · abrir menu",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-onboarding-menu"
-            },
-            {
-              "id": "path-0239",
-              "label": "Header · notificações",
-              "isDefault": false,
-              "sequenceId": "sequence-0240"
-            }
-          ]
-        },
-        {
-          "id": "branch-profissional-onboarding-menu-itens",
-          "sequenceId": "sequence-profissional-onboarding-menu",
-          "order": 0,
-          "title": "Profissional · opções do menu lateral",
-          "paths": [
-            {
-              "id": "path-profissional-onboarding-menu-inicio",
-              "label": "Início",
-              "isDefault": true,
-              "sequenceId": "sequence-profissional-onboarding-menu-inicio"
-            },
-            {
-              "id": "path-profissional-onboarding-menu-atendimentos",
-              "label": "Atendimentos",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-onboarding-menu-atendimentos"
-            },
-            {
-              "id": "path-0233",
-              "label": "Meu Perfil",
-              "isDefault": false,
-              "sequenceId": "sequence-0234"
-            },
-            {
-              "id": "path-0235",
-              "label": "Planos",
-              "isDefault": false,
-              "sequenceId": "sequence-0236"
-            },
-            {
-              "id": "path-0237",
-              "label": "Escritório",
-              "isDefault": false,
-              "sequenceId": "sequence-0238"
-            },
-            {
-              "id": "path-profissional-onboarding-menu-config",
-              "label": "Configurações",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-onboarding-menu-config"
-            },
-            {
-              "id": "path-profissional-onboarding-menu-sair",
-              "label": "Sair",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-onboarding-menu-sair"
-            }
-          ]
-        },
-        {
-          "id": "branch-0400",
-          "sequenceId": "sequence-0421",
-          "order": 18,
-          "title": "Profissional · ações a partir da Home",
-          "paths": [
-            {
-              "id": "path-0401",
-              "label": "Home · abrir solicitação",
-              "isDefault": true,
-              "sequenceId": "sequence-0402"
-            },
-            {
-              "id": "path-profissional-cadastro-menu",
-              "label": "Home · abrir menu",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-cadastro-menu"
-            },
-            {
-              "id": "path-0411",
-              "label": "Header · notificações",
-              "isDefault": false,
-              "sequenceId": "sequence-0412"
-            }
-          ]
-        },
-        {
-          "id": "branch-profissional-cadastro-menu-itens",
-          "sequenceId": "sequence-profissional-cadastro-menu",
-          "order": 0,
-          "title": "Profissional · opções do menu lateral",
-          "paths": [
-            {
-              "id": "path-profissional-cadastro-menu-inicio",
-              "label": "Início",
-              "isDefault": true,
-              "sequenceId": "sequence-profissional-cadastro-menu-inicio"
-            },
-            {
-              "id": "path-profissional-cadastro-menu-atendimentos",
-              "label": "Atendimentos",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-cadastro-menu-atendimentos"
-            },
-            {
-              "id": "path-0405",
-              "label": "Meu Perfil",
-              "isDefault": false,
-              "sequenceId": "sequence-0406"
-            },
-            {
-              "id": "path-0407",
-              "label": "Planos",
-              "isDefault": false,
-              "sequenceId": "sequence-0408"
-            },
-            {
-              "id": "path-0409",
-              "label": "Escritório",
-              "isDefault": false,
-              "sequenceId": "sequence-0410"
-            },
-            {
-              "id": "path-profissional-cadastro-menu-config",
-              "label": "Configurações",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-cadastro-menu-config"
-            },
-            {
-              "id": "path-profissional-cadastro-menu-sair",
-              "label": "Sair",
-              "isDefault": false,
-              "sequenceId": "sequence-profissional-cadastro-menu-sair"
-            }
-          ]
-        }
-      ]
+      "branches": []
     }
   }
 }

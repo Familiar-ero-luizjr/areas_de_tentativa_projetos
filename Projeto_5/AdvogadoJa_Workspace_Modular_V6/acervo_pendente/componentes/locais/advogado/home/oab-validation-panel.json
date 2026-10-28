@@ -1,0 +1,116 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v2-proposta",
+  "identidade": {
+    "id": "cmp_advogado_home_advogado_main_oab_validation_panel",
+    "nome": "Painel de validação OAB",
+    "tipo": "componente",
+    "versao": "1.0.0"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "oab-validation-panel::root",
+        "tag": "section",
+        "atributos": {
+          "class": "oab-gate-card",
+          "aria-labelledby": "oab-gate-title"
+        },
+        "filhos": [
+          {
+            "id": "oab-validation-panel::eyebrow",
+            "tag": "span",
+            "atributos": {
+              "class": "oab-gate-eyebrow"
+            },
+            "filhos": [
+              {
+                "ref": "props.dados.rotulo"
+              }
+            ]
+          },
+          {
+            "id": "oab-validation-panel::title",
+            "tag": "h2",
+            "atributos": {
+              "id": "oab-gate-title"
+            },
+            "filhos": [
+              {
+                "ref": "props.dados.titulo"
+              }
+            ]
+          },
+          {
+            "id": "oab-validation-panel::description",
+            "tag": "p",
+            "filhos": [
+              {
+                "ref": "props.dados.descricao"
+              }
+            ]
+          },
+          {
+            "id": "oab-validation-panel::status",
+            "tag": "p",
+            "atributos": {
+              "class": "oab-gate-status"
+            },
+            "filhos": [
+              {
+                "ref": "props.dados.statusTexto"
+              }
+            ]
+          },
+          {
+            "id": "oab-validation-panel::cta",
+            "tag": "button",
+            "atributos": {
+              "type": "button",
+              "class": "oab-gate-button",
+              "data-action": "oab.validar"
+            },
+            "filhos": [
+              {
+                "ref": "props.dados.textoBotao"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "html_cmp_advogado_home_advogado_main_oab_validation_panel"
+  },
+  "estilos": {
+    "css": ".oab-gate-card{margin:16px 0;padding:24px;border:1px solid #d9cba9;border-radius:16px;background:#fffaf0;color:var(--text,#242424)}.oab-gate-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#936b22}.oab-gate-card h2{margin:10px 0;font-size:22px}.oab-gate-card p{line-height:1.5}.oab-gate-status{font-size:13px;color:#745526}.oab-gate-button{margin-top:12px;border:0;border-radius:10px;padding:12px 18px;background:var(--primary,#2b4d85);color:#fff;font-weight:650;cursor:pointer}",
+    "id": "css_cmp_advogado_home_advogado_main_oab_validation_panel"
+  },
+  "interface": {
+    "propriedadesAceitas": [
+      "rotulo",
+      "titulo",
+      "descricao",
+      "statusTexto",
+      "textoBotao"
+    ],
+    "eventosEmitidos": [
+      "solicitarValidacaoOab"
+    ],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "classificacao": {
+    "escopo": "local",
+    "jornadas": [
+      "advogado"
+    ],
+    "localizacaoArvore": {
+      "secao": "Componentes",
+      "segmentos": [
+        "locais",
+        "advogado",
+        "home"
+      ],
+      "chave": "oab-validation-panel"
+    }
+  }
+}

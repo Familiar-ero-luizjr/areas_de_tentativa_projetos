@@ -1,0 +1,3 @@
+import {montarPacote} from './catalogo.js';
+export function exportacao(c){return montarPacote(c,Object.keys(c.telas))}
+export function comparar(c,pacote){const itens=[];for(const tipo of ['telas','componentes'])for(const [id,obj] of Object.entries(pacote[tipo]||{})){const atual=c[tipo][id],status=!atual?'novo':JSON.stringify(atual)===JSON.stringify(obj)?'igual':'alterado';const impactos=tipo==='componentes'?Object.values(c.telas).filter(t=>(t.componentes?.instancias||[]).some(i=>i.ref===id)).map(t=>t.identidade.id):[];itens.push({tipo,id,nome:obj?.identidade?.nome||id,status,impactos,registro:obj})}return itens;}
