@@ -1,0 +1,60 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "cabecalho.app.resumido",
+    "tipo": "componente",
+    "namespace": "cabecalho",
+    "chave": "resumido",
+    "nome": "Cabecalho simples de papel",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"app-header\"><div></div><div class=\"app-brand\"><strong>AdvogadoJá</strong></div><div class=\"app-role\">{{papel}}</div></div>"
+    },
+    "variantes": [
+      {
+        "id": "template.be79adc84803",
+        "html": "<div class=\"app-header\"><div></div><div class=\"app-brand\"><strong>AdvogadoJá</strong></div><div class=\"app-role\">{{papel}}</div></div>"
+      },
+      {
+        "id": "template.04a9371364b2",
+        "html": "<div class=\"app-header\">\n      <div></div>\n      <div class=\"app-brand\"><strong>AdvogadoJá</strong></div>\n      <div class=\"app-role\">{{papel}}</div>\n    </div>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".app-header {\n  position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  letter-spacing: -.02em;\n}\n.app-brand img {\n  width: 27px;\n  height: 27px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-role {\n  font-size: 10px;\n  font-weight: 800;\n  opacity: .8;\n  text-transform: uppercase;\n  letter-spacing: .06em;\n}"
+    },
+    "variantes": [],
+    "css": ".app-header {\n  position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  letter-spacing: -.02em;\n}\n.app-brand img {\n  width: 27px;\n  height: 27px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-role {\n  font-size: 10px;\n  font-weight: 800;\n  opacity: .8;\n  text-transform: uppercase;\n  letter-spacing: .06em;\n}"
+  },
+  "interface": {
+    "props": [
+      "papel"
+    ],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [
+      "papel"
+    ],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/cabecalho.app.resumido.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/cabecalho.app.resumido.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

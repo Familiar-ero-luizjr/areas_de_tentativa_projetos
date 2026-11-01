@@ -1,0 +1,56 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+  "identidade": {
+    "id": "header.titlebar.v01",
+    "nome": "Barra de título",
+    "tipo": "componente",
+    "escopo": "global",
+    "categoria": "titlebar"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "titlebar::0",
+        "tag": "div",
+        "atributos": {
+          "class": "app-titlebar"
+        },
+        "filhos": [
+          {
+            "id": "titlebar::0.0",
+            "tag": "strong",
+            "filhos": [
+              {
+                "ref": "props.dados.title"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "estilos": {
+    "css": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}\n"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "dadosExemplo": {
+    "componentes": {
+      "titlebar": {}
+    },
+    "fixtures": {
+      "titlebar": {
+        "title": "Início Profissional"
+      }
+    },
+    "campos": {}
+  },
+  "origemHistorica": {
+    "sourcePath": "components/headers/titlebar/v01",
+    "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "feedback.operacional.toast",
+    "tipo": "componente",
+    "namespace": "feedback",
+    "chave": "toast",
+    "nome": "Mensagem operacional de retorno",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"op-toast\" role=\"status\" aria-live=\"polite\"></div>"
+    },
+    "variantes": [
+      {
+        "id": "template.c8e5e1335821",
+        "html": "<div class=\"op-toast\" role=\"status\" aria-live=\"polite\"></div>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }"
+    },
+    "variantes": [
+      {
+        "id": "css.11aed8942f9e",
+        "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\n.op-toast {\n  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;\n  display:none;max-width:min(92vw,460px);padding:10px 14px;border-radius:10px;background:#172033;color:#fff;font-size:11px;\n}\n.op-toast.show { display:block; }"
+      },
+      {
+        "id": "css.84dc38606c87",
+        "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\n.op-toast {\n  position:fixed;\n  left:50%;\n  bottom:18px;\n  z-index:100;\n  display:none;\n  max-width:min(92vw,460px);\n  padding:9px 13px;\n  transform:translateX(-50%);\n  border-radius:10px;\n  background:#172033;\n  color:#fff;\n  font-size:11px;\n  box-shadow:0 10px 30px rgba(0,0,0,.25);\n}\n.op-toast.show { display:block; }"
+      },
+      {
+        "id": "css.af29767f4038",
+        "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\n.op-toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;display:none;max-width:min(92vw,460px);padding:9px 13px;border-radius:10px;background:#172033;color:#fff;font-size:11px;box-shadow:0 10px 30px rgba(0,0,0,.25)}\n.op-toast.show{display:block}"
+      },
+      {
+        "id": "css.91f5a96a6c1d",
+        "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\n.op-toast {\n  position:fixed;\n  left:50%;\n  bottom:18px;\n  z-index:100;\n  display:none;\n  max-width:min(92vw,460px);\n  padding:9px 13px;\n  transform:translateX(-50%);\n  border-radius:10px;\n  background:#172033;\n  color:#fff;\n  font-size:11px;\n  box-shadow:0 10px 30px rgba(0,0,0,.25);\n}\n.op-toast.show {\n  display:block;\n}"
+      },
+      {
+        "id": "css.a9f78a800a9f",
+        "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\n.op-toast{position:fixed;left:50%;bottom:22px;z-index:50;transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:.2s;background:#101828;color:#fff;padding:11px 15px;border-radius:10px;font-size:11px;box-shadow:0 10px 25px rgba(0,0,0,.2)}\n.op-toast.show{opacity:1;transform:translate(-50%,0)}"
+      }
+    ],
+    "css": ".op-toast {\n  position: fixed;\n  z-index: 50;\n  left: 50%;\n  bottom: 82px;\n  max-width: calc(100vw - 32px);\n  transform: translate(-50%, 16px);\n  border-radius: 999px;\n  padding: 10px 14px;\n  background: #111827;\n  color: #fff;\n  font-size: 12px;\n  font-weight: 700;\n  opacity: 0;\n  pointer-events: none;\n  transition: .2s ease;\n}\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }"
+  },
+  "interface": {
+    "props": [],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/feedback.operacional.toast.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/feedback.operacional.toast.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "navegacao.abas",
+    "tipo": "componente",
+    "namespace": "navegacao",
+    "chave": "abas",
+    "nome": "Navegacao abas",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel"
+  },
+  "estrutura": {
+    "base": {
+      "template": "{{abertura}}{{conteudo}}{{fechamento}}"
+    },
+    "variantes": [],
+    "formato": "template_v02_preservado",
+    "template": "{{abertura}}{{conteudo}}{{fechamento}}"
+  },
+  "estilos": {
+    "css": ""
+  },
+  "interface": {
+    "props": {
+      "abertura": {
+        "tipo": "html_abertura"
+      },
+      "conteudo": {
+        "tipo": "html"
+      },
+      "fechamento": {
+        "tipo": "html_fechamento"
+      }
+    },
+    "eventos": [],
+    "propriedadesAceitas": [
+      "abertura",
+      "conteudo",
+      "fechamento"
+    ],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/navegacao.abas.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/navegacao.abas.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

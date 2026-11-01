@@ -1,0 +1,58 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "cabecalho.contexto",
+    "tipo": "componente",
+    "namespace": "cabecalho",
+    "chave": "contexto",
+    "nome": "Titulo e descricao de pagina",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"context-head\"><h1>{{titulo}}</h1><p>{{descricao}}</p></div>"
+    },
+    "variantes": [
+      {
+        "id": "template.7c1d82fccab5",
+        "html": "<div class=\"context-head\"><h1>{{titulo}}</h1><p>{{descricao}}</p></div>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".context-head{margin:0 2px 14px}\n.context-head h1{margin:0;color:var(--primary);font-size:23px;letter-spacing:-.025em}\n.context-head p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}"
+    },
+    "variantes": [],
+    "css": ".context-head{margin:0 2px 14px}\n.context-head h1{margin:0;color:var(--primary);font-size:23px;letter-spacing:-.025em}\n.context-head p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}"
+  },
+  "interface": {
+    "props": [
+      "descricao",
+      "titulo"
+    ],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [
+      "descricao",
+      "titulo"
+    ],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/cabecalho.contexto.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/cabecalho.contexto.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

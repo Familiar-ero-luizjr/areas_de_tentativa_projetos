@@ -1,0 +1,84 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "titulo.app.barra",
+    "tipo": "componente",
+    "namespace": "titulo",
+    "chave": "barra",
+    "nome": "Barra de titulo contextual",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"app-titlebar\">{{titulo}}</div>"
+    },
+    "variantes": [
+      {
+        "id": "template.ee28788cdbf5",
+        "html": "<div class=\"app-titlebar\">{{titulo}}</div>"
+      },
+      {
+        "id": "template.563a70b6a17d",
+        "html": "<div class=\"app-titlebar\"><strong>Avaliar atendimento</strong></div>"
+      },
+      {
+        "id": "template.1083c4b3b1d1",
+        "html": "<div class=\"app-titlebar\"><strong>Contato externo</strong></div>"
+      },
+      {
+        "id": "template.27371fb1580b",
+        "html": "<div class=\"app-titlebar\"><strong>Contatos liberados</strong></div>"
+      },
+      {
+        "id": "template.0dc828dd42ef",
+        "html": "<div class=\"app-titlebar\"><strong>Detalhe da solicitação</strong></div>"
+      },
+      {
+        "id": "template.9ecf5dbecff6",
+        "html": "<div class=\"app-titlebar\"><strong>Motivo do encerramento</strong></div>"
+      },
+      {
+        "id": "template.9ed43f0c31fa",
+        "html": "<div class=\"app-titlebar\"><strong>Minhas solicitações</strong></div>"
+      },
+      {
+        "id": "template.e51f9e7fc46d",
+        "html": "<div class=\"app-titlebar\"><strong>Perfil profissional</strong></div>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".app-titlebar {\n  padding: 10px 18px;\n  border-bottom: 1px solid var(--line);\n  background: #fff;\n  color: var(--primary);\n  font-size: 13px;\n}"
+    },
+    "variantes": [],
+    "css": ".app-titlebar {\n  padding: 10px 18px;\n  border-bottom: 1px solid var(--line);\n  background: #fff;\n  color: var(--primary);\n  font-size: 13px;\n}"
+  },
+  "interface": {
+    "props": [
+      "titulo"
+    ],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [
+      "titulo"
+    ],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/titulo.app.barra.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/titulo.app.barra.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

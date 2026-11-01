@@ -1,0 +1,79 @@
+{
+  "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+  "identidade": {
+    "id": "cmp_advogado_home_advogado_main_hero",
+    "nome": "Apresentação Profissional",
+    "tipo": "componente",
+    "escopo": "local",
+    "categoria": "content"
+  },
+  "estrutura": {
+    "formato": "arvore_elementos",
+    "arvore": [
+      {
+        "id": "hero::0",
+        "tag": "section",
+        "atributos": {
+          "class": "home-intro"
+        },
+        "filhos": [
+          {
+            "id": "hero::0.0",
+            "tag": "span",
+            "atributos": {
+              "class": "home-eyebrow"
+            },
+            "filhos": [
+              {
+                "ref": "props.dados.eyebrow"
+              }
+            ]
+          },
+          {
+            "id": "hero::0.1",
+            "tag": "h1",
+            "filhos": [
+              {
+                "ref": "props.dados.title"
+              }
+            ]
+          },
+          {
+            "id": "hero::0.2",
+            "tag": "p",
+            "filhos": [
+              {
+                "ref": "props.dados.subtitle"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "estilos": {
+    "css": ".home-intro {\n  padding: 2px 2px 4px;\n}\n.home-eyebrow {\n  display:block;\n  margin-bottom:6px;\n  color:var(--gold);\n  font-size:11px;\n  font-weight:900;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n}\n.home-intro h1 {\n  margin:0;\n  color:var(--primary);\n  font-size:24px;\n  line-height:1.15;\n  letter-spacing:-.025em;\n}\n.home-intro p {\n  max-width:560px;\n  margin:8px 0 0;\n  color:var(--muted);\n  font-size:14px;\n  line-height:1.5;\n}\n"
+  },
+  "interface": {
+    "propriedadesAceitas": [],
+    "eventosEmitidos": [],
+    "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+  },
+  "dadosExemplo": {
+    "componentes": {
+      "hero": {}
+    },
+    "fixtures": {
+      "hero": {
+        "eyebrow": "PAINEL PROFISSIONAL",
+        "title": "Olá, Dr. João Silva",
+        "subtitle": "Acompanhe seus atendimentos e novas solicitações."
+      }
+    },
+    "campos": {}
+  },
+  "origemHistorica": {
+    "sourcePath": "features/advogado/screens/home_advogado/main/hero",
+    "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+  }
+}

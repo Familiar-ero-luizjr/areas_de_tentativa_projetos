@@ -1,0 +1,836 @@
+{
+  "schema": "advogadoja.tela",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "app.splash",
+    "tipo": "tela",
+    "namespace": "app",
+    "chave": "splash",
+    "nome": "Splash",
+    "nomeExibicao": "Splash",
+    "descricao": null,
+    "versao": "1.0",
+    "aliasesLegados": [],
+    "referenciasExternas": []
+  },
+  "classificacao": {
+    "dominio": "atendimento_juridico",
+    "moduloRef": "app",
+    "submoduloRef": null,
+    "secao": "comum",
+    "categoria": "tela",
+    "escopo": "comum",
+    "reutilizavel": false,
+    "publicoAlvo": [],
+    "tags": [],
+    "classificacaoLegada": {
+      "escopo": "comum"
+    }
+  },
+  "navegacao": {
+    "rotaPrincipal": null,
+    "rotasLegadas": [],
+    "parametrosRota": [],
+    "participacoes": [
+      {
+        "id": "part.splash.inicio",
+        "jornadaRef": "app",
+        "subjornadaRef": "app.inicializacao",
+        "jornada": {
+          "id": "app",
+          "nome": "Aplicativo",
+          "ordem": 0
+        },
+        "subjornada": {
+          "id": "app.inicializacao",
+          "nome": "Inicialização",
+          "ordem": 1
+        },
+        "papel": "etapa",
+        "ordem": 1,
+        "contexto": {
+          "modo": "inicio"
+        },
+        "ocorrenciaNoRef": null,
+        "origem": "v5_participacao",
+        "ocorrencias": [
+          {
+            "id": "oc.part.splash.inicio.original",
+            "sequenciaRef": "sequence.app.app.inicializacao",
+            "ordem": 1,
+            "caminhoHierarquico": [],
+            "noOrigemRef": null,
+            "origem": "v5_participacao",
+            "confianca": "confirmado"
+          }
+        ]
+      },
+      {
+        "id": "part.cliente.splash",
+        "jornadaRef": "cliente",
+        "subjornadaRef": "acesso",
+        "jornada": {
+          "id": "cliente",
+          "nome": "Cliente + Estudante",
+          "ordem": 1
+        },
+        "subjornada": {
+          "id": "acesso",
+          "nome": "Acesso e autenticação",
+          "ordem": 1
+        },
+        "papel": "etapa",
+        "ordem": 1,
+        "contexto": {
+          "descricao": "Abertura do aplicativo."
+        },
+        "ocorrenciaNoRef": null,
+        "origem": "v5_participacao",
+        "ocorrencias": [
+          {
+            "id": "oc.part.cliente.splash.original",
+            "sequenciaRef": "sequence.cliente.acesso",
+            "ordem": 1,
+            "caminhoHierarquico": [],
+            "noOrigemRef": null,
+            "origem": "v5_participacao",
+            "confianca": "confirmado"
+          }
+        ]
+      },
+      {
+        "id": "part.advogado.splash",
+        "jornadaRef": "advogado",
+        "subjornadaRef": "acesso",
+        "jornada": {
+          "id": "advogado",
+          "nome": "Advogado",
+          "ordem": 2
+        },
+        "subjornada": {
+          "id": "acesso",
+          "nome": "Acesso e autenticação",
+          "ordem": 1
+        },
+        "papel": "etapa",
+        "ordem": 1,
+        "contexto": {
+          "descricao": "Abertura do aplicativo."
+        },
+        "ocorrenciaNoRef": null,
+        "origem": "v5_participacao",
+        "ocorrencias": [
+          {
+            "id": "oc.part.advogado.splash.original",
+            "sequenciaRef": "sequence.advogado.acesso",
+            "ordem": 1,
+            "caminhoHierarquico": [],
+            "noOrigemRef": null,
+            "origem": "v5_participacao",
+            "confianca": "confirmado"
+          }
+        ]
+      },
+      {
+        "id": "part.admin.splash",
+        "jornadaRef": "admin",
+        "subjornadaRef": "acesso",
+        "jornada": {
+          "id": "admin",
+          "nome": "Administrador",
+          "ordem": 3
+        },
+        "subjornada": {
+          "id": "acesso",
+          "nome": "Acesso e autorização",
+          "ordem": 1
+        },
+        "papel": "etapa",
+        "ordem": 1,
+        "contexto": {
+          "descricao": "Abertura do aplicativo."
+        },
+        "ocorrenciaNoRef": null,
+        "origem": "v5_participacao",
+        "ocorrencias": [
+          {
+            "id": "oc.part.admin.splash.original",
+            "sequenciaRef": "sequence.admin.acesso",
+            "ordem": 1,
+            "caminhoHierarquico": [],
+            "noOrigemRef": null,
+            "origem": "v5_participacao",
+            "confianca": "confirmado"
+          }
+        ]
+      }
+    ],
+    "entradas": [
+      {
+        "id": "app.inicio",
+        "participacaoRef": "part.splash.inicio",
+        "tipo": "jornada",
+        "origemTelaRef": null,
+        "origemNoRef": null,
+        "destinoNoRef": null,
+        "opcao": null,
+        "rotulo": null,
+        "origem": "v5_entrada",
+        "relacaoRef": null
+      }
+    ],
+    "saidas": [
+      {
+        "id": "relation.splash.continuar.direto",
+        "acaoRef": "splash.continuar",
+        "tipo": "direto",
+        "rotaAliasLegada": null,
+        "rotulo": "sistema.inicializado",
+        "descricao": null,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoParticipacaoRef": "part.boas.inicial",
+        "destinoNoRef": null,
+        "origemTelaRef": "app.splash",
+        "origemParticipacaoRef": null,
+        "origemOcorrenciaRef": null,
+        "origemNoRef": null,
+        "quando": null,
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "sequenciaRef": null,
+        "prioridade": null,
+        "fallback": null,
+        "confianca": "nao_determinado",
+        "origem": "v5_destino_direto",
+        "confiancaDestinoParticipacao": "confirmado_no_v5"
+      },
+      {
+        "id": "relation.cliente.splash.fluxo.continuar",
+        "acaoRef": "cliente.splash.fluxo",
+        "tipo": "rota",
+        "rotaAliasLegada": "continuar",
+        "rotulo": "Continuar",
+        "descricao": null,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoParticipacaoRef": "part.cliente.welcome",
+        "destinoNoRef": null,
+        "origemTelaRef": "app.splash",
+        "origemParticipacaoRef": "part.cliente.splash",
+        "origemOcorrenciaRef": "oc.part.cliente.splash.original",
+        "origemNoRef": null,
+        "quando": null,
+        "relacaoDireta": null,
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "sequenciaRef": null,
+        "prioridade": null,
+        "fallback": null,
+        "confianca": "confirmado_participacaoId",
+        "origem": "v5_acao_rotas",
+        "confiancaDestinoParticipacao": "confirmado_no_v5"
+      },
+      {
+        "id": "relation.advogado.splash.fluxo.continuar",
+        "acaoRef": "advogado.splash.fluxo",
+        "tipo": "rota",
+        "rotaAliasLegada": "continuar",
+        "rotulo": "Continuar",
+        "descricao": null,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoParticipacaoRef": "part.advogado.welcome",
+        "destinoNoRef": null,
+        "origemTelaRef": "app.splash",
+        "origemParticipacaoRef": "part.advogado.splash",
+        "origemOcorrenciaRef": "oc.part.advogado.splash.original",
+        "origemNoRef": null,
+        "quando": null,
+        "relacaoDireta": null,
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "sequenciaRef": null,
+        "prioridade": null,
+        "fallback": null,
+        "confianca": "confirmado_participacaoId",
+        "origem": "v5_acao_rotas",
+        "confiancaDestinoParticipacao": "confirmado_no_v5"
+      },
+      {
+        "id": "relation.admin.splash.fluxo.continuar",
+        "acaoRef": "admin.splash.fluxo",
+        "tipo": "rota",
+        "rotaAliasLegada": "continuar",
+        "rotulo": "Continuar",
+        "descricao": null,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoParticipacaoRef": "part.admin.welcome",
+        "destinoNoRef": null,
+        "origemTelaRef": "app.splash",
+        "origemParticipacaoRef": "part.admin.splash",
+        "origemOcorrenciaRef": "oc.part.admin.splash.original",
+        "origemNoRef": null,
+        "quando": null,
+        "relacaoDireta": null,
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "sequenciaRef": null,
+        "prioridade": null,
+        "fallback": null,
+        "confianca": "confirmado_participacaoId",
+        "origem": "v5_acao_rotas",
+        "confiancaDestinoParticipacao": "confirmado_no_v5"
+      }
+    ],
+    "bifurcacoes": [],
+    "caminhosLineares": [
+      {
+        "id": "linear.cliente.splash.fluxo.continuar",
+        "acaoRef": "cliente.splash.fluxo",
+        "relacaoRef": "relation.cliente.splash.fluxo.continuar",
+        "rotulo": "Continuar",
+        "ordem": 0,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoNoRef": null,
+        "quando": null,
+        "origem": "v5_rota_unica"
+      },
+      {
+        "id": "linear.advogado.splash.fluxo.continuar",
+        "acaoRef": "advogado.splash.fluxo",
+        "relacaoRef": "relation.advogado.splash.fluxo.continuar",
+        "rotulo": "Continuar",
+        "ordem": 0,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoNoRef": null,
+        "quando": null,
+        "origem": "v5_rota_unica"
+      },
+      {
+        "id": "linear.admin.splash.fluxo.continuar",
+        "acaoRef": "admin.splash.fluxo",
+        "relacaoRef": "relation.admin.splash.fluxo.continuar",
+        "rotulo": "Continuar",
+        "ordem": 0,
+        "destinoTipo": "tela",
+        "destinoRef": "app.boas_vindas",
+        "destinoNoRef": null,
+        "quando": null,
+        "origem": "v5_rota_unica"
+      }
+    ],
+    "referenciasEditoriaisExternas": [],
+    "regras": {
+      "naoInventarCondicoesAusentes": true,
+      "interpretarCaminhoSemCondicao": "apresentar_sem_executar_automaticamente",
+      "jornadasESequencias": "ler_participacoes_e_ocorrencias_declaradas"
+    }
+  },
+  "estados": {
+    "estadoInicialRef": null,
+    "estadoFallbackRef": "app.splash.estado.inicial",
+    "criterioSelecao": "nao_declarado",
+    "itens": [
+      {
+        "id": "app.splash.estado.inicial",
+        "aliasLegado": "inicial",
+        "nome": "Inicial",
+        "descricao": null,
+        "origemNoRef": null,
+        "pendente": false,
+        "prioridade": null,
+        "quando": null,
+        "varianteRefs": [],
+        "acoesPermitidasRefs": [],
+        "ordem": 0,
+        "origem": "v5_estados_possiveis",
+        "composicao": {
+          "estruturaGruposRefs": [
+            "app.splash.grupo.01_mensagem"
+          ],
+          "estilosGruposRefs": [],
+          "acoesGruposRefs": [
+            "app.splash.acao.grupo.comum_v02"
+          ],
+          "variantesRefs": [],
+          "mockRef": null
+        },
+        "composicaoOrigem": "composicao_base_nao_condicional_do_html_v02"
+      },
+      {
+        "id": "app.splash.estado.carregando",
+        "aliasLegado": "carregando",
+        "nome": "Carregando",
+        "descricao": null,
+        "origemNoRef": null,
+        "pendente": false,
+        "prioridade": null,
+        "quando": null,
+        "varianteRefs": [],
+        "acoesPermitidasRefs": [],
+        "ordem": 1,
+        "origem": "v5_estados_possiveis",
+        "composicao": {
+          "estruturaGruposRefs": [
+            "app.splash.grupo.01_mensagem"
+          ],
+          "estilosGruposRefs": [],
+          "acoesGruposRefs": [
+            "app.splash.acao.grupo.comum_v02"
+          ],
+          "variantesRefs": [],
+          "mockRef": null
+        },
+        "composicaoOrigem": "composicao_base_nao_condicional_do_html_v02"
+      },
+      {
+        "id": "app.splash.estado.erro",
+        "aliasLegado": "erro",
+        "nome": "Erro",
+        "descricao": null,
+        "origemNoRef": null,
+        "pendente": false,
+        "prioridade": null,
+        "quando": null,
+        "varianteRefs": [],
+        "acoesPermitidasRefs": [],
+        "ordem": 2,
+        "origem": "v5_estados_possiveis",
+        "composicao": {
+          "estruturaGruposRefs": [
+            "app.splash.grupo.01_mensagem"
+          ],
+          "estilosGruposRefs": [],
+          "acoesGruposRefs": [
+            "app.splash.acao.grupo.comum_v02"
+          ],
+          "variantesRefs": [],
+          "mockRef": null
+        },
+        "composicaoOrigem": "composicao_base_nao_condicional_do_html_v02"
+      },
+      {
+        "id": "app.splash.estado.padrao",
+        "aliasLegado": "padrao",
+        "nome": "Padrão",
+        "descricao": null,
+        "origemNoRef": null,
+        "pendente": false,
+        "prioridade": null,
+        "quando": null,
+        "varianteRefs": [],
+        "acoesPermitidasRefs": [],
+        "ordem": 3,
+        "origem": "v5_estados_possiveis",
+        "composicao": {
+          "estruturaGruposRefs": [
+            "app.splash.grupo.01_mensagem"
+          ],
+          "estilosGruposRefs": [],
+          "acoesGruposRefs": [
+            "app.splash.acao.grupo.comum_v02"
+          ],
+          "variantesRefs": [],
+          "mockRef": null
+        },
+        "composicaoOrigem": "composicao_base_nao_condicional_do_html_v02"
+      }
+    ],
+    "dimensoes": [],
+    "politicas": {
+      "naoInventarCondicoes": true,
+      "composicao": "grupos comuns; variantes antigas mantidas por referencia quando declaradas"
+    }
+  },
+  "acoes": {
+    "itens": [
+      {
+        "id": "splash.continuar",
+        "nome": "sistema.inicializado",
+        "tipo": "navegacao",
+        "descricao": null,
+        "evento": "sistema.inicializado",
+        "origemNoRef": null,
+        "parametros": {},
+        "precondicoes": [],
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "app.boas_vindas",
+            "processoNoRef": null,
+            "origem": "v5_destino_direto"
+          }
+        ],
+        "operacaoRef": null,
+        "aoIniciar": null,
+        "aoErro": null,
+        "semCorrespondencia": null,
+        "tratamentoErro": null,
+        "origem": "v5_acao",
+        "definicaoLegada": {
+          "id": "splash.continuar",
+          "evento": "sistema.inicializado",
+          "destino": {
+            "tipo": "tela",
+            "telaId": "app.boas_vindas",
+            "participacaoId": "part.boas.inicial"
+          }
+        },
+        "grupoRef": "app.splash.acao.grupo.comum_v02"
+      },
+      {
+        "id": "cliente.splash.fluxo",
+        "nome": "fluxo.continuar",
+        "tipo": "navegacao",
+        "descricao": null,
+        "evento": "fluxo.continuar",
+        "origemNoRef": null,
+        "parametros": {},
+        "precondicoes": [],
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "app.boas_vindas",
+            "processoNoRef": null,
+            "rotaRef": "continuar",
+            "condicao": null,
+            "origem": "v5_rota"
+          }
+        ],
+        "operacaoRef": null,
+        "aoIniciar": null,
+        "aoErro": null,
+        "semCorrespondencia": null,
+        "tratamentoErro": null,
+        "origem": "v5_acao",
+        "definicaoLegada": {
+          "id": "cliente.splash.fluxo",
+          "evento": "fluxo.continuar",
+          "rotas": [
+            {
+              "id": "continuar",
+              "rotulo": "Continuar",
+              "descricao": null,
+              "destino": {
+                "tipo": "tela",
+                "telaId": "app.boas_vindas",
+                "participacaoId": "part.cliente.welcome"
+              }
+            }
+          ],
+          "participacaoId": "part.cliente.splash"
+        },
+        "grupoRef": "app.splash.acao.grupo.comum_v02"
+      },
+      {
+        "id": "advogado.splash.fluxo",
+        "nome": "fluxo.continuar",
+        "tipo": "navegacao",
+        "descricao": null,
+        "evento": "fluxo.continuar",
+        "origemNoRef": null,
+        "parametros": {},
+        "precondicoes": [],
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "app.boas_vindas",
+            "processoNoRef": null,
+            "rotaRef": "continuar",
+            "condicao": null,
+            "origem": "v5_rota"
+          }
+        ],
+        "operacaoRef": null,
+        "aoIniciar": null,
+        "aoErro": null,
+        "semCorrespondencia": null,
+        "tratamentoErro": null,
+        "origem": "v5_acao",
+        "definicaoLegada": {
+          "id": "advogado.splash.fluxo",
+          "evento": "fluxo.continuar",
+          "rotas": [
+            {
+              "id": "continuar",
+              "rotulo": "Continuar",
+              "descricao": null,
+              "destino": {
+                "tipo": "tela",
+                "telaId": "app.boas_vindas",
+                "participacaoId": "part.advogado.welcome"
+              }
+            }
+          ],
+          "participacaoId": "part.advogado.splash"
+        },
+        "grupoRef": "app.splash.acao.grupo.comum_v02"
+      },
+      {
+        "id": "admin.splash.fluxo",
+        "nome": "fluxo.continuar",
+        "tipo": "navegacao",
+        "descricao": null,
+        "evento": "fluxo.continuar",
+        "origemNoRef": null,
+        "parametros": {},
+        "precondicoes": [],
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "app.boas_vindas",
+            "processoNoRef": null,
+            "rotaRef": "continuar",
+            "condicao": null,
+            "origem": "v5_rota"
+          }
+        ],
+        "operacaoRef": null,
+        "aoIniciar": null,
+        "aoErro": null,
+        "semCorrespondencia": null,
+        "tratamentoErro": null,
+        "origem": "v5_acao",
+        "definicaoLegada": {
+          "id": "admin.splash.fluxo",
+          "evento": "fluxo.continuar",
+          "rotas": [
+            {
+              "id": "continuar",
+              "rotulo": "Continuar",
+              "descricao": null,
+              "destino": {
+                "tipo": "tela",
+                "telaId": "app.boas_vindas",
+                "participacaoId": "part.admin.welcome"
+              }
+            }
+          ],
+          "participacaoId": "part.admin.splash"
+        },
+        "grupoRef": "app.splash.acao.grupo.comum_v02"
+      }
+    ],
+    "grupos": [
+      {
+        "id": "app.splash.acao.grupo.comum_v02",
+        "nome": "Ações existentes V0.2",
+        "acoesRefs": [
+          "splash.continuar",
+          "cliente.splash.fluxo",
+          "advogado.splash.fluxo",
+          "admin.splash.fluxo"
+        ],
+        "origem": "acoes.itens"
+      }
+    ]
+  },
+  "dados": {
+    "campos": [],
+    "fontes": [],
+    "operacoes": [],
+    "vinculos": [],
+    "persistencia": [],
+    "politicaBinding": "consumir_campos_e_fontes_declarados_sem_inferencia"
+  },
+  "componentes": {
+    "instancias": [],
+    "variantesLegadas": [],
+    "definicoesEmbutidas": [],
+    "definicoesLegadasV02": {},
+    "definicoesExternasRefs": [],
+    "resolucao": {
+      "modo": "autocontido",
+      "campoInstancias": "componentes.instancias",
+      "campoDefinicoes": "componentes.definicoesEmbutidas",
+      "chaveCorrespondencia": "identidade.id = componenteRef",
+      "buscarArquivoExternoEmRuntime": false
+    }
+  },
+  "estrutura": {
+    "raiz": {
+      "id": "app.splash.elemento.raiz",
+      "tipo": "template_html",
+      "html": "<div class=\"brand-mark\">AJ</div><h2>Advogado Já</h2><p data-slot=\"mensagem\">Inicializando aplicativo</p>"
+    },
+    "montagem": {
+      "id": "app.splash.montagem.v5",
+      "modo": "template_html_v5",
+      "origem": "v5_tela_estrutura_base",
+      "slotsPadrao": [
+        "mensagem"
+      ],
+      "slots": [
+        {
+          "id": "mensagem",
+          "instanciasRefs": []
+        }
+      ],
+      "politicaOrdenacao": "componentes.instancias[].ordem dentro de cada slot",
+      "modoV03": "regioes_grupos_instancias_com_html_historico",
+      "selecao": "estados.itens[].composicao.estruturaGruposRefs",
+      "posicoesFlow": "registradas_no_contrato_editorial_quando_existirem"
+    },
+    "variantesLegadas": [],
+    "regioes": [
+      {
+        "id": "app.splash.regiao.01_mensagem",
+        "nome": "mensagem",
+        "ordem": 1,
+        "origem": "estrutura.montagem.slots"
+      }
+    ],
+    "grupos": [
+      {
+        "id": "app.splash.grupo.01_mensagem",
+        "regiaoRef": "app.splash.regiao.01_mensagem",
+        "ordem": 10,
+        "instanciasRefs": [],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "*"
+          ]
+        },
+        "origem": "estrutura.montagem.slots"
+      }
+    ]
+  },
+  "estilos": {
+    "tema": {},
+    "cssGlobalTela": ".brand-mark{border-radius:20px;padding:18px}",
+    "grupos": [],
+    "politica": "css_global_integral_v02_sem_inferencia_de_variantes",
+    "origensV02": {
+      "temaRef": null,
+      "fontesCss": [],
+      "regras": [
+        {
+          "id": "app.splash.css.base",
+          "alvoRef": "app.splash.elemento.raiz",
+          "css": ".brand-mark{border-radius:20px;padding:18px}",
+          "origem": "v5_estilos_base"
+        }
+      ],
+      "variantesLegadas": []
+    }
+  },
+  "variantes": {
+    "itens": []
+  },
+  "interacoes": {
+    "itens": [
+      {
+        "id": "app.splash.interacao.splash.continuar",
+        "elementoRef": null,
+        "evento": "sistema.inicializado",
+        "acaoRef": "splash.continuar",
+        "origem": "v5_acao_sem_elemento_evidente",
+        "mapeamentoElemento": "pendente",
+        "confianca": "nao_determinado"
+      },
+      {
+        "id": "app.splash.interacao.cliente.splash.fluxo",
+        "elementoRef": null,
+        "evento": "fluxo.continuar",
+        "acaoRef": "cliente.splash.fluxo",
+        "origem": "v5_acao_sem_elemento_evidente",
+        "mapeamentoElemento": "pendente",
+        "confianca": "nao_determinado"
+      },
+      {
+        "id": "app.splash.interacao.advogado.splash.fluxo",
+        "elementoRef": null,
+        "evento": "fluxo.continuar",
+        "acaoRef": "advogado.splash.fluxo",
+        "origem": "v5_acao_sem_elemento_evidente",
+        "mapeamentoElemento": "pendente",
+        "confianca": "nao_determinado"
+      },
+      {
+        "id": "app.splash.interacao.admin.splash.fluxo",
+        "elementoRef": null,
+        "evento": "fluxo.continuar",
+        "acaoRef": "admin.splash.fluxo",
+        "origem": "v5_acao_sem_elemento_evidente",
+        "mapeamentoElemento": "pendente",
+        "confianca": "nao_determinado"
+      }
+    ]
+  },
+  "mocks": {
+    "cenarioPadraoRef": "demo.inicio",
+    "cenarios": [
+      {
+        "id": "demo.inicio",
+        "aliasLegado": "demo.inicio",
+        "nome": "Entrada demonstrativa",
+        "estadoEsperadoRef": null,
+        "valores": {},
+        "respostasOperacoes": {},
+        "definicaoLegada": {
+          "id": "demo.inicio",
+          "nome": "Entrada demonstrativa"
+        },
+        "origem": "v5_mocks"
+      }
+    ],
+    "base": {},
+    "politica": "somente_cenarios_expressos_na_fonte_v02"
+  },
+  "localizacao": {
+    "caminhoLogico": "app/splash",
+    "arquivoContrato": "catalogo/telas/app.splash.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/telas/app.splash.json"
+    },
+    "implementacoes": {
+      "react": {
+        "diretorio": "src/features/app/pages/splash",
+        "arquivo": "splash.tsx",
+        "status": "referencia_proposta"
+      },
+      "flutter": {
+        "diretorio": "lib/features/app/screens/splash",
+        "arquivo": "splash_screen.dart",
+        "status": "referencia_proposta"
+      }
+    }
+  },
+  "proveniencia": {
+    "sistemaOrigem": "catalogo_v5",
+    "arquivoOriginal": "fontes_v5/catalogo/telas/app.splash.json",
+    "metodologia": "campos explícitos transportados; topologia de rotas reconstruída de acoes.itens[].rotas; inferência anotada",
+    "atualizacaoV03": {
+      "status": "migrado_automaticamente_com_fonte_preservada",
+      "fonteContrato": "originais_v02/catalogo/telas/app.splash.json",
+      "regra": "transformacao_estrutural_sem_inferencia_de_regras_ausentes",
+      "conteudoPreservado": [
+        "html",
+        "css",
+        "acoes",
+        "estados",
+        "variantes",
+        "jornadas",
+        "relacoes",
+        "bifurcacoes",
+        "caminhos",
+        "mocks"
+      ],
+      "pendencias": []
+    }
+  },
+  "politicas": {
+    "componentes": "definicoes_embutidas_por_identidade",
+    "motorInterpretaNaoInfere": true,
+    "composicao": "grupos_e_regioes_por_estado_sem_busca_de_arquivos",
+    "autorizacao": "estados_visuais_nao_substituem_autorizacao_backend",
+    "mapa": "leitura_de_interacoes_e_relacoes_declaradas"
+  }
+}

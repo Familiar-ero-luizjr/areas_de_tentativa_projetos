@@ -1,0 +1,61 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "cabecalho.app.com_menu",
+    "tipo": "componente",
+    "namespace": "cabecalho",
+    "chave": "com_menu",
+    "nome": "Cabecalho completo com menu e notificacoes",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<header class=\"app-header\">\n  <button class=\"app-menu-button\" type=\"button\" data-menu-open aria-label=\"Abrir menu\"><span></span><span></span><span></span></button>\n  <div class=\"app-brand\"><img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K\" alt=\"\"><strong>AdvogadoJá+</strong></div>\n  <button class=\"app-notification-button\" type=\"button\" data-action=\"navegar.notificacoes.lista.notificacoes\" aria-label=\"Notificações\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9\"/><path d=\"M10 21h4\"/></svg>\n    <span class=\"app-notification-badge\" aria-label=\"3 notificações não lidas\">3</span>\n  </button>\n</header>"
+    },
+    "variantes": [
+      {
+        "id": "template.89815188ad84",
+        "html": "<header class=\"app-header\">\n  <button class=\"app-menu-button\" type=\"button\" data-menu-open aria-label=\"Abrir menu\"><span></span><span></span><span></span></button>\n  <div class=\"app-brand\"><img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K\" alt=\"\"><strong>AdvogadoJá+</strong></div>\n  <button class=\"app-notification-button\" type=\"button\" data-action=\"navegar.notificacoes.lista.notificacoes\" aria-label=\"Notificações\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9\"/><path d=\"M10 21h4\"/></svg>\n    <span class=\"app-notification-badge\" aria-label=\"3 notificações não lidas\">3</span>\n  </button>\n</header>"
+      },
+      {
+        "id": "template.5d9e843f0df4",
+        "html": "<header class=\"app-header\">\n  <button class=\"app-menu-button\" type=\"button\" data-action=\"drawer.open\" aria-label=\"Abrir menu\">\n    <span></span><span></span><span></span>\n  </button>\n  <div class=\"app-brand\">\n    <img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K\" alt=\"\" /><strong>AdvogadoJá+</strong>\n  </div>\n  <button class=\"app-notification-button\" type=\"button\" data-action=\"navegar.notificacoes.lista.notificacoes\" aria-label=\"Notificações\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9\"/><path d=\"M10 21h4\"/></svg>\n    <span class=\"app-notification-badge\" aria-label=\"3 notificações não lidas\">3</span>\n  </button>\n</header>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".app-header {\n  position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  gap: 4px;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  letter-spacing: -.02em;\n}\n.app-brand img {\n  width: 27px;\n  height: 27px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-role {\n  font-size: 10px;\n  font-weight: 800;\n  opacity: .8;\n  text-transform: uppercase;\n  letter-spacing: .06em;\n}\n.app-notification-button{position:relative;width:40px;height:40px;display:grid;place-items:center;padding:0;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer}\n.app-notification-button:hover{background:rgba(255,255,255,.09)}\n.app-notification-button svg{width:22px;height:22px}\n.app-notification-badge{position:absolute;right:2px;top:2px;min-width:17px;height:17px;display:grid;place-items:center;padding:0 4px;border:2px solid var(--primary);border-radius:999px;background:#d92d20;color:#fff;font-size:9px;font-weight:900;line-height:1}"
+    },
+    "variantes": [
+      {
+        "id": "css.e89296a732b7",
+        "css": ".app-header {\n  position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  gap: 4px;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  letter-spacing: -.02em;\n}\n.app-brand img {\n  width: 27px;\n  height: 27px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-role {\n  font-size: 10px;\n  font-weight: 800;\n  opacity: .8;\n  text-transform: uppercase;\n  letter-spacing: .06em;\n}\n.app-header {\n  min-height: 62px; display: grid; grid-template-columns: 42px 1fr auto; gap: 10px;\n  align-items: center; padding: 8px 14px; background: var(--primary); color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button { width:40px;height:40px;display:grid;place-content:center;gap:4px;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer; }\n.app-menu-button span { width:20px;height:2px;border-radius:9px;background:currentColor; }\n.app-brand { min-width:0;display:flex;align-items:center;gap:8px;font-size:16px;letter-spacing:-.02em; }\n.app-brand img { width:27px;height:27px;object-fit:contain;filter:brightness(0) invert(1); }\n.app-role { font-size:10px;font-weight:800;opacity:.8;text-transform:uppercase;letter-spacing:.06em; }\n.app-notification-button{position:relative;width:40px;height:40px;display:grid;place-items:center;padding:0;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer}\n.app-notification-button:hover{background:rgba(255,255,255,.09)}\n.app-notification-button svg{width:22px;height:22px}\n.app-notification-badge{position:absolute;right:2px;top:2px;min-width:17px;height:17px;display:grid;place-items:center;padding:0 4px;border:2px solid var(--primary);border-radius:999px;background:#d92d20;color:#fff;font-size:9px;font-weight:900;line-height:1}"
+      }
+    ],
+    "css": ".app-header {\n  position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  gap: 4px;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  letter-spacing: -.02em;\n}\n.app-brand img {\n  width: 27px;\n  height: 27px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-role {\n  font-size: 10px;\n  font-weight: 800;\n  opacity: .8;\n  text-transform: uppercase;\n  letter-spacing: .06em;\n}\n.app-notification-button{position:relative;width:40px;height:40px;display:grid;place-items:center;padding:0;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer}\n.app-notification-button:hover{background:rgba(255,255,255,.09)}\n.app-notification-button svg{width:22px;height:22px}\n.app-notification-badge{position:absolute;right:2px;top:2px;min-width:17px;height:17px;display:grid;place-items:center;padding:0 4px;border:2px solid var(--primary);border-radius:999px;background:#d92d20;color:#fff;font-size:9px;font-weight:900;line-height:1}"
+  },
+  "interface": {
+    "props": [],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/cabecalho.app.com_menu.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/cabecalho.app.com_menu.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

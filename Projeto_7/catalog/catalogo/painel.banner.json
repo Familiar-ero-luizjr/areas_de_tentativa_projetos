@@ -1,0 +1,116 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "menu.drawer.padrao",
+    "tipo": "componente",
+    "namespace": "menu",
+    "chave": "padrao",
+    "nome": "Menu lateral reutilizável",
+    "versao": "1.0"
+  },
+  "classificacao": {
+    "escopo": "global"
+  },
+  "estrutura": {
+    "base": {
+      "arvore": [
+        {
+          "tag": "nav",
+          "atributos": {
+            "class": "menu-principal",
+            "aria-label": "Navegação principal"
+          },
+          "filhos": [
+            {
+              "tag": "ul",
+              "repetir": "props.itens",
+              "filhos": [
+                {
+                  "tag": "li",
+                  "filhos": [
+                    {
+                      "tag": "button",
+                      "textoRef": "item.texto",
+                      "eventoEmitido": "menu.itemSelecionado",
+                      "acaoRef": "item.acaoRef"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "variantes": [],
+    "formato": "arvore_elementos_v02_preservada",
+    "arvore": [
+      {
+        "tag": "nav",
+        "atributos": {
+          "class": "menu-principal",
+          "aria-label": "Navegação principal"
+        },
+        "filhos": [
+          {
+            "tag": "ul",
+            "repetir": "props.itens",
+            "filhos": [
+              {
+                "tag": "li",
+                "filhos": [
+                  {
+                    "tag": "button",
+                    "textoRef": "item.texto",
+                    "eventoEmitido": "menu.itemSelecionado",
+                    "acaoRef": "item.acaoRef"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "estilos": {
+    "base": {
+      "css": ".menu-principal{display:flex;flex-direction:column;gap:8px}.menu-principal button{padding:10px;border-radius:8px}"
+    },
+    "variantes": [],
+    "css": ".menu-principal{display:flex;flex-direction:column;gap:8px}.menu-principal button{padding:10px;border-radius:8px}"
+  },
+  "interface": {
+    "props": {
+      "titulo": {
+        "tipo": "texto"
+      },
+      "itens": {
+        "tipo": "lista",
+        "obrigatorio": true
+      }
+    },
+    "eventos": [
+      "menu.itemSelecionado"
+    ],
+    "propriedadesAceitas": [
+      "titulo",
+      "itens"
+    ],
+    "eventosEmitidos": [
+      "menu.itemSelecionado"
+    ]
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/menu.drawer.padrao.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/menu.drawer.padrao.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

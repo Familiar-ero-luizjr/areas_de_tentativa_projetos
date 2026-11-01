@@ -1,0 +1,3411 @@
+{
+  "schema": "advogadoja.tela",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "advogado.home",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "chave": "home",
+    "nome": "Home Advogado",
+    "nomeExibicao": "Início Profissional",
+    "descricao": "Tela inicial profissional, com composição dependente do estado da OAB.",
+    "versao": "0.3.0",
+    "aliasesLegados": [
+      "advogado.home_advogado",
+      "advogado_home_advogado"
+    ],
+    "referenciasExternas": []
+  },
+  "classificacao": {
+    "dominio": "atendimento_juridico",
+    "moduloRef": "advogado",
+    "submoduloRef": null,
+    "secao": "home",
+    "categoria": "tela_inicial",
+    "escopo": "modulo",
+    "reutilizavel": false,
+    "publicoAlvo": [
+      "advogado"
+    ],
+    "tags": [
+      "inicio",
+      "painel_profissional",
+      "oab"
+    ]
+  },
+  "navegacao": {
+    "rotaPrincipal": null,
+    "parametrosRota": [],
+    "participacoes": [
+      {
+        "id": "part.advogado.home",
+        "jornadaRef": "advogado",
+        "subjornadaRef": "advogado.pos_home",
+        "papel": "etapa",
+        "ordem": 1,
+        "contexto": {
+          "modo": "principal"
+        },
+        "ocorrencias": [
+          {
+            "id": "oc.part.advogado.home.original",
+            "sequenciaRef": "sequence.advogado.advogado.pos_home",
+            "ordem": 1,
+            "caminhoHierarquico": [],
+            "origem": "v5_participacao",
+            "confianca": "confirmado"
+          },
+          {
+            "id": "oc.relation.login.enviar.advogado",
+            "sequenciaRef": "sequence.login.enviar.advogado",
+            "ordem": 0,
+            "caminhoHierarquico": [
+              {
+                "bifurcacaoRef": "branch.login.enviar",
+                "caminhoRef": "path.login.enviar.advogado",
+                "rotulo": "advogado"
+              }
+            ],
+            "origem": "inferido_por_saida_explicita",
+            "confianca": "confirmado_no_v5"
+          }
+        ]
+      }
+    ],
+    "entradas": [
+      {
+        "id": "advogado.pos_home",
+        "tipo": "subjornada",
+        "origemTelaRef": null,
+        "origemNoRef": null,
+        "participacaoRef": "part.advogado.home",
+        "acaoOrigemRef": null,
+        "relacaoRef": null,
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "condicao": null,
+        "proveniencia": "v5_entrada",
+        "confianca": null
+      },
+      {
+        "id": "in.relation.advogado.pro_review.fluxo.continuar",
+        "tipo": "acao_ou_rota",
+        "origemTelaRef": "advogado.onboarding.revisao_profissional",
+        "origemNoRef": "pro_review",
+        "participacaoRef": "part.advogado.home",
+        "acaoOrigemRef": "advogado.pro_review.fluxo",
+        "relacaoRef": "relation.advogado.pro_review.fluxo.continuar",
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "condicao": null,
+        "proveniencia": "espelho_de_saida_v5",
+        "confianca": "inferido_unica_participacao"
+      },
+      {
+        "id": "in.relation.login.enviar.advogado",
+        "tipo": "acao_ou_rota",
+        "origemTelaRef": "auth.entrar",
+        "origemNoRef": null,
+        "participacaoRef": "part.advogado.home",
+        "acaoOrigemRef": "login.enviar",
+        "relacaoRef": "relation.login.enviar.advogado",
+        "bifurcacaoRef": "branch.login.enviar",
+        "caminhoRef": "path.login.enviar.advogado",
+        "condicao": {
+          "campo": "sessao.perfil",
+          "operador": "igual",
+          "valor": "advogado"
+        },
+        "proveniencia": "espelho_de_saida_v5",
+        "confianca": "confirmado_no_v5"
+      },
+      {
+        "id": "in.relation.advogado.active_login.fluxo.continuar",
+        "tipo": "acao_ou_rota",
+        "origemTelaRef": "auth.entrar",
+        "origemNoRef": null,
+        "participacaoRef": "part.advogado.home",
+        "acaoOrigemRef": "advogado.active_login.fluxo",
+        "relacaoRef": "relation.advogado.active_login.fluxo.continuar",
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "condicao": null,
+        "proveniencia": "espelho_de_saida_v5",
+        "confianca": "confirmado_no_v5"
+      }
+    ],
+    "saidas": [
+      {
+        "id": "relation.advogado.sair.direto",
+        "acaoRef": "advogado.home.acao.encerrar_sessao",
+        "tipo": "direto",
+        "origemParticipacaoRef": "part.advogado.home",
+        "origemOcorrenciaRef": "oc.part.advogado.home.original",
+        "destinoTipo": "tela",
+        "destinoRef": "auth.entrar",
+        "destinoParticipacaoRef": "part.entrar.inicial",
+        "bifurcacaoRef": null,
+        "caminhoRef": null,
+        "sequenciaRef": null,
+        "condicao": null,
+        "origem": "v5_destino_direto",
+        "confianca": "inferido_participacao_unica"
+      },
+      {
+        "id": "relation.advogado.home.fluxo.pending",
+        "acaoRef": "advogado.home.fluxo",
+        "tipo": "rota",
+        "origemParticipacaoRef": "part.advogado.home",
+        "origemOcorrenciaRef": "oc.part.advogado.home.original",
+        "destinoTipo": "estado",
+        "destinoRef": "advogado.home.estado.oab_pending_capabilities",
+        "destinoParticipacaoRef": null,
+        "bifurcacaoRef": "branch.advogado.home.fluxo",
+        "caminhoRef": "path.advogado.home.fluxo.pending",
+        "sequenciaRef": "sequence.advogado.home.fluxo.pending",
+        "condicao": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "em",
+          "valores": [
+            "nao_enviada",
+            "pendente"
+          ]
+        },
+        "origem": "v5_acao_rotas",
+        "confianca": "confirmado_participacaoId",
+        "origemCondicao": "estados.itens[id=advogado.home.estado.oab_pending_capabilities].quando"
+      },
+      {
+        "id": "relation.advogado.home.fluxo.validating",
+        "acaoRef": "advogado.home.fluxo",
+        "tipo": "rota",
+        "origemParticipacaoRef": "part.advogado.home",
+        "origemOcorrenciaRef": "oc.part.advogado.home.original",
+        "destinoTipo": "estado",
+        "destinoRef": "advogado.home.estado.oab_validating_capabilities",
+        "destinoParticipacaoRef": null,
+        "bifurcacaoRef": "branch.advogado.home.fluxo",
+        "caminhoRef": "path.advogado.home.fluxo.validating",
+        "sequenciaRef": "sequence.advogado.home.fluxo.validating",
+        "condicao": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "em",
+          "valores": [
+            "em_analise",
+            "em_validacao"
+          ]
+        },
+        "origem": "v5_acao_rotas",
+        "confianca": "confirmado_participacaoId",
+        "origemCondicao": "estados.itens[id=advogado.home.estado.oab_validating_capabilities].quando"
+      },
+      {
+        "id": "relation.advogado.home.fluxo.enabled",
+        "acaoRef": "advogado.home.fluxo",
+        "tipo": "rota",
+        "origemParticipacaoRef": "part.advogado.home",
+        "origemOcorrenciaRef": "oc.part.advogado.home.original",
+        "destinoTipo": "estado",
+        "destinoRef": "advogado.home.estado.oab_enabled_capabilities",
+        "destinoParticipacaoRef": null,
+        "bifurcacaoRef": "branch.advogado.home.fluxo",
+        "caminhoRef": "path.advogado.home.fluxo.enabled",
+        "sequenciaRef": "sequence.advogado.home.fluxo.enabled",
+        "condicao": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "igual",
+          "valor": "aprovada"
+        },
+        "origem": "v5_acao_rotas",
+        "confianca": "confirmado_participacaoId",
+        "origemCondicao": "estados.itens[id=advogado.home.estado.oab_enabled_capabilities].quando"
+      },
+      {
+        "id": "relation.advogado.home.fluxo.restricted",
+        "acaoRef": "advogado.home.fluxo",
+        "tipo": "rota",
+        "origemParticipacaoRef": "part.advogado.home",
+        "origemOcorrenciaRef": "oc.part.advogado.home.original",
+        "destinoTipo": "estado",
+        "destinoRef": "advogado.home.estado.oab_restricted_capabilities",
+        "destinoParticipacaoRef": null,
+        "bifurcacaoRef": "branch.advogado.home.fluxo",
+        "caminhoRef": "path.advogado.home.fluxo.restricted",
+        "sequenciaRef": "sequence.advogado.home.fluxo.restricted",
+        "condicao": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "em",
+          "valores": [
+            "rejeitada",
+            "suspensa",
+            "expirada"
+          ]
+        },
+        "origem": "v5_acao_rotas",
+        "confianca": "confirmado_participacaoId",
+        "origemCondicao": "estados.itens[id=advogado.home.estado.oab_restricted_capabilities].quando"
+      },
+      {
+        "id": "relation.advogado.home.fluxo.unknown",
+        "acaoRef": "advogado.home.fluxo",
+        "tipo": "rota",
+        "origemParticipacaoRef": "part.advogado.home",
+        "origemOcorrenciaRef": "oc.part.advogado.home.original",
+        "destinoTipo": "estado",
+        "destinoRef": "advogado.home.estado.oab_unknown_capabilities",
+        "destinoParticipacaoRef": null,
+        "bifurcacaoRef": "branch.advogado.home.fluxo",
+        "caminhoRef": "path.advogado.home.fluxo.unknown",
+        "sequenciaRef": "sequence.advogado.home.fluxo.unknown",
+        "condicao": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "sem_correspondencia_ou_nulo"
+        },
+        "origem": "v5_acao_rotas",
+        "confianca": "confirmado_participacaoId",
+        "origemCondicao": "estados.itens[id=advogado.home.estado.oab_unknown_capabilities].quando"
+      }
+    ],
+    "bifurcacoes": [
+      {
+        "id": "branch.advogado.home.fluxo",
+        "titulo": "fluxo.decisao",
+        "tipo": "bifurcacao_de_acao",
+        "acaoRef": "advogado.home.fluxo",
+        "aposOcorrenciaRef": "oc.part.advogado.home.original",
+        "caminhos": [
+          {
+            "id": "path.advogado.home.fluxo.pending",
+            "rotulo": "OAB não validada / pendente",
+            "ordem": 0,
+            "descricao": "Home restrita; mostra pendência e CTA para validar OAB.",
+            "sequenciaRef": "sequence.advogado.home.fluxo.pending",
+            "destinoTipo": "estado",
+            "destinoRef": "advogado.home.estado.oab_pending_capabilities",
+            "relacaoRef": "relation.advogado.home.fluxo.pending",
+            "condicao": {
+              "campoRef": "advogado.home.dado.oab.status",
+              "operador": "em",
+              "valores": [
+                "nao_enviada",
+                "pendente"
+              ]
+            },
+            "itens": [
+              {
+                "id": "item.relation.advogado.home.fluxo.pending",
+                "tipo": "estado",
+                "estadoRef": "advogado.home.estado.oab_pending_capabilities",
+                "telaRef": null,
+                "participacaoRef": null,
+                "ocorrenciaRef": null,
+                "ordem": 0
+              }
+            ],
+            "origemCondicao": "estados.itens[id=advogado.home.estado.oab_pending_capabilities].quando"
+          },
+          {
+            "id": "path.advogado.home.fluxo.validating",
+            "rotulo": "OAB em validação",
+            "ordem": 1,
+            "descricao": "Continua na mesma Home, ainda restrita.",
+            "sequenciaRef": "sequence.advogado.home.fluxo.validating",
+            "destinoTipo": "estado",
+            "destinoRef": "advogado.home.estado.oab_validating_capabilities",
+            "relacaoRef": "relation.advogado.home.fluxo.validating",
+            "condicao": {
+              "campoRef": "advogado.home.dado.oab.status",
+              "operador": "em",
+              "valores": [
+                "em_analise",
+                "em_validacao"
+              ]
+            },
+            "itens": [
+              {
+                "id": "item.relation.advogado.home.fluxo.validating",
+                "tipo": "estado",
+                "estadoRef": "advogado.home.estado.oab_validating_capabilities",
+                "telaRef": null,
+                "participacaoRef": null,
+                "ocorrenciaRef": null,
+                "ordem": 0
+              }
+            ],
+            "origemCondicao": "estados.itens[id=advogado.home.estado.oab_validating_capabilities].quando"
+          },
+          {
+            "id": "path.advogado.home.fluxo.enabled",
+            "rotulo": "OAB validada / habilitada",
+            "ordem": 2,
+            "descricao": "Capabilities recalculadas e funções profissionais permitidas são liberadas.",
+            "sequenciaRef": "sequence.advogado.home.fluxo.enabled",
+            "destinoTipo": "estado",
+            "destinoRef": "advogado.home.estado.oab_enabled_capabilities",
+            "relacaoRef": "relation.advogado.home.fluxo.enabled",
+            "condicao": {
+              "campoRef": "advogado.home.dado.oab.status",
+              "operador": "igual",
+              "valor": "aprovada"
+            },
+            "itens": [
+              {
+                "id": "item.relation.advogado.home.fluxo.enabled",
+                "tipo": "estado",
+                "estadoRef": "advogado.home.estado.oab_enabled_capabilities",
+                "telaRef": null,
+                "participacaoRef": null,
+                "ocorrenciaRef": null,
+                "ordem": 0
+              }
+            ],
+            "origemCondicao": "estados.itens[id=advogado.home.estado.oab_enabled_capabilities].quando"
+          },
+          {
+            "id": "path.advogado.home.fluxo.restricted",
+            "rotulo": "Recusada / suspensa / expirada",
+            "ordem": 3,
+            "descricao": "Pode gerar restrições diferentes; regra exata de cada estado ainda não está fechada.",
+            "sequenciaRef": "sequence.advogado.home.fluxo.restricted",
+            "destinoTipo": "estado",
+            "destinoRef": "advogado.home.estado.oab_restricted_capabilities",
+            "relacaoRef": "relation.advogado.home.fluxo.restricted",
+            "condicao": {
+              "campoRef": "advogado.home.dado.oab.status",
+              "operador": "em",
+              "valores": [
+                "rejeitada",
+                "suspensa",
+                "expirada"
+              ]
+            },
+            "itens": [
+              {
+                "id": "item.relation.advogado.home.fluxo.restricted",
+                "tipo": "estado",
+                "estadoRef": "advogado.home.estado.oab_restricted_capabilities",
+                "telaRef": null,
+                "participacaoRef": null,
+                "ocorrenciaRef": null,
+                "ordem": 0
+              }
+            ],
+            "origemCondicao": "estados.itens[id=advogado.home.estado.oab_restricted_capabilities].quando"
+          },
+          {
+            "id": "path.advogado.home.fluxo.unknown",
+            "rotulo": "Erro técnico / estado desconhecido",
+            "ordem": 4,
+            "descricao": "Não equivale a não validada; operações protegidas permanecem bloqueadas por segurança.",
+            "sequenciaRef": "sequence.advogado.home.fluxo.unknown",
+            "destinoTipo": "estado",
+            "destinoRef": "advogado.home.estado.oab_unknown_capabilities",
+            "relacaoRef": "relation.advogado.home.fluxo.unknown",
+            "condicao": {
+              "campoRef": "advogado.home.dado.oab.status",
+              "operador": "sem_correspondencia_ou_nulo"
+            },
+            "itens": [
+              {
+                "id": "item.relation.advogado.home.fluxo.unknown",
+                "tipo": "estado",
+                "estadoRef": "advogado.home.estado.oab_unknown_capabilities",
+                "telaRef": null,
+                "participacaoRef": null,
+                "ocorrenciaRef": null,
+                "ordem": 0
+              }
+            ],
+            "origemCondicao": "estados.itens[id=advogado.home.estado.oab_unknown_capabilities].quando"
+          }
+        ]
+      }
+    ],
+    "caminhosLineares": [],
+    "regras": {
+      "entradasEspelhadas": "visao_derivada_das_saidas_da_colecao_quando_possivel",
+      "posicoesArrastaveisDoFlow": "configuracao_do_modulo_flow",
+      "jornadaESequencia": "referencias_a_catalogos_globais",
+      "caminhosSemCondicao": "pendentes_de_regra_efetiva"
+    }
+  },
+  "estados": {
+    "dimensoes": [
+      {
+        "id": "negocio_oab",
+        "campoRef": "advogado.home.dado.oab.status",
+        "autoridade": "backend"
+      },
+      {
+        "id": "ciclo_consulta",
+        "campoRef": "advogado.home.dado.consulta.status",
+        "autoridade": "cliente"
+      }
+    ],
+    "estadoInicialRef": "advogado.home.estado.carregando",
+    "estadoFallbackRef": "advogado.home.estado.oab_unknown_capabilities",
+    "criterioSelecao": "estado_tecnico_prioritario_senao_status_oab",
+    "politicas": {
+      "erroOuDesconhecido": "nao_habilitar_operacoes_protegidas",
+      "desconhecidoNaoEquivaleAPendente": true,
+      "permissoesDoServidorSaoAutoritativas": true
+    },
+    "itens": [
+      {
+        "id": "advogado.home.estado.oab_pending_capabilities",
+        "nome": "OAB não enviada ou pendente",
+        "tipo": "negocio",
+        "prioridade": 30,
+        "quando": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "em",
+          "valores": [
+            "nao_enviada",
+            "pendente"
+          ]
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup",
+            "advogado.home.grupo.pendente_main"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_pendente"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns",
+            "advogado.home.acao.grupo.acoes_pendentes"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_restrita"
+          ],
+          "mockRef": "advogado.home.mock.oab_pendente"
+        },
+        "capacidades": {
+          "protegidas": "bloqueadas"
+        },
+        "statusRegras": "proposta_de_mapeamento"
+      },
+      {
+        "id": "advogado.home.estado.oab_validating_capabilities",
+        "nome": "OAB em validação",
+        "tipo": "negocio",
+        "prioridade": 31,
+        "quando": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "em",
+          "valores": [
+            "em_analise",
+            "em_validacao"
+          ]
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup",
+            "advogado.home.grupo.pendente_main"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_pendente"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns",
+            "advogado.home.acao.grupo.acoes_pendentes"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_restrita"
+          ],
+          "mockRef": "advogado.home.mock.oab_em_validacao"
+        },
+        "capacidades": {
+          "protegidas": "bloqueadas"
+        },
+        "statusRegras": "proposta_de_mapeamento"
+      },
+      {
+        "id": "advogado.home.estado.oab_enabled_capabilities",
+        "nome": "OAB aprovada / habilitada",
+        "tipo": "negocio",
+        "prioridade": 32,
+        "quando": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "igual",
+          "valor": "aprovada"
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup",
+            "advogado.home.grupo.aprovada_main"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_aprovada"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns",
+            "advogado.home.acao.grupo.acoes_aprovadas"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_aprovada"
+          ],
+          "mockRef": "advogado.home.mock.oab_aprovada"
+        },
+        "capacidades": {
+          "protegidas": "conforme_autorizacao_backend"
+        },
+        "statusRegras": "confirmado_nos_modelos"
+      },
+      {
+        "id": "advogado.home.estado.oab_restricted_capabilities",
+        "nome": "OAB recusada, suspensa ou expirada",
+        "tipo": "negocio",
+        "prioridade": 33,
+        "quando": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "em",
+          "valores": [
+            "rejeitada",
+            "suspensa",
+            "expirada"
+          ]
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup",
+            "advogado.home.grupo.pendente_main"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_pendente"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns",
+            "advogado.home.acao.grupo.acoes_pendentes"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_restrita"
+          ],
+          "mockRef": "advogado.home.mock.oab_restrita"
+        },
+        "capacidades": {
+          "protegidas": "bloqueadas"
+        },
+        "statusRegras": "detalhamento_pendente"
+      },
+      {
+        "id": "advogado.home.estado.oab_unknown_capabilities",
+        "nome": "OAB desconhecida",
+        "tipo": "negocio",
+        "prioridade": 90,
+        "quando": {
+          "campoRef": "advogado.home.dado.oab.status",
+          "operador": "sem_correspondencia_ou_nulo"
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup",
+            "advogado.home.grupo.pendente_main"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_pendente"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_restrita"
+          ],
+          "mockRef": "advogado.home.mock.oab_desconhecida"
+        },
+        "capacidades": {
+          "protegidas": "bloqueadas"
+        },
+        "statusRegras": "fallback_seguro"
+      },
+      {
+        "id": "advogado.home.estado.carregando",
+        "nome": "Carregando verificação",
+        "tipo": "tecnico",
+        "prioridade": 1,
+        "quando": {
+          "campoRef": "advogado.home.dado.consulta.status",
+          "operador": "igual",
+          "valor": "carregando"
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_pendente"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_restrita"
+          ],
+          "mockRef": null
+        },
+        "capacidades": {
+          "protegidas": "bloqueadas"
+        },
+        "statusRegras": "proposto"
+      },
+      {
+        "id": "advogado.home.estado.erro",
+        "nome": "Erro na consulta da OAB",
+        "tipo": "tecnico",
+        "prioridade": 2,
+        "quando": {
+          "campoRef": "advogado.home.dado.consulta.status",
+          "operador": "igual",
+          "valor": "erro"
+        },
+        "composicao": {
+          "estruturaGruposRefs": [
+            "advogado.home.grupo.comum_header",
+            "advogado.home.grupo.comum_main",
+            "advogado.home.grupo.comum_menu",
+            "advogado.home.grupo.comum_modal",
+            "advogado.home.grupo.comum_popup",
+            "advogado.home.grupo.pendente_main"
+          ],
+          "estilosGruposRefs": [
+            "advogado.home.estilo.grupo.home_base",
+            "advogado.home.estilo.grupo.home_pendente"
+          ],
+          "acoesGruposRefs": [
+            "advogado.home.acao.grupo.acoes_comuns"
+          ],
+          "variantesRefs": [
+            "advogado.home.variante.menu_disponibilidade_restrita"
+          ],
+          "mockRef": "advogado.home.mock.oab_desconhecida"
+        },
+        "capacidades": {
+          "protegidas": "bloqueadas"
+        },
+        "statusRegras": "proposto"
+      }
+    ]
+  },
+  "acoes": {
+    "grupos": [
+      {
+        "id": "advogado.home.acao.grupo.acoes_comuns",
+        "acoesRefs": [
+          "advogado.home.acao.abrir_menu",
+          "advogado.home.acao.fechar_menu",
+          "advogado.home.acao.navegar_item_menu",
+          "advogado.home.acao.abrir_notificacoes",
+          "advogado.home.acao.encerrar_sessao"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        }
+      },
+      {
+        "id": "advogado.home.acao.grupo.acoes_pendentes",
+        "acoesRefs": [
+          "advogado.home.acao.solicitar_validacao_oab"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "advogado.home.estado.oab_pending_capabilities"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        }
+      },
+      {
+        "id": "advogado.home.acao.grupo.acoes_aprovadas",
+        "acoesRefs": [
+          "advogado.home.acao.alternar_disponibilidade",
+          "advogado.home.acao.abrir_solicitacao"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "advogado.home.estado.oab_enabled_capabilities"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        }
+      }
+    ],
+    "itens": [
+      {
+        "id": "advogado.home.acao.abrir_menu",
+        "aliasLegado": "abrir_menu",
+        "grupoRef": "advogado.home.acao.grupo.acoes_comuns",
+        "nome": "abrir menu",
+        "tipo": "efeito",
+        "origemInstanciaRef": "advogado.home.componente.cabecalho",
+        "evento": "abrirMenu",
+        "efeitos": [
+          {
+            "tipo": "estado_local",
+            "campo": "menuAberto",
+            "valor": true
+          }
+        ],
+        "statusContrato": "extraido",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.acao.fechar_menu",
+        "aliasLegado": "fechar_menu",
+        "grupoRef": "advogado.home.acao.grupo.acoes_comuns",
+        "nome": "fechar menu",
+        "tipo": "efeito",
+        "origemInstanciaRef": "advogado.home.componente.menu_principal",
+        "evento": "fecharMenu",
+        "efeitos": [
+          {
+            "tipo": "estado_local",
+            "campo": "menuAberto",
+            "valor": false
+          }
+        ],
+        "statusContrato": "extraido",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.acao.navegar_item_menu",
+        "aliasLegado": "navegar_item_menu",
+        "grupoRef": "advogado.home.acao.grupo.acoes_comuns",
+        "nome": "navegar item menu",
+        "tipo": "efeito",
+        "origemInstanciaRef": "advogado.home.componente.menu_principal",
+        "evento": "itemSelecionado",
+        "efeitos": [
+          {
+            "tipo": "resolver_item",
+            "instanciaRef": "advogado.home.componente.menu_principal",
+            "propriedade": "props.itens",
+            "origemLegada": "componentes.instancias.menu_principal.props.itens"
+          }
+        ],
+        "statusContrato": "extraido",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.acao.abrir_notificacoes",
+        "aliasLegado": "abrir_notificacoes",
+        "grupoRef": "advogado.home.acao.grupo.acoes_comuns",
+        "nome": "abrir notificacoes",
+        "tipo": "navegacao",
+        "origemInstanciaRef": "advogado.home.componente.cabecalho",
+        "evento": "abrirNotificacoes",
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "notificacoes.lista.notificacoes"
+          }
+        ],
+        "statusContrato": "extraido",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.acao.encerrar_sessao",
+        "aliasLegado": "encerrar_sessao",
+        "grupoRef": "advogado.home.acao.grupo.acoes_comuns",
+        "nome": "encerrar sessao",
+        "tipo": "comando",
+        "origemInstanciaRef": null,
+        "evento": null,
+        "efeitos": [
+          {
+            "tipo": "comando",
+            "comandoRef": "auth.sign_out"
+          }
+        ],
+        "statusContrato": "proposto",
+        "comportamentoComplementar": {
+          "seSucesso": {
+            "destino": "auth.entrar"
+          },
+          "seErro": {
+            "tipo": "mostrar_erro"
+          }
+        }
+      },
+      {
+        "id": "advogado.home.acao.solicitar_validacao_oab",
+        "aliasLegado": "solicitar_validacao_oab",
+        "grupoRef": "advogado.home.acao.grupo.acoes_pendentes",
+        "nome": "solicitar validacao oab",
+        "tipo": "navegacao",
+        "origemInstanciaRef": "advogado.home.componente.painel_oab",
+        "evento": "solicitarValidacaoOab",
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "advogado.oab.validacao"
+          }
+        ],
+        "statusContrato": "a_confirmar",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.acao.alternar_disponibilidade",
+        "aliasLegado": "alternar_disponibilidade",
+        "grupoRef": "advogado.home.acao.grupo.acoes_aprovadas",
+        "nome": "alternar disponibilidade",
+        "tipo": "comando",
+        "origemInstanciaRef": "advogado.home.componente.disponibilidade",
+        "evento": "alternarDisponibilidade",
+        "efeitos": [
+          {
+            "tipo": "comando",
+            "comandoRef": "profissional.alternar_online"
+          }
+        ],
+        "statusContrato": "proposto",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.acao.abrir_solicitacao",
+        "aliasLegado": "abrir_solicitacao",
+        "grupoRef": "advogado.home.acao.grupo.acoes_aprovadas",
+        "nome": "abrir solicitacao",
+        "tipo": "navegacao",
+        "origemInstanciaRef": "advogado.home.componente.solicitacoes",
+        "evento": "solicitacaoSelecionada",
+        "efeitos": [
+          {
+            "tipo": "navegar",
+            "destinoRef": "advogado.clientes.detalhe_solicitacao"
+          }
+        ],
+        "statusContrato": "extraido",
+        "comportamentoComplementar": {}
+      },
+      {
+        "id": "advogado.home.fluxo",
+        "aliasLegado": "advogado.home.fluxo",
+        "grupoRef": null,
+        "nome": "Resolver situação profissional na Home",
+        "tipo": "decisao",
+        "origemInstanciaRef": null,
+        "evento": "resolucao_estado_oab",
+        "efeitos": [
+          {
+            "tipo": "selecionar_estado",
+            "bifurcacaoRef": "branch.advogado.home.fluxo"
+          }
+        ],
+        "statusContrato": "extraido_do_flow_v5",
+        "comportamentoComplementar": {}
+      }
+    ]
+  },
+  "dados": {
+    "campos": [
+      {
+        "id": "advogado.home.dado.oab.status",
+        "caminho": "sessao.profissional.oab.status",
+        "tipo": "string|null",
+        "obrigatorio": true,
+        "valorPadrao": null,
+        "fonteRef": "advogado.home.fonte.profissionalOabStatus",
+        "autoridade": "backend"
+      },
+      {
+        "id": "advogado.home.dado.consulta.status",
+        "caminho": "consulta.oab.status",
+        "tipo": "enum",
+        "valores": [
+          "carregando",
+          "sucesso",
+          "erro"
+        ],
+        "valorPadrao": "carregando",
+        "autoridade": "cliente"
+      },
+      {
+        "id": "advogado.home.dado.perfil",
+        "caminho": "sessao.profissional",
+        "tipo": "objeto",
+        "fonteRef": "advogado.home.fonte.perfil",
+        "autoridade": "backend"
+      },
+      {
+        "id": "advogado.home.dado.solicitacoes",
+        "caminho": "profissional.solicitacoes",
+        "tipo": "colecao",
+        "fonteRef": "advogado.home.fonte.solicitacoes",
+        "autoridade": "backend"
+      },
+      {
+        "id": "advogado.home.dado.menuAberto",
+        "caminho": "ui.menuAberto",
+        "tipo": "boolean",
+        "valorPadrao": false,
+        "autoridade": "cliente"
+      }
+    ],
+    "fontes": [
+      {
+        "id": "advogado.home.fonte.profissionalOabStatus",
+        "aliasLegado": "profissionalOabStatus",
+        "caminho": "sessao.profissional.oab.status",
+        "autoridade": "backend",
+        "tipo": "remota_logica"
+      },
+      {
+        "id": "advogado.home.fonte.perfil",
+        "aliasLegado": "perfil",
+        "caminho": "sessao.profissional",
+        "autoridade": "backend",
+        "tipo": "remota_logica"
+      },
+      {
+        "id": "advogado.home.fonte.solicitacoes",
+        "aliasLegado": "solicitacoes",
+        "caminho": "profissional.solicitacoes",
+        "autoridade": "backend",
+        "tipo": "remota_logica"
+      }
+    ],
+    "operacoes": [
+      {
+        "id": "advogado.home.operacao.consultar_status_oab",
+        "tipo": "consulta",
+        "fonteRef": "advogado.home.fonte.profissionalOabStatus",
+        "saidaCamposRefs": [
+          "advogado.home.dado.oab.status"
+        ],
+        "aoFalhar": "estado_tecnico_erro_sem_liberacao",
+        "endpoint": null,
+        "statusContrato": "operacao_logica_proposta"
+      }
+    ],
+    "vinculos": [
+      {
+        "id": "advogado.home.vinculo.oab_estado",
+        "campoRef": "advogado.home.dado.oab.status",
+        "destino": "estados.negocio_oab"
+      },
+      {
+        "id": "advogado.home.vinculo.consulta_estado",
+        "campoRef": "advogado.home.dado.consulta.status",
+        "destino": "estados.ciclo_consulta"
+      }
+    ],
+    "textos": {
+      "online-status": {
+        "online": "Online",
+        "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+      },
+      "actions": {
+        "ver_solicitacao": "Ver solicitação"
+      },
+      "drawer": {
+        "fechar_menu_aria_label": "Fechar menu",
+        "menu_principal_aria_label": "Menu principal",
+        "online": "Online",
+        "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+      },
+      "route-modal": {
+        "navegacao_simulada_aria_label": "Navegação simulada",
+        "tela_modular_navegacao_simulada": "Tela modular · navegação simulada",
+        "navegacao_simulada": "Navegação simulada",
+        "esta_acao_nao_abre_outra_tela_nesta_biblioteca": "Esta ação não abre outra tela nesta biblioteca.",
+        "fechar": "Fechar"
+      },
+      "oab": {
+        "rotulo": "VALIDAÇÃO PROFISSIONAL",
+        "titulo": "Valide sua OAB para liberar sua Home",
+        "descricao": "Seu cadastro foi recebido. Para acessar solicitações e disponibilizar atendimentos, conclua ou acompanhe a verificação da OAB.",
+        "statusTexto": "O acesso completo depende da confirmação da OAB.",
+        "textoBotao": "Verificar minha OAB"
+      }
+    },
+    "assets": {
+      "marca": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K"
+    },
+    "politicaBinding": "refs declarativas da tela e props repassadas as instancias; nenhuma consulta a pasta para completar conteudo visual"
+  },
+  "componentes": {
+    "instancias": [
+      {
+        "id": "advogado.home.componente.cabecalho",
+        "aliasLegado": "cabecalho",
+        "componenteRef": "header.app-header.v04",
+        "regiaoRef": "advogado.home.regiao.header",
+        "ordem": 10,
+        "props": {
+          "dadosRef": "mocks.base.app-header"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.titulo",
+        "aliasLegado": "titulo",
+        "componenteRef": "header.titlebar.v01",
+        "regiaoRef": "advogado.home.regiao.header",
+        "ordem": 20,
+        "props": {
+          "dadosRef": "mocks.base.titlebar"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.introducao",
+        "aliasLegado": "introducao",
+        "componenteRef": "cmp_advogado_home_advogado_main_hero",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 10,
+        "props": {
+          "dadosRef": "mocks.base.hero"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.painel_oab",
+        "aliasLegado": "painel_oab",
+        "componenteRef": "cmp_advogado_home_advogado_main_oab_validation_panel",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 20,
+        "props": {
+          "dadosRef": "dados.textos.oab"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.disponibilidade",
+        "aliasLegado": "disponibilidade",
+        "componenteRef": "cmp_advogado_home_advogado_main_online_status",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 20,
+        "props": {
+          "dadosRef": "mocks.base.online-status",
+          "textosRef": "dados.textos.online-status"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.solicitacoes",
+        "aliasLegado": "solicitacoes",
+        "componenteRef": "cmp_advogado_home_advogado_main_actions",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 30,
+        "props": {
+          "dadosRef": "mocks.base.actions",
+          "textosRef": "dados.textos.actions"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.menu_principal",
+        "aliasLegado": "menu_principal",
+        "componenteRef": "menu.drawer.v01",
+        "regiaoRef": "advogado.home.regiao.menu",
+        "ordem": 10,
+        "props": {
+          "itens": [
+            {
+              "id": "perfil",
+              "nome": "Meu perfil",
+              "destinoRef": "advogado.perfil_profissional",
+              "icone": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "id": "configuracoes",
+              "nome": "Configurações",
+              "destinoRef": "advogado.configuracao.configuracao",
+              "icone": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "id": "notificacoes",
+              "nome": "Notificações",
+              "destinoRef": "notificacoes.lista.notificacoes",
+              "icone": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "id": "atendimentos",
+              "nome": "Atendimentos",
+              "destinoRef": "advogado.atendimentos_advogado",
+              "visibilidadeContexto": {
+                "estadosRefs": [
+                  "advogado.home.estado.oab_enabled_capabilities"
+                ],
+                "jornadasRefs": []
+              },
+              "icone": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "id": "assinatura",
+              "nome": "Assinatura",
+              "destinoRef": "advogado.assinatura.gestao_assinatura",
+              "visibilidadeContexto": {
+                "estadosRefs": [
+                  "advogado.home.estado.oab_enabled_capabilities"
+                ],
+                "jornadasRefs": []
+              },
+              "icone": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "id": "escritorio",
+              "nome": "Escritório",
+              "destinoRef": "escritorio.gestao.escritorio",
+              "visibilidadeContexto": {
+                "estadosRefs": [
+                  "advogado.home.estado.oab_enabled_capabilities"
+                ],
+                "jornadasRefs": []
+              },
+              "icone": "M5 6h14M5 12h14M5 18h14"
+            },
+            {
+              "id": "sair",
+              "nome": "Sair",
+              "acaoRef": "advogado.home.acao.encerrar_sessao",
+              "icone": "M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"
+            }
+          ],
+          "cabecalho": "Profissional",
+          "perfilRef": "mocks.base.drawer",
+          "rodapeRef": "mocks.base.drawer",
+          "rotulosRef": "dados.textos.drawer",
+          "disponibilidadeRef": "dados.textos.drawer"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.modal_rotas",
+        "aliasLegado": "modal_rotas",
+        "componenteRef": "modal.route-modal.v02",
+        "regiaoRef": "advogado.home.regiao.modal",
+        "ordem": 10,
+        "props": {
+          "textosRef": "dados.textos.route-modal"
+        },
+        "origem": "home_advogado (2).json:componentes.instancias"
+      },
+      {
+        "id": "advogado.home.componente.notificacao_toast",
+        "aliasLegado": "notificacao_toast",
+        "componenteRef": "popup.status-toast.v01",
+        "regiaoRef": "advogado.home.regiao.popup",
+        "ordem": 10,
+        "props": {},
+        "origem": "home_advogado (2).json:componentes.instancias"
+      }
+    ],
+    "definicoesExternasRefs": [
+      "header.app-header.v04",
+      "header.titlebar.v01",
+      "cmp_advogado_home_advogado_main_hero",
+      "cmp_advogado_home_advogado_main_oab_validation_panel",
+      "cmp_advogado_home_advogado_main_online_status",
+      "cmp_advogado_home_advogado_main_actions",
+      "menu.drawer.v01",
+      "modal.route-modal.v02",
+      "popup.status-toast.v01"
+    ],
+    "contratoInstanciacao": {
+      "resolverPor": "componenteRef",
+      "propsPor": "instancia.id",
+      "agrupamentoPor": "estrutura.grupos[].instanciasRefs",
+      "semDuplicarDefinicaoReutilizavel": true
+    },
+    "definicoesEmbutidas": [
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "header.app-header.v04",
+          "nome": "Cabeçalho Profissional",
+          "tipo": "componente",
+          "escopo": "global",
+          "categoria": "header"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "app-header::0",
+              "tag": "header",
+              "atributos": {
+                "class": "app-header"
+              },
+              "filhos": [
+                {
+                  "id": "app-header::[data-action=\"drawer.open\"]",
+                  "tag": "button",
+                  "atributos": {
+                    "class": "app-menu-button",
+                    "type": "button",
+                    "data-action": "drawer.open",
+                    "aria-label": {
+                      "ref": "props.dados.menuLabel"
+                    }
+                  },
+                  "filhos": [
+                    {
+                      "id": "app-header::0.0.0",
+                      "tag": "span"
+                    },
+                    {
+                      "id": "app-header::0.0.1",
+                      "tag": "span"
+                    },
+                    {
+                      "id": "app-header::0.0.2",
+                      "tag": "span"
+                    }
+                  ]
+                },
+                {
+                  "id": "app-header::0.1",
+                  "tag": "div",
+                  "atributos": {
+                    "class": "app-brand"
+                  },
+                  "filhos": [
+                    {
+                      "id": "app-header::0.1.0",
+                      "tag": "img",
+                      "atributos": {
+                        "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPgogIDx0aXRsZSBpZD0idGl0bGUiPlPDrW1ib2xvIEFkdm9nYWRvSsOhPC90aXRsZT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzQiIHI9IjkuMyIvPgogICAgPHBhdGggZD0iTTI4IDYwLjVDMTUuMSA2NC4xIDggNzAuMiA4IDc3LjIgOCA4OC42IDI2LjggOTcgNTAgOTdzNDItOC40IDQyLTE5LjhjMC03LTcuMS0xMy4xLTIwLTE2LjciLz4KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+CiAgPC9nPgo8L3N2Zz4K",
+                        "alt": ""
+                      }
+                    },
+                    {
+                      "id": "app-header::0.1.1",
+                      "tag": "div",
+                      "atributos": {
+                        "class": "app-brand-copy"
+                      },
+                      "filhos": [
+                        {
+                          "id": "app-header::0.1.1.0",
+                          "tag": "strong",
+                          "filhos": [
+                            {
+                              "ref": "props.dados.brand"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "app-header::0.1.1.1",
+                          "tag": "small",
+                          "filhos": [
+                            {
+                              "ref": "props.dados.role"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "app-header::0.2",
+                  "tag": "button",
+                  "atributos": {
+                    "class": "app-notifications",
+                    "type": "button",
+                    "aria-label": {
+                      "ref": "props.dados.notificationsLabel"
+                    },
+                    "data-event-id": "selecionar_destino"
+                  },
+                  "filhos": [
+                    {
+                      "id": "app-header::0.2.0",
+                      "tag": "svg",
+                      "atributos": {
+                        "viewbox": "0 0 24 24",
+                        "aria-hidden": "true"
+                      },
+                      "filhos": [
+                        {
+                          "id": "app-header::0.2.0.0",
+                          "tag": "path",
+                          "atributos": {
+                            "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "app-header::0.2.1",
+                      "tag": "span",
+                      "atributos": {
+                        "class": "app-notifications-badge"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.dados.unreadCount"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button { gap: 4px; }\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}\n.app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-brand-copy { min-width: 0; }\n.app-brand-copy strong,\n.app-brand-copy small { display:block; }\n.app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}\n.app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}\n.app-notifications {\n  position: relative;\n  justify-self: end;\n}\n.app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n.app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [],
+          "eventosEmitidos": [
+            "abrirMenu",
+            "abrirNotificacoes"
+          ],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "app-header": {}
+          },
+          "fixtures": {
+            "app-header": {
+              "brand": "AdvogadoJá",
+              "role": "Advogado",
+              "menuLabel": "Abrir menu",
+              "notificationsGoto": "notificacoes.lista.notificacoes",
+              "notificationsLabel": "Notificações",
+              "unreadCount": "3"
+            }
+          },
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "components/headers/app-header/v04",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "header.titlebar.v01",
+          "nome": "Barra de título",
+          "tipo": "componente",
+          "escopo": "global",
+          "categoria": "titlebar"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "titlebar::0",
+              "tag": "div",
+              "atributos": {
+                "class": "app-titlebar"
+              },
+              "filhos": [
+                {
+                  "id": "titlebar::0.0",
+                  "tag": "strong",
+                  "filhos": [
+                    {
+                      "ref": "props.dados.title"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [],
+          "eventosEmitidos": [],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "titlebar": {}
+          },
+          "fixtures": {
+            "titlebar": {
+              "title": "Início Profissional"
+            }
+          },
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "components/headers/titlebar/v01",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "cmp_advogado_home_advogado_main_hero",
+          "nome": "Apresentação Profissional",
+          "tipo": "componente",
+          "escopo": "local",
+          "categoria": "content"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "hero::0",
+              "tag": "section",
+              "atributos": {
+                "class": "home-intro"
+              },
+              "filhos": [
+                {
+                  "id": "hero::0.0",
+                  "tag": "span",
+                  "atributos": {
+                    "class": "home-eyebrow"
+                  },
+                  "filhos": [
+                    {
+                      "ref": "props.dados.eyebrow"
+                    }
+                  ]
+                },
+                {
+                  "id": "hero::0.1",
+                  "tag": "h1",
+                  "filhos": [
+                    {
+                      "ref": "props.dados.title"
+                    }
+                  ]
+                },
+                {
+                  "id": "hero::0.2",
+                  "tag": "p",
+                  "filhos": [
+                    {
+                      "ref": "props.dados.subtitle"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".home-intro {\n  padding: 2px 2px 4px;\n}\n.home-eyebrow {\n  display:block;\n  margin-bottom:6px;\n  color:var(--gold);\n  font-size:11px;\n  font-weight:900;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n}\n.home-intro h1 {\n  margin:0;\n  color:var(--primary);\n  font-size:24px;\n  line-height:1.15;\n  letter-spacing:-.025em;\n}\n.home-intro p {\n  max-width:560px;\n  margin:8px 0 0;\n  color:var(--muted);\n  font-size:14px;\n  line-height:1.5;\n}\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [],
+          "eventosEmitidos": [],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "hero": {}
+          },
+          "fixtures": {
+            "hero": {
+              "eyebrow": "PAINEL PROFISSIONAL",
+              "title": "Olá, Dr. João Silva",
+              "subtitle": "Acompanhe seus atendimentos e novas solicitações."
+            }
+          },
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "features/advogado/screens/home_advogado/main/hero",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "cmp_advogado_home_advogado_main_oab_validation_panel",
+          "nome": "Painel de validação OAB",
+          "tipo": "componente",
+          "escopo": "local",
+          "categoria": "main"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "oab-validation-panel::root",
+              "tag": "section",
+              "atributos": {
+                "class": "oab-gate-card",
+                "aria-labelledby": "oab-gate-title"
+              },
+              "filhos": [
+                {
+                  "id": "oab-validation-panel::eyebrow",
+                  "tag": "span",
+                  "atributos": {
+                    "class": "oab-gate-eyebrow"
+                  },
+                  "filhos": [
+                    {
+                      "ref": "props.dados.rotulo"
+                    }
+                  ]
+                },
+                {
+                  "id": "oab-validation-panel::title",
+                  "tag": "h2",
+                  "atributos": {
+                    "id": "oab-gate-title"
+                  },
+                  "filhos": [
+                    {
+                      "ref": "props.dados.titulo"
+                    }
+                  ]
+                },
+                {
+                  "id": "oab-validation-panel::description",
+                  "tag": "p",
+                  "filhos": [
+                    {
+                      "ref": "props.dados.descricao"
+                    }
+                  ]
+                },
+                {
+                  "id": "oab-validation-panel::status",
+                  "tag": "p",
+                  "atributos": {
+                    "class": "oab-gate-status"
+                  },
+                  "filhos": [
+                    {
+                      "ref": "props.dados.statusTexto"
+                    }
+                  ]
+                },
+                {
+                  "id": "oab-validation-panel::cta",
+                  "tag": "button",
+                  "atributos": {
+                    "type": "button",
+                    "class": "oab-gate-button",
+                    "data-action": "oab.validar"
+                  },
+                  "filhos": [
+                    {
+                      "ref": "props.dados.textoBotao"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".oab-gate-card{margin:16px 0;padding:24px;border:1px solid #d9cba9;border-radius:16px;background:#fffaf0;color:var(--text,#242424)}.oab-gate-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#936b22}.oab-gate-card h2{margin:10px 0;font-size:22px}.oab-gate-card p{line-height:1.5}.oab-gate-status{font-size:13px;color:#745526}.oab-gate-button{margin-top:12px;border:0;border-radius:10px;padding:12px 18px;background:var(--primary,#2b4d85);color:#fff;font-weight:650;cursor:pointer}"
+        },
+        "interface": {
+          "propriedadesAceitas": [
+            "rotulo",
+            "titulo",
+            "descricao",
+            "statusTexto",
+            "textoBotao"
+          ],
+          "eventosEmitidos": [
+            "solicitarValidacaoOab"
+          ],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "rotulo": "VALIDAÇÃO PROFISSIONAL",
+          "titulo": "Valide sua OAB para liberar sua Home",
+          "descricao": "Seu cadastro foi recebido. Para acessar solicitações e disponibilizar atendimentos, conclua ou acompanhe a verificação da OAB.",
+          "statusTexto": "O acesso completo depende da confirmação da OAB.",
+          "textoBotao": "Verificar minha OAB"
+        },
+        "origemHistorica": {
+          "sourcePath": "telas/advogado/home_advogado/main/oab-validation-panel",
+          "descricao": "Painel da montagem pendente extraído do linear_v3."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "cmp_advogado_home_advogado_main_online_status",
+          "nome": "Status Online",
+          "tipo": "componente",
+          "escopo": "local",
+          "categoria": "content"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "online-status::[data-action=\"online.toggle\"]",
+              "tag": "button",
+              "atributos": {
+                "class": "online-card",
+                "type": "button",
+                "data-online-root": "",
+                "data-event-id": "online.toggle"
+              },
+              "filhos": [
+                {
+                  "id": "online-status::0.0",
+                  "tag": "span",
+                  "atributos": {
+                    "class": "online-dot"
+                  }
+                },
+                {
+                  "id": "online-status::0.1",
+                  "tag": "span",
+                  "atributos": {
+                    "class": "online-copy"
+                  },
+                  "filhos": [
+                    {
+                      "id": "online-status::0.1.0",
+                      "tag": "strong",
+                      "atributos": {
+                        "data-online-status": ""
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.textos.online"
+                        }
+                      ],
+                      "vinculos": {
+                        "textoPorEstado": {
+                          "estado": "online",
+                          "verdadeiro": "Online",
+                          "falso": "Offline"
+                        }
+                      }
+                    },
+                    {
+                      "id": "online-status::0.1.1",
+                      "tag": "small",
+                      "atributos": {
+                        "data-online-copy": ""
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.textos.recebendo_novas_solicitacoes"
+                        }
+                      ],
+                      "vinculos": {
+                        "textoPorEstado": {
+                          "estado": "online",
+                          "verdadeiro": "Recebendo novas solicitações",
+                          "falso": "Indisponível para novas solicitações"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "online-status::0.2",
+                  "tag": "span",
+                  "atributos": {
+                    "class": "online-switch",
+                    "aria-hidden": "true"
+                  },
+                  "filhos": [
+                    {
+                      "id": "online-status::0.2.0",
+                      "tag": "b"
+                    }
+                  ]
+                }
+              ],
+              "vinculos": {
+                "classePorEstado": {
+                  "estado": "online",
+                  "quandoFalso": "is-offline"
+                }
+              }
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".online-card {\n  width:100%;\n  display:grid;\n  grid-template-columns:auto minmax(0,1fr) auto;\n  gap:12px;\n  align-items:center;\n  padding:14px 15px;\n  border:1px solid #a8dfc8;\n  border-radius:16px;\n  background:#f1fbf6;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n}\n.online-card.is-offline {\n  border-color:var(--line);\n  background:#f8fafc;\n}\n.online-dot {\n  width:10px;\n  height:10px;\n  border-radius:50%;\n  background:#15945e;\n  box-shadow:0 0 0 4px rgba(21,148,94,.12);\n}\n.is-offline .online-dot {\n  background:#98a2b3;\n  box-shadow:none;\n}\n.online-copy strong,\n.online-copy small { display:block; }\n.online-copy strong {\n  color:var(--primary);\n  font-size:14px;\n}\n.online-copy small {\n  margin-top:3px;\n  color:var(--muted);\n  font-size:12px;\n}\n.online-switch {\n  position:relative;\n  width:40px;\n  height:23px;\n  border-radius:999px;\n  background:#22c55e;\n}\n.online-switch b {\n  position:absolute;\n  top:3px;\n  right:3px;\n  width:17px;\n  height:17px;\n  border-radius:50%;\n  background:#fff;\n}\n.is-offline .online-switch { background:#98a2b3; }\n.is-offline .online-switch b { right:20px; }\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [],
+          "eventosEmitidos": [
+            "alternarDisponibilidade"
+          ],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "online-status": {
+              "online": "Online",
+              "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+            }
+          },
+          "fixtures": {},
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "features/advogado/screens/home_advogado/main/online-status",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "cmp_advogado_home_advogado_main_actions",
+          "nome": "Novas solicitações",
+          "tipo": "componente",
+          "escopo": "local",
+          "categoria": "content"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "actions::0",
+              "tag": "section",
+              "atributos": {
+                "class": "requests-block",
+                "aria-labelledby": "requests-title"
+              },
+              "filhos": [
+                {
+                  "id": "actions::0.0",
+                  "tag": "div",
+                  "atributos": {
+                    "class": "requests-heading"
+                  },
+                  "filhos": [
+                    {
+                      "id": "actions::0.0.0",
+                      "tag": "div",
+                      "filhos": [
+                        {
+                          "id": "actions::#requests-title",
+                          "tag": "h2",
+                          "atributos": {
+                            "id": "requests-title"
+                          },
+                          "filhos": [
+                            {
+                              "ref": "props.dados.title"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.0.0.1",
+                          "tag": "p",
+                          "filhos": [
+                            {
+                              "ref": "props.dados.count"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "actions::0.1",
+                  "tag": "div",
+                  "atributos": {
+                    "class": "requests-list"
+                  },
+                  "filhos": [
+                    {
+                      "id": "actions::0.1.0",
+                      "tag": "button",
+                      "atributos": {
+                        "class": "request-card",
+                        "type": "button",
+                        "data-event-id": "selecionar_destino"
+                      },
+                      "filhos": [
+                        {
+                          "id": "actions::0.1.0.0",
+                          "tag": "div",
+                          "atributos": {
+                            "class": "request-top"
+                          },
+                          "filhos": [
+                            {
+                              "id": "actions::0.1.0.0.0",
+                              "tag": "span",
+                              "atributos": {
+                                "class": "request-priority"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.0.priority"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.0.0.1",
+                              "tag": "span",
+                              "atributos": {
+                                "class": "request-time"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.0.time"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.0.1",
+                          "tag": "h3",
+                          "filhos": [
+                            {
+                              "ref": "props.dados.items.0.area"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.0.2",
+                          "tag": "p",
+                          "atributos": {
+                            "class": "request-meta"
+                          },
+                          "filhos": [
+                            {
+                              "partes": [
+                                {
+                                  "ref": "props.dados.items.0.requestType"
+                                },
+                                " · ",
+                                {
+                                  "ref": "props.dados.items.0.location"
+                                },
+                                " · ",
+                                {
+                                  "ref": "props.dados.items.0.mode"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.0.3",
+                          "tag": "p",
+                          "atributos": {
+                            "class": "request-summary"
+                          },
+                          "filhos": [
+                            {
+                              "ref": "props.dados.items.0.summary"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.0.4",
+                          "tag": "span",
+                          "atributos": {
+                            "class": "request-open"
+                          },
+                          "filhos": [
+                            {
+                              "partes": [
+                                {
+                                  "ref": "props.textos.ver_solicitacao"
+                                },
+                                " "
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.0.4.0",
+                              "tag": "b",
+                              "filhos": [
+                                "›"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "actions::0.1.1",
+                      "tag": "button",
+                      "atributos": {
+                        "class": "request-card",
+                        "type": "button",
+                        "data-event-id": "selecionar_destino"
+                      },
+                      "filhos": [
+                        {
+                          "id": "actions::0.1.1.0",
+                          "tag": "div",
+                          "atributos": {
+                            "class": "request-top"
+                          },
+                          "filhos": [
+                            {
+                              "id": "actions::0.1.1.0.0",
+                              "tag": "span",
+                              "atributos": {
+                                "class": "request-priority"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.1.priority"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.1.0.1",
+                              "tag": "span",
+                              "atributos": {
+                                "class": "request-time"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.dados.items.1.time"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.1.1",
+                          "tag": "h3",
+                          "filhos": [
+                            {
+                              "ref": "props.dados.items.1.area"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.1.2",
+                          "tag": "p",
+                          "atributos": {
+                            "class": "request-meta"
+                          },
+                          "filhos": [
+                            {
+                              "partes": [
+                                {
+                                  "ref": "props.dados.items.1.requestType"
+                                },
+                                " · ",
+                                {
+                                  "ref": "props.dados.items.1.location"
+                                },
+                                " · ",
+                                {
+                                  "ref": "props.dados.items.1.mode"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.1.3",
+                          "tag": "p",
+                          "atributos": {
+                            "class": "request-summary"
+                          },
+                          "filhos": [
+                            {
+                              "ref": "props.dados.items.1.summary"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "actions::0.1.1.4",
+                          "tag": "span",
+                          "atributos": {
+                            "class": "request-open"
+                          },
+                          "filhos": [
+                            {
+                              "partes": [
+                                {
+                                  "ref": "props.textos.ver_solicitacao"
+                                },
+                                " "
+                              ]
+                            },
+                            {
+                              "id": "actions::0.1.1.4.0",
+                              "tag": "b",
+                              "filhos": [
+                                "›"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".requests-block { display:grid; gap:12px; }\n.requests-heading {\n  display:flex;\n  justify-content:space-between;\n  gap:12px;\n  align-items:end;\n}\n.requests-heading h2 {\n  margin:0;\n  color:var(--primary);\n  font-size:18px;\n  letter-spacing:-.015em;\n}\n.requests-heading p {\n  margin:4px 0 0;\n  color:var(--muted);\n  font-size:12px;\n}\n.requests-list { display:grid; gap:10px; }\n.request-card {\n  width:100%;\n  display:block;\n  padding:15px;\n  border:1px solid var(--line);\n  border-radius:16px;\n  background:#fff;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n  box-shadow:0 2px 7px rgba(16,35,63,.035);\n}\n.request-card:hover { border-color:#bac7d8; }\n.request-top {\n  display:flex;\n  justify-content:space-between;\n  gap:10px;\n  align-items:center;\n}\n.request-priority {\n  display:inline-flex;\n  align-items:center;\n  min-height:24px;\n  padding:3px 9px;\n  border-radius:999px;\n  background:#fff7e8;\n  color:#8a5a08;\n  font-size:10px;\n  font-weight:900;\n  text-transform:uppercase;\n  letter-spacing:.045em;\n}\n.request-time {\n  color:var(--muted);\n  font-size:11px;\n}\n.request-card h3 {\n  margin:12px 0 0;\n  color:var(--primary);\n  font-size:16px;\n}\n.request-meta {\n  margin:5px 0 0;\n  color:var(--muted);\n  font-size:12px;\n  line-height:1.45;\n}\n.request-summary {\n  margin:11px 0 0;\n  color:#344054;\n  font-size:13px;\n  line-height:1.5;\n}\n.request-open {\n  margin-top:13px;\n  display:flex;\n  justify-content:flex-end;\n  gap:6px;\n  align-items:center;\n  color:var(--primary-soft);\n  font-size:12px;\n  font-weight:800;\n}\n.request-open b {\n  color:var(--gold);\n  font-size:20px;\n  line-height:1;\n}\n@media(min-width:680px) {\n  .requests-list { grid-template-columns:1fr 1fr; }\n  .request-card:first-child { grid-column:1 / -1; }\n}\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [
+            "solicitacoes"
+          ],
+          "eventosEmitidos": [
+            "solicitacaoSelecionada"
+          ],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "actions": {
+              "ver_solicitacao": "Ver solicitação"
+            }
+          },
+          "fixtures": {
+            "actions": {
+              "title": "Novas solicitações",
+              "count": "2 disponíveis",
+              "items": [
+                {
+                  "goto": "advogado.atendimentos_advogado",
+                  "priority": "Nova",
+                  "time": "há 5 min",
+                  "area": "Direito Criminal",
+                  "requestType": "Orientação",
+                  "location": "Aracaju · SE",
+                  "mode": "Online",
+                  "summary": "Cliente solicita orientação inicial sobre uma situação jurídica."
+                },
+                {
+                  "goto": "advogado.atendimentos_advogado",
+                  "priority": "Nova",
+                  "time": "há 18 min",
+                  "area": "Direito de Família",
+                  "requestType": "Consulta",
+                  "location": "Aracaju · SE",
+                  "mode": "Presencial",
+                  "summary": "Solicitação de atendimento para esclarecimento de próximos passos."
+                }
+              ]
+            }
+          },
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "features/advogado/screens/home_advogado/main/actions",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "menu.drawer.v01",
+          "nome": "Menu lateral Profissional",
+          "tipo": "componente",
+          "escopo": "global",
+          "categoria": "drawer"
+        },
+        "estrutura": {
+          "formato": "arvore_com_repeticao_de_itens",
+          "arvore": [
+            {
+              "tag": "aside",
+              "atributos": {
+                "class": "prototype-drawer",
+                "data-overlay-root": "",
+                "aria-hidden": "true"
+              },
+              "filhos": [
+                {
+                  "tag": "button",
+                  "atributos": {
+                    "class": "drawer-backdrop",
+                    "type": "button",
+                    "aria-label": {
+                      "ref": "props.rotulos.fechar_menu_aria_label"
+                    }
+                  },
+                  "eventoEmitido": "fecharMenu"
+                },
+                {
+                  "tag": "div",
+                  "atributos": {
+                    "class": "drawer-panel"
+                  },
+                  "filhos": [
+                    {
+                      "tag": "div",
+                      "atributos": {
+                        "class": "drawer-top"
+                      },
+                      "filhos": [
+                        {
+                          "tag": "div",
+                          "atributos": {
+                            "class": "drawer-identity"
+                          },
+                          "filhos": [
+                            {
+                              "tag": "div",
+                              "atributos": {
+                                "class": "drawer-avatar"
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.perfil.avatar"
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "div",
+                              "atributos": {
+                                "class": "drawer-profile"
+                              },
+                              "filhos": [
+                                {
+                                  "tag": "strong",
+                                  "filhos": [
+                                    {
+                                      "ref": "props.perfil.name"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "tag": "small",
+                                  "filhos": [
+                                    {
+                                      "ref": "props.perfil.subtitle"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "tag": "button",
+                      "atributos": {
+                        "class": "drawer-online",
+                        "type": "button",
+                        "data-online-root": ""
+                      },
+                      "vinculos": {
+                        "classePorEstado": {
+                          "estado": "online",
+                          "quandoFalso": "is-offline"
+                        }
+                      },
+                      "filhos": [
+                        {
+                          "tag": "span",
+                          "atributos": {
+                            "class": "online-dot"
+                          }
+                        },
+                        {
+                          "tag": "span",
+                          "atributos": {
+                            "class": "drawer-online-copy"
+                          },
+                          "filhos": [
+                            {
+                              "tag": "strong",
+                              "atributos": {
+                                "data-online-status": ""
+                              },
+                              "vinculos": {
+                                "textoPorEstado": {
+                                  "estado": "online",
+                                  "verdadeiro": "Online",
+                                  "falso": "Offline"
+                                }
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.disponibilidade.online"
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "small",
+                              "atributos": {
+                                "data-online-copy": ""
+                              },
+                              "vinculos": {
+                                "textoPorEstado": {
+                                  "estado": "online",
+                                  "verdadeiro": "Recebendo novas solicitações",
+                                  "falso": "Indisponível para novas solicitações"
+                                }
+                              },
+                              "filhos": [
+                                {
+                                  "ref": "props.disponibilidade.recebendo_novas_solicitacoes"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "i",
+                          "atributos": {
+                            "class": "online-switch"
+                          },
+                          "filhos": [
+                            {
+                              "tag": "b"
+                            }
+                          ]
+                        }
+                      ],
+                      "eventoEmitido": "alternarDisponibilidade",
+                      "aplicaA": {
+                        "propsVerdadeiras": [
+                          "mostrarDisponibilidade"
+                        ]
+                      }
+                    },
+                    {
+                      "tag": "nav",
+                      "atributos": {
+                        "class": "drawer-nav",
+                        "aria-label": {
+                          "ref": "props.rotulos.menu_principal_aria_label"
+                        }
+                      },
+                      "filhos": [],
+                      "repetir": {
+                        "colecaoRef": "props.itens",
+                        "chave": "id",
+                        "elemento": {
+                          "tag": "button",
+                          "atributos": {
+                            "type": "button",
+                            "data-item-id": {
+                              "ref": "item.id"
+                            },
+                            "data-event-id": "itemSelecionado"
+                          },
+                          "filhos": [
+                            {
+                              "tag": "svg",
+                              "atributos": {
+                                "class": "drawer-icon",
+                                "viewBox": "0 0 24 24",
+                                "fill": "none",
+                                "stroke": "currentColor",
+                                "stroke-width": "1.5",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "aria-hidden": "true"
+                              },
+                              "filhos": [
+                                {
+                                  "tag": "path",
+                                  "atributos": {
+                                    "d": {
+                                      "ref": "item.icone"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "span",
+                              "filhos": [
+                                {
+                                  "ref": "item.nome"
+                                }
+                              ]
+                            }
+                          ],
+                          "eventoEmitido": "itemSelecionado"
+                        }
+                      }
+                    },
+                    {
+                      "tag": "div",
+                      "atributos": {
+                        "class": "drawer-footer"
+                      },
+                      "filhos": [
+                        {
+                          "tag": "div",
+                          "atributos": {
+                            "class": "drawer-footer-top"
+                          },
+                          "filhos": [
+                            {
+                              "tag": "button",
+                              "atributos": {
+                                "class": "drawer-logout",
+                                "type": "button"
+                              },
+                              "filhos": [
+                                {
+                                  "tag": "svg",
+                                  "atributos": {
+                                    "class": "drawer-icon",
+                                    "viewbox": "0 0 24 24",
+                                    "fill": "none",
+                                    "stroke": "currentColor",
+                                    "stroke-width": "1.5",
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "aria-hidden": "true"
+                                  },
+                                  "filhos": [
+                                    {
+                                      "tag": "path",
+                                      "atributos": {
+                                        "d": "M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "tag": "span",
+                                  "filhos": [
+                                    {
+                                      "ref": "props.rodape.logoutLabel"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "eventoEmitido": "sairSolicitado"
+                            },
+                            {
+                              "tag": "small",
+                              "filhos": [
+                                {
+                                  "ref": "props.rodape.footer"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "button",
+                          "atributos": {
+                            "class": "drawer-emergency",
+                            "type": "button"
+                          },
+                          "filhos": [
+                            {
+                              "ref": "props.rodape.emergencyLabel"
+                            }
+                          ],
+                          "eventoEmitido": "contatoPrioritario"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".prototype-drawer {\n  position: fixed;\n  z-index: 40;\n  inset: 0;\n  display: none;\n}\n\n.prototype-drawer.open { display: block; }\n\n.drawer-backdrop {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: rgba(7, 16, 30, .60);\n}\n\n.drawer-panel {\n  position: absolute;\n  inset: 0 auto 0 0;\n  width: min(80vw, 360px);\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  background: #3b4a7d;\n  color: #fff;\n  box-shadow: 12px 0 30px rgba(0, 0, 0, .32);\n}\n\n.drawer-top {\n  flex: 0 0 auto;\n  min-height: 106px;\n  padding: 30px 22px 20px;\n  display: flex;\n  align-items: center;\n}\n\n.drawer-identity {\n  min-width: 0;\n  display: flex;\n  gap: 14px;\n  align-items: center;\n}\n\n.drawer-avatar {\n  flex: 0 0 56px;\n  width: 56px;\n  height: 56px;\n  display: grid;\n  place-items: center;\n  border: 2px solid rgba(255, 255, 255, .20);\n  border-radius: 50%;\n  background: #dbeafe;\n  color: #1e3a8a;\n  font-size: 20px;\n  font-weight: 800;\n}\n\n.drawer-profile { min-width: 0; }\n.drawer-profile strong,\n.drawer-profile small { display: block; }\n.drawer-profile strong {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 16px;\n  font-weight: 600;\n}\n.drawer-profile small {\n  margin-top: 2px;\n  color: #bfdbfe;\n  font-size: 11px;\n  font-weight: 400;\n  text-transform: lowercase;\n}\n\n.drawer-online {\n  flex: 0 0 auto;\n  width: calc(100% - 44px);\n  margin: 0 22px 10px;\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 10px;\n  align-items: center;\n  border: 1px solid rgba(255, 255, 255, .18);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: rgba(255, 255, 255, .08);\n  color: #fff;\n  text-align: left;\n  cursor: pointer;\n}\n.drawer-online-copy strong,\n.drawer-online-copy small { display: block; }\n.drawer-online-copy strong { font-size: 13px; }\n.drawer-online-copy small { margin-top: 2px; color: #bfdbfe; font-size: 10px; }\n.online-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background: #4ade80;\n  box-shadow: 0 0 0 4px rgba(74, 222, 128, .14);\n}\n.drawer-online.is-offline .online-dot { background: #98a2b3; box-shadow: none; }\n.online-switch { position: relative; width: 38px; height: 22px; border-radius: 999px; background: #22c55e; }\n.online-switch b { position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }\n.drawer-online.is-offline .online-switch { background: #64748b; }\n.drawer-online.is-offline .online-switch b { right: 19px; }\n\n.drawer-nav {\n  flex: 1 1 auto;\n  min-height: 0;\n  display: block;\n  margin: 0;\n  padding: 0 0 8px;\n  overflow-x: hidden;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  -webkit-overflow-scrolling: touch;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(255, 255, 255, .35) transparent;\n}\n.drawer-nav::-webkit-scrollbar { width: 5px; }\n.drawer-nav::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(255, 255, 255, .35); }\n\n.drawer-nav button {\n  width: 100%;\n  min-height: 51px;\n  padding: 14px 22px;\n  border: 0;\n  border-bottom: 1px solid rgba(255, 255, 255, .10);\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  text-align: left;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n}\n.drawer-nav button:hover { background: rgba(255, 255, 255, .08); }\n.drawer-icon { flex: 0 0 20px; width: 20px; height: 20px; color: #aebee5; }\n\n.drawer-footer {\n  flex: 0 0 auto;\n  margin-top: 0;\n  padding: 16px 22px 30px;\n  display: flex;\n  flex-direction: column;\n  gap: 22px;\n  background: rgba(0, 0, 0, .10);\n}\n.drawer-footer-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }\n.drawer-logout {\n  min-height: 32px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  font-size: 14px;\n  cursor: pointer;\n}\n.drawer-logout svg { width: 18px; height: 18px; color: #aebee5; }\n.drawer-footer small { color: #aebee5; font-size: 10px; }\n.drawer-emergency {\n  min-height: 41px;\n  border: 1px solid rgba(255, 255, 255, .54);\n  border-radius: 999px;\n  background: transparent;\n  color: #fff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n}\n.drawer-emergency:hover { background: rgba(255, 255, 255, .08); }\n\n@media (max-width: 420px) {\n  .drawer-panel { width: 80vw; }\n  .drawer-top { padding-top: 24px; }\n}\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [
+            "itens",
+            "perfil",
+            "rodape",
+            "rotulos",
+            "disponibilidade",
+            "mostrarDisponibilidade",
+            "aberto"
+          ],
+          "eventosEmitidos": [
+            "fecharMenu",
+            "itemSelecionado",
+            "alternarDisponibilidade",
+            "sairSolicitado",
+            "contatoPrioritario"
+          ],
+          "contratoItens": "Lista unica fornecida pela tela; item {id,nome,icone,destino|acaoRef,aplicaA}; motor filtra antes de renderizar.",
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "drawer": {
+              "fechar_menu_aria_label": "Fechar menu",
+              "menu_principal_aria_label": "Menu principal",
+              "online": "Online",
+              "recebendo_novas_solicitacoes": "Recebendo novas solicitações"
+            }
+          },
+          "fixtures": {
+            "drawer": {
+              "avatar": "JS",
+              "name": "Dr. João Silva",
+              "subtitle": "Perfil profissional",
+              "showOnline": true,
+              "items": [
+                {
+                  "goto": "advogado.clientes.detalhe_solicitacao",
+                  "label": "Análise da solicitação",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                },
+                {
+                  "goto": "advogado.atendimentos_advogado",
+                  "label": "Atendimentos",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                },
+                {
+                  "goto": "advogado.perfil_profissional",
+                  "label": "Meu Perfil",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                },
+                {
+                  "goto": "advogado.assinatura.gestao_assinatura",
+                  "label": "Assinatura",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                },
+                {
+                  "goto": "escritorio.gestao.escritorio",
+                  "label": "Escritório",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                },
+                {
+                  "goto": "advogado.configuracao.configuracao",
+                  "label": "Configurações",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                },
+                {
+                  "goto": "notificacoes.lista.notificacoes",
+                  "label": "Notificações",
+                  "icon": "M5 6h14M5 12h14M5 18h14"
+                }
+              ],
+              "logoutGoto": "auth.sessao.entrar",
+              "logoutLabel": "Sair",
+              "footer": "Ambiente de demonstração",
+              "emergencyLabel": "Contato prioritário"
+            }
+          },
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "components/menus/drawer/v01",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "modal.route-modal.v02",
+          "nome": "Modal de navegação simulada",
+          "tipo": "componente",
+          "escopo": "global",
+          "categoria": "route-modal"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "route-modal::0",
+              "tag": "div",
+              "atributos": {
+                "class": "route-modal",
+                "data-overlay-root": "",
+                "aria-hidden": "true",
+                "role": "dialog",
+                "aria-modal": "true",
+                "aria-label": {
+                  "ref": "props.textos.navegacao_simulada_aria_label"
+                }
+              },
+              "filhos": [
+                {
+                  "id": "route-modal::0.0",
+                  "tag": "div",
+                  "atributos": {
+                    "class": "route-card"
+                  },
+                  "filhos": [
+                    {
+                      "id": "route-modal::0.0.0",
+                      "tag": "p",
+                      "atributos": {
+                        "class": "kicker"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.textos.tela_modular_navegacao_simulada"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "route-modal::0.0.1",
+                      "tag": "h2",
+                      "atributos": {
+                        "data-route-title": ""
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.textos.navegacao_simulada"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "route-modal::0.0.2",
+                      "tag": "p",
+                      "atributos": {
+                        "data-route-text": ""
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.textos.esta_acao_nao_abre_outra_tela_nesta_biblioteca"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "route-modal::0.0.3",
+                      "tag": "code",
+                      "atributos": {
+                        "data-route-code": ""
+                      }
+                    },
+                    {
+                      "id": "route-modal::[data-action=\"route.close\"]",
+                      "tag": "button",
+                      "atributos": {
+                        "type": "button",
+                        "data-action": "route.close"
+                      },
+                      "filhos": [
+                        {
+                          "ref": "props.textos.fechar"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}.route-modal.open{display:flex}.route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}.kicker{margin:0 0 7px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.route-card h2{margin:0 0 8px;color:var(--primary);font-size:20px}.route-card p:not(.kicker){margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.5}.route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:var(--primary);font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}\n\n"
+        },
+        "interface": {
+          "propriedadesAceitas": [],
+          "eventosEmitidos": [
+            "fecharModal"
+          ],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "route-modal": {
+              "navegacao_simulada_aria_label": "Navegação simulada",
+              "tela_modular_navegacao_simulada": "Tela modular · navegação simulada",
+              "navegacao_simulada": "Navegação simulada",
+              "esta_acao_nao_abre_outra_tela_nesta_biblioteca": "Esta ação não abre outra tela nesta biblioteca.",
+              "fechar": "Fechar"
+            }
+          },
+          "fixtures": {},
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "components/modals/route-modal/v02",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      },
+      {
+        "schema": "advogadoja.componente.reutilizavel.v1-proposta",
+        "identidade": {
+          "id": "popup.status-toast.v01",
+          "nome": "Toast de alteração de status",
+          "tipo": "componente",
+          "escopo": "global",
+          "categoria": "status-toast"
+        },
+        "estrutura": {
+          "formato": "arvore_elementos",
+          "arvore": [
+            {
+              "id": "status-toast::0",
+              "tag": "div",
+              "atributos": {
+                "class": "status-toast",
+                "data-toast-root": "",
+                "role": "status",
+                "aria-live": "polite"
+              },
+              "filhos": [
+                {
+                  "id": "status-toast::0.0",
+                  "tag": "span",
+                  "atributos": {
+                    "data-toast-text": ""
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "estilos": {
+          "css": ".status-toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:999px;background:#10233f;color:#fff;font-size:13px;box-shadow:0 10px 30px #0003;transition:.2s ease}.status-toast.show{opacity:1;transform:translate(-50%,0)}@media(min-width:900px){.status-toast{bottom:28px}}"
+        },
+        "interface": {
+          "propriedadesAceitas": [],
+          "eventosEmitidos": [],
+          "regraBinding": "props calculadas pelo motor a partir de dadosRef/textosRef/instancia da tela; componente nao consulta a tela ou outros arquivos diretamente"
+        },
+        "dadosExemplo": {
+          "componentes": {
+            "status-toast": {}
+          },
+          "fixtures": {},
+          "campos": {}
+        },
+        "origemHistorica": {
+          "sourcePath": "components/popups/status-toast/v01",
+          "descricao": "Extraido e simplificado do catalogo recebido; contrato proposto, não validado em runtime."
+        }
+      }
+    ],
+    "resolucao": {
+      "modo": "autocontido",
+      "campoDefinicoes": "componentes.definicoesEmbutidas",
+      "campoInstancias": "componentes.instancias",
+      "chaveCorrespondencia": "identidade.id = componenteRef",
+      "buscarArquivoExternoEmRuntime": false
+    }
+  },
+  "estrutura": {
+    "raiz": {
+      "id": "advogado.home.elemento.raiz",
+      "tipo": "layout_semantico"
+    },
+    "regioes": [
+      {
+        "id": "advogado.home.regiao.header",
+        "nome": "header",
+        "tipo": "regiao_layout",
+        "ordem": 1,
+        "gruposRefs": [
+          "advogado.home.grupo.comum_header"
+        ]
+      },
+      {
+        "id": "advogado.home.regiao.navigation",
+        "nome": "navigation",
+        "tipo": "regiao_layout",
+        "ordem": 2,
+        "gruposRefs": []
+      },
+      {
+        "id": "advogado.home.regiao.main",
+        "nome": "main",
+        "tipo": "regiao_layout",
+        "ordem": 3,
+        "gruposRefs": [
+          "advogado.home.grupo.comum_main",
+          "advogado.home.grupo.pendente_main",
+          "advogado.home.grupo.aprovada_main"
+        ]
+      },
+      {
+        "id": "advogado.home.regiao.menu",
+        "nome": "menu",
+        "tipo": "camada_auxiliar",
+        "ordem": 4,
+        "gruposRefs": [
+          "advogado.home.grupo.comum_menu"
+        ]
+      },
+      {
+        "id": "advogado.home.regiao.modal",
+        "nome": "modal",
+        "tipo": "camada_auxiliar",
+        "ordem": 5,
+        "gruposRefs": [
+          "advogado.home.grupo.comum_modal"
+        ]
+      },
+      {
+        "id": "advogado.home.regiao.popup",
+        "nome": "popup",
+        "tipo": "camada_auxiliar",
+        "ordem": 6,
+        "gruposRefs": [
+          "advogado.home.grupo.comum_popup"
+        ]
+      },
+      {
+        "id": "advogado.home.regiao.alert",
+        "nome": "alert",
+        "tipo": "camada_auxiliar",
+        "ordem": 7,
+        "gruposRefs": []
+      }
+    ],
+    "grupos": [
+      {
+        "id": "advogado.home.grupo.comum_header",
+        "regiaoRef": "advogado.home.regiao.header",
+        "ordem": 10,
+        "instanciasRefs": [
+          "advogado.home.componente.cabecalho",
+          "advogado.home.componente.titulo"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      },
+      {
+        "id": "advogado.home.grupo.comum_main",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 10,
+        "instanciasRefs": [
+          "advogado.home.componente.introducao"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      },
+      {
+        "id": "advogado.home.grupo.pendente_main",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 20,
+        "instanciasRefs": [
+          "advogado.home.componente.painel_oab"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "advogado.home.estado.oab_pending_capabilities"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      },
+      {
+        "id": "advogado.home.grupo.aprovada_main",
+        "regiaoRef": "advogado.home.regiao.main",
+        "ordem": 20,
+        "instanciasRefs": [
+          "advogado.home.componente.disponibilidade",
+          "advogado.home.componente.solicitacoes"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "advogado.home.estado.oab_enabled_capabilities"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      },
+      {
+        "id": "advogado.home.grupo.comum_menu",
+        "regiaoRef": "advogado.home.regiao.menu",
+        "ordem": 10,
+        "instanciasRefs": [
+          "advogado.home.componente.menu_principal"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      },
+      {
+        "id": "advogado.home.grupo.comum_modal",
+        "regiaoRef": "advogado.home.regiao.modal",
+        "ordem": 10,
+        "instanciasRefs": [
+          "advogado.home.componente.modal_rotas"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      },
+      {
+        "id": "advogado.home.grupo.comum_popup",
+        "regiaoRef": "advogado.home.regiao.popup",
+        "ordem": 10,
+        "instanciasRefs": [
+          "advogado.home.componente.notificacao_toast"
+        ],
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        },
+        "origem": "home_advogado (2).json:estrutura.grupos"
+      }
+    ],
+    "montagem": {
+      "modo": "regioes_grupos_instancias",
+      "ordenacao": "regioes[].ordem > grupos[].ordem > componentes.instancias[].ordem",
+      "selecao": "estados.itens[].composicao.estruturaGruposRefs",
+      "posicoesFlow": "fora_do_contrato_de_tela",
+      "permitirRegioesOpcionais": true
+    }
+  },
+  "estilos": {
+    "tema": {
+      "--primary": "#10233f",
+      "--primary-soft": "#173c6b",
+      "--gold": "#b88932",
+      "--page": "#eef2f6",
+      "--surface": "#fff",
+      "--line": "#dbe3ee",
+      "--text": "#172033",
+      "--muted": "#667085"
+    },
+    "cssGlobalTela": "*{box-sizing:border-box}\nbody{min-width:320px;min-height:100dvh;margin:0;background:var(--page);color:var(--text);font-family:\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\nbutton,input{font:inherit}\nbutton{cursor:pointer}\na{color:inherit;text-decoration:none}\n.prototype-screen{min-height:100dvh}\n.screen-slot--main{display:block;width:min(100%,720px);margin:0 auto;padding:22px 16px 28px}\n.screen-slot--main>*+*{margin-top:12px}\n.screen-layout{min-height:100dvh;}\n.home-profissional{min-height:100dvh;}\n.screen-slot--main{display:block;width:min(100%,720px);margin:0 auto;padding:22px 16px 28px;}\n.screen-slot--main>*+*{margin-top:12px;}\n",
+    "grupos": [
+      {
+        "id": "advogado.home.estilo.grupo.home_base",
+        "nome": "home_base",
+        "css": ".home-profissional {min-height:100dvh; max-width:720px; margin-inline:auto;} ",
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "*"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        }
+      },
+      {
+        "id": "advogado.home.estilo.grupo.home_pendente",
+        "nome": "home_pendente",
+        "css": ".home-profissional.oab-pendente{background:var(--page);}",
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "advogado.home.estado.oab_pending_capabilities"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        }
+      },
+      {
+        "id": "advogado.home.estilo.grupo.home_aprovada",
+        "nome": "home_aprovada",
+        "css": ".home-profissional.oab-aprovada{background:var(--page);}",
+        "aplicacaoOriginal": {
+          "estadosRefs": [
+            "advogado.home.estado.oab_enabled_capabilities"
+          ],
+          "jornadasRefs": [
+            "advogado"
+          ]
+        }
+      }
+    ],
+    "politica": "Estilos comuns e específicos ativados pela composição do estado; CSS literal preservado como fonte existente."
+  },
+  "variantes": {
+    "itens": [
+      {
+        "id": "advogado.home.variante.menu_disponibilidade_aprovada",
+        "estadoRef": "advogado.home.estado.oab_enabled_capabilities",
+        "alteracoes": [
+          {
+            "alvoRef": "advogado.home.componente.menu_principal",
+            "propriedade": "props.mostrarDisponibilidade",
+            "operacao": "definir",
+            "valor": true
+          }
+        ],
+        "origem": "home_advogado (2).json:componentes.instancias.menu_principal.props"
+      },
+      {
+        "id": "advogado.home.variante.menu_disponibilidade_restrita",
+        "estadosRefs": [
+          "advogado.home.estado.oab_pending_capabilities",
+          "advogado.home.estado.oab_validating_capabilities",
+          "advogado.home.estado.oab_restricted_capabilities",
+          "advogado.home.estado.oab_unknown_capabilities",
+          "advogado.home.estado.carregando",
+          "advogado.home.estado.erro"
+        ],
+        "alteracoes": [
+          {
+            "alvoRef": "advogado.home.componente.menu_principal",
+            "propriedade": "props.mostrarDisponibilidade",
+            "operacao": "definir",
+            "valor": false
+          }
+        ],
+        "origem": "derivado_da_visibilidade_de_estado_original"
+      }
+    ],
+    "regra": "Variantes alteram propriedades; selecao de grupos estruturais pertence a estados.itens[].composicao."
+  },
+  "interacoes": {
+    "itens": [
+      {
+        "id": "advogado.home.interacao.abrir_menu",
+        "instanciaRef": "advogado.home.componente.cabecalho",
+        "evento": "abrirMenu",
+        "acaoRef": "advogado.home.acao.abrir_menu",
+        "origem": "home_advogado (2).json:acoes.grupos"
+      },
+      {
+        "id": "advogado.home.interacao.fechar_menu",
+        "instanciaRef": "advogado.home.componente.menu_principal",
+        "evento": "fecharMenu",
+        "acaoRef": "advogado.home.acao.fechar_menu",
+        "origem": "home_advogado (2).json:acoes.grupos"
+      },
+      {
+        "id": "advogado.home.interacao.navegar_item_menu",
+        "instanciaRef": "advogado.home.componente.menu_principal",
+        "evento": "itemSelecionado",
+        "acaoRef": "advogado.home.acao.navegar_item_menu",
+        "origem": "home_advogado (2).json:acoes.grupos",
+        "criterioEvento": {
+          "campo": "itemId",
+          "operador": "diferente",
+          "valor": "sair"
+        }
+      },
+      {
+        "id": "advogado.home.interacao.abrir_notificacoes",
+        "instanciaRef": "advogado.home.componente.cabecalho",
+        "evento": "abrirNotificacoes",
+        "acaoRef": "advogado.home.acao.abrir_notificacoes",
+        "origem": "home_advogado (2).json:acoes.grupos"
+      },
+      {
+        "id": "advogado.home.interacao.solicitar_validacao_oab",
+        "instanciaRef": "advogado.home.componente.painel_oab",
+        "evento": "solicitarValidacaoOab",
+        "acaoRef": "advogado.home.acao.solicitar_validacao_oab",
+        "origem": "home_advogado (2).json:acoes.grupos"
+      },
+      {
+        "id": "advogado.home.interacao.alternar_disponibilidade",
+        "instanciaRef": "advogado.home.componente.disponibilidade",
+        "evento": "alternarDisponibilidade",
+        "acaoRef": "advogado.home.acao.alternar_disponibilidade",
+        "origem": "home_advogado (2).json:acoes.grupos"
+      },
+      {
+        "id": "advogado.home.interacao.abrir_solicitacao",
+        "instanciaRef": "advogado.home.componente.solicitacoes",
+        "evento": "solicitacaoSelecionada",
+        "acaoRef": "advogado.home.acao.abrir_solicitacao",
+        "origem": "home_advogado (2).json:acoes.grupos"
+      },
+      {
+        "id": "advogado.home.interacao.menu.sair",
+        "instanciaRef": "advogado.home.componente.menu_principal",
+        "itemId": "sair",
+        "evento": "itemSelecionado",
+        "acaoRef": "advogado.home.acao.encerrar_sessao",
+        "origem": "home_advogado (2).json:componentes.instancias.menu_principal.props.itens",
+        "criterioEvento": {
+          "campo": "itemId",
+          "operador": "igual",
+          "valor": "sair"
+        }
+      }
+    ]
+  },
+  "mocks": {
+    "base": {
+      "app-header": {
+        "brand": "AdvogadoJá",
+        "role": "Advogado",
+        "menuLabel": "Abrir menu",
+        "notificationsLabel": "Notificações",
+        "unreadCount": "3"
+      },
+      "drawer": {
+        "avatar": "JS",
+        "name": "Dr. João Silva",
+        "subtitle": "Perfil profissional",
+        "logoutLabel": "Sair",
+        "footer": "Ambiente de demonstração",
+        "emergencyLabel": "Contato prioritário"
+      },
+      "actions": {
+        "title": "Novas solicitações",
+        "count": "2 disponíveis",
+        "items": [
+          {
+            "priority": "Nova",
+            "time": "há 5 min",
+            "area": "Direito Criminal",
+            "requestType": "Orientação",
+            "location": "Aracaju · SE",
+            "mode": "Online",
+            "summary": "Cliente solicita orientação inicial sobre uma situação jurídica."
+          },
+          {
+            "priority": "Nova",
+            "time": "há 18 min",
+            "area": "Direito de Família",
+            "requestType": "Consulta",
+            "location": "Aracaju · SE",
+            "mode": "Presencial",
+            "summary": "Solicitação de atendimento para esclarecimento de próximos passos."
+          }
+        ]
+      },
+      "titlebar": {
+        "title": "Início Profissional"
+      },
+      "hero": {
+        "eyebrow": "PAINEL PROFISSIONAL",
+        "title": "Olá, Dr. João Silva",
+        "subtitle": "Acompanhe seus atendimentos e novas solicitações."
+      }
+    },
+    "cenarioPadraoRef": "advogado.home.mock.oab_pendente",
+    "cenarios": [
+      {
+        "id": "advogado.home.mock.oab_pendente_historico",
+        "nome": "oab pendente",
+        "estadoEsperadoRef": "advogado.home.estado.oab_validating_capabilities",
+        "sessao": {
+          "profissional": {
+            "id": "advogado-teste",
+            "oab": {
+              "status": "em_analise"
+            }
+          }
+        },
+        "sobrescritas": {
+          "hero.subtitle": "Sua Home ficará disponível após a validação da OAB."
+        },
+        "origem": "home_advogado (2).json:mocks.cenarios",
+        "status": "extraido"
+      },
+      {
+        "id": "advogado.home.mock.oab_aprovada",
+        "nome": "oab aprovada",
+        "estadoEsperadoRef": "advogado.home.estado.oab_enabled_capabilities",
+        "sessao": {
+          "profissional": {
+            "id": "advogado-teste",
+            "oab": {
+              "status": "aprovada"
+            }
+          }
+        },
+        "sobrescritas": {},
+        "origem": "home_advogado (2).json:mocks.cenarios",
+        "status": "extraido"
+      },
+      {
+        "id": "advogado.home.mock.oab_pendente",
+        "nome": "oab pendente",
+        "estadoEsperadoRef": "advogado.home.estado.oab_pending_capabilities",
+        "sessao": {
+          "profissional": {
+            "id": "advogado-teste",
+            "oab": {
+              "status": "nao_enviada"
+            }
+          }
+        },
+        "sobrescritas": {},
+        "origem": "derivado_dos_estados_e_fluxo",
+        "status": "proposto_para_teste"
+      },
+      {
+        "id": "advogado.home.mock.oab_em_validacao",
+        "nome": "oab em validacao",
+        "estadoEsperadoRef": "advogado.home.estado.oab_validating_capabilities",
+        "sessao": {
+          "profissional": {
+            "id": "advogado-teste",
+            "oab": {
+              "status": "em_analise"
+            }
+          }
+        },
+        "sobrescritas": {},
+        "origem": "derivado_dos_estados_e_fluxo",
+        "status": "proposto_para_teste"
+      },
+      {
+        "id": "advogado.home.mock.oab_restrita",
+        "nome": "oab restrita",
+        "estadoEsperadoRef": "advogado.home.estado.oab_restricted_capabilities",
+        "sessao": {
+          "profissional": {
+            "id": "advogado-teste",
+            "oab": {
+              "status": "suspensa"
+            }
+          }
+        },
+        "sobrescritas": {},
+        "origem": "derivado_dos_estados_e_fluxo",
+        "status": "proposto_para_teste"
+      },
+      {
+        "id": "advogado.home.mock.oab_desconhecida",
+        "nome": "oab desconhecida",
+        "estadoEsperadoRef": "advogado.home.estado.oab_unknown_capabilities",
+        "sessao": {
+          "profissional": {
+            "id": "advogado-teste",
+            "oab": {
+              "status": null
+            }
+          }
+        },
+        "sobrescritas": {},
+        "origem": "derivado_dos_estados_e_fluxo",
+        "status": "proposto_para_teste"
+      }
+    ],
+    "politica": "apenas simulação; nao autoriza recursos em producao"
+  },
+  "localizacao": {
+    "caminhoLogico": "advogado/home",
+    "arquivoContrato": "catalogo/telas/advogado.home.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/telas/advogado.home.json"
+    },
+    "implementacoes": {
+      "react": {
+        "diretorio": "src/features/advogado/pages/home",
+        "arquivo": "home.tsx",
+        "status": "referencia_proposta"
+      },
+      "flutter": {
+        "diretorio": "lib/features/advogado/screens/home",
+        "arquivo": "home_screen.dart",
+        "status": "referencia_proposta"
+      }
+    }
+  },
+  "politicas": {
+    "composicao": "Estado seleciona grupos de estrutura, estilo e ação; variantes aplicam deltas de propriedades.",
+    "eventos": "Interações apontam para ações únicas, não duplicam efeitos.",
+    "autorizacao": "Visibilidade e menu não substituem autorização de backend.",
+    "componentes": "definicoes_embutidas_por_id; nenhuma_busca_externa_em_runtime",
+    "transicoes": "sair_das_acoes_e_itens_do_componente",
+    "mapa": "especificacao_separada_futura",
+    "consumo": {
+      "motorInterpretaNaoInfere": true,
+      "componentePorIdentidade": "componentes.definicoesEmbutidas[].identidade.id",
+      "composicaoPorEstado": "estados.itens[].composicao",
+      "condicaoPorCaminho": "navegacao.bifurcacoes[].caminhos[].condicao",
+      "eventoPorInteracao": "interacoes.itens[].criterioEvento"
+    }
+  },
+  "proveniencia": {
+    "status": "proposta_autocontida_v03_pendente_homologacao",
+    "fontes": [
+      "home_advogado (2).json",
+      "advogado.home_completo_modular.json",
+      "ADVOGADOJA_FLOW_V3_MASTER_CONTRATO_V02.json"
+    ],
+    "decisoes": [
+      "estrutura de sete grupos e nove instâncias preservada da Home segmentada",
+      "relações de jornadas, ocorrências e bifurcações aproveitadas do modelo modular V5",
+      "estado desconhecido separado de OAB pendente; todos os não aprovados permanecem restritos",
+      "estilos e ações organizados em grupos comuns e condicionais",
+      "mocks criados adicionalmente recebem origem e status de proposta"
+    ],
+    "pontosPendentes": [
+      "homologar mapeamento dos status de OAB para estados de negócio",
+      "resolver todas as dependências de componentes reutilizáveis e telas externas",
+      "definir contratos dos comandos e endpoints",
+      "confirmar rotas reais e permissões backend",
+      "validar CSS legado e integração com futuro renderizador",
+      "validar semântica dos caminhos de bifurcação sem condições explícitas"
+    ],
+    "observacoesDeNormalizacao": [
+      "O cenário histórico chamado oab_pendente contém status em_analise; foi mantido como oab_pendente_historico e associado ao estado de validação.",
+      "O cenário oab_pendente estrito foi acrescentado como proposta, com status nao_enviada.",
+      "Refs de componentes legados não foram substituídas por possíveis equivalentes sem confirmação de contrato."
+    ],
+    "dependenciasExternas": {
+      "telas": [
+        {
+          "ref": "advogado.assinatura.gestao_assinatura",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "advogado.atendimentos_advogado",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "advogado.clientes.detalhe_solicitacao",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "advogado.configuracao.configuracao",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "advogado.oab.validacao",
+          "catalogada": false,
+          "status": "pendente_ou_alias"
+        },
+        {
+          "ref": "advogado.onboarding.revisao_profissional",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "advogado.perfil_profissional",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "auth.entrar",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "escritorio.gestao.escritorio",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        },
+        {
+          "ref": "notificacoes.lista.notificacoes",
+          "catalogada": true,
+          "status": "encontrada_no_catalogo_v3"
+        }
+      ],
+      "componentes": [
+        {
+          "ref": "header.app-header.v04",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "header.titlebar.v01",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "cmp_advogado_home_advogado_main_hero",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "cmp_advogado_home_advogado_main_oab_validation_panel",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "cmp_advogado_home_advogado_main_online_status",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "cmp_advogado_home_advogado_main_actions",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "menu.drawer.v01",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "modal.route-modal.v02",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        },
+        {
+          "ref": "popup.status-toast.v01",
+          "catalogado": true,
+          "status": "definicao_incluida_no_contrato"
+        }
+      ]
+    },
+    "atualizacaoV03": {
+      "origem": "advogadoja_catalogo_modular_completo_v6.json",
+      "versaoBase": "0.3.0",
+      "decisoes": [
+        "Nove definicoes completas de componentes embutidas para leitura sem busca externa.",
+        "Cinco regras de caminhos copiadas dos estados de destino existentes.",
+        "Eventos de selecao do menu diferenciados pelo itemId.",
+        "Destino de saida normalizado para auth.entrar.",
+        "Rota principal nula e endpoint OAB nao foram inferidos."
+      ]
+    }
+  }
+}

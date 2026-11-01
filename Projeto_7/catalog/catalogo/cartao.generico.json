@@ -1,0 +1,60 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "cabecalho.cadastro.etapa",
+    "tipo": "componente",
+    "namespace": "cabecalho",
+    "chave": "etapa",
+    "nome": "Introducao da etapa de cadastro/onboarding",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"registration__intro\"><p class=\"eyebrow\">{{etapa}}</p><h1>{{titulo}}</h1><p>{{descricao}}</p></div>"
+    },
+    "variantes": [
+      {
+        "id": "template.abf4384ef606",
+        "html": "<div class=\"registration__intro\"><p class=\"eyebrow\">{{etapa}}</p><h1>{{titulo}}</h1><p>{{descricao}}</p></div>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".eyebrow {\n  margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;\n}\n.welcome__copy > p:not(.eyebrow) {\n  margin: 15px 0 26px;\n  color: var(--muted);\n  line-height: 1.6;\n}\n.registration__intro {\n  margin: 2px 2px 18px;\n}\n.registration__intro h1,\n.registration--success h1 {\n  margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;\n}\n.registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status) {\n  margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;\n}\n.op-shell > .eyebrow {\n  margin: 0 0 7px;\n}"
+    },
+    "variantes": [],
+    "css": ".eyebrow {\n  margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;\n}\n.welcome__copy > p:not(.eyebrow) {\n  margin: 15px 0 26px;\n  color: var(--muted);\n  line-height: 1.6;\n}\n.registration__intro {\n  margin: 2px 2px 18px;\n}\n.registration__intro h1,\n.registration--success h1 {\n  margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;\n}\n.registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status) {\n  margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;\n}\n.op-shell > .eyebrow {\n  margin: 0 0 7px;\n}"
+  },
+  "interface": {
+    "props": [
+      "descricao",
+      "etapa",
+      "titulo"
+    ],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [
+      "descricao",
+      "etapa",
+      "titulo"
+    ],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/cabecalho.cadastro.etapa.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/cabecalho.cadastro.etapa.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

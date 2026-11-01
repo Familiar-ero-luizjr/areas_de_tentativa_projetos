@@ -1,0 +1,52 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "navegacao.admin.modulos",
+    "tipo": "componente",
+    "namespace": "navegacao",
+    "chave": "modulos",
+    "nome": "Barra de modulos administrativos",
+    "versao": null
+  },
+  "classificacao": {
+    "escopo": "reutilizavel",
+    "situacao": "extraido_de_telas_atuais_pendente_homologacao"
+  },
+  "estrutura": {
+    "base": {
+      "html": "<div class=\"admin-nav\">\n        <span class=\"active\">Dashboard</span><span>Perfis</span><span>OAB</span><span>Denúncias</span><span>Assinaturas</span><span>Logs</span>\n      </div>"
+    },
+    "variantes": [
+      {
+        "id": "template.ac1e130264c4",
+        "html": "<div class=\"admin-nav\">\n        <span class=\"active\">Dashboard</span><span>Perfis</span><span>OAB</span><span>Denúncias</span><span>Assinaturas</span><span>Logs</span>\n      </div>"
+      }
+    ],
+    "formato": "fonte_v02_preservada"
+  },
+  "estilos": {
+    "base": {
+      "css": ".admin-ui .admin-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}\n.admin-ui .admin-nav span{padding:7px 9px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:10px;font-weight:800}\n.admin-ui .admin-nav span.active{border-color:#fdba74;background:#fff7ed;color:#9a3412}"
+    },
+    "variantes": [],
+    "css": ".admin-ui .admin-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}\n.admin-ui .admin-nav span{padding:7px 9px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:10px;font-weight:800}\n.admin-ui .admin-nav span.active{border-color:#fdba74;background:#fff7ed;color:#9a3412}"
+  },
+  "interface": {
+    "props": [],
+    "regras": "Campos de texto sao repostos literalmente na montagem; eventos/IDs de acao do HTML original nao sao reescritos nesta extracao.",
+    "propriedadesAceitas": [],
+    "eventosEmitidos": []
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/navegacao.admin.modulos.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/navegacao.admin.modulos.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}

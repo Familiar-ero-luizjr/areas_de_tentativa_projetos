@@ -1,0 +1,73 @@
+{
+  "schema": "advogadoja.componente",
+  "schemaVersion": "0.3.0",
+  "identidade": {
+    "id": "botao.primario",
+    "tipo": "componente",
+    "namespace": "botao",
+    "chave": "primario",
+    "nome": "Botão primário",
+    "versao": "1.0"
+  },
+  "classificacao": {
+    "escopo": "global"
+  },
+  "estrutura": {
+    "base": {
+      "arvore": [
+        {
+          "tag": "button",
+          "textoRef": "props.rotulo",
+          "eventoEmitido": "botao.acionado"
+        }
+      ]
+    },
+    "variantes": [],
+    "formato": "arvore_elementos_v02_preservada",
+    "arvore": [
+      {
+        "tag": "button",
+        "textoRef": "props.rotulo",
+        "eventoEmitido": "botao.acionado"
+      }
+    ]
+  },
+  "estilos": {
+    "base": {
+      "css": "button{background:#2865df;color:white;border-radius:9px;padding:12px}"
+    },
+    "variantes": [],
+    "css": "button{background:#2865df;color:white;border-radius:9px;padding:12px}"
+  },
+  "interface": {
+    "props": {
+      "rotulo": {
+        "tipo": "texto"
+      },
+      "acaoRef": {
+        "tipo": "id"
+      }
+    },
+    "eventos": [
+      "botao.acionado"
+    ],
+    "propriedadesAceitas": [
+      "rotulo",
+      "acaoRef"
+    ],
+    "eventosEmitidos": [
+      "botao.acionado"
+    ]
+  },
+  "localizacao": {
+    "arquivoContrato": "catalogo/componentes/botao.primario.json",
+    "origensLegadas": {
+      "arquivoV5": "fontes_v5/catalogo/componentes/botao.primario.json"
+    }
+  },
+  "origem": "conversao_fiel_componente_v5",
+  "origemContrato": {
+    "schemaVersion": "0.2.0",
+    "preservadoEm": "originais_v02"
+  }
+}
