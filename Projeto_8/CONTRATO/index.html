@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AdvogadoJá · Contrato JSON Completo e Documentação</title>
+<link rel="stylesheet" href="visualizador/style.css">
+</head>
+<body>
+<header class="top"><h1>AdvogadoJá · Contrato modular completo e documentação</h1><p>Tela + componentes · modelo com explicações · exemplo completo · documentação JSON · arquivo autocontido</p></header>
+<main>
+<div id="carregamento" class="status ok" role="status">Carregando dados modulares do contrato…</div>
+<div class="tabs" role="tablist" aria-label="Modelo, exemplo e documentação">
+ <button class="tab" role="tab" type="button" id="tab-estrutura" aria-controls="p-estrutura" aria-selected="true" tabindex="0">01 · Modelo explicado</button>
+ <button class="tab" role="tab" type="button" id="tab-home" aria-controls="p-home" aria-selected="false" tabindex="-1">02 · Home do Advogado</button>
+ <button class="tab" role="tab" type="button" id="tab-doc" aria-controls="p-doc" aria-selected="false" tabindex="-1">03 · Documentação</button>
+</div>
+<section id="p-estrutura" class="panel" role="tabpanel" aria-labelledby="tab-estrutura">
+ <div class="tools"><span class="context" id="count-estrutura">Contrato completo sem valores · explicação em cada campo</span><div class="actions">
+  <button class="btn" type="button" data-op="expand">Expandir tudo</button><button class="btn" type="button" data-op="collapse">Recolher tudo</button>
+  <button class="btn" type="button" data-op="import">Importar JSON</button><button class="btn main" type="button" data-op="export">Exportar JSON</button>
+ </div></div><div class="status" id="msg-estrutura" aria-live="polite" hidden></div>
+ <div class="tree" id="tree-estrutura"></div>
+ <div class="footerline">Todas as linhas trazem comentários. Clique em ⓘ para detalhes. Campos ainda sem contrato interno aparecem como reservas, não como decisões.</div>
+</section>
+<section id="p-home" class="panel" role="tabpanel" aria-labelledby="tab-home" hidden>
+ <div class="tools"><span class="context" id="count-home">Exemplo atual da navegação da Home</span><div class="actions">
+  <button class="btn" type="button" data-op="expand">Expandir tudo</button><button class="btn" type="button" data-op="collapse">Recolher tudo</button>
+  <button class="btn" type="button" data-op="import">Importar JSON</button><button class="btn main" type="button" data-op="export">Exportar JSON</button>
+ </div></div><div class="status" id="msg-home" aria-live="polite" hidden></div>
+ <div class="tree" id="tree-home"></div>
+ <div class="footerline">Mock documental, não dados ou rotas homologados. Importação aceita a navegação isolada ou dentro do objeto da tela.</div>
+</section>
+<section id="p-doc" class="panel" role="tabpanel" aria-labelledby="tab-doc" hidden>
+ <div class="tools"><span class="context" id="count-doc">Conteúdo completo do MD, convertido para JSON estruturado</span><div class="actions">
+  <button class="btn" type="button" data-op="import">Importar JSON</button><button class="btn main" type="button" data-op="export">Exportar JSON</button>
+ </div></div><div class="status" id="msg-doc" aria-live="polite" hidden></div>
+ <div id="documentacao"></div>
+</section>
+<input id="json-file" type="file" accept=".json,application/json" hidden aria-label="Selecionar JSON">
+</main>
+<dialog class="help-dialog" id="help-dialog" aria-labelledby="field-title">
+ <div class="dialog-top"><h2 id="field-title">Explicação do campo</h2><button class="dialog-close" type="button" id="close-help" aria-label="Fechar">×</button></div>
+ <div class="dialog-body"><div class="dialog-path" id="field-path"></div><p id="field-description"></p><p class="fine" id="field-note"></p></div>
+</dialog>
+<script src="conector/montador.js" defer></script></body></html>

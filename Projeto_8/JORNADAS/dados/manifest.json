@@ -1,0 +1,2174 @@
+{
+  "schema": "advogadoja.jornadas.manifest.v1",
+  "pacoteSchema": "advogadoja.pacote.telas.v1-proposta",
+  "origem": {
+    "arquivo": "advogado_joao.html",
+    "jornada": "advogado",
+    "modo": "extração do HTML V3 com design, navegação, relações e estados",
+    "telas": 50,
+    "nosJornada": 69,
+    "nosEstadoSemTela": 14,
+    "participacoes": 55,
+    "transicoesDiretas": 79,
+    "semParticipacao": [
+      "advogado.validacao_profissional"
+    ],
+    "documentacao": "Telas com identidade única por jornada. Um mesmo screenKey pode ter múltiplos nós de Flow. Os estados sem tela são conservados como nós, não como telas.",
+    "upgradeCliente": null,
+    "telasAdminPropostas": null,
+    "regra": "Extração documental não homologada, sem inventar dados do banco, endpoints, permissões ou ações reais."
+  },
+  "fluxoFonte": {
+    "nos": {
+      "splash": {
+        "title": "Splash",
+        "screen": "auth.inicializacao.splash",
+        "note": "Abertura do aplicativo.",
+        "next": "welcome"
+      },
+      "welcome": {
+        "title": "Boas-vindas",
+        "screen": "auth.inicializacao.boas_vindas",
+        "note": "Primeiro contato com a plataforma.",
+        "next": "enter"
+      },
+      "enter": {
+        "title": "Entrar / Criar conta",
+        "screen": "auth.sessao.entrar",
+        "note": "O mesmo card representa a tela de acesso e o ponto que decide em qual estágio João está.",
+        "branch": "Situação do João ao entrar",
+        "routes": [
+          {
+            "id": "new",
+            "label": "Criar conta · advogado novo",
+            "next": "cad_id",
+            "detail": "Cria a conta pelo cadastro comum; depois faz login para iniciar o onboarding."
+          },
+          {
+            "id": "pending",
+            "label": "Já cadastrado · onboarding pendente",
+            "next": "onboarding_login",
+            "detail": "Faz login e continua o onboarding profissional."
+          },
+          {
+            "id": "active",
+            "label": "Advogado já onboardado · entrar",
+            "next": "active_login",
+            "detail": "Faz login e segue para a mesma Home Profissional."
+          }
+        ]
+      },
+      "cad_id": {
+        "title": "Identificação",
+        "screen": "auth.cadastro.identificacao",
+        "note": "Cadastro comum.",
+        "next": "cad_contact"
+      },
+      "cad_contact": {
+        "title": "Contato",
+        "screen": "auth.cadastro.contato",
+        "note": "Cadastro comum.",
+        "next": "cad_address"
+      },
+      "cad_address": {
+        "title": "Endereço",
+        "screen": "auth.cadastro.endereco",
+        "note": "Cadastro comum.",
+        "next": "cad_security"
+      },
+      "cad_security": {
+        "title": "Segurança",
+        "screen": "auth.cadastro.seguranca",
+        "note": "Segurança dentro do cadastro, antes da revisão.",
+        "next": "cad_review"
+      },
+      "cad_review": {
+        "title": "Revisão dos dados",
+        "screen": "auth.cadastro.revisao",
+        "note": "Revisão do cadastro comum.",
+        "next": "cad_done"
+      },
+      "cad_done": {
+        "title": "Cadastro concluído",
+        "screen": "auth.cadastro.concluido",
+        "note": "Fim do cadastro comum. O próximo passo é login; só depois começa o onboarding profissional.",
+        "next": "onboarding_login"
+      },
+      "pro_academic": {
+        "title": "Dados acadêmicos",
+        "screen": "advogado.onboarding.dados_academicos",
+        "note": "Onboarding profissional · etapa 1.",
+        "next": "pro_data"
+      },
+      "pro_data": {
+        "title": "Dados profissionais",
+        "screen": "advogado.onboarding.dados_profissionais",
+        "note": "Onboarding profissional · etapa 2.",
+        "next": "pro_areas"
+      },
+      "pro_areas": {
+        "title": "Áreas de atuação",
+        "screen": "advogado.onboarding.areas_atuacao",
+        "note": "Onboarding profissional · etapa 3.",
+        "next": "pro_profile"
+      },
+      "pro_profile": {
+        "title": "Perfil profissional",
+        "screen": "advogado.onboarding.perfil_profissional",
+        "note": "Onboarding profissional · etapa 4.",
+        "next": "pro_availability"
+      },
+      "pro_availability": {
+        "title": "Disponibilidade inicial",
+        "screen": "advogado.onboarding.disponibilidade",
+        "note": "Onboarding profissional · etapa 5.",
+        "next": "office_intent"
+      },
+      "office_intent": {
+        "title": "Vínculo com escritório",
+        "screen": "escritorio.onboarding.vinculo_escritorio",
+        "note": "Onboarding profissional. Escritório é um subfluxo do advogado, não um tipo de usuário. A validação da OAB não acontece aqui.",
+        "branch": "Como João conclui o onboarding?",
+        "routes": [
+          {
+            "id": "individual",
+            "label": "Atuar individualmente",
+            "next": "pro_review",
+            "detail": "Sem escritório agora; poderá criar ou entrar depois."
+          },
+          {
+            "id": "owner",
+            "label": "Cadastrar meu escritório",
+            "next": "office_register",
+            "detail": "João cria o escritório e será o proprietário."
+          }
+        ]
+      },
+      "office_register": {
+        "title": "Dados do escritório",
+        "screen": "escritorio.onboarding.cadastro_escritorio",
+        "note": "Subfluxo de criação do escritório durante o onboarding.",
+        "next": "pro_review"
+      },
+      "pro_review": {
+        "title": "Revisão do onboarding profissional",
+        "screen": "advogado.onboarding.revisao_profissional",
+        "note": "Conclusão do onboarding profissional. OAB ainda não é validada neste fluxo.",
+        "next": "home"
+      },
+      "home": {
+        "title": "Home Profissional",
+        "screen": "advogado.home_advogado",
+        "note": "A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis.",
+        "branch": "Estado da OAB considerado pela mesma Home",
+        "routes": [
+          {
+            "id": "pending",
+            "label": "OAB não validada / pendente",
+            "next": "oab_pending_capabilities",
+            "detail": "Home restrita; mostra pendência e CTA para validar OAB."
+          },
+          {
+            "id": "validating",
+            "label": "OAB em validação",
+            "next": "oab_validating_capabilities",
+            "detail": "Continua na mesma Home, ainda restrita."
+          },
+          {
+            "id": "enabled",
+            "label": "OAB validada / habilitada",
+            "next": "oab_enabled_capabilities",
+            "detail": "Capabilities recalculadas e funções profissionais permitidas são liberadas."
+          },
+          {
+            "id": "restricted",
+            "label": "Recusada / suspensa / expirada",
+            "next": "oab_restricted_capabilities",
+            "detail": "Pode gerar restrições diferentes; regra exata de cada estado ainda não está fechada."
+          },
+          {
+            "id": "unknown",
+            "label": "Erro técnico / estado desconhecido",
+            "next": "oab_unknown_capabilities",
+            "detail": "Não equivale a não validada; operações protegidas permanecem bloqueadas por segurança."
+          }
+        ]
+      },
+      "requests": {
+        "title": "Solicitações recebidas",
+        "screen": "advogado.clientes.solicitacoes_recebidas",
+        "note": "A própria tela separa novas, aceitas e recusadas.",
+        "next": "request_detail"
+      },
+      "request_detail": {
+        "title": "Detalhe da solicitação",
+        "screen": "advogado.clientes.detalhe_solicitacao",
+        "note": "Aqui João decide aceitar ou recusar o contato.",
+        "branch": "Decisão sobre a solicitação",
+        "routes": [
+          {
+            "id": "accept",
+            "label": "Aceitar contato",
+            "next": "accept_contact",
+            "detail": "Confirma aceite e libera os dados."
+          },
+          {
+            "id": "decline",
+            "label": "Recusar solicitação",
+            "next": "decline_request",
+            "detail": "Registra o motivo da recusa."
+          }
+        ]
+      },
+      "accept_contact": {
+        "title": "Aceitar contato",
+        "screen": "advogado.clientes.aceitar_contato",
+        "note": "Confirmação antes de liberar o contato.",
+        "next": "contact_released"
+      },
+      "contact_released": {
+        "title": "Contato liberado",
+        "screen": "advogado.clientes.contato_liberado",
+        "note": "Contato do cliente liberado após aceite.",
+        "next": "appointments"
+      },
+      "decline_request": {
+        "title": "Recusar solicitação",
+        "screen": "advogado.clientes.recusar_solicitacao",
+        "note": "João informa o motivo e confirma a recusa.",
+        "next": "declined_state"
+      },
+      "declined_state": {
+        "title": "Recusa registrada",
+        "state": true,
+        "note": "A solicitação passa ao estado recusado em Solicitações recebidas."
+      },
+      "appointments": {
+        "title": "Atendimentos",
+        "screen": "advogado.atendimentos_advogado",
+        "note": "Visão dos atendimentos solicitados, em andamento e encerrados."
+      },
+      "availability": {
+        "title": "Disponibilidade",
+        "screen": "advogado.disponibilidade",
+        "note": "Status online/offline e tipos de busca. A tela também abre Agenda e Raio de atendimento.",
+        "branch": "Ação de disponibilidade",
+        "routes": [
+          {
+            "id": "schedule",
+            "label": "Agenda semanal",
+            "next": "schedule",
+            "detail": "Dias, horários e indisponibilidades."
+          },
+          {
+            "id": "radius",
+            "label": "Raio de atendimento",
+            "next": "radius",
+            "detail": "Distância para atendimentos presenciais."
+          },
+          {
+            "id": "preferences",
+            "label": "Preferências de atendimento",
+            "next": "service_preferences",
+            "detail": "Modalidades, região, raio e especialidades."
+          }
+        ]
+      },
+      "schedule": {
+        "title": "Agenda semanal",
+        "screen": "advogado.configuracao.agenda_semanal",
+        "note": "Configuração da agenda profissional."
+      },
+      "radius": {
+        "title": "Raio de atendimento",
+        "screen": "advogado.disponibilidade.raio_atendimento",
+        "note": "Configuração da distância para atendimento presencial."
+      },
+      "service_preferences": {
+        "title": "Preferências de atendimento",
+        "screen": "advogado.configuracao.preferencias_atendimento",
+        "note": "Preferências operacionais do advogado."
+      },
+      "profile": {
+        "title": "Perfil profissional",
+        "screen": "advogado.perfil_profissional",
+        "note": "Dados pessoais, profissionais e públicos do advogado."
+      },
+      "subscription": {
+        "title": "Gestão da assinatura",
+        "screen": "advogado.assinatura.gestao_assinatura",
+        "note": "Ponto de entrada da assinatura profissional.",
+        "branch": "Ação de assinatura",
+        "routes": [
+          {
+            "id": "plans",
+            "label": "Ver planos",
+            "next": "plans",
+            "detail": "Escolher ou alterar plano."
+          },
+          {
+            "id": "history",
+            "label": "Histórico",
+            "next": "subscription_history",
+            "detail": "Consultar histórico de assinatura."
+          }
+        ]
+      },
+      "plans": {
+        "title": "Planos",
+        "screen": "advogado.assinatura.planos",
+        "note": "Planos disponíveis ao advogado.",
+        "branch": "Ação em Planos",
+        "routes": [
+          {
+            "id": "checkout",
+            "label": "Escolher plano",
+            "next": "checkout",
+            "detail": "Segue para o checkout."
+          },
+          {
+            "id": "manage",
+            "label": "Voltar à gestão",
+            "next": "subscription_management_state",
+            "detail": "Retorna à gestão da assinatura."
+          }
+        ]
+      },
+      "checkout": {
+        "title": "Checkout",
+        "screen": "advogado.assinatura.checkout",
+        "note": "Checkout da assinatura; na V2 de homologação a contratação está simulada.",
+        "next": "subscription_management_state"
+      },
+      "subscription_management_state": {
+        "title": "Assinatura gerenciada",
+        "screen": "advogado.assinatura.gestao_assinatura",
+        "note": "Retorno à gestão da assinatura."
+      },
+      "subscription_history": {
+        "title": "Histórico da assinatura",
+        "screen": "advogado.assinatura.historico_assinatura",
+        "note": "Histórico do plano do advogado."
+      },
+      "office": {
+        "title": "Escritório",
+        "screen": "escritorio.gestao.escritorio",
+        "note": "A tela/fluxo depende da relação atual do advogado com um escritório.",
+        "branch": "Situação do João em relação ao escritório",
+        "routes": [
+          {
+            "id": "independent",
+            "label": "Sem escritório",
+            "next": "office_independent",
+            "detail": "Atua individualmente; pode criar escritório."
+          },
+          {
+            "id": "owner",
+            "label": "Proprietário",
+            "next": "office_owner",
+            "detail": "Administra equipe e distribuição interna."
+          },
+          {
+            "id": "member",
+            "label": "Membro convidado",
+            "next": "office_member",
+            "detail": "Está vinculado a escritório de outro advogado."
+          }
+        ]
+      },
+      "office_independent": {
+        "title": "Sem vínculo com escritório",
+        "state": true,
+        "note": "João continua atuando individualmente.",
+        "branch": "Ação disponível",
+        "routes": [
+          {
+            "id": "create",
+            "label": "Criar escritório",
+            "next": "office_create",
+            "detail": "Abre o cadastro do escritório."
+          },
+          {
+            "id": "stay",
+            "label": "Continuar individual",
+            "next": "office_individual_state",
+            "detail": "Mantém a atuação sem escritório."
+          }
+        ]
+      },
+      "office_create": {
+        "title": "Dados do escritório",
+        "screen": "escritorio.onboarding.cadastro_escritorio",
+        "note": "Ao criar, João passa a ser proprietário.",
+        "next": "office_owner"
+      },
+      "office_individual_state": {
+        "title": "Atuação individual mantida",
+        "state": true,
+        "note": "Nenhuma alteração no vínculo de escritório."
+      },
+      "office_owner": {
+        "title": "Gestão do escritório · proprietário",
+        "screen": "escritorio.gestao.escritorio",
+        "note": "Como proprietário, João possui mini fluxos de equipe e distribuição.",
+        "branch": "Ação do proprietário",
+        "routes": [
+          {
+            "id": "team",
+            "label": "Equipe",
+            "next": "office_team",
+            "detail": "Ver membros e convites."
+          },
+          {
+            "id": "invite",
+            "label": "Convidar advogado",
+            "next": "office_invite",
+            "detail": "Enviar convite a outro advogado."
+          },
+          {
+            "id": "distribution",
+            "label": "Distribuição interna",
+            "next": "office_distribution",
+            "detail": "Configurar a distribuição das solicitações."
+          }
+        ]
+      },
+      "office_team": {
+        "title": "Equipe",
+        "screen": "escritorio.equipe.equipe",
+        "note": "Lista de membros e acesso ao convite."
+      },
+      "office_invite": {
+        "title": "Convidar advogado",
+        "screen": "escritorio.equipe.convidar_advogado",
+        "note": "Convite por e-mail e OAB."
+      },
+      "office_distribution": {
+        "title": "Distribuição interna",
+        "screen": "escritorio.distribuicao.distribuicao_interna",
+        "note": "Regra interna para distribuição de solicitações."
+      },
+      "office_member": {
+        "title": "Vínculo como membro",
+        "state": true,
+        "note": "A V2 atual não traz uma tela operacional separada específica de membro neste recorte; o vínculo deve limitar ações conforme as permissões do escritório."
+      },
+      "settings": {
+        "title": "Configurações",
+        "screen": "advogado.configuracao.configuracao",
+        "note": "Hub de configurações profissionais.",
+        "branch": "Opção de Configurações",
+        "routes": [
+          {
+            "id": "agenda",
+            "label": "Agenda",
+            "next": "schedule",
+            "detail": "Dias, horários e indisponibilidades."
+          },
+          {
+            "id": "preferences",
+            "label": "Preferências de atendimento",
+            "next": "service_preferences",
+            "detail": "Disponibilidade, modalidades, região, raio e especialidades."
+          },
+          {
+            "id": "oab",
+            "label": "Validação da OAB",
+            "next": "oab_validation_area",
+            "detail": "Processo próprio, separado do cadastro e do onboarding."
+          },
+          {
+            "id": "legal",
+            "label": "Termos e privacidade",
+            "next": "legal",
+            "detail": "Documentos legais e consentimentos."
+          },
+          {
+            "id": "support",
+            "label": "Suporte",
+            "next": "support",
+            "detail": "Ajuda, contato e chamados."
+          }
+        ]
+      },
+      "oab_validation": {
+        "title": "Validação da OAB",
+        "screen": "advogado.configuracao.validacao_oab",
+        "note": "Status e dados utilizados na validação profissional."
+      },
+      "legal": {
+        "title": "Termos e privacidade",
+        "screen": "advogado.configuracao.termos_privacidade",
+        "note": "Central de documentos legais.",
+        "branch": "Documento / opção legal",
+        "routes": [
+          {
+            "id": "terms",
+            "label": "Termos de uso",
+            "next": "terms",
+            "detail": "Documento legal."
+          },
+          {
+            "id": "privacy",
+            "label": "Política de privacidade",
+            "next": "privacy",
+            "detail": "Documento legal."
+          },
+          {
+            "id": "consents",
+            "label": "Consentimentos",
+            "next": "consents",
+            "detail": "Gestão de consentimentos."
+          }
+        ]
+      },
+      "terms": {
+        "title": "Termos de uso",
+        "screen": "advogado.configuracao.termos_uso",
+        "note": "Termos de uso."
+      },
+      "privacy": {
+        "title": "Política de privacidade",
+        "screen": "advogado.configuracao.politica_privacidade",
+        "note": "Política de privacidade."
+      },
+      "consents": {
+        "title": "Consentimentos",
+        "screen": "advogado.configuracao.consentimentos",
+        "note": "Consentimentos da conta profissional."
+      },
+      "support": {
+        "title": "Suporte",
+        "screen": "advogado.configuracao.suporte",
+        "note": "Hub de suporte do advogado.",
+        "branch": "Opção de Suporte",
+        "routes": [
+          {
+            "id": "help",
+            "label": "Central de ajuda",
+            "next": "help",
+            "detail": "Perguntas e orientações."
+          },
+          {
+            "id": "talk",
+            "label": "Falar com o suporte",
+            "next": "talk_support",
+            "detail": "Abrir novo chamado."
+          },
+          {
+            "id": "tickets",
+            "label": "Meus chamados",
+            "next": "tickets",
+            "detail": "Acompanhar chamados já abertos."
+          }
+        ]
+      },
+      "help": {
+        "title": "Central de ajuda",
+        "screen": "advogado.configuracao.central_ajuda",
+        "note": "Ajuda e orientações."
+      },
+      "talk_support": {
+        "title": "Falar com o suporte",
+        "screen": "advogado.configuracao.falar_suporte",
+        "note": "Formulário de contato com suporte."
+      },
+      "tickets": {
+        "title": "Meus chamados",
+        "screen": "advogado.configuracao.meus_chamados",
+        "note": "Acompanhamento de chamados."
+      },
+      "notifications": {
+        "title": "Notificações",
+        "screen": "notificacoes.lista.notificacoes",
+        "note": "Central de notificações; convites e eventos podem redirecionar para outros mini fluxos."
+      },
+      "online_state": {
+        "title": "Status de disponibilidade alterado",
+        "state": true,
+        "note": "Online/offline é uma ação da própria Home e também é refletida na tela Disponibilidade."
+      },
+      "logout": {
+        "title": "Sessão encerrada",
+        "state": true,
+        "note": "Ação Sair: encerra a sessão e retorna ao acesso."
+      },
+      "onboarding_login": {
+        "title": "Login",
+        "screen": "auth.sessao.entrar",
+        "note": "Após concluir o cadastro, João autentica a conta antes de iniciar o onboarding profissional.",
+        "next": "pro_academic"
+      },
+      "active_login": {
+        "title": "Login",
+        "screen": "auth.sessao.entrar",
+        "note": "Advogado já onboardado autentica e entra na mesma Home Profissional.",
+        "next": "home"
+      },
+      "oab_pending_capabilities": {
+        "title": "Capabilities · Home restrita",
+        "state": true,
+        "note": "OAB pendente/não validada: João permanece na mesma Home. A pendência e o CTA de validação ficam visíveis; funções profissionais protegidas ficam bloqueadas.",
+        "branch": "Ação principal disponível neste estado",
+        "routes": [
+          {
+            "id": "validate",
+            "label": "Validar OAB",
+            "next": "oab_validation_area",
+            "detail": "Abre o processo próprio de validação da OAB."
+          }
+        ]
+      },
+      "oab_validating_capabilities": {
+        "title": "Capabilities · OAB em validação",
+        "state": true,
+        "note": "João continua na mesma Home em estado restrito enquanto não houver habilitação suficiente. As operações profissionais protegidas permanecem bloqueadas.",
+        "branch": "Acompanhar processo",
+        "routes": [
+          {
+            "id": "status",
+            "label": "Área de validação da OAB",
+            "next": "oab_validation_area",
+            "detail": "Consulta o estado do processo próprio de validação."
+          }
+        ]
+      },
+      "oab_enabled_capabilities": {
+        "title": "Capabilities · profissional habilitado",
+        "state": true,
+        "note": "OAB validada/habilitada: as capabilities são recalculadas. A mesma Home passa ao estado operacional, liberando apenas as funções profissionais permitidas.",
+        "next": "professional_actions"
+      },
+      "professional_actions": {
+        "title": "Ações profissionais liberadas na mesma Home",
+        "state": true,
+        "note": "Menu, conteúdo principal e ações agora refletem as capabilities habilitadas.",
+        "branch": "O que João faz a partir da Home operacional?",
+        "routes": [
+          {
+            "id": "requests",
+            "label": "Solicitações recebidas",
+            "next": "requests",
+            "detail": "Analisar novas solicitações de clientes."
+          },
+          {
+            "id": "appointments",
+            "label": "Atendimentos",
+            "next": "appointments",
+            "detail": "Consultar atendimentos solicitados, em andamento ou encerrados."
+          },
+          {
+            "id": "availability",
+            "label": "Disponibilidade",
+            "next": "availability",
+            "detail": "Online/offline, agenda, raio e preferências."
+          },
+          {
+            "id": "profile",
+            "label": "Perfil profissional",
+            "next": "profile",
+            "detail": "Consultar dados profissionais."
+          },
+          {
+            "id": "subscription",
+            "label": "Assinatura",
+            "next": "subscription",
+            "detail": "Planos, gestão e histórico."
+          },
+          {
+            "id": "office",
+            "label": "Escritório",
+            "next": "office",
+            "detail": "Fluxo conforme vínculo com escritório."
+          },
+          {
+            "id": "settings",
+            "label": "Configurações",
+            "next": "settings",
+            "detail": "Preferências, documentos, suporte e área de validação OAB."
+          },
+          {
+            "id": "notifications",
+            "label": "Notificações",
+            "next": "notifications",
+            "detail": "Central de notificações."
+          },
+          {
+            "id": "online",
+            "label": "Online / offline",
+            "next": "online_state",
+            "detail": "Altera disponibilidade operacional."
+          },
+          {
+            "id": "logout",
+            "label": "Sair",
+            "next": "logout",
+            "detail": "Encerra a sessão."
+          }
+        ]
+      },
+      "oab_restricted_capabilities": {
+        "title": "Capabilities · OAB com restrição",
+        "state": true,
+        "note": "Estados como recusada, suspensa ou expirada podem produzir restrições diferentes. A regra exata de cada um ainda não está fechada; portanto este HTML não inventa permissões específicas.",
+        "branch": "Processo disponível",
+        "routes": [
+          {
+            "id": "oab",
+            "label": "Área de validação da OAB",
+            "next": "oab_validation_area",
+            "detail": "Consulta/regularização pela área própria de OAB."
+          }
+        ]
+      },
+      "oab_unknown_capabilities": {
+        "title": "Capabilities · estado da OAB desconhecido",
+        "state": true,
+        "note": "Erro técnico ao consultar a OAB não é tratado como OAB não validada. O estado permanece desconhecido e, por segurança, operações protegidas não são liberadas."
+      },
+      "oab_validation_area": {
+        "title": "Validação da OAB",
+        "screen": "advogado.configuracao.validacao_oab",
+        "note": "Processo próprio e pós-onboarding. Pode ser acessado pelo CTA de pendência ou pela área de validação da OAB.",
+        "branch": "Ação na área de validação",
+        "routes": [
+          {
+            "id": "data",
+            "label": "Informar / revisar dados da OAB",
+            "next": "oab_data",
+            "detail": "Segue para os dados usados no processo de validação."
+          },
+          {
+            "id": "return",
+            "label": "Voltar para a Home",
+            "next": "same_home_return",
+            "detail": "Retorna para a mesma Home Profissional."
+          }
+        ]
+      },
+      "oab_data": {
+        "title": "Dados da OAB",
+        "screen": "advogado.dados_oab",
+        "note": "Dados da OAB pertencem ao processo próprio de validação, não ao cadastro nem ao onboarding profissional.",
+        "next": "oab_submitted"
+      },
+      "oab_submitted": {
+        "title": "Validação da OAB em processamento",
+        "state": true,
+        "note": "Após o envio, o estado da OAB muda para processamento/validação. João retorna à mesma Home, que continua restrita até haver habilitação suficiente.",
+        "next": "same_home_return"
+      },
+      "same_home_return": {
+        "title": "Retorno à mesma Home Profissional",
+        "state": true,
+        "note": "Não existe uma segunda Home. Ao retornar, o sistema consulta novamente o estado da OAB, recalcula capabilities e recompõe menu, conteúdo principal e ações."
+      }
+    },
+    "fases": [
+      {
+        "id": "acesso",
+        "title": "Acesso e autenticação",
+        "subtitle": "Entrada comum",
+        "nodes": [
+          "splash",
+          "welcome",
+          "enter",
+          "onboarding_login",
+          "active_login"
+        ]
+      },
+      {
+        "id": "cadastro",
+        "title": "Cadastro comum",
+        "subtitle": "Identidade da conta",
+        "nodes": [
+          "cad_id",
+          "cad_contact",
+          "cad_address",
+          "cad_security",
+          "cad_review",
+          "cad_done"
+        ]
+      },
+      {
+        "id": "onboarding",
+        "title": "Onboarding profissional",
+        "subtitle": "Dados e vínculo",
+        "nodes": [
+          "pro_academic",
+          "pro_data",
+          "pro_areas",
+          "pro_profile",
+          "pro_availability",
+          "office_intent",
+          "office_register",
+          "pro_review"
+        ]
+      },
+      {
+        "id": "home",
+        "title": "Home única e capabilities",
+        "subtitle": "Estado da OAB",
+        "nodes": [
+          "home",
+          "oab_pending_capabilities",
+          "oab_validating_capabilities",
+          "oab_enabled_capabilities",
+          "oab_restricted_capabilities",
+          "oab_unknown_capabilities",
+          "professional_actions"
+        ]
+      },
+      {
+        "id": "oab",
+        "title": "Validação da OAB",
+        "subtitle": "Processo separado",
+        "nodes": [
+          "oab_validation",
+          "oab_validation_area",
+          "oab_data",
+          "oab_submitted",
+          "same_home_return"
+        ]
+      },
+      {
+        "id": "operacao",
+        "title": "Solicitações e atendimentos",
+        "subtitle": "Operação profissional",
+        "nodes": [
+          "requests",
+          "request_detail",
+          "accept_contact",
+          "contact_released",
+          "decline_request",
+          "declined_state",
+          "appointments"
+        ]
+      },
+      {
+        "id": "disponibilidade",
+        "title": "Disponibilidade profissional",
+        "subtitle": "Agenda e preferências",
+        "nodes": [
+          "availability",
+          "schedule",
+          "radius",
+          "service_preferences",
+          "online_state"
+        ]
+      },
+      {
+        "id": "assinatura",
+        "title": "Assinatura",
+        "subtitle": "Planos e pagamento",
+        "nodes": [
+          "subscription",
+          "plans",
+          "checkout",
+          "subscription_management_state",
+          "subscription_history"
+        ]
+      },
+      {
+        "id": "escritorio",
+        "title": "Escritório",
+        "subtitle": "Vínculos e equipe",
+        "nodes": [
+          "office",
+          "office_independent",
+          "office_create",
+          "office_individual_state",
+          "office_owner",
+          "office_team",
+          "office_invite",
+          "office_distribution",
+          "office_member"
+        ]
+      },
+      {
+        "id": "conta",
+        "title": "Perfil e configurações",
+        "subtitle": "Dados profissionais",
+        "nodes": [
+          "profile",
+          "settings"
+        ]
+      },
+      {
+        "id": "legal",
+        "title": "Documentos e suporte",
+        "subtitle": "Jornadas auxiliares",
+        "nodes": [
+          "legal",
+          "terms",
+          "privacy",
+          "consents",
+          "support",
+          "help",
+          "talk_support",
+          "tickets"
+        ]
+      },
+      {
+        "id": "sistema",
+        "title": "Ações gerais",
+        "subtitle": "Notificações e sessão",
+        "nodes": [
+          "notifications",
+          "logout"
+        ]
+      }
+    ],
+    "selecoesPadrao": {
+      "enter": "new",
+      "office_intent": "individual",
+      "home": "pending",
+      "oab_pending_capabilities": "validate",
+      "oab_validating_capabilities": "status",
+      "oab_restricted_capabilities": "oab",
+      "oab_validation_area": "data",
+      "professional_actions": "requests",
+      "request_detail": "accept",
+      "availability": "schedule",
+      "subscription": "plans",
+      "plans": "checkout",
+      "office": "independent",
+      "office_independent": "create",
+      "office_owner": "team",
+      "settings": "support",
+      "legal": "terms",
+      "support": "help"
+    },
+    "arestas": [
+      {
+        "origemNo": "splash",
+        "origemTela": "auth.inicializacao.splash",
+        "destinoNo": "welcome",
+        "destinoTela": "auth.inicializacao.boas_vindas",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "welcome",
+        "origemTela": "auth.inicializacao.boas_vindas",
+        "destinoNo": "enter",
+        "destinoTela": "auth.sessao.entrar",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "enter",
+        "origemTela": "auth.sessao.entrar",
+        "destinoNo": "cad_id",
+        "destinoTela": "auth.cadastro.identificacao",
+        "tipo": "decisao",
+        "opcao": "new",
+        "rotulo": "Criar conta · advogado novo",
+        "descricao": "Cria a conta pelo cadastro comum; depois faz login para iniciar o onboarding.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "enter",
+        "origemTela": "auth.sessao.entrar",
+        "destinoNo": "onboarding_login",
+        "destinoTela": "auth.sessao.entrar",
+        "tipo": "decisao",
+        "opcao": "pending",
+        "rotulo": "Já cadastrado · onboarding pendente",
+        "descricao": "Faz login e continua o onboarding profissional.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "enter",
+        "origemTela": "auth.sessao.entrar",
+        "destinoNo": "active_login",
+        "destinoTela": "auth.sessao.entrar",
+        "tipo": "decisao",
+        "opcao": "active",
+        "rotulo": "Advogado já onboardado · entrar",
+        "descricao": "Faz login e segue para a mesma Home Profissional.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "cad_id",
+        "origemTela": "auth.cadastro.identificacao",
+        "destinoNo": "cad_contact",
+        "destinoTela": "auth.cadastro.contato",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "cad_contact",
+        "origemTela": "auth.cadastro.contato",
+        "destinoNo": "cad_address",
+        "destinoTela": "auth.cadastro.endereco",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "cad_address",
+        "origemTela": "auth.cadastro.endereco",
+        "destinoNo": "cad_security",
+        "destinoTela": "auth.cadastro.seguranca",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "cad_security",
+        "origemTela": "auth.cadastro.seguranca",
+        "destinoNo": "cad_review",
+        "destinoTela": "auth.cadastro.revisao",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "cad_review",
+        "origemTela": "auth.cadastro.revisao",
+        "destinoNo": "cad_done",
+        "destinoTela": "auth.cadastro.concluido",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "cad_done",
+        "origemTela": "auth.cadastro.concluido",
+        "destinoNo": "onboarding_login",
+        "destinoTela": "auth.sessao.entrar",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "pro_academic",
+        "origemTela": "advogado.onboarding.dados_academicos",
+        "destinoNo": "pro_data",
+        "destinoTela": "advogado.onboarding.dados_profissionais",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "pro_data",
+        "origemTela": "advogado.onboarding.dados_profissionais",
+        "destinoNo": "pro_areas",
+        "destinoTela": "advogado.onboarding.areas_atuacao",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "pro_areas",
+        "origemTela": "advogado.onboarding.areas_atuacao",
+        "destinoNo": "pro_profile",
+        "destinoTela": "advogado.onboarding.perfil_profissional",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "pro_profile",
+        "origemTela": "advogado.onboarding.perfil_profissional",
+        "destinoNo": "pro_availability",
+        "destinoTela": "advogado.onboarding.disponibilidade",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "pro_availability",
+        "origemTela": "advogado.onboarding.disponibilidade",
+        "destinoNo": "office_intent",
+        "destinoTela": "escritorio.onboarding.vinculo_escritorio",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_intent",
+        "origemTela": "escritorio.onboarding.vinculo_escritorio",
+        "destinoNo": "pro_review",
+        "destinoTela": "advogado.onboarding.revisao_profissional",
+        "tipo": "decisao",
+        "opcao": "individual",
+        "rotulo": "Atuar individualmente",
+        "descricao": "Sem escritório agora; poderá criar ou entrar depois.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_intent",
+        "origemTela": "escritorio.onboarding.vinculo_escritorio",
+        "destinoNo": "office_register",
+        "destinoTela": "escritorio.onboarding.cadastro_escritorio",
+        "tipo": "decisao",
+        "opcao": "owner",
+        "rotulo": "Cadastrar meu escritório",
+        "descricao": "João cria o escritório e será o proprietário.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_register",
+        "origemTela": "escritorio.onboarding.cadastro_escritorio",
+        "destinoNo": "pro_review",
+        "destinoTela": "advogado.onboarding.revisao_profissional",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "pro_review",
+        "origemTela": "advogado.onboarding.revisao_profissional",
+        "destinoNo": "home",
+        "destinoTela": "advogado.home_advogado",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "home",
+        "origemTela": "advogado.home_advogado",
+        "destinoNo": "oab_pending_capabilities",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "pending",
+        "rotulo": "OAB não validada / pendente",
+        "descricao": "Home restrita; mostra pendência e CTA para validar OAB.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "home",
+        "origemTela": "advogado.home_advogado",
+        "destinoNo": "oab_validating_capabilities",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "validating",
+        "rotulo": "OAB em validação",
+        "descricao": "Continua na mesma Home, ainda restrita.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "home",
+        "origemTela": "advogado.home_advogado",
+        "destinoNo": "oab_enabled_capabilities",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "enabled",
+        "rotulo": "OAB validada / habilitada",
+        "descricao": "Capabilities recalculadas e funções profissionais permitidas são liberadas.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "home",
+        "origemTela": "advogado.home_advogado",
+        "destinoNo": "oab_restricted_capabilities",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "restricted",
+        "rotulo": "Recusada / suspensa / expirada",
+        "descricao": "Pode gerar restrições diferentes; regra exata de cada estado ainda não está fechada.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "home",
+        "origemTela": "advogado.home_advogado",
+        "destinoNo": "oab_unknown_capabilities",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "unknown",
+        "rotulo": "Erro técnico / estado desconhecido",
+        "descricao": "Não equivale a não validada; operações protegidas permanecem bloqueadas por segurança.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "requests",
+        "origemTela": "advogado.clientes.solicitacoes_recebidas",
+        "destinoNo": "request_detail",
+        "destinoTela": "advogado.clientes.detalhe_solicitacao",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "request_detail",
+        "origemTela": "advogado.clientes.detalhe_solicitacao",
+        "destinoNo": "accept_contact",
+        "destinoTela": "advogado.clientes.aceitar_contato",
+        "tipo": "decisao",
+        "opcao": "accept",
+        "rotulo": "Aceitar contato",
+        "descricao": "Confirma aceite e libera os dados.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "request_detail",
+        "origemTela": "advogado.clientes.detalhe_solicitacao",
+        "destinoNo": "decline_request",
+        "destinoTela": "advogado.clientes.recusar_solicitacao",
+        "tipo": "decisao",
+        "opcao": "decline",
+        "rotulo": "Recusar solicitação",
+        "descricao": "Registra o motivo da recusa.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "accept_contact",
+        "origemTela": "advogado.clientes.aceitar_contato",
+        "destinoNo": "contact_released",
+        "destinoTela": "advogado.clientes.contato_liberado",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "contact_released",
+        "origemTela": "advogado.clientes.contato_liberado",
+        "destinoNo": "appointments",
+        "destinoTela": "advogado.atendimentos_advogado",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "decline_request",
+        "origemTela": "advogado.clientes.recusar_solicitacao",
+        "destinoNo": "declined_state",
+        "destinoTela": null,
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "availability",
+        "origemTela": "advogado.disponibilidade",
+        "destinoNo": "schedule",
+        "destinoTela": "advogado.configuracao.agenda_semanal",
+        "tipo": "decisao",
+        "opcao": "schedule",
+        "rotulo": "Agenda semanal",
+        "descricao": "Dias, horários e indisponibilidades.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "availability",
+        "origemTela": "advogado.disponibilidade",
+        "destinoNo": "radius",
+        "destinoTela": "advogado.disponibilidade.raio_atendimento",
+        "tipo": "decisao",
+        "opcao": "radius",
+        "rotulo": "Raio de atendimento",
+        "descricao": "Distância para atendimentos presenciais.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "availability",
+        "origemTela": "advogado.disponibilidade",
+        "destinoNo": "service_preferences",
+        "destinoTela": "advogado.configuracao.preferencias_atendimento",
+        "tipo": "decisao",
+        "opcao": "preferences",
+        "rotulo": "Preferências de atendimento",
+        "descricao": "Modalidades, região, raio e especialidades.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "subscription",
+        "origemTela": "advogado.assinatura.gestao_assinatura",
+        "destinoNo": "plans",
+        "destinoTela": "advogado.assinatura.planos",
+        "tipo": "decisao",
+        "opcao": "plans",
+        "rotulo": "Ver planos",
+        "descricao": "Escolher ou alterar plano.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "subscription",
+        "origemTela": "advogado.assinatura.gestao_assinatura",
+        "destinoNo": "subscription_history",
+        "destinoTela": "advogado.assinatura.historico_assinatura",
+        "tipo": "decisao",
+        "opcao": "history",
+        "rotulo": "Histórico",
+        "descricao": "Consultar histórico de assinatura.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "plans",
+        "origemTela": "advogado.assinatura.planos",
+        "destinoNo": "checkout",
+        "destinoTela": "advogado.assinatura.checkout",
+        "tipo": "decisao",
+        "opcao": "checkout",
+        "rotulo": "Escolher plano",
+        "descricao": "Segue para o checkout.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "plans",
+        "origemTela": "advogado.assinatura.planos",
+        "destinoNo": "subscription_management_state",
+        "destinoTela": "advogado.assinatura.gestao_assinatura",
+        "tipo": "decisao",
+        "opcao": "manage",
+        "rotulo": "Voltar à gestão",
+        "descricao": "Retorna à gestão da assinatura.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "checkout",
+        "origemTela": "advogado.assinatura.checkout",
+        "destinoNo": "subscription_management_state",
+        "destinoTela": "advogado.assinatura.gestao_assinatura",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office",
+        "origemTela": "escritorio.gestao.escritorio",
+        "destinoNo": "office_independent",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "independent",
+        "rotulo": "Sem escritório",
+        "descricao": "Atua individualmente; pode criar escritório.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office",
+        "origemTela": "escritorio.gestao.escritorio",
+        "destinoNo": "office_owner",
+        "destinoTela": "escritorio.gestao.escritorio",
+        "tipo": "decisao",
+        "opcao": "owner",
+        "rotulo": "Proprietário",
+        "descricao": "Administra equipe e distribuição interna.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office",
+        "origemTela": "escritorio.gestao.escritorio",
+        "destinoNo": "office_member",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "member",
+        "rotulo": "Membro convidado",
+        "descricao": "Está vinculado a escritório de outro advogado.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_independent",
+        "origemTela": null,
+        "destinoNo": "office_create",
+        "destinoTela": "escritorio.onboarding.cadastro_escritorio",
+        "tipo": "decisao",
+        "opcao": "create",
+        "rotulo": "Criar escritório",
+        "descricao": "Abre o cadastro do escritório.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_independent",
+        "origemTela": null,
+        "destinoNo": "office_individual_state",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "stay",
+        "rotulo": "Continuar individual",
+        "descricao": "Mantém a atuação sem escritório.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_create",
+        "origemTela": "escritorio.onboarding.cadastro_escritorio",
+        "destinoNo": "office_owner",
+        "destinoTela": "escritorio.gestao.escritorio",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_owner",
+        "origemTela": "escritorio.gestao.escritorio",
+        "destinoNo": "office_team",
+        "destinoTela": "escritorio.equipe.equipe",
+        "tipo": "decisao",
+        "opcao": "team",
+        "rotulo": "Equipe",
+        "descricao": "Ver membros e convites.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_owner",
+        "origemTela": "escritorio.gestao.escritorio",
+        "destinoNo": "office_invite",
+        "destinoTela": "escritorio.equipe.convidar_advogado",
+        "tipo": "decisao",
+        "opcao": "invite",
+        "rotulo": "Convidar advogado",
+        "descricao": "Enviar convite a outro advogado.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "office_owner",
+        "origemTela": "escritorio.gestao.escritorio",
+        "destinoNo": "office_distribution",
+        "destinoTela": "escritorio.distribuicao.distribuicao_interna",
+        "tipo": "decisao",
+        "opcao": "distribution",
+        "rotulo": "Distribuição interna",
+        "descricao": "Configurar a distribuição das solicitações.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "settings",
+        "origemTela": "advogado.configuracao.configuracao",
+        "destinoNo": "schedule",
+        "destinoTela": "advogado.configuracao.agenda_semanal",
+        "tipo": "decisao",
+        "opcao": "agenda",
+        "rotulo": "Agenda",
+        "descricao": "Dias, horários e indisponibilidades.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "settings",
+        "origemTela": "advogado.configuracao.configuracao",
+        "destinoNo": "service_preferences",
+        "destinoTela": "advogado.configuracao.preferencias_atendimento",
+        "tipo": "decisao",
+        "opcao": "preferences",
+        "rotulo": "Preferências de atendimento",
+        "descricao": "Disponibilidade, modalidades, região, raio e especialidades.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "settings",
+        "origemTela": "advogado.configuracao.configuracao",
+        "destinoNo": "oab_validation_area",
+        "destinoTela": "advogado.configuracao.validacao_oab",
+        "tipo": "decisao",
+        "opcao": "oab",
+        "rotulo": "Validação da OAB",
+        "descricao": "Processo próprio, separado do cadastro e do onboarding.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "settings",
+        "origemTela": "advogado.configuracao.configuracao",
+        "destinoNo": "legal",
+        "destinoTela": "advogado.configuracao.termos_privacidade",
+        "tipo": "decisao",
+        "opcao": "legal",
+        "rotulo": "Termos e privacidade",
+        "descricao": "Documentos legais e consentimentos.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "settings",
+        "origemTela": "advogado.configuracao.configuracao",
+        "destinoNo": "support",
+        "destinoTela": "advogado.configuracao.suporte",
+        "tipo": "decisao",
+        "opcao": "support",
+        "rotulo": "Suporte",
+        "descricao": "Ajuda, contato e chamados.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "legal",
+        "origemTela": "advogado.configuracao.termos_privacidade",
+        "destinoNo": "terms",
+        "destinoTela": "advogado.configuracao.termos_uso",
+        "tipo": "decisao",
+        "opcao": "terms",
+        "rotulo": "Termos de uso",
+        "descricao": "Documento legal.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "legal",
+        "origemTela": "advogado.configuracao.termos_privacidade",
+        "destinoNo": "privacy",
+        "destinoTela": "advogado.configuracao.politica_privacidade",
+        "tipo": "decisao",
+        "opcao": "privacy",
+        "rotulo": "Política de privacidade",
+        "descricao": "Documento legal.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "legal",
+        "origemTela": "advogado.configuracao.termos_privacidade",
+        "destinoNo": "consents",
+        "destinoTela": "advogado.configuracao.consentimentos",
+        "tipo": "decisao",
+        "opcao": "consents",
+        "rotulo": "Consentimentos",
+        "descricao": "Gestão de consentimentos.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "support",
+        "origemTela": "advogado.configuracao.suporte",
+        "destinoNo": "help",
+        "destinoTela": "advogado.configuracao.central_ajuda",
+        "tipo": "decisao",
+        "opcao": "help",
+        "rotulo": "Central de ajuda",
+        "descricao": "Perguntas e orientações.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "support",
+        "origemTela": "advogado.configuracao.suporte",
+        "destinoNo": "talk_support",
+        "destinoTela": "advogado.configuracao.falar_suporte",
+        "tipo": "decisao",
+        "opcao": "talk",
+        "rotulo": "Falar com o suporte",
+        "descricao": "Abrir novo chamado.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "support",
+        "origemTela": "advogado.configuracao.suporte",
+        "destinoNo": "tickets",
+        "destinoTela": "advogado.configuracao.meus_chamados",
+        "tipo": "decisao",
+        "opcao": "tickets",
+        "rotulo": "Meus chamados",
+        "descricao": "Acompanhar chamados já abertos.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "onboarding_login",
+        "origemTela": "auth.sessao.entrar",
+        "destinoNo": "pro_academic",
+        "destinoTela": "advogado.onboarding.dados_academicos",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "active_login",
+        "origemTela": "auth.sessao.entrar",
+        "destinoNo": "home",
+        "destinoTela": "advogado.home_advogado",
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_pending_capabilities",
+        "origemTela": null,
+        "destinoNo": "oab_validation_area",
+        "destinoTela": "advogado.configuracao.validacao_oab",
+        "tipo": "decisao",
+        "opcao": "validate",
+        "rotulo": "Validar OAB",
+        "descricao": "Abre o processo próprio de validação da OAB.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_validating_capabilities",
+        "origemTela": null,
+        "destinoNo": "oab_validation_area",
+        "destinoTela": "advogado.configuracao.validacao_oab",
+        "tipo": "decisao",
+        "opcao": "status",
+        "rotulo": "Área de validação da OAB",
+        "descricao": "Consulta o estado do processo próprio de validação.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_enabled_capabilities",
+        "origemTela": null,
+        "destinoNo": "professional_actions",
+        "destinoTela": null,
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "requests",
+        "destinoTela": "advogado.clientes.solicitacoes_recebidas",
+        "tipo": "decisao",
+        "opcao": "requests",
+        "rotulo": "Solicitações recebidas",
+        "descricao": "Analisar novas solicitações de clientes.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "appointments",
+        "destinoTela": "advogado.atendimentos_advogado",
+        "tipo": "decisao",
+        "opcao": "appointments",
+        "rotulo": "Atendimentos",
+        "descricao": "Consultar atendimentos solicitados, em andamento ou encerrados.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "availability",
+        "destinoTela": "advogado.disponibilidade",
+        "tipo": "decisao",
+        "opcao": "availability",
+        "rotulo": "Disponibilidade",
+        "descricao": "Online/offline, agenda, raio e preferências.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "profile",
+        "destinoTela": "advogado.perfil_profissional",
+        "tipo": "decisao",
+        "opcao": "profile",
+        "rotulo": "Perfil profissional",
+        "descricao": "Consultar dados profissionais.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "subscription",
+        "destinoTela": "advogado.assinatura.gestao_assinatura",
+        "tipo": "decisao",
+        "opcao": "subscription",
+        "rotulo": "Assinatura",
+        "descricao": "Planos, gestão e histórico.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "office",
+        "destinoTela": "escritorio.gestao.escritorio",
+        "tipo": "decisao",
+        "opcao": "office",
+        "rotulo": "Escritório",
+        "descricao": "Fluxo conforme vínculo com escritório.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "settings",
+        "destinoTela": "advogado.configuracao.configuracao",
+        "tipo": "decisao",
+        "opcao": "settings",
+        "rotulo": "Configurações",
+        "descricao": "Preferências, documentos, suporte e área de validação OAB.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "notifications",
+        "destinoTela": "notificacoes.lista.notificacoes",
+        "tipo": "decisao",
+        "opcao": "notifications",
+        "rotulo": "Notificações",
+        "descricao": "Central de notificações.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "online_state",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "online",
+        "rotulo": "Online / offline",
+        "descricao": "Altera disponibilidade operacional.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "professional_actions",
+        "origemTela": null,
+        "destinoNo": "logout",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "logout",
+        "rotulo": "Sair",
+        "descricao": "Encerra a sessão.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_restricted_capabilities",
+        "origemTela": null,
+        "destinoNo": "oab_validation_area",
+        "destinoTela": "advogado.configuracao.validacao_oab",
+        "tipo": "decisao",
+        "opcao": "oab",
+        "rotulo": "Área de validação da OAB",
+        "descricao": "Consulta/regularização pela área própria de OAB.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_validation_area",
+        "origemTela": "advogado.configuracao.validacao_oab",
+        "destinoNo": "oab_data",
+        "destinoTela": "advogado.dados_oab",
+        "tipo": "decisao",
+        "opcao": "data",
+        "rotulo": "Informar / revisar dados da OAB",
+        "descricao": "Segue para os dados usados no processo de validação.",
+        "destinoEhEstado": false,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_validation_area",
+        "origemTela": "advogado.configuracao.validacao_oab",
+        "destinoNo": "same_home_return",
+        "destinoTela": null,
+        "tipo": "decisao",
+        "opcao": "return",
+        "rotulo": "Voltar para a Home",
+        "descricao": "Retorna para a mesma Home Profissional.",
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_data",
+        "origemTela": "advogado.dados_oab",
+        "destinoNo": "oab_submitted",
+        "destinoTela": null,
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      },
+      {
+        "origemNo": "oab_submitted",
+        "origemTela": null,
+        "destinoNo": "same_home_return",
+        "destinoTela": null,
+        "tipo": "continuar",
+        "opcao": null,
+        "rotulo": null,
+        "descricao": null,
+        "destinoEhEstado": true,
+        "destinoPendente": false,
+        "referenciaExiste": true
+      }
+    ]
+  },
+  "telas": [
+    {
+      "id": "auth.inicializacao.splash",
+      "arquivo": "telas/advogado/auth.inicializacao.splash.json"
+    },
+    {
+      "id": "auth.inicializacao.boas_vindas",
+      "arquivo": "telas/advogado/auth.inicializacao.boas_vindas.json"
+    },
+    {
+      "id": "auth.sessao.entrar",
+      "arquivo": "telas/advogado/auth.sessao.entrar.json"
+    },
+    {
+      "id": "auth.cadastro.identificacao",
+      "arquivo": "telas/advogado/auth.cadastro.identificacao.json"
+    },
+    {
+      "id": "auth.cadastro.contato",
+      "arquivo": "telas/advogado/auth.cadastro.contato.json"
+    },
+    {
+      "id": "auth.cadastro.endereco",
+      "arquivo": "telas/advogado/auth.cadastro.endereco.json"
+    },
+    {
+      "id": "auth.cadastro.revisao",
+      "arquivo": "telas/advogado/auth.cadastro.revisao.json"
+    },
+    {
+      "id": "auth.cadastro.concluido",
+      "arquivo": "telas/advogado/auth.cadastro.concluido.json"
+    },
+    {
+      "id": "auth.cadastro.seguranca",
+      "arquivo": "telas/advogado/auth.cadastro.seguranca.json"
+    },
+    {
+      "id": "advogado.home_advogado",
+      "arquivo": "telas/advogado/advogado.home_advogado.json"
+    },
+    {
+      "id": "advogado.onboarding.dados_academicos",
+      "arquivo": "telas/advogado/advogado.onboarding.dados_academicos.json"
+    },
+    {
+      "id": "advogado.onboarding.dados_profissionais",
+      "arquivo": "telas/advogado/advogado.onboarding.dados_profissionais.json"
+    },
+    {
+      "id": "advogado.dados_oab",
+      "arquivo": "telas/advogado/advogado.dados_oab.json"
+    },
+    {
+      "id": "advogado.onboarding.areas_atuacao",
+      "arquivo": "telas/advogado/advogado.onboarding.areas_atuacao.json"
+    },
+    {
+      "id": "advogado.onboarding.perfil_profissional",
+      "arquivo": "telas/advogado/advogado.onboarding.perfil_profissional.json"
+    },
+    {
+      "id": "advogado.onboarding.disponibilidade",
+      "arquivo": "telas/advogado/advogado.onboarding.disponibilidade.json"
+    },
+    {
+      "id": "escritorio.onboarding.vinculo_escritorio",
+      "arquivo": "telas/advogado/escritorio.onboarding.vinculo_escritorio.json"
+    },
+    {
+      "id": "escritorio.onboarding.cadastro_escritorio",
+      "arquivo": "telas/advogado/escritorio.onboarding.cadastro_escritorio.json"
+    },
+    {
+      "id": "advogado.onboarding.revisao_profissional",
+      "arquivo": "telas/advogado/advogado.onboarding.revisao_profissional.json"
+    },
+    {
+      "id": "advogado.validacao_profissional",
+      "arquivo": "telas/advogado/advogado.validacao_profissional.json"
+    },
+    {
+      "id": "advogado.clientes.solicitacoes_recebidas",
+      "arquivo": "telas/advogado/advogado.clientes.solicitacoes_recebidas.json"
+    },
+    {
+      "id": "advogado.clientes.detalhe_solicitacao",
+      "arquivo": "telas/advogado/advogado.clientes.detalhe_solicitacao.json"
+    },
+    {
+      "id": "advogado.clientes.aceitar_contato",
+      "arquivo": "telas/advogado/advogado.clientes.aceitar_contato.json"
+    },
+    {
+      "id": "advogado.clientes.recusar_solicitacao",
+      "arquivo": "telas/advogado/advogado.clientes.recusar_solicitacao.json"
+    },
+    {
+      "id": "advogado.clientes.contato_liberado",
+      "arquivo": "telas/advogado/advogado.clientes.contato_liberado.json"
+    },
+    {
+      "id": "advogado.atendimentos_advogado",
+      "arquivo": "telas/advogado/advogado.atendimentos_advogado.json"
+    },
+    {
+      "id": "advogado.disponibilidade",
+      "arquivo": "telas/advogado/advogado.disponibilidade.json"
+    },
+    {
+      "id": "advogado.disponibilidade.raio_atendimento",
+      "arquivo": "telas/advogado/advogado.disponibilidade.raio_atendimento.json"
+    },
+    {
+      "id": "advogado.configuracao.agenda_semanal",
+      "arquivo": "telas/advogado/advogado.configuracao.agenda_semanal.json"
+    },
+    {
+      "id": "advogado.configuracao.preferencias_atendimento",
+      "arquivo": "telas/advogado/advogado.configuracao.preferencias_atendimento.json"
+    },
+    {
+      "id": "advogado.perfil_profissional",
+      "arquivo": "telas/advogado/advogado.perfil_profissional.json"
+    },
+    {
+      "id": "advogado.assinatura.planos",
+      "arquivo": "telas/advogado/advogado.assinatura.planos.json"
+    },
+    {
+      "id": "advogado.assinatura.checkout",
+      "arquivo": "telas/advogado/advogado.assinatura.checkout.json"
+    },
+    {
+      "id": "advogado.assinatura.gestao_assinatura",
+      "arquivo": "telas/advogado/advogado.assinatura.gestao_assinatura.json"
+    },
+    {
+      "id": "advogado.assinatura.historico_assinatura",
+      "arquivo": "telas/advogado/advogado.assinatura.historico_assinatura.json"
+    },
+    {
+      "id": "escritorio.gestao.escritorio",
+      "arquivo": "telas/advogado/escritorio.gestao.escritorio.json"
+    },
+    {
+      "id": "escritorio.equipe.equipe",
+      "arquivo": "telas/advogado/escritorio.equipe.equipe.json"
+    },
+    {
+      "id": "escritorio.equipe.convidar_advogado",
+      "arquivo": "telas/advogado/escritorio.equipe.convidar_advogado.json"
+    },
+    {
+      "id": "escritorio.distribuicao.distribuicao_interna",
+      "arquivo": "telas/advogado/escritorio.distribuicao.distribuicao_interna.json"
+    },
+    {
+      "id": "advogado.configuracao.configuracao",
+      "arquivo": "telas/advogado/advogado.configuracao.configuracao.json"
+    },
+    {
+      "id": "advogado.configuracao.validacao_oab",
+      "arquivo": "telas/advogado/advogado.configuracao.validacao_oab.json"
+    },
+    {
+      "id": "advogado.configuracao.termos_privacidade",
+      "arquivo": "telas/advogado/advogado.configuracao.termos_privacidade.json"
+    },
+    {
+      "id": "advogado.configuracao.termos_uso",
+      "arquivo": "telas/advogado/advogado.configuracao.termos_uso.json"
+    },
+    {
+      "id": "advogado.configuracao.politica_privacidade",
+      "arquivo": "telas/advogado/advogado.configuracao.politica_privacidade.json"
+    },
+    {
+      "id": "advogado.configuracao.consentimentos",
+      "arquivo": "telas/advogado/advogado.configuracao.consentimentos.json"
+    },
+    {
+      "id": "advogado.configuracao.suporte",
+      "arquivo": "telas/advogado/advogado.configuracao.suporte.json"
+    },
+    {
+      "id": "advogado.configuracao.central_ajuda",
+      "arquivo": "telas/advogado/advogado.configuracao.central_ajuda.json"
+    },
+    {
+      "id": "advogado.configuracao.falar_suporte",
+      "arquivo": "telas/advogado/advogado.configuracao.falar_suporte.json"
+    },
+    {
+      "id": "advogado.configuracao.meus_chamados",
+      "arquivo": "telas/advogado/advogado.configuracao.meus_chamados.json"
+    },
+    {
+      "id": "notificacoes.lista.notificacoes",
+      "arquivo": "telas/advogado/notificacoes.lista.notificacoes.json"
+    }
+  ]
+}

@@ -1,0 +1,2267 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Banco · Workspace V6 · Catálogo canônico</title>
+    <style>
+      /* 01 — Design tokens e fundações */
+      :root {
+        --navy: #10233f;
+        --navy2: #183855;
+        --blue: #2765b4;
+        --ink: #18283c;
+        --muted: #687a8d;
+        --line: #d9e3ee;
+        --bg: #f3f6fa;
+        --white: #fff;
+        --shadow: 0 10px 34px #18334a11;
+        --core: #3979af;
+        --client: #159273;
+        --lawyer: #4970aa;
+        --student: #8455b9;
+        --billing: #735ed0;
+        --admin: #c27a45;
+        --side: 258px;
+        --font:
+          Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial,
+          sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 13px/1.55 var(--font);
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid #7cb4f9;
+        outline-offset: 2px;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1 {
+        font-size: 28px;
+        line-height: 1.18;
+        letter-spacing: -0.03em;
+        margin-bottom: 6px;
+      }
+      h2 {
+        font-size: 19px;
+        letter-spacing: -0.02em;
+      }
+      h3 {
+        font-size: 15px;
+      }
+      small,
+      .muted {
+        color: var(--muted);
+      }
+      code,
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+      }
+      /* 02 — Shell e navegação */
+      .shell {
+        display: flex;
+        min-height: 100vh;
+      }
+      .sidebar {
+        width: var(--side);
+        background: var(--navy);
+        color: #eaf2fc;
+        position: fixed;
+        inset: 0 auto 0 0;
+        z-index: 40;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .brand {
+        padding: 27px 18px 21px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        border-bottom: 1px solid #ffffff1d;
+      }
+      .brand-symbol {
+        width: 43px;
+        height: 43px;
+        background: linear-gradient(135deg, #77bded, #b1d9fa);
+        color: #0f2b49;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 17px;
+      }
+      .brand strong {
+        display: block;
+        font-size: 15px;
+      }
+      .brand small {
+        color: #9bb7d2;
+        font-size: 10px;
+      }
+      .side-label {
+        text-transform: uppercase;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        color: #87a1c0;
+        font-size: 10px;
+        padding: 21px 20px 7px;
+      }
+      .side-nav {
+        padding: 0 11px;
+        display: grid;
+        gap: 3px;
+      }
+      .nav-btn {
+        background: none;
+        border: 0;
+        border-radius: 9px;
+        color: #c1d1e6;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        width: 100%;
+        text-align: left;
+        padding: 10px 11px;
+        font-weight: 690;
+        font-size: 12px;
+      }
+      .nav-btn:hover {
+        background: #ffffff13;
+        color: white;
+      }
+      .nav-btn.active {
+        background: #24476d;
+        color: #fff;
+        box-shadow: inset 3px 0 #9ccaff;
+      }
+      .nav-icon {
+        width: 25px;
+        height: 25px;
+        background: #ffffff14;
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+      }
+      .nav-btn .num {
+        margin-left: auto;
+        font-size: 10px;
+        opacity: 0.75;
+      }
+      .side-foot {
+        padding: 18px 20px;
+        margin-top: auto;
+        border-top: 1px solid #ffffff18;
+        font-size: 11px;
+        color: #b2c3d8;
+      }
+      .side-foot strong {
+        color: #fff;
+      }
+      .workspace {
+        margin-left: var(--side);
+        width: calc(100% - var(--side));
+        min-width: 0;
+      }
+      .topbar {
+        min-height: 66px;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 27px;
+      }
+      .crumb {
+        color: #788a9c;
+        font-size: 12px;
+      }
+      .crumb strong {
+        color: #2c4968;
+      }
+      .top-actions,
+      .toolbar,
+      .flex {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border: 1px solid #cfdae7;
+        border-radius: 9px;
+        background: #fff;
+        color: #38526a;
+        padding: 8px 12px;
+        font-weight: 750;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        background: #eef5ff;
+        border-color: #9cbadb;
+      }
+      .btn.active {
+        background: #e8f2ff;
+        border-color: #a6c2e8;
+        color: #245c9d;
+      }
+      .btn.primary {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+      }
+      .btn.icon {
+        font-size: 15px;
+        padding: 6px 12px;
+      }
+      .view {
+        display: none;
+        padding: 25px 28px 55px;
+      }
+      .view.active {
+        display: block;
+      }
+      .view-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .eyebrow {
+        margin: 0 0 6px;
+        color: #4679ae;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 10px;
+        font-weight: 850;
+      }
+      .view-header p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0;
+        max-width: 810px;
+      }
+      .surface {
+        background: #fff;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 11px;
+        margin-bottom: 16px;
+      }
+      .metric {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        padding: 13px 16px;
+      }
+      .metric b {
+        display: block;
+        font-size: 25px;
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+      }
+      .metric span {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .search {
+        border: 1px solid #cbd8e7;
+        border-radius: 8px;
+        padding: 8px 11px;
+        background: #fff;
+        color: var(--ink);
+        min-width: 0;
+        width: 230px;
+      }
+      .hint {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .pill {
+        font-size: 10px;
+        border: 1px solid #d7e2ed;
+        background: #f6f9fc;
+        color: #52687e;
+        border-radius: 99px;
+        padding: 4px 8px;
+        font-weight: 750;
+        white-space: nowrap;
+      }
+      .warning {
+        border: 1px solid #eacb9d;
+        border-radius: 10px;
+        padding: 11px 13px;
+        background: #fffaf1;
+        color: #805b22;
+        font-size: 11px;
+        margin: 14px 0;
+      }
+      /* 03 — Visão geral por domínios */
+      .domain-map {
+        position: relative;
+        min-height: 465px;
+        background:
+          radial-gradient(circle, #e2eaf2 1px, transparent 1px) 0 0/20px 20px,
+          #fbfcfe;
+        overflow: auto;
+        padding: 23px;
+      }
+      .domain-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .domain-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        align-items: stretch;
+      }
+      .domain-card {
+        --accent: var(--core);
+        min-width: 0;
+        background: white;
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--accent);
+        border-radius: 12px;
+        padding: 17px;
+        text-align: left;
+        box-shadow: 0 8px 25px #18334a0d;
+        min-height: 185px;
+        display: flex;
+        flex-direction: column;
+      }
+      .domain-card:hover {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+      }
+      .domain-card .dom-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 10px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .domain-card h3 {
+        font-size: 17px;
+        margin: 12px 0 5px;
+      }
+      .domain-card p {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 0 0 13px;
+      }
+      .domain-card .dom-bottom {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin-top: auto;
+      }
+      .overview-bottom {
+        padding: 16px 19px;
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .overview-bottom h3 {
+        margin: 0 0 8px;
+        font-size: 13px;
+      }
+      .overview-bottom p {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .hot-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+      .hot-list button {
+        border: 1px solid #e0e7f0;
+        background: #f9fbfe;
+        border-radius: 8px;
+        padding: 8px;
+        text-align: left;
+        color: #375271;
+        font-size: 11px;
+      }
+      .hot-list button:hover {
+        background: #eaf3ff;
+      }
+      .hot-list button b {
+        float: right;
+        color: #8c9aa9;
+      }
+      .bridge-section {
+        padding: 16px 19px;
+        border-top: 1px solid var(--line);
+      }
+      .bridge-section h3 {
+        font-size: 13px;
+        margin: 0 0 11px;
+      }
+      .bridge-section h3 small {
+        font-weight: 500;
+      }
+      .bridge-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .bridge-grid button {
+        border: 1px solid #e0e8f1;
+        border-radius: 9px;
+        background: #fbfcff;
+        padding: 9px 11px;
+        text-align: left;
+        color: #375570;
+      }
+      .bridge-grid button:hover {
+        background: #ecf5ff;
+      }
+      .bridge-grid strong {
+        display: block;
+        font-size: 11px;
+      }
+      .bridge-grid small {
+        font-size: 10px;
+        color: #8292a4;
+      }
+      @media (max-width: 1020px) {
+        .bridge-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .bridge-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* 04 — Diagramas ER e conexões */
+      .diagram-toolbar {
+        padding: 13px 15px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .diagram-toolbar .search {
+        width: 230px;
+      }
+      .graph-wrapper {
+        position: relative;
+        background:
+          radial-gradient(circle, #dce7f1 0.8px, transparent 1px) 0 0/18px 18px,
+          #fafcff;
+        overflow: auto;
+        height: min(73vh, 810px);
+        min-height: 470px;
+        scrollbar-color: #becbdc transparent;
+      }
+      .graph-spacer {
+        position: relative;
+        min-width: 100%;
+      }
+      .graph-board {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: 0 0;
+      }
+      .graph-svg {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        overflow: visible;
+      }
+      .graph-node {
+        --accent: var(--core);
+        position: absolute;
+        z-index: 2;
+        border: 1px solid #d5dfeb;
+        border-top: 3px solid var(--accent);
+        border-radius: 9px;
+        background: #fff;
+        box-shadow: 0 3px 12px #132b4110;
+        overflow: hidden;
+        text-align: left;
+        padding: 0;
+        color: var(--ink);
+        transition:
+          opacity 0.15s,
+          box-shadow 0.15s;
+      }
+      .graph-node:hover,
+      .graph-node.selected {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+      }
+      .graph-node.dim {
+        opacity: 0.18;
+      }
+      .graph-node.match {
+        box-shadow: 0 0 0 3px #ebcb5d;
+      }
+      .graph-node-head {
+        height: 53px;
+        padding: 7px 10px;
+        border-bottom: 1px solid #edf1f5;
+      }
+      .graph-node-head .field-count {
+        font-size: 9px;
+        font-weight: 800;
+        color: var(--accent);
+        float: right;
+      }
+      .graph-node-head strong {
+        display: block;
+        font:
+          750 12px/1.3 ui-monospace,
+          Consolas,
+          monospace;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .graph-node-head small {
+        display: block;
+        font-size: 10px;
+        color: #738496;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-top: 2px;
+      }
+      .graph-field {
+        height: 24px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 92px;
+        gap: 6px;
+        align-items: center;
+        padding: 0 9px;
+        font:
+          10px/1.2 ui-monospace,
+          Consolas,
+          monospace;
+        border-bottom: 1px solid #f0f3f7;
+      }
+      .graph-field:nth-child(odd) {
+        background: #f9fbfd;
+      }
+      .graph-field span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .graph-field small {
+        text-align: right;
+        color: #8a9aa8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 9px;
+      }
+      .graph-field .foreign {
+        color: #2c6bae;
+        font-weight: 800;
+      }
+      .graph-field .primary {
+        color: #a76d17;
+        font-weight: 800;
+      }
+      .graph-node-foot {
+        height: 22px;
+        padding: 3px 10px;
+        font-size: 9px;
+        color: #8393a5;
+        background: #f9fbfe;
+      }
+      .group-label {
+        position: absolute;
+        z-index: 2;
+        top: 12px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 850;
+        letter-spacing: 0.09em;
+        font-size: 10px;
+        color: var(--accent);
+        padding: 7px 0;
+        border-bottom: 2px solid color-mix(in srgb, var(--accent) 35%, #fff);
+      }
+      .graph-edge {
+        fill: none;
+        stroke: #94a8bb;
+        stroke-width: 1.55;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.45;
+        vector-effect: non-scaling-stroke;
+      }
+      .graph-edge.external {
+        stroke: #9382b8;
+        stroke-dasharray: 5 5;
+        opacity: 0.25;
+      }
+      .graph-edge.focus {
+        stroke: #e58d2a;
+        stroke-width: 3;
+        stroke-dasharray: none;
+        opacity: 1;
+      }
+      .graph-edge.fade {
+        opacity: 0.07;
+      }
+      .edge-dot {
+        fill: #7f98b0;
+        opacity: 0.5;
+      }
+      .diagram-foot {
+        border-top: 1px solid var(--line);
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .legend-set {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .legend-set span {
+        font-size: 10px;
+        color: #637789;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 9px;
+        height: 9px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+      .empty-state {
+        text-align: center;
+        padding: 40px;
+        color: var(--muted);
+      }
+      /* 05 — Inspetor, catálogos, tabelas e SQL */
+      .inspector {
+        display: none;
+        position: fixed;
+        right: 16px;
+        top: 78px;
+        bottom: 17px;
+        width: min(410px, calc(100vw - 24px));
+        z-index: 55;
+        overflow: auto;
+        border: 1px solid #d0dce9;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 22px 65px #10233f36;
+      }
+      .inspector.open {
+        display: block;
+      }
+      .inspect-top {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: #fff;
+        padding: 17px 19px;
+        border-bottom: 1px solid var(--line);
+      }
+      .inspect-top h2 {
+        font:
+          800 19px/1.3 ui-monospace,
+          Consolas,
+          monospace;
+        margin: 4px 0 7px;
+        overflow-wrap: anywhere;
+      }
+      .inspect-body {
+        padding: 13px 19px 24px;
+      }
+      .inspect-body h3 {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #7a8b9a;
+        margin: 17px 0 8px;
+      }
+      .inspect-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 9px;
+        border-bottom: 1px solid #eef2f6;
+        padding: 8px 0;
+        font:
+          11px/1.45 ui-monospace,
+          Consolas,
+          monospace;
+      }
+      .inspect-row b {
+        color: #2d608e;
+      }
+      .inspect-row small {
+        font-size: 10px;
+      }
+      .inspect-link {
+        display: block;
+        width: 100%;
+        border: 1px solid #dde7f2;
+        border-radius: 8px;
+        text-align: left;
+        padding: 10px;
+        margin-bottom: 7px;
+        background: #f9fbfe;
+        color: #3b5570;
+        font-size: 11px;
+      }
+      .inspect-link:hover {
+        background: #edf5ff;
+      }
+      .inspect-link strong {
+        display: block;
+        color: #203d59;
+      }
+      .close-x {
+        float: right;
+        border: 0;
+        border-radius: 8px;
+        background: #f2f5f9;
+        color: #567;
+        line-height: 30px;
+        width: 31px;
+        height: 31px;
+        font-size: 20px;
+      }
+      .data-table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 11px;
+        min-width: 880px;
+      }
+      .data-table th {
+        text-align: left;
+        background: #f5f8fb;
+        color: #587086;
+        font-weight: 800;
+        padding: 11px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        border-bottom: 1px solid var(--line);
+      }
+      .data-table td {
+        border-bottom: 1px solid #ecf0f5;
+        padding: 9px 11px;
+        vertical-align: top;
+      }
+      .data-table tr:hover td {
+        background: #fafcff;
+      }
+      .table-scroll {
+        overflow: auto;
+        max-height: 72vh;
+      }
+      .table-chip {
+        border: 1px solid #d5e1f1;
+        background: #edf4fd;
+        color: #2d5e91;
+        border-radius: 99px;
+        padding: 3px 7px;
+        display: inline-block;
+        margin: 2px 4px 2px 0;
+        font-size: 9px;
+        font-weight: 800;
+      }
+      .table-chip.clickable {
+        cursor: pointer;
+      }
+      .table-chip.clickable:hover {
+        background: #dbeaff;
+      }
+      .filter-bar {
+        padding: 13px 15px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+      .counter {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+        gap: 10px;
+        padding: 14px;
+      }
+      .catalog-item {
+        border: 1px solid #dce4ed;
+        border-radius: 10px;
+        padding: 14px;
+        background: white;
+        text-align: left;
+      }
+      .catalog-item:hover {
+        background: #f1f7ff;
+      }
+      .catalog-item strong {
+        display: block;
+        font:
+          750 12px ui-monospace,
+          Consolas,
+          monospace;
+        margin: 7px 0 3px;
+      }
+      .catalog-item p {
+        margin: 0 0 10px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .code-area {
+        margin: 0;
+        background: #102237;
+        color: #deebfa;
+        padding: 20px;
+        min-height: 400px;
+        max-height: 78vh;
+        overflow: auto;
+        font:
+          11px/1.7 ui-monospace,
+          Consolas,
+          monospace;
+        white-space: pre;
+        tab-size: 4;
+      }
+      .sql-kw {
+        color: #ff9dc0;
+      }
+      .sql-type {
+        color: #a2d1fc;
+      }
+      .sql-comment {
+        color: #a2b3c5;
+      }
+      .sql-tools {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 15px;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .relation-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 9px;
+        padding: 14px;
+      }
+      .relation-item {
+        border: 1px solid var(--line);
+        background: #fff;
+        text-align: left;
+        border-radius: 9px;
+        padding: 12px;
+      }
+      .relation-item:hover {
+        background: #f4f9ff;
+      }
+      .relation-item strong {
+        display: block;
+        font:
+          700 11px/1.6 ui-monospace,
+          Consolas,
+          monospace;
+      }
+      .relation-item small {
+        display: block;
+        margin-top: 4px;
+      }
+      .mobile-toggle {
+        display: none;
+      }
+      .backdrop {
+        display: none;
+      }
+      @media (max-width: 1080px) {
+        :root {
+          --side: 224px;
+        }
+        .view {
+          padding: 21px 17px 45px;
+        }
+        .topbar {
+          padding: 10px 16px;
+        }
+        .domain-grid {
+          gap: 12px;
+        }
+        .domain-card {
+          padding: 13px;
+        }
+        .overview-bottom {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 740px) {
+        .sidebar {
+          transform: translateX(-110%);
+          transition: transform 0.2s;
+          width: 265px;
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+        .backdrop.open {
+          display: block;
+          position: fixed;
+          inset: 0;
+          background: #10233f77;
+          z-index: 35;
+        }
+        .workspace {
+          margin-left: 0;
+          width: 100%;
+        }
+        .mobile-toggle {
+          display: block;
+        }
+        .topbar {
+          min-height: 58px;
+        }
+        .top-actions .btn:not(.mobile-toggle) {
+          display: none;
+        }
+        .view {
+          padding: 16px 10px 32px;
+        }
+        .view-header {
+          display: block;
+        }
+        .view-header h1 {
+          font-size: 23px;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .domain-grid {
+          grid-template-columns: 1fr;
+        }
+        .domain-card {
+          min-height: 122px;
+        }
+        .domain-map {
+          padding: 11px;
+        }
+        .hot-list {
+          grid-template-columns: 1fr;
+        }
+        .graph-wrapper {
+          height: 66vh;
+        }
+        .inspector {
+          top: 65px;
+          right: 7px;
+          bottom: 7px;
+        }
+        .diagram-toolbar {
+          gap: 10px;
+        }
+        .diagram-toolbar .search {
+          width: 100%;
+        }
+        .relation-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+        }
+      }
+
+      /* Barra de modos e demonstração: não altera a identidade visual das ferramentas originais. */
+      .modebar {
+        position: relative;
+        z-index: 90;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 11px 18px;
+        background: #0c1e38;
+        color: #fff;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ffffff25;
+      }
+      .modebar-title {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .modebar-mark {
+        width: 35px;
+        height: 35px;
+        border-radius: 9px;
+        display: grid;
+        place-items: center;
+        background: #b8ddff;
+        color: #0d2b4b;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .modebar-title b {
+        font-size: 14px;
+      }
+      .modebar-title small {
+        display: block;
+        color: #aac4df;
+        font-size: 10px;
+      }
+      .mode-actions {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .mode-button,
+      .mode-download {
+        border-radius: 8px;
+        border: 1px solid #617fa6;
+        color: #eaf4ff;
+        background: #19395c;
+        padding: 8px 12px;
+        font-weight: 750;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .mode-button:hover,
+      .mode-download:hover {
+        background: #29517c;
+      }
+      .mode-button.active {
+        background: #e1efff;
+        color: #1b4f91;
+        border-color: #e1efff;
+      }
+      .mode-button:focus-visible,
+      .mode-download:focus-visible {
+        outline: 3px solid #89baff;
+        outline-offset: 2px;
+      }
+      .mode-download {
+        background: transparent;
+        color: #c3d8f0;
+      }
+      .future-mode {
+        min-height: calc(100vh - 64px);
+        padding: 50px 16px;
+        display: grid;
+        place-items: center;
+        background: #f3f6fa;
+      }
+      .future-mode[hidden],
+      #mockMode[hidden] {
+        display: none !important;
+      }
+      .future-card {
+        width: min(650px, 100%);
+        padding: 36px;
+        border: 1px solid #dae5f2;
+        border-radius: 18px;
+        background: white;
+        box-shadow: 0 12px 40px #152d4217;
+      }
+      .future-symbol {
+        font-size: 45px;
+        color: #709ac4;
+      }
+      .future-tag {
+        font-size: 11px !important;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        color: #2b6ca9;
+      }
+      .future-card h1 {
+        font-size: 28px;
+      }
+      .future-card p {
+        line-height: 1.7;
+        color: #566a80;
+      }
+      .future-card .mode-button {
+        margin-top: 12px;
+      }
+      /* Barra de exemplos acima do menu lateral; preserve a navegação do banco por rolagem. */
+      #mockMode .sidebar {
+        top: 64px;
+        bottom: 0;
+        inset-inline-start: 0;
+        height: calc(100vh - 64px);
+      }
+      #mockMode .inspector {
+        top: 76px;
+      }
+      @media (max-width: 900px) {
+        .modebar {
+          padding: 9px 11px;
+        }
+        .modebar-title small {
+          font-size: 9px;
+        }
+      }
+      @media (max-width: 740px) {
+        #mockMode .sidebar {
+          top: 0;
+          height: 100vh;
+        }
+        .modebar-title {
+          flex-basis: 100%;
+        }
+        .mode-actions {
+          width: 100%;
+          display: flex;
+        }
+        .mode-button {
+          flex: 1;
+        }
+        .mode-download {
+          padding: 8px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .modebar *,
+        .future-mode * {
+          transition: none !important;
+        }
+      }
+
+      /* Menu global do Workspace próprio da pasta Banco; submenu lateral interno preservado. */
+      .workspace-global-header {
+        position: relative;
+        z-index: 120;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 9px 18px;
+        min-height: 59px;
+        background: #10233f;
+        color: #fff;
+        border-bottom: 1px solid #3b567a;
+      }
+      .workspace-global-brand {
+        display: grid;
+        gap: 1px;
+      }
+      .workspace-global-brand strong {
+        font-size: 19px;
+        line-height: 1.25;
+      }
+      .workspace-global-overline {
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        font-weight: 800;
+        color: #a9c9fa;
+      }
+      .workspace-menu {
+        position: relative;
+        z-index: 200;
+      }
+      .workspace-menu > summary {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        list-style: none;
+        cursor: pointer;
+        background: #1c3961;
+        border: 1px solid #647fa3;
+        border-radius: 9px;
+        padding: 8px 12px;
+        min-height: 40px;
+        font-weight: 750;
+        color: #fff;
+        user-select: none;
+      }
+      .workspace-menu > summary::-webkit-details-marker {
+        display: none;
+      }
+      .workspace-menu > summary:hover,
+      .workspace-menu[open] > summary {
+        background: #2b4c73;
+      }
+      .workspace-menu .menu-icon {
+        font-size: 20px;
+        line-height: 1;
+      }
+      .workspace-menu .menu-panel {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 9px);
+        width: min(340px, calc(100vw - 24px));
+        max-height: 72vh;
+        overflow-y: auto;
+        z-index: 201;
+        padding: 10px;
+        background: #fff;
+        border: 1px solid #cad8eb;
+        border-radius: 13px;
+        box-shadow: 0 18px 48px #071e4166;
+        color: #1c324d;
+      }
+      .workspace-menu .menu-group {
+        padding: 7px 3px;
+      }
+      .workspace-menu .menu-group + .menu-group {
+        border-top: 1px solid #e5ebf5;
+      }
+      .workspace-menu .menu-heading {
+        margin: 3px 8px 6px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #73839e;
+      }
+      .workspace-menu .menu-link {
+        display: block;
+        padding: 10px 11px;
+        border-radius: 8px;
+        color: #263c5b;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 650;
+      }
+      .workspace-menu .menu-link:hover,
+      .workspace-menu .menu-link:focus-visible {
+        background: #edf4fc;
+        color: #124d9f;
+      }
+      .workspace-menu .menu-link[aria-current="page"] {
+        background: #e7f0ff;
+        color: #1352b1;
+        font-weight: 800;
+      }
+      .workspace-menu .menu-extras {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        border-top: 1px solid #e5ebf5;
+        padding: 10px 3px 3px;
+      }
+      .workspace-menu .menu-extras a {
+        color: #2f5d99;
+        text-align: center;
+        text-decoration: none;
+        font-size: 11px;
+        padding: 8px;
+        border-radius: 7px;
+        background: #f2f6fc;
+      }
+      #mockMode .sidebar {
+        top: 123px;
+        height: calc(100vh - 123px);
+      }
+      #mockMode .inspector {
+        top: 138px;
+      }
+      @media (max-width: 740px) {
+        .workspace-global-header {
+          padding: 8px 11px;
+          min-height: 55px;
+        }
+        .workspace-global-brand strong {
+          font-size: 17px;
+        }
+        .workspace-menu .menu-word {
+          display: none;
+        }
+        .workspace-menu > summary {
+          min-height: 37px;
+          padding: 7px 10px;
+        }
+        #mockMode .sidebar {
+          top: 0;
+          height: 100vh;
+        }
+        #mockMode .inspector {
+          top: 70px;
+        }
+      }
+
+      /* Adaptações para a projeção canônica: sem mock, sem modo reservado. */
+      .workspace-global-header {
+        position: relative;
+        z-index: 120;
+      }
+      .shell {
+        min-height: calc(100dvh - 61px);
+      }
+      .sidebar {
+        top: 61px;
+        height: calc(100vh - 61px);
+      }
+      .bank-body {
+        padding: 16px;
+      }
+      .empty-contract {
+        padding: 28px;
+        border-radius: 13px;
+        border: 1px dashed #c0d5e9;
+        background: #fff;
+        color: #324961;
+        max-width: 850px;
+      }
+      .empty-contract h2 {
+        font-size: 20px;
+      }
+      .bank-graph-scroll {
+        position: relative;
+        overflow: auto;
+        min-height: 360px;
+        max-height: 76vh;
+        background:
+          radial-gradient(circle, #dbe6f1 0.8px, transparent 1px) 0 0/18px 18px,
+          #fbfdff;
+      }
+      .bank-graph-spacer {
+        position: relative;
+      }
+      .bank-graph-board {
+        position: absolute;
+        inset: 0;
+        transform-origin: 0 0;
+      }
+      .bank-graph-board svg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .bank-node {
+        position: absolute;
+        z-index: 1;
+        border: 1px solid #bed0e4;
+        border-top: 3px solid #317ac1;
+        background: #fff;
+        border-radius: 10px;
+        padding: 12px;
+        text-align: left;
+        box-shadow: 0 6px 18px #0e315220;
+        max-height: 215px;
+        overflow: auto;
+      }
+      .bank-node strong {
+        display: block;
+      }
+      .bank-node small {
+        display: block;
+        color: #5e7894;
+      }
+      .bank-node p {
+        margin: 5px 0;
+        border-top: 1px solid #e8eff8;
+      }
+      .view {
+        display: block;
+        max-width: 1350px;
+      }
+      .sidebar .nav-btn:focus-visible,
+      .workspace-menu a:focus-visible {
+        outline: 3px solid #83bfff;
+        outline-offset: 2px;
+      }
+      @media (max-width: 740px) {
+        .sidebar {
+          top: 0;
+          height: 100dvh;
+        }
+        .workspace {
+          min-width: 0;
+        }
+        .view {
+          padding: 17px 12px 40px;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="workspace-global-header">
+      <div class="workspace-global-brand">
+        <div class="workspace-global-overline">ADVOGADO JÁ · WORKSPACE V6</div>
+        <strong>Banco</strong>
+      </div>
+      <details class="workspace-menu">
+        <summary aria-label="Abrir menu geral dos módulos">
+          <span class="menu-icon" aria-hidden="true">☰</span
+          ><span class="menu-word">Módulos</span>
+        </summary>
+        <nav class="menu-panel" aria-label="Módulos do Workspace">
+          <div class="menu-group">
+            <div class="menu-heading">Definição</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/definicao/modelos/index.html"
+              >Modelos JSON</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/definicao/contrato/index.html"
+              >Contrato</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/definicao/planejamento/index.html"
+              >Planejamento</a
+            >
+          </div>
+          <div class="menu-group">
+            <div class="menu-heading">Construção</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/construcao/catalogo/index.html"
+              >Catálogo</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/construcao/jornadas/index.html"
+              >Jornadas</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/construcao/flow/index.html"
+              >Flow Editor</a
+            >
+          </div>
+          <div class="menu-group">
+            <div class="menu-heading">Projeção e validação</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/projecao/prototipo/index.html"
+              >Protótipo</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/projecao/banco/index.html"
+              aria-current="page"
+              >Banco</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/projecao/mapa-interacoes/index.html"
+              >Mapa de Interações</a
+            >
+          </div>
+          <div class="menu-group">
+            <div class="menu-heading">Ferramentas</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/ferramentas/auditoria/index.html"
+              >Auditoria</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/ferramentas/importacao-exportacao/index.html"
+              >Arquivos e exportação</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/ferramentas/questionario/index.html"
+              >Questionário</a
+            >
+          </div>
+          <div class="menu-extras">
+            <a href="../../../../../index.html">Outros projetos</a
+            ><a href="../../../documentacao/DEFINICOES_CONSOLIDADAS_V4.md"
+              >Definições .md</a
+            >
+          </div>
+        </nav>
+      </details>
+    </header>
+    <div class="shell">
+      <div class="backdrop" id="backdrop"></div>
+      <aside class="sidebar" id="sidebar" aria-label="Submenu do Banco">
+        <div class="brand">
+          <div class="brand-symbol">AJ</div>
+          <div><strong>Banco</strong><small>Projeção canônica · V6</small></div>
+        </div>
+        <div class="side-label">Explorar a modelagem</div>
+        <nav class="side-nav" aria-label="Seções do Banco">
+          <button type="button" class="nav-btn active" data-view="overview">
+            <span class="nav-icon">▦</span>Visão geral</button
+          ><button type="button" class="nav-btn" data-view="diagram">
+            <span class="nav-icon">⌘</span>Diagrama DER / UML</button
+          ><button type="button" class="nav-btn" data-view="relations">
+            <span class="nav-icon">⌁</span>Relacionamentos</button
+          ><button type="button" class="nav-btn" data-view="screens">
+            <span class="nav-icon">◫</span>Telas → Entidades</button
+          ><button type="button" class="nav-btn" data-view="catalog">
+            <span class="nav-icon">▥</span>Dicionário de tabelas</button
+          ><button type="button" class="nav-btn" data-view="sql">
+            <span class="nav-icon">{ }</span>SQL declarado</button
+          ><button type="button" class="nav-btn" data-view="motor">
+            <span class="nav-icon">☷</span>Motor / JSON
+          </button>
+        </nav>
+        <div class="side-foot">
+          <strong>Fonte única: Catálogo ativo</strong>
+          <p>
+            Dados históricos e mock removidos. O motor apresenta somente
+            entidades e relações declaradas nas telas.
+          </p>
+        </div>
+      </aside>
+      <main class="workspace">
+        <div class="topbar">
+          <div class="flex">
+            <button
+              class="btn mobile-toggle"
+              id="mobileToggle"
+              type="button"
+              aria-label="Abrir submenu do Banco"
+            >
+              ☰</button
+            ><span class="crumb"
+              >Banco / <strong id="breadcrumb">Visão geral</strong></span
+            >
+          </div>
+          <div class="top-actions">
+            <span class="pill">CATÁLOGO ATIVO · SEM MOCK</span
+            ><button class="btn" id="exportProjection">↓ JSON</button>
+          </div>
+        </div>
+        <section class="view active" id="viewContent" aria-live="polite">
+          <p>Carregando dados canônicos...</p>
+        </section>
+      </main>
+    </div>
+    <aside class="inspector" id="inspector" aria-label="Detalhes da entidade">
+      <div class="inspect-top">
+        <button
+          class="close-x"
+          type="button"
+          id="closeInspector"
+          aria-label="Fechar detalhes"
+        >
+          ×
+        </button>
+        <div class="eyebrow">Inspetor</div>
+        <h2 id="inspectTitle"></h2>
+      </div>
+      <div class="inspect-body" id="inspectBody"></div>
+    </aside>
+    <script>
+      (async () => {
+        const KEY = "advogadoja.v6.prototipo.rascunho.";
+        const EMBEDDED_CATALOGO = {
+          indice: { telas: [], componentes: [] },
+          telas: {},
+          componentes: {},
+          origem: "catalogo/indice.json (não incluído no banco.zip)",
+        };
+        async function carregarCatalogo() {
+          const telas = { ...EMBEDDED_CATALOGO.telas },
+            componentes = { ...EMBEDDED_CATALOGO.componentes };
+          for (const tipo of ["telas", "componentes"])
+            for (const ref of EMBEDDED_CATALOGO.indice[tipo] || []) {
+              const raw = (tipo === "telas" ? telas : componentes)[ref.id];
+              if (!raw) continue;
+              const overlay = localStorage.getItem(KEY + ref.id),
+                obj = overlay ? JSON.parse(overlay) : raw;
+              if (obj.identidade?.id !== ref.id)
+                throw Error("Identidade divergente de índice: " + ref.id);
+              (tipo === "telas" ? telas : componentes)[ref.id] = obj;
+            }
+          return {
+            indice: EMBEDDED_CATALOGO.indice,
+            telas,
+            componentes,
+            origem: EMBEDDED_CATALOGO.origem,
+          };
+        }
+        async function salvarRegistro(tipo, id, registro) {
+          if (!["telas", "componentes"].includes(tipo))
+            throw Error("Tipo inválido");
+          if (registro?.identidade?.id !== id)
+            throw Error("O ID do registro não pode ser alterado ao salvar.");
+          const dados = await carregarCatalogo();
+          if (!dados.indice[tipo].some((x) => x.id === id))
+            throw Error("Registro fora do índice ativo.");
+          localStorage.setItem(KEY + id, JSON.stringify(registro));
+          return {
+            modo: "navegador",
+            mensagem: "Salvo apenas neste navegador.",
+          };
+        }
+        function limparRascunho(id) {
+          localStorage.removeItem(KEY + id);
+        }
+        function baixar(nome, conteudo, mime = "application/json") {
+          const b = new Blob([conteudo], { type: mime + ";charset=utf-8" });
+          baixarBlob(nome, b);
+        }
+        function baixarBlob(nome, blob) {
+          const u = URL.createObjectURL(blob),
+            a = document.createElement("a");
+          a.href = u;
+          a.download = nome;
+          document.body.append(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(u), 1200);
+        }
+        const stringify = (obj) => JSON.stringify(obj, null, 2) + "\n";
+        function montarPacote(catalogo, ids) {
+          const telas = {},
+            componentes = {},
+            idsComps = new Set();
+          for (const id of ids) {
+            const t = catalogo.telas[id];
+            if (!t) continue;
+            telas[id] = t;
+            for (const inst of t.componentes?.instancias || [])
+              idsComps.add(inst.ref);
+          }
+          for (const id of idsComps) {
+            const c = catalogo.componentes[id];
+            if (c) componentes[id] = c;
+          }
+          return {
+            schema: "advogadoja.intercambio.v6-provisorio",
+            fonte: "catalogo-ativo-v6",
+            escopo: {
+              telas: Object.keys(telas),
+              componentes: Object.keys(componentes),
+            },
+            telas,
+            componentes,
+            observacao:
+              "Pacote editável, não fonte mestre; revisão por ID antes de aplicar.",
+          };
+        }
+
+        // Contrato de projeção local. Não infere PK, FK, tabelas nem cardinalidades ausentes.
+        const arr = (v) => (Array.isArray(v) ? v : []);
+        const objects = (v) =>
+          v && typeof v === "object" && !Array.isArray(v) ? v : {};
+        function projetar(catalogo) {
+          const entidades = new Map(),
+            relacoes = new Map(),
+            operacoes = [],
+            fontes = [],
+            telas = {},
+            avisos = [];
+          for (const [telaId, tela] of Object.entries(catalogo.telas || {})) {
+            const dados = objects(tela.dados),
+              persist = dados.persistencia;
+            const declaration = Array.isArray(persist)
+              ? { entidades: persist }
+              : objects(persist);
+            const names = [];
+            for (const raw of arr(declaration.entidades)) {
+              if (!raw || typeof raw !== "object") continue;
+              const id = String(raw.id || raw.entidadeId || "").trim();
+              if (!id) {
+                avisos.push({ tela: telaId, tipo: "entidade-sem-id" });
+                continue;
+              }
+              names.push(id);
+              const campos = arr(raw.campos)
+                .map((f) => (typeof f === "string" ? { id: f } : objects(f)))
+                .filter((f) => f.id);
+              if (!entidades.has(id))
+                entidades.set(id, {
+                  id,
+                  nome: raw.nome || id,
+                  dominio: raw.dominio || "nao_declarado",
+                  campos: [],
+                  telas: [],
+                  origens: [],
+                });
+              const ent = entidades.get(id);
+              if (!ent.telas.includes(telaId)) ent.telas.push(telaId);
+              ent.origens.push(telaId);
+              for (const field of campos) {
+                const prev = ent.campos.find((x) => x.id === field.id);
+                if (!prev) ent.campos.push({ ...field });
+                else if (JSON.stringify(prev) !== JSON.stringify(field))
+                  avisos.push({
+                    tela: telaId,
+                    tipo: "campo-divergente",
+                    entidade: id,
+                    campo: field.id,
+                  });
+              }
+              if (ent.dominio !== (raw.dominio || "nao_declarado"))
+                avisos.push({
+                  tela: telaId,
+                  tipo: "dominio-divergente",
+                  entidade: id,
+                });
+            }
+            for (const raw of arr(declaration.relacoes)) {
+              if (!raw || typeof raw !== "object") continue;
+              const origem = raw.origem || raw.de || raw.entidadeOrigem;
+              const destino = raw.destino || raw.para || raw.entidadeDestino;
+              const id =
+                raw.id ||
+                [origem, destino, raw.campo || raw.chave || ""].join("::");
+              if (origem && destino)
+                relacoes.set(id, {
+                  id,
+                  origem,
+                  destino,
+                  cardinalidade: raw.cardinalidade || null,
+                  campo: raw.campo || raw.chave || null,
+                  tela: telaId,
+                });
+              else
+                avisos.push({ tela: telaId, tipo: "relacao-incompleta", id });
+            }
+            for (const o of arr(dados.operacoes))
+              operacoes.push({ ...objects(o), tela: telaId });
+            for (const f of arr(dados.fontes))
+              fontes.push({ ...objects(f), tela: telaId });
+            telas[telaId] = {
+              nome: tela.identidade?.nome || telaId,
+              entidades: names,
+            };
+          }
+          const tabelaList = [...entidades.values()],
+            relList = [...relacoes.values()];
+          for (const r of relList)
+            if (!entidades.has(r.origem) || !entidades.has(r.destino))
+              avisos.push({ tipo: "referencia-ausente", relacao: r.id });
+          if (!tabelaList.length)
+            avisos.push({
+              tipo: "sem-modelagem",
+              mensagem:
+                "As telas ativas não declaram entidades detalhadas. Nenhuma tabela foi criada por inferência.",
+            });
+          return {
+            origem: "catalogo/indice.json",
+            modo: "canonico",
+            telas,
+            entidades: tabelaList,
+            relacoes: relList,
+            operacoes,
+            fontes,
+            avisos,
+            sql: null,
+          };
+        }
+        const agrupadas = (proj) =>
+          Object.groupBy
+            ? Object.groupBy(proj.entidades, (e) => e.dominio)
+            : proj.entidades.reduce(
+                (a, e) => ((a[e.dominio] ??= []).push(e), a),
+                {},
+              );
+
+        const $ = (id) => document.getElementById(id),
+          esc = (x) =>
+            String(x ?? "").replace(
+              /[&<>"']/g,
+              (c) =>
+                ({
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;",
+                })[c],
+            );
+        let data = null,
+          view = "overview",
+          zoom = 1,
+          query = "",
+          focus = null;
+        const tabs = {
+          overview: "Visão geral",
+          diagram: "Diagrama DER / UML",
+          relations: "Relacionamentos",
+          screens: "Telas → Entidades",
+          catalog: "Dicionário de tabelas",
+          sql: "SQL declarado",
+          motor: "Motor / JSON",
+        };
+        const empty = (title, why) =>
+          '<div class="empty-contract"><h2>' +
+          esc(title) +
+          "</h2><p>" +
+          esc(why) +
+          "</p><p><strong>Sem preenchimento automático:</strong> defina os campos em <code>dados.persistencia</code> dos contratos de tela.</p></div>";
+        const box = (title, content) =>
+          '<div class="surface"><div class="diagram-toolbar"><strong>' +
+          esc(title) +
+          '</strong></div><div class="bank-body">' +
+          content +
+          "</div></div>";
+        const filterRows = (a) =>
+          a.filter((x) =>
+            JSON.stringify(x).toLowerCase().includes(query.toLowerCase()),
+          );
+        function openDetail(id) {
+          const e = data.entidades.find((x) => x.id === id);
+          if (!e) return;
+          focus = id;
+          $("inspectTitle").textContent = id;
+          $("inspectBody").innerHTML =
+            "<p>" +
+            esc(e.nome) +
+            "</p><p><strong>Domínio:</strong> " +
+            esc(e.dominio) +
+            "</p><h3>Campos declarados</h3>" +
+            (e.campos.length
+              ? e.campos
+                  .map(
+                    (f) =>
+                      '<div class="inspect-row"><span>' +
+                      esc(f.id) +
+                      "</span><small>" +
+                      esc(f.tipo || "sem tipo") +
+                      "</small></div>",
+                  )
+                  .join("")
+              : "<p>Campos não declarados.</p>") +
+            "<h3>Relacionamentos</h3>" +
+            (data.relacoes
+              .filter((r) => r.origem === id || r.destino === id)
+              .map(
+                (r) =>
+                  "<p>" +
+                  esc(r.origem) +
+                  " → " +
+                  esc(r.destino) +
+                  " · " +
+                  esc(r.cardinalidade || "cardinalidade não definida") +
+                  "</p>",
+              )
+              .join("") || "<p>Sem relações declaradas.</p>") +
+            "<h3>Telas consumidoras</h3><p>" +
+            esc(e.telas.join(", ") || "—") +
+            "</p>";
+          $("inspector").classList.add("open");
+        }
+        function diagram() {
+          const e = data.entidades,
+            rels = data.relacoes;
+          if (!e.length)
+            return empty(
+              "Diagrama ainda sem entidades",
+              "O catálogo ativo não fornece tabelas ou relacionamentos suficientes para montar o grafo.",
+            );
+          const w = 900,
+            h = Math.max(330, Math.ceil(e.length / 3) * 240),
+            width = 280;
+          const pos = {};
+          let cards = e
+            .map((ent, i) => {
+              const x = 30 + (i % 3) * 295,
+                y = 28 + Math.floor(i / 3) * 225;
+              pos[ent.id] = { x, y };
+              return (
+                '<button type="button" class="bank-node" data-entity="' +
+                esc(ent.id) +
+                '" style="left:' +
+                x +
+                "px;top:" +
+                y +
+                "px;width:" +
+                width +
+                'px"><strong>' +
+                esc(ent.id) +
+                "</strong><small>" +
+                esc(ent.dominio) +
+                "</small><div>" +
+                ent.campos
+                  .slice(0, 6)
+                  .map(
+                    (f) =>
+                      "<p>" +
+                      esc(f.id) +
+                      " <small>" +
+                      esc(f.tipo || "") +
+                      "</small></p>",
+                  )
+                  .join("") +
+                "</div></button>"
+              );
+            })
+            .join("");
+          const paths = rels
+            .map((r) => {
+              const a = pos[r.origem],
+                b = pos[r.destino];
+              if (!a || !b) return "";
+              const ax = a.x + width / 2,
+                ay = a.y + 80,
+                bx = b.x + width / 2,
+                by = b.y + 80;
+              return (
+                '<path d="M' +
+                ax +
+                " " +
+                ay +
+                " L" +
+                bx +
+                " " +
+                by +
+                '" stroke="#6483ab" stroke-width="2" fill="none"/>'
+              );
+            })
+            .join("");
+          return (
+            '<div class="surface"><div class="diagram-toolbar"><strong>Diagrama relacional dos contratos</strong><div class="toolbar"><button class="btn" data-zoom="out">−</button><span>' +
+            Math.round(zoom * 100) +
+            '%</span><button class="btn" data-zoom="in">+</button><button class="btn" data-zoom="reset">100%</button></div></div><div class="bank-graph-scroll" tabindex="0" aria-label="Diagrama com rolagem"><div class="bank-graph-spacer" style="width:' +
+            w * zoom +
+            "px;height:" +
+            h * zoom +
+            'px"><div class="bank-graph-board" style="width:' +
+            w +
+            "px;height:" +
+            h +
+            "px;transform:scale(" +
+            zoom +
+            ')"><svg width="' +
+            w +
+            '" height="' +
+            h +
+            '" aria-hidden="true">' +
+            paths +
+            "</svg>" +
+            cards +
+            "</div></div></div></div>"
+          );
+        }
+        function render() {
+          if (!data) return;
+          $("breadcrumb").textContent = tabs[view];
+          document.querySelectorAll("[data-view]").forEach((b) => {
+            const on = b.dataset.view === view;
+            b.classList.toggle("active", on);
+            if (on) b.setAttribute("aria-current", "page");
+            else b.removeAttribute("aria-current");
+          });
+          let html =
+            '<div class="view-header"><div><div class="eyebrow">Projeção do catálogo · sem mock</div><h1>' +
+            esc(tabs[view]) +
+            "</h1><p>Visualização derivada apenas das declarações das telas ativas. Sem dados legados ou inventados.</p></div></div>";
+          if (view === "overview") {
+            const groups = agrupadas(data);
+            html +=
+              '<div class="metrics"><div class="metric"><b>' +
+              data.entidades.length +
+              '</b><span>Entidades</span></div><div class="metric"><b>' +
+              data.relacoes.length +
+              '</b><span>Relações</span></div><div class="metric"><b>' +
+              Object.keys(data.telas).length +
+              '</b><span>Telas ativas</span></div><div class="metric"><b>' +
+              data.avisos.length +
+              "</b><span>Diagnósticos</span></div></div>";
+            html += data.entidades.length
+              ? box(
+                  "Domínios",
+                  Object.keys(groups)
+                    .map(
+                      (g) =>
+                        '<button class="btn" data-domain="' +
+                        esc(g) +
+                        '">' +
+                        esc(g) +
+                        " · " +
+                        groups[g].length +
+                        "</button>",
+                    )
+                    .join(" "),
+                )
+              : empty(
+                  "Nenhuma entidade homologada",
+                  "Os cinco JSONs de tela ativos ainda não declaram entidades de persistência.",
+                );
+            html += box(
+              "Avisos do motor",
+              "<ul>" +
+                data.avisos
+                  .map(
+                    (x) =>
+                      "<li>" +
+                      esc(
+                        x.mensagem ||
+                          [x.tipo, x.tela || "", x.entidade || ""].join(" · "),
+                      ) +
+                      "</li>",
+                  )
+                  .join("") +
+                "</ul>",
+            );
+          }
+          if (view === "diagram") html += diagram();
+          if (view === "relations")
+            html += data.relacoes.length
+              ? box(
+                  "Relações declaradas",
+                  data.relacoes
+                    .map(
+                      (r) =>
+                        '<button class="relation-item" data-entity="' +
+                        esc(r.origem) +
+                        '"><strong>' +
+                        esc(r.origem) +
+                        " → " +
+                        esc(r.destino) +
+                        "</strong><small>" +
+                        esc(r.cardinalidade || "não declarada") +
+                        " · " +
+                        esc(r.campo || "campo não declarado") +
+                        "</small></button>",
+                    )
+                    .join(""),
+                )
+              : empty(
+                  "Sem relacionamentos declarados",
+                  "Relações devem ser declaradas nas telas antes de aparecerem aqui.",
+                );
+          if (view === "catalog") {
+            html +=
+              '<div class="filter-bar"><label for="bankSearch">Pesquisar campos e entidades</label><input class="search" id="bankSearch" type="search" value="' +
+              esc(query) +
+              '" placeholder="Buscar..."></div>';
+            html += data.entidades.length
+              ? box(
+                  "Tabelas",
+                  filterRows(data.entidades)
+                    .map(
+                      (e) =>
+                        '<button class="catalog-item" data-entity="' +
+                        esc(e.id) +
+                        '"><strong>' +
+                        esc(e.id) +
+                        "</strong><p>" +
+                        esc(e.nome) +
+                        "</p><small>" +
+                        e.campos.length +
+                        " campos · " +
+                        e.telas.length +
+                        " telas</small></button>",
+                    )
+                    .join("") || "<p>Nenhum resultado.</p>",
+                )
+              : empty(
+                  "Sem tabelas no catálogo ativo",
+                  "Não há esquema para listar nesta etapa.",
+                );
+          }
+          if (view === "screens")
+            html += box(
+              "Rastreabilidade",
+              '<div class="table-scroll"><table class="data-table"><thead><tr><th>Tela</th><th>Entidades declaradas</th></tr></thead><tbody>' +
+                Object.entries(data.telas)
+                  .map(
+                    ([id, t]) =>
+                      "<tr><td>" +
+                      esc(t.nome) +
+                      "<br><small>" +
+                      esc(id) +
+                      "</small></td><td>" +
+                      esc(t.entidades.join(", ") || "Nenhuma") +
+                      "</td></tr>",
+                  )
+                  .join("") +
+                "</tbody></table></div>",
+            );
+          if (view === "sql")
+            html += empty(
+              "SQL não disponível",
+              "Nenhum SQL foi declarado nos contratos. O motor não deve gerar DDL arbitrário a partir de campos ausentes.",
+            );
+          if (view === "motor")
+            html += box(
+              "Projeção e diagnósticos",
+              '<pre class="code-area" tabindex="0">' +
+                esc(JSON.stringify(data, null, 2)) +
+                "</pre>",
+            );
+          $("viewContent").innerHTML = html;
+          $("viewContent")
+            .querySelectorAll("[data-entity]")
+            .forEach((b) => (b.onclick = () => openDetail(b.dataset.entity)));
+          $("viewContent")
+            .querySelectorAll("[data-zoom]")
+            .forEach(
+              (b) =>
+                (b.onclick = () => {
+                  zoom =
+                    b.dataset.zoom === "in"
+                      ? Math.min(1.5, zoom + 0.15)
+                      : b.dataset.zoom === "out"
+                        ? Math.max(0.35, zoom - 0.15)
+                        : 1;
+                  render();
+                }),
+            );
+          $("viewContent")
+            .querySelectorAll("[data-domain]")
+            .forEach(
+              (b) =>
+                (b.onclick = () => {
+                  view = "catalog";
+                  query = b.dataset.domain;
+                  render();
+                }),
+            );
+          const search = $("bankSearch");
+          if (search) {
+            search.focus();
+            search.setSelectionRange(search.value.length, search.value.length);
+            search.oninput = (e) => {
+              query = e.target.value;
+              render();
+            };
+          }
+        }
+        document.querySelectorAll("[data-view]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              view = b.dataset.view;
+              query = "";
+              render();
+              $("sidebar").classList.remove("open");
+              $("backdrop").classList.remove("open");
+            }),
+        );
+        $("mobileToggle").onclick = () => {
+          $("sidebar").classList.toggle("open");
+          $("backdrop").classList.toggle("open");
+        };
+        $("backdrop").onclick = () => {
+          $("sidebar").classList.remove("open");
+          $("backdrop").classList.remove("open");
+        };
+        $("closeInspector").onclick = () => {
+          $("inspector").classList.remove("open");
+          focus = null;
+        };
+        $("exportProjection").onclick = () =>
+          data && baixar("banco_projecao_catalogo_v6.json", stringify(data));
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            $("inspector").classList.remove("open");
+            $("sidebar").classList.remove("open");
+            $("backdrop").classList.remove("open");
+          }
+        });
+        try {
+          data = projetar(await carregarCatalogo());
+          render();
+        } catch (err) {
+          $("viewContent").innerHTML = empty(
+            "Erro ao ler o catálogo",
+            err.message + " — sirva o Workspace por HTTP (python iniciar.py).",
+          );
+        }
+      })().catch((err) => {
+        console.error(err);
+        const el = document.getElementById("viewContent");
+        if (el)
+          el.innerHTML = `<div class="empty-contract"><h2>Erro no Banco</h2><p>${String(err?.message || err)}</p></div>`;
+      });
+    </script>
+    <script>
+      document.addEventListener("pointerdown", (e) => {
+        const m = document.querySelector(".workspace-menu");
+        if (m?.open && !m.contains(e.target)) m.open = false;
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape")
+          document.querySelector(".workspace-menu")?.removeAttribute("open");
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".workspace-menu a").forEach((a) => {
+        if (a.getAttribute("aria-current") === "page") return;
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href") || "";
+          if (!href.startsWith("#")) {
+            e.preventDefault();
+            const vc = document.getElementById("viewContent"),
+              old = document.getElementById("standaloneMenuNotice");
+            old?.remove();
+            const n = document.createElement("div");
+            n.id = "standaloneMenuNotice";
+            n.className = "warning";
+            n.textContent =
+              "Este HTML autocontido inclui somente o módulo Banco. Os demais módulos do Workspace não estão embutidos neste arquivo.";
+            vc?.prepend(n);
+            document.querySelector(".workspace-menu")?.removeAttribute("open");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

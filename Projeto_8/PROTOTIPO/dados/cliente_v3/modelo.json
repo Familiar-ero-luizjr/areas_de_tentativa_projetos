@@ -1,0 +1,310 @@
+{
+  "formato": "advogadoja.lab.cliente.v3",
+  "versao": 3,
+  "fonte": "AdvogadoJa_Workspace_Modular.zip (catálogo de telas/componentes da jornada cliente)",
+  "mocks": {
+    "maria_nova": {
+      "nome": "Maria · Primeiro acesso",
+      "cadastroConcluido": false,
+      "onboardingConcluido": false,
+      "dados": {
+        "name": "Maria",
+        "surname": "Oliveira",
+        "username": "maria.oliveira",
+        "cpf": "123.456.789-09",
+        "birthday": "1992-06-15",
+        "gender": "feminino",
+        "email": "maria@exemplo.test",
+        "password": "Demo@123",
+        "passwordConfirmation": "Demo@123",
+        "phoneE164": "79999990000",
+        "zipCode": "49000000",
+        "address": "Rua Exemplo",
+        "addressNumber": "120",
+        "complement": "Apto 202",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "Aracaju",
+        "uf": "SE",
+        "country": "BR",
+        "client-best-time": "Tarde",
+        "comentario": "Preciso de orientação jurídica sobre uma questão contratual."
+      }
+    },
+    "maria_retorno": {
+      "nome": "Maria · Cliente recorrente",
+      "cadastroConcluido": true,
+      "onboardingConcluido": true,
+      "dados": {
+        "name": "Maria",
+        "surname": "Oliveira",
+        "username": "maria.oliveira",
+        "cpf": "123.456.789-09",
+        "birthday": "1992-06-15",
+        "gender": "feminino",
+        "email": "maria@exemplo.test",
+        "password": "Demo@123",
+        "passwordConfirmation": "Demo@123",
+        "phoneE164": "79999990000",
+        "zipCode": "49000000",
+        "address": "Rua Exemplo",
+        "addressNumber": "120",
+        "complement": "Apto 202",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "Aracaju",
+        "uf": "SE",
+        "country": "BR",
+        "client-best-time": "Tarde"
+      }
+    },
+    "cliente_livre": {
+      "nome": "Cliente · Cadastro livre",
+      "cadastroConcluido": false,
+      "onboardingConcluido": false,
+      "dados": {
+        "name": "Cliente",
+        "surname": "Exemplo",
+        "username": "cliente.exemplo",
+        "cpf": "123.456.789-09",
+        "birthday": "1994-04-20",
+        "gender": "outro",
+        "email": "cliente@exemplo.test",
+        "password": "Demo@123",
+        "passwordConfirmation": "Demo@123",
+        "phoneE164": "79988887777",
+        "zipCode": "49000000",
+        "address": "Avenida Exemplo",
+        "addressNumber": "300",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "Aracaju",
+        "uf": "SE",
+        "country": "BR"
+      }
+    }
+  },
+  "sequencias": {
+    "cadastro_completo": {
+      "id": "cadastro_completo",
+      "nome": "Cliente · Cadastro e onboarding",
+      "intervalo": 3,
+      "passos": [
+        "auth.inicializacao.splash",
+        "auth.inicializacao.boas_vindas",
+        "auth.sessao.entrar",
+        "auth.cadastro.tipo_conta",
+        "auth.cadastro.identificacao",
+        "auth.cadastro.contato",
+        "auth.cadastro.endereco",
+        "auth.cadastro.seguranca",
+        "auth.cadastro.consentimentos",
+        "auth.cadastro.revisao",
+        "auth.cadastro.concluido",
+        "cliente.onboarding.localizacao",
+        "cliente.onboarding.preferencias_contato",
+        "cliente.onboarding.concluido",
+        "cliente.home_cliente"
+      ]
+    },
+    "login_home": {
+      "id": "login_home",
+      "nome": "Cliente · Entrada direta na Home",
+      "intervalo": 3,
+      "passos": [
+        "auth.inicializacao.splash",
+        "auth.inicializacao.boas_vindas",
+        "auth.sessao.entrar",
+        "cliente.home_cliente"
+      ]
+    },
+    "solicitacao": {
+      "id": "solicitacao",
+      "nome": "Cliente · Solicitação e aceite",
+      "intervalo": 4,
+      "passos": [
+        "cliente.home_cliente",
+        "cliente.profissionais.perfil_publico",
+        {
+          "evento": "criar_solicitacao"
+        },
+        "cliente.profissionais.minhas_solicitacoes",
+        {
+          "evento": "aceitar_solicitacao"
+        },
+        "cliente.profissionais.contatos_liberados",
+        "cliente.profissionais.encerrar_solicitacao",
+        "cliente.profissionais.avaliar_experiencia"
+      ]
+    }
+  },
+  "relacoes": [
+    {
+      "origem": "auth.inicializacao.splash",
+      "destino": "auth.inicializacao.boas_vindas",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.inicializacao.boas_vindas",
+      "destino": "auth.sessao.entrar",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.sessao.entrar",
+      "destino": "auth.cadastro.tipo_conta",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.tipo_conta",
+      "destino": "auth.cadastro.identificacao",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.identificacao",
+      "destino": "auth.cadastro.contato",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.contato",
+      "destino": "auth.cadastro.endereco",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.endereco",
+      "destino": "auth.cadastro.seguranca",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.seguranca",
+      "destino": "auth.cadastro.consentimentos",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.consentimentos",
+      "destino": "auth.cadastro.revisao",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.revisao",
+      "destino": "auth.cadastro.concluido",
+      "evento": "seguir"
+    },
+    {
+      "origem": "cliente.onboarding.localizacao",
+      "destino": "cliente.onboarding.preferencias_contato",
+      "evento": "seguir"
+    },
+    {
+      "origem": "cliente.onboarding.preferencias_contato",
+      "destino": "cliente.onboarding.concluido",
+      "evento": "seguir"
+    },
+    {
+      "origem": "cliente.onboarding.concluido",
+      "destino": "cliente.home_cliente",
+      "evento": "seguir"
+    },
+    {
+      "origem": "auth.cadastro.concluido",
+      "destino": "auth.sessao.entrar",
+      "evento": "concluir_cadastro"
+    },
+    {
+      "origem": "auth.sessao.entrar",
+      "destino": "cliente.onboarding.localizacao",
+      "evento": "login",
+      "condicao": "onboarding_pendente"
+    },
+    {
+      "origem": "auth.sessao.entrar",
+      "destino": "cliente.home_cliente",
+      "evento": "login",
+      "condicao": "onboarding_concluido"
+    },
+    {
+      "origem": "cliente.onboarding.concluido",
+      "destino": "cliente.home_cliente",
+      "evento": "concluir_onboarding"
+    },
+    {
+      "origem": "cliente.home_cliente",
+      "destino": "cliente.profissionais.perfil_publico",
+      "evento": "buscar"
+    },
+    {
+      "origem": "cliente.profissionais.perfil_publico",
+      "destino": "cliente.profissionais.minhas_solicitacoes",
+      "evento": "criar_solicitacao"
+    },
+    {
+      "origem": "cliente.profissionais.minhas_solicitacoes",
+      "destino": "cliente.profissionais.contatos_liberados",
+      "evento": "aceitar_solicitacao",
+      "condicao": "solicitacao_aceita"
+    },
+    {
+      "origem": "cliente.profissionais.contatos_liberados",
+      "destino": "cliente.profissionais.aviso_canal_externo",
+      "evento": "seguir"
+    },
+    {
+      "origem": "cliente.profissionais.aviso_canal_externo",
+      "destino": "cliente.profissionais.encerrar_solicitacao",
+      "evento": "seguir"
+    },
+    {
+      "origem": "cliente.profissionais.encerrar_solicitacao",
+      "destino": "cliente.profissionais.avaliar_experiencia",
+      "evento": "encerrar"
+    },
+    {
+      "origem": "cliente.profissionais.avaliar_experiencia",
+      "destino": "cliente.profissionais.minhas_solicitacoes",
+      "evento": "avaliar"
+    }
+  ],
+  "configuracao": {
+    "intervaloSegundos": 3,
+    "telaInicial": "auth.inicializacao.splash"
+  },
+  "documentacao": {
+    "importacao": "Mesclagem por ID de telas, mocks, relacoes e sequencias. JSON de estado/snapshot é exportado separadamente.",
+    "autopreenchimento": "Apenas campos vazios são complementados; false, zero e valores manuais são preservados.",
+    "persistencia": "Estado fictício separado por cenário, salvo em localStorage quando permitido pelo navegador."
+  },
+  "ordem": [
+    "auth.inicializacao.splash",
+    "auth.inicializacao.boas_vindas",
+    "auth.sessao.entrar",
+    "auth.cadastro.tipo_conta",
+    "auth.cadastro.identificacao",
+    "auth.cadastro.contato",
+    "auth.cadastro.endereco",
+    "auth.cadastro.seguranca",
+    "auth.cadastro.consentimentos",
+    "auth.cadastro.revisao",
+    "auth.cadastro.concluido",
+    "cliente.onboarding.localizacao",
+    "cliente.onboarding.preferencias_contato",
+    "cliente.onboarding.concluido",
+    "cliente.home_cliente",
+    "cliente.profissionais.perfil_publico",
+    "cliente.profissionais.detalhe_solicitacao",
+    "cliente.profissionais.minhas_solicitacoes",
+    "cliente.profissionais.contatos_liberados",
+    "cliente.profissionais.aviso_canal_externo",
+    "cliente.profissionais.encerrar_solicitacao",
+    "cliente.profissionais.avaliar_experiencia",
+    "cliente.perfil_cliente",
+    "cliente.configuracao.configuracao",
+    "cliente.configuracao.termos_privacidade",
+    "cliente.configuracao.termos_uso",
+    "cliente.configuracao.politica_privacidade",
+    "cliente.configuracao.consentimentos",
+    "cliente.configuracao.suporte",
+    "cliente.configuracao.central_ajuda",
+    "cliente.configuracao.falar_suporte",
+    "cliente.configuracao.meus_chamados",
+    "notificacoes.lista.notificacoes"
+  ]
+}

@@ -1,0 +1,2581 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Workspace JSON · Editor de Conhecimento</title>
+    <style>
+      :root {
+        font:
+          14px/1.5 Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+        color: #1b2d40;
+        background: #f6f8fb;
+        --nav: #152a3d;
+        --ink: #1b2d40;
+        --soft: #65798b;
+        --border: #dfe7ee;
+        --green: #0c8175;
+        --mint: #e4f5f1;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 2px solid #29a9d0;
+        outline-offset: 2px;
+      }
+      .app {
+        display: grid;
+        grid-template-columns: 290px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+      .sidebar {
+        background: var(--nav);
+        color: #d8e5ee;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 18px 12px;
+        gap: 16px;
+        overflow: auto;
+      }
+      .brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 4px 8px;
+      }
+      .mark {
+        background: #0d9184;
+        width: 39px;
+        height: 39px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        color: white;
+        font-size: 21px;
+      }
+      .brand strong {
+        font-size: 19px;
+        color: white;
+        letter-spacing: -0.04em;
+      }
+      .brand small {
+        display: block;
+        color: #9eb7c8;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .projectpick {
+        padding: 12px;
+        background: #203b51;
+        border: 1px solid #36566f;
+        border-radius: 11px;
+      }
+      .projectpick label {
+        display: block;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #8eabbf;
+        font-weight: 800;
+      }
+      .projectpick select {
+        width: 100%;
+        margin: 7px 0 3px;
+        background: #203b51;
+        color: white;
+        border: 0;
+        font-weight: 750;
+        font-size: 13px;
+      }
+      .treehead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 8px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #8eabbf;
+        font-weight: 850;
+      }
+      .tree {
+        display: grid;
+        gap: 2px;
+      }
+      .treeitem {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: 100%;
+        min-width: 0;
+        border-radius: 8px;
+      }
+      .treeitem:hover {
+        background: #254259;
+      }
+      .treeitem.selected {
+        background: #1f6864;
+      }
+      .treeitem .expand {
+        width: 25px;
+        min-width: 25px;
+        background: none;
+        border: 0;
+        color: #b0c5d2;
+        padding: 6px 0;
+      }
+      .treeitem .treebtn {
+        flex: 1;
+        min-width: 0;
+        text-align: left;
+        border: 0;
+        background: none;
+        color: #c9d9e3;
+        padding: 9px 5px 9px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: 12px;
+      }
+      .treeitem.selected .treebtn {
+        color: white;
+      }
+      .treeindent {
+        border-left: 1px solid #375268;
+        margin-left: 13px;
+        padding-left: 8px;
+      }
+      .sidebarfooter {
+        margin-top: auto;
+        border-top: 1px solid #365068;
+        padding: 14px 9px 0;
+        color: #9cb1c1;
+        font-size: 12px;
+      }
+      .sidebarfooter p {
+        margin: 0;
+      }
+      .main {
+        min-width: 0;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        padding: 13px 28px;
+        min-height: 65px;
+      }
+      .trail {
+        font-size: 12px;
+        color: var(--soft);
+      }
+      .trail b {
+        color: var(--ink);
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        background: white;
+        border: 1px solid #d4e0e9;
+        border-radius: 9px;
+        padding: 9px 12px;
+        color: #2b4659;
+        font-size: 12px;
+        font-weight: 750;
+      }
+      .btn:hover {
+        border-color: #3ba99c;
+      }
+      .btn.primary {
+        background: var(--green);
+        color: #fff;
+        border-color: var(--green);
+      }
+      .btn.danger {
+        color: #b42323;
+      }
+      .btn.flat {
+        border-color: transparent;
+        background: transparent;
+      }
+      .btn.tiny {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+      .btn.editactive {
+        background: #fff4d8;
+        border-color: #efc97b;
+        color: #87540b;
+      }
+      .content {
+        max-width: 1160px;
+        margin: auto;
+        padding: 30px 33px 80px;
+      }
+      .pageheader {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .pageheader h1 {
+        font-size: 31px;
+        letter-spacing: -0.05em;
+        margin: 4px 0 7px;
+        line-height: 1.17;
+      }
+      .pageheader p {
+        margin: 0;
+        max-width: 680px;
+        color: var(--soft);
+        font-size: 14px;
+      }
+      .kicker {
+        font-size: 11px;
+        color: var(--green);
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .panel {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        padding: 19px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 15px #122b4305;
+      }
+      .panel h2 {
+        font-size: 17px;
+        margin: 0 0 13px;
+        letter-spacing: -0.025em;
+      }
+      .panel h3 {
+        font-size: 15px;
+        margin: 0 0 8px;
+      }
+      .helper {
+        border-left: 3px solid #45ada2;
+        background: #eaf8f4;
+        padding: 13px 15px;
+        border-radius: 8px;
+        margin-bottom: 18px;
+        color: #28584f;
+      }
+      .editbar {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 12px;
+        background: #fffdf6;
+        border: 1px solid #efd9a3;
+        border-radius: 12px;
+        margin-bottom: 18px;
+      }
+      .crumbs {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        align-items: center;
+        color: var(--soft);
+        font-size: 12px;
+      }
+      .crumbs button {
+        border: 0;
+        background: transparent;
+        color: var(--green);
+        padding: 0;
+        font-weight: 750;
+      }
+      .children {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .child {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 15px;
+        text-align: left;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        min-height: 70px;
+      }
+      .child:hover {
+        border-color: var(--green);
+        background: #f9fffd;
+      }
+      .child strong {
+        font-size: 13px;
+      }
+      .child small {
+        color: var(--soft);
+        font-size: 11px;
+        display: block;
+      }
+      .empty {
+        text-align: center;
+        color: var(--soft);
+        border: 1px dashed #c8d6e1;
+        border-radius: 13px;
+        padding: 38px 18px;
+        background: #fff;
+      }
+      .blocks {
+        display: grid;
+        gap: 13px;
+      }
+      .block {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 19px;
+        min-width: 0;
+      }
+      .blocktitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 9px;
+      }
+      .blocktitle h2 {
+        font-size: 17px;
+        margin: 0;
+      }
+      .blocktype {
+        color: #73879b;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.11em;
+      }
+      .blockactions {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .prose {
+        line-height: 1.8;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+      .prose p {
+        margin: 0 0 10px;
+      }
+      .prose p:last-child {
+        margin-bottom: 0;
+      }
+      .prose ul,
+      .prose ol {
+        margin: 6px 0 15px;
+        padding-left: 22px;
+      }
+      .prose li {
+        margin: 4px 0;
+      }
+      .codeview {
+        background: #182639;
+        color: #deebf5;
+        border-radius: 11px;
+        padding: 16px;
+        overflow: auto;
+        font:
+          12px/1.65 ui-monospace,
+          SFMono-Regular,
+          Consolas,
+          monospace;
+        white-space: pre;
+        max-height: 600px;
+      }
+      .imageview {
+        max-width: 100%;
+        max-height: 600px;
+        object-fit: contain;
+        border-radius: 9px;
+        display: block;
+        margin: 0 auto;
+      }
+      .caption {
+        text-align: center;
+        color: var(--soft);
+        font-size: 12px;
+        margin-top: 8px;
+      }
+      .badge {
+        font-size: 11px;
+        border-radius: 20px;
+        padding: 4px 9px;
+        font-weight: 750;
+        background: #eef2f6;
+        color: #526579;
+        display: inline-flex;
+      }
+      .badge.approved {
+        background: #dff7e9;
+        color: #166641;
+      }
+      .badge.proposed {
+        background: #fff0d5;
+        color: #8b550f;
+      }
+      .badge.open {
+        background: #ffe6e6;
+        color: #a12929;
+      }
+      .badge.working {
+        background: #e1efff;
+        color: #1d6195;
+      }
+      .badge.rejected {
+        background: #eee;
+        color: #555;
+      }
+      .meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .tablewrap {
+        overflow: auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+      }
+      th,
+      td {
+        padding: 11px 12px;
+        border: 1px solid #e5ebf0;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #f5f8fa;
+      }
+      .checklist {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .checklist li {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 7px 0;
+        border-bottom: 1px solid #edf1f5;
+      }
+      .checklist li:last-child {
+        border: 0;
+      }
+      .checklist input {
+        accent-color: var(--green);
+      }
+      .refcard {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 9px;
+        background: #f4faf8;
+        border: 1px solid #d5eae5;
+        padding: 12px;
+        border-radius: 10px;
+      }
+      .relations {
+        margin-top: 20px;
+      }
+      .relations .refcard {
+        margin-bottom: 7px;
+      }
+      .sourceflag {
+        font-size: 11px;
+        color: #8b96a5;
+      }
+      .modal {
+        border: 0;
+        padding: 0;
+        border-radius: 17px;
+        box-shadow: 0 20px 70px #0d254555;
+        width: min(650px, 96vw);
+        max-height: 92vh;
+      }
+      .modal::backdrop {
+        background: #0d233c99;
+      }
+      .modal form {
+        padding: 22px;
+      }
+      .modal h2 {
+        font-size: 21px;
+        margin: 0 0 16px;
+      }
+      .formgrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        color: #4d6278;
+        font-size: 12px;
+        font-weight: 750;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        padding: 10px 11px;
+        border: 1px solid #ccdae5;
+        border-radius: 9px;
+        color: var(--ink);
+        width: 100%;
+        background: #fff;
+      }
+      .field textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+      .field .hint {
+        color: #7c8c9c;
+        font-weight: 450;
+        font-size: 11px;
+      }
+      .span2 {
+        grid-column: 1/-1;
+      }
+      .modal footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .imagepreview {
+        max-width: 100%;
+        max-height: 130px;
+        object-fit: contain;
+        display: block;
+        margin-top: 7px;
+      }
+      .selectrow {
+        display: flex;
+        gap: 8px;
+      }
+      .toast {
+        position: fixed;
+        right: 19px;
+        bottom: 19px;
+        background: #1d3c44;
+        color: #fff;
+        padding: 12px 17px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px #16303b44;
+        z-index: 20;
+        max-width: 360px;
+      }
+      .mobilemenu {
+        display: none;
+      }
+      @media (max-width: 1040px) {
+        .app {
+          grid-template-columns: 245px minmax(0, 1fr);
+        }
+        .content {
+          padding: 23px;
+        }
+        .topbar {
+          padding: 12px 20px;
+        }
+      }
+      @media (max-width: 720px) {
+        .app {
+          display: block;
+        }
+        .sidebar {
+          position: fixed;
+          z-index: 10;
+          transform: translateX(-110%);
+          transition: transform 0.2s;
+          width: 290px;
+          box-shadow: 10px 0 40px #0003;
+        }
+        .sidebar.show {
+          transform: translateX(0);
+        }
+        .mobilemenu {
+          display: inline-block;
+        }
+        .topbar {
+          padding: 10px 14px;
+        }
+        .topbar .actions {
+          width: 100%;
+          justify-content: space-between;
+        }
+        .content {
+          padding: 20px 13px 70px;
+        }
+        .pageheader h1 {
+          font-size: 25px;
+        }
+        .panel,
+        .block {
+          padding: 15px;
+        }
+        .formgrid {
+          grid-template-columns: 1fr;
+        }
+        .span2 {
+          grid-column: auto;
+        }
+        .children {
+          grid-template-columns: 1fr 1fr;
+        }
+        .blocktitle {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 430px) {
+        .children {
+          grid-template-columns: 1fr;
+        }
+        .topbar .btn {
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <span class="mark">◈</span>
+          <div>
+            <strong>Workspace JSON</strong
+            ><small>Conhecimento estruturado</small>
+          </div>
+        </div>
+        <div class="projectpick">
+          <label for="projectSelect">Projeto</label
+          ><select id="projectSelect"></select
+          ><button class="btn tiny flat" style="color: #b6e7de" id="newProject">
+            + Novo projeto
+          </button>
+        </div>
+        <div class="treehead">
+          <span>Navegação do JSON</span>
+          <div>
+            <button
+              id="addRoot"
+              class="btn tiny flat"
+              title="Adicionar página raiz"
+              style="color: #b4e7df"
+              hidden
+            >
+              + Raiz</button
+            ><button
+              id="expandAll"
+              class="btn tiny flat"
+              style="color: #c7dce6"
+              title="Expandir tudo"
+            >
+              ＋</button
+            ><button
+              id="collapseAll"
+              class="btn tiny flat"
+              style="color: #c7dce6"
+              title="Recolher"
+            >
+              －
+            </button>
+          </div>
+        </div>
+        <div>
+          <input
+            class="field"
+            id="treeSearch"
+            style="
+              width: 100%;
+              background: #244156;
+              color: #fff;
+              border: 1px solid #365a72;
+              border-radius: 9px;
+              padding: 10px;
+            "
+            placeholder="Buscar páginas…"
+          />
+        </div>
+        <nav class="tree" id="tree" aria-label="Páginas do projeto"></nav>
+        <div class="sidebarfooter">
+          <p>
+            A hierarquia e o conteúdo vêm do JSON. Edite a árvore e exporte para
+            reutilizar.
+          </p>
+        </div>
+      </aside>
+      <div class="main">
+        <header class="topbar">
+          <div class="actions">
+            <button
+              class="btn mobilemenu"
+              id="mobileMenu"
+              aria-label="Abrir menu"
+            >
+              ☰</button
+            ><span class="trail" id="topTrail">Projeto</span>
+          </div>
+          <div class="actions">
+            <button class="btn" id="importBtn">Importar JSON</button
+            ><button class="btn" id="exportProject">Exportar projeto</button
+            ><button class="btn" id="backupAll">Backup geral</button
+            ><button class="btn" id="editProject">Editar projeto</button
+            ><button class="btn" id="editToggle">Editar: desligado</button>
+          </div>
+        </header>
+        <main class="content" id="content"></main>
+      </div>
+    </div>
+    <dialog id="editor" class="modal">
+      <form id="editForm">
+        <h2 id="editHeading">Editar</h2>
+        <div class="formgrid" id="editFields"></div>
+        <footer>
+          <button type="button" class="btn danger" id="deleteEntity">
+            Excluir
+          </button>
+          <div class="actions">
+            <button type="button" class="btn" id="cancelEdit">Cancelar</button
+            ><button type="submit" class="btn primary">Salvar</button>
+          </div>
+        </footer>
+      </form>
+    </dialog>
+    <input id="fileImport" type="file" accept=".json,application/json" hidden />
+    <div id="toast" class="toast" hidden></div>
+    <script>
+      const INITIAL_WORKSPACE = {
+        app: "json-workspace",
+        schemaVersion: 1,
+        projects: [
+          {
+            id: "advogadoja",
+            name: "AdvogadoJá",
+            description:
+              "Workspace de contratos, motores e definições específicas, dirigido integralmente por JSON.",
+            defaultNodeId: "node-17",
+            nodes: [
+              {
+                id: "node-18",
+                title: "Modelo JSON",
+                description:
+                  "Contrato compartilhado que os motores consultam. A documentação é organizada em páginas editáveis.",
+                blocks: [
+                  {
+                    id: "block-60",
+                    type: "text",
+                    title: "Princípio",
+                    body: "O contrato deve representar informações independentemente de qualquer motor. Cada motor consulta apenas as definições e relações de que precisa.",
+                  },
+                ],
+                children: [
+                  {
+                    id: "node-17",
+                    title: "Prompt inicial / Estrutura-base",
+                    description:
+                      "Modelo macro do contrato JSON. O exemplo advogado.home é documental.",
+                    blocks: [
+                      {
+                        id: "block-56",
+                        type: "text",
+                        title: "Objetivo",
+                        body: "Definir um contrato JSON universal, modular, declarativo e extensível. A Home Advogado é um caso de teste; seus valores são exemplos e não regras finais do produto.",
+                      },
+                      {
+                        id: "block-57",
+                        type: "json",
+                        title: "Macroestrutura definida",
+                        body: '{\n  "advogado.home": {\n    "tela": {\n      "schema": "advogadoja.tela",\n      "schemaVersion": "0.2.0",\n      "identidade": {},\n      "classificacao": {},\n      "navegacao": {},\n      "estados": {},\n      "acoes": {},\n      "dados": {},\n      "componentes": {},\n      "estrutura": {\n        "html": {},\n        "css": {}\n      },\n      "estilos": {},\n      "variantes": {},\n      "interacoes": {},\n      "mocks": {},\n      "localizacao": {},\n      "proveniencia": {}\n    },\n    "componentes": {}\n  }\n}',
+                      },
+                      {
+                        id: "block-58",
+                        type: "decision",
+                        title: "ID e blocos principais",
+                        body: "ID estável da tela na raiz. Sob essa chave ficam tela e componentes (definições). Não há um segundo ID dentro de tela.",
+                        status: "approved",
+                        code: "MACRO-01",
+                      },
+                      {
+                        id: "block-59",
+                        type: "requirement",
+                        title: "Não homologar exemplos",
+                        body: "IDs, rotas, jornadas, destinos e nomes concretos são mocks documentais enquanto não forem validados.",
+                        status: "approved",
+                        code: "MACRO-REQ-01",
+                      },
+                    ],
+                    children: [],
+                  },
+                  {
+                    id: "node-15",
+                    title: "Tela",
+                    description:
+                      "Seções que descrevem o contrato de uma tela. A definição interna dos campos permanece em evolução.",
+                    blocks: [
+                      {
+                        id: "block-51",
+                        type: "text",
+                        title: "Separação de responsabilidades",
+                        body: "Cada informação deve ter uma única fonte de definição. Outras seções fazem referência a ela por identificadores. A hierarquia mostrada neste workspace documenta o contrato; ela não é o próprio contrato JSON da aplicação.",
+                      },
+                      {
+                        id: "block-52",
+                        type: "table",
+                        title: "Fronteiras importantes",
+                        body: "Seções\tDistinção\nNavegação × Ações\tCaminhos × operações\nEstados × Variantes\tSituação × apresentação\nAções × Interações\tOperação × evento que dispara\nDados × Mocks\tContrato de informação × valores simulados\nEstrutura × Estilos\tHTML/CSS × temas e tokens\nComponentes × Estrutura\tO que usar × como organizar",
+                      },
+                    ],
+                    children: [
+                      {
+                        id: "node-1",
+                        title: "Identidade",
+                        description:
+                          "Identifica exclusivamente a tela ou componente, com nome, descrição e versão.",
+                        blocks: [
+                          {
+                            id: "block-1",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Identifica exclusivamente a tela ou componente, com nome, descrição e versão.",
+                          },
+                          {
+                            id: "block-43",
+                            type: "json",
+                            title:
+                              "Modelo de trabalho — não homologação definitiva",
+                            body: '{\n  "tipo": "tela",\n  "namespace": "advogado",\n  "nome": "Home Advogado",\n  "nomeExibicao": "Início Profissional",\n  "descricao": "Tela inicial da área profissional do AdvogadoJá.",\n  "versao": "1.0.0"\n}',
+                          },
+                          {
+                            id: "block-44",
+                            type: "decision",
+                            title: "ID na raiz",
+                            body: "Não repetir o identificador da tela em identidade.id; não incorporar aliasesLegados e históricos antigos.",
+                            status: "approved",
+                            code: "ID-01",
+                          },
+                          {
+                            id: "block-2",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-01",
+                          },
+                          {
+                            id: "block-3",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 3. Identidade\n\nO modelo de trabalho da identidade foi aceito **por enquanto**, aproveitando apenas os campos úteis do modelo mestre e excluindo informações de legado.\n\n```json\n"identidade": {\n  "tipo": "tela",\n  "namespace": "advogado",\n  "nome": "Home Advogado",\n  "nomeExibicao": "Início Profissional",\n  "descricao": "Tela inicial da área profissional do AdvogadoJá.",\n  "versao": "1.0.0"\n}\n```\n\n| Campo | Para que existe |\n|---|---|\n| `tipo` | Diferencia uma tela de outros objetos, como componentes. |\n| `namespace` | Agrupa IDs e facilita organização e busca. |\n| `nome` | Nome legível para organização e edição. |\n| `nomeExibicao` | Nome destinado à apresentação ao usuário. |\n| `descricao` | Explica a finalidade do objeto, sem precisar abrir seu layout. |\n| `versao` | Permite evoluir este objeto independentemente da versão do esquema. |\n\n**Não incorporar campos de legado** como `aliasesLegados`, históricos de origem e caminhos antigos. O ID principal já está na chave `advogado.home`; sua repetição em `identidade.id` não faz parte do modelo atual.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-2",
+                        title: "Classificação",
+                        description:
+                          "Organiza domínio, módulo, categoria, escopo, público-alvo, jornadas e subjornadas.",
+                        blocks: [
+                          {
+                            id: "block-4",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Organiza domínio, módulo, categoria, escopo, público-alvo, jornadas e subjornadas.",
+                          },
+                          {
+                            id: "block-45",
+                            type: "decision",
+                            title: "Participações múltiplas",
+                            body: "A mesma tela pode participar de jornadas e subjornadas diferentes sem duplicar identidade ou layout. A participação pertence à classificação.",
+                            status: "approved",
+                            code: "CLA-01",
+                          },
+                          {
+                            id: "block-5",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-02",
+                          },
+                          {
+                            id: "block-6",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 4. Classificação e participação em jornadas\n\nA classificação organiza domínio, módulo, seção, categoria, escopo, público e busca. Uma tela **pode participar de várias jornadas e subjornadas**, sem duplicar sua identidade ou seu layout.\n\n```json\n"classificacao": {\n  "dominio": "atendimento_juridico",\n  "moduloRef": "advogado",\n  "submoduloRef": null,\n  "secao": "home",\n  "categoria": "tela_inicial",\n  "escopo": "modulo",\n  "reutilizavel": false,\n  "publicoAlvo": ["advogado"],\n  "tags": ["inicio", "painel_profissional"],\n  "jornadas": [\n    {\n      "id": "part.advogado.home",\n      "jornada": { "id": "advogado", "nome": "Advogado", "ordem": 2 },\n      "subjornada": { "id": "home", "nome": "Home única e capabilities", "ordem": 4 },\n      "ordemTela": 1,\n      "ocorrenciaNo": "home",\n      "condicaoRef": null\n    }\n  ]\n}\n```\n\n| Campo ou grupo | Para que existe |\n|---|---|\n| `dominio`, `moduloRef`, `submoduloRef`, `secao` | Classificação funcional e hierárquica. |\n| `categoria` | Papel da tela no produto. |\n| `escopo` | Abrangência da definição, inclusive telas comuns. |\n| `reutilizavel` | Indica se o objeto é destinado ao reúso. |\n| `publicoAlvo` | Um ou mais perfis que podem utilizar a tela. |\n| `tags` | Busca e filtros sem impor nova hierarquia. |\n| `jornadas[]` | Permite múltiplas participações independentes. |\n| `jornadas[].id` | Identifica uma participação específica para edição/comparação. |\n| `jornada`, `subjornada` (`id`, `nome`, `ordem`) | Identificam e ordenam agrupamentos da jornada. |\n| `ordemTela` | Ordena a tela naquele contexto, não globalmente. |\n| `ocorrenciaNo` | Vincula a participação a um nó específico da jornada. |\n| `condicaoRef` | Reserva um vínculo com condição, sem repetir a expressão. |\n\n**Distinção importante:** `escopo: "comum"` não significa que deva existir uma jornada artificial chamada `comum`. A tela pode ser compartilhada por diferentes jornadas. A participação pertence à **classificação**; as conexões de entrada/saída pertencem à **navegação**.\n\nOs valores concretos da Home acima são **exemplos extraídos dos materiais**, não nomenclaturas homologadas.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-3",
+                        title: "Navegação",
+                        description:
+                          "Representa rotas, entradas, saídas, destinos, conexões e condições de transição.",
+                        blocks: [
+                          {
+                            id: "block-7",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Representa rotas, entradas, saídas, destinos, conexões e condições de transição.",
+                          },
+                          {
+                            id: "block-46",
+                            type: "requirement",
+                            title: "Capacidade de relações",
+                            body: "Representar origens, destinos, transições, diferentes contextos, bifurcações e condições usando IDs.",
+                            status: "approved",
+                            code: "NAV-01",
+                          },
+                          {
+                            id: "block-47",
+                            type: "decision",
+                            title: "Divisão rotas / relações / bifurcações",
+                            body: "Proposta de três grupos internos. O formato, os campos e cardinalidades ainda não estão homologados.",
+                            status: "proposed",
+                            code: "NAV-P01",
+                          },
+                          {
+                            id: "block-48",
+                            type: "json",
+                            title:
+                              "Exemplo de relação declarativa — ilustrativo",
+                            body: '{\n  "navegacao": {\n    "rotas": [],\n    "relacoes": [\n      {\n        "id": "rel.home.solicitacoes",\n        "participacaoRef": "part.advogado.home",\n        "origemRef": "requests.root",\n        "eventoRef": "evento.abrir_solicitacoes",\n        "destinoRef": "advogado.clientes.solicitacoes_recebidas",\n        "tipoDestino": "tela",\n        "condicaoRef": null,\n        "acaoRef": null,\n        "ordem": 10\n      }\n    ],\n    "bifurcacoes": []\n  }\n}',
+                          },
+                          {
+                            id: "block-8",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-03",
+                          },
+                          {
+                            id: "block-9",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: "## 7. Navegação: o que está decidido e o que não está\n\n**Decidido sobre responsabilidade e capacidade:**\n\n- A navegação deve representar **entradas, saídas, relações e transições**, inclusive entre telas e estados da mesma tela.\n- Os vínculos usam **identificadores** de telas, nós, componentes, ações, estados e participações, conforme o caso.\n- Deve comportar **múltiplos caminhos, decisões condicionais e diferentes contextos**.\n- Uma decisão de estado **não cria automaticamente outra tela**. Na Home do advogado, situações da OAB podem recompor a **mesma Home**.\n- O JSON da jornada serve como **amostra de relações**; o modelo mestre pode oferecer **ideias de campos**. Não copiar nomes e relações como se fossem definitivos.\n\n**Ainda não decidido:** nomenclatura e formato final de `navegacao` e de seus itens; distribuição precisa entre `navegacao`, `estados`, `acoes` e `interacoes`; condições executáveis, cardinalidades, políticas de erro, fallback e transições. As chaves atualmente presentes no JSON de trabalho (`entradas`, `decisoes`, `saidas`, `transicoesInternas`, entre outras) são **experimentais**, não um contrato aprovado.",
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-4",
+                        title: "Estados",
+                        description:
+                          "Define situações possíveis, ativações e comportamentos.",
+                        blocks: [
+                          {
+                            id: "block-10",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Define situações possíveis, ativações e comportamentos.",
+                          },
+                          {
+                            id: "block-11",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-04",
+                          },
+                          {
+                            id: "block-12",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-5",
+                        title: "Ações",
+                        description:
+                          "Descreve operações, parâmetros, pré-condições, efeitos e falhas.",
+                        blocks: [
+                          {
+                            id: "block-13",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Descreve operações, parâmetros, pré-condições, efeitos e falhas.",
+                          },
+                          {
+                            id: "block-14",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-05",
+                          },
+                          {
+                            id: "block-15",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-6",
+                        title: "Dados",
+                        description:
+                          "Define informações, tipos, fontes, consultas, operações e vínculos.",
+                        blocks: [
+                          {
+                            id: "block-16",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Define informações, tipos, fontes, consultas, operações e vínculos.",
+                          },
+                          {
+                            id: "block-17",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-06",
+                          },
+                          {
+                            id: "block-18",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-7",
+                        title: "Componentes (instâncias)",
+                        description:
+                          "Identifica as instâncias e referências de componentes usados na tela.",
+                        blocks: [
+                          {
+                            id: "block-19",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Identifica as instâncias e referências de componentes usados na tela.",
+                          },
+                          {
+                            id: "block-20",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-07",
+                          },
+                          {
+                            id: "block-21",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 6. Modelo-base de componente\n\nCada componente tem identidade e classificação próprias, além de estrutura visual suficiente para ser renderizado estaticamente. A macroestrutura estabelecida para componentes também reserva dados, estados, ações e variantes:\n\n```json\n"menu.drawer.padrao": {\n  "identidade": {\n    "tipo": "componente",\n    "namespace": "menu",\n    "nome": "Menu lateral compartilhado",\n    "nomeExibicao": "Menu lateral compartilhado",\n    "descricao": "Menu reutilizável com definição visual comum.",\n    "versao": "0.1.0"\n  },\n  "classificacao": {\n    "dominio": "interface",\n    "moduloRef": "comum",\n    "categoria": "menu",\n    "escopo": "global",\n    "reutilizavel": true,\n    "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],\n    "tags": ["menu"]\n  },\n  "estrutura": { "html": {}, "css": {} },\n  "dados": {},\n  "estados": {},\n  "acoes": {},\n  "variantes": {}\n}\n```\n\n**Por quê:** `identidade` distingue a definição; `classificacao` organiza seu uso; `estrutura` representa o visual; os demais blocos reservam comportamento e alterações contextuais. **Ações, opções e dados podem variar por tela**, sem perder a definição-base compartilhada.\n\nNa Home de trabalho, foram seccionados como exemplos: `advogado.home.layout`, `header.app.padrao`, `header.titlebar.padrao`, `advogado.home.introducao`, `advogado.home.status_online`, `advogado.home.solicitacoes_resumo` e `menu.drawer.padrao`. **Essa lista não é catálogo definitivo.**',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-8",
+                        title: "Estrutura",
+                        description:
+                          "Define composição HTML/CSS, elementos, hierarquia, posicionamento e organização.",
+                        blocks: [
+                          {
+                            id: "block-22",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Define composição HTML/CSS, elementos, hierarquia, posicionamento e organização.",
+                          },
+                          {
+                            id: "block-49",
+                            type: "decision",
+                            title: "Montagem estática",
+                            body: "estrutura.html e estrutura.css, resolvendo componentes, devem montar a tela estática completa sem depender de dados, estados, ações ou mocks.",
+                            status: "approved",
+                            code: "EST-01",
+                          },
+                          {
+                            id: "block-50",
+                            type: "json",
+                            title: "Árvore HTML/CSS — apenas demonstração",
+                            body: '{\n  "estrutura": {\n    "html": {\n      "raizRef": "layout.root",\n      "elementos": {\n        "layout.root": {\n          "tag": "div",\n          "paiRef": null,\n          "ordem": 10\n        },\n        "layout.main": {\n          "tag": "main",\n          "paiRef": "layout.root",\n          "ordem": 30\n        }\n      }\n    },\n    "css": {\n      "regras": {\n        "base": ".screen-runtime{min-height:100dvh}"\n      }\n    }\n  }\n}',
+                          },
+                          {
+                            id: "block-23",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-08",
+                          },
+                          {
+                            id: "block-24",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 5. Estrutura estática e composição modular\n\nFoi estabelecido que **somente `estrutura.html` + `estrutura.css`, resolvendo seus componentes**, deve ser suficiente para montar a tela **estática completa** — seções, ordem, elementos, aparência e imagens. Não pode depender de `dados`, `estados`, `acoes` ou `mocks` para a composição estática básica.\n\nPrincípios acordados:\n\n- **Seccionar antes de montar**: separar layout, cabeçalho, menu e blocos de conteúdo em componentes identificáveis.\n- Cada componente reutilizado conserva **um único ID de definição**. Sua presença é declarada explicitamente em cada tela que o utiliza.\n- Uma mudança na definição compartilhada deve repercutir nos seus usos; os ajustes específicos da tela não devem criar cópias independentes da definição visual.\n- Cada elemento relevante deve possuir **identidade estável**; movimentar um elemento não deve exigir trocar seu ID.\n- A posição/hierarquia deve ser expressa por **relações e ordem**, para os motores reconstruírem a árvore HTML e compararem alterações pontuais.\n- CSS mantém regras visuais próprias e associações com os elementos, **sem duplicar toda a árvore HTML**.\n- Não impor uma hierarquia interna fixa como `cabecalho`, `itens`, `rodape`: o contrato precisa acomodar qualquer tipo de componente.\n\n**Formato de trabalho já experimentado na Home (ilustrativo, não homologado em seus detalhes internos):**\n\n```json\n"estrutura": {\n  "html": {\n    "raizRef": "layout.root",\n    "elementos": {\n      "layout.root": {\n        "tag": "div",\n        "paiRef": null,\n        "ordem": 10,\n        "atributos": { "class": "screen-runtime" }\n      },\n      "layout.main": {\n        "tag": "main",\n        "paiRef": "layout.root",\n        "ordem": 30,\n        "atributos": { "class": "op-shell" }\n      }\n    }\n  },\n  "css": {\n    "regras": {\n      "base": ".screen-runtime{min-height:100dvh}.op-shell{margin:auto}"\n    }\n  }\n}\n```\n\nEsse exemplo mostra a lógica acordada (**IDs, pai, ordem e regras CSS**); **não aprova definitivamente** nomes como `elementos`, `paiRef`, `regras`, nem a escolha entre CSS textual e regras declarativas.\n\nNa tela, a composição pode referenciar instâncias em vez de copiar seu HTML. O protótipo atual usa `tela.componentes.instanciasRefs` e `tela.estrutura.html.composicao`; esses nomes e sua implementação interna ainda são **modelo de trabalho**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-9",
+                        title: "Estilos",
+                        description:
+                          "Define temas e tokens, sem duplicar as regras CSS de estrutura.",
+                        blocks: [
+                          {
+                            id: "block-25",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Define temas e tokens, sem duplicar as regras CSS de estrutura.",
+                          },
+                          {
+                            id: "block-26",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-09",
+                          },
+                          {
+                            id: "block-27",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-10",
+                        title: "Variantes",
+                        description:
+                          "Define apresentações alternativas conforme condições e contextos.",
+                        blocks: [
+                          {
+                            id: "block-28",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Define apresentações alternativas conforme condições e contextos.",
+                          },
+                          {
+                            id: "block-29",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-10",
+                          },
+                          {
+                            id: "block-30",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-11",
+                        title: "Interações",
+                        description:
+                          "Relaciona eventos visuais às ações correspondentes.",
+                        blocks: [
+                          {
+                            id: "block-31",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Relaciona eventos visuais às ações correspondentes.",
+                          },
+                          {
+                            id: "block-32",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-11",
+                          },
+                          {
+                            id: "block-33",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-12",
+                        title: "Mocks",
+                        description:
+                          "Fornece dados e cenários simulados para testes e protótipos.",
+                        blocks: [
+                          {
+                            id: "block-34",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Fornece dados e cenários simulados para testes e protótipos.",
+                          },
+                          {
+                            id: "block-35",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-12",
+                          },
+                          {
+                            id: "block-36",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-13",
+                        title: "Localização",
+                        description:
+                          "Localização lógica do objeto, independente de caminhos físicos.",
+                        blocks: [
+                          {
+                            id: "block-37",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Localização lógica do objeto, independente de caminhos físicos.",
+                          },
+                          {
+                            id: "block-38",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-13",
+                          },
+                          {
+                            id: "block-39",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                      {
+                        id: "node-14",
+                        title: "Proveniência",
+                        description:
+                          "Registra autoria, revisão e rastreabilidade sem dados legados desnecessários.",
+                        blocks: [
+                          {
+                            id: "block-40",
+                            type: "text",
+                            title: "Responsabilidade proposta",
+                            body: "Registra autoria, revisão e rastreabilidade sem dados legados desnecessários.",
+                          },
+                          {
+                            id: "block-41",
+                            type: "decision",
+                            title: "Situação da definição",
+                            body: "A responsabilidade geral é uma proposta para discussão. A presença da chave na macroestrutura não homologa seus campos internos.",
+                            status: "proposed",
+                            code: "RESP-14",
+                          },
+                          {
+                            id: "block-42",
+                            type: "text",
+                            title: "Contexto do documento original",
+                            body: '## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.',
+                          },
+                        ],
+                        children: [],
+                      },
+                    ],
+                  },
+                  {
+                    id: "node-16",
+                    title: "Componentes (definições)",
+                    description:
+                      "Definições compartilhadas, distintas das instâncias usadas em cada tela.",
+                    blocks: [
+                      {
+                        id: "block-53",
+                        type: "text",
+                        title: "Distinção estrutural",
+                        body: "O bloco externo componentes contém definições; tela.componentes identifica instâncias utilizadas. O mecanismo de referência externa ainda será definido.",
+                      },
+                      {
+                        id: "block-54",
+                        type: "json",
+                        title: "Exemplo de componente — modelo de trabalho",
+                        body: '{\n  "menu.drawer.padrao": {\n    "identidade": {\n      "tipo": "componente",\n      "namespace": "menu",\n      "nome": "Menu lateral compartilhado",\n      "versao": "0.1.0"\n    },\n    "classificacao": {\n      "dominio": "interface",\n      "moduloRef": "comum",\n      "categoria": "menu",\n      "reutilizavel": true\n    },\n    "estrutura": {\n      "html": {},\n      "css": {}\n    },\n    "dados": {},\n    "estados": {},\n    "acoes": {},\n    "variantes": {}\n  }\n}',
+                      },
+                      {
+                        id: "block-55",
+                        type: "decision",
+                        title: "Definição canônica",
+                        body: "Um componente compartilhado deve possuir identidade estável e permitir ajustes locais sem duplicar sua definição.",
+                        status: "approved",
+                        code: "COMP-01",
+                      },
+                    ],
+                    children: [],
+                  },
+                ],
+              },
+              {
+                id: "node-22",
+                title: "Motores",
+                description:
+                  "Cada motor é especificado pelos seus objetivos, requisitos mínimos, relações e limites.",
+                blocks: [
+                  {
+                    id: "block-82",
+                    type: "text",
+                    title: "Sequência de definição",
+                    body: "1. Descrever objetivo e funcionalidades esperadas.\n2. Decidir requisitos mínimos.\n3. Mapear cada necessidade às seções do contrato JSON.\n4. Identificar lacunas e campos faltantes.\n5. Implementar o motor mínimo, independente dos demais.",
+                  },
+                  {
+                    id: "block-83",
+                    type: "decision",
+                    title: "Consumo seletivo",
+                    body: "Jornada, Flow e Protótipo não precisam consumir todas as seções do contrato. Cada motor lê apenas as informações necessárias.",
+                    status: "approved",
+                    code: "MOTOR-01",
+                  },
+                ],
+                children: [
+                  {
+                    id: "node-19",
+                    title: "Jornada",
+                    description:
+                      "Especificação do motor de visualização de jornadas — funcionalidades ainda em avaliação.",
+                    blocks: [
+                      {
+                        id: "block-61",
+                        type: "text",
+                        title: "Objetivo",
+                        body: "Exibir telas organizadas por jornada e subjornada, com sua estrutura estática e interatividade interna necessária.",
+                      },
+                      {
+                        id: "block-62",
+                        type: "requirement",
+                        title: "Mostrar telas por jornada",
+                        body: "Ler participações e sua ordenação, mostrando cada tela no contexto certo.",
+                        status: "proposed",
+                        code: "JOR-01",
+                      },
+                      {
+                        id: "block-63",
+                        type: "requirement",
+                        title: "Renderização estática",
+                        body: "Utilizar estrutura e componentes para apresentar as telas.",
+                        status: "proposed",
+                        code: "JOR-02",
+                      },
+                      {
+                        id: "block-64",
+                        type: "requirement",
+                        title: "Interações internas",
+                        body: "Permitir as interações visuais definidas como necessárias, sem exigir navegação executável.",
+                        status: "proposed",
+                        code: "JOR-03",
+                      },
+                      {
+                        id: "block-65",
+                        type: "table",
+                        title: "Mapeamento inicial — a validar",
+                        body: "Necessidade\tPossível seção do contrato\nParticipações\tclassificacao.jornadas\nApresentação\testrutura e componentes\nInteratividade interna\tinteracoes e acoes, conforme necessidade",
+                      },
+                      {
+                        id: "block-66",
+                        type: "reference",
+                        title: "Definição de Classificação",
+                        body: "",
+                        targetId: "node-2",
+                      },
+                    ],
+                    children: [],
+                  },
+                  {
+                    id: "node-20",
+                    title: "Flow",
+                    description:
+                      "Definir requisitos do motor antes de escolher os campos que ele consumirá.",
+                    blocks: [
+                      {
+                        id: "block-67",
+                        type: "text",
+                        title: "Objetivo",
+                        body: "Representar graficamente relações, caminhos e bifurcações de telas e estados. As funcionalidades abaixo são propostas a validar.",
+                      },
+                      {
+                        id: "block-68",
+                        type: "requirement",
+                        title: "Exibir nós",
+                        body: "Representar telas e pontos do fluxo como nós identificáveis.",
+                        status: "proposed",
+                        code: "FLOW-01",
+                      },
+                      {
+                        id: "block-69",
+                        type: "requirement",
+                        title: "Exibir conexões",
+                        body: "Relacionar origem e destino sem duplicar a ligação.",
+                        status: "proposed",
+                        code: "FLOW-02",
+                      },
+                      {
+                        id: "block-70",
+                        type: "requirement",
+                        title: "Bifurcações e condições",
+                        body: "Exibir alternativas e condições; não executar regras obrigatoriamente.",
+                        status: "proposed",
+                        code: "FLOW-03",
+                      },
+                      {
+                        id: "block-71",
+                        type: "requirement",
+                        title: "Organização visual",
+                        body: "Permitir organizar, ordenar e reposicionar nós; posições do editor podem pertencer ao próprio motor.",
+                        status: "proposed",
+                        code: "FLOW-04",
+                      },
+                      {
+                        id: "block-72",
+                        type: "requirement",
+                        title: "Consulta de detalhes",
+                        body: "Abrir informações da tela ou da relação ao selecionar um nó/conexão.",
+                        status: "proposed",
+                        code: "FLOW-05",
+                      },
+                      {
+                        id: "block-73",
+                        type: "table",
+                        title: "Mapeamento posterior aos requisitos",
+                        body: "O Flow precisa…\tPossível referência contratual\nIdentificar telas\tID raiz e identidade\nParticipações\tclassificacao.jornadas\nConexões\tnavegacao.relacoes\nAlternativas\tnavegacao.bifurcacoes\nDetalhes visuais, quando necessários\testrutura e componentes",
+                      },
+                      {
+                        id: "block-74",
+                        type: "decision",
+                        title: "Bifurcação editorial",
+                        body: "Um desvio visual do Flow pode servir apenas à organização do diagrama e não precisa virar código executável.",
+                        status: "proposed",
+                        code: "FLOW-DEC-01",
+                      },
+                      {
+                        id: "block-75",
+                        type: "reference",
+                        title: "Referenciar Navegação",
+                        body: "",
+                        targetId: "node-3",
+                      },
+                    ],
+                    children: [],
+                  },
+                  {
+                    id: "node-21",
+                    title: "Protótipo",
+                    description:
+                      "Simular a experiência usando somente dados e comportamentos necessários.",
+                    blocks: [
+                      {
+                        id: "block-76",
+                        type: "text",
+                        title: "Objetivo",
+                        body: "Reproduzir navegação e comportamentos da aplicação com dados reais ou simulados, conforme escopo decidido.",
+                      },
+                      {
+                        id: "block-77",
+                        type: "requirement",
+                        title: "Renderizar tela",
+                        body: "Interpretar estrutura e componentes para compor a apresentação.",
+                        status: "proposed",
+                        code: "PROT-01",
+                      },
+                      {
+                        id: "block-78",
+                        type: "requirement",
+                        title: "Executar interações",
+                        body: "Conectar eventos a ações, estados e destinos quando necessário.",
+                        status: "proposed",
+                        code: "PROT-02",
+                      },
+                      {
+                        id: "block-79",
+                        type: "requirement",
+                        title: "Simular dados e condições",
+                        body: "Utilizar mocks para simular cenários e avaliar condições.",
+                        status: "proposed",
+                        code: "PROT-03",
+                      },
+                      {
+                        id: "block-80",
+                        type: "table",
+                        title: "Possíveis fontes de informação",
+                        body: "Necessidade\tContrato\nAparência\testrutura, componentes, estilos\nComportamento\tinteracoes, acoes, estados, variantes\nDados\tdados e mocks\nTransições\tnavegacao",
+                      },
+                      {
+                        id: "block-81",
+                        type: "reference",
+                        title: "Referenciar Mocks",
+                        body: "",
+                        targetId: "node-12",
+                      },
+                    ],
+                    children: [],
+                  },
+                ],
+              },
+              {
+                id: "node-25",
+                title: "Definições das Telas",
+                description:
+                  "Registros específicos de cada tela que referenciam as definições compartilhadas, sem duplicá-las.",
+                blocks: [
+                  {
+                    id: "block-90",
+                    type: "text",
+                    title: "Separação de conhecimento",
+                    body: "O Modelo JSON define a estrutura possível. Cada página de tela registra seus próprios valores, decisões e referências às seções do contrato.",
+                  },
+                ],
+                children: [
+                  {
+                    id: "node-23",
+                    title: "Home Advogado",
+                    description:
+                      "Caso de teste inicial. Não representa modelo definitivo para todas as telas.",
+                    blocks: [
+                      {
+                        id: "block-84",
+                        type: "text",
+                        title: "Contexto",
+                        body: "Esta página registra definições específicas da Home Profissional, separadas do contrato genérico de tela. Dados concretos ainda são documentais.",
+                      },
+                      {
+                        id: "block-85",
+                        type: "reference",
+                        title: "Contrato de Identidade",
+                        body: "",
+                        targetId: "node-1",
+                      },
+                      {
+                        id: "block-86",
+                        type: "reference",
+                        title: "Contrato de Classificação",
+                        body: "",
+                        targetId: "node-2",
+                      },
+                      {
+                        id: "block-87",
+                        type: "reference",
+                        title: "Contrato de Estrutura",
+                        body: "",
+                        targetId: "node-8",
+                      },
+                      {
+                        id: "block-88",
+                        type: "decision",
+                        title: "Estados da OAB",
+                        body: "Mudanças em OAB podem alterar a composição da mesma Home, sem criar outra tela automaticamente.",
+                        status: "approved",
+                        code: "HOME-01",
+                      },
+                    ],
+                    children: [],
+                  },
+                  {
+                    id: "node-24",
+                    title: "Home Cliente",
+                    description:
+                      "Página reservada para registrar definições próprias da tela cliente.",
+                    blocks: [
+                      {
+                        id: "block-89",
+                        type: "text",
+                        title: "Pendente",
+                        body: "Preencher as definições específicas quando forem consolidadas. Não copiar os campos e os dados da Home Advogado como verdade universal.",
+                      },
+                    ],
+                    children: [],
+                  },
+                ],
+              },
+              {
+                id: "node-28",
+                title: "Fontes e Planejamento",
+                description: "Referências originais e fila de decisões.",
+                blocks: [],
+                children: [
+                  {
+                    id: "node-26",
+                    title: "Documento original · Decisões consolidadas",
+                    description:
+                      "Texto Markdown completo, preservado para consulta e rastreabilidade.",
+                    blocks: [
+                      {
+                        id: "block-91",
+                        type: "text",
+                        title: "Markdown integral — 07/11/2026",
+                        body: '# AdvogadoJá — Contrato JSON modular: decisões consolidadas\n\n**Data:** 07/11/2026  \n**Status:** registro das decisões tomadas até aqui; não é homologação do esquema completo.  \n**Exemplo de trabalho:** `advogado.home` (Home Profissional).\n\n## 1. Objetivo e critério de trabalho\n\nO objetivo é definir um **contrato JSON universal, modular, declarativo e extensível**, que diferentes motores possam interpretar sem depender de HTML bruto ou de uma implementação específica. A Home do Advogado é **um caso de teste**, não uma fonte de verdade para todas as telas.\n\nAs prioridades estabelecidas são: (1) definir os campos e suas responsabilidades; (2) permitir relações por identificadores; (3) contemplar múltiplos contextos, condições e ocorrências; (4) evitar redundâncias; (5) manter campos opcionais vazios até sua definição. Os dados de jornada, rotas e IDs atualmente usados servem como **mock documental**: não estamos validando nomes, destinos ou comportamentos reais nesta fase.\n\n> **Regra central:** o contrato define o que pode ser representado; o mock apenas demonstra um preenchimento. **Não converter referências provisórias em decisões de produto.**\n\n## 2. Forma macro da tela\n\nFoi estabelecido que cada tela possui um **ID estável na raiz** e dois blocos principais: `tela` e `componentes`. Não há uma segunda chave com o ID da tela dentro de `tela`.\n\n```json\n{\n  "advogado.home": {\n    "tela": {\n      "schema": "advogadoja.tela",\n      "schemaVersion": "0.2.0",\n      "identidade": {},\n      "classificacao": {},\n      "navegacao": {},\n      "estados": {},\n      "acoes": {},\n      "dados": {},\n      "componentes": {},\n      "estrutura": { "html": {}, "css": {} },\n      "estilos": {},\n      "variantes": {},\n      "interacoes": {},\n      "mocks": {},\n      "localizacao": {},\n      "proveniencia": {}\n    },\n    "componentes": {}\n  }\n}\n```\n\n**Por que manter dois blocos chamados `componentes`?** `tela.componentes` identifica/configura as **instâncias utilizadas pela tela**; o bloco externo `componentes` reúne as **definições dos componentes presentes**. São responsabilidades distintas. O modo definitivo de referenciar definições externas ainda não foi fechado.\n\n`schema` e `schemaVersion` identificam o tipo e a versão do contrato, não a versão do conteúdo de uma tela.\n\n## 3. Identidade\n\nO modelo de trabalho da identidade foi aceito **por enquanto**, aproveitando apenas os campos úteis do modelo mestre e excluindo informações de legado.\n\n```json\n"identidade": {\n  "tipo": "tela",\n  "namespace": "advogado",\n  "nome": "Home Advogado",\n  "nomeExibicao": "Início Profissional",\n  "descricao": "Tela inicial da área profissional do AdvogadoJá.",\n  "versao": "1.0.0"\n}\n```\n\n| Campo | Para que existe |\n|---|---|\n| `tipo` | Diferencia uma tela de outros objetos, como componentes. |\n| `namespace` | Agrupa IDs e facilita organização e busca. |\n| `nome` | Nome legível para organização e edição. |\n| `nomeExibicao` | Nome destinado à apresentação ao usuário. |\n| `descricao` | Explica a finalidade do objeto, sem precisar abrir seu layout. |\n| `versao` | Permite evoluir este objeto independentemente da versão do esquema. |\n\n**Não incorporar campos de legado** como `aliasesLegados`, históricos de origem e caminhos antigos. O ID principal já está na chave `advogado.home`; sua repetição em `identidade.id` não faz parte do modelo atual.\n\n## 4. Classificação e participação em jornadas\n\nA classificação organiza domínio, módulo, seção, categoria, escopo, público e busca. Uma tela **pode participar de várias jornadas e subjornadas**, sem duplicar sua identidade ou seu layout.\n\n```json\n"classificacao": {\n  "dominio": "atendimento_juridico",\n  "moduloRef": "advogado",\n  "submoduloRef": null,\n  "secao": "home",\n  "categoria": "tela_inicial",\n  "escopo": "modulo",\n  "reutilizavel": false,\n  "publicoAlvo": ["advogado"],\n  "tags": ["inicio", "painel_profissional"],\n  "jornadas": [\n    {\n      "id": "part.advogado.home",\n      "jornada": { "id": "advogado", "nome": "Advogado", "ordem": 2 },\n      "subjornada": { "id": "home", "nome": "Home única e capabilities", "ordem": 4 },\n      "ordemTela": 1,\n      "ocorrenciaNo": "home",\n      "condicaoRef": null\n    }\n  ]\n}\n```\n\n| Campo ou grupo | Para que existe |\n|---|---|\n| `dominio`, `moduloRef`, `submoduloRef`, `secao` | Classificação funcional e hierárquica. |\n| `categoria` | Papel da tela no produto. |\n| `escopo` | Abrangência da definição, inclusive telas comuns. |\n| `reutilizavel` | Indica se o objeto é destinado ao reúso. |\n| `publicoAlvo` | Um ou mais perfis que podem utilizar a tela. |\n| `tags` | Busca e filtros sem impor nova hierarquia. |\n| `jornadas[]` | Permite múltiplas participações independentes. |\n| `jornadas[].id` | Identifica uma participação específica para edição/comparação. |\n| `jornada`, `subjornada` (`id`, `nome`, `ordem`) | Identificam e ordenam agrupamentos da jornada. |\n| `ordemTela` | Ordena a tela naquele contexto, não globalmente. |\n| `ocorrenciaNo` | Vincula a participação a um nó específico da jornada. |\n| `condicaoRef` | Reserva um vínculo com condição, sem repetir a expressão. |\n\n**Distinção importante:** `escopo: "comum"` não significa que deva existir uma jornada artificial chamada `comum`. A tela pode ser compartilhada por diferentes jornadas. A participação pertence à **classificação**; as conexões de entrada/saída pertencem à **navegação**.\n\nOs valores concretos da Home acima são **exemplos extraídos dos materiais**, não nomenclaturas homologadas.\n\n## 5. Estrutura estática e composição modular\n\nFoi estabelecido que **somente `estrutura.html` + `estrutura.css`, resolvendo seus componentes**, deve ser suficiente para montar a tela **estática completa** — seções, ordem, elementos, aparência e imagens. Não pode depender de `dados`, `estados`, `acoes` ou `mocks` para a composição estática básica.\n\nPrincípios acordados:\n\n- **Seccionar antes de montar**: separar layout, cabeçalho, menu e blocos de conteúdo em componentes identificáveis.\n- Cada componente reutilizado conserva **um único ID de definição**. Sua presença é declarada explicitamente em cada tela que o utiliza.\n- Uma mudança na definição compartilhada deve repercutir nos seus usos; os ajustes específicos da tela não devem criar cópias independentes da definição visual.\n- Cada elemento relevante deve possuir **identidade estável**; movimentar um elemento não deve exigir trocar seu ID.\n- A posição/hierarquia deve ser expressa por **relações e ordem**, para os motores reconstruírem a árvore HTML e compararem alterações pontuais.\n- CSS mantém regras visuais próprias e associações com os elementos, **sem duplicar toda a árvore HTML**.\n- Não impor uma hierarquia interna fixa como `cabecalho`, `itens`, `rodape`: o contrato precisa acomodar qualquer tipo de componente.\n\n**Formato de trabalho já experimentado na Home (ilustrativo, não homologado em seus detalhes internos):**\n\n```json\n"estrutura": {\n  "html": {\n    "raizRef": "layout.root",\n    "elementos": {\n      "layout.root": {\n        "tag": "div",\n        "paiRef": null,\n        "ordem": 10,\n        "atributos": { "class": "screen-runtime" }\n      },\n      "layout.main": {\n        "tag": "main",\n        "paiRef": "layout.root",\n        "ordem": 30,\n        "atributos": { "class": "op-shell" }\n      }\n    }\n  },\n  "css": {\n    "regras": {\n      "base": ".screen-runtime{min-height:100dvh}.op-shell{margin:auto}"\n    }\n  }\n}\n```\n\nEsse exemplo mostra a lógica acordada (**IDs, pai, ordem e regras CSS**); **não aprova definitivamente** nomes como `elementos`, `paiRef`, `regras`, nem a escolha entre CSS textual e regras declarativas.\n\nNa tela, a composição pode referenciar instâncias em vez de copiar seu HTML. O protótipo atual usa `tela.componentes.instanciasRefs` e `tela.estrutura.html.composicao`; esses nomes e sua implementação interna ainda são **modelo de trabalho**.\n\n## 6. Modelo-base de componente\n\nCada componente tem identidade e classificação próprias, além de estrutura visual suficiente para ser renderizado estaticamente. A macroestrutura estabelecida para componentes também reserva dados, estados, ações e variantes:\n\n```json\n"menu.drawer.padrao": {\n  "identidade": {\n    "tipo": "componente",\n    "namespace": "menu",\n    "nome": "Menu lateral compartilhado",\n    "nomeExibicao": "Menu lateral compartilhado",\n    "descricao": "Menu reutilizável com definição visual comum.",\n    "versao": "0.1.0"\n  },\n  "classificacao": {\n    "dominio": "interface",\n    "moduloRef": "comum",\n    "categoria": "menu",\n    "escopo": "global",\n    "reutilizavel": true,\n    "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],\n    "tags": ["menu"]\n  },\n  "estrutura": { "html": {}, "css": {} },\n  "dados": {},\n  "estados": {},\n  "acoes": {},\n  "variantes": {}\n}\n```\n\n**Por quê:** `identidade` distingue a definição; `classificacao` organiza seu uso; `estrutura` representa o visual; os demais blocos reservam comportamento e alterações contextuais. **Ações, opções e dados podem variar por tela**, sem perder a definição-base compartilhada.\n\nNa Home de trabalho, foram seccionados como exemplos: `advogado.home.layout`, `header.app.padrao`, `header.titlebar.padrao`, `advogado.home.introducao`, `advogado.home.status_online`, `advogado.home.solicitacoes_resumo` e `menu.drawer.padrao`. **Essa lista não é catálogo definitivo.**\n\n## 7. Navegação: o que está decidido e o que não está\n\n**Decidido sobre responsabilidade e capacidade:**\n\n- A navegação deve representar **entradas, saídas, relações e transições**, inclusive entre telas e estados da mesma tela.\n- Os vínculos usam **identificadores** de telas, nós, componentes, ações, estados e participações, conforme o caso.\n- Deve comportar **múltiplos caminhos, decisões condicionais e diferentes contextos**.\n- Uma decisão de estado **não cria automaticamente outra tela**. Na Home do advogado, situações da OAB podem recompor a **mesma Home**.\n- O JSON da jornada serve como **amostra de relações**; o modelo mestre pode oferecer **ideias de campos**. Não copiar nomes e relações como se fossem definitivos.\n\n**Ainda não decidido:** nomenclatura e formato final de `navegacao` e de seus itens; distribuição precisa entre `navegacao`, `estados`, `acoes` e `interacoes`; condições executáveis, cardinalidades, políticas de erro, fallback e transições. As chaves atualmente presentes no JSON de trabalho (`entradas`, `decisoes`, `saidas`, `transicoesInternas`, entre outras) são **experimentais**, não um contrato aprovado.\n\n## 8. Demais seções: manter sem inventar\n\nAs seguintes chaves já integram a **macroestrutura da tela**, mas seu conteúdo interno **não foi decidido**:\n\n```json\n{\n  "estados": {},\n  "acoes": {},\n  "dados": {},\n  "estilos": {},\n  "variantes": {},\n  "interacoes": {},\n  "mocks": {},\n  "localizacao": {},\n  "proveniencia": {}\n}\n```\n\n`estilos` permanece reservado mesmo existindo `estrutura.css`; **a fronteira entre ambos ainda precisa ser definida**. A inclusão de `proveniencia` como chave da macroestrutura **não autoriza adicionar campos de legado ou origem duvidosa**.\n\n## 9. Requisitos comuns para todos os motores\n\nAcordos arquiteturais que atravessam o contrato:\n\n- **Referências estáveis e comparação rápida** por ID, propriedades e relações, não por grandes blocos de HTML.\n- **Uma única definição compartilhada** com personalizações locais quando necessárias.\n- **Separação entre apresentação e comportamento**: estrutura estática independente; dados, estados e ações por referências.\n- **Múltiplas participações** da mesma tela em jornadas/subjornadas, com ordenação própria.\n- **Consumo seletivo**: cada motor interpreta apenas as seções de que precisa; nenhum motor deve exigir conteúdo irrelevante.\n- **Contrato amplo, preenchimento enxuto**: ser capaz de representar casos futuros não obriga cada tela a declarar todos eles.\n\n## 10. Próximas definições pendentes\n\nEstas **não são decisões tomadas**; são itens a resolver, em ordem lógica:\n\n1. **Fechar `navegacao`**: grupos, campos, tipos, cardinalidades, condições, parâmetros, decisões, retornos, estados, permissões e falhas — sem sobrepor `acoes`, `estados` e `interacoes`.\n2. **Fechar `estrutura.html` e `estrutura.css`**: modelo dos nós, identificadores, instâncias, ordenação, atributos, imagens, CSS por regras ou texto, responsividade e reconstrução.\n3. **Definir resolução de componentes**: referência ao componente canônico, configuração/overrides locais, propagação de mudanças e exportação estática autocontida.\n4. **Definir contratos internos** de `dados`, `estados`, `acoes`, `variantes`, `interacoes` e `mocks`, com vínculos por IDs e divisão inequívoca de responsabilidades.\n5. **Definir `estilos`, `localizacao` e `proveniencia`** — incluindo se são necessários ou se alguma função deve migrar para outro bloco, sem herdar metadados de legado.\n6. **Estabelecer validação de contrato**: campos obrigatórios/opcionais, tipos, identificadores únicos, referências resolvíveis, regras de ordenação, versionamento e compatibilidade com os motores.\n7. **Homologar nomenclaturas e relações reais**, somente após o contrato ficar consistente. A Home do Advogado continua sendo o caso de teste inicial.\n\n---\n\n**Síntese:** estão estabelecidas a **macroestrutura**, a **identidade e classificação de trabalho**, as **participações múltiplas**, a **modularização com IDs estáveis**, a **montagem estática por HTML/CSS** e a **separação de responsabilidades**. O contrato interno detalhado — especialmente `navegacao` e os formatos definitivos de HTML/CSS — **continua aberto**.\n',
+                      },
+                    ],
+                    children: [],
+                  },
+                  {
+                    id: "node-27",
+                    title: "Pendências gerais",
+                    description:
+                      "Próximas decisões do contrato, não homologadas.",
+                    blocks: [
+                      {
+                        id: "block-92",
+                        type: "checklist",
+                        title: "Ordem de resolução",
+                        body: "[ ] Fechar navegação: grupos, campos, condições, parâmetros, retornos e falhas\n[ ] Fechar estrutura.html e estrutura.css\n[ ] Definir resolução e overrides de componentes\n[ ] Definir dados, estados, ações, variantes, interações e mocks\n[ ] Definir estilos, localização e proveniência\n[ ] Estabelecer validação de contrato e versionamento\n[ ] Homologar nomes e relações reais só após consistência",
+                      },
+                      {
+                        id: "block-93",
+                        type: "text",
+                        title: "Atenção",
+                        body: "A lista é o roteiro de trabalho consolidado no Markdown; marcar um checklist não equivale, por si só, à homologação dos campos internos.",
+                      },
+                    ],
+                    children: [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      };
+      (() => {
+        "use strict";
+        const STORAGE = "workspace_json_dinamico_v1",
+          TYPE_LABELS = {
+            text: "Texto",
+            json: "JSON / código",
+            image: "Imagem",
+            decision: "Decisão",
+            requirement: "Requisito",
+            table: "Tabela",
+            checklist: "Checklist",
+            reference: "Referência",
+            heading: "Título / seção",
+          };
+        const STATUS = {
+          approved: "Aprovado",
+          working: "Em trabalho",
+          proposed: "Proposto",
+          open: "Em aberto",
+          rejected: "Descartado",
+        };
+        const $ = (id) => document.getElementById(id),
+          safe = (s) =>
+            String(s ?? "").replace(
+              /[&<>"']/g,
+              (c) =>
+                ({
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;",
+                })[c],
+            );
+        const uid = () =>
+          crypto.randomUUID?.() ||
+          "n-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+        const clone = (x) => JSON.parse(JSON.stringify(x));
+        const icon = "▤";
+        let db;
+        try {
+          db = JSON.parse(localStorage.getItem(STORAGE));
+        } catch {}
+        if (!db || db.app !== "json-workspace" || !Array.isArray(db.projects))
+          db = clone(INITIAL_WORKSPACE);
+        let projectId = db.projects[0]?.id,
+          selectedId = null,
+          expanded = new Set(),
+          editMode = false,
+          search = "",
+          editor = null,
+          noticeTimer = 0;
+        const project = () =>
+          db.projects.find((p) => p.id === projectId) || db.projects[0];
+        function walk(nodes, fn, parent = null, depth = 0) {
+          for (const n of nodes || []) {
+            fn(n, parent, depth);
+            walk(n.children, fn, n, depth + 1);
+          }
+        }
+        function lookup(id) {
+          if (!id) return null;
+          let result = null;
+          walk(project()?.nodes || [], (n, p, d) => {
+            if (n.id === id) result = { node: n, parent: p, depth: d };
+          });
+          return result;
+        }
+        function siblings(id) {
+          const f = lookup(id);
+          return f ? (f.parent ? f.parent.children : project().nodes) : null;
+        }
+        function subtreeIds(node) {
+          const ids = new Set();
+          walk([node], (n) => ids.add(n.id));
+          return ids;
+        }
+        function validProjects(items) {
+          if (!Array.isArray(items) || items.length > 200) return false;
+          return items.every((p) => {
+            if (!p || typeof p.name !== "string" || !Array.isArray(p.nodes))
+              return false;
+            const ids = new Set(),
+              blockIds = new Set(),
+              stack = [...p.nodes];
+            let nodeCount = 0,
+              blockCount = 0;
+            while (stack.length) {
+              const n = stack.pop();
+              if (
+                !n ||
+                typeof n.id !== "string" ||
+                typeof n.title !== "string" ||
+                !Array.isArray(n.children) ||
+                !Array.isArray(n.blocks) ||
+                ids.has(n.id)
+              )
+                return false;
+              ids.add(n.id);
+              nodeCount++;
+              blockCount += n.blocks.length;
+              if (nodeCount > 10000 || blockCount > 30000) return false;
+              for (const b of n.blocks) {
+                if (
+                  !b ||
+                  typeof b.id !== "string" ||
+                  typeof b.type !== "string" ||
+                  typeof b.title !== "string" ||
+                  blockIds.has(b.id)
+                )
+                  return false;
+                blockIds.add(b.id);
+              }
+              stack.push(...n.children);
+            }
+            return true;
+          });
+        }
+        function persist() {
+          try {
+            localStorage.setItem(STORAGE, JSON.stringify(db));
+            return true;
+          } catch (err) {
+            alert(
+              "Não foi possível salvar. O armazenamento local pode estar cheio; exporte um backup. " +
+                err.message,
+            );
+            return false;
+          }
+        }
+        function toast(message) {
+          const t = $("toast");
+          t.textContent = message;
+          t.hidden = false;
+          clearTimeout(noticeTimer);
+          noticeTimer = setTimeout(() => (t.hidden = true), 2600);
+        }
+        function download(data, name, type = "application/json") {
+          const text =
+              typeof data === "string" ? data : JSON.stringify(data, null, 2),
+            url = URL.createObjectURL(new Blob([text], { type })),
+            a = document.createElement("a");
+          a.href = url;
+          a.download = name.replace(/[^\wÀ-ÿ.-]+/g, "_");
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(url), 1500);
+        }
+        function initSelection() {
+          if (!project()) return;
+          const defaultId = project().defaultNodeId;
+          if (lookup(defaultId)) selectedId = defaultId;
+          else selectedId = project().nodes[0]?.id || null;
+          if (selectedId) {
+            const path = [];
+            let f = lookup(selectedId);
+            while (f) {
+              path.push(f.node.id);
+              f = f.parent ? lookup(f.parent.id) : null;
+            }
+            path.forEach((id) => expanded.add(id));
+          }
+        }
+        initSelection();
+        function navTo(id) {
+          if (!lookup(id)) return;
+          selectedId = id;
+          let f = lookup(id);
+          while (f) {
+            expanded.add(f.node.id);
+            f = f.parent ? lookup(f.parent.id) : null;
+          }
+          render();
+          window.scrollTo({ top: 0, behavior: "instant" });
+          $("sidebar").classList.remove("show");
+        }
+        function treeHTML(nodes, depth = 0) {
+          return nodes
+            .map((n) => {
+              const selected = n.id === selectedId,
+                has = n.children.length > 0,
+                open = expanded.has(n.id);
+              return `<div><div class="treeitem ${selected ? "selected" : ""}" style="padding-left:${Math.min(depth * 10, 90)}px"><button class="expand" data-expand="${safe(n.id)}" ${has ? "" : "disabled"} aria-label="${open ? "Recolher" : "Expandir"} ${safe(n.title)}">${has ? (open ? "▾" : "▸") : "·"}</button><button class="treebtn" data-nav="${safe(n.id)}" title="${safe(n.title)}">${safe(n.title)}</button></div>${has && open ? `<div class="treeindent">${treeHTML(n.children, depth + 1)}</div>` : ""}</div>`;
+            })
+            .join("");
+        }
+        function renderTree() {
+          const p = project();
+          $("projectSelect").innerHTML = db.projects
+            .map(
+              (x) =>
+                `<option value="${safe(x.id)}" ${x.id === projectId ? "selected" : ""}>${safe(x.name)}</option>`,
+            )
+            .join("");
+          if (search) {
+            const rows = [];
+            walk(p.nodes, (n, parent) => {
+              if (
+                [n.title, n.description].some((v) =>
+                  String(v || "")
+                    .toLowerCase()
+                    .includes(search.toLowerCase()),
+                )
+              )
+                rows.push({ n, parent });
+            });
+            $("tree").innerHTML =
+              rows
+                .map(
+                  ({ n, parent }) =>
+                    `<div class="treeitem ${n.id === selectedId ? "selected" : ""}"><button class="treebtn" style="padding-left:12px" data-nav="${safe(n.id)}"><small style="color:#8da8bb">${parent ? safe(parent.title) + " / " : ""}</small>${safe(n.title)}</button></div>`,
+                )
+                .join("") ||
+              '<p style="color:#9eb2c1;padding:10px">Nenhuma página encontrada.</p>';
+          } else $("tree").innerHTML = treeHTML(p.nodes);
+        }
+        function refLabel(id) {
+          return lookup(id)?.node.title || "Referência não encontrada";
+        }
+        function blockHTML(b, index, total) {
+          const type = TYPE_LABELS[b.type] || b.type;
+          const controls = editMode
+            ? `<div class="blockactions"><button class="btn tiny" data-block-up="${safe(b.id)}" ${index === 0 ? "disabled" : ""} title="Mover bloco para cima">↑</button><button class="btn tiny" data-block-down="${safe(b.id)}" ${index === total - 1 ? "disabled" : ""} title="Mover bloco para baixo">↓</button><button class="btn tiny" data-block-edit="${safe(b.id)}">Editar</button></div>`
+            : "";
+          let body = "";
+          switch (b.type) {
+            case "json":
+              body = `<pre class="codeview"><code>${safe(b.body || "{}")}</code></pre>`;
+              break;
+            case "image":
+              body =
+                b.image &&
+                /^data:image\/(png|jpeg|webp|gif);base64,/.test(b.image)
+                  ? `<img class="imageview" src="${safe(b.image)}" alt="${safe(b.alt || b.title)}">${b.body ? `<div class="caption">${safe(b.body)}</div>` : ""}`
+                  : '<p class="sourceflag">Sem imagem. Adicione uma imagem no modo edição.</p>';
+              break;
+            case "decision":
+            case "requirement":
+              body = `<div class="meta"><span class="badge ${safe(b.status || "proposed")}">${safe(STATUS[b.status] || "Proposto")}</span>${b.code ? `<span class="sourceflag">${safe(b.code)}</span>` : ""}</div><div class="prose" style="margin-top:10px">${safe(b.body)}</div>`;
+              break;
+            case "table": {
+              const rows = String(b.body || "")
+                .trim()
+                .split("\n")
+                .filter(Boolean)
+                .map((line) => line.split("\t"));
+              body = rows.length
+                ? `<div class="tablewrap"><table><thead><tr>${rows[0].map((c) => `<th>${safe(c)}</th>`).join("")}</tr></thead><tbody>${rows
+                    .slice(1)
+                    .map(
+                      (row) =>
+                        `<tr>${row.map((c) => `<td>${safe(c)}</td>`).join("")}</tr>`,
+                    )
+                    .join("")}</tbody></table></div>`
+                : '<div class="sourceflag">Tabela vazia.</div>';
+              break;
+            }
+            case "checklist": {
+              const lines = String(b.body || "")
+                .split("\n")
+                .filter((x) => x.trim());
+              body = `<ul class="checklist">${lines
+                .map((line, i) => {
+                  const checked = /^\[x\]\s*/i.test(line);
+                  return `<li><input data-check="${safe(b.id)}" data-check-index="${i}" type="checkbox" ${checked ? "checked" : ""} aria-label="Marcar item ${i + 1}"><span>${safe(line.replace(/^\[[x ]\]\s*/i, ""))}</span></li>`;
+                })
+                .join("")}</ul>`;
+              break;
+            }
+            case "reference":
+              body = b.targetId
+                ? `<div class="refcard"><div><b>${safe(refLabel(b.targetId))}</b>${b.body ? `<div class="sourceflag">${safe(b.body)}</div>` : ""}</div><button class="btn tiny" data-nav="${safe(b.targetId)}" ${lookup(b.targetId) ? "" : "disabled"}>Abrir →</button></div>`
+                : '<p class="sourceflag">Referência sem destino.</p>';
+              break;
+            case "heading":
+              body = b.body ? `<div class="prose">${safe(b.body)}</div>` : "";
+              break;
+            default:
+              body = `<div class="prose">${safe(b.body)}</div>`;
+          }
+          return `<section class="block" data-block="${safe(b.id)}"><div class="blocktitle"><div><div class="blocktype">${safe(type)}</div>${b.title ? `<h2>${safe(b.title)}</h2>` : ""}</div>${controls}</div>${body}</section>`;
+        }
+        function backlinks(id) {
+          const rows = [];
+          walk(project().nodes, (n) => {
+            for (const b of n.blocks) {
+              if (b.type === "reference" && b.targetId === id)
+                rows.push({ node: n, block: b });
+            }
+          });
+          return rows;
+        }
+        function nodeToolbar(f) {
+          if (!editMode) return "";
+          const n = f.node,
+            arr = siblings(n.id),
+            i = arr.indexOf(n);
+          return `<div class="editbar"><span class="sourceflag">Editar página:</span><button class="btn tiny" data-act="edit-node">Propriedades</button><button class="btn tiny" data-act="add-child">+ Subpágina</button><button class="btn tiny" data-act="add-block">+ Bloco</button><button class="btn tiny" data-node-up="${safe(n.id)}" ${i === 0 ? "disabled" : ""}>↑ Página</button><button class="btn tiny" data-node-down="${safe(n.id)}" ${i === arr.length - 1 ? "disabled" : ""}>↓ Página</button><button class="btn tiny" data-act="export-branch">Exportar ramo</button><button class="btn tiny danger" data-act="delete-node">Excluir página</button></div>`;
+        }
+        function renderPage() {
+          const p = project(),
+            f = lookup(selectedId);
+          if (!f)
+            return `<header class="pageheader"><div><div class="kicker">${safe(p.name)}</div><h1>Organize seu projeto</h1><p>Crie uma página raiz ou importe um JSON para iniciar. O HTML não impõe grupos ou categorias.</p></div></header><div class="empty">Nenhuma página selecionada. ${editMode ? '<button class="btn primary" data-act="add-root">+ Página raiz</button>' : "Ative o modo edição para criar uma página."}</div>`;
+          const n = f.node,
+            path = [];
+          let cur = f;
+          while (cur) {
+            path.unshift(cur.node);
+            cur = cur.parent ? lookup(cur.parent.id) : null;
+          }
+          const where = `<div class="crumbs">${path.map((x, i) => (i === path.length - 1 ? `<b>${safe(x.title)}</b>` : `<button data-nav="${safe(x.id)}">${safe(x.title)}</button><span>›</span>`)).join("")}</div>`;
+          const children = n.children.length
+            ? `<div class="panel"><h2>Subpáginas <span class="sourceflag">${n.children.length}</span></h2><div class="children">${n.children.map((x) => `<button class="child" data-nav="${safe(x.id)}"><span style="font-size:22px;color:#17887c">▤</span><span><strong>${safe(x.title)}</strong><small>${safe(x.description || "Abrir página")}</small></span></button>`).join("")}</div></div>`
+            : "";
+          const backs = backlinks(n.id).filter((x) => x.node.id !== n.id);
+          const refs = backs.length
+            ? `<section class="panel relations"><h2>Onde este item é referenciado</h2>${backs.map((r) => `<div class="refcard"><span><b>${safe(r.node.title)}</b> <span class="sourceflag">· ${safe(r.block.title || "Referência")}</span></span><button class="btn tiny" data-nav="${safe(r.node.id)}">Abrir</button></div>`).join("")}</section>`
+            : "";
+          return `<header class="pageheader"><div><div class="kicker">${safe(p.name)} · Página</div><h1>${safe(n.title)}</h1><p>${safe(n.description || "")}</p></div>${editMode ? `<button class="btn primary" data-act="add-block">+ Bloco de conteúdo</button>` : ""}</header>${where}${nodeToolbar(f)}${n.blocks.length ? `<div class="blocks">${n.blocks.map((b, i) => blockHTML(b, i, n.blocks.length)).join("")}</div>` : `<div class="empty">Esta página ainda não tem conteúdo.${editMode ? '<div style="margin-top:12px"><button class="btn primary" data-act="add-block">+ Adicionar bloco</button></div>' : ""}</div>`}${children}${refs}`;
+        }
+        function render() {
+          if (!project()) return;
+          renderTree();
+          const p = project(),
+            f = lookup(selectedId);
+          $("topTrail").innerHTML =
+            `${safe(p.name)} <b>· ${safe(f?.node.title || "Página inicial")}</b>`;
+          $("editToggle").textContent = editMode
+            ? "✓ Modo edição ligado"
+            : "Editar: desligado";
+          $("editToggle").classList.toggle("editactive", editMode);
+          $("addRoot").hidden = !editMode;
+          $("content").innerHTML = renderPage();
+        }
+        function editorOpen(kind, entity = null, context = {}) {
+          editor = { kind, id: entity?.id || null, context };
+          $("editHeading").textContent =
+            (entity ? "Editar " : "Criar ") +
+            { project: "projeto", node: "página", block: "bloco" }[kind];
+          $("deleteEntity").style.visibility = entity ? "visible" : "hidden";
+          const field = (
+            name,
+            label,
+            val = "",
+            wide = false,
+            tag = "input",
+            extra = "",
+          ) =>
+            `<label class="field ${wide ? "span2" : ""}">${label}${tag === "textarea" ? `<textarea name="${name}" ${extra}>${safe(val)}</textarea>` : `<input name="${name}" value="${safe(val)}" ${extra}>`}</label>`;
+          const select = (name, label, options, val) =>
+            `<label class="field">${label}<select name="${name}">${options.map(([v, l]) => `<option value="${safe(v)}" ${v === val ? "selected" : ""}>${safe(l)}</option>`).join("")}</select></label>`;
+          if (kind === "project")
+            $("editFields").innerHTML =
+              field(
+                "name",
+                "Nome do projeto",
+                entity?.name || "",
+                true,
+                "input",
+                'required maxlength="150"',
+              ) +
+              field(
+                "description",
+                "Descrição",
+                entity?.description || "",
+                true,
+                "textarea",
+              );
+          if (kind === "node") {
+            const exclude = entity ? subtreeIds(entity) : new Set(),
+              parents = [["", "Raiz do projeto"]];
+            walk(project().nodes, (n) => {
+              if (!exclude.has(n.id)) parents.push([n.id, n.title]);
+            });
+            $("editFields").innerHTML =
+              field(
+                "title",
+                "Nome da página",
+                entity?.title || "",
+                true,
+                "input",
+                'required maxlength="150"',
+              ) +
+              field(
+                "description",
+                "Descrição / objetivo",
+                entity?.description || "",
+                true,
+                "textarea",
+              ) +
+              select(
+                "parentId",
+                "Localização na árvore",
+                parents,
+                entity
+                  ? lookup(entity.id)?.parent?.id || ""
+                  : context.parentId || "",
+              );
+          }
+          if (kind === "block") {
+            const type = entity?.type || context.type || "text";
+            const targets = [["", "Nenhum destino"]];
+            walk(project().nodes, (n) => targets.push([n.id, n.title]));
+            $("editFields").innerHTML =
+              field(
+                "title",
+                "Título do bloco",
+                entity?.title || "",
+                true,
+                "input",
+                'maxlength="180"',
+              ) +
+              select(
+                "type",
+                "Tipo de conteúdo",
+                Object.entries(TYPE_LABELS),
+                type,
+              ) +
+              select(
+                "status",
+                "Estado (decisão/requisito)",
+                Object.entries(STATUS),
+                entity?.status || "proposed",
+              ) +
+              field(
+                "code",
+                "Código opcional (decisão/requisito)",
+                entity?.code || "",
+                false,
+                "input",
+                'maxlength="80"',
+              ) +
+              select(
+                "targetId",
+                "Página referenciada",
+                targets,
+                entity?.targetId || "",
+              ) +
+              field(
+                "body",
+                "Texto / JSON / linhas da tabela ou checklist",
+                entity?.body || "",
+                true,
+                "textarea",
+                'rows="9"',
+              ) +
+              `<label class="field span2" id="imageField">Imagem (PNG, JPEG, GIF ou WebP; até 1,5 MB)<input type="file" name="imageFile" accept="image/png,image/jpeg,image/gif,image/webp">${entity?.image ? '<span class="hint">Imagem atual será mantida até selecionar outra.</span>' : ""}</label>` +
+              field(
+                "alt",
+                "Texto alternativo da imagem",
+                entity?.alt || "",
+                true,
+                "input",
+                'maxlength="180"',
+              ) +
+              `<div class="span2 sourceflag">Tabela: colunas separadas por TAB, linhas por Enter. Checklist: uma linha por item, começando com [ ] ou [x].</div>`;
+            updateTypeFields();
+          }
+          $("editor").showModal();
+        }
+        function updateTypeFields() {
+          if (editor?.kind !== "block") return;
+          const type = $("editFields").querySelector("[name=type]")?.value;
+          for (const name of [
+            "status",
+            "code",
+            "targetId",
+            "alt",
+            "imageFile",
+          ]) {
+            const input = $("editFields").querySelector(`[name=${name}]`),
+              label = input?.closest("label");
+            if (label)
+              label.style.display = (
+                name === "status" || name === "code"
+                  ? ["decision", "requirement"].includes(type)
+                  : name === "targetId"
+                    ? type === "reference"
+                    : type === "image"
+              )
+                ? "flex"
+                : "none";
+          }
+        }
+        function deleteNode(id) {
+          const f = lookup(id);
+          if (!f) return;
+          const ids = subtreeIds(f.node),
+            refs = [];
+          walk(project().nodes, (n) => {
+            if (ids.has(n.id)) return;
+            for (const b of n.blocks) {
+              if (b.type === "reference" && ids.has(b.targetId))
+                refs.push(`${n.title} → ${refLabel(b.targetId)}`);
+            }
+          });
+          if (refs.length)
+            return alert(
+              "Esta página (ou subpáginas) é referenciada em outros lugares. Remova os vínculos antes de excluir:\n" +
+                refs.slice(0, 10).join("\n"),
+            );
+          if (
+            !confirm(
+              `Excluir “${f.node.title}” e suas ${ids.size - 1} subpáginas? Faça backup antes.`,
+            )
+          )
+            return;
+          const arr = siblings(id);
+          arr.splice(arr.indexOf(f.node), 1);
+          selectedId = f.parent?.id || project().nodes[0]?.id || null;
+          persist();
+          render();
+          toast("Página excluída");
+        }
+        function deleteBlock(id) {
+          const n = lookup(selectedId)?.node,
+            b = n?.blocks.find((x) => x.id === id);
+          if (
+            !b ||
+            !confirm(`Excluir o bloco “${b.title || TYPE_LABELS[b.type]}”?`)
+          )
+            return;
+          n.blocks = n.blocks.filter((x) => x.id !== id);
+          persist();
+          render();
+          toast("Bloco excluído");
+        }
+        function reorderNode(id, direction) {
+          const arr = siblings(id),
+            i = arr?.findIndex((x) => x.id === id),
+            j = i + direction;
+          if (i < 0 || j < 0 || j >= arr.length) return;
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+          persist();
+          render();
+        }
+        function reorderBlock(id, direction) {
+          const arr = lookup(selectedId)?.node.blocks,
+            i = arr?.findIndex((x) => x.id === id),
+            j = i + direction;
+          if (i < 0 || j < 0 || j >= arr.length) return;
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+          persist();
+          render();
+        }
+        function readImage(file) {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = () =>
+              reject(Error("Não foi possível ler a imagem."));
+            reader.readAsDataURL(file);
+          });
+        }
+        async function saveEditor(e) {
+          e.preventDefault();
+          const form = e.currentTarget,
+            fd = new FormData(form),
+            g = (x) => String(fd.get(x) || "").trim(),
+            { kind, id, context } = editor,
+            p = project();
+          if (kind === "project") {
+            const item = id
+              ? p
+              : { id: uid(), name: "", description: "", nodes: [] };
+            item.name = g("name");
+            item.description = g("description");
+            if (!item.name) return alert("Informe um nome.");
+            if (!id) {
+              db.projects.push(item);
+              projectId = item.id;
+              selectedId = null;
+              expanded.clear();
+            }
+          }
+          if (kind === "node") {
+            let item = id
+              ? lookup(id)?.node
+              : { id: uid(), children: [], blocks: [] };
+            const parentId = g("parentId"),
+              newParent = parentId ? lookup(parentId)?.node : null;
+            if (parentId && !newParent)
+              return alert("Página de destino inexistente.");
+            if (id && subtreeIds(item).has(parentId))
+              return alert(
+                "Não é possível mover uma página para dentro dela mesma ou de suas subpáginas.",
+              );
+            const title = g("title");
+            if (!title) return alert("Informe um nome.");
+            item.title = title;
+            item.description = g("description");
+            const old = id ? lookup(id) : null;
+            if (id) {
+              const priorParent = old.parent?.id || "";
+              if (priorParent !== parentId) {
+                const a = siblings(id);
+                a.splice(a.indexOf(item), 1);
+                (newParent ? newParent.children : p.nodes).push(item);
+              }
+            } else (newParent ? newParent.children : p.nodes).push(item);
+            selectedId = item.id;
+            expanded.add(item.id);
+            if (parentId) expanded.add(parentId);
+          }
+          if (kind === "block") {
+            const node = lookup(context.nodeId || selectedId)?.node;
+            if (!node) return alert("Página não encontrada.");
+            const item = id
+              ? node.blocks.find((b) => b.id === id)
+              : { id: uid() };
+            item.title = g("title");
+            item.type = g("type");
+            item.body = g("body");
+            item.status = g("status");
+            item.code = g("code");
+            item.targetId = g("targetId");
+            item.alt = g("alt");
+            if (item.type === "json") {
+              try {
+                JSON.parse(item.body || "{}");
+              } catch {
+                alert(
+                  "O bloco JSON contém sintaxe inválida. Corrija antes de salvar.",
+                );
+                return;
+              }
+            }
+            const file = fd.get("imageFile");
+            if (file instanceof File && file.size) {
+              if (file.size > 1_500_000)
+                return alert("A imagem deve ter até 1,5 MB.");
+              if (
+                ![
+                  "image/png",
+                  "image/jpeg",
+                  "image/gif",
+                  "image/webp",
+                ].includes(file.type)
+              )
+                return alert("Formato de imagem não aceito.");
+              try {
+                item.image = await readImage(file);
+              } catch (err) {
+                return alert(err.message);
+              }
+            }
+            if (!id) node.blocks.push(item);
+          }
+          if (!persist()) return;
+          $("editor").close();
+          render();
+          toast("Alterações salvas");
+        }
+        function copyBranch(raw) {
+          const branch = clone(raw),
+            map = new Map();
+          walk([branch], (n) => {
+            const prev = n.id;
+            n.id = uid();
+            map.set(prev, n.id);
+            for (const b of n.blocks) b.id = uid();
+          });
+          walk([branch], (n) => {
+            for (const b of n.blocks)
+              if (b.targetId) {
+                b.targetId =
+                  map.get(b.targetId) || (lookup(b.targetId) ? b.targetId : "");
+              }
+          });
+          return branch;
+        }
+        function exportBranch() {
+          const node = lookup(selectedId)?.node;
+          if (node)
+            download(
+              {
+                app: "json-workspace",
+                schemaVersion: 1,
+                kind: "subtree",
+                node: clone(node),
+              },
+              "ramo_" + node.title + ".json",
+            );
+        }
+        function action(cmd) {
+          if (cmd === "edit-node") {
+            const f = lookup(selectedId);
+            if (f) editorOpen("node", f.node);
+          } else if (cmd === "add-root")
+            editorOpen("node", null, { parentId: "" });
+          else if (cmd === "add-child")
+            editorOpen("node", null, { parentId: selectedId });
+          else if (cmd === "add-block")
+            editorOpen("block", null, { nodeId: selectedId });
+          else if (cmd === "export-branch") exportBranch();
+          else if (cmd === "delete-node") deleteNode(selectedId);
+        }
+        $("tree").onclick = (e) => {
+          const b = e.target.closest("button");
+          if (!b) return;
+          if (b.dataset.nav) navTo(b.dataset.nav);
+          if (b.dataset.expand) {
+            if (expanded.has(b.dataset.expand))
+              expanded.delete(b.dataset.expand);
+            else expanded.add(b.dataset.expand);
+            renderTree();
+          }
+        };
+        $("content").onclick = (e) => {
+          const b = e.target.closest("button");
+          if (!b) return;
+          const d = b.dataset;
+          if (d.nav) navTo(d.nav);
+          else if (d.act) action(d.act);
+          else if (d.blockEdit) {
+            const node = lookup(selectedId)?.node,
+              block = node?.blocks.find((x) => x.id === d.blockEdit);
+            if (block) editorOpen("block", block, { nodeId: selectedId });
+          } else if (d.nodeUp) reorderNode(d.nodeUp, -1);
+          else if (d.nodeDown) reorderNode(d.nodeDown, 1);
+          else if (d.blockUp) reorderBlock(d.blockUp, -1);
+          else if (d.blockDown) reorderBlock(d.blockDown, 1);
+        };
+        $("content").onchange = (e) => {
+          if (!e.target.matches("[data-check]")) return;
+          const b = lookup(selectedId)?.node.blocks.find(
+            (x) => x.id === e.target.dataset.check,
+          );
+          if (!b) return;
+          const i = Number(e.target.dataset.checkIndex),
+            lines = String(b.body || "")
+              .split("\n")
+              .filter((x) => x.trim());
+          if (!lines[i]) return;
+          lines[i] =
+            (e.target.checked ? "[x] " : "[ ] ") +
+            lines[i].replace(/^\[[x ]\]\s*/i, "");
+          b.body = lines.join("\n");
+          persist();
+        };
+        $("projectSelect").onchange = (e) => {
+          projectId = e.target.value;
+          expanded.clear();
+          initSelection();
+          render();
+        };
+        $("treeSearch").oninput = (e) => {
+          search = e.target.value;
+          renderTree();
+        };
+        $("expandAll").onclick = () => {
+          walk(project().nodes, (n) => expanded.add(n.id));
+          renderTree();
+        };
+        $("collapseAll").onclick = () => {
+          expanded.clear();
+          renderTree();
+        };
+        $("addRoot").onclick = () => editorOpen("node", null, { parentId: "" });
+        $("newProject").onclick = () => editorOpen("project");
+        $("editProject").onclick = () => editorOpen("project", project());
+        $("mobileMenu").onclick = () => $("sidebar").classList.toggle("show");
+        $("editToggle").onclick = () => {
+          editMode = !editMode;
+          render();
+          toast(editMode ? "Modo edição ativado" : "Modo visualização ativado");
+        };
+        $("cancelEdit").onclick = () => $("editor").close();
+        $("deleteEntity").onclick = () => {
+          if (!editor.id) return;
+          if (editor.kind === "node") deleteNode(editor.id);
+          else if (editor.kind === "block") deleteBlock(editor.id);
+          else if (editor.kind === "project") {
+            if (!confirm("Excluir este projeto completo?")) return;
+            db.projects = db.projects.filter((p) => p.id !== editor.id);
+            if (!db.projects.length)
+              db.projects.push({
+                id: uid(),
+                name: "Novo projeto",
+                description: "",
+                nodes: [],
+              });
+            projectId = db.projects[0].id;
+            expanded.clear();
+            initSelection();
+            persist();
+            render();
+          }
+          $("editor").close();
+        };
+        $("editForm").onsubmit = saveEditor;
+        $("editFields").onchange = (e) => {
+          if (e.target.name === "type") updateTypeFields();
+        };
+        $("exportProject").onclick = () =>
+          download(
+            {
+              app: "json-workspace",
+              schemaVersion: 1,
+              kind: "project",
+              project: clone(project()),
+            },
+            "workspace_" + project().name + ".json",
+          );
+        $("backupAll").onclick = () =>
+          download(db, "workspace_json_backup_completo.json");
+        $("importBtn").onclick = () => $("fileImport").click();
+        $("fileImport").onchange = async (e) => {
+          const file = e.target.files?.[0];
+          e.target.value = "";
+          if (!file) return;
+          if (file.size > 12_000_000) return alert("Arquivo maior que 12 MB.");
+          let data;
+          try {
+            data = JSON.parse(await file.text());
+          } catch {
+            return alert("JSON inválido.");
+          }
+          if (data.app !== "json-workspace")
+            return alert("Este arquivo não é um JSON do Workspace.");
+          if (data.kind === "subtree" && data.node) {
+            const fake = [{ name: "Importado", nodes: [data.node] }];
+            if (!validProjects(fake)) return alert("Ramo inválido.");
+            const target = lookup(selectedId)?.node;
+            if (
+              !confirm(
+                `Importar “${data.node.title}” como ${target ? "subpágina de " + target.title : "página raiz"}?`,
+              )
+            )
+              return;
+            const n = copyBranch(data.node);
+            (target ? target.children : project().nodes).push(n);
+            if (target) expanded.add(target.id);
+            selectedId = n.id;
+            persist();
+            render();
+            toast("Ramo importado");
+            return;
+          }
+          let incoming = [];
+          if (data.kind === "project" && data.project)
+            incoming = [data.project];
+          else if (Array.isArray(data.projects)) incoming = data.projects;
+          else return alert("Tipo de importação não reconhecido.");
+          if (!validProjects(incoming))
+            return alert(
+              "Estrutura inválida: verifique IDs, páginas, blocos e formato.",
+            );
+          if (
+            !confirm(
+              `Importar ${incoming.length} projeto(s) como cópia, preservando os atuais?`,
+            )
+          )
+            return;
+          for (const raw of incoming) {
+            const p = clone(raw);
+            p.id = uid();
+            db.projects.push(p);
+          }
+          projectId = db.projects.at(-1).id;
+          expanded.clear();
+          initSelection();
+          persist();
+          render();
+          toast("Projetos importados");
+        };
+        render();
+      })();
+    </script>
+  </body>
+</html>

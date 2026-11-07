@@ -1,0 +1,697 @@
+{
+  "advogado.home": {
+    "tela": {
+      "schema": "advogadoja.tela",
+      "schemaVersion": "0.2.0",
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Home Advogado",
+        "nomeExibicao": "Início Profissional",
+        "descricao": "Tela inicial da área profissional do AdvogadoJá.",
+        "versao": "1.0.0"
+      },
+      "classificacao": {
+        "dominio": "atendimento_juridico",
+        "moduloRef": "advogado",
+        "submoduloRef": null,
+        "secao": "home",
+        "categoria": "tela_inicial",
+        "escopo": "modulo",
+        "reutilizavel": false,
+        "publicoAlvo": ["advogado"],
+        "tags": ["inicio", "painel_profissional"],
+        "jornadas": [
+          {
+            "id": "part.advogado.home",
+            "jornada": {
+              "id": "advogado",
+              "nome": "Advogado",
+              "ordem": 2
+            },
+            "subjornada": {
+              "id": "home",
+              "nome": "Home única e capabilities",
+              "ordem": 4
+            },
+            "ordemTela": 1,
+            "ocorrenciaNo": "home",
+            "condicaoRef": null
+          }
+        ]
+      },
+      "componentes": {
+        "instanciasRefs": {
+          "screen.root": "advogado.home.layout",
+          "screen.header": "header.app.padrao",
+          "screen.titlebar": "header.titlebar.padrao",
+          "screen.intro": "advogado.home.introducao",
+          "screen.online": "advogado.home.status_online",
+          "screen.requests": "advogado.home.solicitacoes_resumo",
+          "screen.drawer": "menu.drawer.padrao"
+        }
+      },
+      "estrutura": {
+        "html": {
+          "composicao": {
+            "screen.root": {
+              "componenteRef": "advogado.home.layout",
+              "paiRef": null,
+              "slot": "raiz",
+              "ordem": 10
+            },
+            "screen.header": {
+              "componenteRef": "header.app.padrao",
+              "paiRef": "layout.root",
+              "slot": "header",
+              "ordem": 10
+            },
+            "screen.titlebar": {
+              "componenteRef": "header.titlebar.padrao",
+              "paiRef": "layout.root",
+              "slot": "header",
+              "ordem": 20
+            },
+            "screen.intro": {
+              "componenteRef": "advogado.home.introducao",
+              "paiRef": "layout.main",
+              "slot": "main",
+              "ordem": 10
+            },
+            "screen.online": {
+              "componenteRef": "advogado.home.status_online",
+              "paiRef": "layout.main",
+              "slot": "main",
+              "ordem": 20
+            },
+            "screen.requests": {
+              "componenteRef": "advogado.home.solicitacoes_resumo",
+              "paiRef": "layout.main",
+              "slot": "main",
+              "ordem": 30
+            },
+            "screen.drawer": {
+              "componenteRef": "menu.drawer.padrao",
+              "paiRef": "layout.root",
+              "slot": "menu",
+              "ordem": 40
+            }
+          },
+          "raizRef": "screen.root"
+        },
+        "css": {
+          "tokens": {
+            "--primary": "#10233f",
+            "--primary-soft": "#173c6b",
+            "--gold": "#b88932",
+            "--page": "#eef2f6",
+            "--surface": "#fff",
+            "--line": "#dbe3ee",
+            "--text": "#172033",
+            "--muted": "#667085"
+          },
+          "regras": {
+            "base": "*,*::before,*::after{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif;color:var(--text)}a{color:inherit}body{background:var(--page)}"
+          }
+        }
+      },
+      "navegacao": {},
+      "estados": {},
+      "acoes": {},
+      "dados": {},
+
+      "estilos": {},
+      "variantes": {},
+      "interacoes": {},
+      "mocks": {},
+      "localizacao": {},
+      "proveniencia": {}
+    },
+    "componentes": {
+      "advogado.home.layout": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "advogado",
+          "nome": "Estrutura da Home profissional",
+          "nomeExibicao": "Estrutura da Home profissional",
+          "descricao": "Contêiner estrutural da Home: define a área principal e largura responsiva.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "advogado",
+          "categoria": "layout",
+          "escopo": "modulo",
+          "reutilizavel": false,
+          "publicoAlvo": ["advogado"],
+          "tags": ["layout"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "layout.root",
+            "elementos": {
+              "layout.root": {
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "screen-runtime prototype-screen operational"
+                }
+              },
+              "layout.main": {
+                "tag": "main",
+                "paiRef": "layout.root",
+                "ordem": 30,
+                "atributos": {
+                  "class": "op-shell",
+                  "id": "conteudo-home"
+                }
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".screen-runtime{width:100%;min-height:100dvh}.operational{background:var(--page);min-height:100dvh;padding-bottom:84px}.op-shell{width:min(100%,720px);margin:0 auto;padding:22px 16px 36px}@media(min-width:720px){.op-shell{padding:28px 22px 52px}}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      },
+      "header.app.padrao": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "header",
+          "nome": "Cabeçalho do aplicativo",
+          "nomeExibicao": "Cabeçalho do aplicativo",
+          "descricao": "Cabeçalho compartilhado, com acionador do menu, marca e papel.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "comum",
+          "categoria": "cabecalho",
+          "escopo": "global",
+          "reutilizavel": true,
+          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
+          "tags": ["cabecalho"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "header.root",
+            "elementos": {
+              "header.root": {
+                "tag": "header",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              "header.menu": {
+                "tag": "a",
+                "paiRef": "header.root",
+                "ordem": 10,
+                "atributos": {
+                  "class": "app-menu-button",
+                  "href": "#menu-drawer",
+                  "aria-label": "Abrir menu"
+                },
+                "texto": "☰"
+              },
+              "header.brand": {
+                "tag": "div",
+                "paiRef": "header.root",
+                "ordem": 20,
+                "atributos": {
+                  "class": "app-brand"
+                }
+              },
+              "header.brand.text": {
+                "tag": "strong",
+                "paiRef": "header.brand",
+                "ordem": 10,
+                "texto": "AdvogadoJá"
+              },
+              "header.role": {
+                "tag": "span",
+                "paiRef": "header.root",
+                "ordem": 30,
+                "atributos": {
+                  "class": "app-role"
+                },
+                "texto": "Advogado"
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".app-header{position:sticky;top:0;z-index:12;min-height:62px;display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:8px 14px;background:var(--primary);color:#fff;box-shadow:0 4px 14px #10233f2e}.app-menu-button{width:40px;height:40px;display:grid;place-content:center;text-decoration:none;color:#fff;font-size:24px;border-radius:10px}.app-brand{display:flex;align-items:center;font-size:16px;letter-spacing:-.02em}.app-role{font-size:10px;font-weight:800;opacity:.8;text-transform:uppercase;letter-spacing:.06em}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      },
+      "header.titlebar.padrao": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "header",
+          "nome": "Barra de título contextual",
+          "nomeExibicao": "Barra de título contextual",
+          "descricao": "Faixa horizontal de título abaixo do cabeçalho.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "comum",
+          "categoria": "titulo",
+          "escopo": "global",
+          "reutilizavel": true,
+          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
+          "tags": ["titulo"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "titlebar.root",
+            "elementos": {
+              "titlebar.root": {
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "app-titlebar"
+                },
+                "texto": "Início Profissional"
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;font-weight:700}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      },
+      "advogado.home.introducao": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "advogado",
+          "nome": "Introdução profissional",
+          "nomeExibicao": "Introdução profissional",
+          "descricao": "Apresentação estática do conteúdo da Home.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "advogado",
+          "categoria": "conteudo",
+          "escopo": "modulo",
+          "reutilizavel": false,
+          "publicoAlvo": ["advogado"],
+          "tags": ["conteudo"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "intro.root",
+            "elementos": {
+              "intro.root": {
+                "tag": "section",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "home-intro"
+                }
+              },
+              "intro.title": {
+                "tag": "h1",
+                "paiRef": "intro.root",
+                "ordem": 10,
+                "texto": "Início Profissional"
+              },
+              "intro.description": {
+                "tag": "p",
+                "paiRef": "intro.root",
+                "ordem": 20,
+                "texto": "Visão operacional do advogado."
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".home-intro{padding:2px 2px 14px}.home-intro h1{margin:0;color:var(--primary);font-size:24px;line-height:1.15;letter-spacing:-.025em}.home-intro p{max-width:560px;margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      },
+      "advogado.home.status_online": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "advogado",
+          "nome": "Indicador de disponibilidade online",
+          "nomeExibicao": "Indicador de disponibilidade online",
+          "descricao": "Prévia estática do status online presente na jornada, sem persistência ou interação.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "advogado",
+          "categoria": "indicador",
+          "escopo": "modulo",
+          "reutilizavel": false,
+          "publicoAlvo": ["advogado"],
+          "tags": ["indicador"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "online.root",
+            "elementos": {
+              "online.root": {
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "online-card"
+                }
+              },
+              "online.dot": {
+                "tag": "span",
+                "paiRef": "online.root",
+                "ordem": 10,
+                "atributos": {
+                  "class": "online-dot"
+                }
+              },
+              "online.copy": {
+                "tag": "span",
+                "paiRef": "online.root",
+                "ordem": 20,
+                "atributos": {
+                  "class": "online-copy"
+                }
+              },
+              "online.title": {
+                "tag": "strong",
+                "paiRef": "online.copy",
+                "ordem": 10,
+                "texto": "Online"
+              },
+              "online.description": {
+                "tag": "small",
+                "paiRef": "online.copy",
+                "ordem": 20,
+                "texto": "Recebendo novas solicitações"
+              },
+              "online.switch": {
+                "tag": "span",
+                "paiRef": "online.root",
+                "ordem": 30,
+                "atributos": {
+                  "class": "online-switch",
+                  "aria-hidden": "true"
+                }
+              },
+              "online.switch.thumb": {
+                "tag": "b",
+                "paiRef": "online.switch",
+                "ordem": 10
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".online-card{display:flex;gap:12px;align-items:center;min-height:80px;padding:17px;border:1px solid #a8dfc8;border-radius:16px;background:#f1fbf6;margin-bottom:12px}.online-dot{width:9px;height:9px;flex:0 0 auto;border-radius:50%;background:#15945e;box-shadow:0 0 0 4px #15945e1f}.online-copy{flex:1}.online-copy strong,.online-copy small{display:block}.online-copy strong{font-size:14px;color:var(--primary)}.online-copy small{margin-top:4px;color:var(--muted);font-size:12px}.online-switch{position:relative;display:block;width:42px;height:24px;border-radius:999px;background:#15945e}.online-switch b{position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      },
+      "advogado.home.solicitacoes_resumo": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "advogado",
+          "nome": "Resumo de solicitações",
+          "nomeExibicao": "Resumo de solicitações",
+          "descricao": "Resumo estático das solicitações, conforme HTML da jornada.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "advogado",
+          "categoria": "conteudo",
+          "escopo": "modulo",
+          "reutilizavel": false,
+          "publicoAlvo": ["advogado"],
+          "tags": ["conteudo"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "requests.root",
+            "elementos": {
+              "requests.root": {
+                "tag": "section",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "op-card requests-card"
+                }
+              },
+              "requests.title": {
+                "tag": "h2",
+                "paiRef": "requests.root",
+                "ordem": 10,
+                "texto": "Solicitações recebidas"
+              },
+              "requests.description": {
+                "tag": "p",
+                "paiRef": "requests.root",
+                "ordem": 20,
+                "texto": "Novas solicitações compatíveis aparecem aqui para análise."
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".op-card{padding:17px;border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:12px}.op-card h2{font-size:18px;margin:0;color:var(--primary)}.op-card p{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.5}.requests-card{margin-top:12px}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      },
+      "menu.drawer.padrao": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "menu",
+          "nome": "Menu lateral compartilhado",
+          "nomeExibicao": "Menu lateral compartilhado",
+          "descricao": "Menu reutilizável com design-base compartilhado. Itens são uma composição estática provisória a partir das referências de navegação do modelo mestre; ações não estão homologadas.",
+          "versao": "0.1.0"
+        },
+        "classificacao": {
+          "dominio": "interface",
+          "moduloRef": "comum",
+          "categoria": "menu",
+          "escopo": "global",
+          "reutilizavel": true,
+          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
+          "tags": ["menu"]
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "drawer.root",
+            "elementos": {
+              "drawer.root": {
+                "tag": "aside",
+                "paiRef": null,
+                "ordem": 10,
+                "atributos": {
+                  "class": "prototype-drawer",
+                  "id": "menu-drawer",
+                  "aria-label": "Menu principal"
+                }
+              },
+              "drawer.backdrop": {
+                "tag": "a",
+                "paiRef": "drawer.root",
+                "ordem": 10,
+                "atributos": {
+                  "href": "#conteudo-home",
+                  "class": "drawer-backdrop",
+                  "aria-label": "Fechar menu"
+                }
+              },
+              "drawer.panel": {
+                "tag": "nav",
+                "paiRef": "drawer.root",
+                "ordem": 20,
+                "atributos": {
+                  "class": "drawer-panel",
+                  "aria-label": "Navegação profissional"
+                }
+              },
+              "drawer.top": {
+                "tag": "div",
+                "paiRef": "drawer.panel",
+                "ordem": 10,
+                "atributos": {
+                  "class": "drawer-top"
+                }
+              },
+              "drawer.identity": {
+                "tag": "div",
+                "paiRef": "drawer.top",
+                "ordem": 10,
+                "atributos": {
+                  "class": "drawer-identity"
+                }
+              },
+              "drawer.avatar": {
+                "tag": "div",
+                "paiRef": "drawer.identity",
+                "ordem": 10,
+                "atributos": {
+                  "class": "drawer-avatar"
+                },
+                "texto": "AJ"
+              },
+              "drawer.profile": {
+                "tag": "div",
+                "paiRef": "drawer.identity",
+                "ordem": 20
+              },
+              "drawer.profile.name": {
+                "tag": "strong",
+                "paiRef": "drawer.profile",
+                "ordem": 10,
+                "texto": "Área profissional"
+              },
+              "drawer.profile.role": {
+                "tag": "small",
+                "paiRef": "drawer.profile",
+                "ordem": 20,
+                "texto": "ADVOGADO"
+              },
+              "drawer.close": {
+                "tag": "a",
+                "paiRef": "drawer.top",
+                "ordem": 20,
+                "atributos": {
+                  "href": "#conteudo-home",
+                  "class": "drawer-close",
+                  "aria-label": "Fechar menu"
+                },
+                "texto": "×"
+              },
+              "drawer.nav": {
+                "tag": "div",
+                "paiRef": "drawer.panel",
+                "ordem": 20,
+                "atributos": {
+                  "class": "drawer-nav"
+                }
+              },
+              "drawer.item.inicio": {
+                "tag": "a",
+                "paiRef": "drawer.nav",
+                "ordem": 10,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Início"
+              },
+              "drawer.item.atendimentos": {
+                "tag": "a",
+                "paiRef": "drawer.nav",
+                "ordem": 20,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Atendimentos"
+              },
+              "drawer.item.perfil": {
+                "tag": "a",
+                "paiRef": "drawer.nav",
+                "ordem": 30,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Meu perfil"
+              },
+              "drawer.item.planos": {
+                "tag": "a",
+                "paiRef": "drawer.nav",
+                "ordem": 40,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Planos"
+              },
+              "drawer.item.escritorio": {
+                "tag": "a",
+                "paiRef": "drawer.nav",
+                "ordem": 50,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Escritório"
+              },
+              "drawer.item.configuracoes": {
+                "tag": "a",
+                "paiRef": "drawer.nav",
+                "ordem": 60,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Configurações"
+              },
+              "drawer.footer": {
+                "tag": "div",
+                "paiRef": "drawer.panel",
+                "ordem": 30,
+                "atributos": {
+                  "class": "drawer-footer"
+                }
+              },
+              "drawer.exit": {
+                "tag": "a",
+                "paiRef": "drawer.footer",
+                "ordem": 10,
+                "atributos": {
+                  "href": "#conteudo-home"
+                },
+                "texto": "Sair"
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "base": ".prototype-drawer{position:fixed;inset:0;z-index:50;display:none}.prototype-drawer:target{display:block}.drawer-backdrop{position:absolute;inset:0;background:#07101e8c}.drawer-panel{position:absolute;top:0;bottom:0;left:0;width:min(88vw,360px);overflow:auto;padding:18px 14px 22px;background:linear-gradient(180deg,#10233f,#0a1b32);color:#fff;box-shadow:12px 0 28px #0005}.drawer-top{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 5px 18px}.drawer-identity{display:flex;gap:11px;align-items:center}.drawer-avatar{width:48px;height:48px;display:grid;place-items:center;border:1px solid #ffffff33;border-radius:50%;background:#ffffff14;font-weight:900}.drawer-identity strong,.drawer-identity small{display:block}.drawer-identity small{margin-top:3px;color:#aebdd0;font-size:10px}.drawer-close{font-size:30px;text-decoration:none;color:#fff}.drawer-nav{display:grid;gap:3px;margin-top:12px}.drawer-nav a,.drawer-footer a{display:block;min-height:44px;border-radius:10px;padding:12px;color:#f8fafc;text-decoration:none;font-weight:700}.drawer-nav a:hover,.drawer-footer a:hover{background:#ffffff13}.drawer-footer{margin-top:16px;border-top:1px solid #ffffff1a;padding-top:12px}"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      }
+    }
+  }
+}

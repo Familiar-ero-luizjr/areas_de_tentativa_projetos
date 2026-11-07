@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Banco · Workspace V6 · Catálogo canônico</title>
+    <link rel="stylesheet" href="./visualizador/style.css">
+  </head>
+  <body>
+    <header class="workspace-global-header">
+      <div class="workspace-global-brand">
+        <div class="workspace-global-overline">ADVOGADO JÁ · WORKSPACE V6</div>
+        <strong>Banco</strong>
+      </div>
+      <details class="workspace-menu">
+        <summary aria-label="Abrir menu geral dos módulos">
+          <span class="menu-icon" aria-hidden="true">☰</span
+          ><span class="menu-word">Módulos</span>
+        </summary>
+        <nav class="menu-panel" aria-label="Módulos do Workspace">
+          <div class="menu-group">
+            <div class="menu-heading">Definição</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/definicao/modelos/index.html"
+              >Modelos JSON</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/definicao/contrato/index.html"
+              >Contrato</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/definicao/planejamento/index.html"
+              >Planejamento</a
+            >
+          </div>
+          <div class="menu-group">
+            <div class="menu-heading">Construção</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/construcao/catalogo/index.html"
+              >Catálogo</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/construcao/jornadas/index.html"
+              >Jornadas</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/construcao/flow/index.html"
+              >Flow Editor</a
+            >
+          </div>
+          <div class="menu-group">
+            <div class="menu-heading">Projeção e validação</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/projecao/prototipo/index.html"
+              >Protótipo</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/projecao/banco/index.html"
+              aria-current="page"
+              >Banco</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/projecao/mapa-interacoes/index.html"
+              >Mapa de Interações</a
+            >
+          </div>
+          <div class="menu-group">
+            <div class="menu-heading">Ferramentas</div>
+            <a
+              class="menu-link"
+              href="../../../modulos/ferramentas/auditoria/index.html"
+              >Auditoria</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/ferramentas/importacao-exportacao/index.html"
+              >Arquivos e exportação</a
+            ><a
+              class="menu-link"
+              href="../../../modulos/ferramentas/questionario/index.html"
+              >Questionário</a
+            >
+          </div>
+          <div class="menu-extras">
+            <a href="../../../../../index.html">Outros projetos</a
+            ><a href="../../../documentacao/DEFINICOES_CONSOLIDADAS_V4.md"
+              >Definições .md</a
+            >
+          </div>
+        </nav>
+      </details>
+    </header>
+    <div class="shell">
+      <div class="backdrop" id="backdrop"></div>
+      <aside class="sidebar" id="sidebar" aria-label="Submenu do Banco">
+        <div class="brand">
+          <div class="brand-symbol">AJ</div>
+          <div><strong>Banco</strong><small>Projeção canônica · V6</small></div>
+        </div>
+        <div class="side-label">Explorar a modelagem</div>
+        <nav class="side-nav" aria-label="Seções do Banco">
+          <button type="button" class="nav-btn active" data-view="overview">
+            <span class="nav-icon">▦</span>Visão geral</button
+          ><button type="button" class="nav-btn" data-view="diagram">
+            <span class="nav-icon">⌘</span>Diagrama DER / UML</button
+          ><button type="button" class="nav-btn" data-view="relations">
+            <span class="nav-icon">⌁</span>Relacionamentos</button
+          ><button type="button" class="nav-btn" data-view="screens">
+            <span class="nav-icon">◫</span>Telas → Entidades</button
+          ><button type="button" class="nav-btn" data-view="catalog">
+            <span class="nav-icon">▥</span>Dicionário de tabelas</button
+          ><button type="button" class="nav-btn" data-view="sql">
+            <span class="nav-icon">{ }</span>SQL declarado</button
+          ><button type="button" class="nav-btn" data-view="motor">
+            <span class="nav-icon">☷</span>Motor / JSON
+          </button>
+        </nav>
+        <div class="side-foot">
+          <strong>Fonte única: Catálogo ativo</strong>
+          <p>
+            Dados históricos e mock removidos. O motor apresenta somente
+            entidades e relações declaradas nas telas.
+          </p>
+        </div>
+      </aside>
+      <main class="workspace">
+        <div class="topbar">
+          <div class="flex">
+            <button
+              class="btn mobile-toggle"
+              id="mobileToggle"
+              type="button"
+              aria-label="Abrir submenu do Banco"
+            >
+              ☰</button
+            ><span class="crumb"
+              >Banco / <strong id="breadcrumb">Visão geral</strong></span
+            >
+          </div>
+          <div class="top-actions">
+            <span class="pill">CATÁLOGO ATIVO · SEM MOCK</span
+            ><button class="btn" id="exportProjection">↓ JSON</button>
+          </div>
+        </div>
+        <section class="view active" id="viewContent" aria-live="polite">
+          <p>Carregando dados canônicos...</p>
+        </section>
+      </main>
+    </div>
+    <aside class="inspector" id="inspector" aria-label="Detalhes da entidade">
+      <div class="inspect-top">
+        <button
+          class="close-x"
+          type="button"
+          id="closeInspector"
+          aria-label="Fechar detalhes"
+        >
+          ×
+        </button>
+        <div class="eyebrow">Inspetor</div>
+        <h2 id="inspectTitle"></h2>
+      </div>
+      <div class="inspect-body" id="inspectBody"></div>
+    </aside>
+    <script src="./conector/montador.js" defer></script>
+  </body>
+</html>
