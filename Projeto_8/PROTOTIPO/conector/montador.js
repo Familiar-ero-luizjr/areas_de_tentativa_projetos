@@ -1,17 +1,29 @@
 const base = new URL('../', import.meta.url);
 async function carregarJSON(caminho){
  const url = new URL(caminho,base);
- const resposta=await fetch(url,{cache:'no-store'});
+ const resposta=await fetch(url,{cache:'default'});
  if(!resposta.ok) throw Error(`Não foi possível ler ${caminho} (HTTP ${resposta.status})`);
  return resposta.json();
 }
 export async function carregarManifest(){return carregarJSON('dados/manifest.json')}
-export async function montarLaboratorio(chave, manifest){
+const cacheLaboratorios=new Map();
+export async function montarLaboratorio(chave, manifest, force=false){
+ if(force)cacheLaboratorios.delete(chave);
+ if(cacheLaboratorios.has(chave))return cacheLaboratorios.get(chave);
+ const task=montarInterno(chave,manifest);
+ cacheLaboratorios.set(chave,task);
+ try{return await task}catch(e){cacheLaboratorios.delete(chave);throw e}
+}
+async function montarInterno(chave, manifest){
  const cfg=manifest.laboratorios[chave];if(!cfg)throw Error('Laboratório não encontrado: '+chave);
  const [modelo,interfaceDados]=await Promise.all([carregarJSON(cfg.arquivoModelo),carregarJSON(cfg.interface)]);
  const telas={};const componentes={};
- await Promise.all(Object.entries(cfg.telas).map(async ([id,path])=>{telas[id]=await carregarJSON(path)}));
- await Promise.all(Object.entries(cfg.componentes).map(async ([id,path])=>{componentes[id]=await carregarJSON(path)}));
+ const jobs=[...Object.entries(cfg.telas).map(([id,path])=>({tipo:'tela',id,path})),...Object.entries(cfg.componentes).map(([id,path])=>({tipo:'componente',id,path}))];
+ let next=0;
+ await Promise.all(Array.from({length:Math.min(6,jobs.length)},async()=>{while(next<jobs.length){
+  const job=jobs[next++],data=await carregarJSON(job.path);
+  if(job.tipo==='tela')telas[job.id]=data;else componentes[job.id]=data;
+ }}));
  modelo.telas=telas;if(Object.keys(componentes).length)modelo.componentes=componentes;
  return {config:cfg,modelo,interfaceDados};
 }
