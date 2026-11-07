@@ -4,7 +4,7 @@
  const status=document.getElementById('count');
  const fail=e=>{status.textContent='Falha no carregamento: '+e;status.style.color='#a22d2d';console.error(e)};
  const voids=new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
- async function readJson(path){const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw Error(path+': HTTP '+r.status);return r.json()}
+ async function readJson(path){const r=await fetch(path,{cache:'default'});if(!r.ok)throw Error(path+': HTTP '+r.status);return r.json()}
  function renderMarkup(tree){
    const children=new Map();
    for(const [id,node] of Object.entries(tree?.elementos||{})){
@@ -58,7 +58,17 @@
      if(!t.id||!/^telas\/[a-z0-9_./-]+\.json$/i.test(t.arquivo)||t.arquivo.includes('..')||seen.has(t.id))throw Error('Referência de tela inválida: '+t.id);
      seen.add(t.id);
    }
-   const telas=await Promise.all(manifest.telas.map(async t=>adaptarTela(await readJson(t.arquivo),t.id)));
+   const telas=new Array(manifest.telas.length);
+   let next=0,completed=0;
+   const workers=Array.from({length:Math.min(6,manifest.telas.length)},async()=>{
+     while(next<manifest.telas.length){
+       const i=next++,t=manifest.telas[i];
+       telas[i]=adaptarTela(await readJson(t.arquivo),t.id);
+       completed++;
+       status.textContent='Carregando jornadas: '+completed+' / '+manifest.telas.length+' telas';
+     }
+   });
+   await Promise.all(workers);
    window.__JORNADAS_SOURCE__={schema:manifest.pacoteSchema,origem:manifest.origem,fluxoFonte:manifest.fluxoFonte,telas};
    const script=document.createElement('script');script.src='visualizador/app.js';script.onerror=()=>fail('Não foi possível carregar o visualizador.');
    document.body.appendChild(script);
