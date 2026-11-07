@@ -628,7 +628,7 @@
         if (a.getAttribute("aria-current") === "page") return;
         a.addEventListener("click", (e) => {
           const href = a.getAttribute("href") || "";
-          if (!href.startsWith("#")) {
+          if (!href.startsWith("#") && !/^\.\.?\/(?:JORNADAS|PROTOTIPO)\/index\.html$/.test(href) && href !== "./index.html") {
             e.preventDefault();
             const vc = document.getElementById("viewContent"),
               old = document.getElementById("standaloneMenuNotice");
