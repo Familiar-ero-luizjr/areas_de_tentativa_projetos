@@ -1,0 +1,43 @@
+name: Restaurar motores do Prototipo 8
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restaurar-motores-prototipo.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  restaurar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Extrair JavaScript original dos laboratorios
+        run: |
+          python3 - <<'PY'
+          import pathlib, re
+          root = pathlib.Path('Projeto_8/PROTOTIPO/visualizador')
+          sources = {
+            'cliente_v3.js': pathlib.Path('Projeto_7/prototype/AdvogadoJa_Laboratorio_Cliente_Interativo_V3.html'),
+            'modular_v2.js': pathlib.Path('Projeto_7/prototype/AdvogadoJa_Prototipo_Laboratorio_Modular_V2.html')
+          }
+          for target, source in sources.items():
+              html = source.read_text(encoding='utf-8')
+              scripts = re.findall(r'<script\b([^>]*)>([\s\S]*?)</script\s*>', html, flags=re.I)
+              motors = [body for attrs,body in scripts if not re.search(r'\btype\s*=\s*["\'](?:application/json|text/plain)["\']', attrs, re.I) and body.strip()]
+              if len(motors) != 1 or len(motors[0]) < 1000:
+                  raise RuntimeError('Motor original nao identificado: '+str(source))
+              (root/target).write_text(motors[0].strip()+'\n',encoding='utf-8')
+              print(target, len(motors[0]), 'caracteres restaurados')
+          PY
+      - name: Registrar motores restaurados
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Projeto_8/PROTOTIPO/visualizador/cliente_v3.js Projeto_8/PROTOTIPO/visualizador/modular_v2.js
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix(prototipo): restore original interactive engines'
+            git push
+          fi
