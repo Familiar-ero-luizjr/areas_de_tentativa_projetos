@@ -29,3 +29,9 @@ Abra `http://localhost:8000/` no navegador. Acesso direto via `file://` pode blo
 Altere o JSON desejado. Atualize `dados/manifest.json` caso adicione outra tela. O montador coleta o pacote antes do visualizador inicializar. Preserve a chave de ID na raiz do JSON da tela. Ao alterar o modelo e o glossário, mantenha suas estruturas originais. Importações na interface são transitórias: para persistir mudanças, atualize os JSONs do projeto.
 
 **Observação:** a Home e suas relações são exemplos documentais, não definições homologadas. A separação dos arquivos não altera esse status. A interface original foi mantida, incluindo sua lógica de importação/exportação.
+
+## Auditoria do contrato de navegação (não homologada)
+
+- [`dados/documentacao/AUDITORIA_EQUIVALENCIAS_NAVEGACAO_V1.md`](dados/documentacao/AUDITORIA_EQUIVALENCIAS_NAVEGACAO_V1.md): equivalências semânticas, limites de leitura dos motores, campos candidatos e validações.
+- `dados/contrato/modelo.json` e `dados/contrato/glossario.json` descrevem os campos candidatos; `telas/advogado/advogado.home.json` é apenas o exemplo documental.
+- `dados/documentacao/decisoes_consolidadas.json` permanece inalterado até novas aprovações.

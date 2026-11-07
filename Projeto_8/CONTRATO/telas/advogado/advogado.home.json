@@ -65,12 +65,14 @@
             "origem": {
               "tipo": "tela",
               "ref": "advogado.onboarding.revisao_profissional",
-              "noRef": "pro_review"
+              "noRef": "pro_review",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "opcao": null,
             "rotulo": null,
@@ -78,12 +80,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 1
+            "ordem": 1,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.home.oab_pending_capabilities",
@@ -91,13 +96,15 @@
             "origem": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "oab_pending_capabilities",
               "noRef": "oab_pending_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "pending",
             "rotulo": "OAB não validada / pendente",
@@ -105,12 +112,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 2
+            "ordem": 2,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.home.oab_validating_capabilities",
@@ -118,13 +128,15 @@
             "origem": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "oab_validating_capabilities",
               "noRef": "oab_validating_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "validating",
             "rotulo": "OAB em validação",
@@ -132,12 +144,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 3
+            "ordem": 3,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.home.oab_enabled_capabilities",
@@ -145,13 +160,15 @@
             "origem": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "oab_enabled_capabilities",
               "noRef": "oab_enabled_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "enabled",
             "rotulo": "OAB validada / habilitada",
@@ -159,12 +176,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 4
+            "ordem": 4,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.home.oab_restricted_capabilities",
@@ -172,13 +192,15 @@
             "origem": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "oab_restricted_capabilities",
               "noRef": "oab_restricted_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "restricted",
             "rotulo": "Recusada / suspensa / expirada",
@@ -186,12 +208,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 5
+            "ordem": 5,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.home.oab_unknown_capabilities",
@@ -199,13 +224,15 @@
             "origem": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "oab_unknown_capabilities",
               "noRef": "oab_unknown_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "unknown",
             "rotulo": "Erro técnico / estado desconhecido",
@@ -213,12 +240,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 6
+            "ordem": 6,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.active_login.home",
@@ -226,12 +256,14 @@
             "origem": {
               "tipo": "tela",
               "ref": "auth.sessao.entrar",
-              "noRef": "active_login"
+              "noRef": "active_login",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.home",
-              "noRef": "home"
+              "noRef": "home",
+              "portaRef": null
             },
             "opcao": null,
             "rotulo": null,
@@ -239,12 +271,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 7
+            "ordem": 7,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.oab_pending_capabilities.oab_validation_area",
@@ -253,12 +288,14 @@
               "tipo": "estado_fluxo",
               "ref": "oab_pending_capabilities",
               "noRef": "oab_pending_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.configuracao.validacao_oab",
-              "noRef": "oab_validation_area"
+              "noRef": "oab_validation_area",
+              "portaRef": null
             },
             "opcao": "validate",
             "rotulo": "Validar OAB",
@@ -266,12 +303,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 8
+            "ordem": 8,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.oab_validating_capabilities.oab_validation_area",
@@ -280,12 +320,14 @@
               "tipo": "estado_fluxo",
               "ref": "oab_validating_capabilities",
               "noRef": "oab_validating_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.configuracao.validacao_oab",
-              "noRef": "oab_validation_area"
+              "noRef": "oab_validation_area",
+              "portaRef": null
             },
             "opcao": "status",
             "rotulo": "Área de validação da OAB",
@@ -293,12 +335,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 9
+            "ordem": 9,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.oab_enabled_capabilities.professional_actions",
@@ -307,13 +352,15 @@
               "tipo": "estado_fluxo",
               "ref": "oab_enabled_capabilities",
               "noRef": "oab_enabled_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": null,
             "rotulo": null,
@@ -321,12 +368,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 10
+            "ordem": 10,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.requests",
@@ -335,12 +385,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.clientes.solicitacoes_recebidas",
-              "noRef": "requests"
+              "noRef": "requests",
+              "portaRef": null
             },
             "opcao": "requests",
             "rotulo": "Solicitações recebidas",
@@ -348,12 +400,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 11
+            "ordem": 11,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.appointments",
@@ -362,12 +417,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.atendimentos_advogado",
-              "noRef": "appointments"
+              "noRef": "appointments",
+              "portaRef": null
             },
             "opcao": "appointments",
             "rotulo": "Atendimentos",
@@ -375,12 +432,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 12
+            "ordem": 12,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.availability",
@@ -389,12 +449,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.disponibilidade",
-              "noRef": "availability"
+              "noRef": "availability",
+              "portaRef": null
             },
             "opcao": "availability",
             "rotulo": "Disponibilidade",
@@ -402,12 +464,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 13
+            "ordem": 13,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.profile",
@@ -416,12 +481,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.perfil_profissional",
-              "noRef": "profile"
+              "noRef": "profile",
+              "portaRef": null
             },
             "opcao": "profile",
             "rotulo": "Perfil profissional",
@@ -429,12 +496,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 14
+            "ordem": 14,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.subscription",
@@ -443,12 +513,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.assinatura.gestao_assinatura",
-              "noRef": "subscription"
+              "noRef": "subscription",
+              "portaRef": null
             },
             "opcao": "subscription",
             "rotulo": "Assinatura",
@@ -456,12 +528,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 15
+            "ordem": 15,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.office",
@@ -470,12 +545,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "escritorio.gestao.escritorio",
-              "noRef": "office"
+              "noRef": "office",
+              "portaRef": null
             },
             "opcao": "office",
             "rotulo": "Escritório",
@@ -483,12 +560,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 16
+            "ordem": 16,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.settings",
@@ -497,12 +577,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.configuracao.configuracao",
-              "noRef": "settings"
+              "noRef": "settings",
+              "portaRef": null
             },
             "opcao": "settings",
             "rotulo": "Configurações",
@@ -510,12 +592,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 17
+            "ordem": 17,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.notifications",
@@ -524,12 +609,14 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "notificacoes.lista.notificacoes",
-              "noRef": "notifications"
+              "noRef": "notifications",
+              "portaRef": null
             },
             "opcao": "notifications",
             "rotulo": "Notificações",
@@ -537,12 +624,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 18
+            "ordem": 18,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.online_state",
@@ -551,13 +641,15 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "online_state",
               "noRef": "online_state",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "online",
             "rotulo": "Online / offline",
@@ -565,12 +657,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 19
+            "ordem": 19,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.professional_actions.logout",
@@ -579,13 +674,15 @@
               "tipo": "estado_fluxo",
               "ref": "professional_actions",
               "noRef": "professional_actions",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "estado_fluxo",
               "ref": "logout",
               "noRef": "logout",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "opcao": "logout",
             "rotulo": "Sair",
@@ -593,12 +690,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 20
+            "ordem": 20,
+            "participacaoRef": null,
+            "prioridade": null
           },
           {
             "id": "rel.advogado.oab_restricted_capabilities.oab_validation_area",
@@ -607,12 +707,14 @@
               "tipo": "estado_fluxo",
               "ref": "oab_restricted_capabilities",
               "noRef": "oab_restricted_capabilities",
-              "telaContextoRef": "advogado.home"
+              "telaContextoRef": "advogado.home",
+              "portaRef": null
             },
             "destino": {
               "tipo": "tela",
               "ref": "advogado.configuracao.validacao_oab",
-              "noRef": "oab_validation_area"
+              "noRef": "oab_validation_area",
+              "portaRef": null
             },
             "opcao": "oab",
             "rotulo": "Área de validação da OAB",
@@ -620,12 +722,15 @@
             "gatilho": {
               "elementoRef": null,
               "eventoRef": null,
-              "acaoRef": null
+              "acaoRef": null,
+              "instanciaRef": null
             },
             "condicaoRef": null,
             "parametros": {},
             "comportamento": {},
-            "ordem": 21
+            "ordem": 21,
+            "participacaoRef": null,
+            "prioridade": null
           }
         ],
         "bifurcacoes": [
@@ -641,35 +746,45 @@
                 "rotulo": "OAB não validada / pendente",
                 "valor": "pending",
                 "relacaoRef": "rel.advogado.home.oab_pending_capabilities",
-                "ordem": 1
+                "ordem": 1,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "validating",
                 "rotulo": "OAB em validação",
                 "valor": "validating",
                 "relacaoRef": "rel.advogado.home.oab_validating_capabilities",
-                "ordem": 2
+                "ordem": 2,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "enabled",
                 "rotulo": "OAB validada / habilitada",
                 "valor": "enabled",
                 "relacaoRef": "rel.advogado.home.oab_enabled_capabilities",
-                "ordem": 3
+                "ordem": 3,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "restricted",
                 "rotulo": "Recusada / suspensa / expirada",
                 "valor": "restricted",
                 "relacaoRef": "rel.advogado.home.oab_restricted_capabilities",
-                "ordem": 4
+                "ordem": 4,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "unknown",
                 "rotulo": "Erro técnico / estado desconhecido",
                 "valor": "unknown",
                 "relacaoRef": "rel.advogado.home.oab_unknown_capabilities",
-                "ordem": 5
+                "ordem": 5,
+                "condicaoRef": null,
+                "prioridade": null
               }
             ],
             "fallbackRelacaoRef": null
@@ -686,70 +801,90 @@
                 "rotulo": "Solicitações recebidas",
                 "valor": "requests",
                 "relacaoRef": "rel.advogado.professional_actions.requests",
-                "ordem": 1
+                "ordem": 1,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "appointments",
                 "rotulo": "Atendimentos",
                 "valor": "appointments",
                 "relacaoRef": "rel.advogado.professional_actions.appointments",
-                "ordem": 2
+                "ordem": 2,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "availability",
                 "rotulo": "Disponibilidade",
                 "valor": "availability",
                 "relacaoRef": "rel.advogado.professional_actions.availability",
-                "ordem": 3
+                "ordem": 3,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "profile",
                 "rotulo": "Perfil profissional",
                 "valor": "profile",
                 "relacaoRef": "rel.advogado.professional_actions.profile",
-                "ordem": 4
+                "ordem": 4,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "subscription",
                 "rotulo": "Assinatura",
                 "valor": "subscription",
                 "relacaoRef": "rel.advogado.professional_actions.subscription",
-                "ordem": 5
+                "ordem": 5,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "office",
                 "rotulo": "Escritório",
                 "valor": "office",
                 "relacaoRef": "rel.advogado.professional_actions.office",
-                "ordem": 6
+                "ordem": 6,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "settings",
                 "rotulo": "Configurações",
                 "valor": "settings",
                 "relacaoRef": "rel.advogado.professional_actions.settings",
-                "ordem": 7
+                "ordem": 7,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "notifications",
                 "rotulo": "Notificações",
                 "valor": "notifications",
                 "relacaoRef": "rel.advogado.professional_actions.notifications",
-                "ordem": 8
+                "ordem": 8,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "online",
                 "rotulo": "Online / offline",
                 "valor": "online",
                 "relacaoRef": "rel.advogado.professional_actions.online_state",
-                "ordem": 9
+                "ordem": 9,
+                "condicaoRef": null,
+                "prioridade": null
               },
               {
                 "id": "logout",
                 "rotulo": "Sair",
                 "valor": "logout",
                 "relacaoRef": "rel.advogado.professional_actions.logout",
-                "ordem": 10
+                "ordem": 10,
+                "condicaoRef": null,
+                "prioridade": null
               }
             ],
             "fallbackRelacaoRef": null

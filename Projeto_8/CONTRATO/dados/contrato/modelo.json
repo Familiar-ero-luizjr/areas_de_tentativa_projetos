@@ -46,7 +46,8 @@
                   "kind": "string"
                 },
                 "submoduloRef": {
-                  "kind": "null"
+                  "kind": "string",
+                  "nullable": true
                 },
                 "secao": {
                   "kind": "string"
@@ -116,7 +117,8 @@
                         "kind": "string"
                       },
                       "condicaoRef": {
-                        "kind": "null"
+                        "kind": "string",
+                        "nullable": true
                       }
                     }
                   }
@@ -142,15 +144,82 @@
                       },
                       "parametros": {
                         "kind": "array",
-                        "item": null
+                        "item": {
+                          "kind": "object",
+                          "children": {
+                            "nome": {
+                              "kind": "string"
+                            },
+                            "tipo": {
+                              "kind": "string"
+                            },
+                            "obrigatorio": {
+                              "kind": "boolean"
+                            },
+                            "origemRef": {
+                              "kind": "string",
+                              "nullable": true
+                            },
+                            "valorPadrao": {
+                              "kind": "null"
+                            }
+                          }
+                        }
                       },
                       "query": {
                         "kind": "array",
-                        "item": null
+                        "item": {
+                          "kind": "object",
+                          "children": {
+                            "nome": {
+                              "kind": "string"
+                            },
+                            "tipo": {
+                              "kind": "string"
+                            },
+                            "obrigatorio": {
+                              "kind": "boolean"
+                            },
+                            "origemRef": {
+                              "kind": "string",
+                              "nullable": true
+                            },
+                            "valorPadrao": {
+                              "kind": "null"
+                            }
+                          }
+                        }
                       },
                       "redirecionamentos": {
                         "kind": "array",
-                        "item": null
+                        "item": {
+                          "kind": "object",
+                          "children": {
+                            "id": {
+                              "kind": "string"
+                            },
+                            "destinoRotaRef": {
+                              "kind": "string",
+                              "nullable": true
+                            },
+                            "destinoTelaRef": {
+                              "kind": "string",
+                              "nullable": true
+                            },
+                            "condicaoRef": {
+                              "kind": "string",
+                              "nullable": true
+                            },
+                            "prioridade": {
+                              "kind": "number",
+                              "nullable": true
+                            },
+                            "comportamento": {
+                              "kind": "object",
+                              "children": {}
+                            }
+                          }
+                        }
                       },
                       "comportamento": {
                         "kind": "object",
@@ -188,11 +257,15 @@
                           },
                           "noRef": {
                             "kind": "string",
-                            "nullable": false
+                            "nullable": true
                           },
                           "telaContextoRef": {
                             "kind": "string",
-                            "nullable": false
+                            "nullable": true
+                          },
+                          "portaRef": {
+                            "kind": "string",
+                            "nullable": true
                           }
                         }
                       },
@@ -209,11 +282,15 @@
                           },
                           "noRef": {
                             "kind": "string",
-                            "nullable": false
+                            "nullable": true
                           },
                           "telaContextoRef": {
                             "kind": "string",
-                            "nullable": false
+                            "nullable": true
+                          },
+                          "portaRef": {
+                            "kind": "string",
+                            "nullable": true
                           }
                         }
                       },
@@ -233,22 +310,26 @@
                         "kind": "object",
                         "children": {
                           "elementoRef": {
-                            "kind": "null",
-                            "nullable": false
+                            "kind": "string",
+                            "nullable": true
                           },
                           "eventoRef": {
-                            "kind": "null",
-                            "nullable": false
+                            "kind": "string",
+                            "nullable": true
                           },
                           "acaoRef": {
-                            "kind": "null",
-                            "nullable": false
+                            "kind": "string",
+                            "nullable": true
+                          },
+                          "instanciaRef": {
+                            "kind": "string",
+                            "nullable": true
                           }
                         }
                       },
                       "condicaoRef": {
-                        "kind": "null",
-                        "nullable": false
+                        "kind": "string",
+                        "nullable": true
                       },
                       "parametros": {
                         "kind": "object",
@@ -261,6 +342,14 @@
                       "ordem": {
                         "kind": "number",
                         "nullable": false
+                      },
+                      "participacaoRef": {
+                        "kind": "string",
+                        "nullable": true
+                      },
+                      "prioridade": {
+                        "kind": "number",
+                        "nullable": true
                       }
                     }
                   }
@@ -276,7 +365,7 @@
                       },
                       "origemNoRef": {
                         "kind": "string",
-                        "nullable": false
+                        "nullable": true
                       },
                       "titulo": {
                         "kind": "string",
@@ -287,8 +376,8 @@
                         "nullable": false
                       },
                       "criterioRef": {
-                        "kind": "null",
-                        "nullable": false
+                        "kind": "string",
+                        "nullable": true
                       },
                       "alternativas": {
                         "kind": "array",
@@ -314,13 +403,21 @@
                             "ordem": {
                               "kind": "number",
                               "nullable": false
+                            },
+                            "condicaoRef": {
+                              "kind": "string",
+                              "nullable": true
+                            },
+                            "prioridade": {
+                              "kind": "number",
+                              "nullable": true
                             }
                           }
                         }
                       },
                       "fallbackRelacaoRef": {
-                        "kind": "null",
-                        "nullable": false
+                        "kind": "string",
+                        "nullable": true
                       }
                     }
                   }

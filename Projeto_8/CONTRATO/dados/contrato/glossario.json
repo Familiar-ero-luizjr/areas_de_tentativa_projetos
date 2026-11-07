@@ -80,9 +80,9 @@
       "situacao": "estrutura"
     },
     "contrato.<telaId>.tela.classificacao.submoduloRef": {
-      "resumo": "Referência à subdivisão do módulo, quando aplicável.",
-      "detalhes": "Referência à subdivisão do módulo, quando aplicável. Informações demonstrativas da Home não constituem nomenclatura homologada.",
-      "situacao": "estrutura"
+      "resumo": "Referência opcional de submódulo",
+      "detalhes": "Pode conter um ID de submódulo ou null quando a tela não está subdividida.",
+      "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.classificacao.secao": {
       "resumo": "Seção lógica em que o objeto é organizado.",
@@ -190,9 +190,9 @@
       "situacao": "estrutura"
     },
     "contrato.<telaId>.tela.classificacao.jornadas[].condicaoRef": {
-      "resumo": "Aponta para uma condição; não duplica a regra.",
-      "detalhes": "Aponta para uma condição; não duplica a regra. Informações demonstrativas da Home não constituem nomenclatura homologada.",
-      "situacao": "estrutura"
+      "resumo": "Condição de participação opcional",
+      "detalhes": "Referência textual opcional, não string obrigatória nem null permanente. Sua definição/execução é externa.",
+      "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao": {
       "resumo": "Conjunto de referências que descreve caminhos e decisões.",
@@ -285,13 +285,13 @@
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].origem.noRef": {
-      "resumo": "Nó do fluxo associado à origem.",
-      "detalhes": "Permite distinguir ocorrências ou nós distintos associados a uma mesma tela.",
+      "resumo": "Ocorrência de origem",
+      "detalhes": "Referência de nó opcional; não substitui a identidade da tela.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].origem.telaContextoRef": {
-      "resumo": "Tela associada a um estado de origem.",
-      "detalhes": "Usado quando o nó de origem é um estado sem tela própria; preserva o contexto da Home.",
+      "resumo": "Tela de contexto da origem",
+      "detalhes": "Referência opcional necessária quando a origem é estado/nó associado a uma tela.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].destino": {
@@ -310,13 +310,13 @@
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].destino.noRef": {
-      "resumo": "Nó do fluxo associado ao destino.",
-      "detalhes": "Identifica a ocorrência de fluxo à qual a relação aponta.",
+      "resumo": "Ocorrência de destino",
+      "detalhes": "Referência de nó opcional; não substitui a identidade da tela.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].destino.telaContextoRef": {
-      "resumo": "Tela associada a um estado de destino.",
-      "detalhes": "Evita inventar uma nova tela quando a relação só recalcula capacidades na Home existente.",
+      "resumo": "Tela de contexto do destino",
+      "detalhes": "Referência opcional necessária quando o destino é estado/nó associado a uma tela.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].opcao": {
@@ -340,23 +340,23 @@
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].gatilho.elementoRef": {
-      "resumo": "Elemento visual que pode disparar o caminho.",
-      "detalhes": "Referência opcional a um elemento da estrutura HTML/componente.",
+      "resumo": "Elemento disparador",
+      "detalhes": "Referência textual opcional; null significa ausência de vínculo, e não tipo definitivo.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].gatilho.eventoRef": {
-      "resumo": "Evento vinculado ao disparo.",
-      "detalhes": "Referência opcional a um evento definido em interações; o modelo do evento ainda será definido.",
+      "resumo": "Evento disparador",
+      "detalhes": "Referência textual opcional a interacoes, sem copiar definição do evento.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].gatilho.acaoRef": {
-      "resumo": "Ação associada ao disparo.",
-      "detalhes": "Referência opcional a uma ação definida em acoes, evitando duplicar sua implementação.",
+      "resumo": "Ação vinculada",
+      "detalhes": "Referência textual opcional a acoes, sem copiar operação.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].condicaoRef": {
-      "resumo": "ID de condição para esta conexão.",
-      "detalhes": "Reserva o vínculo com uma condição, sem colocar a expressão executável dentro da navegação.",
+      "resumo": "Condição da relação",
+      "detalhes": "Referência textual opcional a uma condição externa; execução permanece fora da navegação.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.relacoes[].parametros": {
@@ -390,8 +390,8 @@
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.bifurcacoes[].origemNoRef": {
-      "resumo": "Nó ao qual a bifurcação pertence.",
-      "detalhes": "Identifica no fluxo o ponto da escolha ou decisão.",
+      "resumo": "Nó de origem opcional",
+      "detalhes": "Um motor sem nós explícitos pode omitir esta referência e usar as relações do grupo.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.bifurcacoes[].titulo": {
@@ -405,8 +405,8 @@
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.bifurcacoes[].criterioRef": {
-      "resumo": "Referência ao critério da decisão.",
-      "detalhes": "Vincula a bifurcação a uma condição externa quando houver. O contrato de expressão ainda está aberto.",
+      "resumo": "Critério da bifurcação",
+      "detalhes": "Referência textual opcional; editor pode exibir escolha sem executar esse critério.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas": {
@@ -445,8 +445,8 @@
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.navegacao.bifurcacoes[].fallbackRelacaoRef": {
-      "resumo": "Relação alternativa em caso de fallback.",
-      "detalhes": "Referência opcional e ainda não configurada para um caminho de contingência. Política de fallback pendente.",
+      "resumo": "Relação de contingência",
+      "detalhes": "Referência textual opcional a uma relação existente; política de fallback a definir.",
       "situacao": "modelo_em_avaliacao"
     },
     "contrato.<telaId>.tela.estados": {
@@ -763,6 +763,136 @@
       "resumo": "Reserva variações de apresentação e configuração.",
       "detalhes": "Reserva variações de apresentação e configuração. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
       "situacao": "estrutura"
+    },
+    "contrato.<telaId>.tela.navegacao.relacoes[].participacaoRef": {
+      "resumo": "Participação contextual opcional",
+      "detalhes": "Quando a mesma tela aparece em múltiplas jornadas ou subjornadas, permite apontar uma participação declarada em classificacao.jornadas. Ausência não impede relação global.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.relacoes[].prioridade": {
+      "resumo": "Precedência candidata da relação",
+      "detalhes": "Diferente da ordem visual; útil se houver múltiplas conexões aplicáveis. Regra de conflito/desempate ainda pendente.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.relacoes[].origem.portaRef": {
+      "resumo": "Porta de conexão da origem",
+      "detalhes": "Referência opcional a ponto conectivo do Flow. Diferente de noRef (ocorrência). O formato das portas ainda não está homologado.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.relacoes[].destino.portaRef": {
+      "resumo": "Porta de conexão da destino",
+      "detalhes": "Referência opcional a ponto conectivo do Flow. Diferente de noRef (ocorrência). O formato das portas ainda não está homologado.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.relacoes[].gatilho.instanciaRef": {
+      "resumo": "Instância visual disparadora",
+      "detalhes": "Identifica a instância de componente quando um componente reutilizado em várias telas emite o mesmo evento; complementa elementoRef.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas[].condicaoRef": {
+      "resumo": "Condição opcional por alternativa",
+      "detalhes": "Referência à condição externa aplicável especificamente a esta alternativa. Não contém expressão executável.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas[].prioridade": {
+      "resumo": "Precedência opcional da alternativa",
+      "detalhes": "Separada de ordem: ordem serve à apresentação, prioridade pode orientar resolução. Política ainda pendente.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].parametros[]": {
+      "resumo": "Parâmetro de caminho",
+      "detalhes": "Entrada declarativa do caminho; estrutura candidata e ainda não homologada.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].query[]": {
+      "resumo": "Parâmetro de consulta",
+      "detalhes": "Entrada declarativa da query; estrutura candidata e ainda não homologada.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[]": {
+      "resumo": "Regra de redirecionamento",
+      "detalhes": "Desvio com possíveis condições; nenhuma política executável está aprovada.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].parametros[].nome": {
+      "resumo": "Nome do parâmetro",
+      "detalhes": "Chave legível do parâmetro; nomenclatura candidata.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].parametros[].tipo": {
+      "resumo": "Tipo esperado",
+      "detalhes": "Tipo lógico do valor; enumeração e validação pendentes.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].parametros[].obrigatorio": {
+      "resumo": "Obrigatoriedade contextual",
+      "detalhes": "Indica se a rota requer este valor. Regra de ausência pendente.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].parametros[].origemRef": {
+      "resumo": "Fonte de preenchimento",
+      "detalhes": "Referência opcional a dado/estado/parametrização; sem embutir o valor de execução.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].parametros[].valorPadrao": {
+      "resumo": "Reserva de valor padrão",
+      "detalhes": "Tipo ainda indefinido; a representação definitiva do valor depende do contrato de dados.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].query[].nome": {
+      "resumo": "Nome do parâmetro",
+      "detalhes": "Chave legível do parâmetro; nomenclatura candidata.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].query[].tipo": {
+      "resumo": "Tipo esperado",
+      "detalhes": "Tipo lógico do valor; enumeração e validação pendentes.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].query[].obrigatorio": {
+      "resumo": "Obrigatoriedade contextual",
+      "detalhes": "Indica se a rota requer este valor. Regra de ausência pendente.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].query[].origemRef": {
+      "resumo": "Fonte de preenchimento",
+      "detalhes": "Referência opcional a dado/estado/parametrização; sem embutir o valor de execução.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].query[].valorPadrao": {
+      "resumo": "Reserva de valor padrão",
+      "detalhes": "Tipo ainda indefinido; a representação definitiva do valor depende do contrato de dados.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].id": {
+      "resumo": "ID do redirecionamento",
+      "detalhes": "Identificador estável da regra candidata.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].destinoRotaRef": {
+      "resumo": "Rota de destino",
+      "detalhes": "Referência opcional a uma rota já cadastrada, evitando repetir seu caminho.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].destinoTelaRef": {
+      "resumo": "Tela de destino",
+      "detalhes": "Referência opcional à tela; precedência frente a destinoRotaRef ainda não definida.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].condicaoRef": {
+      "resumo": "Condição de redirecionamento",
+      "detalhes": "Referência opcional, não código de avaliação.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].prioridade": {
+      "resumo": "Precedência de desvio",
+      "detalhes": "Ordem de resolução proposta; empates permanecem pendentes.",
+      "situacao": "modelo_em_avaliacao"
+    },
+    "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].comportamento": {
+      "resumo": "Política do desvio",
+      "detalhes": "Reserva sem detalhes executáveis homologados.",
+      "situacao": "modelo_em_avaliacao"
     }
   }
 }
