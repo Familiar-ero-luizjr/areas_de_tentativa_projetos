@@ -2,7 +2,7 @@
 (async () => {
   const status = document.getElementById('viewContent');
   try {
-    const response = await fetch('./dados/manifest.json', {cache:'no-store'});
+    const response = await fetch('./dados/manifest.json', {cache:'default'});
     if (!response.ok) throw new Error('Não foi possível ler dados/manifest.json (' + response.status + ')');
     const manifest = await response.json();
     const indice = manifest.indice;
@@ -11,25 +11,31 @@
     }
     const catalogo = {indice:{telas:[],componentes:[]},telas:{},componentes:{},origem:'dados/manifest.json'};
     const ids = new Set();
+    const tasks=[];
     for (const tipo of ['telas','componentes']) {
       for (const item of indice[tipo]) {
         if (!item || typeof item.id !== 'string' || typeof item.arquivo !== 'string')
           throw new Error('Entrada inválida em indice.' + tipo + ': ID e arquivo obrigatórios.');
         if (ids.has(tipo + ':' + item.id)) throw new Error('ID duplicado: ' + item.id);
         ids.add(tipo + ':' + item.id);
-        // Restringir à própria pasta de tipo para impedir travessia de caminho.
-        const expectedPrefix = tipo + '/';
-        if (!item.arquivo.startsWith(expectedPrefix) || item.arquivo.split('/').includes('..') || !item.arquivo.endsWith('.json'))
+        if (!item.arquivo.startsWith(tipo + '/') || item.arquivo.split('/').includes('..') || !item.arquivo.endsWith('.json'))
           throw new Error('Caminho não permitido: ' + item.arquivo);
-        const res = await fetch('./' + item.arquivo, {cache:'no-store'});
-        if (!res.ok) throw new Error('Erro ao ler ' + item.arquivo + ' (' + res.status + ')');
-        const record = await res.json();
-        if (record?.identidade?.id !== item.id)
-          throw new Error('Identidade divergente: ' + item.arquivo);
-        catalogo[tipo][item.id] = record;
-        catalogo.indice[tipo].push({id:item.id,arquivo:item.arquivo});
+        tasks.push({tipo,item});
       }
     }
+    let next=0;
+    await Promise.all(Array.from({length:Math.min(6,tasks.length)},async()=>{
+      while(next<tasks.length){
+        const {tipo,item}=tasks[next++];
+        const res=await fetch('./'+item.arquivo,{cache:'default'});
+        if(!res.ok)throw new Error('Erro ao ler '+item.arquivo+' ('+res.status+')');
+        const record=await res.json();
+        if(record?.identidade?.id!==item.id)throw new Error('Identidade divergente: '+item.arquivo);
+        catalogo[tipo][item.id]=record;
+      }
+    }));
+    for(const tipo of ['telas','componentes'])
+      catalogo.indice[tipo]=indice[tipo].map(({id,arquivo})=>({id,arquivo}));
     window.__BANCO_CATALOGO__ = catalogo;
     const script = document.createElement('script');
     script.src = './visualizador/app.js';
