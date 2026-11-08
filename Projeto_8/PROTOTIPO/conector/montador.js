@@ -38,6 +38,6 @@ export function criarDocumento({config,modelo,interfaceDados},token){
  const signal=JSON.stringify({type:'advogadoja-lab-status',token});
  const boot='<script>window.__ajLabFailure=null;window.addEventListener("error",function(e){window.__ajLabFailure=String(e.message||"Falha de script");});<\\/script>'.replace('<\\/script>','</script>');
  const finish='<script>(function(){const m='+signal+';m.ok=!window.__ajLabFailure;m.error=window.__ajLabFailure;parent.postMessage(m,location.origin);})();<\\/script>'.replace('<\\/script>','</script>');
- const cssSource=modelId==='embeddedModel'?'<script type="text/plain" id="sourceCss">'+String(interfaceDados.sourceCss||'').replace(/<\\/script/gi,'&lt;/script')+'</script>':'';
+ const cssSource=modelId==='embeddedModel'?'<script type="text/plain" id="sourceCss">'+String(interfaceDados.sourceCss||'').replace(new RegExp('</script','gi'),'&lt;/script')+'</script>':'';
  return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><base href="'+escHTML(baseURL)+'"><title>'+escHTML(interfaceDados.title)+'</title><link rel="stylesheet" href="'+escHTML(cssURL)+'"></head><body>'+interfaceDados.body+'<script type="application/json" id="'+modelId+'">'+escJSON(modelo)+'</script>'+cssSource+boot+'<script src="'+escHTML(jsURL)+'"></script>'+finish+'</body></html>';
 }
