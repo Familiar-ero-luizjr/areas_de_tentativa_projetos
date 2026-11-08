@@ -19,3 +19,7 @@ button{border:1px solid #cdd8e8;border-radius:9px;background:#fff;padding:9px 12
 @media(max-width:600px){
   .frame-card.desktop,.frame-card{min-width:0;}
 }
+
+/* Renderização progressiva: botão permanece utilizável sem IntersectionObserver. */
+.gallery-more{align-self:center;flex:0 0 210px;min-height:76px;border:1px dashed #9aabc0;background:#f6f9fd;color:#24496d;white-space:normal;padding:14px;scroll-snap-align:end}
+.gallery.grid .gallery-more{width:100%;min-height:100px}
