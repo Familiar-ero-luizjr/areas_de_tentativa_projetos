@@ -23,6 +23,8 @@ function usableScreen(raw){
 function project(documents){
  var ids=Object.keys(documents).sort(),graph={},nodeByScreen={},seen=new Set(),counts={participacoes:0,relacoes:0,bifurcacoes:0,semNoOriginal:0};
  function keyFor(id,no){var refs=nodeByScreen[id]||[];var hits=refs.filter(x=>x.original===no);return hits.length===1?hits[0].key:null;}
+ function occurrenceFor(id,ref){if(!ref)return null;var hits=(nodeByScreen[id]||[]).filter(x=>x.ocorrenciaRef===ref);return hits.length===1?hits[0].key:null;}
+ function participationFor(id,ref){if(!ref)return null;var hits=(nodeByScreen[id]||[]).filter(x=>x.part===ref);return hits.length===1?hits[0].key:null;}
  function routeEndpoint(owner,otherId,no,tipo){
   var resolved=no&&keyFor(otherId,no);
   return {tipo:tipo||'tela',ref:otherId||null,noRef:resolved||no||null,telaContextoRef:tipo==='estado_fluxo'?owner:null,portaRef:null};
@@ -39,7 +41,7 @@ function project(documents){
       while(seen.has(key))key+='x';
       seen.add(key);
       if(!original)counts.semNoOriginal++;
-      nodeByScreen[id].push({original:original,key:key,part:p.id||null});
+      nodeByScreen[id].push({original:original,key:key,part:p.id||null,ocorrenciaRef:o.id||null});
       var j=p.jornada||{id:p.jornadaRef||'sem_jornada',nome:p.jornadaRef||'Sem jornada',ordem:99};
       var sj=p.subjornada||{id:p.subjornadaRef||'sem_subjornada',nome:p.subjornadaRef||'Sem subjornada',ordem:99};
       arr.push({id:String(p.id||'part.'+id)+'.'+(i+1),jornada:{id:j.id,nome:j.nome||j.id,ordem:j.ordem??99},subjornada:{id:String(j.id)+':'+String(sj.id),nome:(j.nome||j.id)+' · '+(sj.nome||sj.id),ordem:Number(j.ordem??99)*100+Number(sj.ordem??99)},ordemTela:Number(o.ordem??p.ordem??999),ocorrenciaNo:key,condicaoRef:p.condicaoRef||null,contexto:copy(p.contexto||{})});
@@ -58,8 +60,10 @@ function project(documents){
     var sourceId=r.origemTelaRef||id,destId=r.destinoRef||null;
     if(r.destinoTipo!=='tela'&&r.destinoTipo!=='estado_fluxo'&&r.destinoTipo!=='estado'&&r.destinoTipo!=='no')return;
     var originRef=r.origemNoRef||null,destNo=r.destinoNoRef||null;
-    var origem=routeEndpoint(sourceId,sourceId,originRef,'tela');
-    var destino=routeEndpoint(sourceId,destId,destNo,r.destinoTipo==='tela'?'tela':'estado_fluxo');
+    var originKey=(originRef&&keyFor(sourceId,originRef))||occurrenceFor(sourceId,r.origemOcorrenciaRef)||participationFor(sourceId,r.origemParticipacaoRef)||originRef;
+    var destKey=(destNo&&keyFor(destId,destNo))||participationFor(destId,r.destinoParticipacaoRef)||destNo;
+    var origem=routeEndpoint(sourceId,sourceId,originKey,'tela');
+    var destino=routeEndpoint(sourceId,destId,destKey,r.destinoTipo==='tela'?'tela':'estado_fluxo');
     target.relacoes.push({id:r.id,tipo:r.tipo||'continuar',origem:origem,destino:destino,opcao:r.rotaAliasLegada||null,rotulo:r.rotulo||null,descricao:r.descricao||null,gatilho:{instanciaRef:null,elementoRef:null,eventoRef:null,acaoRef:r.acaoRef||null},condicaoRef:r.quando||null,parametros:{},comportamento:{},ordem:Number(r.prioridade??counts.relacoes),participacaoRef:r.origemParticipacaoRef||null,prioridade:r.prioridade??null});
     counts.relacoes++;
   });
@@ -69,7 +73,7 @@ function project(documents){
   (nav.bifurcacoes||[]).forEach(function(b){
     if(!b||!b.id)return;
     var origin=b.origemNoRef||null;
-    var key=origin&&keyFor(id,origin);
+    var key=(origin&&keyFor(id,origin))||occurrenceFor(id,b.aposOcorrenciaRef);
     var alternativas=(b.caminhos||[]).filter(function(c){return c.relacaoRef;}).map(function(c,i){return {id:c.id||b.id+'.'+i,rotulo:c.rotulo||null,relacaoRef:c.relacaoRef,ordem:c.ordem??i};});
     target.bifurcacoes.push({id:b.id,titulo:b.titulo||b.id,tipo:b.tipo||'decisao',origemNoRef:key||origin,criterioRef:b.criterioRef||null,alternativas:alternativas});
     counts.bifurcacoes++;
