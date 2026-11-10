@@ -10,3 +10,7 @@
 8. Mudanças de modelo ≠ migração de contratos reais ≠ implementação/homologação de motores. Registrar cada uma separadamente.
 
 Ver `biblioteca_telas/ESTRUTURA_FLOW_JORNADAS_V1.md`, `PROJETO_7_CHECKLIST_EXECUCAO.md` e `PROJETO_7_CONTROLE_CONTEXTO_REGRESSAO.md`.
+
+## Adaptador do Fluxo V2
+
+O `flow/index.html` reutiliza a interface do Projeto 8, mas seu `aj-data` está vazio de telas. `flow/adaptador_p7.js` é responsável pela leitura e projeção em memória. Não incorporar JSONs do Projeto 8 nem editar contratos reais por meio da projeção. O `flow/legado_contrato_vivo.html` preserva o motor anterior.
