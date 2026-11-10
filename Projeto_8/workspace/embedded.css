@@ -1,0 +1,18 @@
+/* Este arquivo é injetado somente no iframe do Workspace; páginas isoladas não mudam. */
+html.in-workspace,html.in-workspace body{width:100%;min-height:100%;overflow-x:hidden}
+html.in-workspace[data-aj-module="banco"] .workspace-global-header,
+html.in-workspace[data-aj-module="banco"] .sidebar,
+html.in-workspace[data-aj-module="banco"] .backdrop,
+html.in-workspace[data-aj-module="banco"] .mobile-toggle{display:none!important}
+html.in-workspace[data-aj-module="banco"] .workspace{margin-left:0!important;width:100%!important;max-width:none!important}
+html.in-workspace[data-aj-module="banco"] .shell{min-height:100%!important}
+html.in-workspace[data-aj-module="banco"] .view{max-width:none}
+html.in-workspace[data-aj-module="contrato"] header.top{display:none!important}
+html.in-workspace[data-aj-module="contrato"] main{max-width:none!important}
+html.in-workspace[data-aj-module="jornadas"] header.top .brand{display:none!important}
+html.in-workspace[data-aj-module="jornadas"] header.top{min-height:48px;justify-content:flex-end}
+html.in-workspace[data-aj-module="jornadas"] .viewer-wrap{max-width:none!important}
+html.in-workspace[data-aj-module="prototipos"] .shell{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%;height:100dvh}
+html.in-workspace[data-aj-module="prototipos"] #sidebar{display:none!important}
+html.in-workspace[data-aj-module="prototipos"] .main{height:100dvh!important;width:100%}
+html.in-workspace[data-aj-module="prototipos"] #mobile{display:none!important}
