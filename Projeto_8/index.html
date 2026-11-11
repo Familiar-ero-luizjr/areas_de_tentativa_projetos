@@ -1,103 +1,52 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#10233f" />
-    <meta
-      name="description"
-      content="Workspace unificado AdvogadoJá: Documento Base, Banco, Contrato JSON, Jornadas e Protótipos."
-    />
-    <title>AdvogadoJá · Workspace unificado</title>
-    <link rel="stylesheet" href="workspace/style.css" />
-  </head>
-  <body>
-    <div class="app" id="app">
-      <header class="top">
-        <button
-          class="hamburger"
-          id="menuButton"
-          type="button"
-          aria-label="Abrir menu"
-          aria-controls="sidebar"
-          aria-expanded="true"
-        >
-          ☰
-        </button>
-        <div class="brand">
-          <div class="brandmark">AJ</div>
-          <div>
-            <b>AdvogadoJá</b><small>WORKSPACE UNIFICADO · PROJETO 8</small>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10233f">
+  <meta name="description" content="Workspace unificado AdvogadoJá: Documento Base, Banco, Contrato JSON, Jornadas e Protótipos.">
+  <title>AdvogadoJá · Workspace unificado</title>
+  <link rel="stylesheet" href="workspace/style.css">
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <button class="hamburger" id="menuButton" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="true">☰</button>
+    <div class="brand"><div class="brandmark">AJ</div><div><b>AdvogadoJá</b><small>WORKSPACE UNIFICADO · PROJETO 8</small></div></div>
+    <div class="spacer"></div>
+    <span class="edition">NAVEGAÇÃO PADRÃO</span>
+  </header>
+  <div class="overlay" id="overlay"></div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+      <div class="side-inner">
+        <div class="side-head">
+          <div class="side-head-top"><div class="side-title">Navegação</div><button class="side-close" id="closeButton" type="button" aria-label="Fechar menu">×</button></div>
+          <p class="side-sub">Todos os módulos em um único lugar</p>
         </div>
-        <div class="spacer"></div>
-        <span class="edition">NAVEGAÇÃO PADRÃO</span>
-      </header>
-      <div class="overlay" id="overlay"></div>
-      <div class="shell">
-        <aside class="sidebar" id="sidebar" aria-label="Menu principal">
-          <div class="side-inner">
-            <div class="side-head">
-              <div class="side-head-top">
-                <div class="side-title">Navegação</div>
-                <button
-                  class="side-close"
-                  id="closeButton"
-                  type="button"
-                  aria-label="Fechar menu"
-                >
-                  ×
-                </button>
-              </div>
-              <p class="side-sub">Todos os módulos em um único lugar</p>
-            </div>
-            <div class="search-wrap">
-              <input
-                class="search"
-                id="menuSearch"
-                type="search"
-                placeholder="⌕  Buscar módulo ou subitem..."
-                aria-label="Buscar no menu"
-              />
-            </div>
-            <div class="menu-title">MÓDULOS</div>
-            <nav class="nav" id="nav" aria-label="Módulos do Workspace"></nav>
-            <div class="side-foot">
-              AdvogadoJá · Projeto 8<br />Menu definido por JSON; jornadas
-              carregadas dinamicamente.
-            </div>
-          </div>
-        </aside>
-        <main class="content" id="content">
-          <div class="context">
-            <span>Workspace</span><span aria-hidden="true">›</span
-            ><span class="crumb" id="crumb">Documento Base</span
-            ><span id="moduleDescription" class="module-description"></span>
-            <span class="spacer"></span>
-            <div class="context-actions">
-              <a
-                id="openSeparate"
-                class="external-link"
-                href="Documento_base/index.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Abrir módulo isolado ↗</a
-              >
-            </div>
-          </div>
-          <section
-            class="frame-host"
-            id="frameHost"
-            aria-label="Área do módulo selecionado"
-          >
-            <div class="message" id="message" role="status" aria-live="polite">
-              <strong>Preparando o workspace</strong>
-              <span>Carregando a navegação e os módulos por demanda…</span>
-            </div>
-          </section>
-        </main>
+        <div class="search-wrap"><input class="search" id="menuSearch" type="search" placeholder="⌕  Buscar módulo ou subitem..." aria-label="Buscar no menu"></div>
+        <div class="menu-title">MÓDULOS</div>
+        <nav class="nav" id="nav" aria-label="Módulos do Workspace"></nav>
+        <div class="side-foot">AdvogadoJá · Projeto 8<br>Menu definido por JSON; jornadas carregadas dinamicamente.</div>
       </div>
-    </div>
-    <script src="workspace/app.js?rev=fluxo-20261110" defer></script>
-  </body>
+    </aside>
+    <main class="content" id="content">
+      <div class="context">
+        <span>Workspace</span><span aria-hidden="true">›</span><span class="crumb" id="crumb">Documento Base</span><span id="moduleDescription" class="module-description"></span>
+        <span class="spacer"></span>
+        <div class="context-actions">
+          <a id="openSeparate" class="external-link" href="Documento_base/index.html" target="_blank" rel="noopener noreferrer">Abrir módulo isolado ↗</a>
+        </div>
+      </div>
+      <section class="frame-host" id="frameHost" aria-label="Área do módulo selecionado">
+        <div class="message" id="message" role="status" aria-live="polite">
+          <strong>Preparando o workspace</strong>
+          <span>Carregando a navegação e os módulos por demanda…</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="workspace/app.js" defer></script>
+</body>
 </html>
