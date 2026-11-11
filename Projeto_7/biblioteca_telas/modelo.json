@@ -19,25 +19,12 @@
         "categoria": "tela_inicial",
         "escopo": "modulo",
         "reutilizavel": false,
-        "publicoAlvo": ["advogado"],
-        "tags": ["inicio", "painel_profissional"],
-        "jornadas": [
-          {
-            "id": "part.advogado.home",
-            "jornada": {
-              "id": "advogado",
-              "nome": "Advogado",
-              "ordem": 2
-            },
-            "subjornada": {
-              "id": "home",
-              "nome": "Home única e capabilities",
-              "ordem": 4
-            },
-            "ordemTela": 1,
-            "ocorrenciaNo": "home",
-            "condicaoRef": null
-          }
+        "publicoAlvo": [
+          "advogado"
+        ],
+        "tags": [
+          "inicio",
+          "painel_profissional"
         ]
       },
       "componentes": {
@@ -115,11 +102,48 @@
           }
         }
       },
-      "navegacao": {},
+      "navegacao": {
+        "rotaPrincipal": null,
+        "rotasLegadas": [],
+        "parametrosRota": [],
+        "participacoes": [
+          {
+            "id": "part.advogado.home",
+            "jornadaRef": "advogado",
+            "subjornadaRef": "home",
+            "jornada": {
+              "id": "advogado",
+              "nome": "Advogado",
+              "ordem": 2
+            },
+            "subjornada": {
+              "id": "home",
+              "nome": "Home única e capabilities",
+              "ordem": 4
+            },
+            "papel": "etapa",
+            "ordem": 1,
+            "ocorrenciaNoRef": "home",
+            "condicaoRef": null,
+            "ocorrencias": [],
+            "origem": "modelo_existente_projeto7"
+          }
+        ],
+        "entradas": [],
+        "saidas": [],
+        "bifurcacoes": [],
+        "caminhosLineares": [],
+        "referenciasEditoriaisExternas": [],
+        "nosContextuais": [],
+        "regras": {
+          "naoInventarCondicoesAusentes": true,
+          "interpretarCaminhoSemCondicao": "apresentar_sem_executar_automaticamente",
+          "jornadasESequencias": "ler_participacoes_e_ocorrencias_declaradas"
+        }
+      },
       "estados": {},
       "acoes": {},
       "dados": {},
-
       "estilos": {},
       "variantes": {},
       "interacoes": {},
@@ -143,8 +167,12 @@
           "categoria": "layout",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": ["advogado"],
-          "tags": ["layout"]
+          "publicoAlvo": [
+            "advogado"
+          ],
+          "tags": [
+            "layout"
+          ]
         },
         "estrutura": {
           "html": {
@@ -195,8 +223,15 @@
           "categoria": "cabecalho",
           "escopo": "global",
           "reutilizavel": true,
-          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
-          "tags": ["cabecalho"]
+          "publicoAlvo": [
+            "advogado",
+            "cliente",
+            "estudante",
+            "administrador"
+          ],
+          "tags": [
+            "cabecalho"
+          ]
         },
         "estrutura": {
           "html": {
@@ -272,8 +307,15 @@
           "categoria": "titulo",
           "escopo": "global",
           "reutilizavel": true,
-          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
-          "tags": ["titulo"]
+          "publicoAlvo": [
+            "advogado",
+            "cliente",
+            "estudante",
+            "administrador"
+          ],
+          "tags": [
+            "titulo"
+          ]
         },
         "estrutura": {
           "html": {
@@ -316,8 +358,12 @@
           "categoria": "conteudo",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": ["advogado"],
-          "tags": ["conteudo"]
+          "publicoAlvo": [
+            "advogado"
+          ],
+          "tags": [
+            "conteudo"
+          ]
         },
         "estrutura": {
           "html": {
@@ -371,8 +417,12 @@
           "categoria": "indicador",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": ["advogado"],
-          "tags": ["indicador"]
+          "publicoAlvo": [
+            "advogado"
+          ],
+          "tags": [
+            "indicador"
+          ]
         },
         "estrutura": {
           "html": {
@@ -456,8 +506,12 @@
           "categoria": "conteudo",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": ["advogado"],
-          "tags": ["conteudo"]
+          "publicoAlvo": [
+            "advogado"
+          ],
+          "tags": [
+            "conteudo"
+          ]
         },
         "estrutura": {
           "html": {
@@ -511,8 +565,15 @@
           "categoria": "menu",
           "escopo": "global",
           "reutilizavel": true,
-          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
-          "tags": ["menu"]
+          "publicoAlvo": [
+            "advogado",
+            "cliente",
+            "estudante",
+            "administrador"
+          ],
+          "tags": [
+            "menu"
+          ]
         },
         "estrutura": {
           "html": {

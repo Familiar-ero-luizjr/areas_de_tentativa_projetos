@@ -1,7 +1,7 @@
 # Projeto 8 — Instruções de trabalho
 
 ## Escopo
-Este diretório reúne módulos independentes de laboratório: `BANCO`, `CONTRATO`, `JORNADAS`, `PROTOTIPO` e referências `htmls_autocontidos`.
+Este diretório reúne módulos independentes de laboratório: `BANCO`, `CONTRATO`, `FLUXO`, `JORNADAS`, `PROTOTIPO` e referências `htmls_autocontidos`.
 
 ## Antes de modificar
 1. Leia o `AGENTS.md` da raiz do repositório e o `README.md` do módulo afetado.

@@ -156,7 +156,7 @@ window.addEventListener('hashchange',()=>{const key=currentHash();if(key&&key!==
 window.addEventListener('popstate',()=>{const key=currentHash();if(key&&key!==activeKey)navigate(key,false)});
 async function start(){
  try{
-  const response=await fetch('workspace/menu.json',{cache:'default'});
+  const response=await fetch('workspace/menu.json?rev=fluxo-20261110',{cache:'no-store'});
   if(!response.ok)throw Error('Não foi possível carregar workspace/menu.json: HTTP '+response.status);
   const config=await response.json();
   if(!Array.isArray(config.modules)||!config.modules.length)throw Error('Configuração de menu inválida.');
