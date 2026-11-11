@@ -208,7 +208,17 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.officeintent",
+            "elementoHTMLRef": "officeIntent",
+            "tipoVisual": "radio",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -236,11 +246,34 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.escritorio.onboarding.vinculo_escritorio.1",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.disponibilidade"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Onboarding profissional. Escritório é um subfluxo do advogado, não um tipo de usuário. A validação da OAB não acontece aqui.",
+          "grupo": "Onboarding profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.escritorio.onboarding.vinculo_escritorio.visual": {

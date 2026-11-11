@@ -1039,7 +1039,25 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.email",
+            "elementoHTMLRef": "email",
+            "tipoVisual": "email",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.password",
+            "elementoHTMLRef": "password",
+            "tipoVisual": "password",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {},
@@ -1120,11 +1138,41 @@
           }
         }
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.sessao.entrar.1",
+            "atributosHTML": {
+              "href": "#"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.sessao.entrar.2",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.tipo_conta"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "",
+          "grupo": "Acesso e autenticação",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.sessao.entrar.visual.cliente": {

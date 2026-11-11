@@ -236,11 +236,41 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.clientes.detalhe_solicitacao.1",
+            "atributosHTML": {
+              "data-goto": "advogado.clientes.aceitar_contato"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.clientes.detalhe_solicitacao.2",
+            "atributosHTML": {
+              "data-goto": "advogado.clientes.recusar_solicitacao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Aqui o advogado decide aceitar ou recusar o contato.",
+          "grupo": "Solicitações e atendimentos",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "notificacoes",
+            "solicitacoes"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.clientes.detalhe_solicitacao.visual": {

@@ -178,11 +178,76 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.1",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.dados_academicos"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.2",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.dados_profissionais"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.3",
+            "atributosHTML": {
+              "data-goto": "advogado.oab.dados"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.4",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.areas_atuacao"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.5",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.disponibilidade"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.6",
+            "atributosHTML": {
+              "data-goto": "escritorio.onboarding.vinculo_escritorio"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.revisao_profissional.7",
+            "atributosHTML": {
+              "data-submit-professional": ""
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Conclusão do onboarding profissional. OAB ainda não é validada neste fluxo.",
+          "grupo": "Onboarding profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.onboarding.revisao_profissional.visual": {

@@ -132,7 +132,62 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.pro-work-mode",
+            "elementoHTMLRef": "pro-work-mode",
+            "tipoVisual": "select",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [
+              "",
+              "online",
+              "presencial",
+              "hibrido"
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-radius",
+            "elementoHTMLRef": "pro-radius",
+            "tipoVisual": "select",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [
+              "",
+              "5",
+              "10",
+              "20",
+              "30",
+              "50",
+              "100"
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.available",
+            "elementoHTMLRef": "available",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.prioritycontactactive",
+            "elementoHTMLRef": "priorityContactActive",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.consultationactive",
+            "elementoHTMLRef": "consultationActive",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -160,11 +215,41 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.onboarding.disponibilidade.1",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.perfil_profissional"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.disponibilidade.2",
+            "atributosHTML": {
+              "data-next": "escritorio.onboarding.vinculo_escritorio"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Onboarding profissional · etapa 5.",
+          "grupo": "Onboarding profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.onboarding.disponibilidade.visual": {

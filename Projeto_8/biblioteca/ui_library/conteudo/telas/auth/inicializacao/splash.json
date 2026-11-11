@@ -339,11 +339,34 @@
           }
         }
       },
-      "interacoes": {},
-      "mocks": {
-        "cenarios": []
+      "interacoes": {
+        "eventosPrototipo": []
       },
-      "localizacao": {}
+      "mocks": {
+        "cenarios": [
+          {
+            "id": "mock.primeiro_acesso.auth.inicializacao.splash",
+            "cenarioRef": "primeiro_acesso",
+            "nome": "Mariana · Primeiro acesso",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado"
+          }
+        ]
+      },
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Abertura do aplicativo.",
+          "grupo": "Acesso e autenticação",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.inicializacao.splash.visual.cliente": {

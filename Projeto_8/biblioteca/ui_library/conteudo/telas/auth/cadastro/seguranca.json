@@ -233,7 +233,25 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.reg-password",
+            "elementoHTMLRef": "reg-password",
+            "tipoVisual": "password",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-password-confirm",
+            "elementoHTMLRef": "reg-password-confirm",
+            "tipoVisual": "password",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {},
@@ -290,11 +308,41 @@
           }
         }
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.cadastro.seguranca.1",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.endereco"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.seguranca.2",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.consentimentos"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "",
+          "grupo": "Cadastro comum",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.cadastro.seguranca.visual.cliente": {

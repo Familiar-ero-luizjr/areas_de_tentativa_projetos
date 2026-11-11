@@ -132,7 +132,41 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.pro-professional-name",
+            "elementoHTMLRef": "pro-professional-name",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-practice-start-year",
+            "elementoHTMLRef": "pro-practice-start-year",
+            "tipoVisual": "number",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-job-description",
+            "elementoHTMLRef": "pro-job-description",
+            "tipoVisual": "textarea",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-experience",
+            "elementoHTMLRef": "pro-experience",
+            "tipoVisual": "textarea",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -160,11 +194,41 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.onboarding.dados_profissionais.1",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.dados_academicos"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.dados_profissionais.2",
+            "atributosHTML": {
+              "data-next": "advogado.oab.dados"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Onboarding profissional · etapa 2.",
+          "grupo": "Onboarding profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.onboarding.dados_profissionais.visual": {

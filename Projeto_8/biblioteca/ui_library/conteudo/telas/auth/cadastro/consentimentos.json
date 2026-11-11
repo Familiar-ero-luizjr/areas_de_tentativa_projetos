@@ -37,7 +37,17 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.legalaccepted",
+            "elementoHTMLRef": "legalAccepted",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -65,11 +75,55 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.cadastro.consentimentos.1",
+            "atributosHTML": {
+              "data-legal": "Termos de Uso"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.consentimentos.2",
+            "atributosHTML": {
+              "data-legal": "Política de Privacidade"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.consentimentos.3",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.seguranca"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.consentimentos.4",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.revisao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Consentimentos do cadastro.",
+          "grupo": "Cadastro comum",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.cadastro.consentimentos.visual": {

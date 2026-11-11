@@ -105,11 +105,33 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.assinatura.historico_assinatura.1",
+            "atributosHTML": {
+              "data-goto": "advogado.assinatura.gestao_assinatura"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Histórico do plano do advogado.",
+          "grupo": "Assinatura",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "assinatura"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.assinatura.historico_assinatura.visual": {

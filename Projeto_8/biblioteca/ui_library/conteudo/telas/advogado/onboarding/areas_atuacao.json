@@ -132,7 +132,113 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.field_0",
+            "elementoHTMLRef": "field_0",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_1",
+            "elementoHTMLRef": "field_1",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_2",
+            "elementoHTMLRef": "field_2",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_3",
+            "elementoHTMLRef": "field_3",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_4",
+            "elementoHTMLRef": "field_4",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_5",
+            "elementoHTMLRef": "field_5",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_6",
+            "elementoHTMLRef": "field_6",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_7",
+            "elementoHTMLRef": "field_7",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_8",
+            "elementoHTMLRef": "field_8",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_9",
+            "elementoHTMLRef": "field_9",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_10",
+            "elementoHTMLRef": "field_10",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_11",
+            "elementoHTMLRef": "field_11",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_12",
+            "elementoHTMLRef": "field_12",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -160,11 +266,41 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.onboarding.areas_atuacao.1",
+            "atributosHTML": {
+              "data-goto": "advogado.oab.dados"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.areas_atuacao.2",
+            "atributosHTML": {
+              "data-next": "advogado.onboarding.perfil_profissional"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Onboarding profissional · etapa 3.",
+          "grupo": "Onboarding profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.onboarding.areas_atuacao.visual": {

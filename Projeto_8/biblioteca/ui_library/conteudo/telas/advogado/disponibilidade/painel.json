@@ -291,11 +291,68 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.disponibilidade.painel.1",
+            "atributosHTML": {
+              "data-online-toggle": ""
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.disponibilidade.painel.2",
+            "atributosHTML": {
+              "data-action-message": "Contato prioritário alternado na simulação."
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.disponibilidade.painel.3",
+            "atributosHTML": {
+              "data-action-message": "Consultoria alternada na simulação."
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.disponibilidade.painel.4",
+            "atributosHTML": {
+              "data-action-message": "Tipos de busca salvos na simulação."
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.disponibilidade.painel.5",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.agenda_semanal"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.disponibilidade.painel.6",
+            "atributosHTML": {
+              "data-goto": "advogado.disponibilidade.raio_atendimento"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Status online/offline e tipos de busca. A tela também abre Agenda e Raio de atendimento.",
+          "grupo": "Disponibilidade profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "disponibilidade"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.disponibilidade.painel.visual": {

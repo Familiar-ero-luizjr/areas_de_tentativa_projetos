@@ -229,7 +229,25 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.reg-email",
+            "elementoHTMLRef": "reg-email",
+            "tipoVisual": "email",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-phone",
+            "elementoHTMLRef": "reg-phone",
+            "tipoVisual": "tel",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {},
@@ -286,11 +304,41 @@
           }
         }
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.cadastro.contato.1",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.identificacao"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.contato.2",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.endereco"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Cadastro comum.",
+          "grupo": "Cadastro comum",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.cadastro.contato.visual.cliente": {

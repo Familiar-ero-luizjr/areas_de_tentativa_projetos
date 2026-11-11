@@ -160,11 +160,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.clientes.aceitar_contato.1",
+            "atributosHTML": {
+              "data-goto": "advogado.clientes.contato_liberado"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.clientes.aceitar_contato.2",
+            "atributosHTML": {
+              "data-goto": "advogado.clientes.detalhe_solicitacao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Confirmação antes de liberar o contato.",
+          "grupo": "Solicitações e atendimentos",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "solicitacoes"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.clientes.aceitar_contato.visual": {

@@ -291,11 +291,54 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.configuracao.suporte.1",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.configuracao"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.suporte.2",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.central_ajuda"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.suporte.3",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.falar_suporte"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.suporte.4",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.meus_chamados"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Hub de suporte do advogado.",
+          "grupo": "Documentos e suporte",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "suporte"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.configuracao.suporte.visual": {

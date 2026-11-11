@@ -290,11 +290,41 @@
           }
         }
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.cadastro.concluido.1",
+            "atributosHTML": {
+              "data-onboarding-placeholder": ""
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.concluido.2",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.revisao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "",
+          "grupo": "Cadastro comum",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.cadastro.concluido.visual.cliente": {

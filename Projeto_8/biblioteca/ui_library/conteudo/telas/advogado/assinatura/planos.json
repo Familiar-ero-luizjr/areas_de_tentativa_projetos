@@ -236,11 +236,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.assinatura.planos.1",
+            "atributosHTML": {
+              "data-goto": "advogado.assinatura.checkout"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.assinatura.planos.2",
+            "atributosHTML": {
+              "data-goto": "advogado.assinatura.gestao_assinatura"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Planos disponíveis ao advogado.",
+          "grupo": "Assinatura",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "assinatura"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.assinatura.planos.visual": {

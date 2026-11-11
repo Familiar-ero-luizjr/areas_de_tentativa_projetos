@@ -661,11 +661,55 @@
           }
         ]
       },
-      "interacoes": {},
-      "mocks": {
-        "cenarios": []
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.escritorio.gestao.escritorio.1",
+            "atributosHTML": {
+              "data-action-message": "Fluxo de criação de escritório ainda será conectado ao cadastro definitivo."
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.escritorio.gestao.escritorio.2",
+            "atributosHTML": {
+              "data-goto": "escritorio.equipe.equipe"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.escritorio.gestao.escritorio.3",
+            "atributosHTML": {
+              "data-goto": "escritorio.distribuicao.distribuicao_interna"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
       },
-      "localizacao": {}
+      "mocks": {
+        "cenarios": [
+          {
+            "id": "mock.escritorio.escritorio.gestao.escritorio",
+            "cenarioRef": "escritorio",
+            "nome": "Mariana · Proprietária de escritório",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado"
+          }
+        ]
+      },
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "A tela/fluxo depende da relação atual do advogado com um escritório.",
+          "grupo": "Escritório",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "escritorio"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.escritorio.gestao.escritorio.visual": {

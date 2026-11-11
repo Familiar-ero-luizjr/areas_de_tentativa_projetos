@@ -229,7 +229,62 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.reg-name",
+            "elementoHTMLRef": "reg-name",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-surname",
+            "elementoHTMLRef": "reg-surname",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-username",
+            "elementoHTMLRef": "reg-username",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-cpf",
+            "elementoHTMLRef": "reg-cpf",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-birthday",
+            "elementoHTMLRef": "reg-birthday",
+            "tipoVisual": "date",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.reg-gender",
+            "elementoHTMLRef": "reg-gender",
+            "tipoVisual": "select",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [
+              "",
+              "feminino",
+              "masculino",
+              "nao-informar"
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {},
@@ -286,11 +341,41 @@
           }
         }
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.cadastro.identificacao.1",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.tipo_conta"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.identificacao.2",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.contato"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Cadastro comum.",
+          "grupo": "Cadastro comum",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.cadastro.identificacao.visual.cliente": {

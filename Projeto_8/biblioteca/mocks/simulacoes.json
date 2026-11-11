@@ -1,0 +1,1143 @@
+{
+  "schema": "advogadoja.mocks.editoriais.v1",
+  "situacao": "dados_ficticios_do_prototipo",
+  "cenarios": {
+    "primeiro_acesso": {
+      "name": "Mariana · Primeiro acesso",
+      "description": "Cadastro e onboarding do zero",
+      "start": "auth.inicializacao.splash",
+      "status": "pending",
+      "registered": false,
+      "onboarded": false,
+      "office": false,
+      "request": "new",
+      "data": {
+        "name": "Mariana",
+        "surname": "Costa",
+        "username": "mariana.costa",
+        "cpf": "000.000.000-00",
+        "birthday": "1990-08-12",
+        "gender": "feminino",
+        "email": "mariana.advogada@example.test",
+        "phone": "11999990000",
+        "zipCode": "01001000",
+        "address": "Praça Modelo",
+        "addressNumber": "100",
+        "complement": "Sala 204",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "São Paulo",
+        "uf": "SP",
+        "country": "BR",
+        "password": "Demo@123456",
+        "passwordConfirmation": "Demo@123456",
+        "educationInstitution": "Faculdade Exemplo",
+        "educationInstitutionCity": "São Paulo",
+        "educationCourse": "Direito",
+        "graduationYear": "2014",
+        "specialization": "Direito Civil",
+        "professionalName": "Mariana Costa",
+        "practiceStartYear": "2016",
+        "jobDescription": "Advogada autônoma",
+        "experience": "Atendimento consultivo e contencioso cível.",
+        "bio": "Atuação em Direito Civil e do Consumidor, com atendimento humanizado.",
+        "professionalCity": "São Paulo",
+        "professionalUf": "SP",
+        "oabNumber": "000000",
+        "oabUf": "SP",
+        "oabType": "definitiva",
+        "workMode": "hibrido",
+        "radius": "30",
+        "officeIntent": "individual",
+        "officeName": "Costa & Associados (fictício)",
+        "officeCnpj": "00.000.000/0000-00",
+        "officeEmail": "contato@escritorio.example.test",
+        "officePhone": "1130000000",
+        "officeAddress": "Avenida Exemplo",
+        "officeAddressNumber": "120",
+        "officeZip": "01001000",
+        "officeNeighborhood": "Centro",
+        "officeDistrict": "Centro",
+        "officeCity": "São Paulo",
+        "officeUf": "SP",
+        "clientName": "João de Teste",
+        "clientEmail": "joao.cliente@example.test",
+        "requestArea": "Direito do Consumidor",
+        "requestDescription": "Orientação sobre contrato de serviço não cumprido.",
+        "supportSubject": "Ajuda com cadastro",
+        "supportMessage": "Tenho uma dúvida sobre a atualização do perfil."
+      }
+    },
+    "oab_analise": {
+      "name": "Mariana · OAB em análise",
+      "description": "Conta cadastrada com pendência de validação",
+      "start": "advogado.home.inicio",
+      "status": "review",
+      "registered": true,
+      "onboarded": true,
+      "office": false,
+      "request": "new",
+      "data": {
+        "name": "Mariana",
+        "surname": "Costa",
+        "username": "mariana.costa",
+        "cpf": "000.000.000-00",
+        "birthday": "1990-08-12",
+        "gender": "feminino",
+        "email": "mariana.advogada@example.test",
+        "phone": "11999990000",
+        "zipCode": "01001000",
+        "address": "Praça Modelo",
+        "addressNumber": "100",
+        "complement": "Sala 204",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "São Paulo",
+        "uf": "SP",
+        "country": "BR",
+        "password": "Demo@123456",
+        "passwordConfirmation": "Demo@123456",
+        "educationInstitution": "Faculdade Exemplo",
+        "educationInstitutionCity": "São Paulo",
+        "educationCourse": "Direito",
+        "graduationYear": "2014",
+        "specialization": "Direito Civil",
+        "professionalName": "Mariana Costa",
+        "practiceStartYear": "2016",
+        "jobDescription": "Advogada autônoma",
+        "experience": "Atendimento consultivo e contencioso cível.",
+        "bio": "Atuação em Direito Civil e do Consumidor, com atendimento humanizado.",
+        "professionalCity": "São Paulo",
+        "professionalUf": "SP",
+        "oabNumber": "000000",
+        "oabUf": "SP",
+        "oabType": "definitiva",
+        "workMode": "hibrido",
+        "radius": "30",
+        "officeIntent": "individual",
+        "officeName": "Costa & Associados (fictício)",
+        "officeCnpj": "00.000.000/0000-00",
+        "officeEmail": "contato@escritorio.example.test",
+        "officePhone": "1130000000",
+        "officeAddress": "Avenida Exemplo",
+        "officeAddressNumber": "120",
+        "officeZip": "01001000",
+        "officeNeighborhood": "Centro",
+        "officeDistrict": "Centro",
+        "officeCity": "São Paulo",
+        "officeUf": "SP",
+        "clientName": "João de Teste",
+        "clientEmail": "joao.cliente@example.test",
+        "requestArea": "Direito do Consumidor",
+        "requestDescription": "Orientação sobre contrato de serviço não cumprido.",
+        "supportSubject": "Ajuda com cadastro",
+        "supportMessage": "Tenho uma dúvida sobre a atualização do perfil."
+      }
+    },
+    "habilitado": {
+      "name": "Mariana · Advogada habilitada",
+      "description": "Operação profissional liberada",
+      "start": "advogado.home.inicio",
+      "status": "validated",
+      "registered": true,
+      "onboarded": true,
+      "office": false,
+      "request": "new",
+      "data": {
+        "name": "Mariana",
+        "surname": "Costa",
+        "username": "mariana.costa",
+        "cpf": "000.000.000-00",
+        "birthday": "1990-08-12",
+        "gender": "feminino",
+        "email": "mariana.advogada@example.test",
+        "phone": "11999990000",
+        "zipCode": "01001000",
+        "address": "Praça Modelo",
+        "addressNumber": "100",
+        "complement": "Sala 204",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "São Paulo",
+        "uf": "SP",
+        "country": "BR",
+        "password": "Demo@123456",
+        "passwordConfirmation": "Demo@123456",
+        "educationInstitution": "Faculdade Exemplo",
+        "educationInstitutionCity": "São Paulo",
+        "educationCourse": "Direito",
+        "graduationYear": "2014",
+        "specialization": "Direito Civil",
+        "professionalName": "Mariana Costa",
+        "practiceStartYear": "2016",
+        "jobDescription": "Advogada autônoma",
+        "experience": "Atendimento consultivo e contencioso cível.",
+        "bio": "Atuação em Direito Civil e do Consumidor, com atendimento humanizado.",
+        "professionalCity": "São Paulo",
+        "professionalUf": "SP",
+        "oabNumber": "000000",
+        "oabUf": "SP",
+        "oabType": "definitiva",
+        "workMode": "hibrido",
+        "radius": "30",
+        "officeIntent": "individual",
+        "officeName": "Costa & Associados (fictício)",
+        "officeCnpj": "00.000.000/0000-00",
+        "officeEmail": "contato@escritorio.example.test",
+        "officePhone": "1130000000",
+        "officeAddress": "Avenida Exemplo",
+        "officeAddressNumber": "120",
+        "officeZip": "01001000",
+        "officeNeighborhood": "Centro",
+        "officeDistrict": "Centro",
+        "officeCity": "São Paulo",
+        "officeUf": "SP",
+        "clientName": "João de Teste",
+        "clientEmail": "joao.cliente@example.test",
+        "requestArea": "Direito do Consumidor",
+        "requestDescription": "Orientação sobre contrato de serviço não cumprido.",
+        "supportSubject": "Ajuda com cadastro",
+        "supportMessage": "Tenho uma dúvida sobre a atualização do perfil."
+      }
+    },
+    "escritorio": {
+      "name": "Mariana · Proprietária de escritório",
+      "description": "Equipe, convites e distribuição",
+      "start": "escritorio.gestao.escritorio",
+      "status": "validated",
+      "registered": true,
+      "onboarded": true,
+      "office": true,
+      "request": "accepted",
+      "data": {
+        "name": "Mariana",
+        "surname": "Costa",
+        "username": "mariana.costa",
+        "cpf": "000.000.000-00",
+        "birthday": "1990-08-12",
+        "gender": "feminino",
+        "email": "mariana.advogada@example.test",
+        "phone": "11999990000",
+        "zipCode": "01001000",
+        "address": "Praça Modelo",
+        "addressNumber": "100",
+        "complement": "Sala 204",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "São Paulo",
+        "uf": "SP",
+        "country": "BR",
+        "password": "Demo@123456",
+        "passwordConfirmation": "Demo@123456",
+        "educationInstitution": "Faculdade Exemplo",
+        "educationInstitutionCity": "São Paulo",
+        "educationCourse": "Direito",
+        "graduationYear": "2014",
+        "specialization": "Direito Civil",
+        "professionalName": "Mariana Costa",
+        "practiceStartYear": "2016",
+        "jobDescription": "Advogada autônoma",
+        "experience": "Atendimento consultivo e contencioso cível.",
+        "bio": "Atuação em Direito Civil e do Consumidor, com atendimento humanizado.",
+        "professionalCity": "São Paulo",
+        "professionalUf": "SP",
+        "oabNumber": "000000",
+        "oabUf": "SP",
+        "oabType": "definitiva",
+        "workMode": "hibrido",
+        "radius": "30",
+        "officeIntent": "criar",
+        "officeName": "Costa & Associados (fictício)",
+        "officeCnpj": "00.000.000/0000-00",
+        "officeEmail": "contato@escritorio.example.test",
+        "officePhone": "1130000000",
+        "officeAddress": "Avenida Exemplo",
+        "officeAddressNumber": "120",
+        "officeZip": "01001000",
+        "officeNeighborhood": "Centro",
+        "officeDistrict": "Centro",
+        "officeCity": "São Paulo",
+        "officeUf": "SP",
+        "clientName": "João de Teste",
+        "clientEmail": "joao.cliente@example.test",
+        "requestArea": "Direito do Consumidor",
+        "requestDescription": "Orientação sobre contrato de serviço não cumprido.",
+        "supportSubject": "Ajuda com cadastro",
+        "supportMessage": "Tenho uma dúvida sobre a atualização do perfil."
+      }
+    },
+    "restrito": {
+      "name": "Mariana · OAB restrita",
+      "description": "Testar bloqueios e retomada",
+      "start": "advogado.home.inicio",
+      "status": "rejected",
+      "registered": true,
+      "onboarded": true,
+      "office": false,
+      "request": "new",
+      "data": {
+        "name": "Mariana",
+        "surname": "Costa",
+        "username": "mariana.costa",
+        "cpf": "000.000.000-00",
+        "birthday": "1990-08-12",
+        "gender": "feminino",
+        "email": "mariana.advogada@example.test",
+        "phone": "11999990000",
+        "zipCode": "01001000",
+        "address": "Praça Modelo",
+        "addressNumber": "100",
+        "complement": "Sala 204",
+        "neighborhood": "Centro",
+        "district": "Centro",
+        "city": "São Paulo",
+        "uf": "SP",
+        "country": "BR",
+        "password": "Demo@123456",
+        "passwordConfirmation": "Demo@123456",
+        "educationInstitution": "Faculdade Exemplo",
+        "educationInstitutionCity": "São Paulo",
+        "educationCourse": "Direito",
+        "graduationYear": "2014",
+        "specialization": "Direito Civil",
+        "professionalName": "Mariana Costa",
+        "practiceStartYear": "2016",
+        "jobDescription": "Advogada autônoma",
+        "experience": "Atendimento consultivo e contencioso cível.",
+        "bio": "Atuação em Direito Civil e do Consumidor, com atendimento humanizado.",
+        "professionalCity": "São Paulo",
+        "professionalUf": "SP",
+        "oabNumber": "000000",
+        "oabUf": "SP",
+        "oabType": "definitiva",
+        "workMode": "hibrido",
+        "radius": "30",
+        "officeIntent": "individual",
+        "officeName": "Costa & Associados (fictício)",
+        "officeCnpj": "00.000.000/0000-00",
+        "officeEmail": "contato@escritorio.example.test",
+        "officePhone": "1130000000",
+        "officeAddress": "Avenida Exemplo",
+        "officeAddressNumber": "120",
+        "officeZip": "01001000",
+        "officeNeighborhood": "Centro",
+        "officeDistrict": "Centro",
+        "officeCity": "São Paulo",
+        "officeUf": "SP",
+        "clientName": "João de Teste",
+        "clientEmail": "joao.cliente@example.test",
+        "requestArea": "Direito do Consumidor",
+        "requestDescription": "Orientação sobre contrato de serviço não cumprido.",
+        "supportSubject": "Ajuda com cadastro",
+        "supportMessage": "Tenho uma dúvida sobre a atualização do perfil."
+      }
+    }
+  },
+  "jornadasSimuladas": [
+    {
+      "id": "completa",
+      "name": "Primeiro acesso completo",
+      "group": "Acesso e cadastro",
+      "intro": "Cadastro comum, onboarding profissional, OAB e retorno à Home.",
+      "steps": [
+        "auth.inicializacao.splash",
+        "auth.inicializacao.boas_vindas",
+        "auth.sessao.entrar",
+        "auth.cadastro.tipo_conta",
+        "auth.cadastro.identificacao",
+        "auth.cadastro.contato",
+        "auth.cadastro.endereco",
+        "auth.cadastro.seguranca",
+        {
+          "fork": "consent_first",
+          "screen": "auth.cadastro.consentimentos",
+          "question": "Deseja confirmar os consentimentos do cadastro?",
+          "choices": [
+            {
+              "label": "Confirmar termos obrigatórios",
+              "detail": "Registrar aceite somente neste cenário de demonstração",
+              "effects": {
+                "consents": true
+              },
+              "steps": []
+            },
+            {
+              "label": "Ler política e confirmar aceite",
+              "detail": "Consultar documento e depois confirmar",
+              "effects": {
+                "consents": true
+              },
+              "steps": [
+                "advogado.configuracao.politica_privacidade",
+                "auth.cadastro.consentimentos"
+              ]
+            }
+          ]
+        },
+        "auth.cadastro.revisao",
+        {
+          "screen": "auth.cadastro.concluido",
+          "effect": {
+            "registered": true
+          }
+        },
+        "auth.sessao.entrar",
+        "advogado.onboarding.dados_academicos",
+        "advogado.onboarding.dados_profissionais",
+        "advogado.oab.dados",
+        "advogado.onboarding.areas_atuacao",
+        "advogado.onboarding.perfil_profissional",
+        "advogado.onboarding.disponibilidade",
+        {
+          "fork": "office_first",
+          "screen": "escritorio.onboarding.vinculo_escritorio",
+          "question": "Como o advogado deseja atuar?",
+          "choices": [
+            {
+              "label": "Atuação individual",
+              "detail": "Seguir sem escritório",
+              "effects": {
+                "office": false
+              },
+              "steps": []
+            },
+            {
+              "label": "Criar um escritório",
+              "detail": "Preencher cadastro fictício do escritório",
+              "effects": {
+                "office": true
+              },
+              "steps": [
+                "escritorio.onboarding.cadastro_escritorio"
+              ]
+            }
+          ]
+        },
+        "advogado.onboarding.revisao_profissional",
+        {
+          "screen": "advogado.onboarding.conclusao_profissional",
+          "effect": {
+            "onboarded": true,
+            "status": "review"
+          }
+        },
+        "advogado.validacao.status",
+        "advogado.home.inicio"
+      ]
+    },
+    {
+      "id": "onboarding",
+      "name": "Onboarding profissional",
+      "group": "Acesso e cadastro",
+      "intro": "Dados acadêmicos, OAB, atuação, disponibilidade e vínculo com escritório.",
+      "steps": [
+        "advogado.onboarding.dados_academicos",
+        "advogado.onboarding.dados_profissionais",
+        "advogado.oab.dados",
+        "advogado.onboarding.areas_atuacao",
+        "advogado.onboarding.perfil_profissional",
+        "advogado.onboarding.disponibilidade",
+        {
+          "fork": "office_onb",
+          "screen": "escritorio.onboarding.vinculo_escritorio",
+          "question": "Escolha a forma de atuação",
+          "choices": [
+            {
+              "label": "Atuação individual",
+              "effects": {
+                "office": false
+              },
+              "steps": []
+            },
+            {
+              "label": "Cadastrar escritório",
+              "effects": {
+                "office": true
+              },
+              "steps": [
+                "escritorio.onboarding.cadastro_escritorio"
+              ]
+            }
+          ]
+        },
+        "advogado.onboarding.revisao_profissional",
+        {
+          "screen": "advogado.onboarding.conclusao_profissional",
+          "effect": {
+            "onboarded": true,
+            "status": "review"
+          }
+        },
+        "advogado.validacao.status",
+        "advogado.home.inicio"
+      ]
+    },
+    {
+      "id": "acesso",
+      "name": "Acesso e recuperação",
+      "group": "Acesso e cadastro",
+      "intro": "Simulação das alternativas do login.",
+      "steps": [
+        "auth.inicializacao.splash",
+        "auth.inicializacao.boas_vindas",
+        {
+          "fork": "acesso_escolha",
+          "screen": "auth.sessao.entrar",
+          "question": "Qual caminho deseja demonstrar?",
+          "choices": [
+            {
+              "label": "Entrar em conta ativa",
+              "effects": {
+                "registered": true,
+                "onboarded": true
+              },
+              "steps": [
+                "advogado.home.inicio"
+              ]
+            },
+            {
+              "label": "Criar nova conta",
+              "steps": [
+                "auth.cadastro.tipo_conta",
+                "auth.cadastro.identificacao",
+                "auth.cadastro.contato",
+                "auth.cadastro.endereco",
+                "auth.cadastro.seguranca",
+                {
+                  "fork": "consent_first",
+                  "screen": "auth.cadastro.consentimentos",
+                  "question": "Deseja confirmar os consentimentos do cadastro?",
+                  "choices": [
+                    {
+                      "label": "Confirmar termos obrigatórios",
+                      "detail": "Registrar aceite somente neste cenário de demonstração",
+                      "effects": {
+                        "consents": true
+                      },
+                      "steps": []
+                    },
+                    {
+                      "label": "Ler política e confirmar aceite",
+                      "detail": "Consultar documento e depois confirmar",
+                      "effects": {
+                        "consents": true
+                      },
+                      "steps": [
+                        "advogado.configuracao.politica_privacidade",
+                        "auth.cadastro.consentimentos"
+                      ]
+                    }
+                  ]
+                },
+                "auth.cadastro.revisao",
+                {
+                  "screen": "auth.cadastro.concluido",
+                  "effect": {
+                    "registered": true
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Recuperar senha",
+              "steps": [
+                "auth.sessao.recuperar_senha",
+                "auth.sessao.recuperacao_enviada",
+                "auth.sessao.entrar"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oab",
+      "name": "Estados e validação da OAB",
+      "group": "Atuação profissional",
+      "intro": "A mesma Home reage aos estados de habilitação.",
+      "steps": [
+        "advogado.home.inicio",
+        "advogado.configuracao.validacao_oab",
+        "advogado.oab.dados",
+        {
+          "screen": "advogado.validacao.envio_confirmado",
+          "effect": {
+            "status": "review"
+          }
+        },
+        "advogado.validacao.status",
+        {
+          "fork": "oab_status",
+          "screen": "advogado.home.inicio",
+          "question": "Qual resultado deseja simular?",
+          "choices": [
+            {
+              "label": "OAB validada",
+              "detail": "Liberar recursos profissionais",
+              "effects": {
+                "status": "validated"
+              },
+              "steps": [
+                "advogado.home.inicio"
+              ]
+            },
+            {
+              "label": "Ainda em análise",
+              "detail": "Manter bloqueios de operações protegidas",
+              "effects": {
+                "status": "review"
+              },
+              "steps": [
+                "advogado.validacao.status",
+                "advogado.home.inicio"
+              ]
+            },
+            {
+              "label": "Correção necessária",
+              "detail": "Apresentar restrições e revisão",
+              "effects": {
+                "status": "rejected"
+              },
+              "steps": [
+                "advogado.validacao.status",
+                "advogado.configuracao.validacao_oab",
+                "advogado.home.inicio"
+              ]
+            },
+            {
+              "label": "Erro técnico",
+              "detail": "Não confundir erro com aprovação",
+              "effects": {
+                "status": "unknown"
+              },
+              "steps": [
+                "advogado.validacao.status",
+                "advogado.home.inicio"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "solicitacoes",
+      "name": "Solicitação e atendimento",
+      "group": "Atuação profissional",
+      "intro": "Recebimento, aceite/recusa, contato e encerramento.",
+      "steps": [
+        "advogado.home.inicio",
+        "advogado.clientes.solicitacoes_recebidas",
+        "advogado.clientes.detalhe_solicitacao",
+        {
+          "fork": "solicitar",
+          "screen": "advogado.clientes.detalhe_solicitacao",
+          "question": "Qual será a decisão do advogado?",
+          "choices": [
+            {
+              "label": "Aceitar contato",
+              "effects": {
+                "request": "accepted"
+              },
+              "steps": [
+                "advogado.clientes.aceitar_contato",
+                "advogado.clientes.contato_liberado",
+                "advogado.atendimentos.lista",
+                "advogado.atendimentos.detalhe",
+                {
+                  "screen": "advogado.atendimentos.encerrar",
+                  "effect": {
+                    "request": "closed"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Recusar solicitação",
+              "effects": {
+                "request": "declined"
+              },
+              "steps": [
+                "advogado.clientes.recusar_solicitacao",
+                "advogado.clientes.recusa_confirmada",
+                "advogado.clientes.solicitacoes_recebidas"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disponibilidade",
+      "name": "Disponibilidade profissional",
+      "group": "Atuação profissional",
+      "intro": "Online, agenda, raio e preferências.",
+      "steps": [
+        "advogado.home.inicio",
+        "advogado.disponibilidade.painel",
+        {
+          "fork": "adjust",
+          "screen": "advogado.disponibilidade.painel",
+          "question": "Qual configuração quer demonstrar?",
+          "choices": [
+            {
+              "label": "Agenda semanal",
+              "steps": [
+                "advogado.configuracao.agenda_semanal",
+                "advogado.disponibilidade.painel"
+              ]
+            },
+            {
+              "label": "Raio de atendimento",
+              "steps": [
+                "advogado.disponibilidade.raio_atendimento",
+                "advogado.disponibilidade.painel"
+              ]
+            },
+            {
+              "label": "Preferências",
+              "steps": [
+                "advogado.configuracao.preferencias_atendimento",
+                "advogado.disponibilidade.painel"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "assinatura",
+      "name": "Planos e assinatura",
+      "group": "Gestão e serviços",
+      "intro": "Planos, checkout demonstrativo e histórico.",
+      "steps": [
+        "advogado.assinatura.gestao_assinatura",
+        "advogado.assinatura.planos",
+        "advogado.assinatura.checkout",
+        {
+          "fork": "payment",
+          "screen": "advogado.assinatura.checkout",
+          "question": "Qual resultado simulado do checkout?",
+          "choices": [
+            {
+              "label": "Pagamento aprovado (mock)",
+              "effects": {
+                "payment": "approved"
+              },
+              "steps": [
+                "advogado.assinatura.resultado_checkout",
+                "advogado.assinatura.gestao_assinatura",
+                "advogado.assinatura.historico_assinatura"
+              ]
+            },
+            {
+              "label": "Pagamento não concluído (mock)",
+              "effects": {
+                "payment": "failed"
+              },
+              "steps": [
+                "advogado.assinatura.resultado_checkout",
+                "advogado.assinatura.planos"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "escritorio",
+      "name": "Escritório, equipe e convites",
+      "group": "Gestão e serviços",
+      "intro": "Atuação individual e gestão de escritório.",
+      "steps": [
+        "advogado.home.inicio",
+        {
+          "fork": "office_mode",
+          "screen": "escritorio.gestao.escritorio",
+          "question": "Como quer demonstrar o vínculo?",
+          "choices": [
+            {
+              "label": "Continuar individual",
+              "effects": {
+                "office": false
+              },
+              "steps": [
+                "escritorio.gestao.escritorio"
+              ]
+            },
+            {
+              "label": "Criar escritório e gerir equipe",
+              "effects": {
+                "office": true
+              },
+              "steps": [
+                "escritorio.onboarding.cadastro_escritorio",
+                "escritorio.gestao.escritorio",
+                "escritorio.equipe.equipe",
+                "escritorio.equipe.convidar_advogado",
+                "escritorio.equipe.convite_enviado",
+                "escritorio.distribuicao.distribuicao_interna"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "perfil",
+      "name": "Perfil e configurações",
+      "group": "Gestão e serviços",
+      "intro": "Perfil, configurações e área jurídica.",
+      "steps": [
+        "advogado.perfil.visualizacao",
+        "advogado.configuracao.configuracao",
+        {
+          "fork": "settings",
+          "screen": "advogado.configuracao.configuracao",
+          "question": "Qual configuração deseja visitar?",
+          "choices": [
+            {
+              "label": "Preferências e agenda",
+              "steps": [
+                "advogado.configuracao.preferencias_atendimento",
+                "advogado.configuracao.agenda_semanal"
+              ]
+            },
+            {
+              "label": "Validação OAB",
+              "steps": [
+                "advogado.configuracao.validacao_oab",
+                "advogado.validacao.status"
+              ]
+            },
+            {
+              "label": "Termos e consentimentos",
+              "steps": [
+                "advogado.configuracao.termos_privacidade",
+                "advogado.configuracao.termos_uso",
+                "advogado.configuracao.politica_privacidade",
+                "advogado.configuracao.consentimentos"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "suporte",
+      "name": "Suporte e chamados",
+      "group": "Gestão e serviços",
+      "intro": "Ajuda, chamado e acompanhamento do resultado.",
+      "steps": [
+        "advogado.configuracao.suporte",
+        {
+          "fork": "support",
+          "screen": "advogado.configuracao.suporte",
+          "question": "O que deseja mostrar?",
+          "choices": [
+            {
+              "label": "Consultar central de ajuda",
+              "steps": [
+                "advogado.configuracao.central_ajuda"
+              ]
+            },
+            {
+              "label": "Abrir e acompanhar chamado",
+              "steps": [
+                "advogado.configuracao.falar_suporte",
+                {
+                  "screen": "advogado.configuracao.chamado_detalhe",
+                  "effect": {
+                    "ticket": true
+                  }
+                },
+                "advogado.configuracao.meus_chamados",
+                "advogado.configuracao.chamado_detalhe"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "notificacoes",
+      "name": "Notificações e destinos",
+      "group": "Gestão e serviços",
+      "intro": "Caixa de notificações e contexto associado.",
+      "steps": [
+        "advogado.home.inicio",
+        "notificacoes.lista.notificacoes",
+        "notificacoes.detalhe.notificacao",
+        {
+          "fork": "notif",
+          "screen": "notificacoes.detalhe.notificacao",
+          "question": "Qual categoria de notificação quer abrir?",
+          "choices": [
+            {
+              "label": "Nova solicitação",
+              "steps": [
+                "advogado.clientes.detalhe_solicitacao"
+              ]
+            },
+            {
+              "label": "Validação OAB",
+              "steps": [
+                "advogado.validacao.status"
+              ]
+            },
+            {
+              "label": "Disponibilidade",
+              "steps": [
+                "advogado.configuracao.agenda_semanal"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atendimento",
+      "name": "Atendimentos em andamento",
+      "group": "Atuação profissional",
+      "intro": "Consulta e fechamento de um atendimento existente.",
+      "steps": [
+        "advogado.atendimentos.lista",
+        "advogado.atendimentos.detalhe",
+        {
+          "screen": "advogado.atendimentos.encerrar",
+          "effect": {
+            "request": "closed"
+          }
+        },
+        "advogado.atendimentos.lista"
+      ]
+    }
+  ],
+  "notificacoes": [
+    {
+      "id": "n1",
+      "title": "Nova solicitação de contato",
+      "body": "João de Teste deseja atendimento em Direito do Consumidor.",
+      "to": "advogado.clientes.detalhe_solicitacao",
+      "category": "Solicitação",
+      "read": false
+    },
+    {
+      "id": "n2",
+      "title": "Validação de OAB",
+      "body": "Acompanhe o status do envio fictício da OAB.",
+      "to": "advogado.validacao.status",
+      "category": "OAB",
+      "read": false
+    },
+    {
+      "id": "n3",
+      "title": "Atualização da agenda",
+      "body": "Confira sua disponibilidade para novos atendimentos.",
+      "to": "advogado.configuracao.agenda_semanal",
+      "category": "Disponibilidade",
+      "read": true
+    },
+    {
+      "id": "n4",
+      "title": "Assinatura",
+      "body": "Consulte planos e histórico da sua assinatura simulada.",
+      "to": "advogado.assinatura.gestao_assinatura",
+      "category": "Assinatura",
+      "read": true
+    }
+  ],
+  "solicitacoes": [
+    {
+      "id": "SOL-001",
+      "client": "João de Teste",
+      "area": "Direito do Consumidor",
+      "description": "Orientação sobre contrato de serviço não cumprido.",
+      "channel": "Contato prioritário",
+      "status": "new"
+    },
+    {
+      "id": "SOL-002",
+      "client": "Carla Exemplo",
+      "area": "Direito Civil",
+      "description": "Análise de cláusula contratual.",
+      "channel": "Consultoria",
+      "status": "accepted"
+    }
+  ],
+  "fieldSpecs": [
+    {
+      "path": "screens.*.id",
+      "group": "Telas",
+      "name": "Identificador de tela",
+      "why": "Identifica explicitamente cada tela; evita dedução por posição."
+    },
+    {
+      "path": "screens.*.title",
+      "group": "Telas",
+      "name": "Título da tela",
+      "why": "Exibe o nome no cabeçalho e no catálogo."
+    },
+    {
+      "path": "screens.*.group",
+      "group": "Telas",
+      "name": "Grupo de navegação",
+      "why": "Agrupa as telas no catálogo e nos filtros."
+    },
+    {
+      "path": "screens.*.origin",
+      "group": "Telas",
+      "name": "Origem de renderização",
+      "why": "Permite selecionar visualização da fonte ou versão complementada."
+    },
+    {
+      "path": "screens.*.description",
+      "group": "Telas",
+      "name": "Descrição",
+      "why": "Apresenta a finalidade textual quando utilizada pela tela."
+    },
+    {
+      "path": "screens.*.html",
+      "group": "Visual",
+      "name": "HTML da tela",
+      "why": "Renderiza a composição da tela original no laboratório."
+    },
+    {
+      "path": "screens.*.css",
+      "group": "Visual",
+      "name": "CSS da tela",
+      "why": "Estilos individuais inseridos no Shadow DOM."
+    },
+    {
+      "path": "screens.*.fields",
+      "group": "Formulários",
+      "name": "Campos da tela",
+      "why": "Lista campos usados no preenchimento simulado."
+    },
+    {
+      "path": "screens.*.fields[].key",
+      "group": "Formulários",
+      "name": "Chave do campo",
+      "why": "Vincula o campo à informação simulada correspondente."
+    },
+    {
+      "path": "screens.*.fields[].type",
+      "group": "Formulários",
+      "name": "Tipo de campo",
+      "why": "Define o tratamento de entrada e preenchimento."
+    },
+    {
+      "path": "scenarios.*.name",
+      "group": "Cenários",
+      "name": "Nome do cenário",
+      "why": "Identifica o cenário selecionável pelo usuário."
+    },
+    {
+      "path": "scenarios.*.start",
+      "group": "Cenários",
+      "name": "Tela de partida",
+      "why": "Determina a tela inicial de cada cenário."
+    },
+    {
+      "path": "scenarios.*.status",
+      "group": "Cenários",
+      "name": "Situação OAB",
+      "why": "Altera as permissões e o comportamento da simulação."
+    },
+    {
+      "path": "scenarios.*.registered",
+      "group": "Cenários",
+      "name": "Cadastro concluído",
+      "why": "Indica o estado fictício do cadastro."
+    },
+    {
+      "path": "scenarios.*.onboarded",
+      "group": "Cenários",
+      "name": "Onboarding concluído",
+      "why": "Indica o estágio simulado do perfil profissional."
+    },
+    {
+      "path": "scenarios.*.office",
+      "group": "Cenários",
+      "name": "Vínculo com escritório",
+      "why": "Controla a condição simulada do escritório."
+    },
+    {
+      "path": "scenarios.*.request",
+      "group": "Cenários",
+      "name": "Estado da solicitação",
+      "why": "Define o contexto de uma solicitação fictícia."
+    },
+    {
+      "path": "scenarios.*.data",
+      "group": "Cenários",
+      "name": "Dados mockados",
+      "why": "Fornece valores apenas para simulação local."
+    },
+    {
+      "path": "journeys[].id",
+      "group": "Jornadas",
+      "name": "ID da jornada",
+      "why": "Identifica o roteiro de apresentação."
+    },
+    {
+      "path": "journeys[].name",
+      "group": "Jornadas",
+      "name": "Nome da jornada",
+      "why": "Exibe o título no submenu dinâmico."
+    },
+    {
+      "path": "journeys[].group",
+      "group": "Jornadas",
+      "name": "Grupo da jornada",
+      "why": "Reúne roteiros do mesmo assunto."
+    },
+    {
+      "path": "journeys[].intro",
+      "group": "Jornadas",
+      "name": "Descrição do roteiro",
+      "why": "Explica o objetivo da apresentação."
+    },
+    {
+      "path": "journeys[].steps",
+      "group": "Jornadas",
+      "name": "Etapas do roteiro",
+      "why": "Declara a ordem das telas e decisões."
+    },
+    {
+      "path": "journeys[].steps[].screen",
+      "group": "Jornadas",
+      "name": "Referência de tela",
+      "why": "Aponta para o ID exato da tela dentro de uma etapa."
+    },
+    {
+      "path": "journeys[].steps[].fork",
+      "group": "Decisões",
+      "name": "Identificador de bifurcação",
+      "why": "Declara o ponto onde a apresentação exige uma escolha."
+    },
+    {
+      "path": "journeys[].steps[].choices",
+      "group": "Decisões",
+      "name": "Alternativas da bifurcação",
+      "why": "Declara caminhos possíveis, sem dedução do motor."
+    },
+    {
+      "path": "journeys[].steps[].effect",
+      "group": "Decisões",
+      "name": "Alteração de estado",
+      "why": "Aplica alterações de estado associadas a uma etapa."
+    },
+    {
+      "path": "notifications",
+      "group": "Estado simulado",
+      "name": "Notificações",
+      "why": "Alimenta a caixa de notificações fictícias."
+    },
+    {
+      "path": "requests",
+      "group": "Estado simulado",
+      "name": "Solicitações",
+      "why": "Alimenta as solicitações de clientes simuladas."
+    }
+  ]
+}

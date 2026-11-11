@@ -105,11 +105,33 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.configuracao.central_ajuda.1",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.suporte"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Ajuda e orientações.",
+          "grupo": "Documentos e suporte",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "suporte"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.configuracao.central_ajuda.visual": {

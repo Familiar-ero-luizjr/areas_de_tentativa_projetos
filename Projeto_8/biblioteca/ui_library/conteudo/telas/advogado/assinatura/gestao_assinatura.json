@@ -293,11 +293,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.assinatura.gestao_assinatura.1",
+            "atributosHTML": {
+              "data-goto": "advogado.assinatura.planos"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.assinatura.gestao_assinatura.2",
+            "atributosHTML": {
+              "data-goto": "advogado.assinatura.historico_assinatura"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Ponto de entrada da assinatura profissional.",
+          "grupo": "Assinatura",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "assinatura"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.assinatura.gestao_assinatura.visual": {

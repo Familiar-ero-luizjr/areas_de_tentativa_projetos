@@ -105,11 +105,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.escritorio.equipe.equipe.1",
+            "atributosHTML": {
+              "data-goto": "escritorio.equipe.convidar_advogado"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.escritorio.equipe.equipe.2",
+            "atributosHTML": {
+              "data-goto": "escritorio.gestao.escritorio"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Lista de membros e acesso ao convite.",
+          "grupo": "Escritório",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "escritorio"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.escritorio.equipe.equipe.visual": {

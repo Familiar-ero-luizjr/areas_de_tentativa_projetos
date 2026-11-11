@@ -290,11 +290,62 @@
           }
         }
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.auth.cadastro.revisao.1",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.tipo_conta"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.revisao.2",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.contato"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.revisao.3",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.endereco"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.revisao.4",
+            "atributosHTML": {
+              "data-action": "navegar.auth.cadastro.consentimentos"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.auth.cadastro.revisao.5",
+            "atributosHTML": {
+              "data-create-account": ""
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "",
+          "grupo": "Cadastro comum",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.auth.cadastro.revisao.visual.cliente": {

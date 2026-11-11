@@ -132,7 +132,49 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.pro-education-institution",
+            "elementoHTMLRef": "pro-education-institution",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-education-city",
+            "elementoHTMLRef": "pro-education-city",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-education-course",
+            "elementoHTMLRef": "pro-education-course",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-graduation-year",
+            "elementoHTMLRef": "pro-graduation-year",
+            "tipoVisual": "number",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-specialization",
+            "elementoHTMLRef": "pro-specialization",
+            "tipoVisual": "text",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -160,11 +202,41 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.onboarding.dados_academicos.1",
+            "atributosHTML": {
+              "data-goto": "auth.cadastro.concluido"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.onboarding.dados_academicos.2",
+            "atributosHTML": {
+              "data-next": "advogado.onboarding.dados_profissionais"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Onboarding profissional · etapa 1.",
+          "grupo": "Onboarding profissional",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.onboarding.dados_academicos.visual": {

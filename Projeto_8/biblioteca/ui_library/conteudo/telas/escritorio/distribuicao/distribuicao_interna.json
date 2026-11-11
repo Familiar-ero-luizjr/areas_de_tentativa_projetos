@@ -77,7 +77,19 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.field_0",
+            "elementoHTMLRef": "field_0",
+            "tipoVisual": "select",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [
+              ""
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -105,11 +117,33 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.escritorio.distribuicao.distribuicao_interna.1",
+            "atributosHTML": {
+              "data-goto": "escritorio.gestao.escritorio"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Regra interna para distribuição de solicitações.",
+          "grupo": "Escritório",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "escritorio"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.escritorio.distribuicao.distribuicao_interna.visual": {

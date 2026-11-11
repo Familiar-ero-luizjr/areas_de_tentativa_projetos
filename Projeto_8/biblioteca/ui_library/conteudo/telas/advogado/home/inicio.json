@@ -1137,11 +1137,63 @@
           }
         ]
       },
-      "interacoes": {},
-      "mocks": {
-        "cenarios": []
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.home.inicio.1",
+            "atributosHTML": {
+              "data-action": "online.toggle",
+              "data-online-root": ""
+            },
+            "status": "revisar_efeito"
+          }
+        ]
       },
-      "localizacao": {}
+      "mocks": {
+        "cenarios": [
+          {
+            "id": "mock.oab_analise.advogado.home.inicio",
+            "cenarioRef": "oab_analise",
+            "nome": "Mariana · OAB em análise",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado"
+          },
+          {
+            "id": "mock.habilitado.advogado.home.inicio",
+            "cenarioRef": "habilitado",
+            "nome": "Mariana · Advogada habilitada",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado"
+          },
+          {
+            "id": "mock.restrito.advogado.home.inicio",
+            "cenarioRef": "restrito",
+            "nome": "Mariana · OAB restrita",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado"
+          }
+        ]
+      },
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis.",
+          "grupo": "Home única e capabilities",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "acesso",
+            "completa",
+            "disponibilidade",
+            "escritorio",
+            "notificacoes",
+            "oab",
+            "onboarding",
+            "solicitacoes"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.home.inicio.visual": {

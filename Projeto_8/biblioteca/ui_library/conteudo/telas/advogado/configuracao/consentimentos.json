@@ -77,7 +77,41 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.field_0",
+            "elementoHTMLRef": "field_0",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_1",
+            "elementoHTMLRef": "field_1",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_2",
+            "elementoHTMLRef": "field_2",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_3",
+            "elementoHTMLRef": "field_3",
+            "tipoVisual": "checkbox",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -105,11 +139,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.configuracao.consentimentos.1",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.termos_privacidade"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.consentimentos.2",
+            "atributosHTML": {
+              "data-action-message": "Consentimentos atualizados no protótipo."
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Consentimentos da conta profissional.",
+          "grupo": "Documentos e suporte",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "perfil"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.configuracao.consentimentos.visual": {

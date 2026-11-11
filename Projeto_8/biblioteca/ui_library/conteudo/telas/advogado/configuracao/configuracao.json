@@ -401,11 +401,61 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.configuracao.configuracao.1",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.agenda_semanal"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.configuracao.2",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.preferencias_atendimento"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.configuracao.3",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.validacao_oab"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.configuracao.4",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.termos_privacidade"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.configuracao.5",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.suporte"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Hub de configurações profissionais.",
+          "grupo": "Perfil e configurações",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "perfil"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.configuracao.configuracao.visual": {

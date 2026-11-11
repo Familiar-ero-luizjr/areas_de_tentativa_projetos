@@ -1,35 +1,33 @@
-# Projeto 8 — Laboratórios AdvogadoJá
+# AdvogadoJá — Projeto 8 normalizado, módulos independentes
 
-Áreas independentes para inspeção e evolução controlada de modelos e interfaces.
+## Executar
 
-- [Contratos](./CONTRATO/) — modelo JSON, glossário, exemplo da Home e documentação.
-- [Jornadas](./JORNADAS/) — apresentação de telas por jornada e subjornada.
-- [Protótipo](./PROTOTIPO/) — laboratórios demonstrativos, cliente e modular.
-- [Banco](./BANCO/) — visualizador/estrutura de modelagem.
-- [Fluxo](./FLUXO/) — visualizador de fluxo, integrado ao menu lateral do Workspace.
-- [Referências autocontidas](./htmls_autocontidos/) — HTMLs de referência, incluindo Fluxo V2.
+Executar `python iniciar_local.py` e acessar **http://127.0.0.1:8768/**. O endereço é apenas um servidor **local** para permitir que o navegador leia os arquivos JSON na mesma pasta; não faz nenhuma chamada de rede a serviços externos.
 
-Cada módulo usa seu próprio `README.md`. Consulte [AGENTS.md](./AGENTS.md) antes de alterar arquivos. Execute o site por HTTP local quando houver carregamento de JSON via `fetch`.
+Também é possível copiar **somente** `BANCO/`, `FLUXO/`, `JORNADAS/` ou `PROTOTIPO/` para outro local e executá-lo como site estático. Cada pasta contém `index.html`, `script.js` e `modulo.json`: nenhuma consulta à biblioteca editorial ou a outras pastas é executada. Se abrir `index.html` diretamente com `file://`, o navegador pode bloquear `fetch()` local; use o seletor de **modulo.json** exibido na própria página. Não há qualquer duplicação do JSON dentro do HTML.
 
-**Atenção:** materiais de laboratório não homologam automaticamente contratos, rotas ou decisões de produção.
+## Estrutura
 
-## Workspace único de navegação
+- `biblioteca/ui_library/conteudo/telas/`: fonte editorial consolidada, com 110 registros de telas; 12 estão claramente marcados como **rascunhos sem HTML/CSS homologados**.
+- `biblioteca/mocks/simulacoes.json`: cinco cenários e 12 roteiros fictícios originais, além de dados de simulação.
+- `BANCO/modulo.json`: snapshot completo e independente para projetar campos, entidades, relacionamentos e operações; nenhuma tabela é inventada.
+- `FLUXO/modulo.json`: snapshot completo e independente para examinar e editar relações entre telas.
+- `JORNADAS/modulo.json`: snapshot completo e independente para organizar jornadas, ver as telas e inserir participações.
+- `PROTOTIPO/modulo.json`: snapshot completo e independente com os mocks, roteiros e telas para simulação local.
+- `auditoria/`: comparação tela por tela, fontes, mudanças, pendências e testes.
 
-O `index.html` é a entrada padrão do Projeto 8. Sua aparência e navegação seguem o menu de referência fornecido para esta integração:
+A biblioteca não é acessada em tempo de execução por nenhum módulo. A **replicação é um snapshot intencional no momento da exportação**, não sincronização entre módulos. Cada JSON tem um único conjunto local de contratos de telas. Alterações realizadas em um módulo permanecem naquele módulo até serem exportadas e consolidadas explicitamente.
 
-- `workspace/menu.json` define **somente os módulos e as opções conhecidas** de Banco, Contrato, Fluxo e Protótipos. Não fixa perfis de Jornadas;
-- `workspace/style.css` define o cabeçalho e menu lateral responsivos;
-- `workspace/app.js` carrega cada módulo sob demanda em um iframe de mesma origem, preserva a sessão quando alterna e permite navegar por suas opções reais;
-- `workspace/embedded.css` oculta apenas a navegação redundante quando o módulo está integrado ao Workspace. Aberturas diretas dos módulos continuam com seus menus próprios e não sofrem alteração.
+## Estado de homologação
 
-### Jornadas dinâmicas
+Esta versão é um **primeiro ciclo de normalização técnica/funcional**; não equivale à aprovação de cada uma das 110 telas, nem das regras de negócio. Os HTML/CSS das 98 telas originais foram preservados. O Protótipo acrescentou dados de formulário, eventos documentais e referências de mock; componentes marcados como rascunho são apenas um suporte de inspeção. O Banco pode mostrar dados de UI, mas persistência e tabelas de produção só aparecem após declaração explícita.
 
-O menu **Jornadas** é construído após o carregamento do visualizador real, lendo os itens de `#journeyTabs`, que por sua vez são montados a partir dos registros do `JORNADAS/dados/manifest.json` e dos JSONs das telas, ou das jornadas importadas em sessão. As **subjornadas permanecem nas abas internas do visualizador**, também derivadas dos dados. Um observador atualiza o menu externo após uma importação de JSON ou mudança de jornada, sem códigos fixos para Advogado, Cliente/Estudante ou Administrador.
+## Processo de revisão
 
-Importações do navegador seguem a persistência já existente de Jornadas no `localStorage`; **não** escrevem automaticamente no repositório nem tornam os dados públicos. Para publicar uma nova jornada, inclua os arquivos e suas referências no manifesto versionado.
+1. Comparar `auditoria/AUDITORIA_TELA_A_TELA.csv` com a biblioteca.
+2. Priorizar os 12 rascunhos e as 51 telas com dados enriquecidos.
+3. Homologar estados, eventos e ações por tela; separar HTML, CSS e comportamento conforme Direção V5.
+4. Exportar de um módulo quando alterado e incorporar à biblioteca editorial via revisão explícita; **não sobrescrever silenciosamente** os outros módulos.
+5. Gerar novamente os snapshots dos módulos quando a biblioteca editorial for homologada.
 
-### Rotas e compatibilidade
-
-Abra `Projeto_8/index.html` para navegar entre os cinco módulos sem sair da página. A URL com fragmento permite apontar para opções específicas, por exemplo `#banco%3Adiagram`, `#contrato%3Adoc`, `#fluxo%3Aabrir`, `#prototipos%3Amodular_v2` e `#jornadas%3A<id-codificado>`.
-
-Os endereços `BANCO/index.html`, `CONTRATO/index.html`, `FLUXO/index.html`, `JORNADAS/index.html` e `PROTOTIPO/index.html` continuam válidos para testes independentes. A integração não migra dados, não reescreve os motores e não converte modelos incompatíveis.
+O projeto original permanece congelado em `Projeto_8.zip`, SHA informado em `auditoria/FONTE_CONGELADA.txt`.

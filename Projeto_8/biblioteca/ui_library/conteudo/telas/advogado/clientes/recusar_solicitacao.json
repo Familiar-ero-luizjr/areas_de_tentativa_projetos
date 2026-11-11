@@ -139,7 +139,23 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.field_0",
+            "elementoHTMLRef": "field_0",
+            "tipoVisual": "select",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -177,11 +193,33 @@
           }
         ]
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.clientes.recusar_solicitacao.1",
+            "atributosHTML": {
+              "data-goto": "advogado.clientes.detalhe_solicitacao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "o advogado informa o motivo e confirma a recusa.",
+          "grupo": "Solicitações e atendimentos",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "solicitacoes"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.clientes.recusar_solicitacao.visual": {

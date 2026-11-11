@@ -160,11 +160,33 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.assinatura.checkout.1",
+            "atributosHTML": {
+              "data-action-message": "Assinaturas indisponíveis."
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Checkout da assinatura. A prévia visual não realiza pagamentos.",
+          "grupo": "Assinatura",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "assinatura"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.assinatura.checkout.visual": {

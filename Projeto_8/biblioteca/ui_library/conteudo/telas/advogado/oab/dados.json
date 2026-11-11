@@ -173,7 +173,67 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.pro-oab-number",
+            "elementoHTMLRef": "pro-oab-number",
+            "tipoVisual": "text",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-oab-uf",
+            "elementoHTMLRef": "pro-oab-uf",
+            "tipoVisual": "select",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [
+              "",
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.pro-oab-type",
+            "elementoHTMLRef": "pro-oab-type",
+            "tipoVisual": "select",
+            "obrigatorioVisual": true,
+            "opcoesVisuais": [
+              "",
+              "advogado",
+              "estagiario",
+              "suplementar"
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -211,11 +271,42 @@
           }
         ]
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.oab.dados.1",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.dados_profissionais"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.oab.dados.2",
+            "atributosHTML": {
+              "data-next": "advogado.onboarding.areas_atuacao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Dados da OAB pertencem ao processo próprio de validação, não ao cadastro nem ao onboarding profissional.",
+          "grupo": "Validação da OAB",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "oab",
+            "onboarding"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.oab.dados.visual": {

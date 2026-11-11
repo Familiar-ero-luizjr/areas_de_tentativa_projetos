@@ -160,11 +160,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.clientes.contato_liberado.1",
+            "atributosHTML": {
+              "data-action-message": "Simulação: abrir WhatsApp."
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.clientes.contato_liberado.2",
+            "atributosHTML": {
+              "data-action-message": "Simulação: iniciar ligação."
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Contato do cliente liberado após aceite.",
+          "grupo": "Solicitações e atendimentos",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "solicitacoes"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.clientes.contato_liberado.visual": {

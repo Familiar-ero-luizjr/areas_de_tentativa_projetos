@@ -105,11 +105,40 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.configuracao.meus_chamados.1",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.suporte"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.meus_chamados.2",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.falar_suporte"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Acompanhamento de chamados.",
+          "grupo": "Documentos e suporte",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "suporte"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.configuracao.meus_chamados.visual": {

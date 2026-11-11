@@ -160,11 +160,55 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.clientes.solicitacoes_recebidas.1",
+            "atributosHTML": {
+              "data-request-tab": "new"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.clientes.solicitacoes_recebidas.2",
+            "atributosHTML": {
+              "data-request-tab": "accepted"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.clientes.solicitacoes_recebidas.3",
+            "atributosHTML": {
+              "data-request-tab": "declined"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.clientes.solicitacoes_recebidas.4",
+            "atributosHTML": {
+              "data-request-state": "new",
+              "data-goto": "advogado.clientes.detalhe_solicitacao"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "A própria tela separa novas, aceitas e recusadas.",
+          "grupo": "Solicitações e atendimentos",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "solicitacoes"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.clientes.solicitacoes_recebidas.visual": {

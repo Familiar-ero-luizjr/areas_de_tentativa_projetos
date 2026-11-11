@@ -64,11 +64,44 @@
       "variantes": {
         "regras": []
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.validacao.status.1",
+            "atributosHTML": {
+              "data-professional-home-placeholder": ""
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.validacao.status.2",
+            "atributosHTML": {
+              "data-goto": "advogado.onboarding.revisao_profissional"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "",
+          "grupo": "Validação da OAB",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "completa",
+            "notificacoes",
+            "oab",
+            "onboarding",
+            "perfil"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.validacao.status.visual": {

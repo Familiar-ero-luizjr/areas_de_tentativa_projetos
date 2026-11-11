@@ -290,7 +290,67 @@
       "dados": {
         "fontes": [],
         "operacoes": [],
-        "persistencia": []
+        "persistencia": [],
+        "camposDeInterface": [
+          {
+            "id": "campo.ui.field_0",
+            "elementoHTMLRef": "field_0",
+            "tipoVisual": "text",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_1",
+            "elementoHTMLRef": "field_1",
+            "tipoVisual": "select",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          },
+          {
+            "id": "campo.ui.field_2",
+            "elementoHTMLRef": "field_2",
+            "tipoVisual": "select",
+            "obrigatorioVisual": false,
+            "opcoesVisuais": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "situacao": "campo_visual_sem_vinculo_persistente"
+          }
+        ]
       },
       "componentes": {
         "instanciasRefs": {
@@ -328,11 +388,76 @@
           }
         ]
       },
-      "interacoes": {},
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.1",
+            "atributosHTML": {
+              "data-goto": "advogado.configuracao.configuracao"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.2",
+            "atributosHTML": {
+              "data-pick-file": ""
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.3",
+            "atributosHTML": {
+              "data-submit-oab-validation": ""
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.4",
+            "atributosHTML": {
+              "data-demo-state": "pending"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.5",
+            "atributosHTML": {
+              "data-demo-state": "review"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.6",
+            "atributosHTML": {
+              "data-demo-state": "validated"
+            },
+            "status": "revisar_efeito"
+          },
+          {
+            "id": "prot.acao.advogado.configuracao.validacao_oab.7",
+            "atributosHTML": {
+              "data-demo-state": "rejected"
+            },
+            "status": "revisar_efeito"
+          }
+        ]
+      },
       "mocks": {
         "cenarios": []
       },
-      "localizacao": {}
+      "localizacao": {},
+      "especificacoes": {
+        "prototipo": {
+          "descricao": "Status e dados utilizados na validação profissional.",
+          "grupo": "Validação da OAB",
+          "origemDeclarada": "fonte",
+          "jornadasRoteiroRefs": [
+            "oab",
+            "perfil"
+          ],
+          "visualizacao": "biblioteca",
+          "status": "referencia_documental"
+        }
+      }
     },
     "componentes": {
       "jornadas.advogado.configuracao.validacao_oab.visual": {
