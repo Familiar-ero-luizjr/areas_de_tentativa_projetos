@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const app=$('app'),nav=$('nav'),host=$('frameHost'),notice=$('message');
-const frames=new Map(),expanded=new Set(['jornadas']);
+const frames=new Map(),expanded=new Set(['documento_base','jornadas']);
 let modules=[],activeKey='',activeModule='',pendingJourney=null,journeySignature='';
 const node=(tag,cls,text)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x};
 const currentHash=()=>{try{return decodeURIComponent(location.hash.slice(1))}catch{return ''}};
@@ -135,7 +135,7 @@ function ensureFrame(m){
  f.src=url.href;return f;
 }
 function navigate(key,updateHash=true){
- const m=moduleFor(key)||modules.find(x=>x.id==='jornadas')||modules[0];
+ const m=moduleFor(key)||modules.find(x=>x.id==='documento_base')||modules[0];
  if(!m)return;
  activeKey=key.startsWith(m.id)?key:m.id;activeModule=m.id;
  if(m.id==='jornadas')pendingJourney=childFor(activeKey)||null;
@@ -170,7 +170,7 @@ async function start(){
     if(m&&p.laboratorios)m.children=Object.entries(p.laboratorios).map(([id,lab])=>({id,label:lab.titulo||id}));
    }
   }catch(e){console.warn('Menu de laboratórios: usando configuração local.',e)}
-  navigate(currentHash()||'jornadas');
+  navigate(currentHash()||'documento_base');
  }catch(error){
   console.error(error);
   showMessage('Erro ao carregar o workspace',error.message+' — sirva a pasta por HTTP/HTTPS.');

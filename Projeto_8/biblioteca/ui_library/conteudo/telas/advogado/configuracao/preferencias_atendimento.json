@@ -1,0 +1,2819 @@
+{
+  "advogado.configuracao.preferencias_atendimento": {
+    "tela": {
+      "schema": "advogadoja.tela.modular.contrato.v2",
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Preferências de atendimento",
+        "nomeExibicao": "Preferências de atendimento",
+        "descricao": "Preferências operacionais do advogado.",
+        "id": "advogado.configuracao.preferencias_atendimento"
+      },
+      "classificacao": {
+        "escopo": "advogado",
+        "reutilizavel": false,
+        "jornadas": [
+          {
+            "id": "part.advogado.service_preferences",
+            "jornada": {
+              "id": "advogado",
+              "nome": "Advogado",
+              "ordem": 2
+            },
+            "subjornada": {
+              "id": "disponibilidade",
+              "nome": "Disponibilidade profissional",
+              "ordem": 7
+            },
+            "ordemTela": 4,
+            "ocorrenciaNo": "service_preferences",
+            "condicaoRef": null,
+            "contexto": {
+              "descricao": "Preferências operacionais do advogado.",
+              "branch": null,
+              "pendente": false
+            }
+          }
+        ]
+      },
+      "navegacao": {
+        "rotas": [],
+        "relacoes": [],
+        "bifurcacoes": [],
+        "entradas": [
+          {
+            "relacaoRef": "rel.advogado.settings.service_preferences.preferences",
+            "origem": {
+              "tipo": "tela",
+              "ref": "advogado.configuracao.configuracao",
+              "noRef": "settings",
+              "telaContextoRef": null,
+              "portaRef": null
+            },
+            "destino": {
+              "tipo": "tela",
+              "ref": "advogado.configuracao.preferencias_atendimento",
+              "noRef": "service_preferences",
+              "telaContextoRef": null,
+              "portaRef": null
+            },
+            "jornadaRef": "advogado"
+          },
+          {
+            "relacaoRef": "rel.advogado.availability.service_preferences.preferences",
+            "origem": {
+              "tipo": "tela",
+              "ref": "advogado.disponibilidade.painel",
+              "noRef": "availability",
+              "telaContextoRef": null,
+              "portaRef": null
+            },
+            "destino": {
+              "tipo": "tela",
+              "ref": "advogado.configuracao.preferencias_atendimento",
+              "noRef": "service_preferences",
+              "telaContextoRef": null,
+              "portaRef": null
+            },
+            "jornadaRef": "advogado"
+          }
+        ]
+      },
+      "estados": {
+        "possiveis": [
+          {
+            "id": "padrao",
+            "nome": "Padrão"
+          }
+        ],
+        "fallbackSeguro": "padrao"
+      },
+      "acoes": {
+        "itens": []
+      },
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "persistencia": []
+      },
+      "componentes": {
+        "instanciasRefs": {
+          "screen.root": "jornadas.advogado.configuracao.preferencias_atendimento.visual"
+        }
+      },
+      "estrutura": {
+        "html": {
+          "raizRef": "screen.root",
+          "composicao": {
+            "screen.root": {
+              "componenteRef": "jornadas.advogado.configuracao.preferencias_atendimento.visual",
+              "paiRef": "",
+              "slot": "main",
+              "ordem": 1
+            }
+          }
+        },
+        "css": {
+          "tokens": {},
+          "regras": {}
+        }
+      },
+      "estilos": {},
+      "variantes": {
+        "regras": []
+      },
+      "interacoes": {},
+      "mocks": {
+        "cenarios": []
+      },
+      "localizacao": {}
+    },
+    "componentes": {
+      "jornadas.advogado.configuracao.preferencias_atendimento.visual": {
+        "identidade": {
+          "tipo": "componente",
+          "namespace": "jornadas",
+          "nome": "Preferências de atendimento · visual",
+          "nomeExibicao": "Preferências de atendimento",
+          "descricao": "Composição visual da tela advogado.configuracao.preferencias_atendimento"
+        },
+        "classificacao": {
+          "escopo": "tela",
+          "reutilizavel": false
+        },
+        "estrutura": {
+          "html": {
+            "raizRef": "html.n00000",
+            "elementos": {
+              "html.n00000": {
+                "tag": "div",
+                "paiRef": "",
+                "ordem": 1,
+                "atributos": {
+                  "class": "screen-runtime"
+                },
+                "texto": ""
+              },
+              "html.n00001": {
+                "tag": "div",
+                "paiRef": "html.n00000",
+                "ordem": 2,
+                "atributos": {
+                  "class": "prototype-screen operational"
+                },
+                "texto": ""
+              },
+              "html.n00002": {
+                "tag": "div",
+                "paiRef": "html.n00001",
+                "ordem": 3,
+                "atributos": {
+                  "class": "app-header"
+                },
+                "texto": ""
+              },
+              "html.n00003": {
+                "tag": "div",
+                "paiRef": "html.n00002",
+                "ordem": 4,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00004": {
+                "tag": "div",
+                "paiRef": "html.n00002",
+                "ordem": 5,
+                "atributos": {
+                  "class": "app-brand"
+                },
+                "texto": ""
+              },
+              "html.n00005": {
+                "tag": "strong",
+                "paiRef": "html.n00004",
+                "ordem": 6,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00006": {
+                "tag": "#text",
+                "paiRef": "html.n00005",
+                "ordem": 7,
+                "atributos": {},
+                "texto": "AdvogadoJá"
+              },
+              "html.n00007": {
+                "tag": "div",
+                "paiRef": "html.n00002",
+                "ordem": 8,
+                "atributos": {
+                  "class": "app-role"
+                },
+                "texto": ""
+              },
+              "html.n00008": {
+                "tag": "#text",
+                "paiRef": "html.n00007",
+                "ordem": 9,
+                "atributos": {},
+                "texto": "Advogado"
+              },
+              "html.n00009": {
+                "tag": "div",
+                "paiRef": "html.n00001",
+                "ordem": 10,
+                "atributos": {
+                  "class": "app-titlebar"
+                },
+                "texto": ""
+              },
+              "html.n00010": {
+                "tag": "#text",
+                "paiRef": "html.n00009",
+                "ordem": 11,
+                "atributos": {},
+                "texto": "Preferências de atendimento"
+              },
+              "html.n00011": {
+                "tag": "div",
+                "paiRef": "html.n00001",
+                "ordem": 12,
+                "atributos": {
+                  "class": "screen-layout"
+                },
+                "texto": ""
+              },
+              "html.n00012": {
+                "tag": "div",
+                "paiRef": "html.n00011",
+                "ordem": 13,
+                "atributos": {
+                  "class": "screen-slot screen-slot--main"
+                },
+                "texto": ""
+              },
+              "html.n00013": {
+                "tag": "main",
+                "paiRef": "html.n00012",
+                "ordem": 14,
+                "atributos": {
+                  "class": "preferences-shell"
+                },
+                "texto": ""
+              },
+              "html.n00014": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 15,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00015": {
+                "tag": "button",
+                "paiRef": "html.n00013",
+                "ordem": 16,
+                "atributos": {
+                  "class": "preferences-back",
+                  "type": "button",
+                  "data-goto": "advogado.configuracao.configuracao"
+                },
+                "texto": ""
+              },
+              "html.n00016": {
+                "tag": "#text",
+                "paiRef": "html.n00015",
+                "ordem": 17,
+                "atributos": {},
+                "texto": "Voltar as configurações"
+              },
+              "html.n00017": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 18,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00018": {
+                "tag": "section",
+                "paiRef": "html.n00013",
+                "ordem": 19,
+                "atributos": {
+                  "class": "preferences-heading"
+                },
+                "texto": ""
+              },
+              "html.n00019": {
+                "tag": "#text",
+                "paiRef": "html.n00018",
+                "ordem": 20,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00020": {
+                "tag": "h1",
+                "paiRef": "html.n00018",
+                "ordem": 21,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00021": {
+                "tag": "#text",
+                "paiRef": "html.n00020",
+                "ordem": 22,
+                "atributos": {},
+                "texto": "Preferências atendimento"
+              },
+              "html.n00022": {
+                "tag": "#text",
+                "paiRef": "html.n00018",
+                "ordem": 23,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00023": {
+                "tag": "p",
+                "paiRef": "html.n00018",
+                "ordem": 24,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00024": {
+                "tag": "#text",
+                "paiRef": "html.n00023",
+                "ordem": 25,
+                "atributos": {},
+                "texto": "Defina como onde e em quais áreas voce deseja receber solicitaco"
+              },
+              "html.n00025": {
+                "tag": "#text",
+                "paiRef": "html.n00018",
+                "ordem": 26,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00026": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 27,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00027": {
+                "tag": "aside",
+                "paiRef": "html.n00013",
+                "ordem": 28,
+                "atributos": {
+                  "class": "preferences-notice"
+                },
+                "texto": ""
+              },
+              "html.n00028": {
+                "tag": "#text",
+                "paiRef": "html.n00027",
+                "ordem": 29,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00029": {
+                "tag": "strong",
+                "paiRef": "html.n00027",
+                "ordem": 30,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00030": {
+                "tag": "#text",
+                "paiRef": "html.n00029",
+                "ordem": 31,
+                "atributos": {},
+                "texto": "Agenda fica separada"
+              },
+              "html.n00031": {
+                "tag": "#text",
+                "paiRef": "html.n00027",
+                "ordem": 32,
+                "atributos": {},
+                "texto": "\n    Esta tela controla disponibilidade geral modalidades regiao raio "
+              },
+              "html.n00032": {
+                "tag": "button",
+                "paiRef": "html.n00027",
+                "ordem": 33,
+                "atributos": {
+                  "type": "button",
+                  "data-goto": "advogado.configuracao.agenda_semanal"
+                },
+                "texto": ""
+              },
+              "html.n00033": {
+                "tag": "#text",
+                "paiRef": "html.n00032",
+                "ordem": 34,
+                "atributos": {},
+                "texto": "Agenda"
+              },
+              "html.n00034": {
+                "tag": "#text",
+                "paiRef": "html.n00027",
+                "ordem": 35,
+                "atributos": {},
+                "texto": ".\n  "
+              },
+              "html.n00035": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 36,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00036": {
+                "tag": "section",
+                "paiRef": "html.n00013",
+                "ordem": 37,
+                "atributos": {
+                  "class": "preferences-card"
+                },
+                "texto": ""
+              },
+              "html.n00037": {
+                "tag": "#text",
+                "paiRef": "html.n00036",
+                "ordem": 38,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00038": {
+                "tag": "div",
+                "paiRef": "html.n00036",
+                "ordem": 39,
+                "atributos": {
+                  "class": "preferences-card-head"
+                },
+                "texto": ""
+              },
+              "html.n00039": {
+                "tag": "#text",
+                "paiRef": "html.n00038",
+                "ordem": 40,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00040": {
+                "tag": "div",
+                "paiRef": "html.n00038",
+                "ordem": 41,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00041": {
+                "tag": "#text",
+                "paiRef": "html.n00040",
+                "ordem": 42,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00042": {
+                "tag": "h2",
+                "paiRef": "html.n00040",
+                "ordem": 43,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00043": {
+                "tag": "#text",
+                "paiRef": "html.n00042",
+                "ordem": 44,
+                "atributos": {},
+                "texto": "Disponibilidade geral"
+              },
+              "html.n00044": {
+                "tag": "#text",
+                "paiRef": "html.n00040",
+                "ordem": 45,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00045": {
+                "tag": "p",
+                "paiRef": "html.n00040",
+                "ordem": 46,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00046": {
+                "tag": "#text",
+                "paiRef": "html.n00045",
+                "ordem": 47,
+                "atributos": {},
+                "texto": "Controle se seu perfil esta apto a receber novas solicitações"
+              },
+              "html.n00047": {
+                "tag": "#text",
+                "paiRef": "html.n00040",
+                "ordem": 48,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00048": {
+                "tag": "#text",
+                "paiRef": "html.n00038",
+                "ordem": 49,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00049": {
+                "tag": "#text",
+                "paiRef": "html.n00036",
+                "ordem": 50,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00050": {
+                "tag": "button",
+                "paiRef": "html.n00036",
+                "ordem": 51,
+                "atributos": {
+                  "class": "availability-row",
+                  "type": "button",
+                  "data-online-toggle": ""
+                },
+                "texto": ""
+              },
+              "html.n00051": {
+                "tag": "#text",
+                "paiRef": "html.n00050",
+                "ordem": 52,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00052": {
+                "tag": "span",
+                "paiRef": "html.n00050",
+                "ordem": 53,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00053": {
+                "tag": "#text",
+                "paiRef": "html.n00052",
+                "ordem": 54,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00054": {
+                "tag": "strong",
+                "paiRef": "html.n00052",
+                "ordem": 55,
+                "atributos": {
+                  "data-online-status": ""
+                },
+                "texto": ""
+              },
+              "html.n00055": {
+                "tag": "#text",
+                "paiRef": "html.n00054",
+                "ordem": 56,
+                "atributos": {},
+                "texto": "Online"
+              },
+              "html.n00056": {
+                "tag": "#text",
+                "paiRef": "html.n00052",
+                "ordem": 57,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00057": {
+                "tag": "small",
+                "paiRef": "html.n00052",
+                "ordem": 58,
+                "atributos": {
+                  "data-online-copy": ""
+                },
+                "texto": ""
+              },
+              "html.n00058": {
+                "tag": "#text",
+                "paiRef": "html.n00057",
+                "ordem": 59,
+                "atributos": {},
+                "texto": "Recebendo novas solicitações compativeis"
+              },
+              "html.n00059": {
+                "tag": "#text",
+                "paiRef": "html.n00052",
+                "ordem": 60,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00060": {
+                "tag": "#text",
+                "paiRef": "html.n00050",
+                "ordem": 61,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00061": {
+                "tag": "i",
+                "paiRef": "html.n00050",
+                "ordem": 62,
+                "atributos": {
+                  "class": "preferences-switch on",
+                  "aria-hidden": "true"
+                },
+                "texto": ""
+              },
+              "html.n00062": {
+                "tag": "b",
+                "paiRef": "html.n00061",
+                "ordem": 63,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00063": {
+                "tag": "#text",
+                "paiRef": "html.n00050",
+                "ordem": 64,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00064": {
+                "tag": "#text",
+                "paiRef": "html.n00036",
+                "ordem": 65,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00065": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 66,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00066": {
+                "tag": "section",
+                "paiRef": "html.n00013",
+                "ordem": 67,
+                "atributos": {
+                  "class": "preferences-card"
+                },
+                "texto": ""
+              },
+              "html.n00067": {
+                "tag": "#text",
+                "paiRef": "html.n00066",
+                "ordem": 68,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00068": {
+                "tag": "div",
+                "paiRef": "html.n00066",
+                "ordem": 69,
+                "atributos": {
+                  "class": "preferences-card-head"
+                },
+                "texto": ""
+              },
+              "html.n00069": {
+                "tag": "#text",
+                "paiRef": "html.n00068",
+                "ordem": 70,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00070": {
+                "tag": "div",
+                "paiRef": "html.n00068",
+                "ordem": 71,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00071": {
+                "tag": "#text",
+                "paiRef": "html.n00070",
+                "ordem": 72,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00072": {
+                "tag": "h2",
+                "paiRef": "html.n00070",
+                "ordem": 73,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00073": {
+                "tag": "#text",
+                "paiRef": "html.n00072",
+                "ordem": 74,
+                "atributos": {},
+                "texto": "Modalidades atendidas"
+              },
+              "html.n00074": {
+                "tag": "#text",
+                "paiRef": "html.n00070",
+                "ordem": 75,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00075": {
+                "tag": "p",
+                "paiRef": "html.n00070",
+                "ordem": 76,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00076": {
+                "tag": "#text",
+                "paiRef": "html.n00075",
+                "ordem": 77,
+                "atributos": {},
+                "texto": "Voce pode atender online presencialmente ou nas duas modalidades"
+              },
+              "html.n00077": {
+                "tag": "#text",
+                "paiRef": "html.n00070",
+                "ordem": 78,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00078": {
+                "tag": "#text",
+                "paiRef": "html.n00068",
+                "ordem": 79,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00079": {
+                "tag": "#text",
+                "paiRef": "html.n00066",
+                "ordem": 80,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00080": {
+                "tag": "div",
+                "paiRef": "html.n00066",
+                "ordem": 81,
+                "atributos": {
+                  "class": "modality-list"
+                },
+                "texto": ""
+              },
+              "html.n00081": {
+                "tag": "#text",
+                "paiRef": "html.n00080",
+                "ordem": 82,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00082": {
+                "tag": "label",
+                "paiRef": "html.n00080",
+                "ordem": 83,
+                "atributos": {
+                  "class": "modality-option"
+                },
+                "texto": ""
+              },
+              "html.n00083": {
+                "tag": "#text",
+                "paiRef": "html.n00082",
+                "ordem": 84,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00084": {
+                "tag": "input",
+                "paiRef": "html.n00082",
+                "ordem": 85,
+                "atributos": {
+                  "type": "checkbox",
+                  "checked": "",
+                  "data-modality": "online"
+                },
+                "texto": ""
+              },
+              "html.n00085": {
+                "tag": "#text",
+                "paiRef": "html.n00082",
+                "ordem": 86,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00086": {
+                "tag": "span",
+                "paiRef": "html.n00082",
+                "ordem": 87,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00087": {
+                "tag": "strong",
+                "paiRef": "html.n00086",
+                "ordem": 88,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00088": {
+                "tag": "#text",
+                "paiRef": "html.n00087",
+                "ordem": 89,
+                "atributos": {},
+                "texto": "Online 2"
+              },
+              "html.n00089": {
+                "tag": "small",
+                "paiRef": "html.n00086",
+                "ordem": 90,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00090": {
+                "tag": "#text",
+                "paiRef": "html.n00089",
+                "ordem": 91,
+                "atributos": {},
+                "texto": "Atendimentos remotos"
+              },
+              "html.n00091": {
+                "tag": "#text",
+                "paiRef": "html.n00082",
+                "ordem": 92,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00092": {
+                "tag": "#text",
+                "paiRef": "html.n00080",
+                "ordem": 93,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00093": {
+                "tag": "label",
+                "paiRef": "html.n00080",
+                "ordem": 94,
+                "atributos": {
+                  "class": "modality-option"
+                },
+                "texto": ""
+              },
+              "html.n00094": {
+                "tag": "#text",
+                "paiRef": "html.n00093",
+                "ordem": 95,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00095": {
+                "tag": "input",
+                "paiRef": "html.n00093",
+                "ordem": 96,
+                "atributos": {
+                  "type": "checkbox",
+                  "checked": "",
+                  "data-modality": "presential"
+                },
+                "texto": ""
+              },
+              "html.n00096": {
+                "tag": "#text",
+                "paiRef": "html.n00093",
+                "ordem": 97,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00097": {
+                "tag": "span",
+                "paiRef": "html.n00093",
+                "ordem": 98,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00098": {
+                "tag": "strong",
+                "paiRef": "html.n00097",
+                "ordem": 99,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00099": {
+                "tag": "#text",
+                "paiRef": "html.n00098",
+                "ordem": 100,
+                "atributos": {},
+                "texto": "Presencial"
+              },
+              "html.n00100": {
+                "tag": "small",
+                "paiRef": "html.n00097",
+                "ordem": 101,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00101": {
+                "tag": "#text",
+                "paiRef": "html.n00100",
+                "ordem": 102,
+                "atributos": {},
+                "texto": "Atendimentos presenciais dentro da regiao configurada abaixo"
+              },
+              "html.n00102": {
+                "tag": "#text",
+                "paiRef": "html.n00093",
+                "ordem": 103,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00103": {
+                "tag": "#text",
+                "paiRef": "html.n00080",
+                "ordem": 104,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00104": {
+                "tag": "#text",
+                "paiRef": "html.n00066",
+                "ordem": 105,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00105": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 106,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00106": {
+                "tag": "section",
+                "paiRef": "html.n00013",
+                "ordem": 107,
+                "atributos": {
+                  "class": "preferences-card",
+                  "data-presential-region": ""
+                },
+                "texto": ""
+              },
+              "html.n00107": {
+                "tag": "#text",
+                "paiRef": "html.n00106",
+                "ordem": 108,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00108": {
+                "tag": "div",
+                "paiRef": "html.n00106",
+                "ordem": 109,
+                "atributos": {
+                  "class": "preferences-card-head"
+                },
+                "texto": ""
+              },
+              "html.n00109": {
+                "tag": "#text",
+                "paiRef": "html.n00108",
+                "ordem": 110,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00110": {
+                "tag": "div",
+                "paiRef": "html.n00108",
+                "ordem": 111,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00111": {
+                "tag": "#text",
+                "paiRef": "html.n00110",
+                "ordem": 112,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00112": {
+                "tag": "h2",
+                "paiRef": "html.n00110",
+                "ordem": 113,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00113": {
+                "tag": "#text",
+                "paiRef": "html.n00112",
+                "ordem": 114,
+                "atributos": {},
+                "texto": "Regiao de atendimento presencial"
+              },
+              "html.n00114": {
+                "tag": "#text",
+                "paiRef": "html.n00110",
+                "ordem": 115,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00115": {
+                "tag": "p",
+                "paiRef": "html.n00110",
+                "ordem": 116,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00116": {
+                "tag": "#text",
+                "paiRef": "html.n00115",
+                "ordem": 117,
+                "atributos": {},
+                "texto": "Defina a localização de referencia e o alcance que deseja atende"
+              },
+              "html.n00117": {
+                "tag": "#text",
+                "paiRef": "html.n00110",
+                "ordem": 118,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00118": {
+                "tag": "#text",
+                "paiRef": "html.n00108",
+                "ordem": 119,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00119": {
+                "tag": "span",
+                "paiRef": "html.n00108",
+                "ordem": 120,
+                "atributos": {
+                  "class": "mode-badge",
+                  "data-presential-badge": ""
+                },
+                "texto": ""
+              },
+              "html.n00120": {
+                "tag": "#text",
+                "paiRef": "html.n00119",
+                "ordem": 121,
+                "atributos": {},
+                "texto": "Ativa"
+              },
+              "html.n00121": {
+                "tag": "#text",
+                "paiRef": "html.n00108",
+                "ordem": 122,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00122": {
+                "tag": "#text",
+                "paiRef": "html.n00106",
+                "ordem": 123,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00123": {
+                "tag": "div",
+                "paiRef": "html.n00106",
+                "ordem": 124,
+                "atributos": {
+                  "class": "region-grid"
+                },
+                "texto": ""
+              },
+              "html.n00124": {
+                "tag": "#text",
+                "paiRef": "html.n00123",
+                "ordem": 125,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00125": {
+                "tag": "label",
+                "paiRef": "html.n00123",
+                "ordem": 126,
+                "atributos": {
+                  "class": "preferences-field"
+                },
+                "texto": ""
+              },
+              "html.n00126": {
+                "tag": "#text",
+                "paiRef": "html.n00125",
+                "ordem": 127,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00127": {
+                "tag": "span",
+                "paiRef": "html.n00125",
+                "ordem": 128,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00128": {
+                "tag": "#text",
+                "paiRef": "html.n00127",
+                "ordem": 129,
+                "atributos": {},
+                "texto": "Cidade principal"
+              },
+              "html.n00129": {
+                "tag": "#text",
+                "paiRef": "html.n00125",
+                "ordem": 130,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00130": {
+                "tag": "input",
+                "paiRef": "html.n00125",
+                "ordem": 131,
+                "atributos": {
+                  "type": "text",
+                  "value": "São Paulo",
+                  "data-city": ""
+                },
+                "texto": ""
+              },
+              "html.n00131": {
+                "tag": "#text",
+                "paiRef": "html.n00125",
+                "ordem": 132,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00132": {
+                "tag": "#text",
+                "paiRef": "html.n00123",
+                "ordem": 133,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00133": {
+                "tag": "label",
+                "paiRef": "html.n00123",
+                "ordem": 134,
+                "atributos": {
+                  "class": "preferences-field uf-field"
+                },
+                "texto": ""
+              },
+              "html.n00134": {
+                "tag": "#text",
+                "paiRef": "html.n00133",
+                "ordem": 135,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00135": {
+                "tag": "span",
+                "paiRef": "html.n00133",
+                "ordem": 136,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00136": {
+                "tag": "#text",
+                "paiRef": "html.n00135",
+                "ordem": 137,
+                "atributos": {},
+                "texto": "UF"
+              },
+              "html.n00137": {
+                "tag": "#text",
+                "paiRef": "html.n00133",
+                "ordem": 138,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00138": {
+                "tag": "select",
+                "paiRef": "html.n00133",
+                "ordem": 139,
+                "atributos": {
+                  "data-uf": ""
+                },
+                "texto": ""
+              },
+              "html.n00139": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 140,
+                "atributos": {},
+                "texto": "\n          "
+              },
+              "html.n00140": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 141,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00141": {
+                "tag": "#text",
+                "paiRef": "html.n00140",
+                "ordem": 142,
+                "atributos": {},
+                "texto": "Ac"
+              },
+              "html.n00142": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 143,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00143": {
+                "tag": "#text",
+                "paiRef": "html.n00142",
+                "ordem": 144,
+                "atributos": {},
+                "texto": "Al"
+              },
+              "html.n00144": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 145,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00145": {
+                "tag": "#text",
+                "paiRef": "html.n00144",
+                "ordem": 146,
+                "atributos": {},
+                "texto": "Ap"
+              },
+              "html.n00146": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 147,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00147": {
+                "tag": "#text",
+                "paiRef": "html.n00146",
+                "ordem": 148,
+                "atributos": {},
+                "texto": "Am"
+              },
+              "html.n00148": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 149,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00149": {
+                "tag": "#text",
+                "paiRef": "html.n00148",
+                "ordem": 150,
+                "atributos": {},
+                "texto": "Ba"
+              },
+              "html.n00150": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 151,
+                "atributos": {},
+                "texto": "\n          "
+              },
+              "html.n00151": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 152,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00152": {
+                "tag": "#text",
+                "paiRef": "html.n00151",
+                "ordem": 153,
+                "atributos": {},
+                "texto": "Ce"
+              },
+              "html.n00153": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 154,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00154": {
+                "tag": "#text",
+                "paiRef": "html.n00153",
+                "ordem": 155,
+                "atributos": {},
+                "texto": "Df"
+              },
+              "html.n00155": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 156,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00156": {
+                "tag": "#text",
+                "paiRef": "html.n00155",
+                "ordem": 157,
+                "atributos": {},
+                "texto": "Es"
+              },
+              "html.n00157": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 158,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00158": {
+                "tag": "#text",
+                "paiRef": "html.n00157",
+                "ordem": 159,
+                "atributos": {},
+                "texto": "Go"
+              },
+              "html.n00159": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 160,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00160": {
+                "tag": "#text",
+                "paiRef": "html.n00159",
+                "ordem": 161,
+                "atributos": {},
+                "texto": "Ma"
+              },
+              "html.n00161": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 162,
+                "atributos": {},
+                "texto": "\n          "
+              },
+              "html.n00162": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 163,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00163": {
+                "tag": "#text",
+                "paiRef": "html.n00162",
+                "ordem": 164,
+                "atributos": {},
+                "texto": "Mt"
+              },
+              "html.n00164": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 165,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00165": {
+                "tag": "#text",
+                "paiRef": "html.n00164",
+                "ordem": 166,
+                "atributos": {},
+                "texto": "Ms"
+              },
+              "html.n00166": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 167,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00167": {
+                "tag": "#text",
+                "paiRef": "html.n00166",
+                "ordem": 168,
+                "atributos": {},
+                "texto": "Mg"
+              },
+              "html.n00168": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 169,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00169": {
+                "tag": "#text",
+                "paiRef": "html.n00168",
+                "ordem": 170,
+                "atributos": {},
+                "texto": "Pa"
+              },
+              "html.n00170": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 171,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00171": {
+                "tag": "#text",
+                "paiRef": "html.n00170",
+                "ordem": 172,
+                "atributos": {},
+                "texto": "Pb"
+              },
+              "html.n00172": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 173,
+                "atributos": {},
+                "texto": "\n          "
+              },
+              "html.n00173": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 174,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00174": {
+                "tag": "#text",
+                "paiRef": "html.n00173",
+                "ordem": 175,
+                "atributos": {},
+                "texto": "Pr"
+              },
+              "html.n00175": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 176,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00176": {
+                "tag": "#text",
+                "paiRef": "html.n00175",
+                "ordem": 177,
+                "atributos": {},
+                "texto": "Pe"
+              },
+              "html.n00177": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 178,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00178": {
+                "tag": "#text",
+                "paiRef": "html.n00177",
+                "ordem": 179,
+                "atributos": {},
+                "texto": "Pi"
+              },
+              "html.n00179": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 180,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00180": {
+                "tag": "#text",
+                "paiRef": "html.n00179",
+                "ordem": 181,
+                "atributos": {},
+                "texto": "Rj"
+              },
+              "html.n00181": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 182,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00182": {
+                "tag": "#text",
+                "paiRef": "html.n00181",
+                "ordem": 183,
+                "atributos": {},
+                "texto": "Rn"
+              },
+              "html.n00183": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 184,
+                "atributos": {},
+                "texto": "\n          "
+              },
+              "html.n00184": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 185,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00185": {
+                "tag": "#text",
+                "paiRef": "html.n00184",
+                "ordem": 186,
+                "atributos": {},
+                "texto": "Rs"
+              },
+              "html.n00186": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 187,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00187": {
+                "tag": "#text",
+                "paiRef": "html.n00186",
+                "ordem": 188,
+                "atributos": {},
+                "texto": "Ro"
+              },
+              "html.n00188": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 189,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00189": {
+                "tag": "#text",
+                "paiRef": "html.n00188",
+                "ordem": 190,
+                "atributos": {},
+                "texto": "Rr"
+              },
+              "html.n00190": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 191,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00191": {
+                "tag": "#text",
+                "paiRef": "html.n00190",
+                "ordem": 192,
+                "atributos": {},
+                "texto": "Sc"
+              },
+              "html.n00192": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 193,
+                "atributos": {},
+                "texto": "\n          "
+              },
+              "html.n00193": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 194,
+                "atributos": {
+                  "selected": ""
+                },
+                "texto": ""
+              },
+              "html.n00194": {
+                "tag": "#text",
+                "paiRef": "html.n00193",
+                "ordem": 195,
+                "atributos": {},
+                "texto": "Sp"
+              },
+              "html.n00195": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 196,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00196": {
+                "tag": "#text",
+                "paiRef": "html.n00195",
+                "ordem": 197,
+                "atributos": {},
+                "texto": "Se"
+              },
+              "html.n00197": {
+                "tag": "option",
+                "paiRef": "html.n00138",
+                "ordem": 198,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00198": {
+                "tag": "#text",
+                "paiRef": "html.n00197",
+                "ordem": 199,
+                "atributos": {},
+                "texto": "To"
+              },
+              "html.n00199": {
+                "tag": "#text",
+                "paiRef": "html.n00138",
+                "ordem": 200,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00200": {
+                "tag": "#text",
+                "paiRef": "html.n00133",
+                "ordem": 201,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00201": {
+                "tag": "#text",
+                "paiRef": "html.n00123",
+                "ordem": 202,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00202": {
+                "tag": "#text",
+                "paiRef": "html.n00106",
+                "ordem": 203,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00203": {
+                "tag": "label",
+                "paiRef": "html.n00106",
+                "ordem": 204,
+                "atributos": {
+                  "class": "preferences-field"
+                },
+                "texto": ""
+              },
+              "html.n00204": {
+                "tag": "#text",
+                "paiRef": "html.n00203",
+                "ordem": 205,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00205": {
+                "tag": "span",
+                "paiRef": "html.n00203",
+                "ordem": 206,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00206": {
+                "tag": "#text",
+                "paiRef": "html.n00205",
+                "ordem": 207,
+                "atributos": {},
+                "texto": "Bairro zona ou regiao de referencia"
+              },
+              "html.n00207": {
+                "tag": "#text",
+                "paiRef": "html.n00203",
+                "ordem": 208,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00208": {
+                "tag": "input",
+                "paiRef": "html.n00203",
+                "ordem": 209,
+                "atributos": {
+                  "type": "text",
+                  "value": "Centro expandido / Zona Sul",
+                  "data-region-reference": ""
+                },
+                "texto": ""
+              },
+              "html.n00209": {
+                "tag": "#text",
+                "paiRef": "html.n00203",
+                "ordem": 210,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00210": {
+                "tag": "#text",
+                "paiRef": "html.n00106",
+                "ordem": 211,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00211": {
+                "tag": "label",
+                "paiRef": "html.n00106",
+                "ordem": 212,
+                "atributos": {
+                  "class": "preferences-field"
+                },
+                "texto": ""
+              },
+              "html.n00212": {
+                "tag": "#text",
+                "paiRef": "html.n00211",
+                "ordem": 213,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00213": {
+                "tag": "span",
+                "paiRef": "html.n00211",
+                "ordem": 214,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00214": {
+                "tag": "#text",
+                "paiRef": "html.n00213",
+                "ordem": 215,
+                "atributos": {},
+                "texto": "Raio de atendimento presencial"
+              },
+              "html.n00215": {
+                "tag": "#text",
+                "paiRef": "html.n00211",
+                "ordem": 216,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00216": {
+                "tag": "div",
+                "paiRef": "html.n00211",
+                "ordem": 217,
+                "atributos": {
+                  "class": "radius-control"
+                },
+                "texto": ""
+              },
+              "html.n00217": {
+                "tag": "#text",
+                "paiRef": "html.n00216",
+                "ordem": 218,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00218": {
+                "tag": "input",
+                "paiRef": "html.n00216",
+                "ordem": 219,
+                "atributos": {
+                  "type": "number",
+                  "min": "1",
+                  "step": "1",
+                  "inputmode": "numeric",
+                  "value": "10",
+                  "data-radius-km": "",
+                  "aria-describedby": "radius-help"
+                },
+                "texto": ""
+              },
+              "html.n00219": {
+                "tag": "#text",
+                "paiRef": "html.n00216",
+                "ordem": 220,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00220": {
+                "tag": "b",
+                "paiRef": "html.n00216",
+                "ordem": 221,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00221": {
+                "tag": "#text",
+                "paiRef": "html.n00220",
+                "ordem": 222,
+                "atributos": {},
+                "texto": "Km"
+              },
+              "html.n00222": {
+                "tag": "#text",
+                "paiRef": "html.n00216",
+                "ordem": 223,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00223": {
+                "tag": "#text",
+                "paiRef": "html.n00211",
+                "ordem": 224,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00224": {
+                "tag": "small",
+                "paiRef": "html.n00211",
+                "ordem": 225,
+                "atributos": {
+                  "class": "field-help",
+                  "id": "radius-help"
+                },
+                "texto": ""
+              },
+              "html.n00225": {
+                "tag": "#text",
+                "paiRef": "html.n00224",
+                "ordem": 226,
+                "atributos": {},
+                "texto": "Informe o raio desejado o campo nao possui uma lista fixa de 5 1"
+              },
+              "html.n00226": {
+                "tag": "#text",
+                "paiRef": "html.n00211",
+                "ordem": 227,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00227": {
+                "tag": "#text",
+                "paiRef": "html.n00106",
+                "ordem": 228,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00228": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 229,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00229": {
+                "tag": "section",
+                "paiRef": "html.n00013",
+                "ordem": 230,
+                "atributos": {
+                  "class": "preferences-card"
+                },
+                "texto": ""
+              },
+              "html.n00230": {
+                "tag": "#text",
+                "paiRef": "html.n00229",
+                "ordem": 231,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00231": {
+                "tag": "div",
+                "paiRef": "html.n00229",
+                "ordem": 232,
+                "atributos": {
+                  "class": "preferences-card-head"
+                },
+                "texto": ""
+              },
+              "html.n00232": {
+                "tag": "#text",
+                "paiRef": "html.n00231",
+                "ordem": 233,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00233": {
+                "tag": "div",
+                "paiRef": "html.n00231",
+                "ordem": 234,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00234": {
+                "tag": "#text",
+                "paiRef": "html.n00233",
+                "ordem": 235,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00235": {
+                "tag": "h2",
+                "paiRef": "html.n00233",
+                "ordem": 236,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00236": {
+                "tag": "#text",
+                "paiRef": "html.n00235",
+                "ordem": 237,
+                "atributos": {},
+                "texto": "Especialidades"
+              },
+              "html.n00237": {
+                "tag": "#text",
+                "paiRef": "html.n00233",
+                "ordem": 238,
+                "atributos": {},
+                "texto": "\n        "
+              },
+              "html.n00238": {
+                "tag": "p",
+                "paiRef": "html.n00233",
+                "ordem": 239,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00239": {
+                "tag": "#text",
+                "paiRef": "html.n00238",
+                "ordem": 240,
+                "atributos": {},
+                "texto": "Selecione uma ou mais áreas o catalogo e o mesmo utilizado no on"
+              },
+              "html.n00240": {
+                "tag": "#text",
+                "paiRef": "html.n00233",
+                "ordem": 241,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00241": {
+                "tag": "#text",
+                "paiRef": "html.n00231",
+                "ordem": 242,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00242": {
+                "tag": "span",
+                "paiRef": "html.n00231",
+                "ordem": 243,
+                "atributos": {
+                  "class": "specialty-count",
+                  "data-specialty-count": ""
+                },
+                "texto": ""
+              },
+              "html.n00243": {
+                "tag": "#text",
+                "paiRef": "html.n00242",
+                "ordem": 244,
+                "atributos": {},
+                "texto": "Texto 2 selecionadas"
+              },
+              "html.n00244": {
+                "tag": "#text",
+                "paiRef": "html.n00231",
+                "ordem": 245,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00245": {
+                "tag": "#text",
+                "paiRef": "html.n00229",
+                "ordem": 246,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00246": {
+                "tag": "div",
+                "paiRef": "html.n00229",
+                "ordem": 247,
+                "atributos": {
+                  "class": "specialty-actions"
+                },
+                "texto": ""
+              },
+              "html.n00247": {
+                "tag": "#text",
+                "paiRef": "html.n00246",
+                "ordem": 248,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00248": {
+                "tag": "button",
+                "paiRef": "html.n00246",
+                "ordem": 249,
+                "atributos": {
+                  "type": "button",
+                  "class": "small-button",
+                  "data-specialty-select-all": ""
+                },
+                "texto": ""
+              },
+              "html.n00249": {
+                "tag": "#text",
+                "paiRef": "html.n00248",
+                "ordem": 250,
+                "atributos": {},
+                "texto": "Marcar todas"
+              },
+              "html.n00250": {
+                "tag": "#text",
+                "paiRef": "html.n00246",
+                "ordem": 251,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00251": {
+                "tag": "button",
+                "paiRef": "html.n00246",
+                "ordem": 252,
+                "atributos": {
+                  "type": "button",
+                  "class": "small-button",
+                  "data-specialty-clear": ""
+                },
+                "texto": ""
+              },
+              "html.n00252": {
+                "tag": "#text",
+                "paiRef": "html.n00251",
+                "ordem": 253,
+                "atributos": {},
+                "texto": "Limpar"
+              },
+              "html.n00253": {
+                "tag": "#text",
+                "paiRef": "html.n00246",
+                "ordem": 254,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00254": {
+                "tag": "#text",
+                "paiRef": "html.n00229",
+                "ordem": 255,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00255": {
+                "tag": "div",
+                "paiRef": "html.n00229",
+                "ordem": 256,
+                "atributos": {
+                  "class": "selected-specialties"
+                },
+                "texto": ""
+              },
+              "html.n00256": {
+                "tag": "#text",
+                "paiRef": "html.n00255",
+                "ordem": 257,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00257": {
+                "tag": "strong",
+                "paiRef": "html.n00255",
+                "ordem": 258,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00258": {
+                "tag": "#text",
+                "paiRef": "html.n00257",
+                "ordem": 259,
+                "atributos": {},
+                "texto": "Selecionadas"
+              },
+              "html.n00259": {
+                "tag": "#text",
+                "paiRef": "html.n00255",
+                "ordem": 260,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00260": {
+                "tag": "div",
+                "paiRef": "html.n00255",
+                "ordem": 261,
+                "atributos": {
+                  "class": "specialty-chips",
+                  "data-specialty-chips": ""
+                },
+                "texto": ""
+              },
+              "html.n00261": {
+                "tag": "#text",
+                "paiRef": "html.n00255",
+                "ordem": 262,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00262": {
+                "tag": "small",
+                "paiRef": "html.n00255",
+                "ordem": 263,
+                "atributos": {
+                  "data-specialty-empty": "",
+                  "hidden": ""
+                },
+                "texto": ""
+              },
+              "html.n00263": {
+                "tag": "#text",
+                "paiRef": "html.n00262",
+                "ordem": 264,
+                "atributos": {},
+                "texto": "Nenhuma especialidade selecionada"
+              },
+              "html.n00264": {
+                "tag": "#text",
+                "paiRef": "html.n00255",
+                "ordem": 265,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00265": {
+                "tag": "#text",
+                "paiRef": "html.n00229",
+                "ordem": 266,
+                "atributos": {},
+                "texto": "\n\n    "
+              },
+              "html.n00266": {
+                "tag": "div",
+                "paiRef": "html.n00229",
+                "ordem": 267,
+                "atributos": {
+                  "class": "specialty-grid"
+                },
+                "texto": ""
+              },
+              "html.n00267": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 268,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00268": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 269,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00269": {
+                "tag": "input",
+                "paiRef": "html.n00268",
+                "ordem": 270,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Criminal",
+                  "data-practice-area": "",
+                  "checked": ""
+                },
+                "texto": ""
+              },
+              "html.n00270": {
+                "tag": "span",
+                "paiRef": "html.n00268",
+                "ordem": 271,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00271": {
+                "tag": "#text",
+                "paiRef": "html.n00270",
+                "ordem": 272,
+                "atributos": {},
+                "texto": "Criminal"
+              },
+              "html.n00272": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 273,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00273": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 274,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00274": {
+                "tag": "input",
+                "paiRef": "html.n00273",
+                "ordem": 275,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Cível",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00275": {
+                "tag": "span",
+                "paiRef": "html.n00273",
+                "ordem": 276,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00276": {
+                "tag": "#text",
+                "paiRef": "html.n00275",
+                "ordem": 277,
+                "atributos": {},
+                "texto": "Civel"
+              },
+              "html.n00277": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 278,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00278": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 279,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00279": {
+                "tag": "input",
+                "paiRef": "html.n00278",
+                "ordem": 280,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Trabalhista",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00280": {
+                "tag": "span",
+                "paiRef": "html.n00278",
+                "ordem": 281,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00281": {
+                "tag": "#text",
+                "paiRef": "html.n00280",
+                "ordem": 282,
+                "atributos": {},
+                "texto": "Trabalhista"
+              },
+              "html.n00282": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 283,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00283": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 284,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00284": {
+                "tag": "input",
+                "paiRef": "html.n00283",
+                "ordem": 285,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Consumidor",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00285": {
+                "tag": "span",
+                "paiRef": "html.n00283",
+                "ordem": 286,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00286": {
+                "tag": "#text",
+                "paiRef": "html.n00285",
+                "ordem": 287,
+                "atributos": {},
+                "texto": "Consumidor"
+              },
+              "html.n00287": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 288,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00288": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 289,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00289": {
+                "tag": "input",
+                "paiRef": "html.n00288",
+                "ordem": 290,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Família",
+                  "data-practice-area": "",
+                  "checked": ""
+                },
+                "texto": ""
+              },
+              "html.n00290": {
+                "tag": "span",
+                "paiRef": "html.n00288",
+                "ordem": 291,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00291": {
+                "tag": "#text",
+                "paiRef": "html.n00290",
+                "ordem": 292,
+                "atributos": {},
+                "texto": "Familia"
+              },
+              "html.n00292": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 293,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00293": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 294,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00294": {
+                "tag": "input",
+                "paiRef": "html.n00293",
+                "ordem": 295,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Previdenciário",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00295": {
+                "tag": "span",
+                "paiRef": "html.n00293",
+                "ordem": 296,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00296": {
+                "tag": "#text",
+                "paiRef": "html.n00295",
+                "ordem": 297,
+                "atributos": {},
+                "texto": "Previdenciario"
+              },
+              "html.n00297": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 298,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00298": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 299,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00299": {
+                "tag": "input",
+                "paiRef": "html.n00298",
+                "ordem": 300,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Direito Intelectual",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00300": {
+                "tag": "span",
+                "paiRef": "html.n00298",
+                "ordem": 301,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00301": {
+                "tag": "#text",
+                "paiRef": "html.n00300",
+                "ordem": 302,
+                "atributos": {},
+                "texto": "Direito intelectual"
+              },
+              "html.n00302": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 303,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00303": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 304,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00304": {
+                "tag": "input",
+                "paiRef": "html.n00303",
+                "ordem": 305,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Tributário",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00305": {
+                "tag": "span",
+                "paiRef": "html.n00303",
+                "ordem": 306,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00306": {
+                "tag": "#text",
+                "paiRef": "html.n00305",
+                "ordem": 307,
+                "atributos": {},
+                "texto": "Tributario"
+              },
+              "html.n00307": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 308,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00308": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 309,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00309": {
+                "tag": "input",
+                "paiRef": "html.n00308",
+                "ordem": 310,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Trânsito",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00310": {
+                "tag": "span",
+                "paiRef": "html.n00308",
+                "ordem": 311,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00311": {
+                "tag": "#text",
+                "paiRef": "html.n00310",
+                "ordem": 312,
+                "atributos": {},
+                "texto": "Transito"
+              },
+              "html.n00312": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 313,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00313": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 314,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00314": {
+                "tag": "input",
+                "paiRef": "html.n00313",
+                "ordem": 315,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Imobiliário",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00315": {
+                "tag": "span",
+                "paiRef": "html.n00313",
+                "ordem": 316,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00316": {
+                "tag": "#text",
+                "paiRef": "html.n00315",
+                "ordem": 317,
+                "atributos": {},
+                "texto": "Imobiliario"
+              },
+              "html.n00317": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 318,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00318": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 319,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00319": {
+                "tag": "input",
+                "paiRef": "html.n00318",
+                "ordem": 320,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Bancário",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00320": {
+                "tag": "span",
+                "paiRef": "html.n00318",
+                "ordem": 321,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00321": {
+                "tag": "#text",
+                "paiRef": "html.n00320",
+                "ordem": 322,
+                "atributos": {},
+                "texto": "Bancario"
+              },
+              "html.n00322": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 323,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00323": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 324,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00324": {
+                "tag": "input",
+                "paiRef": "html.n00323",
+                "ordem": 325,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Empresarial",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00325": {
+                "tag": "span",
+                "paiRef": "html.n00323",
+                "ordem": 326,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00326": {
+                "tag": "#text",
+                "paiRef": "html.n00325",
+                "ordem": 327,
+                "atributos": {},
+                "texto": "Empresarial"
+              },
+              "html.n00327": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 328,
+                "atributos": {},
+                "texto": "\n      "
+              },
+              "html.n00328": {
+                "tag": "label",
+                "paiRef": "html.n00266",
+                "ordem": 329,
+                "atributos": {
+                  "class": "specialty-option"
+                },
+                "texto": ""
+              },
+              "html.n00329": {
+                "tag": "input",
+                "paiRef": "html.n00328",
+                "ordem": 330,
+                "atributos": {
+                  "type": "checkbox",
+                  "value": "Não sei informar",
+                  "data-practice-area": ""
+                },
+                "texto": ""
+              },
+              "html.n00330": {
+                "tag": "span",
+                "paiRef": "html.n00328",
+                "ordem": 331,
+                "atributos": {},
+                "texto": ""
+              },
+              "html.n00331": {
+                "tag": "#text",
+                "paiRef": "html.n00330",
+                "ordem": 332,
+                "atributos": {},
+                "texto": "Nao sei informar"
+              },
+              "html.n00332": {
+                "tag": "#text",
+                "paiRef": "html.n00266",
+                "ordem": 333,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00333": {
+                "tag": "#text",
+                "paiRef": "html.n00229",
+                "ordem": 334,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00334": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 335,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00335": {
+                "tag": "div",
+                "paiRef": "html.n00013",
+                "ordem": 336,
+                "atributos": {
+                  "class": "preferences-actions"
+                },
+                "texto": ""
+              },
+              "html.n00336": {
+                "tag": "#text",
+                "paiRef": "html.n00335",
+                "ordem": 337,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00337": {
+                "tag": "button",
+                "paiRef": "html.n00335",
+                "ordem": 338,
+                "atributos": {
+                  "class": "secondary-button",
+                  "type": "button",
+                  "data-action-message": "Alterações descartadas no protótipo."
+                },
+                "texto": ""
+              },
+              "html.n00338": {
+                "tag": "#text",
+                "paiRef": "html.n00337",
+                "ordem": 339,
+                "atributos": {},
+                "texto": "Cancelar"
+              },
+              "html.n00339": {
+                "tag": "#text",
+                "paiRef": "html.n00335",
+                "ordem": 340,
+                "atributos": {},
+                "texto": "\n    "
+              },
+              "html.n00340": {
+                "tag": "button",
+                "paiRef": "html.n00335",
+                "ordem": 341,
+                "atributos": {
+                  "class": "primary-button",
+                  "type": "button",
+                  "data-save-preferences": ""
+                },
+                "texto": ""
+              },
+              "html.n00341": {
+                "tag": "#text",
+                "paiRef": "html.n00340",
+                "ordem": 342,
+                "atributos": {},
+                "texto": "Salvar alterações"
+              },
+              "html.n00342": {
+                "tag": "#text",
+                "paiRef": "html.n00335",
+                "ordem": 343,
+                "atributos": {},
+                "texto": "\n  "
+              },
+              "html.n00343": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 344,
+                "atributos": {},
+                "texto": "\n\n  "
+              },
+              "html.n00344": {
+                "tag": "div",
+                "paiRef": "html.n00013",
+                "ordem": 345,
+                "atributos": {
+                  "class": "op-toast",
+                  "role": "status",
+                  "aria-live": "polite"
+                },
+                "texto": ""
+              },
+              "html.n00345": {
+                "tag": "#text",
+                "paiRef": "html.n00013",
+                "ordem": 346,
+                "atributos": {},
+                "texto": "\n"
+              },
+              "html.n00346": {
+                "tag": "#text",
+                "paiRef": "html.n00012",
+                "ordem": 347,
+                "atributos": {},
+                "texto": "\n"
+              }
+            }
+          },
+          "css": {
+            "regras": {
+              "css.base": ":host {\r\n  display: block;\r\n  width: 100%;\r\n  color: var(--text, #172033);\r\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\r\n}\r\n*, *::before, *::after { box-sizing: border-box; }\r\nbutton, input, select, textarea { font: inherit; }\r\nbutton { -webkit-tap-highlight-color: transparent; }\r\na { color: inherit; text-decoration: none; }\r\n[hidden] { display: none !important; }\r\n\n\r\n\r\n:root {\r\n  --primary: #10233f;\r\n  --primary-soft: #173c6b;\r\n  --gold: #b88932;\r\n  --page: #eef2f6;\r\n  --surface: #fff;\r\n  --line: #dbe3ee;\r\n  --text: #172033;\r\n  --muted: #667085;\r\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\r\n}\r\n* {\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  min-width: 320px;\r\n  min-height: 100dvh;\r\n  margin: 0;\r\n  background: var(--page);\r\n  color: var(--text);\r\n}\r\na {\r\n  color: inherit;\r\n  text-decoration: none;\r\n}\r\nbutton,\r\ninput {\r\n  font: inherit;\r\n}\r\n.screen {\r\n  display: none;\r\n  width: 100%;\r\n  min-height: 100dvh;\r\n}\r\n.screen.active {\r\n  display: block;\r\n  animation: fade 0.28s ease;\r\n}\r\n@keyframes fade {\r\n  from {\r\n    opacity: 0;\r\n    transform: translateY(8px);\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    transform: none;\r\n  }\r\n}\r\n.open-index {\r\n  position: fixed;\r\n  z-index: 20;\r\n  right: 18px;\r\n  bottom: 18px;\r\n  border: 0;\r\n  border-radius: 999px;\r\n  padding: 10px 14px;\r\n  background: rgba(17, 24, 39, 0.82);\r\n  color: #fff;\r\n  font-weight: 800;\r\n  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);\r\n  cursor: pointer;\r\n}\r\n.open-index span {\r\n  display: inline-grid;\r\n  min-width: 18px;\r\n  place-items: center;\r\n  border-radius: 50%;\r\n  background: #fff;\r\n  color: var(--primary);\r\n  font-size: 11px;\r\n}\r\n.sheet {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 30;\r\n  display: none;\r\n}\r\n.sheet.open {\r\n  display: block;\r\n}\r\n.sheet-backdrop {\r\n  position: absolute;\r\n  inset: 0;\r\n  background: rgba(15, 23, 42, 0.5);\r\n}\r\n.sheet-panel {\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  max-height: 72dvh;\r\n  overflow: auto;\r\n  border-radius: 20px 20px 0 0;\r\n  background: #fff;\r\n  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.2);\r\n}\r\n.sheet-head {\r\n  position: sticky;\r\n  top: 0;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding: 16px 18px;\r\n  border-bottom: 1px solid var(--line);\r\n  background: #fff;\r\n}\r\n.sheet-head button {\r\n  border: 0;\r\n  background: transparent;\r\n  color: var(--primary);\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.screen-link {\r\n  display: flex;\r\n  width: 100%;\r\n  gap: 12px;\r\n  align-items: center;\r\n  border: 0;\r\n  border-bottom: 1px solid var(--line);\r\n  padding: 15px 18px;\r\n  background: #fff;\r\n  text-align: left;\r\n  color: var(--text);\r\n  cursor: pointer;\r\n}\r\n.screen-link:hover {\r\n  background: #f8fafc;\r\n}\r\n.screen-link .number {\r\n  display: grid;\r\n  width: 28px;\r\n  height: 28px;\r\n  place-items: center;\r\n  border-radius: 50%;\r\n  background: #e8eef5;\r\n  color: var(--primary);\r\n  font-size: 11px;\r\n  font-weight: 900;\r\n}\r\n.screen-link.active {\r\n  background: #eef5ff;\r\n}\r\n.mark {\r\n  display: grid;\r\n  width: 76px;\r\n  height: 76px;\r\n  margin: auto;\r\n  place-items: center;\r\n  border-radius: 24px;\r\n  background: var(--primary);\r\n  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);\r\n}\r\n.mark img {\r\n  width: 54%;\r\n  height: 54%;\r\n  object-fit: contain;\r\n}\r\n.splash {\r\n  display: grid;\r\n  width: 100%;\r\n  min-height: 100dvh;\r\n  padding: 28px;\r\n  place-items: center;\r\n  color: #fff;\r\n  background: radial-gradient(\r\n    circle at 50% 20%,\r\n    #284e7d 0,\r\n    var(--primary) 48%,\r\n    #08172d 100%\r\n  );\r\n}\r\n.splash > div {\r\n  text-align: center;\r\n}\r\n.splash button {\r\n  border: 0;\r\n  background: transparent;\r\n  color: inherit;\r\n  cursor: pointer;\r\n  text-align: center;\r\n}\r\n.splash h1 {\r\n  margin: 22px 0 0;\r\n  font-size: clamp(30px, 8vw, 46px);\r\n  line-height: 1;\r\n  letter-spacing: -0.04em;\r\n}\r\n.welcome {\r\n  display: flex;\r\n  flex-direction: column;\r\n  background: var(--surface);\r\n}\r\n.welcome__image {\r\n  min-height: 38dvh;\r\n  overflow: hidden;\r\n  background: #dce7f4;\r\n}\r\n.welcome__image img {\r\n  display: block;\r\n  width: 100%;\r\n  min-height: 38dvh;\r\n  height: 100%;\r\n  object-fit: cover;\r\n  object-position: top center;\r\n}\r\n.welcome__copy {\r\n  display: flex;\r\n  flex: 1;\r\n  flex-direction: column;\r\n  padding: 30px 24px 26px;\r\n}\r\n.eyebrow {\r\n  margin: 0 0 10px;\r\n  color: var(--gold);\r\n  font-size: 12px;\r\n  font-weight: 800;\r\n  letter-spacing: 0.09em;\r\n  text-transform: uppercase;\r\n}\r\n.welcome h1 {\r\n  margin: 0;\r\n  color: var(--primary);\r\n  font-size: clamp(28px, 7vw, 46px);\r\n  line-height: 1.08;\r\n  letter-spacing: -0.035em;\r\n}\r\n.welcome__copy > p:not(.eyebrow) {\r\n  margin: 15px 0 26px;\r\n  color: var(--muted);\r\n  line-height: 1.6;\r\n}\r\n.grow {\r\n  flex: 1;\r\n}\r\n.button {\r\n  display: grid;\r\n  width: 100%;\r\n  min-height: 54px;\r\n  place-items: center;\r\n  border: 0;\r\n  border-radius: 13px;\r\n  padding: 14px 18px;\r\n  background: var(--primary);\r\n  color: #fff;\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.login {\r\n  min-height: 100dvh;\r\n  background: var(--page);\r\n}\r\n.topbar {\r\n  min-height: 64px;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  padding: 10px 18px;\r\n  color: #fff;\r\n  background: var(--primary);\r\n  font-weight: 800;\r\n}\r\n.topbar img {\r\n  width: 26px;\r\n  height: 26px;\r\n  object-fit: contain;\r\n  filter: brightness(0) invert(1);\r\n}\r\n.login__shell {\r\n  width: min(100%, 520px);\r\n  margin: auto;\r\n  padding: 28px 20px 48px;\r\n}\r\n.login__brand {\r\n  margin: 8px 0 24px;\r\n  text-align: center;\r\n}\r\n.login__brand .mark {\r\n  width: 64px;\r\n  height: 64px;\r\n  margin: 0 auto 16px;\r\n  border-radius: 21px;\r\n}\r\n.login h1 {\r\n  margin: 0;\r\n  color: var(--primary);\r\n  font-size: 27px;\r\n}\r\n.login__brand p {\r\n  margin: 8px 0 0;\r\n  color: var(--muted);\r\n  font-size: 14px;\r\n}\r\n.card {\r\n  padding: 20px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 18px;\r\n  background: #fff;\r\n}\r\n.field {\r\n  position: relative;\r\n  margin-bottom: 14px;\r\n}\r\n.field input {\r\n  width: 100%;\r\n  min-height: 57px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 12px;\r\n  padding: 22px 14px 9px;\r\n  outline: 0;\r\n}\r\n.field label {\r\n  position: absolute;\r\n  top: 8px;\r\n  left: 14px;\r\n  color: var(--primary);\r\n  font-size: 10px;\r\n  font-weight: 800;\r\n}\r\n.help {\r\n  display: inline-block;\r\n  margin: 2px 0 14px;\r\n  color: var(--primary);\r\n  font-size: 13px;\r\n  font-weight: 800;\r\n}\r\n.divider {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  margin: 20px 0 12px;\r\n  color: var(--muted);\r\n  font-size: 12px;\r\n}\r\n.divider::before,\r\n.divider::after {\r\n  height: 1px;\r\n  flex: 1;\r\n  background: var(--line);\r\n  content: \"\";\r\n}\r\n.secondary {\r\n  width: 100%;\r\n  min-height: 50px;\r\n  margin-top: 9px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 12px;\r\n  background: #fff;\r\n  color: var(--primary);\r\n  font-weight: 800;\r\n}\r\n.signup {\r\n  margin: 20px 0 0;\r\n  color: var(--muted);\r\n  text-align: center;\r\n  font-size: 13px;\r\n}\r\n.signup a {\r\n  color: var(--primary);\r\n  font-weight: 800;\r\n}\r\n.status {\r\n  min-height: 20px;\r\n  margin: 12px 0 0;\r\n  color: var(--primary);\r\n  text-align: center;\r\n  font-size: 12px;\r\n  font-weight: 700;\r\n}\r\n@media (min-width: 700px) {\r\n  .welcome {\r\n    min-height: 100dvh;\r\n    padding: 34px;\r\n    background: #e9eff6;\r\n  }\r\n  .welcome__layout {\r\n    width: min(1080px, 100%);\r\n    min-height: min(680px, calc(100dvh - 68px));\r\n    margin: auto;\r\n    display: grid;\r\n    grid-template-columns: 1.08fr 0.92fr;\r\n    overflow: hidden;\r\n    border: 1px solid var(--line);\r\n    border-radius: 20px;\r\n    background: #fff;\r\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.14);\r\n  }\r\n  .welcome__image,\r\n  .welcome__image img {\r\n    min-height: 0;\r\n    height: 100%;\r\n  }\r\n  .welcome__copy {\r\n    padding: clamp(42px, 6vw, 76px);\r\n  }\r\n  .login__shell {\r\n    padding-top: 54px;\r\n  }\r\n  .card {\r\n    padding: 28px;\r\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.14);\r\n  }\r\n}\r\n.screen-link .number {\r\n  width: auto;\r\n  min-width: 46px;\r\n  padding: 0 7px;\r\n  border-radius: 999px;\r\n}\r\n.screen-meta {\r\n  display: flex;\r\n  min-width: 0;\r\n  flex-direction: column;\r\n  gap: 3px;\r\n}\r\n.screen-meta strong {\r\n  font-size: 14px;\r\n}\r\n.screen-meta small {\r\n  color: var(--muted);\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n}\r\n\r\n\r\n.registration {\r\n  min-height: 100dvh;\r\n  background: var(--page);\r\n}\r\n.registration__shell {\r\n  width: min(100%, 620px);\r\n  margin: 0 auto;\r\n  padding: 24px 18px 48px;\r\n}\r\n.registration__intro {\r\n  margin: 2px 2px 18px;\r\n}\r\n.registration__intro h1,\r\n.registration--success h1 {\r\n  margin: 0;\r\n  color: var(--primary);\r\n  font-size: clamp(25px, 7vw, 34px);\r\n  line-height: 1.12;\r\n  letter-spacing: -0.025em;\r\n}\r\n.registration__intro > p:not(.eyebrow),\r\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status) {\r\n  margin: 10px 0 0;\r\n  color: var(--muted);\r\n  font-size: 14px;\r\n  line-height: 1.58;\r\n}\r\n.progress {\r\n  height: 5px;\r\n  margin: 0 2px 18px;\r\n  overflow: hidden;\r\n  border-radius: 999px;\r\n  background: #dce4ed;\r\n}\r\n.progress span {\r\n  display: block;\r\n  height: 100%;\r\n  border-radius: inherit;\r\n  background: var(--gold);\r\n}\r\n.form-card {\r\n  padding: 18px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 18px;\r\n  background: var(--surface);\r\n}\r\n.form-card .field:last-of-type {\r\n  margin-bottom: 0;\r\n}\r\n.form-card .field input,\r\n.form-card .select-field select {\r\n  background: #fff;\r\n  color: var(--text);\r\n}\r\n.select-field {\r\n  position: relative;\r\n  margin-bottom: 14px;\r\n}\r\n.select-field label {\r\n  position: absolute;\r\n  z-index: 1;\r\n  top: 8px;\r\n  left: 14px;\r\n  color: var(--primary);\r\n  font-size: 10px;\r\n  font-weight: 800;\r\n  pointer-events: none;\r\n}\r\n.select-field select {\r\n  width: 100%;\r\n  min-height: 57px;\r\n  appearance: auto;\r\n  border: 1px solid var(--line);\r\n  border-radius: 12px;\r\n  padding: 22px 40px 9px 14px;\r\n  outline: 0;\r\n  cursor: pointer;\r\n}\r\n.field-grid {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  gap: 0;\r\n}\r\n.choice-group {\r\n  display: grid;\r\n  gap: 10px;\r\n  margin: 0;\r\n  padding: 0;\r\n  border: 0;\r\n}\r\n.choice-group legend {\r\n  margin-bottom: 10px;\r\n  color: var(--primary);\r\n  font-size: 12px;\r\n  font-weight: 800;\r\n}\r\n.choice-card {\r\n  display: grid;\r\n  grid-template-columns: auto 1fr auto;\r\n  gap: 12px;\r\n  align-items: center;\r\n  min-height: 78px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 14px;\r\n  padding: 14px;\r\n  cursor: pointer;\r\n  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;\r\n}\r\n.choice-card:has(input:checked) {\r\n  border-color: var(--primary-soft);\r\n  background: #f3f7fc;\r\n  box-shadow: inset 0 0 0 1px rgba(23, 60, 107, .16);\r\n}\r\n.choice-card input {\r\n  width: 18px;\r\n  height: 18px;\r\n  accent-color: var(--primary);\r\n}\r\n.choice-card span {\r\n  min-width: 0;\r\n}\r\n.choice-card strong,\r\n.choice-card small {\r\n  display: block;\r\n}\r\n.choice-card strong {\r\n  color: var(--primary);\r\n  font-size: 14px;\r\n}\r\n.choice-card small {\r\n  margin-top: 4px;\r\n  color: var(--muted);\r\n  font-size: 12px;\r\n  line-height: 1.45;\r\n}\r\n.choice-card b {\r\n  color: var(--primary-soft);\r\n  font-size: 24px;\r\n  font-weight: 500;\r\n}\r\n.form-note {\r\n  display: flex;\r\n  gap: 8px;\r\n  margin: 16px 0 0;\r\n  border-radius: 12px;\r\n  padding: 12px 13px;\r\n  background: #f3f6fa;\r\n  color: var(--muted);\r\n  font-size: 11px;\r\n  line-height: 1.5;\r\n}\r\n.form-note strong {\r\n  flex: 0 0 auto;\r\n  color: var(--primary);\r\n}\r\n.form-actions {\r\n  display: grid;\r\n  grid-template-columns: minmax(96px, .7fr) 1.3fr;\r\n  gap: 10px;\r\n  margin-top: 20px;\r\n}\r\n.form-actions.single {\r\n  grid-template-columns: 1fr;\r\n}\r\n.secondary-action {\r\n  min-height: 54px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 13px;\r\n  padding: 14px 16px;\r\n  background: #fff;\r\n  color: var(--primary);\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.form-status {\r\n  min-height: 18px;\r\n  margin: 10px 0 0;\r\n  color: #9b2c2c;\r\n  text-align: center;\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n}\r\n.upload-field {\r\n  position: relative;\r\n  display: grid;\r\n  grid-template-columns: 1fr auto;\r\n  gap: 8px 12px;\r\n  align-items: center;\r\n  margin: 4px 0 14px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 12px;\r\n  padding: 13px 14px;\r\n  cursor: pointer;\r\n}\r\n.upload-field input {\r\n  position: absolute;\r\n  width: 1px;\r\n  height: 1px;\r\n  opacity: 0;\r\n  pointer-events: none;\r\n}\r\n.upload-field strong,\r\n.upload-field small,\r\n.upload-field em {\r\n  display: block;\r\n}\r\n.upload-field strong {\r\n  color: var(--primary);\r\n  font-size: 13px;\r\n}\r\n.upload-field small,\r\n.upload-field em {\r\n  color: var(--muted);\r\n  font-size: 10px;\r\n  font-style: normal;\r\n}\r\n.upload-field em {\r\n  grid-column: 1 / -1;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n.upload-button {\r\n  border-radius: 9px;\r\n  padding: 9px 10px;\r\n  background: #eef3f8;\r\n  color: var(--primary);\r\n  font-size: 11px;\r\n  font-weight: 800;\r\n}\r\n.legal-links {\r\n  display: grid;\r\n  gap: 8px;\r\n  margin-bottom: 14px;\r\n}\r\n.legal-link {\r\n  display: flex;\r\n  width: 100%;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  border: 1px solid var(--line);\r\n  border-radius: 12px;\r\n  padding: 13px 14px;\r\n  background: #fff;\r\n  color: var(--primary);\r\n  text-align: left;\r\n  cursor: pointer;\r\n}\r\n.legal-link strong,\r\n.legal-link small {\r\n  display: block;\r\n}\r\n.legal-link small {\r\n  margin-top: 3px;\r\n  color: var(--muted);\r\n  font-size: 10px;\r\n  font-weight: 500;\r\n}\r\n.legal-link b {\r\n  font-size: 22px;\r\n  font-weight: 500;\r\n}\r\n.check-row {\r\n  display: grid;\r\n  grid-template-columns: auto 1fr;\r\n  gap: 10px;\r\n  align-items: start;\r\n  color: var(--text);\r\n  font-size: 12px;\r\n  line-height: 1.5;\r\n  cursor: pointer;\r\n}\r\n.check-row input {\r\n  width: 18px;\r\n  height: 18px;\r\n  margin: 1px 0 0;\r\n  accent-color: var(--primary);\r\n}\r\n.link-button {\r\n  border: 0;\r\n  padding: 0;\r\n  background: transparent;\r\n  color: var(--primary);\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.review-section + .review-section {\r\n  margin-top: 18px;\r\n  padding-top: 18px;\r\n  border-top: 1px solid var(--line);\r\n}\r\n.review-section__head {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  margin-bottom: 8px;\r\n}\r\n.review-section__head strong {\r\n  color: var(--primary);\r\n  font-size: 14px;\r\n}\r\n.review-section__head button {\r\n  border: 0;\r\n  padding: 5px 0;\r\n  background: transparent;\r\n  color: var(--primary-soft);\r\n  font-size: 11px;\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.review-section dl {\r\n  margin: 0;\r\n}\r\n.review-section dl > div {\r\n  display: grid;\r\n  grid-template-columns: minmax(92px, .55fr) 1.45fr;\r\n  gap: 10px;\r\n  padding: 8px 0;\r\n}\r\n.review-section dt {\r\n  color: var(--muted);\r\n  font-size: 11px;\r\n}\r\n.review-section dd {\r\n  margin: 0;\r\n  overflow-wrap: anywhere;\r\n  color: var(--text);\r\n  font-size: 12px;\r\n  font-weight: 700;\r\n}\r\n.registration--success .success-shell {\r\n  min-height: calc(100dvh - 64px);\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  padding-top: 36px;\r\n  padding-bottom: 60px;\r\n  text-align: center;\r\n}\r\n.success-mark {\r\n  display: grid;\r\n  width: 74px;\r\n  height: 74px;\r\n  margin: 0 auto 18px;\r\n  place-items: center;\r\n  border-radius: 50%;\r\n  background: var(--primary);\r\n  color: #fff;\r\n  font-size: 34px;\r\n  font-weight: 800;\r\n  box-shadow: 0 12px 28px rgba(16, 35, 63, .18);\r\n}\r\n.registration--success .form-note {\r\n  margin: 24px 0 18px;\r\n  text-align: left;\r\n}\r\n.text-action {\r\n  margin-top: 12px;\r\n  border: 0;\r\n  background: transparent;\r\n  color: var(--primary);\r\n  font-size: 12px;\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n@media (min-width: 520px) {\r\n  .field-grid {\r\n    grid-template-columns: 1fr 1fr;\r\n    gap: 12px;\r\n  }\r\n}\r\n@media (min-width: 700px) {\r\n  .registration__shell {\r\n    padding-top: 38px;\r\n    padding-bottom: 64px;\r\n  }\r\n  .form-card {\r\n    padding: 26px;\r\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.10);\r\n  }\r\n}\r\n\r\n\r\n\r\n\r\n.professional-onboarding { min-height: 100dvh; background: var(--page); }\r\n.professional-onboarding .registration__shell { width: min(100%, 680px); }\r\n.form-card textarea { width:100%; min-height:118px; resize:vertical; border:1px solid var(--line); border-radius:12px; padding:24px 14px 12px; background:#fff; color:var(--text); font:inherit; line-height:1.5; outline:0; }\r\n.textarea-field { position:relative; margin-bottom:14px; }\r\n.textarea-field label { position:absolute; z-index:1; top:8px; left:14px; color:var(--primary); font-size:10px; font-weight:800; pointer-events:none; }\r\n.toggle-grid { display:grid; gap:10px; margin:0 0 14px; }\r\n.toggle-card { display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center; min-height:72px; border:1px solid var(--line); border-radius:14px; padding:14px; background:#fff; }\r\n.toggle-card strong,.toggle-card small{display:block}.toggle-card small{margin-top:4px;color:var(--muted);line-height:1.4}.toggle-card input{width:20px;height:20px;accent-color:var(--primary)}\r\n.multi-select{position:relative;margin-bottom:14px}.multi-select summary{position:relative;min-height:62px;list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:25px 42px 9px 14px;background:#fff;color:var(--text)}.multi-select summary::-webkit-details-marker{display:none}.multi-select summary::after{position:absolute;right:16px;top:50%;content:'▼';color:var(--primary);font-size:12px;transform:translateY(-50%);transition:transform .18s ease}.multi-select[open] summary::after{transform:translateY(-50%) rotate(180deg)}\r\n.multi-select__label{position:absolute;z-index:1;top:8px;left:14px;color:var(--primary);font-size:10px;font-weight:800;pointer-events:none}.multi-select__value{display:block;overflow:hidden;color:var(--text);text-overflow:ellipsis;white-space:nowrap}.multi-select__panel{display:grid;gap:0;max-height:300px;overflow:auto;margin-top:7px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 12px 28px rgba(16,35,63,.14)}.multi-select__option{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;min-height:46px;padding:10px 13px;border-bottom:1px solid #edf1f5;cursor:pointer}.multi-select__option:last-child{border-bottom:0}.multi-select__option:hover{background:#f7f9fc}.multi-select__option input{width:18px;height:18px;accent-color:var(--primary)}\r\n.inline-note{margin:0 0 14px;padding:12px 14px;border-left:3px solid var(--gold);border-radius:10px;background:#fff8e7;color:#614617;font-size:12px;line-height:1.5}.office-card[hidden],.review-section[data-office-review][hidden]{display:none}.status-pill{display:inline-flex;align-items:center;min-height:28px;margin-top:10px;border-radius:999px;padding:5px 10px;background:#edf4ff;color:var(--primary);font-size:11px;font-weight:800}\r\n@media(min-width:700px){.professional-onboarding .form-card{padding:26px}.field-grid.two{grid-template-columns:1fr 1fr;gap:14px}}\r\n\r\n\r\n\r\n\r\n.operational {\r\n  min-height: 100dvh;\r\n  background: var(--page);\r\n  padding-bottom: 78px;\r\n}\r\n.app-header {\r\n  position: sticky;\r\n  top: 0;\r\n  z-index: 12;\r\n  min-height: 62px;\r\n  display: grid;\r\n  grid-template-columns: 42px 1fr auto;\r\n  gap: 10px;\r\n  align-items: center;\r\n  padding: 8px 14px;\r\n  background: var(--primary);\r\n  color: #fff;\r\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\r\n}\r\n.app-menu-button {\r\n  width: 40px;\r\n  height: 40px;\r\n  display: grid;\r\n  place-content: center;\r\n  gap: 4px;\r\n  border: 0;\r\n  border-radius: 10px;\r\n  background: transparent;\r\n  color: #fff;\r\n  cursor: pointer;\r\n}\r\n.app-menu-button span {\r\n  width: 20px;\r\n  height: 2px;\r\n  border-radius: 9px;\r\n  background: currentColor;\r\n}\r\n.app-brand {\r\n  min-width: 0;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 8px;\r\n  font-size: 16px;\r\n  letter-spacing: -.02em;\r\n}\r\n.app-brand img {\r\n  width: 27px;\r\n  height: 27px;\r\n  object-fit: contain;\r\n  filter: brightness(0) invert(1);\r\n}\r\n.app-role {\r\n  font-size: 10px;\r\n  font-weight: 800;\r\n  opacity: .8;\r\n  text-transform: uppercase;\r\n  letter-spacing: .06em;\r\n}\r\n.app-titlebar {\r\n  padding: 10px 18px;\r\n  border-bottom: 1px solid var(--line);\r\n  background: #fff;\r\n  color: var(--primary);\r\n  font-size: 13px;\r\n}\r\n.op-shell {\r\n  width: min(100%, 720px);\r\n  margin: 0 auto;\r\n  padding: 22px 16px 36px;\r\n}\r\n.op-shell > .eyebrow {\r\n  margin: 0 0 7px;\r\n}\r\n.op-intro {\r\n  margin: 0 0 18px;\r\n  color: var(--muted);\r\n  font-size: 14px;\r\n  line-height: 1.55;\r\n}\r\n.op-hero {\r\n  margin-bottom: 14px;\r\n  padding: 19px;\r\n  border-radius: 18px;\r\n  background: linear-gradient(135deg, var(--primary), var(--primary-soft));\r\n  color: #fff;\r\n}\r\n.op-hero h1 {\r\n  margin: 0;\r\n  font-size: 24px;\r\n  line-height: 1.15;\r\n}\r\n.op-hero p {\r\n  margin: 7px 0 0;\r\n  color: #dce7f4;\r\n  line-height: 1.5;\r\n}\r\n.op-card {\r\n  margin-bottom: 12px;\r\n  padding: 17px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 16px;\r\n  background: #fff;\r\n}\r\n.op-card h2, .op-card h3 {\r\n  margin: 0;\r\n  color: var(--primary);\r\n}\r\n.op-card h2 { font-size: 18px; }\r\n.op-card h3 { font-size: 15px; }\r\n.op-card p {\r\n  margin: 7px 0 0;\r\n  color: var(--muted);\r\n  font-size: 13px;\r\n  line-height: 1.5;\r\n}\r\n.op-grid {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  gap: 10px;\r\n}\r\n.op-action {\r\n  width: 100%;\r\n  min-height: 78px;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  gap: 14px;\r\n  align-items: center;\r\n  border: 1px solid var(--line);\r\n  border-radius: 15px;\r\n  padding: 14px 15px;\r\n  background: #fff;\r\n  color: var(--text);\r\n  text-align: left;\r\n  cursor: pointer;\r\n}\r\n.op-action strong, .op-action small { display: block; }\r\n.op-action strong { color: var(--primary); font-size: 14px; }\r\n.op-action small { margin-top: 4px; color: var(--muted); line-height: 1.35; }\r\n.op-action::after {\r\n  content: \"›\";\r\n  color: var(--gold);\r\n  font-size: 24px;\r\n  font-weight: 800;\r\n}\r\n.online-card {\r\n  display: flex;\r\n  gap: 12px;\r\n  align-items: center;\r\n  border-color: #a8dfc8;\r\n  background: #f1fbf6;\r\n}\r\n.online-card.is-offline {\r\n  border-color: var(--line);\r\n  background: #f8fafc;\r\n}\r\n.online-dot {\r\n  width: 9px;\r\n  height: 9px;\r\n  flex: 0 0 auto;\r\n  border-radius: 50%;\r\n  background: #15945e;\r\n  box-shadow: 0 0 0 4px rgba(21,148,94,.12);\r\n}\r\n.is-offline .online-dot {\r\n  background: #98a2b3;\r\n  box-shadow: none;\r\n}\r\n.status-chip {\r\n  display: inline-flex;\r\n  align-items: center;\r\n  gap: 6px;\r\n  margin-top: 10px;\r\n  border-radius: 999px;\r\n  padding: 6px 9px;\r\n  background: #edf3fa;\r\n  color: var(--primary);\r\n  font-size: 10px;\r\n  font-weight: 900;\r\n  text-transform: uppercase;\r\n}\r\n.status-chip.waiting { background: #fff4d9; color: #7a5400; }\r\n.status-chip.ok { background: #e5f7ee; color: #08744e; }\r\n.status-chip.danger { background: #feeceb; color: #b42318; }\r\n.op-tabs {\r\n  display: grid;\r\n  grid-template-columns: repeat(3, 1fr);\r\n  gap: 7px;\r\n  margin-bottom: 12px;\r\n}\r\n.op-tabs button {\r\n  min-height: 42px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 10px;\r\n  background: #fff;\r\n  color: var(--muted);\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.op-tabs button.active {\r\n  border-color: var(--primary);\r\n  background: var(--primary);\r\n  color: #fff;\r\n}\r\n.meta-list {\r\n  display: grid;\r\n  gap: 8px;\r\n  margin-top: 12px;\r\n}\r\n.meta-row {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  gap: 16px;\r\n  padding-top: 9px;\r\n  border-top: 1px solid #edf0f4;\r\n  font-size: 12px;\r\n}\r\n.meta-row span { color: var(--muted); }\r\n.meta-row strong { color: var(--primary); text-align: right; }\r\n.op-buttons {\r\n  display: grid;\r\n  gap: 9px;\r\n  margin-top: 14px;\r\n}\r\n.op-buttons.inline {\r\n  grid-template-columns: 1fr 1fr;\r\n}\r\n.op-secondary, .op-danger {\r\n  min-height: 48px;\r\n  border-radius: 12px;\r\n  padding: 12px 14px;\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.op-secondary {\r\n  border: 1px solid var(--line);\r\n  background: #fff;\r\n  color: var(--primary);\r\n}\r\n.op-danger {\r\n  border: 1px solid #f1b6b2;\r\n  background: #fff5f4;\r\n  color: #b42318;\r\n}\r\n.op-empty {\r\n  padding: 28px 16px;\r\n  border: 1px dashed #cbd5e1;\r\n  border-radius: 14px;\r\n  background: #f8fafc;\r\n  color: var(--muted);\r\n  text-align: center;\r\n  font-size: 13px;\r\n}\r\n.op-form {\r\n  display: grid;\r\n  gap: 12px;\r\n}\r\n.op-form label {\r\n  display: grid;\r\n  gap: 6px;\r\n  color: var(--primary);\r\n  font-size: 11px;\r\n  font-weight: 800;\r\n}\r\n.op-form input, .op-form select, .op-form textarea {\r\n  width: 100%;\r\n  min-height: 48px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 11px;\r\n  padding: 11px 12px;\r\n  background: #fff;\r\n  color: var(--text);\r\n  font: inherit;\r\n}\r\n.op-form textarea { min-height: 110px; resize: vertical; }\r\n.switch-row {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  gap: 14px;\r\n  align-items: center;\r\n  padding: 13px 0;\r\n  border-bottom: 1px solid #edf0f4;\r\n}\r\n.switch-row:last-child { border-bottom: 0; }\r\n.switch-row strong, .switch-row small { display: block; }\r\n.switch-row small { margin-top: 3px; color: var(--muted); font-size: 11px; }\r\n.prototype-switch {\r\n  position: relative;\r\n  width: 46px;\r\n  height: 26px;\r\n  flex: 0 0 auto;\r\n  border: 0;\r\n  border-radius: 999px;\r\n  background: #15945e;\r\n  cursor: pointer;\r\n}\r\n.prototype-switch::after {\r\n  position: absolute;\r\n  top: 3px;\r\n  right: 3px;\r\n  width: 20px;\r\n  height: 20px;\r\n  border-radius: 50%;\r\n  background: #fff;\r\n  content: \"\";\r\n  box-shadow: 0 2px 5px rgba(0,0,0,.18);\r\n}\r\n.prototype-switch.is-offline { background: #cbd5e1; }\r\n.prototype-switch.is-offline::after { right: 23px; }\r\n.day-list {\r\n  display: grid;\r\n  gap: 7px;\r\n}\r\n.day-list label {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  min-height: 49px;\r\n  border: 1px solid var(--line);\r\n  border-radius: 11px;\r\n  padding: 10px 12px;\r\n  background: #fff;\r\n  color: var(--primary);\r\n  font-weight: 800;\r\n}\r\n.day-list input { width: 19px; height: 19px; accent-color: var(--primary); }\r\n.radius-value {\r\n  margin: 4px 0 14px;\r\n  color: var(--primary);\r\n  text-align: center;\r\n  font-size: 38px;\r\n  font-weight: 900;\r\n}\r\n.radius-value small { font-size: 14px; color: var(--muted); }\r\n.profile-head {\r\n  display: flex;\r\n  gap: 13px;\r\n  align-items: center;\r\n}\r\n.profile-avatar {\r\n  width: 58px;\r\n  height: 58px;\r\n  display: grid;\r\n  flex: 0 0 auto;\r\n  place-items: center;\r\n  border-radius: 18px;\r\n  background: #dfe8f3;\r\n  color: var(--primary);\r\n  font-weight: 900;\r\n}\r\n.bottom-nav {\r\n  position: fixed;\r\n  z-index: 10;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  display: grid;\r\n  grid-template-columns: repeat(5, 1fr);\r\n  border-top: 1px solid var(--line);\r\n  background: rgba(255,255,255,.97);\r\n  backdrop-filter: blur(12px);\r\n}\r\n.bottom-nav button {\r\n  min-height: 64px;\r\n  border: 0;\r\n  padding: 7px 3px;\r\n  background: transparent;\r\n  color: #778195;\r\n  font-size: 9px;\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.bottom-nav button.active {\r\n  color: var(--primary);\r\n  background: #f0f5fb;\r\n}\r\n.prototype-drawer {\r\n  position: fixed;\r\n  z-index: 40;\r\n  inset: 0;\r\n  display: none;\r\n}\r\n.prototype-drawer.open { display: block; }\r\n.drawer-backdrop {\r\n  position: absolute;\r\n  inset: 0;\r\n  width: 100%;\r\n  border: 0;\r\n  background: rgba(7,16,30,.55);\r\n}\r\n.drawer-panel {\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: min(88vw, 360px);\r\n  overflow: auto;\r\n  padding: 18px 14px 22px;\r\n  background: linear-gradient(180deg, #10233f, #0a1b32);\r\n  color: #fff;\r\n  box-shadow: 12px 0 28px rgba(0,0,0,.28);\r\n}\r\n.drawer-top {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  gap: 10px;\r\n  align-items: flex-start;\r\n  padding: 8px 5px 18px;\r\n}\r\n.drawer-identity {\r\n  display: flex;\r\n  gap: 11px;\r\n  align-items: center;\r\n}\r\n.drawer-identity strong, .drawer-identity small { display: block; }\r\n.drawer-identity small {\r\n  margin-top: 3px;\r\n  color: #aebdd0;\r\n  font-size: 9px;\r\n  font-weight: 900;\r\n  letter-spacing: .08em;\r\n}\r\n.drawer-avatar {\r\n  width: 48px;\r\n  height: 48px;\r\n  display: grid;\r\n  place-items: center;\r\n  border: 1px solid #ffffff33;\r\n  border-radius: 50%;\r\n  background: #ffffff14;\r\n  font-weight: 900;\r\n}\r\n.drawer-close {\r\n  border: 0;\r\n  background: transparent;\r\n  color: #fff;\r\n  font-size: 30px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n}\r\n.drawer-online {\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: auto 1fr auto;\r\n  gap: 10px;\r\n  align-items: center;\r\n  border: 1px solid #ffffff1f;\r\n  border-radius: 13px;\r\n  padding: 12px;\r\n  background: #ffffff0d;\r\n  color: #fff;\r\n  text-align: left;\r\n  cursor: pointer;\r\n}\r\n.drawer-online strong, .drawer-online small { display: block; }\r\n.drawer-online small { margin-top: 2px; color: #aebdd0; font-size: 10px; }\r\n.online-switch {\r\n  position: relative;\r\n  width: 42px;\r\n  height: 24px;\r\n  border-radius: 999px;\r\n  background: #15945e;\r\n}\r\n.online-switch b {\r\n  position: absolute;\r\n  top: 3px;\r\n  right: 3px;\r\n  width: 18px;\r\n  height: 18px;\r\n  border-radius: 50%;\r\n  background: #fff;\r\n}\r\n.drawer-online.is-offline .online-switch { background: #64748b; }\r\n.drawer-online.is-offline .online-switch b { right: 21px; }\r\n.drawer-nav {\r\n  display: grid;\r\n  gap: 3px;\r\n  margin-top: 12px;\r\n}\r\n.drawer-nav button, .drawer-footer button {\r\n  min-height: 44px;\r\n  border: 0;\r\n  border-radius: 10px;\r\n  padding: 10px 12px;\r\n  background: transparent;\r\n  color: #f8fafc;\r\n  text-align: left;\r\n  font-weight: 700;\r\n  cursor: pointer;\r\n}\r\n.drawer-nav button:hover, .drawer-footer button:hover { background: #ffffff10; }\r\n.drawer-footer {\r\n  margin-top: 16px;\r\n  padding-top: 12px;\r\n  border-top: 1px solid #ffffff1a;\r\n}\r\n.drawer-footer small {\r\n  display: block;\r\n  padding: 8px 12px 0;\r\n  color: #8190a5;\r\n}\r\n.op-toast {\r\n  position: fixed;\r\n  z-index: 50;\r\n  left: 50%;\r\n  bottom: 82px;\r\n  max-width: calc(100vw - 32px);\r\n  transform: translate(-50%, 16px);\r\n  border-radius: 999px;\r\n  padding: 10px 14px;\r\n  background: #111827;\r\n  color: #fff;\r\n  font-size: 12px;\r\n  font-weight: 700;\r\n  opacity: 0;\r\n  pointer-events: none;\r\n  transition: .2s ease;\r\n}\r\n.op-toast.show { opacity: 1; transform: translate(-50%, 0); }\r\n.is-operational .open-index { bottom: 82px; }\r\n\r\n@media (min-width: 720px) {\r\n  .op-shell { padding: 28px 22px 52px; }\r\n  .op-grid.two { grid-template-columns: 1fr 1fr; }\r\n  .bottom-nav {\r\n    left: 50%;\r\n    width: min(720px, 100%);\r\n    transform: translateX(-50%);\r\n    border-right: 1px solid var(--line);\r\n    border-left: 1px solid var(--line);\r\n    border-radius: 16px 16px 0 0;\r\n    overflow: hidden;\r\n  }\r\n}\r\n\r\n\r\n\r\n\r\n.client-view {\r\n  --client-primary: #10233f;\r\n  --client-primary-2: #173c6b;\r\n  --client-gold: #b88932;\r\n  --client-gold-soft: #fff4db;\r\n  --client-bg: #eef2f6;\r\n  --client-surface: #ffffff;\r\n  --client-soft: #f8fafc;\r\n  --client-line: #dbe3ee;\r\n  --client-text: #172033;\r\n  --client-muted: #667085;\r\n  --client-ok: #0f8f62;\r\n  --client-ok-bg: #def7ec;\r\n  background: var(--client-bg);\r\n}\r\n\r\n.client-view .client-view__content {\r\n  min-height: calc(100dvh - 112px);\r\n  background: var(--client-bg);\r\n}\r\n\r\n.client-view .op-card,\r\n.client-view .op-action {\r\n  border: 1px solid var(--client-line);\r\n  border-radius: 14px;\r\n  background: var(--client-surface);\r\n  box-shadow: 0 4px 12px rgba(15, 23, 42, .035);\r\n}\r\n\r\n.client-view .op-card {\r\n  padding: 16px;\r\n  margin-bottom: 12px;\r\n}\r\n\r\n.client-view .op-action {\r\n  width: 100%;\r\n  min-height: 72px;\r\n  margin: 0 0 12px;\r\n  padding: 14px 16px;\r\n  color: var(--client-text);\r\n  text-align: left;\r\n}\r\n\r\n.client-view .op-action strong,\r\n.client-view .op-action small {\r\n  display: block;\r\n}\r\n\r\n.client-view .op-action strong {\r\n  margin-bottom: 4px;\r\n  color: var(--client-text);\r\n  font-size: 15px;\r\n  font-weight: 800;\r\n}\r\n\r\n.client-view .op-action small {\r\n  color: var(--client-muted);\r\n  font-size: 12px;\r\n  line-height: 1.4;\r\n  font-weight: 600;\r\n}\r\n\r\n.client-home-head {\r\n  margin-bottom: 18px;\r\n}\r\n\r\n.client-home-head h1 {\r\n  margin: 0 0 8px;\r\n  color: var(--client-primary);\r\n  font-size: 24px;\r\n  line-height: 1.15;\r\n}\r\n\r\n.client-home-head p {\r\n  margin: 0;\r\n  color: var(--client-muted);\r\n  font-size: 14px;\r\n  line-height: 1.5;\r\n}\r\n\r\n.client-home-action {\r\n  width: 100%;\r\n  display: grid;\r\n  grid-template-columns: 44px 1fr auto;\r\n  gap: 12px;\r\n  align-items: center;\r\n  margin-bottom: 12px;\r\n  padding: 16px;\r\n  border: 1px solid var(--client-line);\r\n  border-radius: 14px;\r\n  background: var(--client-surface);\r\n  color: var(--client-text);\r\n  text-align: left;\r\n  box-shadow: 0 4px 12px rgba(15, 23, 42, .035);\r\n  cursor: pointer;\r\n}\r\n\r\n.client-home-action .iconbox {\r\n  display: grid;\r\n  width: 44px;\r\n  height: 44px;\r\n  place-items: center;\r\n  border-radius: 13px;\r\n  background: #e7f0ff;\r\n  color: var(--client-primary);\r\n  font-weight: 900;\r\n}\r\n\r\n.client-home-action.consultoria .iconbox {\r\n  background: var(--client-gold-soft);\r\n  color: var(--client-gold);\r\n}\r\n\r\n.client-home-action .txt b,\r\n.client-home-action .txt small {\r\n  display: block;\r\n}\r\n\r\n.client-home-action .txt b {\r\n  margin-bottom: 4px;\r\n  font-size: 15px;\r\n  font-weight: 800;\r\n}\r\n\r\n.client-home-action .txt small {\r\n  color: var(--client-muted);\r\n  font-size: 12px;\r\n  line-height: 1.4;\r\n  font-weight: 600;\r\n}\r\n\r\n.client-home-action .chev {\r\n  color: var(--client-primary);\r\n  font-size: 24px;\r\n  line-height: 1;\r\n}\r\n\r\n.client-notice {\r\n  margin-top: 12px;\r\n  padding: 13px 14px;\r\n  border: 1px solid #ead6a9;\r\n  border-radius: 12px;\r\n  background: #fff8e8;\r\n  color: #70510b;\r\n  font-size: 12px;\r\n  line-height: 1.45;\r\n}\r\n\r\n.client-map {\r\n  position: relative;\r\n  min-height: 210px;\r\n  overflow: hidden;\r\n  margin-bottom: 14px;\r\n  border: 1px solid var(--client-line, #dbe3ee);\r\n  border-radius: 14px;\r\n  background:\r\n    linear-gradient(90deg, rgba(16,35,63,.06) 1px, transparent 1px) 0 0/36px 36px,\r\n    linear-gradient(rgba(16,35,63,.06) 1px, transparent 1px) 0 0/36px 36px,\r\n    #eaf0f6;\r\n}\r\n.client-map::before,\r\n.client-map::after {\r\n  position: absolute;\r\n  width: 18px;\r\n  height: 18px;\r\n  border-radius: 50% 50% 50% 0;\r\n  background: #10233f;\r\n  box-shadow: 0 4px 10px rgba(16,35,63,.2);\r\n  content: \"\";\r\n  transform: rotate(-45deg);\r\n}\r\n.client-map::before { left: 34%; top: 35%; }\r\n.client-map::after { right: 25%; top: 48%; background: #b88932; }\r\n\r\n.client-chip-row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  gap: 8px;\r\n  margin: 12px 0;\r\n}\r\n.client-chip {\r\n  border: 1px solid #dbe3ee;\r\n  border-radius: 999px;\r\n  padding: 8px 11px;\r\n  background: #fff;\r\n  color: #10233f;\r\n  font-size: 11px;\r\n  font-weight: 800;\r\n  cursor: pointer;\r\n}\r\n.client-chip.active {\r\n  border-color: #10233f;\r\n  background: #10233f;\r\n  color: #fff;\r\n}\r\n\r\n.client-timeline {\r\n  display: grid;\r\n  gap: 12px;\r\n  margin: 16px 0;\r\n}\r\n.client-step {\r\n  display: grid;\r\n  grid-template-columns: 28px 1fr;\r\n  gap: 10px;\r\n  align-items: center;\r\n  color: #667085;\r\n  font-size: 12px;\r\n}\r\n.client-step span:first-child {\r\n  display: grid;\r\n  width: 28px;\r\n  height: 28px;\r\n  place-items: center;\r\n  border-radius: 50%;\r\n  background: #e7edf4;\r\n  color: #10233f;\r\n  font-size: 10px;\r\n  font-weight: 900;\r\n}\r\n.client-step.done span:first-child {\r\n  background: #def7ec;\r\n  color: #0f8f62;\r\n}\r\n\r\n.client-profile {\r\n  display: grid;\r\n  grid-template-columns: 48px 1fr auto;\r\n  gap: 12px;\r\n  align-items: center;\r\n}\r\n.client-avatar {\r\n  display: grid;\r\n  width: 48px;\r\n  height: 48px;\r\n  place-items: center;\r\n  border-radius: 13px;\r\n  background: #e7f0ff;\r\n  color: #10233f;\r\n  font-weight: 900;\r\n}\r\n\r\n\r\n.login-flow {\r\n  --login-flow-content-max: 560px;\r\n  min-height: 100dvh;\r\n  background: #eef2f6;\r\n  color: #172033;\r\n}\r\n.login-flow__bar {\r\n  min-height: calc(64px + env(safe-area-inset-top));\r\n  padding-top: env(safe-area-inset-top);\r\n  padding-left: max(18px, env(safe-area-inset-left));\r\n  padding-right: max(18px, env(safe-area-inset-right));\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  background: #10233f;\r\n  color: #fff;\r\n  font-size: 16px;\r\n  font-weight: 800;\r\n}\r\n.login-flow__bar img {\r\n  width: 23px;\r\n  height: 23px;\r\n}\r\n.login-flow__content {\r\n  width: min(calc(100% - 40px), var(--login-flow-content-max));\r\n  margin-inline: auto;\r\n  padding: 20px 0 32px;\r\n}\r\n.login-flow__content h1 {\r\n  margin: 0 0 10px;\r\n  color: #10233f;\r\n  font-size: 24px;\r\n  line-height: 1.15;\r\n}\r\n.login-flow__subcopy {\r\n  margin: 0 0 18px;\r\n  color: #667085;\r\n  font-size: 14px;\r\n  line-height: 1.5;\r\n}\r\n.login-flow .role-choice {\r\n  margin-bottom: 12px;\r\n  padding: 14px;\r\n  border: 1px solid #dbe3ee;\r\n  border-radius: 14px;\r\n  background: #fff;\r\n  box-shadow: 0 4px 12px rgba(15,23,42,.035);\r\n}\r\n.login-flow .role-choice-head {\r\n  display: grid;\r\n  grid-template-columns: 44px 1fr;\r\n  gap: 12px;\r\n  align-items: center;\r\n  margin-bottom: 12px;\r\n}\r\n.login-flow .mini-icon {\r\n  display: grid;\r\n  width: 44px;\r\n  height: 44px;\r\n  place-items: center;\r\n  border-radius: 13px;\r\n  background: #e7f0ff;\r\n  color: #10233f;\r\n  font-weight: 900;\r\n}\r\n.login-flow .mini-icon.gold { background: #fff4db; color: #b88932; }\r\n.login-flow .mini-icon.ok { background: #def7ec; color: #0f8f62; }\r\n.login-flow .title {\r\n  margin-bottom: 4px;\r\n  color: #172033;\r\n  font-size: 15px;\r\n  font-weight: 800;\r\n}\r\n.login-flow .muted {\r\n  color: #667085;\r\n  font-size: 12px;\r\n  line-height: 1.35;\r\n  font-weight: 600;\r\n}\r\n.login-flow .role-actions {\r\n  display: grid;\r\n  grid-template-columns: repeat(2, minmax(0, 1fr));\r\n  gap: 8px;\r\n}\r\n.login-flow .role-actions.single {\r\n  grid-template-columns: 1fr;\r\n}\r\n.login-flow .role-actions button {\r\n  min-height: 38px;\r\n  border: 1px solid #10233f;\r\n  border-radius: 10px;\r\n  padding: 8px 10px;\r\n  background: #10233f;\r\n  color: #fff;\r\n  font: inherit;\r\n  font-size: 11px;\r\n  font-weight: 900;\r\n  text-transform: uppercase;\r\n  letter-spacing: .03em;\r\n  cursor: pointer;\r\n}\r\n.login-flow .role-actions button + button {\r\n  background: transparent;\r\n  color: #10233f;\r\n}\r\n@media (min-width: 700px) {\r\n  .login-flow__content {\r\n    width: min(calc(100% - 48px), var(--login-flow-content-max));\r\n    padding: 54px 0 112px;\r\n  }\r\n}\r\n.login-flow__note {\r\n  margin-top: 16px;\r\n  padding: 12px 13px;\r\n  border: 1px dashed #c8d3df;\r\n  border-radius: 12px;\r\n  color: #667085;\r\n  font-size: 11px;\r\n  line-height: 1.45;\r\n}\r\n\r\n\r\n\r\n\r\nhtml,body{min-height:100%;}\r\nbody.aj08-static{margin:0;overflow-x:hidden;}\r\nbody.aj08-static .open-index,body.aj08-static .sheet{display:none!important;}\r\n.aj08-route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}\r\n.aj08-route-modal.open{display:flex}.aj08-route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}\r\n.aj08-route-card .aj08-kicker{margin:0 0 7px;color:#b88932;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.aj08-route-card h2{margin:0 0 8px;color:#10233f;font-size:20px}.aj08-route-card p{margin:0 0 12px;color:#667085;font-size:13px;line-height:1.5}.aj08-route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:#10233f;font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.aj08-route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:#10233f;color:#fff;font-weight:800;cursor:pointer}\r\n.aj08-static-note{position:fixed;z-index:80;right:12px;top:12px;max-width:min(260px,calc(100vw - 24px));padding:7px 10px;border-radius:999px;background:rgba(17,24,39,.86);color:#fff;font-size:10px;font-weight:800;pointer-events:none;box-shadow:0 6px 18px rgba(0,0,0,.15)}\r\n@media(max-width:600px){.aj08-static-note{top:auto;right:10px;bottom:10px;max-width:calc(100vw - 20px)}}\r\n\r\n\r\n#screen-root,.screen-runtime,[data-screen-root]{min-height:100dvh}\r\n.screen-runtime{width:100%}\r\n.screen-slot,screen-section{display:contents}\r\n.screen-runtime .prototype-screen .screen-slot--main{display:block;width:min(100%,720px);margin:0 auto;padding:22px 16px 28px}\r\n.screen-runtime .prototype-screen .screen-slot--main screen-section{display:block}\r\n.screen-runtime .prototype-screen .screen-slot--main screen-section+screen-section{margin-top:12px}\r\n.screen-loading,.screen-error{display:block;width:min(100% - 32px,720px);margin:32px auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff;line-height:1.55}\r\n.section-runtime-warning{display:block;margin:12px;padding:12px;border:1px dashed #b8c2cf;border-radius:12px;background:#fff}\r\n[data-studio-toolbar]{display:flex!important}\r\n\n.preferences-shell {\n  width:min(100%,760px);\n  margin:0 auto;\n  padding:28px 16px 40px;\n  color:var(--text);\n}\n.preferences-back {\n  display:inline-flex;align-items:center;gap:6px;margin:0 0 14px;padding:0;border:0;background:transparent;\n  color:var(--primary);font-size:12px;font-weight:800;\n}\n.preferences-heading { margin:0 2px 14px; }\n.preferences-heading h1 { margin:0;color:var(--primary);font-size:24px;letter-spacing:-.025em; }\n.preferences-heading p { margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5; }\n.preferences-notice {\n  margin-bottom:13px;padding:11px 13px;border:1px solid #d9e4f0;border-radius:13px;background:#f8fbff;\n  color:#516273;font-size:10px;line-height:1.5;\n}\n.preferences-notice strong { color:var(--primary); }\n.preferences-notice button { padding:0;border:0;background:transparent;color:var(--primary);font-size:inherit;font-weight:800;text-decoration:underline; }\n.preferences-card {\n  margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:16px;background:#fff;\n  box-shadow:0 3px 10px rgba(16,35,63,.035);\n}\n.preferences-card-head { display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px; }\n.preferences-card-head h2 { margin:0;color:var(--primary);font-size:15px; }\n.preferences-card-head p { margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.45; }\n.availability-row {\n  width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px;\n  border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);text-align:left;\n}\n.availability-row strong,.availability-row small { display:block; }\n.availability-row strong { color:var(--primary);font-size:12px; }\n.availability-row small { margin-top:3px;color:var(--muted);font-size:10px;line-height:1.4; }\n.preferences-switch { position:relative;flex:none;width:44px;height:25px;border-radius:999px;background:#cbd5e1; }\n.preferences-switch b { position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;transition:.15s; }\n.availability-row:not(.is-offline) .preferences-switch { background:#08744e; }\n.availability-row:not(.is-offline) .preferences-switch b { left:22px; }\n.modality-list { display:grid;gap:8px; }\n.modality-option {\n  display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;\n}\n.modality-option input,.specialty-option input { width:18px;height:18px;margin:1px 0 0;accent-color:var(--primary);flex:none; }\n.modality-option strong,.modality-option small { display:block; }\n.modality-option strong { color:var(--primary);font-size:12px; }\n.modality-option small { margin-top:2px;color:var(--muted);font-size:10px;line-height:1.45; }\n.mode-badge,.specialty-count {\n  flex:none;display:inline-flex;min-height:25px;align-items:center;padding:4px 9px;border-radius:999px;\n  background:#e5f7ee;color:#08744e;font-size:9px;font-weight:900;\n}\n[data-presential-region].disabled { opacity:.58; }\n[data-presential-region].disabled .preferences-field input,\n[data-presential-region].disabled .preferences-field select { pointer-events:none;background:#f2f4f7; }\n[data-presential-region].disabled .mode-badge { background:#f2f4f7;color:#667085; }\n.region-grid { display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:10px; }\n.preferences-field { display:block;margin-top:10px; }\n.preferences-field > span { display:block;margin-bottom:5px;color:var(--primary);font-size:10px;font-weight:800; }\n.preferences-field input,.preferences-field select {\n  width:100%;min-height:42px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text);font-size:11px;\n}\n.radius-control {\n  display:grid;grid-template-columns:minmax(0,1fr) 48px;align-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden;\n}\n.radius-control input { min-height:42px;border:0;border-radius:0;outline:none; }\n.radius-control b { min-height:42px;display:grid;place-items:center;border-left:1px solid var(--line);background:#f8fafc;color:var(--primary);font-size:11px; }\n.radius-control:focus-within { border-color:var(--primary-soft);box-shadow:0 0 0 3px rgba(23,60,107,.08); }\n.field-help { display:block;margin-top:5px;color:var(--muted);font-size:9px;line-height:1.45; }\n.specialty-actions { display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px; }\n.small-button { min-height:33px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--primary);font-size:10px;font-weight:800; }\n.selected-specialties { padding:10px 11px;margin-bottom:10px;border:1px dashed #c8d6e7;border-radius:11px;background:#fbfdff; }\n.selected-specialties > strong { display:block;margin-bottom:7px;color:var(--primary);font-size:10px; }\n.selected-specialties > small { color:var(--muted);font-size:9px; }\n.specialty-chips { display:flex;flex-wrap:wrap;gap:6px; }\n.specialty-chip { display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;background:#eef3f8;color:var(--primary);font-size:9px;font-weight:800; }\n.specialty-chip button { width:16px;height:16px;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:#dbe3ee;color:var(--primary);font-size:10px; }\n.specialty-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px; }\n.specialty-option { display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border:1px solid var(--line);border-radius:11px;background:#fff; }\n.specialty-option span { color:var(--text);font-size:10px;line-height:1.35; }\n.preferences-actions { display:flex;justify-content:flex-end;gap:8px;margin-top:16px; }\n.primary-button,.secondary-button { min-height:43px;padding:9px 14px;border-radius:10px;font-size:11px;font-weight:800; }\n.primary-button { border:0;background:var(--primary);color:#fff; }\n.secondary-button { border:1px solid var(--line);background:#fff;color:var(--primary); }\n@media(max-width:620px) {\n  .preferences-shell { padding-left:13px;padding-right:13px; }\n  .region-grid,.specialty-grid { grid-template-columns:1fr; }\n  .preferences-card-head { flex-direction:column; }\n  .preferences-actions { flex-direction:column-reverse; }\n  .preferences-actions button { width:100%; }\n}\n"
+            }
+          }
+        },
+        "dados": {},
+        "estados": {},
+        "acoes": {},
+        "variantes": {}
+      }
+    }
+  }
+}
