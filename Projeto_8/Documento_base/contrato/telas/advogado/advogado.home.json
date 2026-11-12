@@ -2,14 +2,21 @@
   "advogado.home": {
     "tela": {
       "schema": "advogadoja.tela",
-      "schemaVersion": "0.2.0",
+      "schemaVersion": "0.3.0",
       "identidade": {
         "tipo": "tela",
         "namespace": "advogado",
         "nome": "Home Advogado",
         "nomeExibicao": "Início Profissional",
         "descricao": "Tela inicial da área profissional do AdvogadoJá.",
-        "versao": "1.0.0"
+        "versao": "1.1.0",
+        "referenciasExternas": [
+          {
+            "origem": "Projeto 8 — módulos Fluxo/Jornadas/Protótipo",
+            "id": "advogado.home.inicio",
+            "situacao": "pendente_conciliacao_com_advogado.home"
+          }
+        ]
       },
       "classificacao": {
         "dominio": "atendimento_juridico",
@@ -19,13 +26,8 @@
         "categoria": "tela_inicial",
         "escopo": "modulo",
         "reutilizavel": false,
-        "publicoAlvo": [
-          "advogado"
-        ],
-        "tags": [
-          "inicio",
-          "painel_profissional"
-        ],
+        "publicoAlvo": ["advogado"],
+        "tags": ["inicio", "painel_profissional"],
         "jornadas": [
           {
             "id": "part.advogado.home",
@@ -49,7 +51,6 @@
         "rotas": [
           {
             "id": "rota.advogado.home",
-            "telaRef": "advogado.home",
             "caminho": "/professional/home",
             "parametros": [],
             "query": [],
@@ -891,9 +892,308 @@
           }
         ]
       },
-      "estados": {},
-      "acoes": {},
-      "dados": {},
+      "estados": {
+        "possiveis": [
+          {
+            "id": "padrao",
+            "nome": "Padrão",
+            "comportamento": {
+              "homeUnica": true,
+              "operacoesProtegidas": "bloqueadas_ate_verificacao",
+              "situacao": "fallback_seguro_proposto"
+            }
+          },
+          {
+            "id": "oab_pending_capabilities",
+            "nome": "Capabilities · Home restrita",
+            "descricao": "OAB pendente/não validada: o advogado permanece na mesma Home. A pendência e o CTA de validação ficam visíveis; funções profissionais protegidas ficam bloqueadas.",
+            "origemNo": "home",
+            "pendente": false,
+            "comportamento": {
+              "homeUnica": true,
+              "operacoesProtegidas": "bloqueadas",
+              "indicacao": "pendencia_OAB_e_acesso_a_validacao"
+            }
+          },
+          {
+            "id": "oab_validating_capabilities",
+            "nome": "Capabilities · OAB em validação",
+            "descricao": "o advogado continua na mesma Home em estado restrito enquanto não houver habilitação suficiente. As operações profissionais protegidas permanecem bloqueadas.",
+            "origemNo": "home",
+            "pendente": false,
+            "comportamento": {
+              "homeUnica": true,
+              "operacoesProtegidas": "bloqueadas",
+              "indicacao": "OAB_em_analise"
+            }
+          },
+          {
+            "id": "oab_enabled_capabilities",
+            "nome": "Capabilities · profissional habilitado",
+            "descricao": "OAB validada/habilitada: as capabilities são recalculadas. A mesma Home passa ao estado operacional, liberando apenas as funções profissionais permitidas.",
+            "origemNo": "home",
+            "pendente": false,
+            "comportamento": {
+              "homeUnica": true,
+              "operacoesProtegidas": "conforme_capabilities",
+              "indicacao": "home_operacional"
+            }
+          },
+          {
+            "id": "oab_restricted_capabilities",
+            "nome": "Capabilities · OAB com restrição",
+            "descricao": "Estados como recusada, suspensa ou expirada podem produzir restrições diferentes. A regra exata de cada um ainda não está fechada; portanto este HTML não inventa permissões específicas.",
+            "origemNo": "home",
+            "pendente": false,
+            "comportamento": {
+              "homeUnica": true,
+              "operacoesProtegidas": "conforme_regra_a_definir",
+              "situacao": "pendente_diferenciar_recusada_suspensa_expirada"
+            }
+          },
+          {
+            "id": "oab_unknown_capabilities",
+            "nome": "Capabilities · estado da OAB desconhecido",
+            "descricao": "Erro técnico ao consultar a OAB não é tratado como OAB não validada. O estado permanece desconhecido e, por segurança, operações protegidas não são liberadas.",
+            "origemNo": "home",
+            "pendente": false,
+            "comportamento": {
+              "homeUnica": true,
+              "operacoesProtegidas": "bloqueadas",
+              "indicacao": "falha_tecnica_nao_equivale_a_OAB_invalida"
+            }
+          }
+        ],
+        "fallbackSeguro": "padrao"
+      },
+      "acoes": {
+        "itens": [
+          {
+            "id": "advogado.home.fluxo",
+            "evento": "fluxo.decisao",
+            "rotas": [
+              {
+                "id": "pending",
+                "rotulo": "OAB não validada / pendente",
+                "descricao": "Home restrita; mostra pendência e CTA para validar OAB.",
+                "destino": {
+                  "tipo": "estado_ou_processo",
+                  "telaId": null,
+                  "noId": "oab_pending_capabilities"
+                },
+                "relacaoDireta": true,
+                "origemNo": "home"
+              },
+              {
+                "id": "validating",
+                "rotulo": "OAB em validação",
+                "descricao": "Continua na mesma Home, ainda restrita.",
+                "destino": {
+                  "tipo": "estado_ou_processo",
+                  "telaId": null,
+                  "noId": "oab_validating_capabilities"
+                },
+                "relacaoDireta": true,
+                "origemNo": "home"
+              },
+              {
+                "id": "enabled",
+                "rotulo": "OAB validada / habilitada",
+                "descricao": "Capabilities recalculadas e funções profissionais permitidas são liberadas.",
+                "destino": {
+                  "tipo": "estado_ou_processo",
+                  "telaId": null,
+                  "noId": "oab_enabled_capabilities"
+                },
+                "relacaoDireta": true,
+                "origemNo": "home"
+              },
+              {
+                "id": "restricted",
+                "rotulo": "Recusada / suspensa / expirada",
+                "descricao": "Pode gerar restrições diferentes; regra exata de cada estado ainda não está fechada.",
+                "destino": {
+                  "tipo": "estado_ou_processo",
+                  "telaId": null,
+                  "noId": "oab_restricted_capabilities"
+                },
+                "relacaoDireta": true,
+                "origemNo": "home"
+              },
+              {
+                "id": "unknown",
+                "rotulo": "Erro técnico / estado desconhecido",
+                "descricao": "Não equivale a não validada; operações protegidas permanecem bloqueadas por segurança.",
+                "destino": {
+                  "tipo": "estado_ou_processo",
+                  "telaId": null,
+                  "noId": "oab_unknown_capabilities"
+                },
+                "relacaoDireta": true,
+                "origemNo": "home"
+              }
+            ],
+            "jornadaRef": "advogado"
+          },
+          {
+            "id": "advogado.home.abrir_menu",
+            "evento": "click",
+            "elementoRef": "header.menu",
+            "instanciaRef": "screen.header",
+            "efeito": {
+              "tipo": "estado_visual_local",
+              "alvoRef": "screen.drawer",
+              "valor": "aberto"
+            },
+            "situacao": "proposta_nao_homologada"
+          },
+          {
+            "id": "advogado.home.fechar_menu",
+            "evento": "click",
+            "elementoRef": "drawer.close",
+            "instanciaRef": "screen.drawer",
+            "efeito": {
+              "tipo": "estado_visual_local",
+              "alvoRef": "screen.drawer",
+              "valor": "fechado"
+            },
+            "situacao": "proposta_nao_homologada"
+          },
+          {
+            "id": "advogado.home.validar_oab",
+            "evento": "click",
+            "elementoRef": null,
+            "destino": {
+              "tipo": "tela",
+              "telaRef": "advogado.configuracao.validacao_oab"
+            },
+            "relacaoRef": "rel.advogado.oab_pending_capabilities.oab_validation_area",
+            "situacao": "proposta_de_gatilho_sem_elemento_definido"
+          },
+          {
+            "id": "advogado.home.alternar_disponibilidade",
+            "evento": "online.toggle",
+            "elementoRef": "online.switch",
+            "instanciaRef": "screen.online",
+            "condicaoRef": null,
+            "efeito": {
+              "tipo": "atualizar_disponibilidade",
+              "situacao": "pendente_regra_e_persistencia"
+            },
+            "situacao": "proposta_nao_homologada"
+          },
+          {
+            "id": "advogado.home.acessar_solicitacoes",
+            "evento": "click",
+            "elementoRef": "requests.root",
+            "instanciaRef": "screen.requests",
+            "destino": {
+              "tipo": "tela",
+              "telaRef": "advogado.clientes.solicitacoes_recebidas"
+            },
+            "relacaoRef": "rel.advogado.professional_actions.requests",
+            "situacao": "proposta_de_gatilho_visual"
+          },
+          {
+            "id": "advogado.home.sair",
+            "evento": "click",
+            "elementoRef": "drawer.exit",
+            "instanciaRef": "screen.drawer",
+            "efeito": {
+              "tipo": "encerrar_sessao",
+              "situacao": "pendente_integracao_de_autenticacao"
+            },
+            "relacaoRef": "rel.advogado.professional_actions.logout",
+            "situacao": "proposta_nao_homologada"
+          }
+        ]
+      },
+      "dados": {
+        "fontes": [
+          {
+            "id": "perfil_profissional",
+            "finalidade": "identificar o advogado na Home",
+            "origemRef": null,
+            "situacao": "pendente_definicao_banco_api"
+          },
+          {
+            "id": "status_oab",
+            "finalidade": "determinar validação profissional e estado da tela",
+            "origemRef": null,
+            "situacao": "pendente_definicao_banco_api"
+          },
+          {
+            "id": "capabilities",
+            "finalidade": "determinar operações profissionais permitidas",
+            "origemRef": null,
+            "situacao": "pendente_definicao_banco_api"
+          },
+          {
+            "id": "disponibilidade",
+            "finalidade": "exibir e eventualmente alterar status online",
+            "origemRef": null,
+            "situacao": "pendente_definicao_banco_api"
+          },
+          {
+            "id": "solicitacoes",
+            "finalidade": "apresentar resumo de solicitações",
+            "origemRef": null,
+            "situacao": "pendente_definicao_banco_api"
+          },
+          {
+            "id": "notificacoes",
+            "finalidade": "apresentar notificações vinculadas à Home",
+            "origemRef": null,
+            "situacao": "pendente_definicao_banco_api"
+          }
+        ],
+        "operacoes": [
+          {
+            "id": "consultar_perfil",
+            "tipo": "leitura",
+            "fonteRef": "perfil_profissional",
+            "servicoRef": null,
+            "situacao": "proposta"
+          },
+          {
+            "id": "consultar_oab",
+            "tipo": "leitura",
+            "fonteRef": "status_oab",
+            "servicoRef": null,
+            "situacao": "proposta"
+          },
+          {
+            "id": "consultar_capabilities",
+            "tipo": "leitura",
+            "fonteRef": "capabilities",
+            "servicoRef": null,
+            "situacao": "proposta"
+          },
+          {
+            "id": "listar_solicitacoes",
+            "tipo": "leitura",
+            "fonteRef": "solicitacoes",
+            "servicoRef": null,
+            "situacao": "proposta"
+          },
+          {
+            "id": "alterar_disponibilidade",
+            "tipo": "escrita",
+            "fonteRef": "disponibilidade",
+            "servicoRef": null,
+            "situacao": "proposta_requer_autorizacao_e_persistencia"
+          }
+        ],
+        "persistencia": [
+          {
+            "id": "disponibilidade_profissional",
+            "operacaoRef": "alterar_disponibilidade",
+            "destinoRef": null,
+            "autorizacaoRef": null,
+            "situacao": "pendente_definicao"
+          }
+        ]
+      },
       "componentes": {
         "instanciasRefs": {
           "screen.root": "advogado.home.layout",
@@ -909,43 +1209,36 @@
         "html": {
           "composicao": {
             "screen.root": {
-              "componenteRef": "advogado.home.layout",
               "paiRef": null,
               "slot": "raiz",
               "ordem": 10
             },
             "screen.header": {
-              "componenteRef": "header.app.padrao",
               "paiRef": "layout.root",
               "slot": "header",
               "ordem": 10
             },
             "screen.titlebar": {
-              "componenteRef": "header.titlebar.padrao",
               "paiRef": "layout.root",
               "slot": "header",
               "ordem": 20
             },
             "screen.intro": {
-              "componenteRef": "advogado.home.introducao",
               "paiRef": "layout.main",
               "slot": "main",
               "ordem": 10
             },
             "screen.online": {
-              "componenteRef": "advogado.home.status_online",
               "paiRef": "layout.main",
               "slot": "main",
               "ordem": 20
             },
             "screen.requests": {
-              "componenteRef": "advogado.home.solicitacoes_resumo",
               "paiRef": "layout.main",
               "slot": "main",
               "ordem": 30
             },
             "screen.drawer": {
-              "componenteRef": "menu.drawer.padrao",
               "paiRef": "layout.root",
               "slot": "menu",
               "ordem": 40
@@ -969,12 +1262,193 @@
           }
         }
       },
-      "estilos": {},
-      "variantes": {},
-      "interacoes": {},
-      "mocks": {},
-      "localizacao": {},
-      "proveniencia": {}
+      "variantes": {
+        "regras": [
+          {
+            "id": "advogado.home.pending",
+            "origem": "projecao_do_flow",
+            "gatilho": "selecao_de_rota",
+            "opcao": "pending",
+            "estadoAlvo": "oab_pending_capabilities",
+            "nota": "Condição funcional exata e integração de backend dependem do contrato aprovado.",
+            "jornadaRef": "advogado",
+            "efeitoVisual": null,
+            "situacaoVisual": "pendente_definicao_por_componente"
+          },
+          {
+            "id": "advogado.home.validating",
+            "origem": "projecao_do_flow",
+            "gatilho": "selecao_de_rota",
+            "opcao": "validating",
+            "estadoAlvo": "oab_validating_capabilities",
+            "nota": "Condição funcional exata e integração de backend dependem do contrato aprovado.",
+            "jornadaRef": "advogado",
+            "efeitoVisual": null,
+            "situacaoVisual": "pendente_definicao_por_componente"
+          },
+          {
+            "id": "advogado.home.enabled",
+            "origem": "projecao_do_flow",
+            "gatilho": "selecao_de_rota",
+            "opcao": "enabled",
+            "estadoAlvo": "oab_enabled_capabilities",
+            "nota": "Condição funcional exata e integração de backend dependem do contrato aprovado.",
+            "jornadaRef": "advogado",
+            "efeitoVisual": null,
+            "situacaoVisual": "pendente_definicao_por_componente"
+          },
+          {
+            "id": "advogado.home.restricted",
+            "origem": "projecao_do_flow",
+            "gatilho": "selecao_de_rota",
+            "opcao": "restricted",
+            "estadoAlvo": "oab_restricted_capabilities",
+            "nota": "Condição funcional exata e integração de backend dependem do contrato aprovado.",
+            "jornadaRef": "advogado",
+            "efeitoVisual": null,
+            "situacaoVisual": "pendente_definicao_por_componente"
+          },
+          {
+            "id": "advogado.home.unknown",
+            "origem": "projecao_do_flow",
+            "gatilho": "selecao_de_rota",
+            "opcao": "unknown",
+            "estadoAlvo": "oab_unknown_capabilities",
+            "nota": "Condição funcional exata e integração de backend dependem do contrato aprovado.",
+            "jornadaRef": "advogado",
+            "efeitoVisual": null,
+            "situacaoVisual": "pendente_definicao_por_componente"
+          }
+        ]
+      },
+      "interacoes": {
+        "eventosPrototipo": [
+          {
+            "id": "prot.acao.advogado.home.inicio.1",
+            "atributosHTML": {
+              "data-action": "online.toggle",
+              "data-online-root": ""
+            },
+            "status": "revisar_efeito"
+          }
+        ],
+        "vinculos": [
+          {
+            "id": "interacao.advogado.home.abrir_menu",
+            "instanciaRef": "screen.header",
+            "elementoRef": "header.menu",
+            "evento": "click",
+            "acaoRef": "advogado.home.abrir_menu",
+            "situacao": "proposta"
+          },
+          {
+            "id": "interacao.advogado.home.fechar_menu",
+            "instanciaRef": "screen.drawer",
+            "elementoRef": "drawer.close",
+            "evento": "click",
+            "acaoRef": "advogado.home.fechar_menu",
+            "situacao": "proposta"
+          },
+          {
+            "id": "interacao.advogado.home.alternar_disponibilidade",
+            "instanciaRef": "screen.online",
+            "elementoRef": "online.switch",
+            "evento": "online.toggle",
+            "acaoRef": "advogado.home.alternar_disponibilidade",
+            "situacao": "pendente_substituir_span_decorativo_por_controle_acessivel"
+          },
+          {
+            "id": "interacao.advogado.home.sair",
+            "instanciaRef": "screen.drawer",
+            "elementoRef": "drawer.exit",
+            "evento": "click",
+            "acaoRef": "advogado.home.sair",
+            "situacao": "proposta"
+          }
+        ]
+      },
+      "mocks": {
+        "cenarios": [
+          {
+            "id": "mock.oab_analise.advogado.home.inicio",
+            "cenarioRef": "oab_analise",
+            "nome": "Mariana · OAB em análise",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado",
+            "start": "advogado.home",
+            "startProjeto8": "advogado.home.inicio",
+            "estadoTelaRef": "oab_validating_capabilities",
+            "status": "review",
+            "registered": true,
+            "onboarded": true,
+            "office": false,
+            "request": "new",
+            "dadosRef": "simulacoes.cenarios.oab_analise.data",
+            "dadosExemplo": {
+              "name": "Mariana",
+              "surname": "Costa",
+              "professionalName": "Mariana Costa",
+              "oabNumber": "000000",
+              "oabUf": "SP",
+              "requestArea": "Direito do Consumidor",
+              "requestDescription": "Orientação sobre contrato de serviço não cumprido."
+            },
+            "pendencia": "conciliar_identificador_de_tela_entre_modelo_e_Projeto8"
+          },
+          {
+            "id": "mock.habilitado.advogado.home.inicio",
+            "cenarioRef": "habilitado",
+            "nome": "Mariana · Advogada habilitada",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado",
+            "start": "advogado.home",
+            "startProjeto8": "advogado.home.inicio",
+            "estadoTelaRef": "oab_enabled_capabilities",
+            "status": "validated",
+            "registered": true,
+            "onboarded": true,
+            "office": false,
+            "request": "new",
+            "dadosRef": "simulacoes.cenarios.habilitado.data",
+            "dadosExemplo": {
+              "name": "Mariana",
+              "surname": "Costa",
+              "professionalName": "Mariana Costa",
+              "oabNumber": "000000",
+              "oabUf": "SP",
+              "requestArea": "Direito do Consumidor",
+              "requestDescription": "Orientação sobre contrato de serviço não cumprido."
+            },
+            "pendencia": "conciliar_identificador_de_tela_entre_modelo_e_Projeto8"
+          },
+          {
+            "id": "mock.restrito.advogado.home.inicio",
+            "cenarioRef": "restrito",
+            "nome": "Mariana · OAB restrita",
+            "uso": "visualizacao_ou_simulacao",
+            "situacao": "mock_documental_nao_homologado",
+            "start": "advogado.home",
+            "startProjeto8": "advogado.home.inicio",
+            "estadoTelaRef": "oab_restricted_capabilities",
+            "status": "rejected",
+            "registered": true,
+            "onboarded": true,
+            "office": false,
+            "request": "new",
+            "dadosRef": "simulacoes.cenarios.restrito.data",
+            "dadosExemplo": {
+              "name": "Mariana",
+              "surname": "Costa",
+              "professionalName": "Mariana Costa",
+              "oabNumber": "000000",
+              "oabUf": "SP",
+              "requestArea": "Direito do Consumidor",
+              "requestDescription": "Orientação sobre contrato de serviço não cumprido."
+            },
+            "pendencia": "conciliar_identificador_de_tela_entre_modelo_e_Projeto8"
+          }
+        ]
+      }
     },
     "componentes": {
       "advogado.home.layout": {
@@ -992,12 +1466,8 @@
           "categoria": "layout",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": [
-            "advogado"
-          ],
-          "tags": [
-            "layout"
-          ]
+          "publicoAlvo": ["advogado"],
+          "tags": ["layout"]
         },
         "estrutura": {
           "html": {
@@ -1048,15 +1518,8 @@
           "categoria": "cabecalho",
           "escopo": "global",
           "reutilizavel": true,
-          "publicoAlvo": [
-            "advogado",
-            "cliente",
-            "estudante",
-            "administrador"
-          ],
-          "tags": [
-            "cabecalho"
-          ]
+          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
+          "tags": ["cabecalho"]
         },
         "estrutura": {
           "html": {
@@ -1132,15 +1595,8 @@
           "categoria": "titulo",
           "escopo": "global",
           "reutilizavel": true,
-          "publicoAlvo": [
-            "advogado",
-            "cliente",
-            "estudante",
-            "administrador"
-          ],
-          "tags": [
-            "titulo"
-          ]
+          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
+          "tags": ["titulo"]
         },
         "estrutura": {
           "html": {
@@ -1183,12 +1639,8 @@
           "categoria": "conteudo",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": [
-            "advogado"
-          ],
-          "tags": [
-            "conteudo"
-          ]
+          "publicoAlvo": ["advogado"],
+          "tags": ["conteudo"]
         },
         "estrutura": {
           "html": {
@@ -1242,12 +1694,8 @@
           "categoria": "indicador",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": [
-            "advogado"
-          ],
-          "tags": [
-            "indicador"
-          ]
+          "publicoAlvo": ["advogado"],
+          "tags": ["indicador"]
         },
         "estrutura": {
           "html": {
@@ -1331,12 +1779,8 @@
           "categoria": "conteudo",
           "escopo": "modulo",
           "reutilizavel": false,
-          "publicoAlvo": [
-            "advogado"
-          ],
-          "tags": [
-            "conteudo"
-          ]
+          "publicoAlvo": ["advogado"],
+          "tags": ["conteudo"]
         },
         "estrutura": {
           "html": {
@@ -1390,15 +1834,8 @@
           "categoria": "menu",
           "escopo": "global",
           "reutilizavel": true,
-          "publicoAlvo": [
-            "advogado",
-            "cliente",
-            "estudante",
-            "administrador"
-          ],
-          "tags": [
-            "menu"
-          ]
+          "publicoAlvo": ["advogado", "cliente", "estudante", "administrador"],
+          "tags": ["menu"]
         },
         "estrutura": {
           "html": {

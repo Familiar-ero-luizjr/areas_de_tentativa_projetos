@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="pt-BR" data-module="doc">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>AdvogadoJá · 03 · Documentação</title>
+<style>
 :root{color-scheme:light;--navy:#10233f;--text:#263448;--sub:#62748a;--edge:#dce4ed;--page:#f4f6fa;--gold:#ac7b2e;--focus:#bd8c36}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--page);color:var(--text);font:14px/1.52 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 button{font:inherit;cursor:pointer}button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
@@ -40,3 +44,28 @@ dialog.help-dialog{width:min(95vw,535px);border:1px solid var(--edge);border-rad
 .doc-rule{border:0;border-top:1px solid var(--edge);margin:18px 0}.doc a{color:#245780}
 @media(max-width:850px){.doc{display:block;padding:13px}.doc-index{position:static;max-height:none;margin-bottom:15px}.doc-index .index-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.doc-cover h2{font-size:21px}}
 @media(max-width:650px){.top{padding:16px 13px}.top h1{font-size:16px}main{padding:11px 7px 24px}.tab{flex:1;padding:9px 8px;text-align:center;font-size:11px}.panel{border-radius:0 0 10px 10px}.tools{padding:10px}.context{width:100%}.actions{width:100%}.btn{flex:1;font-size:11px;padding:7px 5px}.tree{padding:9px 5px 17px;font-size:11px}.tree .children{margin-left:9px;padding-left:7px}.tree .leaf{padding-left:14px}.field-comment{flex-basis:190px;font-size:11px}.doc{padding:11px}.doc-index .index-links{grid-template-columns:1fr}.doc-part>header{padding:12px 13px}.subsection{padding:13px}.doc-cover h2{font-size:18px}}
+
+/* A mesma interface pode ser aberta diretamente ou dentro do índice principal. */
+html.embedded,html.embedded body{background:#fff}
+html.embedded header.top{display:none}
+html.embedded main{max-width:none;padding:0;margin:0}
+html.embedded .panel{border:0;box-shadow:none;border-radius:0;min-height:100vh}
+@media(max-width:650px){html.embedded main{padding:0}}
+
+</style></head>
+<body>
+<header class="top"><h1>AdvogadoJá · 03 · Documentação</h1><p>Catálogo Contrato · Visualizador modular · dados em documento.json</p></header>
+<main>
+<div id="carregamento" class="status ok" role="status">Carregando documento.json…</div>
+<section class="panel" id="p-doc">
+<div class="tools"><span class="context" id="count-doc">Documentação estruturada das decisões consolidadas</span><div class="actions">
+
+<button class="btn" type="button" data-op="import">Importar JSON</button><button class="btn main" type="button" data-op="export">Exportar JSON</button></div></div>
+<div class="status" id="msg-doc" aria-live="polite" hidden></div>
+<div id="documentacao"></div>
+<div class="footerline">Conteúdo completo convertido para JSON estruturado. A documentação continua não homologada nos pontos indicados.</div>
+</section>
+<input id="json-file" type="file" accept=".json,application/json" hidden aria-label="Selecionar JSON">
+</main>
+<dialog class="help-dialog" id="help-dialog" aria-labelledby="field-title"><div class="dialog-top"><h2 id="field-title">Explicação do campo</h2><button class="dialog-close" type="button" id="close-help" aria-label="Fechar">×</button></div><div class="dialog-body"><div class="dialog-path" id="field-path"></div><p id="field-description"></p><p class="fine" id="field-note"></p></div></dialog>
+<script src="app.js" defer></script></body></html>

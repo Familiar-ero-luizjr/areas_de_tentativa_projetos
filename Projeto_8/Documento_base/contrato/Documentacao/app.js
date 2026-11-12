@@ -1,11 +1,8 @@
 'use strict';
-const DEFAULT_HOME=window.__CONTRACT_DATA.DEFAULT_HOME;;
-const DEFAULT_SCHEMA=window.__CONTRACT_DATA.DEFAULT_SCHEMA;;
-const DEFAULT_GLOSSARY=window.__CONTRACT_DATA.DEFAULT_GLOSSARY;;
-const DEFAULT_DOCUMENT=window.__CONTRACT_DATA.DEFAULT_DOCUMENT;;
+const MODE=document.documentElement.dataset.module;
 const clone=x=>JSON.parse(JSON.stringify(x));
 const isObj=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
-let home=clone(DEFAULT_HOME),schema=clone(DEFAULT_SCHEMA),help=clone(DEFAULT_GLOSSARY.campos),documentacao=clone(DEFAULT_DOCUMENT),active=0,importMode='estrutura';
+let home={}, schema={kind:'object', children:{}}, help={}, glossario={documento:{}, campos:{}}, documentacao={documento:{titulo:'Documentação'},secoes:[]};
 const names={object:'objeto',array:'lista',string:'texto',number:'número',boolean:'booleano',null:'não especificado',mixed:'múltiplos tipos'};
 const E=(tag,cl,txt)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(txt!==undefined)x.textContent=txt;return x};
 function merge(a,b){
@@ -63,11 +60,15 @@ function treeData(key,val,depth){
 }
 function countFields(s){if(!s)return 0;if(s.kind==='object')return Object.values(s.children).reduce((n,v)=>n+1+countFields(v),0);if(s.kind==='array')return countFields(s.item);return 0}
 function refreshTrees(){
- document.getElementById('tree-estrutura').replaceChildren(treeSchema('contrato',schema,0,'contrato'));
- document.getElementById('tree-home').replaceChildren(treeData('contrato',home,0));
- document.getElementById('count-estrutura').textContent='Contrato modular completo · '+countFields(schema)+' campos · comentários e detalhes por campo';
- const roots=Object.keys(home),one=home[roots[0]]||{},nav=one.tela?.navegacao||{};
- document.getElementById('count-home').textContent='JSON integral · '+roots.length+' tela(s) · '+Object.keys(one.componentes||{}).length+' componentes · '+(nav.relacoes?.length??0)+' relações';
+ if(MODE==='estrutura'){
+  document.getElementById('tree-estrutura').replaceChildren(treeSchema('contrato',schema,0,'contrato'));
+  document.getElementById('count-estrutura').textContent='Contrato modular completo · '+countFields(schema)+' campos · comentários e detalhes por campo';
+ }
+ if(MODE==='home'){
+  document.getElementById('tree-home').replaceChildren(treeData('contrato',home,0));
+  const roots=Object.keys(home),one=home[roots[0]]||{},nav=one.tela?.navegacao||{};
+  document.getElementById('count-home').textContent='JSON integral · '+roots.length+' tela(s) · '+Object.keys(one.componentes||{}).length+' componentes · '+(nav.relacoes?.length??0)+' relações';
+ }
 }
 function inline(tokens){const frag=document.createDocumentFragment();for(const t of tokens||[]){
  if(t.tipo==='texto'){frag.append(document.createTextNode(t.texto||''));continue}
@@ -105,10 +106,7 @@ function renderDocument(){
  });shell.append(aside,article);slot.append(shell);
  document.getElementById('count-doc').textContent='Documentação estruturada · '+documentacao.secoes.length+' seções · '+documentacao.secoes.reduce((n,s)=>n+s.subsecoes.length,0)+' subseções · sem Markdown em tempo de execução';
 }
-const tabs=[...document.querySelectorAll('[role="tab"]')];
-function activate(i,focus=false){active=i;tabs.forEach((t,j)=>{t.setAttribute('aria-selected',i===j?'true':'false');t.tabIndex=i===j?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=i!==j});if(focus)tabs[i].focus()}
-tabs.forEach((t,i)=>{t.addEventListener('click',()=>activate(i));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();activate((i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length,true)}})});
-function notify(mode,msg,bad=false){const e=document.getElementById('msg-'+mode);e.textContent=msg;e.className='status '+(bad?'err':'ok');e.hidden=false}
+
 function getContrato(obj){
  if(!isObj(obj))throw Error('JSON inválido: esperado objeto.');
  if(isObj(obj.tela)&&isObj(obj.componentes))return {'advogado.home':obj};
@@ -149,31 +147,66 @@ function normalizeParte(obj,path){
  return Object.fromEntries(Object.entries(obj).map(([k,v])=>[k,normalizeParte(v,[...path,k])]));
 }
 function download(name,obj){const blob=new Blob([JSON.stringify(obj,null,2)+'\n'],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200)}
-function exportTab(mode){
- if(mode==='doc') download('advogadoja_documentacao_estruturada.json',documentacao);
- else download(mode==='estrutura'?'advogadoja_contrato_completo_modelo_sem_dados.json':'advogadoja_home_advogado_completa.json',
-       mode==='estrutura'?strip(schema):home);
- notify(mode,'JSON exportado com sucesso.');
-}
+
+
 const input=document.getElementById('json-file');
-async function importTab(file,mode){try{
- const parsed=JSON.parse((await file.text()).replace(/^\uFEFF/,''));
- if(mode==='doc'){
-  if(!validateDoc(parsed))throw Error('Documento inválido. Esperado: documento e secoes[].subsecoes[].blocos[].');
-  documentacao=clone(parsed);renderDocument();notify(mode,'Documentação importada. Seções atualizadas.');
- } else if(mode==='estrutura'){
-  if(parsed.kind==='object'&&parsed.children) schema=merge(schema,parsed);
-  else {const s=shape(normalizeModelo(getContrato(parsed)));schema=merge(schema,s);}
-  refreshTrees();notify(mode,'Modelo completo importado, sem copiar valores. Comentários preservados.');
- } else {
-  home=clone(getContrato(parsed));schema=merge(schema,shape(normalizeModelo(home)));
-  refreshTrees();notify(mode,'Home completa importada. Modelo atualizado com eventuais campos novos.');
+const loading=document.getElementById('carregamento');
+function notify(msg,bad=false){
+ const el=document.getElementById('msg-'+MODE);
+ if(el){el.textContent=msg;el.className='status '+(bad?'err':'ok');el.hidden=false;}
+}
+function setLoading(message,bad=false){
+ loading.textContent=message;loading.className='status '+(bad?'err':'ok');loading.hidden=false;
+}
+function validateBundle(payload){
+ if(MODE==='estrutura'){
+  if(!isObj(payload)||!isObj(payload.modelo)||!isObj(payload.glossario)||!isObj(payload.glossario.campos))
+   throw Error('Documento do Modelo explicado precisa conter "modelo" e "glossario.campos".');
+  if(payload.modelo.kind!=='object'||!isObj(payload.modelo.children))throw Error('Modelo inválido: esperado esquema {kind:"object",children:{...}}.');
+  schema=clone(payload.modelo);glossario=clone(payload.glossario);help=clone(glossario.campos);
+ }else if(MODE==='home'){
+  home=clone(getContrato(payload));
+ }else if(MODE==='doc'){
+  if(!validateDoc(payload))throw Error('Documentação inválida: esperado documento e secoes[].subsecoes[].blocos[].');
+  documentacao=clone(payload);
  }
-}catch(e){notify(mode,'Falha na importação: '+e.message,true)}}
-input.addEventListener('change',async()=>{const f=input.files?.[0];if(f)await importTab(f,importMode);input.value=''});
-document.querySelectorAll('.panel').forEach(p=>{const mode=p.id==='p-estrutura'?'estrutura':p.id==='p-home'?'home':'doc';p.querySelectorAll('[data-op]').forEach(b=>b.addEventListener('click',()=>{
- const op=b.dataset.op;if(op==='import'){importMode=mode;input.click();return}if(op==='export'){exportTab(mode);return}
- const expand=op==='expand';p.querySelectorAll('.tree details').forEach(d=>d.open=expand);
- if(!expand){const root=p.querySelector('.tree>details');if(root)root.open=true}
-}))});
-refreshTrees();renderDocument();
+}
+function render(){if(MODE==='doc')renderDocument();else refreshTrees()}
+async function loadInitial(){
+ try{
+  const response=await fetch('./documento.json',{cache:'no-store'});
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const payload=JSON.parse((await response.text()).replace(/^\uFEFF/,''));
+  validateBundle(payload);render();loading.hidden=true;
+ }catch(err){setLoading('Não foi possível abrir documento.json automaticamente. Use servidor HTTP (GitHub Pages) ou clique em Importar JSON para selecionar o arquivo. Detalhe: '+err.message,true)}
+}
+async function importData(file){
+ try{
+  const parsed=JSON.parse((await file.text()).replace(/^\uFEFF/,''));
+  if(MODE==='estrutura'){
+   if(isObj(parsed.modelo)&&isObj(parsed.glossario))validateBundle(parsed);
+   else if(parsed.kind==='object'&&isObj(parsed.children))schema=merge(schema,parsed);
+   else schema=merge(schema,shape(normalizeModelo(getContrato(parsed))));
+   help=clone(glossario.campos);
+  }else validateBundle(parsed);
+  render();loading.hidden=true;
+  notify('JSON importado e aplicado nesta visualização. Exporte documento.json para guardar o resultado.');
+ }catch(err){notify('Falha na importação: '+err.message,true)}
+}
+function exportData(){
+ const payload=MODE==='estrutura'?{modelo:schema,glossario}:MODE==='home'?home:documentacao;
+ download('documento.json',payload);
+ notify('documento.json exportado. Para persistir, substitua o arquivo da pasta do módulo.');
+}
+input.addEventListener('change',async()=>{
+ const file=input.files?.[0];if(file)await importData(file);input.value='';
+});
+document.querySelectorAll('[data-op]').forEach(btn=>btn.addEventListener('click',()=>{
+ const op=btn.dataset.op;
+ if(op==='import'){input.click();return}
+ if(op==='export'){exportData();return}
+ const expand=op==='expand';document.querySelectorAll('.tree details').forEach(d=>d.open=expand);
+ if(!expand){const root=document.querySelector('.tree>details');if(root)root.open=true}
+}));
+if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embedded');
+loadInitial();

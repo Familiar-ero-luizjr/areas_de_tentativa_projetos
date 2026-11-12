@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR" data-module="estrutura">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>AdvogadoJá · 01 · Modelo explicado</title>
+<style>
+:root{color-scheme:light;--navy:#10233f;--text:#263448;--sub:#62748a;--edge:#dce4ed;--page:#f4f6fa;--gold:#ac7b2e;--focus:#bd8c36}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--page);color:var(--text);font:14px/1.52 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+button{font:inherit;cursor:pointer}button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+header.top{background:var(--navy);color:#fff;padding:19px max(16px,calc((100vw - 1220px)/2))}.top h1{font-size:19px;margin:0;letter-spacing:-.02em}.top p{font-size:12px;color:#cbd8e8;margin:5px 0 0}
+main{max-width:1240px;margin:auto;padding:18px 16px 34px}.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--edge)}
+.tab{border:1px solid transparent;border-bottom:none;border-radius:10px 10px 0 0;background:transparent;color:#5e6d7f;font-weight:730;padding:11px 16px;position:relative;top:1px}
+.tab:hover{background:#eaf0f7}.tab[aria-selected="true"]{background:#fff;border-color:var(--edge);color:var(--navy);box-shadow:inset 0 3px var(--gold)}
+.panel{background:#fff;border:1px solid var(--edge);border-radius:0 12px 12px 12px;box-shadow:0 9px 24px #172b4508;min-height:420px}.panel[hidden]{display:none}
+.tools{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 15px;border-bottom:1px solid var(--edge)}
+.context{font-size:12px;color:var(--sub);font-weight:630}.actions{display:flex;gap:6px;flex-wrap:wrap}.btn{display:inline-flex;gap:5px;align-items:center;justify-content:center;border:1px solid #d9e1ea;border-radius:7px;padding:7px 10px;background:#fff;color:var(--navy);font-size:12px;font-weight:700}
+.btn:hover{background:#f1f5fa}.btn.main{background:var(--navy);border-color:var(--navy);color:#fff}.btn.main:hover{background:#244365}
+.status{padding:8px 15px;border-bottom:1px solid var(--edge);font-size:11px}.status[hidden]{display:none}.status.ok{color:#14724a;background:#ecf8f2}.status.err{color:#ab362d;background:#fff3f1}
+.tree{font:12.5px/1.48 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;padding:12px 14px 25px;overflow-wrap:anywhere}
+.tree details{display:block}.tree summary{display:flex;align-items:center;flex-wrap:wrap;gap:7px;min-height:31px;padding:5px 7px;border-radius:6px;cursor:pointer;list-style:none}
+.tree summary::-webkit-details-marker{display:none}.tree summary:hover,.tree .leaf:hover{background:#f3f6fa}
+.tree summary::before{content:"";width:7px;height:7px;flex:0 0 auto;margin:0 5px 0 2px;border-right:1.6px solid #65788d;border-bottom:1.6px solid #65788d;transform:rotate(-45deg)}
+.tree details[open]>summary::before{transform:rotate(45deg)}.tree .children{border-left:1px solid #d8e2ed;margin-left:14px;padding-left:12px}
+.tree .key{font-weight:750;color:#27527c}.tree .root>summary .key{color:var(--navy);font-size:14px}.tree .index{color:#936128;font-weight:730}
+.tree .count{border-radius:5px;border:1px solid #e6e5ef;background:#f7f4fa;color:#816a84;padding:1px 5px;font:10px/1.4 system-ui,sans-serif}
+.tree .type{font:10px system-ui,sans-serif;color:#64758a;border-radius:5px;background:#eef2f7;padding:2px 5px}.tree .leaf{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;min-height:30px;border-radius:5px;padding:5px 7px 5px 26px}
+.tree .value{white-space:pre-wrap;word-break:break-word;color:#4c5e70;flex:1 1 auto;min-width:30px}.tree .value.string{color:#14714e}.tree .value.number{color:#8651a2}.tree .value.boolean{color:#956120}.tree .value.null{color:#8592a3;font-style:italic}
+.field-comment{font:11.5px/1.5 system-ui,sans-serif;color:#5c6b7d;flex:1 1 250px}.help-btn{font:700 11px/1 system-ui,sans-serif;color:#365477;background:#edf3f9;border:1px solid #cad8e8;border-radius:50%;width:21px;height:21px;flex:0 0 auto;display:inline-grid;place-items:center}
+.help-btn:hover{background:#dceaf7}.undefined{color:#8b97a6;font:11.5px system-ui,sans-serif;padding:7px 8px}.root-help{color:#77869a}
+.footerline{font:11px system-ui,sans-serif;color:#748397;padding:4px 18px 17px}
+dialog.help-dialog{width:min(95vw,535px);border:1px solid var(--edge);border-radius:14px;padding:0;background:#fff;color:var(--text);box-shadow:0 22px 65px #14223b4a}dialog::backdrop{background:#0e203c82}
+.dialog-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 19px;border-bottom:1px solid var(--edge)}.dialog-top h2{font-size:16px;margin:0}.dialog-close{background:none;border:0;font-size:23px;color:#66788b}.dialog-body{padding:18px 19px 21px}.dialog-path{font:11px/1.6 ui-monospace,Consolas,monospace;color:#365477;background:#f2f6fa;padding:8px 10px;border-radius:7px;overflow-wrap:anywhere}
+.dialog-body p{font-size:13px;line-height:1.6}.dialog-body .fine{color:#79869a;font-size:11px}
+.doc{display:grid;grid-template-columns:236px minmax(0,1fr);gap:20px;padding:20px}.doc-index{align-self:start;position:sticky;top:15px;border:1px solid var(--edge);border-radius:10px;padding:12px;background:#fbfcfe;max-height:80vh;overflow:auto}
+.doc-index h3{color:#7c8b9e;text-transform:uppercase;font-size:10px;letter-spacing:.1em;margin:5px 5px 9px}
+.doc-index a{display:block;color:#3c536d;text-decoration:none;font-size:12px;padding:7px 9px;border-radius:6px}.doc-index a:hover{background:#edf3fa;color:var(--navy)}
+.doc-main{min-width:0}.doc-cover{padding:8px 2px 19px;border-bottom:1px solid var(--edge);margin-bottom:20px}.doc-cover h2{font-size:24px;line-height:1.18;letter-spacing:-.03em;margin:0 0 9px;color:var(--navy)}
+.doc-cover p{font-size:12px;color:#68798e;margin:0 0 9px;overflow-wrap:anywhere}.doc-part{margin-bottom:22px;border:1px solid var(--edge);border-radius:12px;background:#fff;overflow:hidden;scroll-margin-top:10px}
+.doc-part>header{padding:14px 19px;background:#f5f8fc;border-bottom:1px solid var(--edge)}.doc-part h3{font-size:17px;margin:0;color:var(--navy)}
+.subsection{padding:18px 20px}.subsection+.subsection{border-top:1px solid var(--edge)}.subsection h4{font-size:13px;letter-spacing:.015em;color:#2c5074;margin:0 0 11px}
+.doc-p{font-size:13px;line-height:1.65;margin:10px 0;color:#344156}.doc-p:first-of-type{margin-top:0}.doc-p strong{color:#203247}.doc-p code,.doc-list code,.doc-table code{font:11px/1.4 ui-monospace,Consolas,monospace;background:#edf3f9;color:#214d76;padding:2px 4px;border-radius:4px}
+.doc-note{border-left:3px solid #be914b;background:#fffbf4;border-radius:0 7px 7px 0;padding:12px 14px;margin:12px 0}.doc-note .doc-p{margin:0;color:#554b3c}
+.code-shell{margin:14px 0;border:1px solid #dce3ed;border-radius:9px;overflow:hidden}.code-head{display:flex;justify-content:space-between;align-items:center;background:#e9eef5;color:#6c7b8c;padding:6px 10px;font-size:11px;font-weight:700}.doc-pre{background:#f7f9fc;color:#20334b;margin:0;padding:14px;overflow:auto;font:11.4px/1.6 ui-monospace,Consolas,monospace}
+.doc-list{margin:10px 0 13px;padding-left:23px;color:#344156;font-size:13px;line-height:1.64}.doc-list li{padding-left:4px;margin:6px 0}
+.doc-table-wrap{overflow:auto;margin:13px 0;border:1px solid #dce3ed;border-radius:8px}.doc-table{width:100%;border-collapse:collapse;min-width:400px;font-size:12px}.doc-table th{background:#f1f5fa;color:#3d5671;text-align:left;font-weight:750}.doc-table th,.doc-table td{padding:9px 11px;vertical-align:top;border-bottom:1px solid #e6edf5}.doc-table tr:last-child td{border-bottom:0}.doc-table tbody tr:nth-child(even){background:#fbfcfe}
+.doc-rule{border:0;border-top:1px solid var(--edge);margin:18px 0}.doc a{color:#245780}
+@media(max-width:850px){.doc{display:block;padding:13px}.doc-index{position:static;max-height:none;margin-bottom:15px}.doc-index .index-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.doc-cover h2{font-size:21px}}
+@media(max-width:650px){.top{padding:16px 13px}.top h1{font-size:16px}main{padding:11px 7px 24px}.tab{flex:1;padding:9px 8px;text-align:center;font-size:11px}.panel{border-radius:0 0 10px 10px}.tools{padding:10px}.context{width:100%}.actions{width:100%}.btn{flex:1;font-size:11px;padding:7px 5px}.tree{padding:9px 5px 17px;font-size:11px}.tree .children{margin-left:9px;padding-left:7px}.tree .leaf{padding-left:14px}.field-comment{flex-basis:190px;font-size:11px}.doc{padding:11px}.doc-index .index-links{grid-template-columns:1fr}.doc-part>header{padding:12px 13px}.subsection{padding:13px}.doc-cover h2{font-size:18px}}
+
+/* A mesma interface pode ser aberta diretamente ou dentro do índice principal. */
+html.embedded,html.embedded body{background:#fff}
+html.embedded header.top{display:none}
+html.embedded main{max-width:none;padding:0;margin:0}
+html.embedded .panel{border:0;box-shadow:none;border-radius:0;min-height:100vh}
+@media(max-width:650px){html.embedded main{padding:0}}
+
+</style></head>
+<body>
+<header class="top"><h1>AdvogadoJá · 01 · Modelo explicado</h1><p>Catálogo Contrato · Visualizador modular · dados em documento.json</p></header>
+<main>
+<div id="carregamento" class="status ok" role="status">Carregando documento.json…</div>
+<section class="panel" id="p-estrutura">
+<div class="tools"><span class="context" id="count-estrutura">Contrato completo sem valores · explicação em cada campo</span><div class="actions">
+<button class="btn" type="button" data-op="expand">Expandir tudo</button><button class="btn" type="button" data-op="collapse">Recolher tudo</button>
+<button class="btn" type="button" data-op="import">Importar JSON</button><button class="btn main" type="button" data-op="export">Exportar JSON</button></div></div>
+<div class="status" id="msg-estrutura" aria-live="polite" hidden></div>
+<div class="tree" id="tree-estrutura"></div>
+<div class="footerline">Todas as linhas trazem comentários. Clique em ⓘ para detalhes. Campos ainda sem contrato interno aparecem como reservas, não como decisões.</div>
+</section>
+<input id="json-file" type="file" accept=".json,application/json" hidden aria-label="Selecionar JSON">
+</main>
+<dialog class="help-dialog" id="help-dialog" aria-labelledby="field-title"><div class="dialog-top"><h2 id="field-title">Explicação do campo</h2><button class="dialog-close" type="button" id="close-help" aria-label="Fechar">×</button></div><div class="dialog-body"><div class="dialog-path" id="field-path"></div><p id="field-description"></p><p class="fine" id="field-note"></p></div></dialog>
+<script src="app.js" defer></script></body></html>

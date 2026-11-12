@@ -17,12 +17,12 @@
   </header>
   <main class="page">
     <section class="intro" aria-labelledby="page-title">
-      <div><div class="eyebrow">Subitem de trabalho</div><h1 id="page-title">Estrutura e design: V1 legado × V2 estrutural</h1><p>Use os dois catálogos como referências separadas: o V1 preserva a experiência legada; o V2 registra a organização estrutural. A comparação serve para decidir o que manter, transformar ou descartar.</p></div>
+      <div><div class="eyebrow">Subitem de trabalho</div><h1 id="page-title">Estrutura e design: Catálogo V1 × Catálogo V2</h1><p>Use os dois catálogos estruturais como referências separadas: o V1 preserva a experiência legada; o V2 registra a organização estrutural. A comparação serve para decidir o que manter, transformar ou descartar.</p></div>
       <aside class="scope"><strong>Escopo desta área</strong>Examinar visual, HTML, CSS, componentes e organização — sem promover automaticamente uma versão como padrão.</aside>
     </section>
     <section class="catalogs" aria-label="Catálogos disponíveis">
-      <article class="catalog legacy"><span class="catalog-tag">Referência de origem</span><h2>Catálogo V1 legado</h2><p>Base visual e funcional anterior: útil para recuperar telas, composição, comportamento percebido e detalhes de design.</p><div class="facts"><span class="fact">HTML autocontido</span><span class="fact">≈ 4 MB</span><span class="fact">Legado</span></div><code class="file">ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html</code><div class="actions"><a class="btn" href="ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html" target="_blank" rel="noopener">Abrir catálogo</a><button class="btn primary" data-open="legacy">Ver na comparação</button></div></article>
-      <article class="catalog v2"><span class="catalog-tag">Referência estrutural</span><h2>Catálogo estrutural V2</h2><p>Organização para inspeção de contratos, componentes, composição de telas e auditoria do modelo estrutural.</p><div class="facts"><span class="fact">HTML autocontido</span><span class="fact">≈ 20 MB</span><span class="fact">Estrutura</span></div><code class="file">ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html</code><div class="actions"><a class="btn" href="ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html" target="_blank" rel="noopener">Abrir catálogo</a><button class="btn primary" data-open="v2">Ver na comparação</button></div></article>
+      <article class="catalog legacy"><span class="catalog-tag">Referência de origem</span><h2>Catálogo estrutural V1 (legado)</h2><p>Base visual e funcional anterior: útil para recuperar telas, composição, comportamento percebido e detalhes de design.</p><div class="facts"><span class="fact">HTML + JS + JSON</span><span class="fact">Catálogo separado</span><span class="fact">Legado</span></div><code class="file">CATALOGO_ESTRUTURAL_V1/index.html</code><div class="actions"><a class="btn" href="CATALOGO_ESTRUTURAL_V1/index.html" target="_blank" rel="noopener">Abrir catálogo</a><button class="btn primary" data-open="legacy">Ver na comparação</button></div></article>
+      <article class="catalog v2"><span class="catalog-tag">Referência estrutural</span><h2>Catálogo estrutural V2</h2><p>Organização para inspeção de contratos, componentes, composição de telas e auditoria do modelo estrutural.</p><div class="facts"><span class="fact">HTML + JS + JSON</span><span class="fact">Catálogo separado</span><span class="fact">Estrutura</span></div><code class="file">CATALOGO_ESTRUTURAL_V2/index.html</code><div class="actions"><a class="btn" href="CATALOGO_ESTRUTURAL_V2/index.html" target="_blank" rel="noopener">Abrir catálogo</a><button class="btn primary" data-open="v2">Ver na comparação</button></div></article>
     </section>
     <section class="compare-section" aria-labelledby="compare-title">
       <div class="compare-head"><div><h2 id="compare-title">Área de comparação</h2><p id="compare-status">Selecione um catálogo ou abra os dois lado a lado.</p></div><div class="modes" role="group" aria-label="Modo de comparação"><button class="mode" data-mode="legacy">Somente V1</button><button class="mode" data-mode="v2">Somente V2</button><button class="mode active" data-mode="both">Lado a lado</button></div></div>
@@ -33,7 +33,7 @@
   </main>
   <script>
     (() => {
-      const sources = { legacy: { label: 'V1 legado', file: 'ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html', className: 'legacy' }, v2: { label: 'V2 estrutural', file: 'ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html', className: 'v2' } };
+      const sources = { legacy: { label: 'Catálogo estrutural V1 (legado)', file: 'CATALOGO_ESTRUTURAL_V1/index.html', className: 'legacy' }, v2: { label: 'Catálogo estrutural V2', file: 'CATALOGO_ESTRUTURAL_V2/index.html', className: 'v2' } };
       let mode = 'both';
       const viewer = document.querySelector('#viewer');
       const grid = document.querySelector('#viewer-grid');
@@ -46,7 +46,7 @@
           const item = sources[key];
           const card = document.createElement('section');
           card.className = 'frame-card ' + item.className;
-          card.innerHTML = `<div class="frame-label"><i aria-hidden="true"></i>${item.label}</div><iframe title="${item.label}" src="${item.file}" loading="lazy" sandbox="allow-scripts allow-downloads"></iframe>`;
+          card.innerHTML = `<div class="frame-label"><i aria-hidden="true"></i>${item.label}</div><iframe title="${item.label}" src="${item.file}" loading="lazy" sandbox="allow-scripts allow-downloads allow-same-origin"></iframe>`;
           return card;
         }));
         viewer.classList.add('open'); empty.hidden = true;
