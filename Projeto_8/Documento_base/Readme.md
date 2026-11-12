@@ -386,6 +386,16 @@ O `index` deve controlar: seleção, histórico/breadcrumb derivado quando útil
 
 **Objetivo funcional [DECIDIDO]:** organizar, selecionar e apresentar as telas de uma jornada/subjornada em uma sequência documental clara, com prévia visual fiel. **Não confundir sequência editorial da Jornada com conexões editáveis do Fluxo.**
 
+**Decisões estruturais atuais[DECIDIDO]:**
+
+- Estudante é plano/área do Cliente, não usuário independente.
+- Escritório é subfluxo do Advogado.
+- Administrador é papel interno de identidade existente.
+  Perguntas antigas que contradigam isso devem ser revisadas/obsoletadas, nunca silenciosamente convertidas.
+
+**Persistência[DECIDIDO]:**
+Alterações no navegador são locais até exportar o JSON e publicar no repositório. Não adicionar tokens ou segredos.
+
 **Leitura principal [PROPOSTO]:** `identidade`, `classificacao`, `estrutura`, `componentes`, `estilos`, `estados`/`variantes` pertinentes e as informações de agrupamento/participação necessárias em `navegacao`. O módulo não precisa executar todas as ações de navegação do contrato.
 
 **Interações permitidas na prévia [DECIDIDO]:** mudanças **dentro da mesma tela**, como abrir/fechar menu ou acordeão, alternar aba interna, mostrar itens, revelar informações e mudar estado visual local, quando tais comportamentos estiverem declarados.
@@ -1420,4 +1430,5 @@ Cada evidência deve registrar:
 - **Resultado contratual:** campos, referências, versões e alterações efetivamente exportadas ou preservadas.
 - **Status da aprovação:** decidido, proposto, pendente ou homologado, com critérios de aceite e lacunas remanescentes.
 
+**Princípio:** o documento descreve requisitos e decisões de produto; as evidências demonstram se a implementação os atende. Uma captura visual não torna automaticamente obrigatórias medidas, classes CSS, nomes de arquivo ou comportamento que não tenham sido definidos.
 **Princípio:** o documento descreve requisitos e decisões de produto; as evidências demonstram se a implementação os atende. Uma captura visual não torna automaticamente obrigatórias medidas, classes CSS, nomes de arquivo ou comportamento que não tenham sido definidos.

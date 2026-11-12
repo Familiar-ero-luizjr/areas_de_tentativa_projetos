@@ -97,15 +97,65 @@ function prototypeView(){const scenarios=S.bundle?.simulacoes?.cenarios||{},scen
  const links=getRels(screen).filter(x=>relType(x)==='tela' && scr()[relTarget(x)]);
  return `<div class="toolbar"><div class="segmented"><button data-nav="proto:livre" class="${!scripted?'selected':''}">Navegação livre</button><button data-nav="proto:roteiros" class="${scripted?'selected':''}">Apresentação de jornadas</button></div><label>Mock <select id="scenarioSelect">${scenarioIds.map(id=>`<option value="${esc(id)}" ${id===S.scenario?'selected':''}>${esc(scenarios[id].name||id)}</option>`).join('')}</select></label><label>Dispositivo <select id="deviceSelect"><option value="mobile" ${S.device==='mobile'?'selected':''}>Mobile</option><option value="desktop" ${S.device==='desktop'?'selected':''}>Desktop</option></select></label><button data-action="resetMock">Reiniciar sessão</button></div>${scripted?`<div class="toolbar"><label>Roteiro <select id="roteiroSelect">${rotes().map(x=>`<option value="${esc(x.id)}" ${x.id===S.roteiro?'selected':''}>${esc(x.name)}</option>`).join('')}</select></label><span class="count">Etapa ${S.step+1} de ${steps.length}</span><button data-action="prevStep" ${S.step<1?'disabled':''}>← Anterior</button><button data-action="nextStep" ${S.step>=steps.length-1?'disabled':''}>Próxima →</button></div>`:`<div class="toolbar"><label>Selecionar tela ${screensSelect(screen)}</label><span class="count">Ações simuladas: ${links.length}</span></div>`}<div class="split prototype-split"><div class="center-col"><div class="prototype-heading"><strong>${esc(nameOf(screen))}</strong><code>${esc(screen)}</code></div><div class="preview-frame prototype-frame ${S.device}"><iframe class="screen-iframe" sandbox="allow-scripts" data-screen="${esc(screen)}" data-interactive="1" title="Protótipo interativo"></iframe></div><div class="actions-bar"><button data-action="protoBack">← Voltar</button>${links.map(rel=>`<button data-go="${esc(relTarget(rel))}">${esc(rel.rotulo||rel.opcao||nameOf(relTarget(rel)))}</button>`).join('')||'<span class="muted">Sem saída declarada nesta tela</span>'}</div></div><div class="rightpanel"><h3>Contexto simulado</h3><p class="mini">${esc(ss.description||'Dados fictícios de apresentação, nunca produção.')}</p><div class="facts"><div><b>Cenário</b><span>${esc(ss.name||S.scenario||'—')}</span></div><div><b>Estado da OAB (mock)</b><span>${esc(ss.status||'—')}</span></div><div><b>Cadastro</b><span>${ss.registered?'Simulado: concluído':'Simulado: pendente'}</span></div><div><b>Escritório</b><span>${ss.office?'Simulado: vinculado':'Sem vínculo simulado'}</span></div></div>${active?.fork?`<div class="fork"><b>${esc(active.question||'Escolha uma alternativa')}</b>${dt(active.choices).map((c,i)=>`<button data-choice="${esc(active.fork)}:${i}" class="${S.branchChoices[active.fork]===i?'selected':''}">${esc(c.label||'Alternativa '+(i+1))}</button>`).join('')}</div>`:''}<h3>Dados do mock</h3><details><summary>Inspecionar amostra</summary><pre>${esc(JSON.stringify(ss.data||{},null,2))}</pre></details><p class="notice">Sem chamadas HTTP, pagamentos ou gravações reais. Interações não documentadas não geram destinos.</p></div></div>`;
 }
-function treeHtml(obj){const result=[];for(const [cid,c] of Object.entries(obj?.componentes||{})){
- const nodes=c?.estrutura?.html?.elementos||{},root=c?.estrutura?.html?.raizRef; if(!root||!nodes[root])continue;
- const children={};for(const [key,n] of Object.entries(nodes)){const par=n.paiRef||'';(children[par]||=([])).push([key,n]);}
- for(const arr of Object.values(children))arr.sort((a,b)=>(a[1].ordem||0)-(b[1].ordem||0));
- const seen=new Set();function rec(id,depth=0){if(depth>65||seen.has(id))return '';seen.add(id);const n=nodes[id];if(!n)return '';let tag=String(n.tag||'div').toLowerCase();if(!/^[a-z][a-z0-9-]*$/.test(tag)||['script','iframe','object','embed','link','meta','style'].includes(tag))tag='div';let attrs='';for(const [k,v] of Object.entries(n.atributos||{})){if(!/^[a-zA-Z_:][\w:.-]*$/.test(k)||/^on/i.test(k)||['srcdoc'].includes(k.toLowerCase()))continue;if(['href','src'].includes(k.toLowerCase())&&/^\s*(javascript|https?):/i.test(String(v)))continue;attrs+=` ${k}="${esc(v)}"`}
- let text=esc(n.texto||'');let content=(children[id]||[]).map(([ck])=>rec(ck,depth+1)).join('');if(['img','input','br','hr','source','area','wbr'].includes(tag))return `<${tag}${attrs}>`;return `<${tag}${attrs}>${text}${content}</${tag}>`}
- result.push(rec(root));
+ function treeHtml(obj){
+  const comp=obj?.componentes||{}, tela=obj?.tela||{};
+  const refs=tela.componentes?.instanciasRefs||{};
+  const placements=tela.estrutura?.html?.composicao||{};
+  const nodes=new Map(),rootByComponent=new Map(),rootByInstance=new Map();
+  for(const [cid,c] of Object.entries(comp)){
+   const html=c?.estrutura?.html||{},elementos=html.elementos||{};
+   if(!html.raizRef||!elementos[html.raizRef])continue;
+   rootByComponent.set(cid,html.raizRef);
+   for(const [eid,node] of Object.entries(elementos)){
+    if(nodes.has(eid)){console.warn('ID visual duplicado:',eid);continue;}
+    nodes.set(eid,{...node,atributos:{...(node.atributos||{})}});
+   }
+  }
+  // As instâncias declaram qual componente usar; composição declara onde inserir.
+  // Nunca deduzir hierarquia pela ordem do mapa de componentes.
+  for(const [inst,cid] of Object.entries(refs)){
+   const root=rootByComponent.get(cid),placement=placements[inst];
+   if(!root)continue;
+   rootByInstance.set(inst,root);
+   if(placement){
+    const node=nodes.get(root);
+    if(node){node.paiRef=placement.paiRef||null;node.ordem=placement.ordem??node.ordem??0;}
+   }
+  }
+  const children=new Map();
+  for(const [id,n] of nodes){
+   const parent=n.paiRef;
+   if(parent&&nodes.has(parent)){
+    if(!children.has(parent))children.set(parent,[]);
+    children.get(parent).push(id);
+   }
+  }
+  for(const ids of children.values())ids.sort((a,b)=>(nodes.get(a).ordem??0)-(nodes.get(b).ordem??0));
+  const seen=new Set(),voids=new Set(['img','input','br','hr','source','area','wbr','col','embed']);
+  const forbidden=new Set(['script','iframe','object','embed','link','meta','style','base','form']);
+  function rec(id,depth=0){
+   if(depth>110||seen.has(id))return '';
+   seen.add(id);const n=nodes.get(id);if(!n)return '';
+   if(n.tag==='#text')return esc(n.texto||'');
+   if(n.tag==='#comment')return '';
+   let tag=String(n.tag||'div').toLowerCase();
+   if(!/^[a-z][a-z0-9-]*$/.test(tag)||forbidden.has(tag))tag='div';
+   let attrs='';
+   for(const [k,v] of Object.entries(n.atributos||{})){
+    if(!/^[a-zA-Z_:][\w:.-]*$/.test(k)||/^on/i.test(k)||['srcdoc'].includes(k.toLowerCase()))continue;
+    if(['href','src','xlink:href','action'].includes(k.toLowerCase())&&/^\s*(javascript|https?|file|blob):/i.test(String(v)))continue;
+    if(typeof v!=='string'&&typeof v!=='number'&&typeof v!=='boolean')continue;
+    attrs+=` ${k}="${esc(v)}"`;
+   }
+   const content=esc(n.texto||'')+(children.get(id)||[]).map(child=>rec(child,depth+1)).join('');
+   return voids.has(tag)?`<${tag}${attrs}>`:`<${tag}${attrs}>${content}</${tag}>`;
+  }
+  const preferred=rootByInstance.get(tela.estrutura?.html?.raizRef)||'';
+  const detached=[...nodes.keys()].filter(id=>!nodes.get(id).paiRef||!nodes.has(nodes.get(id).paiRef));
+  const first=preferred&&nodes.has(preferred)?[preferred]:[];
+  const roots=[...new Set([...first,...detached])];
+  return roots.map(id=>rec(id)).join('');
  }
- return result.join('')}
 const memo=new Map();function frameDoc(id,interactive){let key=id+':'+Number(interactive);if(memo.has(key))return memo.get(key);const obj=scr()[id];if(!obj)return '<p>Tela inexistente</p>';
  let html=treeHtml(obj),parts=[];const t=obj.tela||{};for(const v of Object.values(t.estrutura?.css?.regras||{}))if(typeof v==='string')parts.push(v);
  for(const c of Object.values(obj.componentes||{}))for(let rule of Object.values(c.estrutura?.css?.regras||{}))if(typeof rule==='string')parts.push(rule.replace(/:host\b/g,'html'));
