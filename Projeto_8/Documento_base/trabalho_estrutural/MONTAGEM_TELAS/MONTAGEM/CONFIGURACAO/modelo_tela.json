@@ -1,0 +1,77 @@
+{
+  "schema": "advogadoja.modelo.edicao.tela",
+  "schemaVersion": "1.0.0",
+  "contratoSchema": "advogadoja.tela",
+  "contratoSchemaVersion": "0.3.0",
+  "blocos": [
+    "identidade",
+    "classificacao",
+    "navegacao",
+    "estados",
+    "acoes",
+    "dados",
+    "componentes",
+    "estrutura",
+    "variantes",
+    "interacoes",
+    "mocks"
+  ],
+  "camposEscalares": [
+    "schema",
+    "schemaVersion"
+  ],
+  "template": {
+    "identidade": {
+      "tipo": "tela",
+      "namespace": "",
+      "nome": "",
+      "nomeExibicao": "",
+      "descricao": "",
+      "versao": "1.0.0-proposta"
+    },
+    "classificacao": {
+      "pastaCatalogo": "global",
+      "dominio": null,
+      "moduloRef": null,
+      "submoduloRef": null,
+      "pasta": {
+        "flutter": "",
+        "react": ""
+      },
+      "secao": null,
+      "categoria": "tela",
+      "escopo": null,
+      "reutilizavel": false,
+      "publicoAlvo": [],
+      "tags": [],
+      "jornadas": []
+    },
+    "navegacao": {},
+    "estados": {},
+    "acoes": {},
+    "dados": {},
+    "componentes": {},
+    "estrutura": {},
+    "variantes": {},
+    "interacoes": {},
+    "mocks": {}
+  },
+  "atributos": {
+    "classificacao.pastaCatalogo": {
+      "tipo": "string",
+      "finalidade": "Sub-aba dinâmica no Montador (não é caminho físico)."
+    },
+    "classificacao.pasta.flutter": {
+      "tipo": "string",
+      "finalidade": "Caminho de implementação Flutter, independente da pasta do catálogo."
+    },
+    "classificacao.pasta.react": {
+      "tipo": "string",
+      "finalidade": "Caminho de implementação React, independente da pasta do catálogo."
+    }
+  },
+  "politicas": {
+    "camposNovos": "Adicionar ao modelo e aplicar atualização estrutural explícita. Não inventar valores de negócio.",
+    "camposAusentes": "Não remover automaticamente ao importar pacote parcial."
+  }
+}

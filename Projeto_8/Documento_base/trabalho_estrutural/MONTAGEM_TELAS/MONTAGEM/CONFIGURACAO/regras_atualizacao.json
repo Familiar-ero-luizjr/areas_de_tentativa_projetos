@@ -1,0 +1,26 @@
+{
+  "schema": "advogadoja.montagem.regras_atualizacao",
+  "schemaVersion": "1.0.0",
+  "regras": {
+    "identidade": "Chaves e IDs são únicos; renomeações verificam colisões e propagam referências identificadas sem trocar nomes visuais por semelhança.",
+    "importacaoParcial": {
+      "campoAusente": "preservar",
+      "campoNull": "valor explícito null em mesclar; remoção somente em operacao remover",
+      "mesclar": "mescla objetos recursivamente, substitui arrays completos",
+      "substituir": "substitui somente blocos presentes",
+      "remover": "remove blocos/campos declarados no pacote"
+    },
+    "importacaoCompleta": "Substituição explícita do contrato individual; pacote pode criar novas telas por ID.",
+    "atualizacaoEstrutura": {
+      "adicionar": "adicionar caminho se ausente, valor inicial informado",
+      "transformar": "definir valor para caminho existente",
+      "remover": "remover caminho depois de confirmação",
+      "escopo": "contratos carregados na sessão atual",
+      "persistencia": "Exportar novo documento.json para persistir no arquivo físico."
+    }
+  },
+  "politicaDeVersionamento": {
+    "schemaVersion": "Versão do formato, não da tela.",
+    "migracoes": "Ampliações e remoções são operações explícitas; manter cópia exportada antes de aplicar."
+  }
+}

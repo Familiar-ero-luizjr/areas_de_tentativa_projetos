@@ -1,0 +1,6177 @@
+{
+  "schema": "advogadoja.montagem.catalogo",
+  "schemaVersion": "1.0.0",
+  "totalTelas": 110,
+  "registros": [
+    {
+      "id": "admin.acesso.seletor_perfil",
+      "name": "Selecionar perfil",
+      "group": "admin",
+      "index": 1,
+      "jornadas": [
+        [
+          "admin",
+          "acesso"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Selecionar perfil",
+        "nomeExibicao": "Selecionar perfil",
+        "descricao": "Seleciona Administrador sem refazer login.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.assinatura.detalhe",
+      "name": "Detalhe da assinatura",
+      "group": "admin",
+      "index": 2,
+      "jornadas": [
+        [
+          "admin",
+          "assinatura"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Detalhe da assinatura",
+        "nomeExibicao": "Detalhe da assinatura",
+        "descricao": "Estado do plano, pagamento e entitlements.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.assinatura.lista",
+      "name": "Assinaturas",
+      "group": "admin",
+      "index": 3,
+      "jornadas": [
+        [
+          "admin",
+          "assinatura"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Assinaturas",
+        "nomeExibicao": "Assinaturas",
+        "descricao": "Consulta assinaturas de Advogados e Estudantes de Direito.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.auditoria.log_detalhe",
+      "name": "Detalhe do log",
+      "group": "admin",
+      "index": 4,
+      "jornadas": [
+        [
+          "admin",
+          "auditoria"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Detalhe do log",
+        "nomeExibicao": "Detalhe do log",
+        "descricao": "Exibe o evento e seus metadados permitidos.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.auditoria.logs",
+      "name": "Logs de auditoria",
+      "group": "admin",
+      "index": 5,
+      "jornadas": [
+        [
+          "admin",
+          "auditoria"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Logs de auditoria",
+        "nomeExibicao": "Logs de auditoria",
+        "descricao": "Rastreabilidade das ações e eventos administrativos.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.configuracao.geral",
+      "name": "Configurações administrativas",
+      "group": "admin",
+      "index": 6,
+      "jornadas": [
+        [
+          "admin",
+          "governanca"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Configurações administrativas",
+        "nomeExibicao": "Configurações administrativas",
+        "descricao": "Ponto de entrada para governança e ajustes administrativos.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.governanca.administrador_detalhe",
+      "name": "Permissões administrativas",
+      "group": "admin",
+      "index": 7,
+      "jornadas": [
+        [
+          "admin",
+          "governanca"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Permissões administrativas",
+        "nomeExibicao": "Permissões administrativas",
+        "descricao": "Visualiza uma estrutura possível, sem assumir que permissões serão individuais.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.governanca.administradores",
+      "name": "Administradores",
+      "group": "admin",
+      "index": 8,
+      "jornadas": [
+        [
+          "admin",
+          "governanca"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Administradores",
+        "nomeExibicao": "Administradores",
+        "descricao": "Gestão do papel Administrador; modelo de governança ainda não fechado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.home.dashboard",
+      "name": "Painel administrativo",
+      "group": "admin",
+      "index": 9,
+      "jornadas": [
+        [
+          "admin",
+          "home"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Painel administrativo",
+        "nomeExibicao": "Painel administrativo",
+        "descricao": "Ponto central da operação administrativa. Os módulos exibidos devem respeitar as permissões que forem definidas para o Administrador.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.moderacao.denuncia_detalhe",
+      "name": "Detalhe da denúncia",
+      "group": "admin",
+      "index": 10,
+      "jornadas": [
+        [
+          "admin",
+          "moderacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Detalhe da denúncia",
+        "nomeExibicao": "Detalhe da denúncia",
+        "descricao": "Reúne contexto necessário para a análise.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.moderacao.denuncias",
+      "name": "Denúncias",
+      "group": "admin",
+      "index": 11,
+      "jornadas": [
+        [
+          "admin",
+          "moderacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Denúncias",
+        "nomeExibicao": "Denúncias",
+        "descricao": "Fila de moderação e ocorrências reportadas.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.oab.detalhe",
+      "name": "Análise da OAB",
+      "group": "admin",
+      "index": 12,
+      "jornadas": [
+        [
+          "admin",
+          "oab"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Análise da OAB",
+        "nomeExibicao": "Análise da OAB",
+        "descricao": "Conferência administrativa do processo próprio de OAB.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.oab.fila",
+      "name": "Validação da OAB",
+      "group": "admin",
+      "index": 13,
+      "jornadas": [
+        [
+          "admin",
+          "oab"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Validação da OAB",
+        "nomeExibicao": "Validação da OAB",
+        "descricao": "Lista de registros profissionais que exigem análise.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.usuarios.perfil_detalhe",
+      "name": "Detalhe do usuário",
+      "group": "admin",
+      "index": 14,
+      "jornadas": [
+        [
+          "admin",
+          "perfis"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Detalhe do usuário",
+        "nomeExibicao": "Detalhe do usuário",
+        "descricao": "Visualiza a conta e os perfis acumulados.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "admin.usuarios.perfis",
+      "name": "Perfis e usuários",
+      "group": "admin",
+      "index": 15,
+      "jornadas": [
+        [
+          "admin",
+          "perfis"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "admin",
+        "nome": "Perfis e usuários",
+        "nomeExibicao": "Perfis e usuários",
+        "descricao": "Lista e busca de identidades da plataforma.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.assinatura.checkout",
+      "name": "Checkout",
+      "group": "advogado",
+      "index": 16,
+      "jornadas": [
+        [
+          "advogado",
+          "assinatura"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Checkout",
+        "nomeExibicao": "Checkout",
+        "descricao": "Checkout da assinatura. A prévia visual não realiza pagamentos.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.assinatura.gestao_assinatura",
+      "name": "Gestão da assinatura",
+      "group": "advogado",
+      "index": 17,
+      "jornadas": [
+        [
+          "advogado",
+          "assinatura"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Gestão da assinatura",
+        "nomeExibicao": "Gestão da assinatura",
+        "descricao": "Ponto de entrada da assinatura profissional.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.assinatura.historico_assinatura",
+      "name": "Histórico da assinatura",
+      "group": "advogado",
+      "index": 18,
+      "jornadas": [
+        [
+          "advogado",
+          "assinatura"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Histórico da assinatura",
+        "nomeExibicao": "Histórico da assinatura",
+        "descricao": "Histórico do plano do advogado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.assinatura.planos",
+      "name": "Planos",
+      "group": "advogado",
+      "index": 19,
+      "jornadas": [
+        [
+          "advogado",
+          "assinatura"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Planos",
+        "nomeExibicao": "Planos",
+        "descricao": "Planos disponíveis ao advogado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout",
+      "name": "Resultado do checkout",
+      "group": "advogado",
+      "index": 20,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Resultado do checkout",
+        "nomeExibicao": "Resultado do checkout",
+        "descricao": "Exibir resultado de pagamento integralmente fictício.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.atendimentos.detalhe",
+      "name": "Detalhe do atendimento",
+      "group": "advogado",
+      "index": 21,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Detalhe do atendimento",
+        "nomeExibicao": "Detalhe do atendimento",
+        "descricao": "Acompanhar o contato liberado e os dados simulados de atendimento.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.atendimentos.encerrar",
+      "name": "Encerrar atendimento",
+      "group": "advogado",
+      "index": 22,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Encerrar atendimento",
+        "nomeExibicao": "Encerrar atendimento",
+        "descricao": "Registrar encerramento sem executar mensagens externas.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.atendimentos.lista",
+      "name": "Atendimentos",
+      "group": "advogado",
+      "index": 23,
+      "jornadas": [
+        [
+          "advogado",
+          "operacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Atendimentos",
+        "nomeExibicao": "Atendimentos",
+        "descricao": "Visão dos atendimentos solicitados, em andamento e encerrados.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.clientes.aceitar_contato",
+      "name": "Aceitar contato",
+      "group": "advogado",
+      "index": 24,
+      "jornadas": [
+        [
+          "advogado",
+          "operacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Aceitar contato",
+        "nomeExibicao": "Aceitar contato",
+        "descricao": "Confirmação antes de liberar o contato.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.clientes.contato_liberado",
+      "name": "Contato liberado",
+      "group": "advogado",
+      "index": 25,
+      "jornadas": [
+        [
+          "advogado",
+          "operacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Contato liberado",
+        "nomeExibicao": "Contato liberado",
+        "descricao": "Contato do cliente liberado após aceite.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.clientes.detalhe_solicitacao",
+      "name": "Detalhe da solicitação",
+      "group": "advogado",
+      "index": 26,
+      "jornadas": [
+        [
+          "advogado",
+          "operacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Detalhe da solicitação",
+        "nomeExibicao": "Detalhe da solicitação",
+        "descricao": "Aqui o advogado decide aceitar ou recusar o contato.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.clientes.recusa_confirmada",
+      "name": "Solicitação recusada",
+      "group": "advogado",
+      "index": 27,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Solicitação recusada",
+        "nomeExibicao": "Solicitação recusada",
+        "descricao": "Exibir confirmação da recusa e destino da solicitação.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.clientes.recusar_solicitacao",
+      "name": "Recusar solicitação",
+      "group": "advogado",
+      "index": 28,
+      "jornadas": [
+        [
+          "advogado",
+          "operacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Recusar solicitação",
+        "nomeExibicao": "Recusar solicitação",
+        "descricao": "o advogado informa o motivo e confirma a recusa.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.clientes.solicitacoes_recebidas",
+      "name": "Solicitações recebidas",
+      "group": "advogado",
+      "index": 29,
+      "jornadas": [
+        [
+          "advogado",
+          "operacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Solicitações recebidas",
+        "nomeExibicao": "Solicitações recebidas",
+        "descricao": "A própria tela separa novas, aceitas e recusadas.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.agenda_semanal",
+      "name": "Agenda semanal",
+      "group": "advogado",
+      "index": 30,
+      "jornadas": [
+        [
+          "advogado",
+          "disponibilidade"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Agenda semanal",
+        "nomeExibicao": "Agenda semanal",
+        "descricao": "Configuração da agenda profissional.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.central_ajuda",
+      "name": "Central de ajuda",
+      "group": "advogado",
+      "index": 31,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Central de ajuda",
+        "nomeExibicao": "Central de ajuda",
+        "descricao": "Ajuda e orientações.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.chamado_detalhe",
+      "name": "Detalhes do chamado",
+      "group": "advogado",
+      "index": 32,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Detalhes do chamado",
+        "nomeExibicao": "Detalhes do chamado",
+        "descricao": "Mostrar histórico, status e resposta simulada do suporte.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.configuracao",
+      "name": "Configurações",
+      "group": "advogado",
+      "index": 33,
+      "jornadas": [
+        [
+          "advogado",
+          "conta"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Configurações",
+        "nomeExibicao": "Configurações",
+        "descricao": "Hub de configurações profissionais.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.consentimentos",
+      "name": "Consentimentos",
+      "group": "advogado",
+      "index": 34,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Consentimentos",
+        "nomeExibicao": "Consentimentos",
+        "descricao": "Consentimentos da conta profissional.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.falar_suporte",
+      "name": "Falar com o suporte",
+      "group": "advogado",
+      "index": 35,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Falar com o suporte",
+        "nomeExibicao": "Falar com o suporte",
+        "descricao": "Formulário de contato com suporte.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.meus_chamados",
+      "name": "Meus chamados",
+      "group": "advogado",
+      "index": 36,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Meus chamados",
+        "nomeExibicao": "Meus chamados",
+        "descricao": "Acompanhamento de chamados.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.politica_privacidade",
+      "name": "Política de privacidade",
+      "group": "advogado",
+      "index": 37,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Política de privacidade",
+        "nomeExibicao": "Política de privacidade",
+        "descricao": "Política de privacidade.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.preferencias_atendimento",
+      "name": "Preferências de atendimento",
+      "group": "advogado",
+      "index": 38,
+      "jornadas": [
+        [
+          "advogado",
+          "disponibilidade"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Preferências de atendimento",
+        "nomeExibicao": "Preferências de atendimento",
+        "descricao": "Preferências operacionais do advogado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.suporte",
+      "name": "Suporte",
+      "group": "advogado",
+      "index": 39,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Suporte",
+        "nomeExibicao": "Suporte",
+        "descricao": "Hub de suporte do advogado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.termos_privacidade",
+      "name": "Termos e privacidade",
+      "group": "advogado",
+      "index": 40,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Termos e privacidade",
+        "nomeExibicao": "Termos e privacidade",
+        "descricao": "Central de documentos legais.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.termos_uso",
+      "name": "Termos de uso",
+      "group": "advogado",
+      "index": 41,
+      "jornadas": [
+        [
+          "advogado",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Termos de uso",
+        "nomeExibicao": "Termos de uso",
+        "descricao": "Termos de uso.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.configuracao.validacao_oab",
+      "name": "Validação da OAB",
+      "group": "advogado",
+      "index": 42,
+      "jornadas": [
+        [
+          "advogado",
+          "oab"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Validação da OAB",
+        "nomeExibicao": "Validação da OAB",
+        "descricao": "Status e dados utilizados na validação profissional.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.disponibilidade.painel",
+      "name": "Disponibilidade profissional",
+      "group": "advogado",
+      "index": 43,
+      "jornadas": [
+        [
+          "advogado",
+          "disponibilidade"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Disponibilidade profissional",
+        "nomeExibicao": "Disponibilidade profissional",
+        "descricao": "Status online/offline e tipos de busca. A tela também abre Agenda e Raio de atendimento.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.disponibilidade.raio_atendimento",
+      "name": "Raio de atendimento",
+      "group": "advogado",
+      "index": 44,
+      "jornadas": [
+        [
+          "advogado",
+          "disponibilidade"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Raio de atendimento",
+        "nomeExibicao": "Raio de atendimento",
+        "descricao": "Configuração da distância para atendimento presencial.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.home.inicio",
+      "name": "Início do advogado",
+      "group": "advogado",
+      "index": 45,
+      "jornadas": [
+        [
+          "advogado",
+          "home"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Início do advogado",
+        "nomeExibicao": "Início do advogado",
+        "descricao": "A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.oab.dados",
+      "name": "Dados da OAB",
+      "group": "advogado",
+      "index": 46,
+      "jornadas": [
+        [
+          "advogado",
+          "oab"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Dados da OAB",
+        "nomeExibicao": "Dados da OAB",
+        "descricao": "Dados da OAB pertencem ao processo próprio de validação, não ao cadastro nem ao onboarding profissional.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.areas_atuacao",
+      "name": "Áreas de atuação",
+      "group": "advogado",
+      "index": 47,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Áreas de atuação",
+        "nomeExibicao": "Áreas de atuação",
+        "descricao": "Onboarding profissional · etapa 3.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.conclusao_profissional",
+      "name": "Onboarding profissional concluído",
+      "group": "advogado",
+      "index": 48,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Onboarding profissional concluído",
+        "nomeExibicao": "Onboarding profissional concluído",
+        "descricao": "Confirmar dados enviados e orientar a etapa de OAB.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.dados_academicos",
+      "name": "Dados acadêmicos",
+      "group": "advogado",
+      "index": 49,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Dados acadêmicos",
+        "nomeExibicao": "Dados acadêmicos",
+        "descricao": "Onboarding profissional · etapa 1.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.dados_profissionais",
+      "name": "Dados profissionais",
+      "group": "advogado",
+      "index": 50,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Dados profissionais",
+        "nomeExibicao": "Dados profissionais",
+        "descricao": "Onboarding profissional · etapa 2.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.disponibilidade",
+      "name": "Disponibilidade inicial",
+      "group": "advogado",
+      "index": 51,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Disponibilidade inicial",
+        "nomeExibicao": "Disponibilidade inicial",
+        "descricao": "Onboarding profissional · etapa 5.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.perfil_profissional",
+      "name": "Configuração do perfil profissional",
+      "group": "advogado",
+      "index": 52,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Configuração do perfil profissional",
+        "nomeExibicao": "Configuração do perfil profissional",
+        "descricao": "Onboarding profissional · etapa 4.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.onboarding.revisao_profissional",
+      "name": "Revisão profissional",
+      "group": "advogado",
+      "index": 53,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Revisão profissional",
+        "nomeExibicao": "Revisão profissional",
+        "descricao": "Conclusão do onboarding profissional. OAB ainda não é validada neste fluxo.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.perfil.visualizacao",
+      "name": "Perfil profissional",
+      "group": "advogado",
+      "index": 54,
+      "jornadas": [
+        [
+          "advogado",
+          "conta"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Perfil profissional",
+        "nomeExibicao": "Perfil profissional",
+        "descricao": "Dados pessoais, profissionais e públicos do advogado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.validacao.envio_confirmado",
+      "name": "OAB enviada para análise",
+      "group": "advogado",
+      "index": 55,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "OAB enviada para análise",
+        "nomeExibicao": "OAB enviada para análise",
+        "descricao": "Confirmar protocolo simulado, com acesso ao status e à mesma Home.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "advogado.validacao.status",
+      "name": "Perfil em validação",
+      "group": "advogado",
+      "index": 56,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "advogado",
+        "nome": "Perfil em validação",
+        "nomeExibicao": "Perfil em validação",
+        "descricao": "Apresenta a situação da validação profissional do advogado e o acompanhamento de seu cadastro de OAB.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.concluido",
+      "name": "Cadastro concluído",
+      "group": "auth",
+      "index": 57,
+      "jornadas": [
+        [
+          "cliente",
+          "cadastro"
+        ],
+        [
+          "advogado",
+          "cadastro"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Cadastro concluído",
+        "nomeExibicao": "Cadastro concluído",
+        "descricao": "Confirma a conclusão do cadastro comum e orienta a próxima etapa conforme a jornada do usuário.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.consentimentos",
+      "name": "Consentimentos do cadastro",
+      "group": "auth",
+      "index": 58,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Consentimentos do cadastro",
+        "nomeExibicao": "Consentimentos do cadastro",
+        "descricao": "Consentimentos do cadastro.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.contato",
+      "name": "Dados de contato",
+      "group": "auth",
+      "index": 59,
+      "jornadas": [
+        [
+          "cliente",
+          "cadastro"
+        ],
+        [
+          "advogado",
+          "cadastro"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Dados de contato",
+        "nomeExibicao": "Dados de contato",
+        "descricao": "Cadastro comum.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.endereco",
+      "name": "Endereço",
+      "group": "auth",
+      "index": 60,
+      "jornadas": [
+        [
+          "cliente",
+          "cadastro"
+        ],
+        [
+          "advogado",
+          "cadastro"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Endereço",
+        "nomeExibicao": "Endereço",
+        "descricao": "Cadastro comum.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.identificacao",
+      "name": "Identificação",
+      "group": "auth",
+      "index": 61,
+      "jornadas": [
+        [
+          "cliente",
+          "cadastro"
+        ],
+        [
+          "advogado",
+          "cadastro"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Identificação",
+        "nomeExibicao": "Identificação",
+        "descricao": "Cadastro comum.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.revisao",
+      "name": "Revisão do cadastro",
+      "group": "auth",
+      "index": 62,
+      "jornadas": [
+        [
+          "cliente",
+          "cadastro"
+        ],
+        [
+          "advogado",
+          "cadastro"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Revisão do cadastro",
+        "nomeExibicao": "Revisão do cadastro",
+        "descricao": "Permite conferir os dados informados no cadastro comum antes de sua conclusão.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.seguranca",
+      "name": "Segurança da conta",
+      "group": "auth",
+      "index": 63,
+      "jornadas": [
+        [
+          "cliente",
+          "cadastro"
+        ],
+        [
+          "advogado",
+          "cadastro"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Segurança da conta",
+        "nomeExibicao": "Segurança da conta",
+        "descricao": "Reúne as definições de segurança da conta durante o cadastro comum, antes da revisão final.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.cadastro.tipo_conta",
+      "name": "Tipo de conta",
+      "group": "auth",
+      "index": 64,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Tipo de conta",
+        "nomeExibicao": "Tipo de conta",
+        "descricao": "Definir advogado como perfil de cadastro.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.inicializacao.boas_vindas",
+      "name": "Boas-vindas",
+      "group": "auth",
+      "index": 65,
+      "jornadas": [
+        [
+          "cliente",
+          "acesso"
+        ],
+        [
+          "advogado",
+          "acesso"
+        ],
+        [
+          "admin",
+          "acesso"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Boas-vindas",
+        "nomeExibicao": "Boas-vindas",
+        "descricao": "Apresenta o AdvogadoJá ao usuário antes do acesso ou da criação de uma conta.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.inicializacao.splash",
+      "name": "Splash",
+      "group": "auth",
+      "index": 66,
+      "jornadas": [
+        [
+          "cliente",
+          "acesso"
+        ],
+        [
+          "advogado",
+          "acesso"
+        ],
+        [
+          "admin",
+          "acesso"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Splash",
+        "nomeExibicao": "Splash",
+        "descricao": "Abertura do aplicativo.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.sessao.entrar",
+      "name": "Login",
+      "group": "auth",
+      "index": 67,
+      "jornadas": [
+        [
+          "cliente",
+          "acesso"
+        ],
+        [
+          "advogado",
+          "acesso"
+        ],
+        [
+          "admin",
+          "acesso"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Login",
+        "nomeExibicao": "Login",
+        "descricao": "Permite entrar na conta e encaminha a jornada conforme o perfil e o estágio de cadastro do usuário.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.sessao.recuperacao_enviada",
+      "name": "Recuperação solicitada",
+      "group": "auth",
+      "index": 68,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Recuperação solicitada",
+        "nomeExibicao": "Recuperação solicitada",
+        "descricao": "Confirmar solicitação fictícia de recuperação.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "auth.sessao.recuperar_senha",
+      "name": "Recuperar senha",
+      "group": "auth",
+      "index": 69,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Recuperar senha",
+        "nomeExibicao": "Recuperar senha",
+        "descricao": "Solicitar recuperação de senha (simulada).",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.central_ajuda",
+      "name": "Central de ajuda",
+      "group": "cliente",
+      "index": 70,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Central de ajuda",
+        "nomeExibicao": "Central de ajuda",
+        "descricao": "Conteúdo de ajuda do Cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.configuracao",
+      "name": "Configurações do cliente",
+      "group": "cliente",
+      "index": 71,
+      "jornadas": [
+        [
+          "cliente",
+          "conta"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Configurações do cliente",
+        "nomeExibicao": "Configurações do cliente",
+        "descricao": "Tela raiz das configurações do Cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.consentimentos",
+      "name": "Consentimentos",
+      "group": "cliente",
+      "index": 72,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Consentimentos",
+        "nomeExibicao": "Consentimentos",
+        "descricao": "Consentimentos acessíveis pelas configurações, fora do onboarding da O cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.falar_suporte",
+      "name": "Falar com o suporte",
+      "group": "cliente",
+      "index": 73,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Falar com o suporte",
+        "nomeExibicao": "Falar com o suporte",
+        "descricao": "Formulário de abertura de chamado.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.meus_chamados",
+      "name": "Meus chamados",
+      "group": "cliente",
+      "index": 74,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Meus chamados",
+        "nomeExibicao": "Meus chamados",
+        "descricao": "Lista de chamados de suporte.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.politica_privacidade",
+      "name": "Política de privacidade",
+      "group": "cliente",
+      "index": 75,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Política de privacidade",
+        "nomeExibicao": "Política de privacidade",
+        "descricao": "Documento legal da versão documentada.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.suporte",
+      "name": "Suporte",
+      "group": "cliente",
+      "index": 76,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Suporte",
+        "nomeExibicao": "Suporte",
+        "descricao": "Hub de suporte do Cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.termos_privacidade",
+      "name": "Termos e privacidade",
+      "group": "cliente",
+      "index": 77,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Termos e privacidade",
+        "nomeExibicao": "Termos e privacidade",
+        "descricao": "Central legal.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.configuracao.termos_uso",
+      "name": "Termos de uso",
+      "group": "cliente",
+      "index": 78,
+      "jornadas": [
+        [
+          "cliente",
+          "legal"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Termos de uso",
+        "nomeExibicao": "Termos de uso",
+        "descricao": "Documento legal da versão documentada.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.home.inicio",
+      "name": "Início do cliente",
+      "group": "cliente",
+      "index": 79,
+      "jornadas": [
+        [
+          "cliente",
+          "home"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Início do cliente",
+        "nomeExibicao": "Início do cliente",
+        "descricao": "Hub do Cliente: as funções jurídicas originais continuam disponíveis, e Estudante é item permanente no menu.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.onboarding.concluido",
+      "name": "Onboarding do cliente concluído",
+      "group": "cliente",
+      "index": 80,
+      "jornadas": [
+        [
+          "cliente",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Onboarding do cliente concluído",
+        "nomeExibicao": "Onboarding do cliente concluído",
+        "descricao": "Onboarding encerrado; a O cliente entra na área autenticada.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.onboarding.localizacao",
+      "name": "Localização do cliente",
+      "group": "cliente",
+      "index": 81,
+      "jornadas": [
+        [
+          "cliente",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Localização do cliente",
+        "nomeExibicao": "Localização do cliente",
+        "descricao": "Onboarding do Cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.onboarding.preferencias_contato",
+      "name": "Preferências de contato no onboarding",
+      "group": "cliente",
+      "index": 82,
+      "jornadas": [
+        [
+          "cliente",
+          "onboarding"
+        ],
+        [
+          "cliente",
+          "conta"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Preferências de contato no onboarding",
+        "nomeExibicao": "Preferências de contato no onboarding",
+        "descricao": "Onboarding do Cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.perfil.visualizacao",
+      "name": "Meu perfil",
+      "group": "cliente",
+      "index": 83,
+      "jornadas": [
+        [
+          "cliente",
+          "conta"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Meu perfil",
+        "nomeExibicao": "Meu perfil",
+        "descricao": "O próprio perfil também pode originar pequenas jornadas.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.avaliar_experiencia",
+      "name": "Avaliar atendimento",
+      "group": "cliente",
+      "index": 84,
+      "jornadas": [
+        [
+          "cliente",
+          "atendimento"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Avaliar atendimento",
+        "nomeExibicao": "Avaliar atendimento",
+        "descricao": "Avaliação após o encerramento.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.aviso_canal_externo",
+      "name": "Aviso de atendimento externo",
+      "group": "cliente",
+      "index": 85,
+      "jornadas": [
+        [
+          "cliente",
+          "atendimento"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Aviso de atendimento externo",
+        "nomeExibicao": "Aviso de atendimento externo",
+        "descricao": "Orienta que o atendimento seguirá fora da plataforma.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.contatos_liberados",
+      "name": "Contatos liberados",
+      "group": "cliente",
+      "index": 86,
+      "jornadas": [
+        [
+          "cliente",
+          "atendimento"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Contatos liberados",
+        "nomeExibicao": "Contatos liberados",
+        "descricao": "Dados liberados após aceite.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.detalhe_solicitacao",
+      "name": "Detalhe da solicitação",
+      "group": "cliente",
+      "index": 87,
+      "jornadas": [
+        [
+          "cliente",
+          "solicitacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Detalhe da solicitação",
+        "nomeExibicao": "Detalhe da solicitação",
+        "descricao": "O envio da solicitação acontece nesta própria tela.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.encerrar_solicitacao",
+      "name": "Encerrar solicitação",
+      "group": "cliente",
+      "index": 88,
+      "jornadas": [
+        [
+          "cliente",
+          "atendimento"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Encerrar solicitação",
+        "nomeExibicao": "Encerrar solicitação",
+        "descricao": "Retorno à plataforma para concluir o atendimento.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.minhas_solicitacoes",
+      "name": "Minhas solicitações",
+      "group": "cliente",
+      "index": 89,
+      "jornadas": [
+        [
+          "cliente",
+          "solicitacao"
+        ],
+        [
+          "cliente",
+          "atendimento"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Minhas solicitações",
+        "nomeExibicao": "Minhas solicitações",
+        "descricao": "Os resultados da resposta do advogado são estados desta mesma tela, e não novas telas.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "cliente.profissionais.perfil_publico",
+      "name": "Perfil público do advogado",
+      "group": "cliente",
+      "index": 90,
+      "jornadas": [
+        [
+          "cliente",
+          "solicitacao"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "cliente",
+        "nome": "Perfil público do advogado",
+        "nomeExibicao": "Perfil público do advogado",
+        "descricao": "Profissional escolhido a partir dos resultados da Home.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.distribuicao.distribuicao_interna",
+      "name": "Distribuição interna",
+      "group": "escritorio",
+      "index": 91,
+      "jornadas": [
+        [
+          "advogado",
+          "escritorio"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Distribuição interna",
+        "nomeExibicao": "Distribuição interna",
+        "descricao": "Regra interna para distribuição de solicitações.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.equipe.convidar_advogado",
+      "name": "Convidar advogado",
+      "group": "escritorio",
+      "index": 92,
+      "jornadas": [
+        [
+          "advogado",
+          "escritorio"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Convidar advogado",
+        "nomeExibicao": "Convidar advogado",
+        "descricao": "Convite por e-mail e OAB.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.equipe.convite_enviado",
+      "name": "Convite enviado",
+      "group": "escritorio",
+      "index": 93,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Convite enviado",
+        "nomeExibicao": "Convite enviado",
+        "descricao": "Confirmar um convite simulado para integrante do escritório.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.equipe.equipe",
+      "name": "Equipe",
+      "group": "escritorio",
+      "index": 94,
+      "jornadas": [
+        [
+          "advogado",
+          "escritorio"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Equipe",
+        "nomeExibicao": "Equipe",
+        "descricao": "Lista de membros e acesso ao convite.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.gestao.escritorio",
+      "name": "Escritório",
+      "group": "escritorio",
+      "index": 95,
+      "jornadas": [
+        [
+          "advogado",
+          "escritorio"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Escritório",
+        "nomeExibicao": "Escritório",
+        "descricao": "A tela/fluxo depende da relação atual do advogado com um escritório.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.onboarding.cadastro_escritorio",
+      "name": "Dados do escritório",
+      "group": "escritorio",
+      "index": 96,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ],
+        [
+          "advogado",
+          "escritorio"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Dados do escritório",
+        "nomeExibicao": "Dados do escritório",
+        "descricao": "Subfluxo de criação do escritório durante o onboarding.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "escritorio.onboarding.vinculo_escritorio",
+      "name": "Vínculo com escritório",
+      "group": "escritorio",
+      "index": 97,
+      "jornadas": [
+        [
+          "advogado",
+          "onboarding"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "escritorio",
+        "nome": "Vínculo com escritório",
+        "nomeExibicao": "Vínculo com escritório",
+        "descricao": "Onboarding profissional. Escritório é um subfluxo do advogado, não um tipo de usuário. A validação da OAB não acontece aqui.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.assinatura.checkout",
+      "name": "Checkout do Plano Estudante",
+      "group": "estudante",
+      "index": 98,
+      "jornadas": [
+        [
+          "cliente",
+          "plano"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Checkout do Plano Estudante",
+        "nomeExibicao": "Checkout do Plano Estudante",
+        "descricao": "Etapa ilustrativa de contratação; nenhum pagamento real é processado neste HTML.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.assinatura.contratacao_concluida",
+      "name": "Contratação concluída",
+      "group": "estudante",
+      "index": 99,
+      "jornadas": [
+        [
+          "cliente",
+          "plano"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Contratação concluída",
+        "nomeExibicao": "Contratação concluída",
+        "descricao": "Confirmação ilustrativa; retorna à área Estudante com funcionalidades autorizadas.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.assinatura.gestao_assinatura",
+      "name": "Gestão do Plano Estudante",
+      "group": "estudante",
+      "index": 100,
+      "jornadas": [
+        [
+          "cliente",
+          "plano"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Gestão do Plano Estudante",
+        "nomeExibicao": "Gestão do Plano Estudante",
+        "descricao": "Ver estado do plano, regularizar e consultar histórico dentro da área Estudante.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura",
+      "name": "Histórico do Plano Estudante",
+      "group": "estudante",
+      "index": 101,
+      "jornadas": [
+        [
+          "cliente",
+          "plano"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Histórico do Plano Estudante",
+        "nomeExibicao": "Histórico do Plano Estudante",
+        "descricao": "Registros do plano e seus estados, sem criar um segundo perfil.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.assinatura.modal_acesso",
+      "name": "Aviso de acesso restrito",
+      "group": "estudante",
+      "index": 102,
+      "jornadas": [
+        [
+          "cliente",
+          "cursos"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Aviso de acesso restrito",
+        "nomeExibicao": "Aviso de acesso restrito",
+        "descricao": "A janela explica o bloqueio. Fechar mantém a Home; conhecer o plano abre a tela completa.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.assinatura.planos",
+      "name": "Planos Estudante",
+      "group": "estudante",
+      "index": 103,
+      "jornadas": [
+        [
+          "cliente",
+          "plano"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Planos Estudante",
+        "nomeExibicao": "Planos Estudante",
+        "descricao": "Benefícios, funcionalidades, condições e botão de contratação, no layout Cliente. Valores não informados nos arquivos.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.cursos.catalogo",
+      "name": "Catálogo de cursos",
+      "group": "estudante",
+      "index": 104,
+      "jornadas": [
+        [
+          "cliente",
+          "cursos"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Catálogo de cursos",
+        "nomeExibicao": "Catálogo de cursos",
+        "descricao": "Lista os cursos disponíveis para visualização no ambiente do Cliente.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.cursos.detalhe",
+      "name": "Detalhe do curso",
+      "group": "estudante",
+      "index": 105,
+      "jornadas": [
+        [
+          "cliente",
+          "cursos"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Detalhe do curso",
+        "nomeExibicao": "Detalhe do curso",
+        "descricao": "Exibe as informações do curso; a tentativa de consumir conteúdo passa pela autorização.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.cursos.meus_cursos",
+      "name": "Meus cursos",
+      "group": "estudante",
+      "index": 106,
+      "jornadas": [
+        [
+          "cliente",
+          "cursos"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Meus cursos",
+        "nomeExibicao": "Meus cursos",
+        "descricao": "Acompanhamento dos cursos da conta Cliente, conforme plano e permissões.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.home.inicio",
+      "name": "Área Estudante",
+      "group": "estudante",
+      "index": 107,
+      "jornadas": [
+        [
+          "cliente",
+          "estudante"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Área Estudante",
+        "nomeExibicao": "Área Estudante",
+        "descricao": "O ícone Estudante fica sempre presente no menu Cliente. Header e menu do Cliente são preservados.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "estudante.perfil.editar_academicos",
+      "name": "Dados acadêmicos",
+      "group": "estudante",
+      "index": 108,
+      "jornadas": [
+        [
+          "cliente",
+          "conta"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "estudante",
+        "nome": "Dados acadêmicos",
+        "nomeExibicao": "Dados acadêmicos",
+        "descricao": "Dados complementares no Perfil Cliente. Não são exigidos para visualizar Estudante nem para contratar.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao",
+      "name": "Detalhe da notificação",
+      "group": "notificacoes",
+      "index": 109,
+      "jornadas": [],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "notificacoes",
+        "nome": "Detalhe da notificação",
+        "nomeExibicao": "Detalhe da notificação",
+        "descricao": "Mostrar conteúdo da notificação e ação relacionada.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "versao"
+      ]
+    },
+    {
+      "id": "notificacoes.lista.notificacoes",
+      "name": "Notificações",
+      "group": "notificacoes",
+      "index": 110,
+      "jornadas": [
+        [
+          "cliente",
+          "sistema"
+        ],
+        [
+          "advogado",
+          "sistema"
+        ],
+        [
+          "admin",
+          "sistema"
+        ]
+      ],
+      "identidade": {
+        "tipo": "tela",
+        "namespace": "notificacoes",
+        "nome": "Notificações",
+        "nomeExibicao": "Notificações",
+        "descricao": "Reúne notificações do usuário e permite acessar seus respectivos contextos na plataforma.",
+        "versao": "1.0.0-proposta"
+      },
+      "identidadeInferida": [
+        "descricao",
+        "versao"
+      ]
+    }
+  ],
+  "telas": {
+    "admin.acesso.seletor_perfil": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Selecionar perfil",
+          "nomeExibicao": "Selecionar perfil",
+          "descricao": "Seleciona Administrador sem refazer login.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "acesso"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.assinatura.detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Detalhe da assinatura",
+          "nomeExibicao": "Detalhe da assinatura",
+          "descricao": "Estado do plano, pagamento e entitlements.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "assinatura"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.assinatura.lista": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Assinaturas",
+          "nomeExibicao": "Assinaturas",
+          "descricao": "Consulta assinaturas de Advogados e Estudantes de Direito.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "assinatura"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.auditoria.log_detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Detalhe do log",
+          "nomeExibicao": "Detalhe do log",
+          "descricao": "Exibe o evento e seus metadados permitidos.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "auditoria"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.auditoria.logs": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Logs de auditoria",
+          "nomeExibicao": "Logs de auditoria",
+          "descricao": "Rastreabilidade das ações e eventos administrativos.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "auditoria"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.configuracao.geral": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Configurações administrativas",
+          "nomeExibicao": "Configurações administrativas",
+          "descricao": "Ponto de entrada para governança e ajustes administrativos.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "governanca"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.governanca.administrador_detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Permissões administrativas",
+          "nomeExibicao": "Permissões administrativas",
+          "descricao": "Visualiza uma estrutura possível, sem assumir que permissões serão individuais.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "governanca"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.governanca.administradores": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Administradores",
+          "nomeExibicao": "Administradores",
+          "descricao": "Gestão do papel Administrador; modelo de governança ainda não fechado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "governanca"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.home.dashboard": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Painel administrativo",
+          "nomeExibicao": "Painel administrativo",
+          "descricao": "Ponto central da operação administrativa. Os módulos exibidos devem respeitar as permissões que forem definidas para o Administrador.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "home"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.moderacao.denuncia_detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Detalhe da denúncia",
+          "nomeExibicao": "Detalhe da denúncia",
+          "descricao": "Reúne contexto necessário para a análise.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "moderacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.moderacao.denuncias": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Denúncias",
+          "nomeExibicao": "Denúncias",
+          "descricao": "Fila de moderação e ocorrências reportadas.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "moderacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.oab.detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Análise da OAB",
+          "nomeExibicao": "Análise da OAB",
+          "descricao": "Conferência administrativa do processo próprio de OAB.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "oab"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.oab.fila": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Validação da OAB",
+          "nomeExibicao": "Validação da OAB",
+          "descricao": "Lista de registros profissionais que exigem análise.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "oab"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.usuarios.perfil_detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Detalhe do usuário",
+          "nomeExibicao": "Detalhe do usuário",
+          "descricao": "Visualiza a conta e os perfis acumulados.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "perfis"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "admin.usuarios.perfis": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "admin",
+          "nome": "Perfis e usuários",
+          "nomeExibicao": "Perfis e usuários",
+          "descricao": "Lista e busca de identidades da plataforma.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "admin",
+          "jornadas": [
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "perfis"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.assinatura.checkout": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Checkout",
+          "nomeExibicao": "Checkout",
+          "descricao": "Checkout da assinatura. A prévia visual não realiza pagamentos.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "assinatura"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.assinatura.gestao_assinatura": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Gestão da assinatura",
+          "nomeExibicao": "Gestão da assinatura",
+          "descricao": "Ponto de entrada da assinatura profissional.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "assinatura"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.assinatura.historico_assinatura": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Histórico da assinatura",
+          "nomeExibicao": "Histórico da assinatura",
+          "descricao": "Histórico do plano do advogado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "assinatura"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.assinatura.planos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Planos",
+          "nomeExibicao": "Planos",
+          "descricao": "Planos disponíveis ao advogado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "assinatura"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.assinatura.resultado_checkout": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Resultado do checkout",
+          "nomeExibicao": "Resultado do checkout",
+          "descricao": "Exibir resultado de pagamento integralmente fictício.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.atendimentos.detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Detalhe do atendimento",
+          "nomeExibicao": "Detalhe do atendimento",
+          "descricao": "Acompanhar o contato liberado e os dados simulados de atendimento.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.atendimentos.encerrar": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Encerrar atendimento",
+          "nomeExibicao": "Encerrar atendimento",
+          "descricao": "Registrar encerramento sem executar mensagens externas.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.atendimentos.lista": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Atendimentos",
+          "nomeExibicao": "Atendimentos",
+          "descricao": "Visão dos atendimentos solicitados, em andamento e encerrados.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "operacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.clientes.aceitar_contato": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Aceitar contato",
+          "nomeExibicao": "Aceitar contato",
+          "descricao": "Confirmação antes de liberar o contato.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "operacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.clientes.contato_liberado": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Contato liberado",
+          "nomeExibicao": "Contato liberado",
+          "descricao": "Contato do cliente liberado após aceite.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "operacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.clientes.detalhe_solicitacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Detalhe da solicitação",
+          "nomeExibicao": "Detalhe da solicitação",
+          "descricao": "Aqui o advogado decide aceitar ou recusar o contato.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "operacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.clientes.recusa_confirmada": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Solicitação recusada",
+          "nomeExibicao": "Solicitação recusada",
+          "descricao": "Exibir confirmação da recusa e destino da solicitação.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.clientes.recusar_solicitacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Recusar solicitação",
+          "nomeExibicao": "Recusar solicitação",
+          "descricao": "o advogado informa o motivo e confirma a recusa.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "operacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.clientes.solicitacoes_recebidas": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Solicitações recebidas",
+          "nomeExibicao": "Solicitações recebidas",
+          "descricao": "A própria tela separa novas, aceitas e recusadas.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "operacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.agenda_semanal": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Agenda semanal",
+          "nomeExibicao": "Agenda semanal",
+          "descricao": "Configuração da agenda profissional.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "disponibilidade"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.central_ajuda": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Central de ajuda",
+          "nomeExibicao": "Central de ajuda",
+          "descricao": "Ajuda e orientações.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.chamado_detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Detalhes do chamado",
+          "nomeExibicao": "Detalhes do chamado",
+          "descricao": "Mostrar histórico, status e resposta simulada do suporte.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.configuracao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Configurações",
+          "nomeExibicao": "Configurações",
+          "descricao": "Hub de configurações profissionais.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "conta"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.consentimentos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Consentimentos",
+          "nomeExibicao": "Consentimentos",
+          "descricao": "Consentimentos da conta profissional.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.falar_suporte": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Falar com o suporte",
+          "nomeExibicao": "Falar com o suporte",
+          "descricao": "Formulário de contato com suporte.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.meus_chamados": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Meus chamados",
+          "nomeExibicao": "Meus chamados",
+          "descricao": "Acompanhamento de chamados.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.politica_privacidade": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Política de privacidade",
+          "nomeExibicao": "Política de privacidade",
+          "descricao": "Política de privacidade.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.preferencias_atendimento": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Preferências de atendimento",
+          "nomeExibicao": "Preferências de atendimento",
+          "descricao": "Preferências operacionais do advogado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "disponibilidade"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.suporte": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Suporte",
+          "nomeExibicao": "Suporte",
+          "descricao": "Hub de suporte do advogado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.termos_privacidade": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Termos e privacidade",
+          "nomeExibicao": "Termos e privacidade",
+          "descricao": "Central de documentos legais.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.termos_uso": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Termos de uso",
+          "nomeExibicao": "Termos de uso",
+          "descricao": "Termos de uso.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.configuracao.validacao_oab": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Validação da OAB",
+          "nomeExibicao": "Validação da OAB",
+          "descricao": "Status e dados utilizados na validação profissional.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "oab"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.disponibilidade.painel": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Disponibilidade profissional",
+          "nomeExibicao": "Disponibilidade profissional",
+          "descricao": "Status online/offline e tipos de busca. A tela também abre Agenda e Raio de atendimento.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "disponibilidade"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.disponibilidade.raio_atendimento": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Raio de atendimento",
+          "nomeExibicao": "Raio de atendimento",
+          "descricao": "Configuração da distância para atendimento presencial.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "disponibilidade"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.home.inicio": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Início do advogado",
+          "nomeExibicao": "Início do advogado",
+          "descricao": "A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "home"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.oab.dados": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Dados da OAB",
+          "nomeExibicao": "Dados da OAB",
+          "descricao": "Dados da OAB pertencem ao processo próprio de validação, não ao cadastro nem ao onboarding profissional.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "oab"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.areas_atuacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Áreas de atuação",
+          "nomeExibicao": "Áreas de atuação",
+          "descricao": "Onboarding profissional · etapa 3.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.conclusao_profissional": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Onboarding profissional concluído",
+          "nomeExibicao": "Onboarding profissional concluído",
+          "descricao": "Confirmar dados enviados e orientar a etapa de OAB.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.dados_academicos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Dados acadêmicos",
+          "nomeExibicao": "Dados acadêmicos",
+          "descricao": "Onboarding profissional · etapa 1.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.dados_profissionais": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Dados profissionais",
+          "nomeExibicao": "Dados profissionais",
+          "descricao": "Onboarding profissional · etapa 2.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.disponibilidade": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Disponibilidade inicial",
+          "nomeExibicao": "Disponibilidade inicial",
+          "descricao": "Onboarding profissional · etapa 5.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.perfil_profissional": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Configuração do perfil profissional",
+          "nomeExibicao": "Configuração do perfil profissional",
+          "descricao": "Onboarding profissional · etapa 4.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.onboarding.revisao_profissional": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Revisão profissional",
+          "nomeExibicao": "Revisão profissional",
+          "descricao": "Conclusão do onboarding profissional. OAB ainda não é validada neste fluxo.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.perfil.visualizacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Perfil profissional",
+          "nomeExibicao": "Perfil profissional",
+          "descricao": "Dados pessoais, profissionais e públicos do advogado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "conta"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.validacao.envio_confirmado": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "OAB enviada para análise",
+          "nomeExibicao": "OAB enviada para análise",
+          "descricao": "Confirmar protocolo simulado, com acesso ao status e à mesma Home.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "advogado.validacao.status": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "advogado",
+          "nome": "Perfil em validação",
+          "nomeExibicao": "Perfil em validação",
+          "descricao": "Apresenta a situação da validação profissional do advogado e o acompanhamento de seu cadastro de OAB.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "advogado",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.concluido": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Cadastro concluído",
+          "nomeExibicao": "Cadastro concluído",
+          "descricao": "Confirma a conclusão do cadastro comum e orienta a próxima etapa conforme a jornada do usuário.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cadastro"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "cadastro"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.consentimentos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Consentimentos do cadastro",
+          "nomeExibicao": "Consentimentos do cadastro",
+          "descricao": "Consentimentos do cadastro.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.contato": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Dados de contato",
+          "nomeExibicao": "Dados de contato",
+          "descricao": "Cadastro comum.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cadastro"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "cadastro"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.endereco": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Endereço",
+          "nomeExibicao": "Endereço",
+          "descricao": "Cadastro comum.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cadastro"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "cadastro"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.identificacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Identificação",
+          "nomeExibicao": "Identificação",
+          "descricao": "Cadastro comum.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cadastro"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "cadastro"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.revisao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Revisão do cadastro",
+          "nomeExibicao": "Revisão do cadastro",
+          "descricao": "Permite conferir os dados informados no cadastro comum antes de sua conclusão.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cadastro"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "cadastro"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.seguranca": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Segurança da conta",
+          "nomeExibicao": "Segurança da conta",
+          "descricao": "Reúne as definições de segurança da conta durante o cadastro comum, antes da revisão final.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cadastro"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "cadastro"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.cadastro.tipo_conta": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Tipo de conta",
+          "nomeExibicao": "Tipo de conta",
+          "descricao": "Definir advogado como perfil de cadastro.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.inicializacao.boas_vindas": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Boas-vindas",
+          "nomeExibicao": "Boas-vindas",
+          "descricao": "Apresenta o AdvogadoJá ao usuário antes do acesso ou da criação de uma conta.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "acesso"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "acesso"
+            },
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "acesso"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.inicializacao.splash": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Splash",
+          "nomeExibicao": "Splash",
+          "descricao": "Abertura do aplicativo.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "acesso"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "acesso"
+            },
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "acesso"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.sessao.entrar": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Login",
+          "nomeExibicao": "Login",
+          "descricao": "Permite entrar na conta e encaminha a jornada conforme o perfil e o estágio de cadastro do usuário.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "acesso"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "acesso"
+            },
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "acesso"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.sessao.recuperacao_enviada": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Recuperação solicitada",
+          "nomeExibicao": "Recuperação solicitada",
+          "descricao": "Confirmar solicitação fictícia de recuperação.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "auth.sessao.recuperar_senha": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "auth",
+          "nome": "Recuperar senha",
+          "nomeExibicao": "Recuperar senha",
+          "descricao": "Solicitar recuperação de senha (simulada).",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.central_ajuda": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Central de ajuda",
+          "nomeExibicao": "Central de ajuda",
+          "descricao": "Conteúdo de ajuda do Cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.configuracao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Configurações do cliente",
+          "nomeExibicao": "Configurações do cliente",
+          "descricao": "Tela raiz das configurações do Cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "conta"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.consentimentos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Consentimentos",
+          "nomeExibicao": "Consentimentos",
+          "descricao": "Consentimentos acessíveis pelas configurações, fora do onboarding da O cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.falar_suporte": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Falar com o suporte",
+          "nomeExibicao": "Falar com o suporte",
+          "descricao": "Formulário de abertura de chamado.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.meus_chamados": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Meus chamados",
+          "nomeExibicao": "Meus chamados",
+          "descricao": "Lista de chamados de suporte.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.politica_privacidade": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Política de privacidade",
+          "nomeExibicao": "Política de privacidade",
+          "descricao": "Documento legal da versão documentada.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.suporte": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Suporte",
+          "nomeExibicao": "Suporte",
+          "descricao": "Hub de suporte do Cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.termos_privacidade": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Termos e privacidade",
+          "nomeExibicao": "Termos e privacidade",
+          "descricao": "Central legal.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.configuracao.termos_uso": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Termos de uso",
+          "nomeExibicao": "Termos de uso",
+          "descricao": "Documento legal da versão documentada.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "legal"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.home.inicio": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Início do cliente",
+          "nomeExibicao": "Início do cliente",
+          "descricao": "Hub do Cliente: as funções jurídicas originais continuam disponíveis, e Estudante é item permanente no menu.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "home"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.onboarding.concluido": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Onboarding do cliente concluído",
+          "nomeExibicao": "Onboarding do cliente concluído",
+          "descricao": "Onboarding encerrado; a O cliente entra na área autenticada.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.onboarding.localizacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Localização do cliente",
+          "nomeExibicao": "Localização do cliente",
+          "descricao": "Onboarding do Cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.onboarding.preferencias_contato": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Preferências de contato no onboarding",
+          "nomeExibicao": "Preferências de contato no onboarding",
+          "descricao": "Onboarding do Cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "onboarding"
+            },
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "conta"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.perfil.visualizacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Meu perfil",
+          "nomeExibicao": "Meu perfil",
+          "descricao": "O próprio perfil também pode originar pequenas jornadas.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "conta"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.avaliar_experiencia": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Avaliar atendimento",
+          "nomeExibicao": "Avaliar atendimento",
+          "descricao": "Avaliação após o encerramento.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "atendimento"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.aviso_canal_externo": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Aviso de atendimento externo",
+          "nomeExibicao": "Aviso de atendimento externo",
+          "descricao": "Orienta que o atendimento seguirá fora da plataforma.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "atendimento"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.contatos_liberados": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Contatos liberados",
+          "nomeExibicao": "Contatos liberados",
+          "descricao": "Dados liberados após aceite.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "atendimento"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.detalhe_solicitacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Detalhe da solicitação",
+          "nomeExibicao": "Detalhe da solicitação",
+          "descricao": "O envio da solicitação acontece nesta própria tela.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "solicitacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.encerrar_solicitacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Encerrar solicitação",
+          "nomeExibicao": "Encerrar solicitação",
+          "descricao": "Retorno à plataforma para concluir o atendimento.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "atendimento"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.minhas_solicitacoes": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Minhas solicitações",
+          "nomeExibicao": "Minhas solicitações",
+          "descricao": "Os resultados da resposta do advogado são estados desta mesma tela, e não novas telas.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "solicitacao"
+            },
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "atendimento"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "cliente.profissionais.perfil_publico": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "cliente",
+          "nome": "Perfil público do advogado",
+          "nomeExibicao": "Perfil público do advogado",
+          "descricao": "Profissional escolhido a partir dos resultados da Home.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "cliente",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "solicitacao"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.distribuicao.distribuicao_interna": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Distribuição interna",
+          "nomeExibicao": "Distribuição interna",
+          "descricao": "Regra interna para distribuição de solicitações.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "escritorio"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.equipe.convidar_advogado": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Convidar advogado",
+          "nomeExibicao": "Convidar advogado",
+          "descricao": "Convite por e-mail e OAB.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "escritorio"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.equipe.convite_enviado": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Convite enviado",
+          "nomeExibicao": "Convite enviado",
+          "descricao": "Confirmar um convite simulado para integrante do escritório.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.equipe.equipe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Equipe",
+          "nomeExibicao": "Equipe",
+          "descricao": "Lista de membros e acesso ao convite.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "escritorio"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.gestao.escritorio": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Escritório",
+          "nomeExibicao": "Escritório",
+          "descricao": "A tela/fluxo depende da relação atual do advogado com um escritório.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "escritorio"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.onboarding.cadastro_escritorio": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Dados do escritório",
+          "nomeExibicao": "Dados do escritório",
+          "descricao": "Subfluxo de criação do escritório durante o onboarding.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "escritorio"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "escritorio.onboarding.vinculo_escritorio": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "escritorio",
+          "nome": "Vínculo com escritório",
+          "nomeExibicao": "Vínculo com escritório",
+          "descricao": "Onboarding profissional. Escritório é um subfluxo do advogado, não um tipo de usuário. A validação da OAB não acontece aqui.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "escritorio",
+          "jornadas": [
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "onboarding"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.assinatura.checkout": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Checkout do Plano Estudante",
+          "nomeExibicao": "Checkout do Plano Estudante",
+          "descricao": "Etapa ilustrativa de contratação; nenhum pagamento real é processado neste HTML.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "plano"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.assinatura.contratacao_concluida": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Contratação concluída",
+          "nomeExibicao": "Contratação concluída",
+          "descricao": "Confirmação ilustrativa; retorna à área Estudante com funcionalidades autorizadas.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "plano"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.assinatura.gestao_assinatura": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Gestão do Plano Estudante",
+          "nomeExibicao": "Gestão do Plano Estudante",
+          "descricao": "Ver estado do plano, regularizar e consultar histórico dentro da área Estudante.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "plano"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.assinatura.historico_assinatura": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Histórico do Plano Estudante",
+          "nomeExibicao": "Histórico do Plano Estudante",
+          "descricao": "Registros do plano e seus estados, sem criar um segundo perfil.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "plano"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.assinatura.modal_acesso": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Aviso de acesso restrito",
+          "nomeExibicao": "Aviso de acesso restrito",
+          "descricao": "A janela explica o bloqueio. Fechar mantém a Home; conhecer o plano abre a tela completa.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cursos"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.assinatura.planos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Planos Estudante",
+          "nomeExibicao": "Planos Estudante",
+          "descricao": "Benefícios, funcionalidades, condições e botão de contratação, no layout Cliente. Valores não informados nos arquivos.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "plano"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.cursos.catalogo": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Catálogo de cursos",
+          "nomeExibicao": "Catálogo de cursos",
+          "descricao": "Lista os cursos disponíveis para visualização no ambiente do Cliente.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cursos"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.cursos.detalhe": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Detalhe do curso",
+          "nomeExibicao": "Detalhe do curso",
+          "descricao": "Exibe as informações do curso; a tentativa de consumir conteúdo passa pela autorização.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cursos"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.cursos.meus_cursos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Meus cursos",
+          "nomeExibicao": "Meus cursos",
+          "descricao": "Acompanhamento dos cursos da conta Cliente, conforme plano e permissões.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "cursos"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.home.inicio": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Área Estudante",
+          "nomeExibicao": "Área Estudante",
+          "descricao": "O ícone Estudante fica sempre presente no menu Cliente. Header e menu do Cliente são preservados.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "estudante"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "estudante.perfil.editar_academicos": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "estudante",
+          "nome": "Dados acadêmicos",
+          "nomeExibicao": "Dados acadêmicos",
+          "descricao": "Dados complementares no Perfil Cliente. Não são exigidos para visualizar Estudante nem para contratar.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "estudante",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "conta"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "notificacoes.detalhe.notificacao": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "notificacoes",
+          "nome": "Detalhe da notificação",
+          "nomeExibicao": "Detalhe da notificação",
+          "descricao": "Mostrar conteúdo da notificação e ação relacionada.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": []
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    },
+    "notificacoes.lista.notificacoes": {
+      "tela": {
+        "schema": "advogadoja.tela",
+        "schemaVersion": "0.3.0",
+        "identidade": {
+          "tipo": "tela",
+          "namespace": "notificacoes",
+          "nome": "Notificações",
+          "nomeExibicao": "Notificações",
+          "descricao": "Reúne notificações do usuário e permite acessar seus respectivos contextos na plataforma.",
+          "versao": "1.0.0-proposta"
+        },
+        "classificacao": {
+          "pastaCatalogo": "global",
+          "jornadas": [
+            {
+              "jornadaRef": "cliente",
+              "subjornadaRef": "sistema"
+            },
+            {
+              "jornadaRef": "advogado",
+              "subjornadaRef": "sistema"
+            },
+            {
+              "jornadaRef": "admin",
+              "subjornadaRef": "sistema"
+            }
+          ]
+        },
+        "navegacao": {},
+        "estados": {},
+        "acoes": {},
+        "dados": {},
+        "componentes": {},
+        "estrutura": {},
+        "variantes": {},
+        "interacoes": {},
+        "mocks": {}
+      },
+      "componentes": {}
+    }
+  },
+  "componentes": {},
+  "observacoes": {
+    "pastasCatalogo": "Agrupamento inicial derivado de namespace. Validar classificacoes antes da homologacao; auth e notificacoes foram agrupados em global por serem compartilhados.",
+    "edicao": "Fonte inicial carregada pelo editor. As alteracoes ficam na memoria/localStorage ate exportar novo documento.json."
+  }
+}

@@ -79,6 +79,7 @@ function inline(tokens){const frag=document.createDocumentFragment();for(const t
  frag.append(el);
  }return frag}
 function renderBlock(b){
+ if(b.tipo==='titulo'){const level=Math.min(6,Math.max(4,Number(b.nivel)||4));const h=E('h'+level,'doc-subtitle');h.append(inline(b.conteudo));return h}
  if(b.tipo==='paragrafo'){const p=E('p','doc-p');p.append(inline(b.conteudo));return p}
  if(b.tipo==='codigo'){const shell=E('div','code-shell'),head=E('div','code-head',(b.linguagem||'texto').toUpperCase());const pre=E('pre','doc-pre',b.conteudo||'');shell.append(head,pre);return shell}
  if(b.tipo==='tabela'){
@@ -92,6 +93,39 @@ function renderBlock(b){
  const el=E('p','doc-p','Tipo de bloco não reconhecido');return el;
 }
 function validateDoc(d){return isObj(d)&&isObj(d.documento)&&typeof d.documento.titulo==='string'&&Array.isArray(d.secoes)&&d.secoes.every(s=>typeof s.titulo==='string'&&Array.isArray(s.subsecoes)&&s.subsecoes.every(g=>typeof g.titulo==='string'&&Array.isArray(g.blocos)))}
+function markdownInline(text){
+ const tokens=[],pattern=/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^\s)]+\)|\*[^*]+\*)/g;let at=0,m;
+ while((m=pattern.exec(text))){if(m.index>at)tokens.push({tipo:'texto',texto:text.slice(at,m.index)});const raw=m[0];
+  if(raw.startsWith('**'))tokens.push({tipo:'negrito',conteudo:markdownInline(raw.slice(2,-2))});
+  else if(raw.startsWith('`'))tokens.push({tipo:'codigo',texto:raw.slice(1,-1)});
+  else if(raw.startsWith('[')){const end=raw.indexOf('](');tokens.push({tipo:'link',url:raw.slice(end+2,-1),conteudo:markdownInline(raw.slice(1,end))});}
+  else tokens.push({tipo:'italico',conteudo:markdownInline(raw.slice(1,-1))});at=pattern.lastIndex;
+ }if(at<text.length)tokens.push({tipo:'texto',texto:text.slice(at)});return tokens;
+}
+function markdownBlocks(markdown){
+ const lines=String(markdown||'').replace(/\r\n?/g,'\n').split('\n'),blocks=[];let i=0;
+ const paragraph=value=>({tipo:'paragrafo',conteudo:markdownInline(value.trim())});
+ while(i<lines.length){let line=lines[i];if(!line.trim()){i++;continue}
+  const fence=line.match(/^```([^`]*)$/);if(fence){const parts=[];i++;while(i<lines.length&&!/^```/.test(lines[i]))parts.push(lines[i++]);if(i<lines.length)i++;blocks.push({tipo:'codigo',linguagem:fence[1].trim()||'texto',conteudo:parts.join('\n')});continue}
+  const heading=line.match(/^(#{1,4})\s+(.+)$/);if(heading){blocks.push({tipo:'titulo',nivel:heading[1].length,conteudo:markdownInline(heading[2])});i++;continue}
+  if(/^---+$/.test(line.trim())){blocks.push({tipo:'divisor'});i++;continue}
+  if(/^>\s?/.test(line)){const parts=[];while(i<lines.length&&/^>\s?/.test(lines[i]))parts.push(lines[i++].replace(/^>\s?/,''));blocks.push({tipo:'destaque',blocos:[paragraph(parts.join(' '))]});continue}
+  const list=line.match(/^(\s*)([-*+] |\d+\. )(.+)$/);if(list){const ordered=/\d+\. /.test(list[2]),items=[];while(i<lines.length){const item=lines[i].match(/^\s*(?:[-*+] |\d+\. )(.+)$/);if(!item)break;items.push([paragraph(item[1])]);i++;}blocks.push({tipo:'lista',ordenada:ordered,itens:items});continue}
+  if(/^\|/.test(line)&&i+1<lines.length&&/^\|?\s*:?-{3,}/.test(lines[i+1])){const cells=value=>value.replace(/^\||\|$/g,'').split('|').map(x=>markdownInline(x.trim()));const colunas=cells(line);i+=2;const linhas=[];while(i<lines.length&&/^\|/.test(lines[i]))linhas.push(cells(lines[i++]));blocks.push({tipo:'tabela',colunas,linhas});continue}
+  const parts=[line.trim()];i++;while(i<lines.length&&lines[i].trim()&&!/^(#{1,4})\s|^```|^>\s?|^\s*(?:[-*+] |\d+\. )|^\|/.test(lines[i]))parts.push(lines[i++].trim());blocks.push(paragraph(parts.join(' ')));
+ }return blocks;
+}
+function normalizeDoc(d){
+ if(validateDoc(d))return clone(d);
+ if(!isObj(d)||typeof d.title!=='string'||!Array.isArray(d.sections))throw Error('Documentação inválida: esperado documento estruturado ou { title, introMarkdown, sections }.');
+ const byId=new Map(d.sections.filter(isObj).map(s=>[s.id,s]));
+ const chapters=Array.isArray(d.chapters)&&d.chapters.length?d.chapters:d.sections.map((s,i)=>({id:s.id,numero:i+1,title:s.title,sectionIds:[s.id]}));
+ return {documento:{titulo:d.title,fonteArquivo:d.schema||'documento.json'},apresentacao:markdownBlocks(d.introMarkdown),secoes:chapters.map((chapter,index)=>{
+  const ids=Array.isArray(chapter.sectionIds)?chapter.sectionIds:[];const entries=ids.map(id=>byId.get(id)).filter(Boolean);
+  const title=String(chapter.title||'Seção '+(index+1)).replace(/^\s*\d+(?:\.\d+)?\.?\s*/,'');
+  return {numero:chapter.numero||index+1,titulo:title,subsecoes:entries.map(section=>({titulo:(section.number?section.number+' · ':'')+section.title,blocos:markdownBlocks(section.markdown)}))};
+ })};
+}
 function renderDocument(){
  const slot=document.getElementById('documentacao');slot.replaceChildren();
  const shell=E('div','doc'),aside=E('nav','doc-index'),heading=E('h3',null,'Índice das seções'),links=E('div','index-links');
@@ -167,8 +201,7 @@ function validateBundle(payload){
  }else if(MODE==='home'){
   home=clone(getContrato(payload));
  }else if(MODE==='doc'){
-  if(!validateDoc(payload))throw Error('Documentação inválida: esperado documento e secoes[].subsecoes[].blocos[].');
-  documentacao=clone(payload);
+  documentacao=normalizeDoc(payload);
  }
 }
 function render(){if(MODE==='doc')renderDocument();else refreshTrees()}
