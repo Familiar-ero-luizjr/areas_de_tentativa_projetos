@@ -1,6 +1,7 @@
 /* AdvogadoJá · Módulo independente · execução local sem dependência externa */
 (()=>{'use strict';
 if(new URLSearchParams(location.search).has('embed'))document.body.classList.add('embedded');
+const IN_WORKSPACE=new URLSearchParams(location.search).get('workspace')==='1';
 const $=s=>document.querySelector(s), app=$('#app'), S={bundle:null,screen:null,mode:'campos',query:'',journey:null,subjourney:null,device:'mobile',scenario:null,roteiro:null,step:0,history:[],modal:null,changes:0,bankView:'campos',branchChoices:{},showCount:24};
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dt=v=>Array.isArray(v)?v:[];
@@ -31,7 +32,22 @@ function nav(){const all=screenIDs();const journey=jIndex(),rotes=dt(S.bundle?.s
 }
 function header(){return `<div class="head-left"><button class="menu-toggle" title="Abrir menu" data-action="toggleSidebar">☰</button><span class="brand-mark">AJ</span><div class="head-brand"><b>AdvogadoJá</b><small>WORKSPACE · MÓDULO AUTÔNOMO</small></div></div><div class="head-actions"><span id="saveStatus" class="save-status">${S.changes?'Alterações não exportadas':'Snapshot local'}</span><button class="head-btn" data-action="import">Importar JSON</button><button class="head-btn primary" data-action="export">Exportar JSON</button></div>`}
 function topTitle(){const label=S.mode.startsWith('journey:')?`Jornada · ${jIndex().find(j=>j.id===S.mode.slice(8))?.name||S.mode.slice(8)}`:S.mode.startsWith('roteiro:')?`Roteiro · ${dt(S.bundle?.simulacoes?.jornadasSimuladas).find(j=>j.id===S.mode.slice(8))?.name||''}`:S.mode.startsWith('banco:')?'Modelagem do banco':S.mode==='campos'?'Campos utilizados':S.mode==='visualizacao'?'Visualização do fluxo':S.mode==='simulador'?'Protótipo interativo':S.mode==='modelagem'?'Modelagem do banco':S.mode.startsWith('proto:')?'Protótipo interativo':'Área de trabalho';return `<div class="intro"><div><span class="kicker">${esc(moduleName())} / ${esc(label)}</span><h1>${esc(label)}</h1><p>${S.mode==='campos'?'Inspeção documental dos campos efetivamente presentes no JSON do módulo.':S.mode.startsWith('banco:')||S.mode==='modelagem'?'Entidades e operações só são efetivas quando declaradas; campos visuais são candidatos.':S.mode.startsWith('journey:')||MODULO==='JORNADAS'?'Telas organizadas por participações explícitas de jornadas.':S.mode==='visualizacao'?'Relações declaradas, bifurcações e prévias; sem criar destinos automaticamente.':'Simulação local, sem acesso a serviços externos ou persistência de produção.'}</p></div><div class="chip">${screenIDs().length} telas</div></div>`}
-function shell(){app.innerHTML=`<header id="topbar">${header()}</header><div class="work"><aside id="sidebar">${nav()}</aside><main id="main">${topTitle()}<section id="pane"></section></main></div><input id="fileLoader" type="file" accept=".json,application/json" hidden>`;renderPane();}
+function shell(){app.innerHTML=`<header id="topbar">${header()}</header><div class="work"><aside id="sidebar">${nav()}</aside><main id="main">${topTitle()}<section id="pane"></section></main></div><input id="fileLoader" type="file" accept=".json,application/json" hidden>`;
+ if(IN_WORKSPACE){
+  // Só o conteúdo e as AÇÕES permanecem visíveis; o menu agora vive no index geral.
+  const toolbar=make('div','workspace-module-actions');
+  const buttons=$('#topbar .head-actions');if(buttons)toolbar.append(buttons);
+  $('#main').insertBefore(toolbar,$('#main').firstChild);
+ }
+ renderPane();
+ if(IN_WORKSPACE&&window.parent!==window){
+  const walk=el=>{const button=el.querySelector(':scope > button[data-nav]');if(!button)return null;
+   const sub=el.querySelector(':scope > .nav-sub');const children=sub?[...sub.children].map(walk).filter(Boolean):[];
+   return {id:button.dataset.nav,label:button.querySelector('.nav-label')?.textContent?.trim()||button.textContent.trim(),kind:'mode',...(children.length?{children}:{})};};
+  const menu=[...document.querySelectorAll('#sidebar .nav-tree > .nav-item-wrap')].map(walk).filter(Boolean);
+  window.parent.postMessage({type:'aj.workspace.module-state',module:MODULO,mode:S.mode,menu},location.origin);
+ }
+}
 function setMode(mode){if(mode==='simulador')mode='proto:livre';if(mode==='modelagem')mode='banco:campos';if(mode==='proto:roteiros')mode='roteiro:'+(dt(S.bundle?.simulacoes?.jornadasSimuladas)[0]?.id||'');if(mode.startsWith('banco:'))S.bankView=mode.slice(6);if(mode.startsWith('journey:')){S.journey=mode.slice(8);S.subjourney=null;S.showCount=24}if(mode.startsWith('roteiro:')){S.roteiro=mode.slice(8);S.step=0;S.branchChoices={}}S.mode=mode;shell();}
 function renderPane(){const pane=$('#pane');if(!pane)return;
  if(S.mode==='campos'){pane.innerHTML=fieldsView();return}
@@ -138,6 +154,8 @@ function handleChange(e){const id=e.target.id,v=e.target.value;
 }
 function handleSubmit(e){if(!['relationForm','journeyForm','addScreenForm','bankForm','operationForm'].includes(e.target.id))return;e.preventDefault();({relationForm:relationSubmit,journeyForm:journeySubmit,addScreenForm:addScreenSubmit,bankForm:bankSubmit,operationForm:operationSubmit})[e.target.id](e.target)}
 window.addEventListener('message',e=>{if(!S.bundle||MODULO!=='PROTOTIPO')return;const data=e.data;if(data?.type==='aj.simulacao.navegar'&&typeof data.id==='string'){const id=data.id;if(!scr()[id])return;const possible=getRels(S.screen).some(r=>relTarget(r)===id&&relType(r)==='tela');if(!possible){alert('Destino não documentado como relação da tela atual.');return}S.history.push(S.screen);S.screen=id;shell()}else if(data?.type==='aj.simulacao.acao'){const msg='Evento local documentado: '+data.action+' · Sem efeito externo.';$('#saveStatus')&&($('#saveStatus').textContent=msg.slice(0,70))}});
+// API mínima para o index escolher telas sem reproduzir os motores dos módulos.
+window.AJWorkspace={navigate(mode){if(!S.bundle)return false;setMode(mode);return true},getMode(){return S.mode}};
 document.addEventListener('click',handleClick);document.addEventListener('change',handleChange);document.addEventListener('submit',handleSubmit);
 async function start(){try{const response=await fetch('./modulo.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const j=await response.json();if(j.modulo?.toUpperCase()!==MODULO)throw Error('módulo incompatível');S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];S.scenario=Object.keys(j.simulacoes?.cenarios||{})[0]||null;S.mode=MODULO==='JORNADAS'?'journey:'+(jIndex()[0]?.id||''):MODULO==='PROTOTIPO'?'proto:livre':MODULO==='BANCO'?'banco:campos':'visualizacao';if(MODULO==='BANCO')S.bankView='campos';shell()}catch(err){app.innerHTML=`<div class="loader-error"><div class="brand-mark">AJ</div><h1>Carregar módulo ${esc(moduleName())}</h1><p>Este módulo não busca dados fora de sua pasta. Para abrir o <code>index.html</code> diretamente como arquivo local, selecione seu próprio <code>modulo.json</code>. Em servidor estático local, a leitura é automática.</p><input id="fallbackFile" type="file" accept=".json,application/json"><p class="mini">Detalhe técnico: ${esc(err.message)}</p></div>`;$('#fallbackFile').onchange=async e=>{try{const j=JSON.parse(await e.target.files[0].text());if(j.modulo?.toUpperCase()!==MODULO||!j.telas)throw Error('JSON incorreto');S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];S.scenario=Object.keys(j.simulacoes?.cenarios||{})[0]||null;S.mode=MODULO==='JORNADAS'?'journey:'+(jIndex()[0]?.id||''):MODULO==='PROTOTIPO'?'proto:livre':MODULO==='BANCO'?'banco:campos':'visualizacao';if(MODULO==='BANCO')S.bankView='campos';shell()}catch(ex){alert(ex.message)}};}}
 start();

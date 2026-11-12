@@ -1,18 +1,44 @@
-/* Este arquivo é injetado somente no iframe do Workspace; páginas isoladas não mudam. */
+/* Aplicado apenas ao documento exibido no iframe do index geral. */
 html.in-workspace,html.in-workspace body{width:100%;min-height:100%;overflow-x:hidden}
-html.in-workspace[data-aj-module="banco"] .workspace-global-header,
-html.in-workspace[data-aj-module="banco"] .sidebar,
-html.in-workspace[data-aj-module="banco"] .backdrop,
-html.in-workspace[data-aj-module="banco"] .mobile-toggle{display:none!important}
-html.in-workspace[data-aj-module="banco"] .workspace{margin-left:0!important;width:100%!important;max-width:none!important}
-html.in-workspace[data-aj-module="banco"] .shell{min-height:100%!important}
-html.in-workspace[data-aj-module="banco"] .view{max-width:none}
-html.in-workspace[data-aj-module="contrato"] header.top{display:none!important}
-html.in-workspace[data-aj-module="contrato"] main{max-width:none!important}
-html.in-workspace[data-aj-module="jornadas"] header.top .brand{display:none!important}
-html.in-workspace[data-aj-module="jornadas"] header.top{min-height:48px;justify-content:flex-end}
-html.in-workspace[data-aj-module="jornadas"] .viewer-wrap{max-width:none!important}
-html.in-workspace[data-aj-module="prototipos"] .shell{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%;height:100dvh}
-html.in-workspace[data-aj-module="prototipos"] #sidebar{display:none!important}
-html.in-workspace[data-aj-module="prototipos"] .main{height:100dvh!important;width:100%}
-html.in-workspace[data-aj-module="prototipos"] #mobile{display:none!important}
+/* Quatro motores de tela possuem o MESMO contrato de navegação (data-nav). */
+html.in-workspace[data-aj-module="banco"] #topbar,
+html.in-workspace[data-aj-module="fluxo"] #topbar,
+html.in-workspace[data-aj-module="jornadas"] #topbar,
+html.in-workspace[data-aj-module="prototipo"] #topbar,
+html.in-workspace[data-aj-module="banco"] #sidebar,
+html.in-workspace[data-aj-module="fluxo"] #sidebar,
+html.in-workspace[data-aj-module="jornadas"] #sidebar,
+html.in-workspace[data-aj-module="prototipo"] #sidebar{display:none!important}
+html.in-workspace[data-aj-module="banco"] .work,
+html.in-workspace[data-aj-module="fluxo"] .work,
+html.in-workspace[data-aj-module="jornadas"] .work,
+html.in-workspace[data-aj-module="prototipo"] .work{display:block!important;min-height:100vh;grid-template-columns:minmax(0,1fr)!important}
+html.in-workspace[data-aj-module="banco"] #main,
+html.in-workspace[data-aj-module="fluxo"] #main,
+html.in-workspace[data-aj-module="jornadas"] #main,
+html.in-workspace[data-aj-module="prototipo"] #main{width:100%;max-width:none!important;padding-top:17px}
+html.in-workspace .workspace-module-actions{display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px}
+html.in-workspace .workspace-module-actions .head-actions{margin-left:auto;display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;color:#52677c}
+html.in-workspace .workspace-module-actions .save-status{color:#6a7d90}
+html.in-workspace .workspace-module-actions .head-btn{border:1px solid #cedcea;color:#23435e;background:#fff}
+html.in-workspace .workspace-module-actions .head-btn.primary{background:#2265b9;color:#fff;border-color:#2265b9}
+html.in-workspace .workspace-module-actions .head-btn:hover{filter:brightness(.97)}
+/* Contrato: as três abas agora são filhos do menu geral, mas os controles do painel ficam. */
+html.in-workspace[data-aj-module="contrato"] header.top,
+html.in-workspace[data-aj-module="contrato"] main > .tabs{display:none!important}
+html.in-workspace[data-aj-module="contrato"] main{max-width:none!important;width:100%;padding:20px clamp(14px,3vw,36px)!important}
+/* Documento: o editor, as seções e as operações sobrevivem sem a segunda lateral. */
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"],
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] body{height:100%;overflow:hidden}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] .app-header,
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] .sidebar,
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] .sidebar-backdrop{display:none!important}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] .main-layout{display:block!important;height:100dvh;min-height:0!important;overflow:hidden}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] .reader{display:block!important;width:100%!important;min-width:0!important;height:100%!important;overflow:auto!important;padding:20px clamp(14px,3vw,42px) 75px!important}
+html.in-workspace .workspace-document-actions{display:flex;justify-content:flex-end;gap:8px;max-width:1030px;margin:0 auto 15px}
+html.in-workspace .workspace-document-actions .btn{border:1px solid #cdd8e5;background:#fff;color:#284662}
+html.in-workspace .workspace-document-actions .header-primary{background:#2264bd;color:#fff}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] .reader-inner{max-width:1130px}
+/* Trabalho estrutural é uma página de conteúdo; nunca mostra segundo cabeçalho. */
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="work-index"] .app-header{display:none!important}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="work-index"] .page{max-width:none;padding:24px clamp(16px,3vw,38px)}

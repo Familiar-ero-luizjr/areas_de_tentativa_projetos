@@ -1,48 +1,373 @@
 {
-  "schema": "advogadoja.workspace.menu.v1",
+  "schema": "advogadoja.workspace.menu.v2",
   "modules": [
     {
       "id": "documento_base",
       "label": "Documento Base",
       "icon": "▤",
-      "description": "Padrão canônico JSON e front-end · seções editáveis, importação e exportação.",
       "entry": "Documento_base/index.html",
-      "children": []
+      "children": [
+        {
+          "id": "indice",
+          "label": "Índice do documento",
+          "children": [
+            {
+              "id": "introducao",
+              "label": "Apresentação",
+              "kind": "section"
+            },
+            {
+              "id": "grupo-direcao",
+              "label": "Direção geral",
+              "children": [
+                {
+                  "id": "sec-0041",
+                  "label": "Direção geral — finalidade, prioridades e estrutura desejada",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0042",
+                  "label": "Workspace/index — regiões fixas e composição visual",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0043",
+                  "label": "Padrão obrigatório do menu — módulos, subitens e listas dinâmicas",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0044",
+                  "label": "Inclusão de um novo módulo no index — contrato de registro e aceitação",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0045",
+                  "label": "Direção dos dados — o que fica no JSON e o que fica na documentação",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0046",
+                  "label": "Organização lógica do index, módulos, conteúdos e documentos",
+                  "kind": "section"
+                }
+              ],
+              "kind": "group"
+            },
+            {
+              "id": "grupo-contrato_recuperado",
+              "label": "Contrato recuperado",
+              "children": [
+                {
+                  "id": "sec-0047",
+                  "label": "Contrato modular — formato macro recuperado e responsabilidades",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0048",
+                  "label": "Identidade e classificação — campos já definidos para reutilização",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0049",
+                  "label": "Participações em jornadas — identificação, ordenação e submenu dinâmico",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0050",
+                  "label": "Composição estática — estrutura HTML/CSS e isolamento de visual",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0051",
+                  "label": "Componentes reutilizáveis — identidade, instâncias e edição por escopo",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0052",
+                  "label": "Navegação, bifurcações e estados — relações sem dedução",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0053",
+                  "label": "Home do Advogado — caso de teste verificado e limites de aprovação",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0054",
+                  "label": "Compatibilização entre V4 e decisões recuperadas — sem perder conteúdo",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0055",
+                  "label": "Fontes desta consolidação e próximos testes de especificação",
+                  "kind": "section"
+                }
+              ],
+              "kind": "group"
+            },
+            {
+              "id": "grupo-parte1",
+              "label": "Parte I — Contrato JSON",
+              "children": [
+                {
+                  "id": "sec-0001",
+                  "label": "Critérios de decisão, escopo e status",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0003",
+                  "label": "Princípios canônicos",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0004",
+                  "label": "Domínios atuais de dados — revisão funcional antes do schema final",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0005",
+                  "label": "Padrão de identidade, referência e composição",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0006",
+                  "label": "Exemplo consistente de reuso do menu em contrato modular",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0007",
+                  "label": "Jornadas — função e limites esperados",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0008",
+                  "label": "Fluxo — função e limites esperados",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0009",
+                  "label": "Protótipo — evolução posterior",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0010",
+                  "label": "Matriz funcional de consumo de dados por módulo",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0011",
+                  "label": "Troca de contratos e alterações entre os módulos",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0012",
+                  "label": "Evolução progressiva de tipos e estruturas",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0013",
+                  "label": "Critérios verificáveis por módulo",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0014",
+                  "label": "Pendências a homologar antes de consolidar o schema",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0015",
+                  "label": "Sequência de trabalho — produto primeiro, motor depois",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0016",
+                  "label": "Decisão-síntese do padrão de chegada",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0017",
+                  "label": "Requisitos visuais e funcionais a homologar por área de trabalho",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0018",
+                  "label": "Regra de identidade e referências como base comum",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0019",
+                  "label": "Mesmo componente em muitas telas: atualização por ID sem sincronização automática",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0020",
+                  "label": "Banco: projeção progressiva dos dados declarados em múltiplas telas",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0021",
+                  "label": "Interoperabilidade sem duplicar a fonte de dados",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0022",
+                  "label": "Estados, variantes e mocks: evolução sem duplicar telas",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0023",
+                  "label": "Testes mínimos de aceitação do padrão (independentes do motor)",
+                  "kind": "section"
+                }
+              ],
+              "kind": "group"
+            },
+            {
+              "id": "grupo-parte2",
+              "label": "Parte II — Front-end dos módulos",
+              "children": [
+                {
+                  "id": "sec-0025",
+                  "label": "Três níveis de interface: produto, módulo e Workspace",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0026",
+                  "label": "Ficha funcional e visual de cada módulo — formato proposto",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0028",
+                  "label": "Ordem de composição e isolamento visual dos módulos",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0029",
+                  "label": "Ficha funcional + visual — Jornada",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0030",
+                  "label": "Ficha funcional + visual — Fluxo",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0031",
+                  "label": "Ficha funcional + visual — Protótipo (em definição)",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0032",
+                  "label": "Ficha funcional + visual — Banco (progressão de modelagem)",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0033",
+                  "label": "Ficha funcional — Contrato/Catálogo e Workspace",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0034",
+                  "label": "Matriz visual do Workspace e das áreas internas (sem CSS herdado)",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0035",
+                  "label": "Cadastro de componentes da interface do editor",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0036",
+                  "label": "Checklist de homologação visual, funcional e da navegação",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0037",
+                  "label": "Contrato de importação/exportação + preservação de UI (dois tipos de teste)",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0038",
+                  "label": "Política de mudanças do próprio design do módulo",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-0039",
+                  "label": "Pendências de direção e sequência de homologação",
+                  "kind": "section"
+                },
+                {
+                  "id": "sec-trabalho-estrutural",
+                  "label": "Trabalho estrutural — comparação dos catálogos V1 e V2",
+                  "kind": "section"
+                }
+              ],
+              "kind": "group"
+            }
+          ],
+          "kind": "index"
+        },
+        {
+          "id": "trabalho",
+          "label": "Trabalho estrutural",
+          "children": [
+            {
+              "id": "trabalho-index",
+              "label": "Índice / Comparação",
+              "kind": "file",
+              "entry": "Documento_base/trabalho_estrutural/index.html"
+            },
+            {
+              "id": "trabalho-v1",
+              "label": "Catálogo V1 legado",
+              "kind": "file",
+              "entry": "Documento_base/trabalho_estrutural/ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html"
+            },
+            {
+              "id": "trabalho-v2",
+              "label": "Catálogo estrutural V2",
+              "kind": "file",
+              "entry": "Documento_base/trabalho_estrutural/ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html"
+            }
+          ],
+          "kind": "file",
+          "entry": "Documento_base/trabalho_estrutural/index.html"
+        }
+      ]
     },
     {
       "id": "banco",
       "label": "Banco",
       "icon": "▦",
-      "description": "Modelagem e projeção das entidades declaradas.",
       "entry": "BANCO/index.html",
+      "code": "BANCO",
       "children": [
         {
-          "id": "overview",
-          "label": "Visão geral"
+          "id": "campos",
+          "label": "Campos utilizados",
+          "kind": "mode"
         },
         {
-          "id": "diagram",
-          "label": "Diagrama DER / UML"
-        },
-        {
-          "id": "relations",
-          "label": "Relacionamentos"
-        },
-        {
-          "id": "screens",
-          "label": "Telas → Entidades"
-        },
-        {
-          "id": "catalog",
-          "label": "Dicionário de tabelas"
-        },
-        {
-          "id": "sql",
-          "label": "SQL declarado"
-        },
-        {
-          "id": "motor",
-          "label": "Motor / JSON"
+          "id": "modelagem",
+          "label": "Modelagem do banco",
+          "children": [
+            {
+              "id": "banco:campos",
+              "label": "Campos por tela",
+              "kind": "mode"
+            },
+            {
+              "id": "banco:tabelas",
+              "label": "Entidades e tabelas",
+              "kind": "mode"
+            },
+            {
+              "id": "banco:operacoes",
+              "label": "Operações declaradas",
+              "kind": "mode"
+            }
+          ],
+          "kind": "mode"
         }
       ]
     },
@@ -50,20 +375,41 @@
       "id": "contrato",
       "label": "Contrato JSON",
       "icon": "{}",
-      "description": "Modelo explicado, exemplo e documentação dos contratos.",
       "entry": "CONTRATO/index.html",
       "children": [
         {
           "id": "estrutura",
-          "label": "Modelo explicado"
+          "label": "Modelo explicado",
+          "kind": "tab"
         },
         {
           "id": "home",
-          "label": "Home do Advogado"
+          "label": "Home do Advogado",
+          "kind": "tab"
         },
         {
           "id": "doc",
-          "label": "Documentação"
+          "label": "Documentação",
+          "kind": "tab"
+        }
+      ]
+    },
+    {
+      "id": "fluxo",
+      "label": "Fluxo",
+      "icon": "⌁",
+      "entry": "FLUXO/index.html",
+      "code": "FLUXO",
+      "children": [
+        {
+          "id": "campos",
+          "label": "Campos utilizados",
+          "kind": "mode"
+        },
+        {
+          "id": "visualizacao",
+          "label": "Visualização do fluxo",
+          "kind": "mode"
         }
       ]
     },
@@ -71,25 +417,128 @@
       "id": "jornadas",
       "label": "Jornadas",
       "icon": "◇",
-      "description": "Jornadas e subjornadas declaradas nos JSONs.",
       "entry": "JORNADAS/index.html",
-      "children": [],
-      "dynamic": "journeys"
-    },
-    {
-      "id": "prototipos",
-      "label": "Protótipos",
-      "icon": "▣",
-      "description": "Laboratórios e estados interativos.",
-      "entry": "PROTOTIPO/index.html",
+      "code": "JORNADAS",
       "children": [
         {
-          "id": "cliente_v3",
-          "label": "Laboratório Cliente V3"
+          "id": "campos",
+          "label": "Campos utilizados",
+          "kind": "mode"
         },
         {
-          "id": "modular_v2",
-          "label": "Laboratório Modular V2"
+          "id": "visualizacao",
+          "label": "Visualização de jornadas",
+          "children": [
+            {
+              "id": "journey:admin",
+              "label": "Administrador",
+              "kind": "mode"
+            },
+            {
+              "id": "journey:advogado",
+              "label": "Advogado",
+              "kind": "mode"
+            },
+            {
+              "id": "journey:cliente",
+              "label": "Cliente + Estudante",
+              "kind": "mode"
+            }
+          ],
+          "kind": "mode"
+        }
+      ]
+    },
+    {
+      "id": "prototipo",
+      "label": "Protótipo",
+      "icon": "▣",
+      "entry": "PROTOTIPO/index.html",
+      "code": "PROTOTIPO",
+      "children": [
+        {
+          "id": "campos",
+          "label": "Campos utilizados",
+          "kind": "mode"
+        },
+        {
+          "id": "simulador",
+          "label": "Protótipo interativo",
+          "children": [
+            {
+              "id": "proto:livre",
+              "label": "Navegação livre",
+              "kind": "mode"
+            },
+            {
+              "id": "proto:roteiros",
+              "label": "Apresentação de jornadas",
+              "children": [
+                {
+                  "id": "roteiro:completa",
+                  "label": "Primeiro acesso completo",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:onboarding",
+                  "label": "Onboarding profissional",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:acesso",
+                  "label": "Acesso e recuperação",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:oab",
+                  "label": "Estados e validação da OAB",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:solicitacoes",
+                  "label": "Solicitação e atendimento",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:disponibilidade",
+                  "label": "Disponibilidade profissional",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:assinatura",
+                  "label": "Planos e assinatura",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:escritorio",
+                  "label": "Escritório, equipe e convites",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:perfil",
+                  "label": "Perfil e configurações",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:suporte",
+                  "label": "Suporte e chamados",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:notificacoes",
+                  "label": "Notificações e destinos",
+                  "kind": "mode"
+                },
+                {
+                  "id": "roteiro:atendimento",
+                  "label": "Atendimentos em andamento",
+                  "kind": "mode"
+                }
+              ],
+              "kind": "mode"
+            }
+          ],
+          "kind": "mode"
         }
       ]
     }

@@ -1,4 +1,4 @@
-# AdvogadoJá — Projeto 8 normalizado, módulos independentes
+# AdvogadoJá — Projeto 8 · Workspace com menu unificado e módulos independentes
 
 ## Executar
 
@@ -31,3 +31,14 @@ Esta versão é um **primeiro ciclo de normalização técnica/funcional**; não
 5. Gerar novamente os snapshots dos módulos quando a biblioteca editorial for homologada.
 
 O projeto original permanece congelado em `Projeto_8.zip`, SHA informado em `auditoria/FONTE_CONGELADA.txt`.
+
+
+## Menu unificado do Workspace
+
+O `index.html` na raiz é o único responsável pelo menu lateral.
+`workspace/menu.json` contém os módulos Documento Base, Banco, Contrato JSON, Fluxo, Jornadas e Protótipo e seus subitens reais.
+O documento possui um índice de 52 seções (agrupadas) e Trabalho estrutural reúne seu índice de comparação e os dois catálogos HTML autocontidos.
+
+Ao carregar um módulo dentro do Workspace, `workspace/embedded.css` oculta seus menus de navegação internos e sua marca duplicada; as ações funcionais (importar/exportar, filtros, controles de fluxo, edição) permanecem no conteúdo. As páginas independentes continuam abrindo normalmente fora do Workspace.
+
+Não é necessário manter abas ou botões de módulos no cabeçalho. A navegação e o estado selecionado são geridos no `workspace/app.js`. Alterações na lista de jornadas/roteiros após importar dados locais são refletidas no menu.

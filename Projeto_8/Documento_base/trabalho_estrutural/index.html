@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>AdvogadoJá · Trabalho estrutural</title>
+  <style>
+    :root{--navy:#112541;--blue:#2264d4;--blue-soft:#edf4ff;--ink:#17263d;--muted:#64748b;--line:#dce5f0;--surface:#fff;--bg:#f5f7fb;--legacy:#9c5421;--v2:#126b85}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}button{font:inherit;cursor:pointer}.app-header{min-height:62px;background:var(--navy);color:#fff;display:flex;align-items:center;gap:12px;padding:12px clamp(16px,4vw,52px)}.logo{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:linear-gradient(150deg,#3c7ddd,#0e3972);border:1px solid #658bb9;font-size:14px;font-weight:900;flex:none}.heading{min-width:0}.heading b{display:block;font-size:14px}.heading span{display:block;font-size:11px;color:#aec0dc}.back{margin-left:auto;border:1px solid #607a9e;border-radius:7px;padding:7px 10px;color:#fff;text-decoration:none;font-size:12px;font-weight:700}.back:hover{background:#294768}.page{max-width:1480px;margin:auto;padding:clamp(22px,4vw,52px)}.eyebrow{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.intro{display:flex;gap:24px;justify-content:space-between;align-items:end;flex-wrap:wrap;margin-bottom:24px}.intro h1{max-width:760px;margin:5px 0 8px;font-size:clamp(28px,4vw,43px);letter-spacing:-1.2px;line-height:1.1}.intro p{max-width:710px;margin:0;color:var(--muted)}.scope{max-width:320px;padding:13px 15px;border:1px solid #cbdcf4;border-radius:11px;background:var(--blue-soft);font-size:12px;color:#385477}.scope strong{display:block;color:#1d4e95;margin-bottom:3px}.catalogs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.catalog{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:23px;box-shadow:0 2px 10px rgba(16,37,65,.035)}.catalog:before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--accent)}.catalog.legacy{--accent:var(--legacy)}.catalog.v2{--accent:var(--v2)}.catalog-tag{display:inline-block;padding:4px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 11%,white);color:var(--accent);font-size:11px;font-weight:800}.catalog h2{margin:13px 0 7px;font-size:21px}.catalog p{min-height:44px;margin:0;color:var(--muted)}.facts{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.fact{border:1px solid var(--line);border-radius:7px;padding:5px 8px;color:#52667e;font-size:11px}.file{display:block;overflow-wrap:anywhere;margin:0 0 17px;padding:9px 10px;border-radius:7px;background:#f7f9fc;color:#51647d;font:11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid #c9d6e6;border-radius:8px;padding:8px 11px;background:#fff;color:#29435f;font-size:12px;font-weight:750}.btn:hover{background:#f0f5fb}.btn.primary{border-color:var(--blue);background:var(--blue);color:#fff}.btn.primary:hover{background:#1853b1}.compare-section{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.compare-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 21px;border-bottom:1px solid var(--line)}.compare-head h2{margin:0;font-size:18px}.compare-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.modes{display:flex;gap:6px;flex-wrap:wrap}.mode{border:1px solid #cad8e7;border-radius:7px;padding:7px 10px;background:#fff;color:#405872;font-size:12px;font-weight:750}.mode.active{border-color:#2b69bd;background:#eaf2ff;color:#184e98}.viewer{display:none;padding:18px;background:#f8faff}.viewer.open{display:block}.viewer-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.viewer-grid.single{grid-template-columns:minmax(0,1fr)}.frame-card{min-width:0;border:1px solid #cbd7e5;border-radius:10px;overflow:hidden;background:white}.frame-label{display:flex;align-items:center;gap:7px;padding:8px 11px;border-bottom:1px solid var(--line);font-size:12px;font-weight:800}.frame-label i{width:9px;height:9px;border-radius:50%;background:var(--accent);display:block}.frame-card.legacy{--accent:var(--legacy)}.frame-card.v2{--accent:var(--v2)}iframe{display:block;width:100%;height:720px;border:0;background:#fff}.empty{padding:42px 20px;text-align:center;color:var(--muted);border:1px dashed #c7d5e5;border-radius:10px;background:#fbfdff}.checklist{margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none}.checklist li{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#52667e;font-size:12px}.checklist b{display:block;color:#223f60;margin-bottom:4px}@media(max-width:850px){.catalogs,.viewer-grid{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}.intro h1{font-size:31px}iframe{height:650px}}@media(max-width:520px){.app-header{padding:11px 14px}.back{padding:6px 8px}.page{padding:22px 14px}.catalog{padding:19px}.compare-head{padding:16px}.viewer{padding:11px}}
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo" aria-hidden="true">AJ</div>
+    <div class="heading"><b>Documento Base · Trabalho estrutural</b><span>Comparação de referências HTML para definir estrutura e design</span></div>
+    <a class="back" href="../index.html">Voltar ao documento</a>
+  </header>
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div><div class="eyebrow">Subitem de trabalho</div><h1 id="page-title">Estrutura e design: V1 legado × V2 estrutural</h1><p>Use os dois catálogos como referências separadas: o V1 preserva a experiência legada; o V2 registra a organização estrutural. A comparação serve para decidir o que manter, transformar ou descartar.</p></div>
+      <aside class="scope"><strong>Escopo desta área</strong>Examinar visual, HTML, CSS, componentes e organização — sem promover automaticamente uma versão como padrão.</aside>
+    </section>
+    <section class="catalogs" aria-label="Catálogos disponíveis">
+      <article class="catalog legacy"><span class="catalog-tag">Referência de origem</span><h2>Catálogo V1 legado</h2><p>Base visual e funcional anterior: útil para recuperar telas, composição, comportamento percebido e detalhes de design.</p><div class="facts"><span class="fact">HTML autocontido</span><span class="fact">≈ 4 MB</span><span class="fact">Legado</span></div><code class="file">ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html</code><div class="actions"><a class="btn" href="ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html" target="_blank" rel="noopener">Abrir catálogo</a><button class="btn primary" data-open="legacy">Ver na comparação</button></div></article>
+      <article class="catalog v2"><span class="catalog-tag">Referência estrutural</span><h2>Catálogo estrutural V2</h2><p>Organização para inspeção de contratos, componentes, composição de telas e auditoria do modelo estrutural.</p><div class="facts"><span class="fact">HTML autocontido</span><span class="fact">≈ 20 MB</span><span class="fact">Estrutura</span></div><code class="file">ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html</code><div class="actions"><a class="btn" href="ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html" target="_blank" rel="noopener">Abrir catálogo</a><button class="btn primary" data-open="v2">Ver na comparação</button></div></article>
+    </section>
+    <section class="compare-section" aria-labelledby="compare-title">
+      <div class="compare-head"><div><h2 id="compare-title">Área de comparação</h2><p id="compare-status">Selecione um catálogo ou abra os dois lado a lado.</p></div><div class="modes" role="group" aria-label="Modo de comparação"><button class="mode" data-mode="legacy">Somente V1</button><button class="mode" data-mode="v2">Somente V2</button><button class="mode active" data-mode="both">Lado a lado</button></div></div>
+      <div class="viewer" id="viewer"><div class="viewer-grid" id="viewer-grid"></div></div>
+      <div class="empty" id="empty">Os catálogos são carregados somente quando você abrir a comparação, para manter esta página inicial leve.</div>
+    </section>
+    <ul class="checklist" aria-label="Roteiro de análise"><li><b>1. Comparar a tela</b>Header, menu, conteúdo, hierarquia e estados visíveis.</li><li><b>2. Comparar a estrutura</b>Componentes, slots, HTML, CSS e IDs que sustentam a composição.</li><li><b>3. Registrar decisão</b>Classificar cada diferença como preservar, adaptar, substituir ou deixar pendente.</li></ul>
+  </main>
+  <script>
+    (() => {
+      const sources = { legacy: { label: 'V1 legado', file: 'ADVOGADOJA_CATALOGO_V1_LEGADO_AUTOCONTIDO.html', className: 'legacy' }, v2: { label: 'V2 estrutural', file: 'ADVOGADOJA_CATALOGO_ESTRUTURAL_V2_AUTOCONTIDO.html', className: 'v2' } };
+      let mode = 'both';
+      const viewer = document.querySelector('#viewer');
+      const grid = document.querySelector('#viewer-grid');
+      const empty = document.querySelector('#empty');
+      const status = document.querySelector('#compare-status');
+      function render() {
+        const keys = mode === 'both' ? ['legacy', 'v2'] : [mode];
+        grid.className = 'viewer-grid' + (keys.length === 1 ? ' single' : '');
+        grid.replaceChildren(...keys.map(key => {
+          const item = sources[key];
+          const card = document.createElement('section');
+          card.className = 'frame-card ' + item.className;
+          card.innerHTML = `<div class="frame-label"><i aria-hidden="true"></i>${item.label}</div><iframe title="${item.label}" src="${item.file}" loading="lazy" sandbox="allow-scripts allow-downloads"></iframe>`;
+          return card;
+        }));
+        viewer.classList.add('open'); empty.hidden = true;
+        status.textContent = mode === 'both' ? 'Os dois catálogos estão abertos para inspeção simultânea.' : `${sources[mode].label} aberto para inspeção.`;
+        document.querySelectorAll('[data-mode]').forEach(button => { const active = button.dataset.mode === mode; button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active)); });
+      }
+      document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => { mode = button.dataset.mode; render(); }));
+      document.querySelectorAll('[data-open]').forEach(button => button.addEventListener('click', () => { mode = button.dataset.open; render(); document.querySelector('#compare-title').scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+    })();
+  </script>
+</body>
+</html>

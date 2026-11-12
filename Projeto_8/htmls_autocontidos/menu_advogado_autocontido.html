@@ -1,0 +1,71 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AdvogadoJá — Menu Advogado</title><style>html,body{height:100%;margin:0}body{background:#56595a}/* AdvogadoJá — menu lateral das TELAS DO APLICATIVO, não do Workspace.
+   Base visual derivada das imagens de referência; medidas adaptáveis. */
+:root {
+  --aj-menu-bg: #3b4a7d;     /* imagem: rgb(59 74 125) */
+  --aj-menu-footer: #354270; /* imagem: rgb(53 66 112) */
+  --aj-menu-divider: #475585;
+  --aj-menu-text: #f7f9ff;
+  --aj-menu-muted: #c2d0ee;
+  --aj-menu-width: 220px;
+}
+*{box-sizing:border-box}
+.aj-menu, .aj-menu button, .aj-menu a {font-family:Inter, "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif}
+.aj-menu {width:var(--aj-menu-width);min-height:100%;height:100%;display:flex;flex-direction:column;background:var(--aj-menu-bg);color:var(--aj-menu-text);border-radius:0 0 0 22px;overflow:hidden;box-shadow:13px 0 30px rgba(0,0,0,.37);isolation:isolate}
+.aj-menu button {cursor:pointer}
+.aj-menu button:focus-visible,.aj-menu a:focus-visible {outline:2px solid #e3efff;outline-offset:-3px}
+.aj-menu__profile {padding:22px 18px 15px;display:flex;align-items:center;gap:10px;min-height:79px}
+.aj-menu__avatar {width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:50%;background:#e2edff;color:#1f438b;font-size:16px;font-weight:800;letter-spacing:-.04em}
+.aj-menu__avatar--lawyer {background:radial-gradient(circle at 28% 22%,#d9b17a,#8e5236 52%,#282d3d);color:#fff;border:1px solid #e1d2bc;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.aj-menu__identity {min-width:0;display:flex;flex-direction:column;gap:2px}
+.aj-menu__name {font-size:12px;line-height:1.16;font-weight:750;white-space:nowrap}
+.aj-menu__role {font-size:9px;line-height:1.2;color:#d8e4ff;letter-spacing:.025em}
+.aj-menu__rating {display:flex;align-items:center;gap:4px;font-size:11px;color:#fff;line-height:1.2}
+.aj-menu__rating .aj-icon {height:13px;width:13px;fill:#ffc83d;stroke:#ffc83d}
+.aj-menu__availability {padding:3px 17px 10px 18px;min-height:41px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--aj-menu-divider)}
+.aj-menu__status-dot {width:8px;height:8px;background:#27df94;border-radius:50%;box-shadow:0 0 0 2px rgba(39,223,148,.12)}
+.aj-menu__status-dot[data-offline="true"]{background:#b5c0d0;box-shadow:none}
+.aj-menu__availability-label {font-size:11px;font-weight:650}
+.aj-menu__switch {margin-left:auto;border:0;background:#5f6f92;width:33px;height:18px;border-radius:999px;padding:2px;display:flex;align-items:center;transition:background .15s}
+.aj-menu__switch[aria-checked="true"] {background:#18c971}
+.aj-menu__switch-thumb {background:#fff;width:14px;height:14px;border-radius:50%;display:block;transition:transform .15s}
+.aj-menu__switch[aria-checked="true"] .aj-menu__switch-thumb {transform:translateX(15px)}
+.aj-menu__nav {display:flex;flex-direction:column}
+.aj-menu__nav-item {border:0;border-bottom:1px solid rgba(255,255,255,.065);height:39px;width:100%;display:flex;align-items:center;gap:11px;text-align:left;padding:0 18px;background:transparent;color:var(--aj-menu-text);font-size:11px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.aj-menu__nav-item .aj-icon {width:15px;height:15px;flex:none;color:#b8c8ed;opacity:.9}
+.aj-menu__nav-item:hover {background:rgba(255,255,255,.08)}
+.aj-menu__nav-item[aria-current="page"] {background:rgba(255,255,255,.12);box-shadow:inset 3px 0 #9bb9f1}
+.aj-menu__spacer {flex:1;min-height:0}
+.aj-menu__footer {background:var(--aj-menu-footer);padding:9px 18px 2px;min-height:79px;display:flex;flex-direction:column;gap:7px}
+.aj-menu__footer-row {display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:30px}
+.aj-menu__logout {border:0;background:transparent;color:#fff;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;padding:0}
+.aj-menu__logout .aj-icon {width:16px;height:16px;color:#d9e2f7}
+.aj-menu__version {font-size:8px;white-space:nowrap;color:#9cabd1}
+.aj-menu__emergency {height:33px;min-height:33px;background:transparent;border:1px solid #7c8bae;border-radius:999px;color:white;font-size:10px;font-weight:700;width:100%}
+.aj-menu__emergency:hover {background:rgba(255,255,255,.08)}
+.aj-menu__notice {position:fixed;left:50%;bottom:18px;transform:translateX(-50%);border-radius:9px;padding:10px 15px;max-width:90vw;background:#10233f;color:#fff;z-index:100;box-shadow:0 7px 20px #0003;font:12px/1.4 system-ui;text-align:center}
+.aj-menu__notice[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.aj-menu__switch,.aj-menu__switch-thumb{transition:none}}
+.aj-menu{min-height:100dvh;height:100dvh}</style></head><body><aside class="aj-menu aj-menu--advogado" aria-label="Menu do aplicativo — advogado"><div class="aj-menu__profile"><span class="aj-menu__avatar aj-menu__avatar--lawyer" aria-hidden="true">AS</span><div class="aj-menu__identity"><span class="aj-menu__name">Dra. Ana Souza</span><span class="aj-menu__rating"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1-5 4.87 1.18 6.87L12 17.77 5.82 21l1.18-6.87-5-4.87 6.91-1Z"/></svg> <span>5.0</span></span></div></div><div class="aj-menu__availability"><span class="aj-menu__status-dot" data-offline="false" aria-hidden="true"></span><span class="aj-menu__availability-label">Online</span><button class="aj-menu__switch" role="switch" type="button" aria-checked="true" aria-label="Disponibilidade online"><span class="aj-menu__switch-thumb"></span></button></div><nav class="aj-menu__nav" aria-label="Navegação advogado"><button class="aj-menu__nav-item" type="button" data-item-id="dashboard"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></button><button class="aj-menu__nav-item" type="button" data-item-id="solicitacoes"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg><span>Solicitações</span></button><button class="aj-menu__nav-item" type="button" data-item-id="disponibilidade"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Disponibilidade</span></button><button class="aj-menu__nav-item" type="button" data-item-id="agenda"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg><span>Agenda</span></button><button class="aj-menu__nav-item" type="button" data-item-id="plano_plataforma"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>Plano da plataforma</span></button><button class="aj-menu__nav-item" type="button" data-item-id="termos"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg><span>Termos</span></button></nav><div class="aj-menu__spacer"></div><div class="aj-menu__footer"><div class="aj-menu__footer-row"><button type="button" class="aj-menu__logout" data-demo-action="sair"><svg class="aj-icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v10M6.2 5.5a9 9 0 1 0 11.6 0"/></svg><span>Sair</span></button><span class="aj-menu__version">Versão: 1.0.55</span></div><button type="button" class="aj-menu__emergency" data-demo-action="emergencia">Disque 190</button></div></aside><div class="aj-menu__notice" role="status" aria-live="polite" hidden></div><script>/* Demonstração visual, sem navegação real e sem acionar serviços. */
+document.addEventListener('click', event => {
+  const item=event.target.closest('.aj-menu__nav-item');
+  if(item){
+    const nav=item.closest('.aj-menu__nav');
+    nav.querySelectorAll('[aria-current]').forEach(el=>el.removeAttribute('aria-current'));
+    item.setAttribute('aria-current','page');
+    return;
+  }
+  const sw=event.target.closest('.aj-menu__switch');
+  if(sw){
+    const online=sw.getAttribute('aria-checked') !== 'true';
+    sw.setAttribute('aria-checked', String(online));
+    sw.closest('.aj-menu__availability').querySelector('.aj-menu__status-dot').setAttribute('data-offline', String(!online));
+    sw.closest('.aj-menu__availability').querySelector('.aj-menu__availability-label').textContent= online?'Online':'Offline';
+    return;
+  }
+  if(event.target.closest('[data-demo-action]')) {
+    const label=event.target.closest('[data-demo-action]').textContent.trim();
+    const notice=document.querySelector('.aj-menu__notice');
+    if(notice){ notice.textContent=`${label}: demonstração visual — nenhuma ação real foi executada.`; notice.hidden=false; clearTimeout(window._ajNoticeTimer); window._ajNoticeTimer=setTimeout(()=>notice.hidden=true,2600); }
+  }
+});
+</script></body></html>

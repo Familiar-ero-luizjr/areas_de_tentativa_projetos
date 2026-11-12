@@ -49,7 +49,8 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #79b7
 .content{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;background:#edf2f8}
 .context{display:flex;align-items:center;gap:9px;min-height:46px;padding:7px 16px;border-bottom:1px solid var(--line);background:#fff;color:#7b8ca3;font-size:12px;font-weight:600}
 .crumb{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--blue);font-weight:800}
-.module-description{min-width:0;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#8797aa;font-size:11px;font-weight:400}\n.context-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+.module-description{min-width:0;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#8797aa;font-size:11px;font-weight:400}
+.context-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
 .external-link{color:#245c9a;text-decoration:none;padding:7px 10px;background:#eef5fe;border:1px solid #dce8f7;border-radius:8px;white-space:nowrap;font-size:11px}
 .frame-host{position:relative;min-height:0;flex:1;overflow:hidden}
 .module-frame{position:absolute;inset:0;display:none;width:100%;height:100%;border:0;background:#fff;visibility:hidden}
@@ -73,7 +74,9 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #79b7
  .app.mobile-open .overlay{opacity:1;visibility:visible}
  .side-close{display:grid}
 }
-@media(max-width:520px){\n .module-description{display:none}\n
+@media(max-width:520px){
+ .module-description{display:none}
+
  .top{height:60px;min-height:60px;padding:0 13px}
  .sidebar{top:60px;height:calc(100dvh - 60px)}
  .overlay{inset:60px 0 0}
@@ -81,3 +84,16 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #79b7
  .context{padding:7px 9px}
  .context-actions .external-link{font-size:10px;padding:7px 8px}
 }
+/* Navegação hierárquica sem segundo menu nas telas. */
+.tree-item{min-width:0}
+.tree-line{display:flex;align-items:center;gap:2px;padding-left:calc((var(--tree-depth) - 1) * 10px);min-width:0}
+.tree-button{display:block;flex:1;min-width:0;overflow-wrap:anywhere;text-align:left;padding:9px 10px;background:transparent;border:0;border-radius:7px;color:#b7cbe1;font-size:12px;line-height:1.4}
+.tree-button:hover,.tree-toggle:hover{color:#fff;background:#ffffff17}
+.tree-button.active{color:#fff;background:#294a70;box-shadow:inset 3px 0 #78baf6;font-weight:750}
+.tree-toggle{width:30px;min-width:30px;align-self:stretch;background:transparent;border:0;border-radius:6px;color:#96adc8;font-size:16px;transition:transform .16s}
+.tree-item.expanded>.tree-line>.tree-toggle{transform:rotate(180deg)}
+.tree-children{display:none;margin-left:13px;padding-left:5px;border-left:1px solid #315375}
+.tree-item.expanded>.tree-children{display:block}
+.tree-children .tree-button{font-size:11.5px}
+.nav{scrollbar-color:#44668e transparent;scrollbar-width:thin}
+.context .crumb{font-size:13px}

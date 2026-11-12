@@ -3118,10 +3118,10 @@ function restore(){
 }
 function renderMarkdown(md){let html='';try{html=marked.parse(String(md||''),{gfm:true,headerIds:false,mangle:false})}catch(e){html='<pre>'+escapeHTML(md)+'</pre>'}return sanitizeHTML(html)}
 // Imported Markdown is rendered with a restricted HTML tag list, never as executable code.
-function sanitizeHTML(input){const t=document.createElement('template');t.innerHTML=input;const allowed=new Set(['H1','H2','H3','H4','H5','H6','P','BR','HR','UL','OL','LI','BLOCKQUOTE','PRE','CODE','STRONG','EM','DEL','S','B','I','A','TABLE','THEAD','TBODY','TR','TH','TD','INPUT']);const drop=new Set(['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','SVG','MATH','FORM','META','LINK','VIDEO','AUDIO','BUTTON']);function walk(parent){for(const n of [...parent.childNodes]){if(n.nodeType===8){n.remove();continue}if(n.nodeType!==1)continue;const tag=n.tagName;if(drop.has(tag)){n.remove();continue}if(!allowed.has(tag)){walk(n);n.replaceWith(...[...n.childNodes]);continue}for(const attr of [...n.attributes])n.removeAttribute(attr.name);if(tag==='A'){const raw=(n.getAttribute('href')||'').trim();if(/^(https?:\/\/|mailto:|#)/i.test(raw)){n.setAttribute('href',raw);n.setAttribute('rel','noopener noreferrer');n.setAttribute('target','_blank')}}if(tag==='INPUT'){n.disabled=true;n.type='checkbox'}walk(n)}}
+function sanitizeHTML(input){const t=document.createElement('template');t.innerHTML=input;const allowed=new Set(['H1','H2','H3','H4','H5','H6','P','BR','HR','UL','OL','LI','BLOCKQUOTE','PRE','CODE','STRONG','EM','DEL','S','B','I','A','TABLE','THEAD','TBODY','TR','TH','TD','INPUT']);const drop=new Set(['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','SVG','MATH','FORM','META','LINK','VIDEO','AUDIO','BUTTON']);const safeHref=raw=>/^(https?:\/\/|mailto:|#)/i.test(raw)||(/^trabalho_estrutural\/[\w.-]+\.html(?:#[\w-]+)?$/i.test(raw));function walk(parent){for(const n of [...parent.childNodes]){if(n.nodeType===8){n.remove();continue}if(n.nodeType!==1)continue;const tag=n.tagName;if(drop.has(tag)){n.remove();continue}if(!allowed.has(tag)){walk(n);n.replaceWith(...[...n.childNodes]);continue}for(const attr of [...n.attributes])n.removeAttribute(attr.name);if(tag==='A'){const raw=(n.getAttribute('href')||'').trim();if(safeHref(raw)){n.setAttribute('href',raw);n.setAttribute('rel','noopener noreferrer');n.setAttribute('target','_blank')}}if(tag==='INPUT'){n.disabled=true;n.type='checkbox'}walk(n)}}
  // Save link URLs before stripping attributes.
  const links=[...t.content.querySelectorAll('a')].map(a=>[a,a.getAttribute('href')]);
- walk(t.content);for(const [a,href] of links){if(a.isConnected||t.content.contains(a)){if(/^(https?:\/\/|mailto:|#)/i.test(String(href||'').trim())){a.href=href;a.rel='noopener noreferrer';a.target='_blank'}}}return t.innerHTML}
+ walk(t.content);for(const [a,href] of links){if(a.isConnected||t.content.contains(a)){if(safeHref(String(href||'').trim())){a.href=href;a.rel='noopener noreferrer';a.target='_blank'}}}return t.innerHTML}
 function makeEl(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
 function render(){ensureUniqueIds();els.reader.replaceChildren();els.nav.replaceChildren();$('#count').textContent=doc.sections.length+' seções';
  const intro=makeEl('article','doc-cover');intro.id='introducao';const eyebrow=makeEl('div','cover-eyebrow','Documento-base · conteúdo canônico e especificações');intro.append(eyebrow);const body=makeEl('div','markdown');body.innerHTML=renderMarkdown(doc.introMarkdown||'');intro.append(body);els.reader.append(intro);
@@ -3137,6 +3137,9 @@ function render(){ensureUniqueIds();els.reader.replaceChildren();els.nav.replace
    const content=makeEl('div','markdown');content.innerHTML=renderMarkdown(displayMarkdown(s,number));art.append(head,content);els.reader.append(art);
  });
  els.nav.addEventListener('click',handleNavClick,{once:true});observeSections();
+if(new URLSearchParams(location.search).get('workspace')==='1'&&window.parent!==window){
+ window.parent.postMessage({type:'aj.workspace.document-state',sections:doc.sections.map(({id,title,group})=>({id,title,group}))},location.origin);
+}
 }
 function handleNavClick(e){const a=e.target.closest('[data-target]');if(a){const el=document.getElementById(a.dataset.target);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+encodeURIComponent(a.dataset.target));closeNav()}}els.nav.addEventListener('click',handleNavClick,{once:true})}
 function observeSections(){if(observer)observer.disconnect();observer=new IntersectionObserver(entries=>{const candidates=entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(candidates.length){const active=candidates[0].target.id;els.nav.querySelectorAll('[data-target]').forEach(a=>a.classList.toggle('active',a.dataset.target===active));const a=els.nav.querySelector('[data-target="'+CSS.escape(active)+'"]');if(a?.closest('details'))a.closest('details').open=true;}},{rootMargin:'-80px 0px -78% 0px',threshold:0});els.reader.querySelectorAll('.doc-section,.doc-cover').forEach(el=>observer.observe(el))}
@@ -3193,5 +3196,9 @@ async function iniciarDocumento(){
  }
  render();
  if(location.hash){const hash=decodeURIComponent(location.hash.slice(1));if(document.getElementById(hash))setTimeout(()=>jump(hash),50)}
+}
+if(new URLSearchParams(location.search).get('workspace')==='1'){
+ const actions=$('.header-right'),reader=$('.reader');
+ if(actions&&reader){actions.classList.add('workspace-document-actions');reader.insertBefore(actions,reader.firstChild)}
 }
 iniciarDocumento();
