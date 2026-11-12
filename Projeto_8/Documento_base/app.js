@@ -3179,9 +3179,19 @@ function closeNav(){els.sidebar.classList.remove('open');els.backdrop.classList.
 $('#menuToggle').onclick=()=>{if(window.matchMedia('(max-width:850px)').matches){els.sidebar.classList.toggle('open');els.backdrop.classList.toggle('show')}else{$('.main-layout').classList.toggle('nav-collapsed')}};els.backdrop.onclick=closeNav;$('#importBtn').onclick=openImport;$('#exportBtn').onclick=()=>downloadJSON('documento.json',makeExportDoc());$('#modalClose').onclick=closeModal;els.overlay.addEventListener('click',e=>{if(e.target===els.overlay)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeNav()}});
 async function iniciarDocumento(){
  try{
-  const response=await fetch('./documento.json',{cache:'no-store'});
-  if(!response.ok)throw Error('HTTP '+response.status);
-  const source=await response.json();
+  let source;
+  if(location.protocol === 'file:' && window.__DOCUMENTO_BASE_EMBEDDED){
+    source=window.__DOCUMENTO_BASE_EMBEDDED;
+  } else {
+    try {
+      const response=await fetch('./documento.json',{cache:'no-store'});
+      if(!response.ok)throw Error('HTTP '+response.status);
+      source=await response.json();
+    } catch (error) {
+      if (!window.__DOCUMENTO_BASE_EMBEDDED) throw error;
+      source=window.__DOCUMENTO_BASE_EMBEDDED;
+    }
+  }
   if(!source || !Array.isArray(source.sections) || !source.sections.every(s=>s && typeof s.id==='string' && typeof s.title==='string')){
    throw Error('Estrutura de documento.json inválida.');
   }

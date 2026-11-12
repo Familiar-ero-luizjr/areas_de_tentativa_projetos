@@ -23,10 +23,29 @@ html.in-workspace .workspace-module-actions .save-status{color:#6a7d90}
 html.in-workspace .workspace-module-actions .head-btn{border:1px solid #cedcea;color:#23435e;background:#fff}
 html.in-workspace .workspace-module-actions .head-btn.primary{background:#2265b9;color:#fff;border-color:#2265b9}
 html.in-workspace .workspace-module-actions .head-btn:hover{filter:brightness(.97)}
-/* Contrato: as três abas agora são filhos do menu geral, mas os controles do painel ficam. */
-html.in-workspace[data-aj-module="contrato"] header.top,
-html.in-workspace[data-aj-module="contrato"] main > .tabs{display:none!important}
-html.in-workspace[data-aj-module="contrato"] main{max-width:none!important;width:100%;padding:20px clamp(14px,3vw,36px)!important}
+/* Contrato dentro de Documento Base: trocar somente as abas de navegação de lugar. */
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="contract"] header.top,
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="contract"] main > .tabs{display:none!important}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="contract"] main{max-width:none!important;width:100%;padding:20px clamp(14px,3vw,36px)!important}
+/* Modelo Mestre: retirar o menu interno, nunca o editor ou as ações de projeto. */
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="model-master"] .sidebar{display:none!important}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="model-master"] .work-area{width:100%;min-width:0;flex:1}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="model-master"] .topbar-actions > a[href="../index.html"]{display:none!important}
+html.in-workspace[data-aj-module="documento_base"][data-aj-page="model-master"] .main{max-width:none!important}
+/* Os controles de importação que pertenciam à lateral ficam no conteúdo, recolhíveis. */
+html.in-workspace .workspace-model-sources{margin:0 0 17px;border:1px solid #d8e8e4;background:#fff;border-radius:12px;padding:0 16px}
+html.in-workspace .workspace-model-sources summary{padding:13px 2px;cursor:pointer;font-weight:750;color:#177c71;list-style:revert}
+html.in-workspace .workspace-model-sources .source-block{padding:0 0 16px;max-width:850px}
+html.in-workspace .workspace-model-sources .source-block p{color:#607778}
+html.in-workspace .workspace-model-sources .side-heading .eyebrow{color:#257c73}
+html.in-workspace .workspace-model-sources .source-list{max-height:240px;overflow:auto}
+html.in-workspace .workspace-model-sources .source-card{background:#f4f9f7;border-color:#dbe8e4}
+html.in-workspace .workspace-model-sources .source-open{color:#254652}
+html.in-workspace .workspace-model-sources .source-open small{color:#7c9396}
+html.in-workspace .workspace-model-sources .source-remove{color:#6d8989}
+html.in-workspace .workspace-model-sources .side-link{color:#187d73;background:#ebf6f2;border-color:#d2e9e2}
+html.in-workspace .workspace-model-sources .side-button{display:block;color:#fff}
+
 /* Documento: o editor, as seções e as operações sobrevivem sem a segunda lateral. */
 html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"],
 html.in-workspace[data-aj-module="documento_base"][data-aj-page="main"] body{height:100%;overflow:hidden}

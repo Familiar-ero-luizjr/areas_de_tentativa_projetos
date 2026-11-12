@@ -2,7 +2,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const app=$('app'),nav=$('nav'),host=$('frameHost'),notice=$('message');
-const frames=new Map(),pendingModes=new Map(),expanded=new Set(['documento_base','documento_base:indice']);
+const frames=new Map(),pendingModes=new Map(),expanded=new Set(['documento_base','documento_base:indice','documento_base:contrato']);
 let modules=[],activeKey='',activeModule='';
 const make=(tag,cls='',txt)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=txt;return x};
 const getHash=()=>{try{return decodeURIComponent(location.hash.slice(1))}catch{return ''}};
@@ -27,6 +27,7 @@ function updateContext(){
  const target=new URL(n?.entry||m.entry,location.href);
  if(!n?.entry&&m.code&&n?.id)target.hash=n.id;
  if(m.id==='documento_base'&&n?.kind==='section')target.hash=n.id;
+ if(n?.tab)target.hash='tab-'+n.tab;
  $('openSeparate').href=target.href;
  $('openSeparate').setAttribute('aria-label','Abrir '+(n?.label||m.label)+' isoladamente');
  document.title='AdvogadoJá · '+(n?.label||m.label);
@@ -104,7 +105,29 @@ function embedFrame(f,m,entry){
  if(!doc){showMessage('Não foi possível exibir o módulo','Execute o projeto pelo servidor local incluído no ZIP.');return}
  doc.documentElement.classList.add('in-workspace');
  doc.documentElement.dataset.ajModule=m.id;
- doc.documentElement.dataset.ajPage=entry.includes('trabalho_estrutural/index.html')?'work-index':entry.includes('trabalho_estrutural/')?'work-html':'main';
+ doc.documentElement.dataset.ajPage=entry.includes('trabalho_estrutural/index.html')?'work-index':entry.includes('trabalho_estrutural/')?'work-html':entry.includes('/contrato/')?'contract':entry.includes('/modelo_mestre/')?'model-master':'main';
+ // O Modelo Mestre tinha controles funcionais dentro da navegação lateral.
+ // Apenas a navegação some no Workspace: importações e fontes continuam acessíveis.
+ if(m.id==='documento_base'&&doc.documentElement.dataset.ajPage==='model-master'){
+  const source=doc.querySelector('.sidebar .source-block');
+  const main=doc.querySelector('.work-area > .main');
+  if(source&&main){
+   const dock=doc.createElement('details');dock.className='workspace-model-sources';
+   const summary=doc.createElement('summary');summary.textContent='Fontes JSON e importação de projeto';
+   dock.append(summary,source);main.prepend(dock);
+  }
+ }
+ // Links entre submódulos usam a navegação global em vez de trocar a URL do iframe.
+ if(m.id==='documento_base')doc.addEventListener('click',event=>{
+  if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  const link=event.target?.closest?.('a[href]');if(!link||link.hasAttribute('download')||link.target==='_blank')return;
+  let url;try{url=new URL(link.getAttribute('href'),doc.baseURI)}catch{return}
+  if(url.origin!==location.origin)return;
+  const path=decodeURI(url.pathname);
+  const dest=path.endsWith('/Documento_base/contrato/index.html')?'documento_base:contrato':
+    path.endsWith('/Documento_base/modelo_mestre/index.html')?'documento_base:modelo-mestre':null;
+  if(dest){event.preventDefault();navigate(dest)}
+ });
  const style=doc.createElement('link');style.rel='stylesheet';style.href=new URL('workspace/embedded.css',location.href).href;
  let applied=false;
  const ready=()=>{if(applied)return;applied=true;f.classList.add('ready');if(currentFrame()===f){showFrame(entry,m);applyRoute()}};
@@ -134,8 +157,8 @@ function applyRoute(){
   if(button){button.click();pendingModes.delete(m.id)}
   return;
  }
- if(m.id==='contrato'&&n){
-  const tab=doc.getElementById('tab-'+n.id);
+ if(m.id==='documento_base'&&entry.endsWith('/contrato/index.html')){
+  const tab=doc.getElementById('tab-'+(n?.tab||'estrutura'));
   if(tab&&tab.getAttribute('aria-selected')!=='true')tab.click();
  }
 }
