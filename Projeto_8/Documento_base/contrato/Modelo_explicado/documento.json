@@ -71,8 +71,7 @@
                   "tags": {
                     "kind": "array",
                     "item": {
-                      "kind": "string",
-                      "nullable": false
+                      "kind": "string"
                     }
                   },
                   "jornadas": {
@@ -135,9 +134,6 @@
                       "kind": "object",
                       "children": {
                         "id": {
-                          "kind": "string"
-                        },
-                        "telaRef": {
                           "kind": "string"
                         },
                         "caminho": {
@@ -238,33 +234,29 @@
                       "kind": "object",
                       "children": {
                         "id": {
-                          "kind": "string",
-                          "nullable": false
+                          "kind": "string"
                         },
                         "tipo": {
-                          "kind": "string",
-                          "nullable": false
+                          "kind": "string"
                         },
                         "origem": {
                           "kind": "object",
                           "children": {
                             "tipo": {
-                              "kind": "string",
-                              "nullable": false
+                              "kind": "string"
                             },
                             "ref": {
-                              "kind": "string",
-                              "nullable": false
+                              "kind": "string"
                             },
                             "noRef": {
                               "kind": "string",
                               "nullable": true
                             },
-                            "telaContextoRef": {
+                            "portaRef": {
                               "kind": "string",
                               "nullable": true
                             },
-                            "portaRef": {
+                            "telaContextoRef": {
                               "kind": "string",
                               "nullable": true
                             }
@@ -274,22 +266,20 @@
                           "kind": "object",
                           "children": {
                             "tipo": {
-                              "kind": "string",
-                              "nullable": false
+                              "kind": "string"
                             },
                             "ref": {
-                              "kind": "string",
-                              "nullable": false
+                              "kind": "string"
                             },
                             "noRef": {
                               "kind": "string",
                               "nullable": true
                             },
-                            "telaContextoRef": {
+                            "portaRef": {
                               "kind": "string",
                               "nullable": true
                             },
-                            "portaRef": {
+                            "telaContextoRef": {
                               "kind": "string",
                               "nullable": true
                             }
@@ -341,8 +331,7 @@
                           "children": {}
                         },
                         "ordem": {
-                          "kind": "number",
-                          "nullable": false
+                          "kind": "number"
                         },
                         "participacaoRef": {
                           "kind": "string",
@@ -361,20 +350,17 @@
                       "kind": "object",
                       "children": {
                         "id": {
-                          "kind": "string",
-                          "nullable": false
+                          "kind": "string"
                         },
                         "origemNoRef": {
                           "kind": "string",
                           "nullable": true
                         },
                         "titulo": {
-                          "kind": "string",
-                          "nullable": false
+                          "kind": "string"
                         },
                         "tipo": {
-                          "kind": "string",
-                          "nullable": false
+                          "kind": "string"
                         },
                         "criterioRef": {
                           "kind": "string",
@@ -386,24 +372,19 @@
                             "kind": "object",
                             "children": {
                               "id": {
-                                "kind": "string",
-                                "nullable": false
+                                "kind": "string"
                               },
                               "rotulo": {
-                                "kind": "string",
-                                "nullable": false
+                                "kind": "string"
                               },
                               "valor": {
-                                "kind": "string",
-                                "nullable": false
+                                "kind": "string"
                               },
                               "relacaoRef": {
-                                "kind": "string",
-                                "nullable": false
+                                "kind": "string"
                               },
                               "ordem": {
-                                "kind": "number",
-                                "nullable": false
+                                "kind": "number"
                               },
                               "condicaoRef": {
                                 "kind": "string",
@@ -427,15 +408,225 @@
               },
               "estados": {
                 "kind": "object",
-                "children": {}
+                "children": {
+                  "possiveis": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "nome": {
+                          "kind": "string"
+                        },
+                        "comportamento": {
+                          "kind": "object",
+                          "children": {
+                            "homeUnica": {
+                              "kind": "boolean"
+                            },
+                            "operacoesProtegidas": {
+                              "kind": "string"
+                            },
+                            "situacao": {
+                              "kind": "string"
+                            },
+                            "indicacao": {
+                              "kind": "string"
+                            }
+                          }
+                        },
+                        "descricao": {
+                          "kind": "string"
+                        },
+                        "origemNo": {
+                          "kind": "string"
+                        },
+                        "pendente": {
+                          "kind": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "fallbackSeguro": {
+                    "kind": "string"
+                  }
+                }
               },
               "acoes": {
                 "kind": "object",
-                "children": {}
+                "children": {
+                  "itens": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "evento": {
+                          "kind": "string"
+                        },
+                        "rotas": {
+                          "kind": "array",
+                          "item": {
+                            "kind": "object",
+                            "children": {
+                              "id": {
+                                "kind": "string"
+                              },
+                              "rotulo": {
+                                "kind": "string"
+                              },
+                              "descricao": {
+                                "kind": "string"
+                              },
+                              "destino": {
+                                "kind": "object",
+                                "children": {
+                                  "tipo": {
+                                    "kind": "string"
+                                  },
+                                  "telaId": {
+                                    "kind": "null"
+                                  },
+                                  "noId": {
+                                    "kind": "string"
+                                  }
+                                }
+                              },
+                              "relacaoDireta": {
+                                "kind": "boolean"
+                              },
+                              "origemNo": {
+                                "kind": "string"
+                              }
+                            }
+                          }
+                        },
+                        "jornadaRef": {
+                          "kind": "string"
+                        },
+                        "elementoRef": {
+                          "kind": "string",
+                          "nullable": true
+                        },
+                        "instanciaRef": {
+                          "kind": "string"
+                        },
+                        "efeito": {
+                          "kind": "object",
+                          "children": {
+                            "tipo": {
+                              "kind": "string"
+                            },
+                            "alvoRef": {
+                              "kind": "string"
+                            },
+                            "valor": {
+                              "kind": "string"
+                            },
+                            "situacao": {
+                              "kind": "string"
+                            }
+                          }
+                        },
+                        "situacao": {
+                          "kind": "string"
+                        },
+                        "destino": {
+                          "kind": "object",
+                          "children": {
+                            "tipo": {
+                              "kind": "string"
+                            },
+                            "telaRef": {
+                              "kind": "string"
+                            }
+                          }
+                        },
+                        "relacaoRef": {
+                          "kind": "string"
+                        },
+                        "condicaoRef": {
+                          "kind": "null"
+                        }
+                      }
+                    }
+                  }
+                }
               },
               "dados": {
                 "kind": "object",
-                "children": {}
+                "children": {
+                  "fontes": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "finalidade": {
+                          "kind": "string"
+                        },
+                        "origemRef": {
+                          "kind": "null"
+                        },
+                        "situacao": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  },
+                  "operacoes": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "tipo": {
+                          "kind": "string"
+                        },
+                        "fonteRef": {
+                          "kind": "string"
+                        },
+                        "servicoRef": {
+                          "kind": "null"
+                        },
+                        "situacao": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  },
+                  "persistencia": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "operacaoRef": {
+                          "kind": "string"
+                        },
+                        "destinoRef": {
+                          "kind": "null"
+                        },
+                        "autorizacaoRef": {
+                          "kind": "null"
+                        },
+                        "situacao": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  }
+                }
               },
               "componentes": {
                 "kind": "object",
@@ -462,11 +653,9 @@
                           "<instanciaId>": {
                             "kind": "object",
                             "children": {
-                              "componenteRef": {
-                                "kind": "string"
-                              },
                               "paiRef": {
-                                "kind": "string"
+                                "kind": "string",
+                                "nullable": true
                               },
                               "slot": {
                                 "kind": "string"
@@ -506,29 +695,161 @@
                   }
                 }
               },
-              "estilos": {
-                "kind": "object",
-                "children": {}
-              },
               "variantes": {
                 "kind": "object",
-                "children": {}
+                "children": {
+                  "regras": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "origem": {
+                          "kind": "string"
+                        },
+                        "gatilho": {
+                          "kind": "string"
+                        },
+                        "opcao": {
+                          "kind": "string"
+                        },
+                        "estadoAlvo": {
+                          "kind": "string"
+                        },
+                        "nota": {
+                          "kind": "string"
+                        },
+                        "jornadaRef": {
+                          "kind": "string"
+                        },
+                        "efeitoVisual": {
+                          "kind": "null"
+                        },
+                        "situacaoVisual": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  }
+                }
               },
               "interacoes": {
                 "kind": "object",
-                "children": {}
+                "children": {
+                  "eventosPrototipo": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "atributosHTML": {
+                          "kind": "object",
+                          "children": {
+                            "<atributoHTML>": {
+                              "kind": "string"
+                            }
+                          }
+                        },
+                        "status": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  },
+                  "vinculos": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "instanciaRef": {
+                          "kind": "string"
+                        },
+                        "elementoRef": {
+                          "kind": "string"
+                        },
+                        "evento": {
+                          "kind": "string"
+                        },
+                        "acaoRef": {
+                          "kind": "string"
+                        },
+                        "situacao": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  }
+                }
               },
               "mocks": {
                 "kind": "object",
-                "children": {}
-              },
-              "localizacao": {
-                "kind": "object",
-                "children": {}
-              },
-              "proveniencia": {
-                "kind": "object",
-                "children": {}
+                "children": {
+                  "cenarios": {
+                    "kind": "array",
+                    "item": {
+                      "kind": "object",
+                      "children": {
+                        "id": {
+                          "kind": "string"
+                        },
+                        "cenarioRef": {
+                          "kind": "string"
+                        },
+                        "nome": {
+                          "kind": "string"
+                        },
+                        "uso": {
+                          "kind": "string"
+                        },
+                        "situacao": {
+                          "kind": "string"
+                        },
+                        "start": {
+                          "kind": "string"
+                        },
+                        "estadoTelaRef": {
+                          "kind": "string"
+                        },
+                        "status": {
+                          "kind": "string"
+                        },
+                        "registered": {
+                          "kind": "boolean"
+                        },
+                        "onboarded": {
+                          "kind": "boolean"
+                        },
+                        "office": {
+                          "kind": "boolean"
+                        },
+                        "request": {
+                          "kind": "string"
+                        },
+                        "dadosRef": {
+                          "kind": "string"
+                        },
+                        "dadosExemplo": {
+                          "kind": "object",
+                          "children": {
+                            "<campoMock>": {
+                              "kind": "string"
+                            }
+                          }
+                        },
+                        "pendencia": {
+                          "kind": "string"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -612,7 +933,8 @@
                                     "kind": "string"
                                   },
                                   "paiRef": {
-                                    "kind": "string"
+                                    "kind": "string",
+                                    "nullable": true
                                   },
                                   "ordem": {
                                     "kind": "number"
@@ -675,14 +997,14 @@
   },
   "glossario": {
     "documento": {
-      "id": "advogadoja.contrato.glossario.completo.v4",
-      "observacao": "Explicações de apoio; exemplos e campos provisórios não estão homologados."
+      "id": "advogadoja.contrato.glossario.v0.3",
+      "observacao": "Estrutura proposta atualizada pelo caso Home Advogado; diferenças de produto ainda podem exigir homologação."
     },
     "campos": {
       "contrato": {
-        "resumo": "Campo presente na estrutura do exemplo, ainda sem definição detalhada.",
-        "detalhes": "Preservado no contrato de trabalho; finalidade e regras de preenchimento ainda precisam de validação.",
-        "situacao": "estrutura"
+        "resumo": "Definição autocontida de uma tela por ID, com dados funcionais, visuais e componentes completos.",
+        "detalhes": "Definição autocontida de uma tela por ID, com dados funcionais, visuais e componentes completos. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
       "contrato.<telaId>": {
         "resumo": "Identificador canônico da tela, exemplo: advogado.home.",
@@ -690,9 +1012,9 @@
         "situacao": "estrutura"
       },
       "contrato.<telaId>.tela": {
-        "resumo": "Campo presente na estrutura do exemplo, ainda sem definição detalhada.",
-        "detalhes": "Preservado no contrato de trabalho; finalidade e regras de preenchimento ainda precisam de validação.",
-        "situacao": "estrutura"
+        "resumo": "Objeto principal da tela: schema, schemaVersion e 11 blocos funcionais.",
+        "detalhes": "Objeto principal da tela: schema, schemaVersion e 11 blocos funcionais. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
       "contrato.<telaId>.tela.schema": {
         "resumo": "Identifica o padrão declarado para este objeto.",
@@ -870,9 +1192,9 @@
         "situacao": "modelo_em_avaliacao"
       },
       "contrato.<telaId>.tela.navegacao": {
-        "resumo": "Conjunto de referências que descreve caminhos e decisões.",
-        "detalhes": "Bloco de trabalho que permite representar a navegação sem embutir o comportamento de um motor específico.",
-        "situacao": "modelo_em_avaliacao"
+        "resumo": "Rotas, relações e bifurcações que o Flow interpreta sem duplicar a identidade da tela.",
+        "detalhes": "Rotas, relações e bifurcações que o Flow interpreta sem duplicar a identidade da tela. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
       "contrato.<telaId>.tela.navegacao.rotas": {
         "resumo": "Endereços associados a telas.",
@@ -889,11 +1211,6 @@
         "detalhes": "Permite encontrar, comparar e referenciar esta rota sem depender de sua posição na lista.",
         "situacao": "modelo_em_avaliacao"
       },
-      "contrato.<telaId>.tela.navegacao.rotas[].telaRef": {
-        "resumo": "Referência à tela que usa a rota.",
-        "detalhes": "Aponta para a identidade da tela, sem duplicar a sua definição visual.",
-        "situacao": "modelo_em_avaliacao"
-      },
       "contrato.<telaId>.tela.navegacao.rotas[].caminho": {
         "resumo": "Caminho ou endereço da rota.",
         "detalhes": "Pode guardar um caminho como /professional/home, usado aqui somente como referência documental.",
@@ -904,14 +1221,109 @@
         "detalhes": "Coleção reservada para parâmetros do caminho. Nomes, obrigatoriedade, tipos, validação e cardinalidade não foram homologados.",
         "situacao": "modelo_em_avaliacao"
       },
+      "contrato.<telaId>.tela.navegacao.rotas[].parametros[]": {
+        "resumo": "Parâmetro de caminho",
+        "detalhes": "Entrada declarativa do caminho; estrutura candidata e ainda não homologada.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].nome": {
+        "resumo": "Nome do parâmetro",
+        "detalhes": "Chave legível do parâmetro; nomenclatura candidata.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].tipo": {
+        "resumo": "Tipo esperado",
+        "detalhes": "Tipo lógico do valor; enumeração e validação pendentes.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].obrigatorio": {
+        "resumo": "Obrigatoriedade contextual",
+        "detalhes": "Indica se a rota requer este valor. Regra de ausência pendente.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].origemRef": {
+        "resumo": "Fonte de preenchimento",
+        "detalhes": "Referência opcional a dado/estado/parametrização; sem embutir o valor de execução.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].valorPadrao": {
+        "resumo": "Reserva de valor padrão",
+        "detalhes": "Tipo ainda indefinido; a representação definitiva do valor depende do contrato de dados.",
+        "situacao": "modelo_em_avaliacao"
+      },
       "contrato.<telaId>.tela.navegacao.rotas[].query": {
         "resumo": "Parâmetros de consulta; formato ainda aberto.",
         "detalhes": "Coleção reservada para query string. A estrutura dos itens não foi definida.",
         "situacao": "modelo_em_avaliacao"
       },
+      "contrato.<telaId>.tela.navegacao.rotas[].query[]": {
+        "resumo": "Parâmetro de consulta",
+        "detalhes": "Entrada declarativa da query; estrutura candidata e ainda não homologada.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].query[].nome": {
+        "resumo": "Nome do parâmetro",
+        "detalhes": "Chave legível do parâmetro; nomenclatura candidata.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].query[].tipo": {
+        "resumo": "Tipo esperado",
+        "detalhes": "Tipo lógico do valor; enumeração e validação pendentes.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].query[].obrigatorio": {
+        "resumo": "Obrigatoriedade contextual",
+        "detalhes": "Indica se a rota requer este valor. Regra de ausência pendente.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].query[].origemRef": {
+        "resumo": "Fonte de preenchimento",
+        "detalhes": "Referência opcional a dado/estado/parametrização; sem embutir o valor de execução.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].query[].valorPadrao": {
+        "resumo": "Reserva de valor padrão",
+        "detalhes": "Tipo ainda indefinido; a representação definitiva do valor depende do contrato de dados.",
+        "situacao": "modelo_em_avaliacao"
+      },
       "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos": {
         "resumo": "Desvios de rota; formato ainda aberto.",
         "detalhes": "Coleção reservada para redirecionamentos. Regras de prioridade, condição e retorno ainda não foram definidas.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[]": {
+        "resumo": "Regra de redirecionamento",
+        "detalhes": "Desvio com possíveis condições; nenhuma política executável está aprovada.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].id": {
+        "resumo": "ID do redirecionamento",
+        "detalhes": "Identificador estável da regra candidata.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].destinoRotaRef": {
+        "resumo": "Rota de destino",
+        "detalhes": "Referência opcional a uma rota já cadastrada, evitando repetir seu caminho.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].destinoTelaRef": {
+        "resumo": "Tela de destino",
+        "detalhes": "Referência opcional à tela; precedência frente a destinoRotaRef ainda não definida.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].condicaoRef": {
+        "resumo": "Condição de redirecionamento",
+        "detalhes": "Referência opcional, não código de avaliação.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].prioridade": {
+        "resumo": "Precedência de desvio",
+        "detalhes": "Ordem de resolução proposta; empates permanecem pendentes.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].comportamento": {
+        "resumo": "Política do desvio",
+        "detalhes": "Reserva sem detalhes executáveis homologados.",
         "situacao": "modelo_em_avaliacao"
       },
       "contrato.<telaId>.tela.navegacao.rotas[].comportamento": {
@@ -964,6 +1376,11 @@
         "detalhes": "Referência de nó opcional; não substitui a identidade da tela.",
         "situacao": "modelo_em_avaliacao"
       },
+      "contrato.<telaId>.tela.navegacao.relacoes[].origem.portaRef": {
+        "resumo": "Porta de conexão da origem",
+        "detalhes": "Referência opcional a ponto conectivo do Flow. Diferente de noRef (ocorrência). O formato das portas ainda não está homologado.",
+        "situacao": "modelo_em_avaliacao"
+      },
       "contrato.<telaId>.tela.navegacao.relacoes[].origem.telaContextoRef": {
         "resumo": "Tela de contexto da origem",
         "detalhes": "Referência opcional necessária quando a origem é estado/nó associado a uma tela.",
@@ -987,6 +1404,11 @@
       "contrato.<telaId>.tela.navegacao.relacoes[].destino.noRef": {
         "resumo": "Ocorrência de destino",
         "detalhes": "Referência de nó opcional; não substitui a identidade da tela.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.relacoes[].destino.portaRef": {
+        "resumo": "Porta de conexão da destino",
+        "detalhes": "Referência opcional a ponto conectivo do Flow. Diferente de noRef (ocorrência). O formato das portas ainda não está homologado.",
         "situacao": "modelo_em_avaliacao"
       },
       "contrato.<telaId>.tela.navegacao.relacoes[].destino.telaContextoRef": {
@@ -1029,6 +1451,11 @@
         "detalhes": "Referência textual opcional a acoes, sem copiar operação.",
         "situacao": "modelo_em_avaliacao"
       },
+      "contrato.<telaId>.tela.navegacao.relacoes[].gatilho.instanciaRef": {
+        "resumo": "Instância visual disparadora",
+        "detalhes": "Identifica a instância de componente quando um componente reutilizado em várias telas emite o mesmo evento; complementa elementoRef.",
+        "situacao": "modelo_em_avaliacao"
+      },
       "contrato.<telaId>.tela.navegacao.relacoes[].condicaoRef": {
         "resumo": "Condição da relação",
         "detalhes": "Referência textual opcional a uma condição externa; execução permanece fora da navegação.",
@@ -1047,6 +1474,16 @@
       "contrato.<telaId>.tela.navegacao.relacoes[].ordem": {
         "resumo": "Ordem de apresentação da relação.",
         "detalhes": "Facilita ordenação e comparação; a política de desempate ainda precisa ser definida.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.relacoes[].participacaoRef": {
+        "resumo": "Participação contextual opcional",
+        "detalhes": "Quando a mesma tela aparece em múltiplas jornadas ou subjornadas, permite apontar uma participação declarada em classificacao.jornadas. Ausência não impede relação global.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.relacoes[].prioridade": {
+        "resumo": "Precedência candidata da relação",
+        "detalhes": "Diferente da ordem visual; útil se houver múltiplas conexões aplicáveis. Regra de conflito/desempate ainda pendente.",
         "situacao": "modelo_em_avaliacao"
       },
       "contrato.<telaId>.tela.navegacao.bifurcacoes": {
@@ -1119,30 +1556,350 @@
         "detalhes": "Permite dispor as alternativas de forma reordenável.",
         "situacao": "modelo_em_avaliacao"
       },
+      "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas[].condicaoRef": {
+        "resumo": "Condição opcional por alternativa",
+        "detalhes": "Referência à condição externa aplicável especificamente a esta alternativa. Não contém expressão executável.",
+        "situacao": "modelo_em_avaliacao"
+      },
+      "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas[].prioridade": {
+        "resumo": "Precedência opcional da alternativa",
+        "detalhes": "Separada de ordem: ordem serve à apresentação, prioridade pode orientar resolução. Política ainda pendente.",
+        "situacao": "modelo_em_avaliacao"
+      },
       "contrato.<telaId>.tela.navegacao.bifurcacoes[].fallbackRelacaoRef": {
         "resumo": "Relação de contingência",
         "detalhes": "Referência textual opcional a uma relação existente; política de fallback a definir.",
         "situacao": "modelo_em_avaliacao"
       },
       "contrato.<telaId>.tela.estados": {
-        "resumo": "Reserva as situações possíveis da tela ou do componente.",
-        "detalhes": "Reserva as situações possíveis da tela ou do componente. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+        "resumo": "Estados da Home única condicionados à situação de OAB; comportamento e permissões são declarativos.",
+        "detalhes": "Estados da Home única condicionados à situação de OAB; comportamento e permissões são declarativos. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
+      },
+      "contrato.<telaId>.tela.estados.possiveis": {
+        "resumo": "Lista dos estados definidos para essa tela.",
+        "detalhes": "Lista dos estados definidos para essa tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[]": {
+        "resumo": "Lista dos estados definidos para essa tela.",
+        "detalhes": "Lista dos estados definidos para essa tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].nome": {
+        "resumo": "Nome legível para o editor ou documento.",
+        "detalhes": "Nome legível para o editor ou documento. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].comportamento": {
+        "resumo": "Efeitos declarativos associados a uma situação, sem implementação implícita.",
+        "detalhes": "Efeitos declarativos associados a uma situação, sem implementação implícita. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].comportamento.homeUnica": {
+        "resumo": "Campo de home Unica no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de home Unica no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].comportamento.operacoesProtegidas": {
+        "resumo": "Campo de operacoes Protegidas no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de operacoes Protegidas no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].comportamento.situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].comportamento.indicacao": {
+        "resumo": "Campo de indicacao no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de indicacao no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].descricao": {
+        "resumo": "Descrição funcional do elemento.",
+        "detalhes": "Descrição funcional do elemento. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].origemNo": {
+        "resumo": "Campo de origem No no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de origem No no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.possiveis[].pendente": {
+        "resumo": "Campo de pendente no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de pendente no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.estados.fallbackSeguro": {
+        "resumo": "Estado utilizado quando não for possível determinar outro estado seguro.",
+        "detalhes": "Estado utilizado quando não for possível determinar outro estado seguro. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
       "contrato.<telaId>.tela.acoes": {
-        "resumo": "Reserva operações e os efeitos associados.",
-        "detalhes": "Reserva operações e os efeitos associados. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+        "resumo": "Ações da Home (menu, OAB, disponibilidade, solicitações, sair), com homologação operacional pendente.",
+        "detalhes": "Ações da Home (menu, OAB, disponibilidade, solicitações, sair), com homologação operacional pendente. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
+      },
+      "contrato.<telaId>.tela.acoes.itens": {
+        "resumo": "Ações declaradas, com identificadores e rotas de decisão quando aplicável.",
+        "detalhes": "Ações declaradas, com identificadores e rotas de decisão quando aplicável. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[]": {
+        "resumo": "Ações declaradas, com identificadores e rotas de decisão quando aplicável.",
+        "detalhes": "Ações declaradas, com identificadores e rotas de decisão quando aplicável. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].evento": {
+        "resumo": "Evento lógico ou visual que dispara uma ação.",
+        "detalhes": "Evento lógico ou visual que dispara uma ação. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas": {
+        "resumo": "Definição de caminhos de URL ou saídas previstas, conforme o bloco.",
+        "detalhes": "Definição de caminhos de URL ou saídas previstas, conforme o bloco. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[]": {
+        "resumo": "Definição de caminhos de URL ou saídas previstas, conforme o bloco.",
+        "detalhes": "Definição de caminhos de URL ou saídas previstas, conforme o bloco. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].rotulo": {
+        "resumo": "Campo de rotulo no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de rotulo no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].descricao": {
+        "resumo": "Descrição funcional do elemento.",
+        "detalhes": "Descrição funcional do elemento. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].destino": {
+        "resumo": "Referência do destino da transição.",
+        "detalhes": "Referência do destino da transição. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].destino.tipo": {
+        "resumo": "Tipo declarado do objeto, ação, nó ou parâmetro.",
+        "detalhes": "Tipo declarado do objeto, ação, nó ou parâmetro. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].destino.telaId": {
+        "resumo": "Campo de tela Id no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de tela Id no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].destino.noId": {
+        "resumo": "Campo de no Id no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de no Id no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].relacaoDireta": {
+        "resumo": "Campo de relacao Direta no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de relacao Direta no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].rotas[].origemNo": {
+        "resumo": "Campo de origem No no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de origem No no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].jornadaRef": {
+        "resumo": "Referência identificada por ID: jornada Ref.",
+        "detalhes": "Referência identificada por ID: jornada Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].elementoRef": {
+        "resumo": "ID do elemento HTML que recebe ou dispara um evento.",
+        "detalhes": "ID do elemento HTML que recebe ou dispara um evento. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].instanciaRef": {
+        "resumo": "Referência estável à instância do componente na tela.",
+        "detalhes": "Referência estável à instância do componente na tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].efeito": {
+        "resumo": "Campo de efeito no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de efeito no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].efeito.tipo": {
+        "resumo": "Tipo declarado do objeto, ação, nó ou parâmetro.",
+        "detalhes": "Tipo declarado do objeto, ação, nó ou parâmetro. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].efeito.alvoRef": {
+        "resumo": "Referência identificada por ID: alvo Ref.",
+        "detalhes": "Referência identificada por ID: alvo Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].efeito.valor": {
+        "resumo": "Campo de valor no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de valor no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].efeito.situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].destino": {
+        "resumo": "Referência do destino da transição.",
+        "detalhes": "Referência do destino da transição. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].destino.tipo": {
+        "resumo": "Tipo declarado do objeto, ação, nó ou parâmetro.",
+        "detalhes": "Tipo declarado do objeto, ação, nó ou parâmetro. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].destino.telaRef": {
+        "resumo": "Referência identificada por ID: tela Ref.",
+        "detalhes": "Referência identificada por ID: tela Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].relacaoRef": {
+        "resumo": "Referência identificada por ID: relacao Ref.",
+        "detalhes": "Referência identificada por ID: relacao Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.acoes.itens[].condicaoRef": {
+        "resumo": "Referência a condição; não implica execução já implementada.",
+        "detalhes": "Referência a condição; não implica execução já implementada. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
       "contrato.<telaId>.tela.dados": {
-        "resumo": "Reserva os dados e as referências de informações necessárias.",
-        "detalhes": "Reserva os dados e as referências de informações necessárias. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+        "resumo": "Fontes e operações lógicas previstas; não representam schema de banco ou API homologados.",
+        "detalhes": "Fontes e operações lógicas previstas; não representam schema de banco ou API homologados. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
+      },
+      "contrato.<telaId>.tela.dados.fontes": {
+        "resumo": "Fontes lógicas de informação consumidas pela tela.",
+        "detalhes": "Fontes lógicas de informação consumidas pela tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.fontes[]": {
+        "resumo": "Fontes lógicas de informação consumidas pela tela.",
+        "detalhes": "Fontes lógicas de informação consumidas pela tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.fontes[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.fontes[].finalidade": {
+        "resumo": "Campo de finalidade no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de finalidade no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.fontes[].origemRef": {
+        "resumo": "Referência identificada por ID: origem Ref.",
+        "detalhes": "Referência identificada por ID: origem Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.fontes[].situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes": {
+        "resumo": "Operações de dados previstas; vínculos reais de API ainda pendentes.",
+        "detalhes": "Operações de dados previstas; vínculos reais de API ainda pendentes. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes[]": {
+        "resumo": "Operações de dados previstas; vínculos reais de API ainda pendentes.",
+        "detalhes": "Operações de dados previstas; vínculos reais de API ainda pendentes. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes[].tipo": {
+        "resumo": "Tipo declarado do objeto, ação, nó ou parâmetro.",
+        "detalhes": "Tipo declarado do objeto, ação, nó ou parâmetro. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes[].fonteRef": {
+        "resumo": "Referência identificada por ID: fonte Ref.",
+        "detalhes": "Referência identificada por ID: fonte Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes[].servicoRef": {
+        "resumo": "Referência identificada por ID: servico Ref.",
+        "detalhes": "Referência identificada por ID: servico Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.operacoes[].situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia": {
+        "resumo": "Persistência prevista; não pressupõe entidade ou tabela já criada.",
+        "detalhes": "Persistência prevista; não pressupõe entidade ou tabela já criada. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia[]": {
+        "resumo": "Persistência prevista; não pressupõe entidade ou tabela já criada.",
+        "detalhes": "Persistência prevista; não pressupõe entidade ou tabela já criada. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia[].operacaoRef": {
+        "resumo": "Referência identificada por ID: operacao Ref.",
+        "detalhes": "Referência identificada por ID: operacao Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia[].destinoRef": {
+        "resumo": "Referência identificada por ID: destino Ref.",
+        "detalhes": "Referência identificada por ID: destino Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia[].autorizacaoRef": {
+        "resumo": "Referência identificada por ID: autorizacao Ref.",
+        "detalhes": "Referência identificada por ID: autorizacao Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.dados.persistencia[].situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
       "contrato.<telaId>.tela.componentes": {
-        "resumo": "Relaciona componentes da tela ou define componentes reutilizáveis.",
-        "detalhes": "Relaciona componentes da tela ou define componentes reutilizáveis. Informações demonstrativas da Home não constituem nomenclatura homologada.",
-        "situacao": "estrutura"
+        "resumo": "Referências das instâncias presentes na tela; as definições completas ficam em componentes na raiz.",
+        "detalhes": "Referências das instâncias presentes na tela; as definições completas ficam em componentes na raiz. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
       "contrato.<telaId>.tela.componentes.instanciasRefs": {
         "resumo": "Mapa de instâncias locais e componentes que utilizam.",
@@ -1155,9 +1912,9 @@
         "situacao": "estrutura"
       },
       "contrato.<telaId>.tela.estrutura": {
-        "resumo": "Define a montagem visual e a organização HTML/CSS.",
-        "detalhes": "Define a montagem visual e a organização HTML/CSS. Informações demonstrativas da Home não constituem nomenclatura homologada.",
-        "situacao": "estrutura"
+        "resumo": "HTML/CSS de montagem da tela (ordem, slots, raiz, tokens e regras).",
+        "detalhes": "HTML/CSS de montagem da tela (ordem, slots, raiz, tokens e regras). Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
       "contrato.<telaId>.tela.estrutura.html": {
         "resumo": "Estrutura declarativa de elementos ou composição.",
@@ -1172,11 +1929,6 @@
       "contrato.<telaId>.tela.estrutura.html.composicao.<instanciaId>": {
         "resumo": "Identificador local de uma instância.",
         "detalhes": "Posição e vínculo podem variar sem alterar o ID do componente canônico.",
-        "situacao": "estrutura"
-      },
-      "contrato.<telaId>.tela.estrutura.html.composicao.<instanciaId>.componenteRef": {
-        "resumo": "Identificador canônico do componente a montar.",
-        "detalhes": "Identificador canônico do componente a montar. Informações demonstrativas da Home não constituem nomenclatura homologada.",
         "situacao": "estrutura"
       },
       "contrato.<telaId>.tela.estrutura.html.composicao.<instanciaId>.paiRef": {
@@ -1224,40 +1976,240 @@
         "detalhes": "Permite agrupar e substituir regras visuais mantendo a referência.",
         "situacao": "estrutura"
       },
-      "contrato.<telaId>.tela.estilos": {
-        "resumo": "Reserva temas e parâmetros visuais sem duplicar CSS.",
-        "detalhes": "Reserva temas e parâmetros visuais sem duplicar CSS. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
-      },
       "contrato.<telaId>.tela.variantes": {
-        "resumo": "Reserva variações de apresentação e configuração.",
-        "detalhes": "Reserva variações de apresentação e configuração. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+        "resumo": "Regras condicionais associadas aos estados OAB; efeito visual específico ainda pode estar pendente.",
+        "detalhes": "Regras condicionais associadas aos estados OAB; efeito visual específico ainda pode estar pendente. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
+      },
+      "contrato.<telaId>.tela.variantes.regras": {
+        "resumo": "Regras de CSS ou de variantes conforme o bloco pai.",
+        "detalhes": "Regras de CSS ou de variantes conforme o bloco pai. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[]": {
+        "resumo": "Regras de CSS ou de variantes conforme o bloco pai.",
+        "detalhes": "Regras de CSS ou de variantes conforme o bloco pai. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].origem": {
+        "resumo": "Fonte/origem lógica do elemento ou relação.",
+        "detalhes": "Fonte/origem lógica do elemento ou relação. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].gatilho": {
+        "resumo": "Conjunto ou nome do disparador da ação.",
+        "detalhes": "Conjunto ou nome do disparador da ação. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].opcao": {
+        "resumo": "Campo de opcao no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de opcao no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].estadoAlvo": {
+        "resumo": "Estado que a variante representa.",
+        "detalhes": "Estado que a variante representa. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].nota": {
+        "resumo": "Campo de nota no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de nota no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].jornadaRef": {
+        "resumo": "Referência identificada por ID: jornada Ref.",
+        "detalhes": "Referência identificada por ID: jornada Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].efeitoVisual": {
+        "resumo": "Descrição da mudança visual; pode permanecer pendente.",
+        "detalhes": "Descrição da mudança visual; pode permanecer pendente. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.variantes.regras[].situacaoVisual": {
+        "resumo": "Campo de situacao Visual no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de situacao Visual no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
       "contrato.<telaId>.tela.interacoes": {
-        "resumo": "Relaciona eventos de elementos a ações.",
-        "detalhes": "Relaciona eventos de elementos a ações. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+        "resumo": "Eventos observados e vínculos propostos entre instâncias, elementos e ações.",
+        "detalhes": "Eventos observados e vínculos propostos entre instâncias, elementos e ações. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
+      },
+      "contrato.<telaId>.tela.interacoes.eventosPrototipo": {
+        "resumo": "Eventos identificados na fonte de protótipo, sujeitos à validação.",
+        "detalhes": "Eventos identificados na fonte de protótipo, sujeitos à validação. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.eventosPrototipo[]": {
+        "resumo": "Eventos identificados na fonte de protótipo, sujeitos à validação.",
+        "detalhes": "Eventos identificados na fonte de protótipo, sujeitos à validação. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.eventosPrototipo[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.eventosPrototipo[].atributosHTML": {
+        "resumo": "Atributos HTML observados no evento de protótipo.",
+        "detalhes": "Atributos HTML observados no evento de protótipo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.eventosPrototipo[].atributosHTML.<atributoHTML>": {
+        "resumo": "Campo de <atributo HTML> no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de <atributo HTML> no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.eventosPrototipo[].status": {
+        "resumo": "Código do estado simulado neste cenário.",
+        "detalhes": "Código do estado simulado neste cenário. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos": {
+        "resumo": "Associa elementos e instâncias a ações do contrato.",
+        "detalhes": "Associa elementos e instâncias a ações do contrato. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[]": {
+        "resumo": "Associa elementos e instâncias a ações do contrato.",
+        "detalhes": "Associa elementos e instâncias a ações do contrato. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[].instanciaRef": {
+        "resumo": "Referência estável à instância do componente na tela.",
+        "detalhes": "Referência estável à instância do componente na tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[].elementoRef": {
+        "resumo": "ID do elemento HTML que recebe ou dispara um evento.",
+        "detalhes": "ID do elemento HTML que recebe ou dispara um evento. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[].evento": {
+        "resumo": "Evento lógico ou visual que dispara uma ação.",
+        "detalhes": "Evento lógico ou visual que dispara uma ação. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[].acaoRef": {
+        "resumo": "ID de ação existente no contrato da tela.",
+        "detalhes": "ID de ação existente no contrato da tela. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.interacoes.vinculos[].situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
       "contrato.<telaId>.tela.mocks": {
-        "resumo": "Reserva cenários e valores simulados para prévias.",
-        "detalhes": "Reserva cenários e valores simulados para prévias. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+        "resumo": "Três cenários documentais de OAB: em análise, habilitada e restrita.",
+        "detalhes": "Três cenários documentais de OAB: em análise, habilitada e restrita. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
-      "contrato.<telaId>.tela.localizacao": {
-        "resumo": "Reserva a localização lógica do objeto no projeto.",
-        "detalhes": "Reserva a localização lógica do objeto no projeto. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+      "contrato.<telaId>.tela.mocks.cenarios": {
+        "resumo": "Conjunto de cenários simulados que podem ser selecionados no protótipo.",
+        "detalhes": "Conjunto de cenários simulados que podem ser selecionados no protótipo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
-      "contrato.<telaId>.tela.proveniencia": {
-        "resumo": "Reserva autoria e rastreabilidade quando necessárias, sem legado.",
-        "detalhes": "Reserva autoria e rastreabilidade quando necessárias, sem legado. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
-        "situacao": "estrutura"
+      "contrato.<telaId>.tela.mocks.cenarios[]": {
+        "resumo": "Conjunto de cenários simulados que podem ser selecionados no protótipo.",
+        "detalhes": "Conjunto de cenários simulados que podem ser selecionados no protótipo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].id": {
+        "resumo": "Identificador estável dentro do respectivo escopo.",
+        "detalhes": "Identificador estável dentro do respectivo escopo. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].cenarioRef": {
+        "resumo": "Referência identificada por ID: cenario Ref.",
+        "detalhes": "Referência identificada por ID: cenario Ref. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].nome": {
+        "resumo": "Nome legível para o editor ou documento.",
+        "detalhes": "Nome legível para o editor ou documento. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].uso": {
+        "resumo": "Campo de uso no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de uso no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].situacao": {
+        "resumo": "Status de definição/homologação deste item.",
+        "detalhes": "Status de definição/homologação deste item. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].start": {
+        "resumo": "ID canônico da tela inicial do cenário.",
+        "detalhes": "ID canônico da tela inicial do cenário. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].estadoTelaRef": {
+        "resumo": "ID do estado funcional utilizado neste cenário.",
+        "detalhes": "ID do estado funcional utilizado neste cenário. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].status": {
+        "resumo": "Código do estado simulado neste cenário.",
+        "detalhes": "Código do estado simulado neste cenário. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].registered": {
+        "resumo": "Campo de registered no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de registered no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].onboarded": {
+        "resumo": "Campo de onboarded no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de onboarded no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].office": {
+        "resumo": "Campo de office no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de office no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].request": {
+        "resumo": "Campo de request no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de request no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].dadosRef": {
+        "resumo": "Referência a um conjunto de dados simulados.",
+        "detalhes": "Referência a um conjunto de dados simulados. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].dadosExemplo": {
+        "resumo": "Valores simulados para prévia, sem equivalência obrigatória com o banco.",
+        "detalhes": "Valores simulados para prévia, sem equivalência obrigatória com o banco. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].dadosExemplo.<campoMock>": {
+        "resumo": "Campo de <campo Mock> no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de <campo Mock> no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
+      },
+      "contrato.<telaId>.tela.mocks.cenarios[].pendencia": {
+        "resumo": "Campo de pendencia no contrato; valores demonstrativos dependem de validação funcional.",
+        "detalhes": "Campo de pendencia no contrato; valores demonstrativos dependem de validação funcional. O valor da Home Advogado é um exemplo e não homologa integrações de produção.",
+        "situacao": "proposta"
       },
       "contrato.<telaId>.componentes": {
-        "resumo": "Relaciona componentes da tela ou define componentes reutilizáveis.",
-        "detalhes": "Relaciona componentes da tela ou define componentes reutilizáveis. Informações demonstrativas da Home não constituem nomenclatura homologada.",
-        "situacao": "estrutura"
+        "resumo": "Definições completas dos sete componentes usados na Home, com HTML/CSS próprios.",
+        "detalhes": "Definições completas dos sete componentes usados na Home, com HTML/CSS próprios. Não contém lógica de backend executável por si só.",
+        "situacao": "proposta_atual"
       },
       "contrato.<telaId>.componentes.<componenteId>": {
         "resumo": "Identificador canônico de um componente.",
@@ -1438,136 +2390,6 @@
         "resumo": "Reserva variações de apresentação e configuração.",
         "detalhes": "Reserva variações de apresentação e configuração. Informações demonstrativas da Home não constituem nomenclatura homologada. A forma interna deste objeto ainda não está definida.",
         "situacao": "estrutura"
-      },
-      "contrato.<telaId>.tela.navegacao.relacoes[].participacaoRef": {
-        "resumo": "Participação contextual opcional",
-        "detalhes": "Quando a mesma tela aparece em múltiplas jornadas ou subjornadas, permite apontar uma participação declarada em classificacao.jornadas. Ausência não impede relação global.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.relacoes[].prioridade": {
-        "resumo": "Precedência candidata da relação",
-        "detalhes": "Diferente da ordem visual; útil se houver múltiplas conexões aplicáveis. Regra de conflito/desempate ainda pendente.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.relacoes[].origem.portaRef": {
-        "resumo": "Porta de conexão da origem",
-        "detalhes": "Referência opcional a ponto conectivo do Flow. Diferente de noRef (ocorrência). O formato das portas ainda não está homologado.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.relacoes[].destino.portaRef": {
-        "resumo": "Porta de conexão da destino",
-        "detalhes": "Referência opcional a ponto conectivo do Flow. Diferente de noRef (ocorrência). O formato das portas ainda não está homologado.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.relacoes[].gatilho.instanciaRef": {
-        "resumo": "Instância visual disparadora",
-        "detalhes": "Identifica a instância de componente quando um componente reutilizado em várias telas emite o mesmo evento; complementa elementoRef.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas[].condicaoRef": {
-        "resumo": "Condição opcional por alternativa",
-        "detalhes": "Referência à condição externa aplicável especificamente a esta alternativa. Não contém expressão executável.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.bifurcacoes[].alternativas[].prioridade": {
-        "resumo": "Precedência opcional da alternativa",
-        "detalhes": "Separada de ordem: ordem serve à apresentação, prioridade pode orientar resolução. Política ainda pendente.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].parametros[]": {
-        "resumo": "Parâmetro de caminho",
-        "detalhes": "Entrada declarativa do caminho; estrutura candidata e ainda não homologada.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].query[]": {
-        "resumo": "Parâmetro de consulta",
-        "detalhes": "Entrada declarativa da query; estrutura candidata e ainda não homologada.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[]": {
-        "resumo": "Regra de redirecionamento",
-        "detalhes": "Desvio com possíveis condições; nenhuma política executável está aprovada.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].nome": {
-        "resumo": "Nome do parâmetro",
-        "detalhes": "Chave legível do parâmetro; nomenclatura candidata.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].tipo": {
-        "resumo": "Tipo esperado",
-        "detalhes": "Tipo lógico do valor; enumeração e validação pendentes.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].obrigatorio": {
-        "resumo": "Obrigatoriedade contextual",
-        "detalhes": "Indica se a rota requer este valor. Regra de ausência pendente.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].origemRef": {
-        "resumo": "Fonte de preenchimento",
-        "detalhes": "Referência opcional a dado/estado/parametrização; sem embutir o valor de execução.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].parametros[].valorPadrao": {
-        "resumo": "Reserva de valor padrão",
-        "detalhes": "Tipo ainda indefinido; a representação definitiva do valor depende do contrato de dados.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].query[].nome": {
-        "resumo": "Nome do parâmetro",
-        "detalhes": "Chave legível do parâmetro; nomenclatura candidata.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].query[].tipo": {
-        "resumo": "Tipo esperado",
-        "detalhes": "Tipo lógico do valor; enumeração e validação pendentes.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].query[].obrigatorio": {
-        "resumo": "Obrigatoriedade contextual",
-        "detalhes": "Indica se a rota requer este valor. Regra de ausência pendente.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].query[].origemRef": {
-        "resumo": "Fonte de preenchimento",
-        "detalhes": "Referência opcional a dado/estado/parametrização; sem embutir o valor de execução.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].query[].valorPadrao": {
-        "resumo": "Reserva de valor padrão",
-        "detalhes": "Tipo ainda indefinido; a representação definitiva do valor depende do contrato de dados.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].id": {
-        "resumo": "ID do redirecionamento",
-        "detalhes": "Identificador estável da regra candidata.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].destinoRotaRef": {
-        "resumo": "Rota de destino",
-        "detalhes": "Referência opcional a uma rota já cadastrada, evitando repetir seu caminho.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].destinoTelaRef": {
-        "resumo": "Tela de destino",
-        "detalhes": "Referência opcional à tela; precedência frente a destinoRotaRef ainda não definida.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].condicaoRef": {
-        "resumo": "Condição de redirecionamento",
-        "detalhes": "Referência opcional, não código de avaliação.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].prioridade": {
-        "resumo": "Precedência de desvio",
-        "detalhes": "Ordem de resolução proposta; empates permanecem pendentes.",
-        "situacao": "modelo_em_avaliacao"
-      },
-      "contrato.<telaId>.tela.navegacao.rotas[].redirecionamentos[].comportamento": {
-        "resumo": "Política do desvio",
-        "detalhes": "Reserva sem detalhes executáveis homologados.",
-        "situacao": "modelo_em_avaliacao"
       }
     }
   }

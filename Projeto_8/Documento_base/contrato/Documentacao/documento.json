@@ -1,68 +1,18 @@
 {
   "documento": {
-    "id": "advogadoja.contrato.json.decisoes.v1",
-    "titulo": "AdvogadoJá — Contrato JSON modular: decisões consolidadas",
-    "fonteArquivo": "ADVOGADOJA_CONTRATO_JSON_DECISOES_CONSOLIDADAS_V1.md",
-    "fonteSHA256": "ab4f7d17ba65a8357f8b4a43da21c476700c0035cc18df59642567e86fe4c4e1",
-    "observacao": "Transcrição estrutural do documento consolidado, sem alterar conteúdo ou promover modelos provisórios a decisões.",
-    "numeroSecoes": 10
+    "id": "advogadoja.contrato.json.atual.v0.3",
+    "titulo": "AdvogadoJá — Contrato JSON modular · Home Advogado",
+    "fonteArquivo": "contrato/Home_do_Advogado/documento.json",
+    "observacao": "Documentação da proposta atual; não contém versões anteriores nem dados de produção homologados.",
+    "numeroSecoes": 12
   },
   "apresentacao": [
     {
       "tipo": "paragrafo",
       "conteudo": [
         {
-          "tipo": "negrito",
-          "conteudo": [
-            {
-              "tipo": "texto",
-              "texto": "Data:"
-            }
-          ]
-        },
-        {
           "tipo": "texto",
-          "texto": " 07/11/2026"
-        },
-        {
-          "tipo": "quebra"
-        },
-        {
-          "tipo": "negrito",
-          "conteudo": [
-            {
-              "tipo": "texto",
-              "texto": "Status:"
-            }
-          ]
-        },
-        {
-          "tipo": "texto",
-          "texto": " registro das decisões tomadas até aqui; não é homologação do esquema completo."
-        },
-        {
-          "tipo": "quebra"
-        },
-        {
-          "tipo": "negrito",
-          "conteudo": [
-            {
-              "tipo": "texto",
-              "texto": "Exemplo de trabalho:"
-            }
-          ]
-        },
-        {
-          "tipo": "texto",
-          "texto": " "
-        },
-        {
-          "tipo": "codigo",
-          "texto": "advogado.home"
-        },
-        {
-          "tipo": "texto",
-          "texto": " (Home Profissional)."
+          "texto": "Modelo atual do contrato JSON de tela com 11 blocos funcionais, HTML/CSS no bloco estrutura, componentes completos na raiz e exemplos de estados, ações, dados, variantes, interações e mocks."
         }
       ]
     }
@@ -71,44 +21,18 @@
     {
       "numero": 1,
       "id": "secao-01",
-      "titulo": "Objetivo e critério de trabalho",
+      "titulo": "Finalidade e princípio canônico",
       "subsecoes": [
         {
-          "id": "secao-01-sub-01",
-          "titulo": "Propósito e prioridades",
+          "id": "contrato-como-fonte--nica",
+          "titulo": "Contrato como fonte única",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "O objetivo é definir um "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "contrato JSON universal, modular, declarativo e extensível"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", que diferentes motores possam interpretar sem depender de HTML bruto ou de uma implementação específica. A Home do Advogado é "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "um caso de teste"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", não uma fonte de verdade para todas as telas."
+                  "texto": "Cada tela tem um JSON por ID estável. Flow, Jornadas, Protótipo, Banco e Mapa de Interações leem conceitos compartilhados sem redefini-los. O contrato é declarativo; um campo presente não significa serviço implementado."
                 }
               ]
             },
@@ -117,58 +41,7 @@
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "As prioridades estabelecidas são: (1) definir os campos e suas responsabilidades; (2) permitir relações por identificadores; (3) contemplar múltiplos contextos, condições e ocorrências; (4) evitar redundâncias; (5) manter campos opcionais vazios até sua definição. Os dados de jornada, rotas e IDs atualmente usados servem como "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "mock documental"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ": não estamos validando nomes, destinos ou comportamentos reais nesta fase."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "secao-01-sub-02",
-          "titulo": "Regra central",
-          "blocos": [
-            {
-              "tipo": "destaque",
-              "blocos": [
-                {
-                  "tipo": "paragrafo",
-                  "conteudo": [
-                    {
-                      "tipo": "negrito",
-                      "conteudo": [
-                        {
-                          "tipo": "texto",
-                          "texto": "Regra central:"
-                        }
-                      ]
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": " o contrato define o que pode ser representado; o mock apenas demonstra um preenchimento. "
-                    },
-                    {
-                      "tipo": "negrito",
-                      "conteudo": [
-                        {
-                          "tipo": "texto",
-                          "texto": "Não converter referências provisórias em decisões de produto."
-                        }
-                      ]
-                    }
-                  ]
+                  "texto": "Este pacote usa a Home Advogado como exemplo. Os campos ainda pendentes permanecem explícitos, sem inventar coleções, endpoints ou permissões."
                 }
               ]
             }
@@ -179,157 +52,25 @@
     {
       "numero": 2,
       "id": "secao-02",
-      "titulo": "Forma macro da tela",
+      "titulo": "Formato macro e 11 blocos",
       "subsecoes": [
         {
-          "id": "secao-02-sub-01",
-          "titulo": "Formato macro da tela",
+          "id": "estrutura--nica-aprovada",
+          "titulo": "Estrutura única aprovada",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Foi estabelecido que cada tela possui um "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "ID estável na raiz"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e dois blocos principais: "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "tela"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "componentes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ". Não há uma segunda chave com o ID da tela dentro de "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "tela"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "."
+                  "texto": "A raiz conserva dois blocos: tela e componentes. Dentro de tela há schema e schemaVersion, seguidos pelos 11 blocos acordados. O CSS da composição pertence a estrutura.css; não existe o bloco estilos separado."
                 }
               ]
             },
             {
               "tipo": "codigo",
               "linguagem": "json",
-              "conteudo": "{\n  \"advogado.home\": {\n    \"tela\": {\n      \"schema\": \"advogadoja.tela\",\n      \"schemaVersion\": \"0.2.0\",\n      \"identidade\": {},\n      \"classificacao\": {},\n      \"navegacao\": {},\n      \"estados\": {},\n      \"acoes\": {},\n      \"dados\": {},\n      \"componentes\": {},\n      \"estrutura\": { \"html\": {}, \"css\": {} },\n      \"estilos\": {},\n      \"variantes\": {},\n      \"interacoes\": {},\n      \"mocks\": {},\n      \"localizacao\": {},\n      \"proveniencia\": {}\n    },\n    \"componentes\": {}\n  }\n}"
-            }
-          ]
-        },
-        {
-          "id": "secao-02-sub-02",
-          "titulo": "Responsabilidades e versionamento",
-          "blocos": [
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Por que manter dois blocos chamados "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "componentes"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": "?"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "tela.componentes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " identifica/configura as "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "instâncias utilizadas pela tela"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; o bloco externo "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "componentes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " reúne as "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "definições dos componentes presentes"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ". São responsabilidades distintas. O modo definitivo de referenciar definições externas ainda não foi fechado."
-                }
-              ]
-            },
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "codigo",
-                  "texto": "schema"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "schemaVersion"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " identificam o tipo e a versão do contrato, não a versão do conteúdo de uma tela."
-                }
-              ]
+              "conteudo": "{\n  \"<telaId>\": {\n    \"tela\": {\n      \"schema\": \"advogadoja.tela\",\n      \"schemaVersion\": \"0.3.0\",\n      \"identidade\": {},\n      \"classificacao\": {},\n      \"navegacao\": {},\n      \"estados\": {},\n      \"acoes\": {},\n      \"dados\": {},\n      \"componentes\": {},\n      \"estrutura\": {\n        \"html\": {},\n        \"css\": {}\n      },\n      \"variantes\": {},\n      \"interacoes\": {},\n      \"mocks\": {}\n    },\n    \"componentes\": {\n      \"<componenteId>\": {\n        \"identidade\": {},\n        \"classificacao\": {},\n        \"estrutura\": {\n          \"html\": {},\n          \"css\": {}\n        },\n        \"dados\": {},\n        \"estados\": {},\n        \"acoes\": {},\n        \"variantes\": {}\n      }\n    }\n  }\n}"
             }
           ]
         }
@@ -338,193 +79,27 @@
     {
       "numero": 3,
       "id": "secao-03",
-      "titulo": "Identidade",
+      "titulo": "Identidade e classificação",
       "subsecoes": [
         {
-          "id": "secao-03-sub-01",
-          "titulo": "Modelo de identidade",
+          "id": "nomes--p-blico-e-jornadas",
+          "titulo": "Nomes, público e jornadas",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "O modelo de trabalho da identidade foi aceito "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "por enquanto"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", aproveitando apenas os campos úteis do modelo mestre e excluindo informações de legado."
+                  "texto": "O ID da tela é a chave da raiz: advogado.home. identidade descreve o objeto e sua versão de conteúdo. classificacao organiza domínio, escopo, público, tags e participações em jornadas/subjornadas."
                 }
               ]
             },
             {
-              "tipo": "codigo",
-              "linguagem": "json",
-              "conteudo": "\"identidade\": {\n  \"tipo\": \"tela\",\n  \"namespace\": \"advogado\",\n  \"nome\": \"Home Advogado\",\n  \"nomeExibicao\": \"Início Profissional\",\n  \"descricao\": \"Tela inicial da área profissional do AdvogadoJá.\",\n  \"versao\": \"1.0.0\"\n}"
-            }
-          ]
-        },
-        {
-          "id": "secao-03-sub-02",
-          "titulo": "Significado dos campos",
-          "blocos": [
-            {
-              "tipo": "tabela",
-              "colunas": [
-                [
-                  {
-                    "tipo": "texto",
-                    "texto": "Campo"
-                  }
-                ],
-                [
-                  {
-                    "tipo": "texto",
-                    "texto": "Para que existe"
-                  }
-                ]
-              ],
-              "linhas": [
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "tipo"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Diferencia uma tela de outros objetos, como componentes."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "namespace"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Agrupa IDs e facilita organização e busca."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "nome"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Nome legível para organização e edição."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "nomeExibicao"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Nome destinado à apresentação ao usuário."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "descricao"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Explica a finalidade do objeto, sem precisar abrir seu layout."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "versao"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Permite evoluir este objeto independentemente da versão do esquema."
-                    }
-                  ]
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "id": "secao-03-sub-03",
-          "titulo": "Campos excluídos",
-          "blocos": [
-            {
               "tipo": "paragrafo",
               "conteudo": [
                 {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Não incorporar campos de legado"
-                    }
-                  ]
-                },
-                {
                   "tipo": "texto",
-                  "texto": " como "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "aliasesLegados"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", históricos de origem e caminhos antigos. O ID principal já está na chave "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "advogado.home"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; sua repetição em "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "identidade.id"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " não faz parte do modelo atual."
+                  "texto": "A mesma tela pode participar mais de uma jornada sem duplicar seu contrato ou definir uma segunda tela."
                 }
               ]
             }
@@ -535,355 +110,18 @@
     {
       "numero": 4,
       "id": "secao-04",
-      "titulo": "Classificação e participação em jornadas",
+      "titulo": "Navegação e Flow",
       "subsecoes": [
         {
-          "id": "secao-04-sub-01",
-          "titulo": "Modelo de classificação",
+          "id": "rotas--rela--es-e-bifurca--es",
+          "titulo": "Rotas, relações e bifurcações",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "A classificação organiza domínio, módulo, seção, categoria, escopo, público e busca. Uma tela "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "pode participar de várias jornadas e subjornadas"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", sem duplicar sua identidade ou seu layout."
-                }
-              ]
-            },
-            {
-              "tipo": "codigo",
-              "linguagem": "json",
-              "conteudo": "\"classificacao\": {\n  \"dominio\": \"atendimento_juridico\",\n  \"moduloRef\": \"advogado\",\n  \"submoduloRef\": null,\n  \"secao\": \"home\",\n  \"categoria\": \"tela_inicial\",\n  \"escopo\": \"modulo\",\n  \"reutilizavel\": false,\n  \"publicoAlvo\": [\"advogado\"],\n  \"tags\": [\"inicio\", \"painel_profissional\"],\n  \"jornadas\": [\n    {\n      \"id\": \"part.advogado.home\",\n      \"jornada\": { \"id\": \"advogado\", \"nome\": \"Advogado\", \"ordem\": 2 },\n      \"subjornada\": { \"id\": \"home\", \"nome\": \"Home única e capabilities\", \"ordem\": 4 },\n      \"ordemTela\": 1,\n      \"ocorrenciaNo\": \"home\",\n      \"condicaoRef\": null\n    }\n  ]\n}"
-            }
-          ]
-        },
-        {
-          "id": "secao-04-sub-02",
-          "titulo": "Significado dos campos",
-          "blocos": [
-            {
-              "tipo": "tabela",
-              "colunas": [
-                [
-                  {
-                    "tipo": "texto",
-                    "texto": "Campo ou grupo"
-                  }
-                ],
-                [
-                  {
-                    "tipo": "texto",
-                    "texto": "Para que existe"
-                  }
-                ]
-              ],
-              "linhas": [
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "dominio"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "moduloRef"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "submoduloRef"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "secao"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Classificação funcional e hierárquica."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "categoria"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Papel da tela no produto."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "escopo"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Abrangência da definição, inclusive telas comuns."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "reutilizavel"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Indica se o objeto é destinado ao reúso."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "publicoAlvo"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Um ou mais perfis que podem utilizar a tela."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "tags"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Busca e filtros sem impor nova hierarquia."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "jornadas[]"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Permite múltiplas participações independentes."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "jornadas[].id"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Identifica uma participação específica para edição/comparação."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "jornada"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "subjornada"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": " ("
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "id"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "nome"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "ordem"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ")"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Identificam e ordenam agrupamentos da jornada."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "ordemTela"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Ordena a tela naquele contexto, não globalmente."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "ocorrenciaNo"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Vincula a participação a um nó específico da jornada."
-                    }
-                  ]
-                ],
-                [
-                  [
-                    {
-                      "tipo": "codigo",
-                      "texto": "condicaoRef"
-                    }
-                  ],
-                  [
-                    {
-                      "tipo": "texto",
-                      "texto": "Reserva um vínculo com condição, sem repetir a expressão."
-                    }
-                  ]
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "id": "secao-04-sub-03",
-          "titulo": "Participação e escopo",
-          "blocos": [
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Distinção importante:"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "escopo: \"comum\""
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " não significa que deva existir uma jornada artificial chamada "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "comum"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ". A tela pode ser compartilhada por diferentes jornadas. A participação pertence à "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "classificação"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; as conexões de entrada/saída pertencem à "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "navegação"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "."
+                  "texto": "navegacao.rotas descreve caminhos e parâmetros; navegacao.relacoes conecta telas e estados; navegacao.bifurcacoes indica escolhas e critérios. A rota /professional/home é apenas referência documental ainda não homologada."
                 }
               ]
             },
@@ -892,20 +130,16 @@
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Os valores concretos da Home acima são "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "exemplos extraídos dos materiais"
-                    }
-                  ]
-                },
+                  "texto": "O exemplo contém 21 relações e duas bifurcações. Os estados de OAB permanecem na mesma Home; nós de fluxo não são novas telas."
+                }
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": ", não nomenclaturas homologadas."
+                  "texto": "Campos de condição, fallback, prioridade e gatilhos ainda não preenchidos não devem ser presumidos como regras já implementadas."
                 }
               ]
             }
@@ -916,359 +150,18 @@
     {
       "numero": 5,
       "id": "secao-05",
-      "titulo": "Estrutura estática e composição modular",
+      "titulo": "Estados e variantes",
       "subsecoes": [
         {
-          "id": "secao-05-sub-01",
-          "titulo": "Composição estática",
+          "id": "comportamento-por-situa--o-da-oab",
+          "titulo": "Comportamento por situação da OAB",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Foi estabelecido que "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "somente "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "estrutura.html"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": " + "
-                    },
-                    {
-                      "tipo": "codigo",
-                      "texto": "estrutura.css"
-                    },
-                    {
-                      "tipo": "texto",
-                      "texto": ", resolvendo seus componentes"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", deve ser suficiente para montar a tela "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "estática completa"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " — seções, ordem, elementos, aparência e imagens. Não pode depender de "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "dados"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "estados"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "acoes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " ou "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "mocks"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " para a composição estática básica."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "secao-05-sub-02",
-          "titulo": "Princípios acordados",
-          "blocos": [
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "texto",
-                  "texto": "Princípios acordados:"
-                }
-              ]
-            },
-            {
-              "tipo": "lista",
-              "ordenada": false,
-              "itens": [
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Seccionar antes de montar"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": separar layout, cabeçalho, menu e blocos de conteúdo em componentes identificáveis."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Cada componente reutilizado conserva "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "um único ID de definição"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ". Sua presença é declarada explicitamente em cada tela que o utiliza."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Uma mudança na definição compartilhada deve repercutir nos seus usos; os ajustes específicos da tela não devem criar cópias independentes da definição visual."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Cada elemento relevante deve possuir "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "identidade estável"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": "; movimentar um elemento não deve exigir trocar seu ID."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "A posição/hierarquia deve ser expressa por "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "relações e ordem"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", para os motores reconstruírem a árvore HTML e compararem alterações pontuais."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "CSS mantém regras visuais próprias e associações com os elementos, "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "sem duplicar toda a árvore HTML"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": "."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Não impor uma hierarquia interna fixa como "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "cabecalho"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "itens"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "rodape"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": o contrato precisa acomodar qualquer tipo de componente."
-                      }
-                    ]
-                  }
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "id": "secao-05-sub-03",
-          "titulo": "Formato de trabalho em avaliação",
-          "blocos": [
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Formato de trabalho já experimentado na Home (ilustrativo, não homologado em seus detalhes internos):"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "tipo": "codigo",
-              "linguagem": "json",
-              "conteudo": "\"estrutura\": {\n  \"html\": {\n    \"raizRef\": \"layout.root\",\n    \"elementos\": {\n      \"layout.root\": {\n        \"tag\": \"div\",\n        \"paiRef\": null,\n        \"ordem\": 10,\n        \"atributos\": { \"class\": \"screen-runtime\" }\n      },\n      \"layout.main\": {\n        \"tag\": \"main\",\n        \"paiRef\": \"layout.root\",\n        \"ordem\": 30,\n        \"atributos\": { \"class\": \"op-shell\" }\n      }\n    }\n  },\n  \"css\": {\n    \"regras\": {\n      \"base\": \".screen-runtime{min-height:100dvh}.op-shell{margin:auto}\"\n    }\n  }\n}"
-            },
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "texto",
-                  "texto": "Esse exemplo mostra a lógica acordada ("
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "IDs, pai, ordem e regras CSS"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "); "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "não aprova definitivamente"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " nomes como "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "elementos"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "paiRef"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "regras"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", nem a escolha entre CSS textual e regras declarativas."
+                  "texto": "estados.possiveis contém padrao, pending, validating, enabled, restricted e unknown; os IDs concretos no JSON são oab_*_capabilities. fallbackSeguro referencia padrao."
                 }
               ]
             },
@@ -1277,36 +170,7 @@
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Na tela, a composição pode referenciar instâncias em vez de copiar seu HTML. O protótipo atual usa "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "tela.componentes.instanciasRefs"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "tela.estrutura.html.composicao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; esses nomes e sua implementação interna ainda são "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "modelo de trabalho"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "."
+                  "texto": "variantes.regras conecta cada opção ao estado-alvo; efeitos visuais específicos continuam pendentes onde não há evidência. O estado unknown não equivale a OAB recusada e mantém proteção por segurança."
                 }
               ]
             }
@@ -1317,84 +181,18 @@
     {
       "numero": 6,
       "id": "secao-06",
-      "titulo": "Modelo-base de componente",
+      "titulo": "Ações e interações",
       "subsecoes": [
         {
-          "id": "secao-06-sub-01",
-          "titulo": "Modelo de componente",
+          "id": "do-evento---opera--o",
+          "titulo": "Do evento à operação",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Cada componente tem identidade e classificação próprias, além de estrutura visual suficiente para ser renderizado estaticamente. A macroestrutura estabelecida para componentes também reserva dados, estados, ações e variantes:"
-                }
-              ]
-            },
-            {
-              "tipo": "codigo",
-              "linguagem": "json",
-              "conteudo": "\"menu.drawer.padrao\": {\n  \"identidade\": {\n    \"tipo\": \"componente\",\n    \"namespace\": \"menu\",\n    \"nome\": \"Menu lateral compartilhado\",\n    \"nomeExibicao\": \"Menu lateral compartilhado\",\n    \"descricao\": \"Menu reutilizável com definição visual comum.\",\n    \"versao\": \"0.1.0\"\n  },\n  \"classificacao\": {\n    \"dominio\": \"interface\",\n    \"moduloRef\": \"comum\",\n    \"categoria\": \"menu\",\n    \"escopo\": \"global\",\n    \"reutilizavel\": true,\n    \"publicoAlvo\": [\"advogado\", \"cliente\", \"estudante\", \"administrador\"],\n    \"tags\": [\"menu\"]\n  },\n  \"estrutura\": { \"html\": {}, \"css\": {} },\n  \"dados\": {},\n  \"estados\": {},\n  \"acoes\": {},\n  \"variantes\": {}\n}"
-            }
-          ]
-        },
-        {
-          "id": "secao-06-sub-02",
-          "titulo": "Responsabilidades e exemplos",
-          "blocos": [
-            {
-              "tipo": "paragrafo",
-              "conteudo": [
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Por quê:"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "identidade"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " distingue a definição; "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "classificacao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " organiza seu uso; "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "estrutura"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " representa o visual; os demais blocos reservam comportamento e alterações contextuais. "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Ações, opções e dados podem variar por tela"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", sem perder a definição-base compartilhada."
+                  "texto": "acoes.itens descreve eventos e suas operações: decisão OAB, abertura e fechamento do menu, validação, alteração de disponibilidade, acesso a solicitações e saída."
                 }
               ]
             },
@@ -1403,72 +201,7 @@
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Na Home de trabalho, foram seccionados como exemplos: "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "advogado.home.layout"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "header.app.padrao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "header.titlebar.padrao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "advogado.home.introducao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "advogado.home.status_online"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "advogado.home.solicitacoes_resumo"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "menu.drawer.padrao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ". "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Essa lista não é catálogo definitivo."
-                    }
-                  ]
+                  "texto": "interacoes.vinculos conecta instanciaRef, elementoRef, evento e acaoRef. eventosPrototipo identifica eventos observados que precisam de ligação funcional. Não misturar evento de clique com URL de rota nem supor gravação no banco."
                 }
               ]
             }
@@ -1479,284 +212,27 @@
     {
       "numero": 7,
       "id": "secao-07",
-      "titulo": "Navegação: o que está decidido e o que não está",
+      "titulo": "Dados e persistência",
       "subsecoes": [
         {
-          "id": "secao-07-sub-01",
-          "titulo": "Responsabilidades e capacidades decididas",
+          "id": "defini--es-l-gicas--sem-backend-presumido",
+          "titulo": "Definições lógicas, sem backend presumido",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Decidido sobre responsabilidade e capacidade:"
-                    }
-                  ]
+                  "tipo": "texto",
+                  "texto": "dados.fontes inclui perfil_profissional, status_oab, capabilities, disponibilidade, solicitacoes e notificacoes; dados.operacoes registra leituras e a alteração prevista de disponibilidade."
                 }
               ]
             },
             {
-              "tipo": "lista",
-              "ordenada": false,
-              "itens": [
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "A navegação deve representar "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "entradas, saídas, relações e transições"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", inclusive entre telas e estados da mesma tela."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Os vínculos usam "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "identificadores"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " de telas, nós, componentes, ações, estados e participações, conforme o caso."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Deve comportar "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "múltiplos caminhos, decisões condicionais e diferentes contextos"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": "."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "Uma decisão de estado "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "não cria automaticamente outra tela"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ". Na Home do advogado, situações da OAB podem recompor a "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "mesma Home"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": "."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "texto",
-                        "texto": "O JSON da jornada serve como "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "amostra de relações"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": "; o modelo mestre pode oferecer "
-                      },
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "ideias de campos"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ". Não copiar nomes e relações como se fossem definitivos."
-                      }
-                    ]
-                  }
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "id": "secao-07-sub-02",
-          "titulo": "Definições ainda em aberto",
-          "blocos": [
-            {
               "tipo": "paragrafo",
               "conteudo": [
                 {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Ainda não decidido:"
-                    }
-                  ]
-                },
-                {
                   "tipo": "texto",
-                  "texto": " nomenclatura e formato final de "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "navegacao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e de seus itens; distribuição precisa entre "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "navegacao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "estados"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "acoes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "interacoes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; condições executáveis, cardinalidades, políticas de erro, fallback e transições. As chaves atualmente presentes no JSON de trabalho ("
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "entradas"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "decisoes"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "saidas"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "transicoesInternas"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", entre outras) são "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "experimentais"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", não um contrato aprovado."
+                  "texto": "Os identificadores de serviços, tabelas, campos, regras de autenticação e persistência real continuam indefinidos. O JSON sinaliza tais itens como pendentes."
                 }
               ]
             }
@@ -1767,110 +243,27 @@
     {
       "numero": 8,
       "id": "secao-08",
-      "titulo": "Demais seções: manter sem inventar",
+      "titulo": "Composição e componentes",
       "subsecoes": [
         {
-          "id": "secao-08-sub-01",
-          "titulo": "Seções reservadas",
+          "id": "inst-ncias--html-e-css",
+          "titulo": "Instâncias, HTML e CSS",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "As seguintes chaves já integram a "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "macroestrutura da tela"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", mas seu conteúdo interno "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "não foi decidido"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ":"
+                  "texto": "tela.componentes.instanciasRefs estabelece instância → componente. tela.estrutura.html.composicao determina pai, slot e ordem, sem duplicar componenteRef. tela.estrutura.css contém os tokens e regras da composição."
                 }
               ]
             },
             {
-              "tipo": "codigo",
-              "linguagem": "json",
-              "conteudo": "{\n  \"estados\": {},\n  \"acoes\": {},\n  \"dados\": {},\n  \"estilos\": {},\n  \"variantes\": {},\n  \"interacoes\": {},\n  \"mocks\": {},\n  \"localizacao\": {},\n  \"proveniencia\": {}\n}"
-            }
-          ]
-        },
-        {
-          "id": "secao-08-sub-02",
-          "titulo": "Limites ainda não definidos",
-          "blocos": [
-            {
               "tipo": "paragrafo",
               "conteudo": [
                 {
-                  "tipo": "codigo",
-                  "texto": "estilos"
-                },
-                {
                   "tipo": "texto",
-                  "texto": " permanece reservado mesmo existindo "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "estrutura.css"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "a fronteira entre ambos ainda precisa ser definida"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ". A inclusão de "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "proveniencia"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " como chave da macroestrutura "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "não autoriza adicionar campos de legado ou origem duvidosa"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "."
+                  "texto": "O bloco componentes, irmão de tela, permanece obrigatório: guarda o HTML/CSS completo dos sete componentes, inclusive cabeçalho e menu reutilizáveis. Não remover nem transferir suas definições do contrato individual."
                 }
               ]
             }
@@ -1881,145 +274,28 @@
     {
       "numero": 9,
       "id": "secao-09",
-      "titulo": "Requisitos comuns para todos os motores",
+      "titulo": "Mocks e visualização",
       "subsecoes": [
         {
-          "id": "secao-09-sub-01",
-          "titulo": "Requisitos compartilhados",
+          "id": "tr-s-cen-rios-dispon-veis",
+          "titulo": "Três cenários disponíveis",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Acordos arquiteturais que atravessam o contrato:"
+                  "texto": "Os cenários documentais são: OAB em análise (review), profissional habilitada (validated) e OAB restrita (rejected). Todos começam em advogado.home e incluem dadosExemplo, usados em prévias."
                 }
               ]
             },
             {
-              "tipo": "lista",
-              "ordenada": false,
-              "itens": [
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Referências estáveis e comparação rápida"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " por ID, propriedades e relações, não por grandes blocos de HTML."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Uma única definição compartilhada"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " com personalizações locais quando necessárias."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Separação entre apresentação e comportamento"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": estrutura estática independente; dados, estados e ações por referências."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Múltiplas participações"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " da mesma tela em jornadas/subjornadas, com ordenação própria."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Consumo seletivo"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": cada motor interpreta apenas as seções de que precisa; nenhum motor deve exigir conteúdo irrelevante."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Contrato amplo, preenchimento enxuto"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": ser capaz de representar casos futuros não obriga cada tela a declarar todos eles."
-                      }
-                    ]
-                  }
-                ]
+              "tipo": "paragrafo",
+              "conteudo": [
+                {
+                  "tipo": "texto",
+                  "texto": "Mocks não são respostas verdadeiras do banco. A disponibilidade, capacidades e ações só se tornam operacionais após definição e implementação específicas."
+                }
               ]
             }
           ]
@@ -2029,411 +305,107 @@
     {
       "numero": 10,
       "id": "secao-10",
-      "titulo": "Próximas definições pendentes",
+      "titulo": "Compatibilidade entre os motores",
       "subsecoes": [
         {
-          "id": "secao-10-sub-01",
-          "titulo": "Próximos passos pendentes",
+          "id": "responsabilidades-preservadas",
+          "titulo": "Responsabilidades preservadas",
           "blocos": [
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": "Estas "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "não são decisões tomadas"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "; são itens a resolver, em ordem lógica:"
+                  "texto": "Flow: relações, bifurcações e condições. Jornadas: participações e contexto. Protótipo: HTML/CSS, estados, variantes, interações e mocks. Banco: fontes, operações, persistência e rastreabilidade. Mapa de Interações: eventos, serviços, respostas e efeitos."
                 }
               ]
             },
             {
-              "tipo": "lista",
-              "ordenada": true,
-              "itens": [
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Fechar "
-                          },
-                          {
-                            "tipo": "codigo",
-                            "texto": "navegacao"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": grupos, campos, tipos, cardinalidades, condições, parâmetros, decisões, retornos, estados, permissões e falhas — sem sobrepor "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "acoes"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "estados"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " e "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "interacoes"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": "."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Fechar "
-                          },
-                          {
-                            "tipo": "codigo",
-                            "texto": "estrutura.html"
-                          },
-                          {
-                            "tipo": "texto",
-                            "texto": " e "
-                          },
-                          {
-                            "tipo": "codigo",
-                            "texto": "estrutura.css"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": modelo dos nós, identificadores, instâncias, ordenação, atributos, imagens, CSS por regras ou texto, responsividade e reconstrução."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Definir resolução de componentes"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": referência ao componente canônico, configuração/overrides locais, propagação de mudanças e exportação estática autocontida."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Definir contratos internos"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " de "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "dados"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "estados"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "acoes"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "variantes"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "interacoes"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " e "
-                      },
-                      {
-                        "tipo": "codigo",
-                        "texto": "mocks"
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", com vínculos por IDs e divisão inequívoca de responsabilidades."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Definir "
-                          },
-                          {
-                            "tipo": "codigo",
-                            "texto": "estilos"
-                          },
-                          {
-                            "tipo": "texto",
-                            "texto": ", "
-                          },
-                          {
-                            "tipo": "codigo",
-                            "texto": "localizacao"
-                          },
-                          {
-                            "tipo": "texto",
-                            "texto": " e "
-                          },
-                          {
-                            "tipo": "codigo",
-                            "texto": "proveniencia"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": " — incluindo se são necessários ou se alguma função deve migrar para outro bloco, sem herdar metadados de legado."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Estabelecer validação de contrato"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ": campos obrigatórios/opcionais, tipos, identificadores únicos, referências resolvíveis, regras de ordenação, versionamento e compatibilidade com os motores."
-                      }
-                    ]
-                  }
-                ],
-                [
-                  {
-                    "tipo": "paragrafo",
-                    "conteudo": [
-                      {
-                        "tipo": "negrito",
-                        "conteudo": [
-                          {
-                            "tipo": "texto",
-                            "texto": "Homologar nomenclaturas e relações reais"
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "texto",
-                        "texto": ", somente após o contrato ficar consistente. A Home do Advogado continua sendo o caso de teste inicial."
-                      }
-                    ]
-                  }
-                ]
+              "tipo": "paragrafo",
+              "conteudo": [
+                {
+                  "tipo": "texto",
+                  "texto": "O contrato é comum, mas os motores seguem independentes e produzem visualizações próprias. Não criar campos apenas para satisfazer um motor de modo isolado."
+                }
               ]
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "numero": 11,
+      "id": "secao-11",
+      "titulo": "Decisões de limpeza e consistência",
+      "subsecoes": [
         {
-          "id": "secao-10-sub-02",
-          "titulo": "Síntese do documento",
+          "id": "sem-chaves-descontinuadas",
+          "titulo": "Sem chaves descontinuadas",
           "blocos": [
             {
-              "tipo": "divisor"
+              "tipo": "paragrafo",
+              "conteudo": [
+                {
+                  "tipo": "texto",
+                  "texto": "O formato corrente não inclui blocos separados de histórico, localização ou estilos. Não transportar cópias anteriores dos JSONs dentro deste pacote."
+                }
+              ]
             },
             {
               "tipo": "paragrafo",
               "conteudo": [
                 {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "Síntese:"
-                    }
-                  ]
-                },
+                  "tipo": "texto",
+                  "texto": "Não guardar aliases de IDs antigos no contrato de trabalho; o ID estável deste exemplo é advogado.home. Os nomes e destinos funcionais ainda precisam ser confirmados no catálogo antes da execução."
+                }
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": " estão estabelecidas a "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "macroestrutura"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ", a "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "identidade e classificação de trabalho"
-                    }
-                  ]
-                },
+                  "texto": "As definições de componentes do bloco externo não foram descartadas."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 12,
+      "id": "secao-12",
+      "titulo": "Pendências de homologação",
+      "subsecoes": [
+        {
+          "id": "o-que-ainda-n-o-est--conclu-do",
+          "titulo": "O que ainda não está concluído",
+          "blocos": [
+            {
+              "tipo": "paragrafo",
+              "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": ", as "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "participações múltiplas"
-                    }
-                  ]
-                },
+                  "texto": "Confirmar as rotas e os destinos finais, a fonte e o critério para o status de OAB, as capabilities, a diferenciação dos estados restricted e as políticas de fallback."
+                }
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": ", a "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "modularização com IDs estáveis"
-                    }
-                  ]
-                },
+                  "texto": "Fechar as operações de banco/API, a persistência e autorização do online.toggle, a conexão entre eventos visuais e ações e os detalhes de variantes que hoje não têm efeitoVisual definido."
+                }
+              ]
+            },
+            {
+              "tipo": "paragrafo",
+              "conteudo": [
                 {
                   "tipo": "texto",
-                  "texto": ", a "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "montagem estática por HTML/CSS"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e a "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "separação de responsabilidades"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": ". O contrato interno detalhado — especialmente "
-                },
-                {
-                  "tipo": "codigo",
-                  "texto": "navegacao"
-                },
-                {
-                  "tipo": "texto",
-                  "texto": " e os formatos definitivos de HTML/CSS — "
-                },
-                {
-                  "tipo": "negrito",
-                  "conteudo": [
-                    {
-                      "tipo": "texto",
-                      "texto": "continua aberto"
-                    }
-                  ]
-                },
-                {
-                  "tipo": "texto",
-                  "texto": "."
+                  "texto": "Validar a reutilização do mesmo componente em outras telas antes de afirmar compartilhamento físico ou versionamento global de componentes."
                 }
               ]
             }
