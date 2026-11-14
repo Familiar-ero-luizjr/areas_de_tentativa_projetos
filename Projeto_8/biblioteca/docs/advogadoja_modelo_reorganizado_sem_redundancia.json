@@ -1,0 +1,560 @@
+{
+  "tela": {
+    "schema": "<nome-do-schema>",
+    "schemaVersion": "<versao-do-schema>",
+    "identidade": {
+      "id": "<identificador>",
+      "tipo": "<tipo>",
+      "namespace": "<namespace>",
+      "nome": "<nome>",
+      "descricao": {
+        "id": "<identificador-da-descricao>",
+        "title": "<titulo>",
+        "description": "<descricao>",
+        "pasta": {
+          "biblioteca": "<biblioteca/namespace/name>",
+          "flutter": "<lib/namespace/name>",
+          "react": "<src/namespace/name>"
+        },
+        "maps": [
+          {
+            "id": "estruturas",
+            "title": "Estruturas",
+            "description": "<descricao-das-estruturas>",
+            "status": "<status>",
+            "definition": {
+              "html": {
+                "raizRef": "<raiz-ref>",
+                "composicao": {
+                  "screen.root": {
+                    "paiRef": null,
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.header": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.titlebar": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.hero": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.online": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.actions": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.drawer": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.modal": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  },
+                  "screen.toast": {
+                    "paiRef": "<pai-ref>",
+                    "slot": "<area>",
+                    "ordem": 0
+                  }
+                }
+              },
+              "css": {
+                "tokens": {
+                  "--primary": "<--primary>",
+                  "--primary-soft": "<--primary-soft>",
+                  "--gold": "<--gold>",
+                  "--page": "<--page>",
+                  "--surface": "<--surface>",
+                  "--line": "<--line>",
+                  "--text": "<--text>",
+                  "--muted": "<--muted>"
+                },
+                "regras": {
+                  "r001": "<r001>",
+                  "r002": "<r002>",
+                  "r003": "<r003>",
+                  "r004": "<r004>",
+                  "r005": "<r005>",
+                  "r006": "<r006>",
+                  "r007": "<r007>",
+                  "r008": "<r008>",
+                  "r022": "<r022>",
+                  "r055": "<r055>",
+                  "r903": "<r903>",
+                  "r904": "<r904>",
+                  "r905": "<r905>",
+                  "r906": "<r906>"
+                }
+              },
+              "componentes": {
+                "instanciasRefs": {
+                  "screen.root": "<screen.root>",
+                  "screen.header": "<screen.header>",
+                  "screen.titlebar": "<screen.titlebar>",
+                  "screen.hero": "<screen.hero>",
+                  "screen.online": "<screen.online>",
+                  "screen.actions": "<screen.actions>",
+                  "screen.drawer": "<screen.drawer>",
+                  "screen.modal": "<screen.modal>",
+                  "screen.toast": "<screen.toast>"
+                }
+              },
+              "mocks": {
+                "cenarios": [
+                  {
+                    "id": "<identificador>",
+                    "cenarioRef": "<cenario-ref>",
+                    "nome": "<nome>",
+                    "uso": "<uso>",
+                    "situacao": "<situacao>"
+                  }
+                ]
+              }
+            },
+            "pending": []
+          },
+          {
+            "id": "identidade",
+            "title": "Identidade",
+            "description": "<descricao-da-identidade>",
+            "status": "<status>",
+            "definition": {
+              "ref": "identidade"
+            },
+            "pending": []
+          },
+          {
+            "id": "classificacao",
+            "title": "Classificação",
+            "description": "<descricao-da-classificacao>",
+            "status": "<status>",
+            "definition": {
+              "escopo": "<escopo>",
+              "reutilizavel": false,
+              "jornadas": [
+                {
+                  "id": "<identificador>",
+                  "jornada": {
+                    "id": "<identificador>",
+                    "nome": "<nome>",
+                    "ordem": 0
+                  },
+                  "subjornada": {
+                    "id": "<identificador>",
+                    "nome": "<nome>",
+                    "ordem": 0
+                  },
+                  "ordemTela": 0,
+                  "ocorrenciaNo": "<ocorrencia-no>",
+                  "condicaoRef": null,
+                  "contexto": {
+                    "descricao": "<descricao>",
+                    "branch": "<branch>",
+                    "pendente": false
+                  }
+                }
+              ]
+            },
+            "pending": []
+          },
+          {
+            "id": "dados",
+            "title": "Dados",
+            "description": "<descricao-dos-dados>",
+            "status": "<status>",
+            "definition": {
+              "funcoes": {},
+              "backend": {},
+              "banco": {
+                "fontes": [],
+                "operacoes": [],
+                "persistencia": []
+              }
+            },
+            "pending": []
+          },
+          {
+            "id": "navegacao",
+            "title": "Navegação",
+            "description": "<descricao-da-navegacao>",
+            "status": "<status>",
+            "definition": {
+              "rotas": [],
+              "relacoes": [
+                {
+                  "id": "<identificador>",
+                  "tipo": "<tipo>",
+                  "origem": {
+                    "tipo": "<tipo>",
+                    "ref": "<referencia>",
+                    "noRef": "<no-ref>",
+                    "telaContextoRef": null,
+                    "portaRef": null
+                  },
+                  "destino": {
+                    "tipo": "<tipo>",
+                    "ref": "<referencia>",
+                    "noRef": "<no-ref>",
+                    "telaContextoRef": "<tela-contexto-ref>",
+                    "portaRef": null
+                  },
+                  "opcao": "<opcao>",
+                  "rotulo": "<rotulo>",
+                  "descricao": "<descricao>",
+                  "gatilho": {
+                    "instanciaRef": null,
+                    "elementoRef": null,
+                    "eventoRef": null,
+                    "acaoRef": null
+                  },
+                  "condicaoRef": null,
+                  "parametros": {},
+                  "comportamento": {},
+                  "ordem": 0,
+                  "participacaoRef": "<participacao-ref>",
+                  "prioridade": null,
+                  "jornadaRef": "<jornada-ref>"
+                }
+              ],
+              "bifurcacoes": [
+                {
+                  "id": "<identificador>",
+                  "origemNoRef": "<origem-no-ref>",
+                  "titulo": "<titulo>",
+                  "tipo": "<tipo>",
+                  "criterioRef": null,
+                  "alternativas": [
+                    {
+                      "id": "<identificador>",
+                      "rotulo": "<rotulo>",
+                      "valor": "<valor>",
+                      "relacaoRef": "<relacao-ref>",
+                      "ordem": 0,
+                      "condicaoRef": null,
+                      "prioridade": null
+                    }
+                  ],
+                  "fallbackRelacaoRef": null,
+                  "jornadaRef": "<jornada-ref>"
+                }
+              ],
+              "entradas": [
+                {
+                  "relacaoRef": "<relacao-ref>",
+                  "origem": {
+                    "tipo": "<tipo>",
+                    "ref": "<referencia>",
+                    "noRef": "<no-ref>",
+                    "telaContextoRef": null,
+                    "portaRef": null
+                  },
+                  "destino": {
+                    "tipo": "<tipo>",
+                    "ref": "<referencia>",
+                    "noRef": "<no-ref>",
+                    "telaContextoRef": null,
+                    "portaRef": null
+                  },
+                  "jornadaRef": "<jornada-ref>"
+                }
+              ]
+            },
+            "pending": []
+          },
+          {
+            "id": "estados",
+            "title": "Estados",
+            "description": "<descricao-dos-estados>",
+            "status": "<status>",
+            "definition": {
+              "possiveis": [
+                {
+                  "id": "<identificador>",
+                  "nome": "<nome>"
+                }
+              ],
+              "fallbackSeguro": "<fallback-seguro>"
+            },
+            "pending": []
+          },
+          {
+            "id": "variantes",
+            "title": "Variantes",
+            "description": "<descricao-das-variantes>",
+            "status": "<status>",
+            "definition": {
+              "regras": [
+                {
+                  "id": "<identificador>",
+                  "origem": "<origem>",
+                  "gatilho": "<gatilho>",
+                  "opcao": "<opcao>",
+                  "estadoAlvo": "<estado-alvo>",
+                  "nota": "<nota>",
+                  "jornadaRef": "<jornada-ref>"
+                }
+              ]
+            },
+            "pending": []
+          },
+          {
+            "id": "interacoes",
+            "title": "Interações",
+            "description": "<descricao-das-interacoes>",
+            "status": "<status>",
+            "definition": {
+              "eventosPrototipo": [
+                {
+                  "id": "<identificador>",
+                  "atributosHTML": {
+                    "data-action": "<data-action>",
+                    "data-online-root": "<data-online-root>"
+                  },
+                  "status": "<status>"
+                }
+              ]
+            },
+            "pending": []
+          },
+          {
+            "id": "acoes",
+            "title": "Ações",
+            "description": "<descricao-das-acoes>",
+            "status": "<status>",
+            "definition": {
+              "itens": [
+                {
+                  "id": "<identificador>",
+                  "evento": "<evento>",
+                  "rotas": [
+                    {
+                      "id": "<identificador>",
+                      "rotulo": "<rotulo>",
+                      "descricao": "<descricao>",
+                      "destino": {
+                        "tipo": "<tipo>",
+                        "telaId": null,
+                        "noId": "<no-id>"
+                      },
+                      "relacaoDireta": true,
+                      "origemNo": "<origem-no>"
+                    }
+                  ],
+                  "jornadaRef": "<jornada-ref>"
+                }
+              ]
+            },
+            "pending": []
+          },
+          {
+            "id": "testes",
+            "title": "Testes",
+            "description": "<descricao-dos-testes>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "implementacao",
+            "title": "Implementação",
+            "description": "<descricao-da-implementacao>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "notas",
+            "title": "Notas",
+            "description": "<observacoes>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          }
+        ]
+      }
+    }
+  },
+  "component": {
+    "identidade": {
+      "id": "component",
+      "tipo": "<tipo>",
+      "namespace": "<namespace>",
+      "nome": "<nome>",
+      "descricao": {
+        "id": "<identificador>",
+        "title": "<titulo>",
+        "description": "<descricao>",
+        "pasta": {
+          "biblioteca": "<biblioteca/namespace/name>",
+          "flutter": "<lib/namespace/name>",
+          "react": "<src/namespace/name>"
+        },
+        "maps": [
+          {
+            "id": "estruturas",
+            "title": "Estruturas",
+            "description": "<descricao-das-estruturas>",
+            "status": "<status>",
+            "definition": {
+              "html": {
+                "raizRef": "<raiz-ref>",
+                "elementos": {
+                  "<identificador-do-elemento>": {
+                    "tag": "<tag>",
+                    "paiRef": null,
+                    "ordem": 0,
+                    "atributos": {},
+                    "texto": "<texto>"
+                  }
+                }
+              },
+              "css": {
+                "regras": {
+                  "<identificador-da-regra>": "<regra-css>"
+                }
+              },
+              "componentes": {},
+              "mocks": {}
+            },
+            "pending": []
+          },
+          {
+            "id": "identidade",
+            "title": "Identidade",
+            "description": "<descricao-da-identidade>",
+            "status": "<status>",
+            "definition": {
+              "ref": "identidade"
+            },
+            "pending": []
+          },
+          {
+            "id": "classificacao",
+            "title": "Classificação",
+            "description": "<descricao-da-classificacao>",
+            "status": "<status>",
+            "definition": {
+              "escopo": "<escopo>",
+              "reutilizavel": false,
+              "jornadas": [
+                {
+                  "id": "<identificador>",
+                  "jornada": {
+                    "id": "<identificador>",
+                    "nome": "<nome>",
+                    "ordem": 0
+                  },
+                  "subjornada": {
+                    "id": "<identificador>",
+                    "nome": "<nome>",
+                    "ordem": 0
+                  },
+                  "ordemTela": 0,
+                  "ocorrenciaNo": "<ocorrencia-no>",
+                  "condicaoRef": null,
+                  "contexto": {
+                    "descricao": "<descricao>",
+                    "branch": "<branch>",
+                    "pendente": false
+                  }
+                }
+              ]
+            },
+            "pending": []
+          },
+          {
+            "id": "dados",
+            "title": "Dados",
+            "description": "<definicao-de-dados>",
+            "status": "<status>",
+            "definition": {
+              "funcoes": {},
+              "backend": {},
+              "banco": {}
+            },
+            "pending": []
+          },
+          {
+            "id": "navegacao",
+            "title": "Navegação",
+            "description": "<definicao-de-navegacao>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "estados",
+            "title": "Estados",
+            "description": "<definicao-de-estados-e-comportamento>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "variantes",
+            "title": "Variantes",
+            "description": "<descricao-das-variantes>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "interacoes",
+            "title": "Interações",
+            "description": "<descricao-das-interacoes>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "acoes",
+            "title": "Ações",
+            "description": "<definicao-de-acoes-e-eventos>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "testes",
+            "title": "Testes",
+            "description": "<definicao-de-testes-e-criterios-de-aceite>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "implementacao",
+            "title": "Implementação",
+            "description": "<definicao-de-implementacao>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          },
+          {
+            "id": "notas",
+            "title": "Notas",
+            "description": "<observacoes>",
+            "status": "<status>",
+            "definition": {},
+            "pending": []
+          }
+        ]
+      }
+    }
+  }
+}

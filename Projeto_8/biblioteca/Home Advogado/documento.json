@@ -3,14 +3,18 @@
     "schema": "advogadoja.tela",
     "schemaVersion": "0.3.0",
     "identidade": {
+      "id": "advogado.home",
       "tipo": "tela",
       "namespace": "advogado",
       "nome": "Início do advogado",
-      "nomeExibicao": "Início do advogado",
-      "descricao": "A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis."
+      "descricao": "A Home é sempre a mesma (/advogado/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis."
     },
     "classificacao": {
       "escopo": "advogado",
+      "pasta": {
+        "flutter": "lib/advogado/home",
+        "react": "src/advogado/home"
+      },
       "reutilizavel": false,
       "jornadas": [
         {
@@ -29,7 +33,7 @@
           "ocorrenciaNo": "home",
           "condicaoRef": null,
           "contexto": {
-            "descricao": "A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis.",
+            "descricao": "A Home é sempre a mesma (/advogado/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis.",
             "branch": "Estado da OAB considerado pela mesma Home",
             "pendente": false
           }
