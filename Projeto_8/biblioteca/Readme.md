@@ -1,6 +1,6 @@
 # Biblioteca modular — AdvogadoJá+
 
-A biblioteca é um módulo independente. O menu principal preserva as seis telas e a área Global de componentes, com abas **Tela/Padrões**, **JSON**, **Componentes**, **Visuais** e **Documentação**.
+A biblioteca é um módulo independente. O menu principal preserva as seis telas e a área Global de componentes, acrescentando a macroaba Modelo V2, com abas **Tela/Padrões**, **JSON**, **Componentes**, **Visuais** e **Documentação**.
 
 ## Organização
 
@@ -24,3 +24,12 @@ Execute por GitHub Pages ou servidor HTTP local, por exemplo: `python -m http.se
 Se o navegador abrir o HTML pelo disco (`file://`) e bloquear a leitura de JSON, o editor oferecerá a seleção da pasta `BIBLIOTECA` para carregar os contratos localmente. Não precisa de backend nem de serviços externos.
 
 A prévia permite navegação interna de menus e mudanças de estado locais; ações externas apenas mostram o destino simulado. Os contratos são consultados e exportados, não gravados automaticamente.
+
+
+## Modelo V2 (acréscimo)
+
+- `Modelo V2/index.html`: atalho para consultar o modelo diretamente.
+- `docs/modelos_jsons/modelo_v2.json`: **fonte original** do modelo, não uma tela executável.
+- A macroaba **Modelo V2** apresenta as 12 seções de `tela` e as 12 seções de `component`, além de JSON integral e árvore por mapas.
+- A **Home Advogado** já estava nesta biblioteca (`Home Advogado/index.html` e `documento.json`) e foi preservada.
+- Nenhuma das seis telas foi renomeada, substituída ou teve o contrato alterado nesta atualização.

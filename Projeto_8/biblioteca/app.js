@@ -1,7 +1,7 @@
 (async function(){
 'use strict';
 const LAB_BASE_URL=new URL('.',document.currentScript.src);
-const LAB_MANIFEST=[{"id":"auth.inicializacao.splash","titulo":"Splash","tipo":"tela","path":"Splash/documento.json","ordem":1,"descricao":"Abertura do aplicativo."},{"id":"auth.inicializacao.boas_vindas","titulo":"Boas-vindas","tipo":"tela","path":"Boas-vindas/documento.json","ordem":2,"descricao":"Tela Boas-vindas na coleção de jornadas."},{"id":"auth.sessao.entrar","titulo":"Entrar","tipo":"tela","path":"Entrar/documento.json","ordem":3,"descricao":"Tela Entrar na coleção de jornadas."},{"id":"advogado.home","titulo":"Home Advogado","tipo":"tela","path":"Home Advogado/documento.json","ordem":4,"descricao":"A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis."},{"id":"cliente.home.inicio","titulo":"Home Cliente","tipo":"tela","path":"Home Cliente/documento.json","ordem":5,"descricao":"Hub do Cliente: as funções jurídicas originais continuam disponíveis, e Estudante é item permanente no menu."},{"id":"admin.home.dashboard","titulo":"Home Administrador","tipo":"tela","path":"Home Administrador/documento.json","ordem":6,"descricao":"Ponto central da operação administrativa. Os módulos exibidos devem respeitar as permissões que forem definidas para o Administrador."},{"id":"global.componentes","titulo":"Global","tipo":"biblioteca","path":"Global/Componentes/documento.json","ordem":7,"descricao":"Componentes disponíveis nas telas desta biblioteca."}];
+const LAB_MANIFEST=[{"id":"auth.inicializacao.splash","titulo":"Splash","tipo":"tela","path":"Splash/documento.json","ordem":1,"descricao":"Abertura do aplicativo."},{"id":"auth.inicializacao.boas_vindas","titulo":"Boas-vindas","tipo":"tela","path":"Boas-vindas/documento.json","ordem":2,"descricao":"Tela Boas-vindas na coleção de jornadas."},{"id":"auth.sessao.entrar","titulo":"Entrar","tipo":"tela","path":"Entrar/documento.json","ordem":3,"descricao":"Tela Entrar na coleção de jornadas."},{"id":"advogado.home","titulo":"Home Advogado","tipo":"tela","path":"Home Advogado/documento.json","ordem":4,"descricao":"A Home é sempre a mesma (/professional/home). O estado da OAB não troca a tela: ele recalcula capabilities e, com isso, muda menu, conteúdo principal e ações disponíveis."},{"id":"cliente.home.inicio","titulo":"Home Cliente","tipo":"tela","path":"Home Cliente/documento.json","ordem":5,"descricao":"Hub do Cliente: as funções jurídicas originais continuam disponíveis, e Estudante é item permanente no menu."},{"id":"admin.home.dashboard","titulo":"Home Administrador","tipo":"tela","path":"Home Administrador/documento.json","ordem":6,"descricao":"Ponto central da operação administrativa. Os módulos exibidos devem respeitar as permissões que forem definidas para o Administrador."},{"id":"global.componentes","titulo":"Global","tipo":"biblioteca","path":"Global/Componentes/documento.json","ordem":7,"descricao":"Componentes disponíveis nas telas desta biblioteca."},{"id":"modelo.v2","titulo":"Modelo V2","tipo":"modelo","path":"docs/modelos_jsons/modelo_v2.json","ordem":8,"descricao":"Estrutura modelo para contratos de telas e componentes com mapa de seções."}];
 async function LAB_LOAD_DOCS(){
   const fetchDocs=async ()=>Promise.all(LAB_MANIFEST.map(async entry=>{
     const response=await fetch(new URL(entry.path,LAB_BASE_URL),{cache:'no-cache'});
@@ -35,6 +35,7 @@ async function LAB_LOAD_DOCS(){
 }
 const LAB_DOCUMENTS=await LAB_LOAD_DOCS();
 const LAB_GLOBAL_DOCUMENT=LAB_DOCUMENTS[6];
+const LAB_MODEL_DOCUMENT=LAB_DOCUMENTS[7];
 const LAB_DATA={itens:LAB_MANIFEST.map((m,i)=>({id:m.id,titulo:m.titulo,tipo:m.tipo,descricao:m.descricao,campos:{ordem:m.ordem,arquivoLocal:m.path,fontes:i===6?[]:[{id:m.id+'.documento',titulo:'Documento local',arquivo:m.path,caminho:m.path,conteudo:LAB_DOCUMENTS[i]}]}}))};
 /* @ARQUIVO: comportamentos/01-estado-e-dados.js */
 /* @REGIAO DADOS · identidade, índices e estado local */
@@ -50,6 +51,7 @@ const LAB_E=x=>String(x??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>'
 const LAB_STRING=x=>x===null?'null':typeof x==='string'?x:JSON.stringify(x);
 const LAB_COUNT=x=>Array.isArray(x)?x.length:x&&typeof x==='object'?Object.keys(x).length:0;
 const LAB_IS_GLOBAL=()=>LAB_STATE.screenId==='global.componentes';
+const LAB_IS_MODEL=()=>LAB_STATE.screenId==='modelo.v2';
 const LAB_CURRENT_ITEM=()=>LAB_BY_ID.get(LAB_STATE.screenId);
 const LAB_CURRENT_SCREEN=()=>LAB_SCREEN_BY_ID.get(LAB_STATE.screenId);
 const LAB_CURRENT_SOURCES=()=>LAB_CURRENT_ITEM()?.campos?.fontes||[];
@@ -284,7 +286,7 @@ function LAB_DOC_COMPONENT(target,entry,screenId){target.replaceChildren();const
  target.append(LAB_DOC_FIELD('Estrutura da interface',{'raizRef':structure.raizRef,'totalElementos':Object.keys(els).length,'tags':Array.from(new Set(Object.values(els).map(e=>e.tag)))}));
  const note=document.createElement('div');note.className='notice';note.textContent='Documentação gerada a partir dos campos presentes no JSON. Lacunas e regras de negócio não descritas não foram preenchidas artificialmente.';target.append(note);
 }
-function LAB_JSON_PAYLOAD(){return LAB_IS_GLOBAL()?LAB_GLOBAL_DOCUMENT:(LAB_CURRENT_SCREEN()||{});}
+function LAB_JSON_PAYLOAD(){return LAB_IS_MODEL()?LAB_MODEL_DOCUMENT:LAB_IS_GLOBAL()?LAB_GLOBAL_DOCUMENT:(LAB_CURRENT_SCREEN()||{});}
 function LAB_DOWNLOAD_JSON(data,filename){const content=JSON.stringify(data,null,2);const blob=new Blob([content],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
 function LAB_JSON_ALL(target){target.innerHTML=`<div class="json-workspace"><div class="json-head"><div><strong>JSON completo</strong><small id="jsonSourceInfo"></small></div><button class="btn primary" id="exportCurrentJSON" type="button">Exportar JSON</button></div><div class="json-toolbar"><input type="search" id="jsonSearch" placeholder="Buscar conteúdo no JSON" aria-label="Buscar no JSON"><button class="btn" id="copyCurrentJSON">Copiar</button><button class="btn" id="jsonNextMatch">Próxima ocorrência</button></div><pre class="json-code" id="jsonFullContent"></pre><div class="json-status" id="jsonStatus"></div></div>`;
  const payload=LAB_JSON_PAYLOAD();const text=JSON.stringify(payload,null,2);let cursor=-1;
@@ -405,6 +407,22 @@ function LAB_DOC_COMPONENT(target,entry,screenId){
 }
 /* @REGIAO ARVORE · seções independentes, incluindo identidade/estrutura/estilos/componente */
 function LAB_JSON_BLOCK_OPTIONS(payload){
+ if(LAB_IS_MODEL()){
+  const b=[];
+  for(const entity of ['tela','component']){
+   const obj=payload?.[entity];if(!obj)continue;
+   for(const [key,value] of Object.entries(obj)){
+    if(key==='identidade'&&value&&typeof value==='object'){
+     const identity={...value};delete identity.descricao;
+     b.push({key:entity+'.identidade',label:'Identidade',group:entity,value:identity});
+     const desc=value.descricao||{};const intro={...desc};delete intro.maps;
+     b.push({key:entity+'.descricao',label:'Descrição e pastas',group:entity,value:intro});
+     for(const map of (desc.maps||[]))b.push({key:entity+'.maps.'+map.id,label:map.title||map.id,group:entity+' · mapas',value:map});
+    } else b.push({key:entity+'.'+key,label:key,group:entity,value});
+   }
+  }
+  return b;
+ }
  const result=[];
  for(const [key,value] of Object.entries(payload)){
   if((key==='tela'||key==='screen')&&value&&typeof value==='object'&&!Array.isArray(value)){
@@ -432,12 +450,13 @@ const LAB_DOM={macro:document.getElementById('macroTabs'),major:document.getElem
 const LAB_MINOR_FOR={tela:[['visuais','Visuais'],['documentacao','Documentação']],json:[['completo','Completo'],['blocos','Por blocos']],componentes:[['visuais','Visuais'],['documentacao','Documentação']]};
 function LAB_RENDER(){LAB_RESET_PREVIEW_EVENTS();LAB_DOM.macro.replaceChildren();LAB_DOM.major.replaceChildren();LAB_DOM.minor.replaceChildren();LAB_DOM.tools.replaceChildren();LAB_DOM.main.replaceChildren();
  LAB_DOM.source.textContent=LAB_SOURCE_ORIGIN();
- for(const item of LAB_ITEMS){const b=document.createElement('button');b.type='button';b.textContent=item.titulo;b.className=(LAB_STATE.screenId===item.id?'active ':'')+(item.tipo==='biblioteca'?'global':'');b.setAttribute('aria-current',LAB_STATE.screenId===item.id?'page':'false');b.onclick=()=>{if(LAB_STATE.screenId===item.id)return;LAB_STATE.screenId=item.id;LAB_STATE.major='tela';LAB_STATE.minor='visuais';LAB_STATE.sourceIdx=0;LAB_STATE.compSourceIdx=0;LAB_STATE.compIndex=0;LAB_STATE.globalSelection=0;LAB_STATE.globalCategory=item.tipo==='biblioteca'?'Headers':'Todos';LAB_STATE.jsonBlock='';LAB_STATE.visualState='padrao';LAB_STATE.journey='cliente';LAB_STATE.online=true;LAB_RENDER()};LAB_DOM.macro.append(b)}
- for(const [id,label] of [['tela',LAB_IS_GLOBAL()?'Padrões':'Tela'],['json','JSON'],['componentes','Componentes']]){const b=document.createElement('button');b.textContent=label;b.className=LAB_STATE.major===id?'active':'';b.onclick=()=>{LAB_STATE.major=id;LAB_STATE.minor=(LAB_MINOR_FOR[id]||[])[0][0];LAB_STATE.compIndex=0;LAB_RENDER()};LAB_DOM.major.append(b)}
+ for(const item of LAB_ITEMS){const b=document.createElement('button');b.type='button';b.textContent=item.titulo;b.className=(LAB_STATE.screenId===item.id?'active ':'')+(['biblioteca','modelo'].includes(item.tipo)?'global':'');b.setAttribute('aria-current',LAB_STATE.screenId===item.id?'page':'false');b.onclick=()=>{if(LAB_STATE.screenId===item.id)return;LAB_STATE.screenId=item.id;LAB_STATE.major='tela';LAB_STATE.minor='visuais';LAB_STATE.sourceIdx=0;LAB_STATE.compSourceIdx=0;LAB_STATE.compIndex=0;LAB_STATE.globalSelection=0;LAB_STATE.globalCategory=item.tipo==='biblioteca'?'Headers':'Todos';LAB_STATE.jsonBlock='';LAB_STATE.visualState='padrao';LAB_STATE.journey='cliente';LAB_STATE.online=true;LAB_RENDER()};LAB_DOM.macro.append(b)}
+ for(const [id,label] of [['tela',LAB_IS_MODEL()?'Modelo':LAB_IS_GLOBAL()?'Padrões':'Tela'],['json','JSON'],['componentes',LAB_IS_MODEL()?'Componente':'Componentes']]){const b=document.createElement('button');b.textContent=label;b.className=LAB_STATE.major===id?'active':'';b.onclick=()=>{LAB_STATE.major=id;LAB_STATE.minor=(LAB_MINOR_FOR[id]||[])[0][0];LAB_STATE.compIndex=0;LAB_RENDER()};LAB_DOM.major.append(b)}
  for(const [id,label] of LAB_MINOR_FOR[LAB_STATE.major]){const b=document.createElement('button');b.textContent=label;b.className=LAB_STATE.minor===id?'active':'';b.onclick=()=>{LAB_STATE.minor=id;LAB_RENDER()};LAB_DOM.minor.append(b)}
  LAB_RENDER_TOOLS();LAB_RENDER_CONTENT();
 }
 function LAB_RENDER_TOOLS(){const t=LAB_DOM.tools;
+ if(LAB_IS_MODEL()){const small=document.createElement('span');small.className='smallprint';small.textContent='Modelo documental V2 · sem tela simulada · fontes originais preservadas';t.append(small);return;}
  if(LAB_STATE.major==='tela'&&LAB_STATE.minor==='visuais'&&!LAB_IS_GLOBAL()){
   const s=LAB_CURRENT_SCREEN();const visual=s.tela.variantes?.visuaisPorJornada||{};if(Object.keys(visual).length){
    const label=document.createElement('label');label.textContent='Jornada';const sel=document.createElement('select');sel.setAttribute('aria-label','Jornada simulada');for(const key of Object.keys(visual)){const o=document.createElement('option');o.value=key;o.textContent=LAB_SOURCE_NAMES[key]||key;sel.append(o)}sel.value=LAB_STATE.journey;sel.onchange=()=>{LAB_STATE.journey=sel.value;LAB_STATE.visualState=LAB_STATE_OPTIONS()[0]?.id||'padrao';LAB_RENDER()};label.append(sel);t.append(label);
@@ -454,7 +473,8 @@ function LAB_RENDER_TOOLS(){const t=LAB_DOM.tools;
  }
  const text=document.createElement('span');text.className='smallprint';text.textContent='Especificação em seções e subseções baseada no JSON principal.';t.append(text);
 }
-function LAB_RENDER_CONTENT(){LAB_RESET_PREVIEW_EVENTS();const area=LAB_DOM.main;area.replaceChildren();area.classList.toggle('is-preview',LAB_STATE.major==='tela'&&LAB_STATE.minor==='visuais');
+function LAB_RENDER_CONTENT(){LAB_RESET_PREVIEW_EVENTS();const area=LAB_DOM.main;area.replaceChildren();area.classList.toggle('is-preview',!LAB_IS_MODEL()&&LAB_STATE.major==='tela'&&LAB_STATE.minor==='visuais');
+ if(LAB_IS_MODEL()){LAB_RENDER_MODEL(area);return;}
  if(LAB_STATE.major==='tela'){
   if(LAB_IS_GLOBAL()){if(LAB_STATE.minor==='documentacao'){LAB_GLOBAL_DOCS(area)}else LAB_GLOBAL_GALLERY(area)}
   else if(LAB_STATE.minor==='documentacao')LAB_DOC_SCREEN(area);else LAB_SCREEN_GALLERY(area);
@@ -506,6 +526,60 @@ function LAB_GLOBAL_GALLERY(area){LAB_GLOBAL_TABS(area);const pre=document.creat
  area.append(wrap);
 }
 function LAB_GLOBAL_DOCS(area){LAB_GLOBAL_GALLERY(area)}
+
+/* @REGIAO MODELO V2 · Apenas consulta da estrutura enviada; nenhuma tela fictícia. */
+function LAB_MODEL_MAPS(kind){return LAB_MODEL_DOCUMENT?.[kind]?.identidade?.descricao?.maps||[];}
+function LAB_MODEL_ENTRY(area,id){
+ const entity=LAB_MODEL_DOCUMENT?.[id]||{},identity=entity.identidade||{},desc=identity.descricao||{};
+ const title=document.createElement('header');title.className='docs-intro';
+ const eyebrow=document.createElement('span');eyebrow.className='eyebrow';eyebrow.textContent='Modelo de contrato · '+(id==='tela'?'tela':'componente');title.append(eyebrow);
+ const h=document.createElement('h1');h.textContent=id==='tela'?'Estrutura de Tela — Modelo V2':'Estrutura de Componente — Modelo V2';title.append(h);
+ const note=LAB_P('Este conteúdo é um modelo com marcadores de preenchimento; não representa uma tela aprovada nem define comportamentos de produção.');title.append(note);area.append(title);
+ const identityCard=document.createElement('section');identityCard.className='section-card';const hd=document.createElement('h2');hd.textContent='Identificação e destinos de projeto';identityCard.append(hd);
+ for(const [name,value] of Object.entries({schema:entity.schema||'Não declarado',schemaVersion:entity.schemaVersion||'Não declarada',id:identity.id,tipo:identity.tipo,namespace:identity.namespace,nome:identity.nome,arquivo:'docs/modelos_jsons/modelo_v2.json'})){
+  const row=document.createElement('div');row.className='doc-row';const k=document.createElement('strong');k.textContent=name;const v=document.createElement('span');v.textContent=String(value??'—');row.append(k,v);identityCard.append(row);
+ }
+ const folders=desc.pasta||{};for(const [name,value] of Object.entries(folders)){
+  const row=document.createElement('div');row.className='doc-row';const k=document.createElement('strong');k.textContent='Pasta '+name;const v=document.createElement('span');v.textContent=String(value);row.append(k,v);identityCard.append(row);
+ }area.append(identityCard);
+ const box=document.createElement('section');box.className='section-card';const h2=document.createElement('h2');h2.textContent='Mapas e seções da '+(id==='tela'?'tela':'componente');box.append(h2);
+ const explain=LAB_P('Selecione um mapa para expandir seus campos originais. O conteúdo de cada definição permanece intacto no JSON.');box.append(explain);
+ const list=document.createElement('div');list.className='doc-entry-list';
+ for(const [i,map] of LAB_MODEL_MAPS(id).entries()){
+  const card=document.createElement('details');card.className='doc-entry';card.style.cursor='pointer';
+  const summary=document.createElement('summary');summary.textContent=String(i+1).padStart(2,'0')+' · '+(map.title||map.id);summary.style.fontWeight='800';summary.style.color='#10233f';card.append(summary);
+  const descr=LAB_P(map.description||'Sem descrição preenchida');card.append(descr);
+  const code=document.createElement('code');code.textContent='ID: '+map.id+' · status: '+(map.status||'não definido');card.append(code);
+  const tree=LAB_TREE_NODE('definition',map.definition||{});card.append(tree);if(map.pending?.length){const pen=LAB_P('Pendências declaradas: '+map.pending.length);card.append(pen)}
+  list.append(card)
+ }box.append(list);area.append(box);
+}
+function LAB_MODEL_REFERENCE(area){
+ const s=document.createElement('section');s.className='section-card';
+ const h=document.createElement('h2');h.textContent='Referência de estrutura — não é prévia de tela';s.append(h);
+ s.append(LAB_P('O arquivo modelo_v2.json define a organização de contratos para Tela e Componente. Ele usa identidade.descricao.maps[] para agrupar os blocos, sem especificar uma tela visual executável.'));
+ const grid=document.createElement('div');grid.className='doc-entry-list';for(const kind of ['tela','component']){
+  const card=document.createElement('div');card.className='doc-entry';const title=document.createElement('strong');title.textContent=kind==='tela'?'Tela':'Componente';card.append(title);
+  card.append(LAB_P(LAB_MODEL_MAPS(kind).length+' mapas documentais declarados'));
+  for(const m of LAB_MODEL_MAPS(kind)){const label=document.createElement('span');label.className='pill';label.textContent=m.title||m.id;card.append(label)}grid.append(card)
+ }s.append(grid);area.append(s);
+ const note=document.createElement('div');note.className='notice';note.textContent='A Home do Advogado continua sendo a tela real em sua própria aba. Este modelo é apenas referência estrutural, sem converter ou alterar os contratos das seis telas.';area.append(note);
+}
+function LAB_RENDER_MODEL(area){
+ if(LAB_STATE.major==='json'){
+  if(LAB_STATE.minor==='blocos')LAB_JSON_TREE(area);else LAB_JSON_ALL(area);return;
+ }
+ if(LAB_STATE.major==='tela'){
+  if(LAB_STATE.minor==='visuais')LAB_MODEL_REFERENCE(area);else LAB_MODEL_ENTRY(area,'tela');return;
+ }
+ if(LAB_STATE.minor==='visuais'){
+  LAB_MODEL_REFERENCE(area);
+  const banner=document.createElement('section');banner.className='section-card';
+  const hd=document.createElement('h2');hd.textContent='Contrato de componente';banner.append(hd);
+  banner.append(LAB_P('No Modelo V2, o componente é descrito por identidade e 12 mapas próprios. Uma visualização concreta exige os elementos reais do componente, como os que já existem na área Global.'));
+  area.append(banner);
+ }else LAB_MODEL_ENTRY(area,'component');
+}
 const LAB_INITIAL_SCREEN=document.documentElement.dataset.screenId;
 if(LAB_INITIAL_SCREEN&&LAB_BY_ID.has(LAB_INITIAL_SCREEN)){LAB_STATE.screenId=LAB_INITIAL_SCREEN;LAB_STATE.globalCategory=LAB_INITIAL_SCREEN==='global.componentes'?'Headers':'Todos';}
 LAB_RENDER();
