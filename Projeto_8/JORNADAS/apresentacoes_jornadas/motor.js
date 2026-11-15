@@ -26,7 +26,7 @@ function nav(){const all=screenIDs();const journey=jIndex(),rotes=dt(S.bundle?.s
  if(MODULO==='FLUXO')children=[{key:'campos',label:'Campos utilizados',ico:'≡'},{key:'visualizacao',label:'Visualização do fluxo',ico:'⌁'}];
  if(MODULO==='BANCO')children=[{key:'campos',label:'Campos utilizados',ico:'≡'},{key:'modelagem',label:'Modelagem do banco',ico:'▤',sub:[{key:'banco:campos',label:'Campos por tela'},{key:'banco:tabelas',label:'Entidades e tabelas'},{key:'banco:operacoes',label:'Operações declaradas'}]}];
  if(MODULO==='PROTOTIPO')children=[{key:'campos',label:'Campos utilizados',ico:'≡'},{key:'simulador',label:'Protótipo interativo',ico:'▶',sub:[{key:'proto:livre',label:'Navegação livre'},{key:'proto:roteiros',label:'Apresentação de jornadas',sub:rotes.map(j=>({key:'roteiro:'+j.id,label:j.name}))}]}];
- return `<div class="nav-caption">MÓDULO</div><div class="nav-title">${esc(moduleName())}</div><div class="nav-hint">${all.length} telas no snapshot independente</div><div class="nav-tree">${children.map(navItem).join('')}</div><div class="side-note"><b>Dados locais</b><span>Este módulo usa exclusivamente seu próprio <code>modulo.json</code>.</span></div>`;
+ return `<div class="nav-caption">MÓDULO</div><div class="nav-title">${esc(moduleName())}</div><div class="nav-hint">${all.length} telas no snapshot independente</div><div class="nav-tree">${children.map(navItem).join('')}</div><div class="side-note"><b>Dados locais</b><span>Este módulo usa exclusivamente seu próprio <code>documento.json</code>.</span></div>`;
  function navItem(item,level=0){const active=S.mode===item.key||(item.key==='visualizacao'&&S.mode.startsWith('journey:'))||(item.key==='simulador'&&['proto:livre','proto:roteiros'].includes(S.mode))||(item.key==='modelagem'&&S.mode.startsWith('banco:'));
  return `<div class="nav-item-wrap" style="--level:${level}"><button type="button" data-nav="${esc(item.key)}" class="nav-item ${active?'active':''}"><span class="nav-ico">${esc(item.ico||'·')}</span><span class="nav-label">${esc(item.label)}</span>${item.count!=null?`<span class="pill">${item.count}</span>`:''}</button>${item.sub?`<div class="nav-sub">${item.sub.map(x=>navItem(x,level+1)).join('')}</div>`:''}</div>`}
 }
@@ -40,6 +40,7 @@ function shell(){app.innerHTML=`<header id="topbar">${header()}</header><div cla
   $('#main').insertBefore(toolbar,$('#main').firstChild);
  }
  renderPane();
+ publishJornadas();
  if(IN_WORKSPACE&&window.parent!==window){
   const walk=el=>{const button=el.querySelector(':scope > button[data-nav]');if(!button)return null;
    const sub=el.querySelector(':scope > .nav-sub');const children=sub?[...sub.children].map(walk).filter(Boolean):[];
@@ -168,7 +169,7 @@ function closeModal(){const m=$('#dialogOverlay');if(m)m.style.display='none';S.
 function preview(id){if(!scr()[id])return;S.screen=id;modal(nameOf(id),`<div class="preview-modal"><div class="preview-frame ${S.device}"><iframe class="screen-iframe" sandbox="allow-scripts" data-screen="${esc(id)}" title="Tela selecionada"></iframe></div><div class="modal-meta"><code>${esc(id)}</code><h3>Classificação</h3><pre>${esc(JSON.stringify(tOf(id).classificacao||{},null,2))}</pre><h3>Relações</h3><pre>${esc(JSON.stringify(getRels(id),null,2))}</pre><button data-action="showJson">Ver JSON integral</button></div></div>`)}
 function showJson(){const id=S.screen||screenIDs()[0];modal('Contrato JSON · '+id,`<div class="modal-actions"><button data-action="copyScreen">Copiar JSON</button><button data-action="exportScreen">Exportar somente esta tela</button></div><pre class="bigjson">${esc(JSON.stringify(scr()[id],null,2))}</pre>`)}
 function download(obj,name){const blob=new Blob([JSON.stringify(obj,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
-function touch(){S.changes++;$('#saveStatus')&&($('#saveStatus').textContent='Alterações não exportadas');memo.clear()}
+function touch(){S.changes++;$('#saveStatus')&&($('#saveStatus').textContent='Alterações não exportadas');memo.clear();publishJornadas()}
 function askRelation(){modal('Adicionar relação explícita',`<form id="relationForm" class="form"><label>ID da relação <input name="id" required placeholder="relacao.advogado.home.destino"></label><label>Origem ${screensSelect(S.screen,'relationOrigin')}</label><label>Destino ${screensSelect('','relationDest')}</label><label>Tipo <select name="tipo"><option value="continuar">continuar</option><option value="decisao">decisao</option><option value="voltar">voltar</option></select></label><label>Condição (ID, opcional) <input name="condicao" placeholder="condicaoRef (sem inventar expressão)"></label><label>Rótulo <input name="rotulo"></label><button type="submit">Confirmar ligação no JSON local</button></form>`)}
 function relationSubmit(f){const id=f.querySelector('[name="id"]').value.trim(),origin=$('#relationOrigin').value,dest=$('#relationDest').value;if(!id||!origin||!dest){alert('Preencha ID, origem e destino.');return}for(const s of screenIDs())if(getRels(s).some(r=>r.id===id)){alert('ID de relação já existe.');return}const nav=tOf(origin).navegacao;nav.relacoes||=[];nav.relacoes.push({id,tipo:f.querySelector('[name="tipo"]').value,origem:{tipo:'tela',ref:origin},destino:{tipo:'tela',ref:dest},rotulo:f.querySelector('[name="rotulo"]').value||null,condicaoRef:f.querySelector('[name="condicao"]').value||null,situacao:'declarada_pelo_editor'});touch();closeModal();S.screen=origin;shell()}
 function newJourney(){modal('Nova jornada',`<form class="form" id="journeyForm"><p class="mini">Identifique a jornada explicitamente. Não geramos IDs por dedução do nome.</p><label>ID da jornada <input name="id" required placeholder="ex.: cliente"></label><label>Nome da jornada <input name="name" required></label><label>ID da primeira subjornada <input name="subid" required placeholder="ex.: cadastro"></label><label>Nome da subjornada <input name="subname" required></label><label>Tela inicial ${screensSelect(S.screen,'journeyScreen')}</label><button type="submit">Criar participação</button></form>`)}
@@ -204,9 +205,37 @@ function handleChange(e){const id=e.target.id,v=e.target.value;
 }
 function handleSubmit(e){if(!['relationForm','journeyForm','addScreenForm','bankForm','operationForm'].includes(e.target.id))return;e.preventDefault();({relationForm:relationSubmit,journeyForm:journeySubmit,addScreenForm:addScreenSubmit,bankForm:bankSubmit,operationForm:operationSubmit})[e.target.id](e.target)}
 window.addEventListener('message',e=>{if(!S.bundle||MODULO!=='PROTOTIPO')return;const data=e.data;if(data?.type==='aj.simulacao.navegar'&&typeof data.id==='string'){const id=data.id;if(!scr()[id])return;const possible=getRels(S.screen).some(r=>relTarget(r)===id&&relType(r)==='tela');if(!possible){alert('Destino não documentado como relação da tela atual.');return}S.history.push(S.screen);S.screen=id;shell()}else if(data?.type==='aj.simulacao.acao'){const msg='Evento local documentado: '+data.action+' · Sem efeito externo.';$('#saveStatus')&&($('#saveStatus').textContent=msg.slice(0,70))}});
+// Integração opcional apenas com o index do módulo; cada pasta continua autônoma.
+function publishJornadas(){
+ if(!S.bundle||window.parent===window)return;
+ const journeys=jIndex().map(j=>({id:j.id,name:j.name,count:[...j.subs.values()].reduce((sum,s)=>sum+s.items.length,0)}));
+ window.parent.postMessage({type:'aj.jornadas.estado',submodulo:SUBMODULO,jornadas:SUBMODULO==='APRESENTACOES'?journeys:[],telas:screenIDs().length,alteracoes:S.changes,modo:S.mode},'*');
+}
+window.addEventListener('message',e=>{
+ if(e.source!==window.parent||!S.bundle||!e.data||typeof e.data!=='object')return;
+ const msg=e.data;
+ if(msg.type==='aj.jornadas.selecionar'&&SUBMODULO==='APRESENTACOES'){
+   if(!jIndex().some(j=>j.id===msg.id))return;
+   setMode('journey:'+msg.id);
+ }else if(msg.type==='aj.jornadas.exportar'){
+   window.parent.postMessage({type:'aj.jornadas.arquivo',submodulo:SUBMODULO,nome:'jornadas_'+SUBMODULO.toLowerCase()+'_documento.json',conteudo:JSON.stringify(S.bundle,null,2)+'\n'},'*');
+   S.changes=0;publishJornadas();
+ }else if(msg.type==='aj.jornadas.importar'){
+   try{
+     const j=JSON.parse(msg.conteudo);
+     if(j?.modulo?.toUpperCase()!==MODULO||!j.telas||typeof j.telas!=='object')throw Error('JSON de módulo incompatível');
+     S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];
+     S.changes=0;S.query='';S.journey=null;S.subjourney=null;memo.clear();
+     S.mode=SUBMODULO==='CAMPOS'?'campos':'journey:'+(jIndex()[0]?.id||'');
+     shell();
+     window.parent.postMessage({type:'aj.jornadas.importado',submodulo:SUBMODULO},'*');
+   }catch(err){window.parent.postMessage({type:'aj.jornadas.erro',mensagem:err.message},'*');}
+ }
+});
+
 // API mínima para o index escolher telas sem reproduzir os motores dos módulos.
 window.AJWorkspace={navigate(mode){if(!S.bundle)return false;setMode(mode);return true},getMode(){return S.mode}};
 document.addEventListener('click',handleClick);document.addEventListener('change',handleChange);document.addEventListener('submit',handleSubmit);
-async function start(){try{const response=await fetch('./modulo.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const j=await response.json();if(j.modulo?.toUpperCase()!==MODULO)throw Error('módulo incompatível');S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];S.scenario=Object.keys(j.simulacoes?.cenarios||{})[0]||null;S.mode=MODULO==='JORNADAS'?'journey:'+(jIndex()[0]?.id||''):MODULO==='PROTOTIPO'?'proto:livre':MODULO==='BANCO'?'banco:campos':'visualizacao';if(MODULO==='BANCO')S.bankView='campos';shell()}catch(err){app.innerHTML=`<div class="loader-error"><div class="brand-mark">AJ</div><h1>Carregar módulo ${esc(moduleName())}</h1><p>Este módulo não busca dados fora de sua pasta. Para abrir o <code>index.html</code> diretamente como arquivo local, selecione seu próprio <code>modulo.json</code>. Em servidor estático local, a leitura é automática.</p><input id="fallbackFile" type="file" accept=".json,application/json"><p class="mini">Detalhe técnico: ${esc(err.message)}</p></div>`;$('#fallbackFile').onchange=async e=>{try{const j=JSON.parse(await e.target.files[0].text());if(j.modulo?.toUpperCase()!==MODULO||!j.telas)throw Error('JSON incorreto');S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];S.scenario=Object.keys(j.simulacoes?.cenarios||{})[0]||null;S.mode=MODULO==='JORNADAS'?'journey:'+(jIndex()[0]?.id||''):MODULO==='PROTOTIPO'?'proto:livre':MODULO==='BANCO'?'banco:campos':'visualizacao';if(MODULO==='BANCO')S.bankView='campos';shell()}catch(ex){alert(ex.message)}};}}
+async function start(){try{const response=await fetch('./documento.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const j=await response.json();if(j.modulo?.toUpperCase()!==MODULO)throw Error('módulo incompatível');S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];S.scenario=Object.keys(j.simulacoes?.cenarios||{})[0]||null;S.mode=SUBMODULO==='CAMPOS'?'campos':MODULO==='JORNADAS'?'journey:'+(jIndex()[0]?.id||''):MODULO==='PROTOTIPO'?'proto:livre':MODULO==='BANCO'?'banco:campos':'visualizacao';if(MODULO==='BANCO')S.bankView='campos';shell()}catch(err){app.innerHTML=`<div class="loader-error"><div class="brand-mark">AJ</div><h1>Carregar módulo ${esc(moduleName())}</h1><p>Este módulo não busca dados fora de sua pasta. Para abrir o <code>index.html</code> diretamente como arquivo local, selecione seu próprio <code>documento.json</code>. Em servidor estático local, a leitura é automática.</p><input id="fallbackFile" type="file" accept=".json,application/json"><p class="mini">Detalhe técnico: ${esc(err.message)}</p></div>`;$('#fallbackFile').onchange=async e=>{try{const j=JSON.parse(await e.target.files[0].text());if(j.modulo?.toUpperCase()!==MODULO||!j.telas)throw Error('JSON incorreto');S.bundle=j;S.screen=j.telas['auth.inicializacao.splash']?'auth.inicializacao.splash':Object.keys(j.telas)[0];S.scenario=Object.keys(j.simulacoes?.cenarios||{})[0]||null;S.mode=SUBMODULO==='CAMPOS'?'campos':MODULO==='JORNADAS'?'journey:'+(jIndex()[0]?.id||''):MODULO==='PROTOTIPO'?'proto:livre':MODULO==='BANCO'?'banco:campos':'visualizacao';if(MODULO==='BANCO')S.bankView='campos';shell()}catch(ex){alert(ex.message)}};}}
 start();
 })();
