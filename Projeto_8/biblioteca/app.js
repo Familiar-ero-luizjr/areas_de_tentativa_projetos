@@ -46,6 +46,22 @@ const LAB_SCREEN_ITEMS=LAB_ITEMS.filter(item=>item.tipo==='tela');
 const LAB_BY_ID=new Map(LAB_ITEMS.map(x=>[x.id,x]));
 const LAB_SCREEN_BY_ID=new Map(LAB_SCREEN_ITEMS.map(x=>[x.id,x.campos.fontes[0].conteudo]));
 const LAB_STATE={screenId:LAB_SCREEN_ITEMS[0].id,major:'tela',minor:'visuais',sourceIdx:0,compSourceIdx:0,viewport:'mobile',journey:'cliente',visualState:'padrao',compIndex:0,globalCategory:'Todos',globalSelection:0,jsonBlock:'',jsonQuery:'',online:true};
+/* @MACROABA CAMPOS_UTILIZADOS · Integração apenas no shell da Biblioteca.
+   Os arquivos dos três submódulos permanecem byte a byte inalterados. */
+const LAB_CAMPOS_ID='macro.campos_utilizados';
+const LAB_CAMPOS_SUBS=[
+  {id:'FLUXO',name:'Fluxo',src:'CAMPOS_UTILIZADOS/FLUXO/index.html'},
+  {id:'PROTOTIPO',name:'Protótipo',src:'CAMPOS_UTILIZADOS/PROTOTIPO/index.html'},
+  {id:'JORNADAS',name:'Jornadas',src:'CAMPOS_UTILIZADOS/JORNADAS/index.html'}
+];
+let LAB_CAMPOS_SELECTED='FLUXO';
+function LAB_RESIZE_CAMPOS(){
+  if(LAB_STATE.screenId!==LAB_CAMPOS_ID)return;
+  const top=LAB_DOM.main.getBoundingClientRect().top;
+  LAB_DOM.main.style.height=Math.max(400,window.innerHeight-top-12)+'px';
+}
+window.addEventListener('resize',LAB_RESIZE_CAMPOS);
+
 const LAB_SOURCE_NAMES={cliente:'Cliente',advogado:'Advogado',admin:'Administrador'};
 const LAB_E=x=>String(x??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const LAB_STRING=x=>x===null?'null':typeof x==='string'?x:JSON.stringify(x);
@@ -449,8 +465,49 @@ function LAB_JSON_TREE(target){
 const LAB_DOM={macro:document.getElementById('macroTabs'),major:document.getElementById('majorTabs'),minor:document.getElementById('minorTabs'),tools:document.getElementById('tools'),main:document.getElementById('mainArea'),source:document.getElementById('sourceLabel')};
 const LAB_MINOR_FOR={tela:[['visuais','Visuais'],['documentacao','Documentação']],json:[['completo','Completo'],['blocos','Por blocos']],componentes:[['visuais','Visuais'],['documentacao','Documentação']]};
 function LAB_RENDER(){LAB_RESET_PREVIEW_EVENTS();LAB_DOM.macro.replaceChildren();LAB_DOM.major.replaceChildren();LAB_DOM.minor.replaceChildren();LAB_DOM.tools.replaceChildren();LAB_DOM.main.replaceChildren();
- LAB_DOM.source.textContent=LAB_SOURCE_ORIGIN();
+ LAB_DOM.source.textContent=LAB_STATE.screenId===LAB_CAMPOS_ID?'CAMPOS_UTILIZADOS / '+LAB_CAMPOS_SELECTED:LAB_SOURCE_ORIGIN();
  for(const item of LAB_ITEMS){const b=document.createElement('button');b.type='button';b.textContent=item.titulo;b.className=(LAB_STATE.screenId===item.id?'active ':'')+(['biblioteca','modelo'].includes(item.tipo)?'global':'');b.setAttribute('aria-current',LAB_STATE.screenId===item.id?'page':'false');b.onclick=()=>{if(LAB_STATE.screenId===item.id)return;LAB_STATE.screenId=item.id;LAB_STATE.major='tela';LAB_STATE.minor='visuais';LAB_STATE.sourceIdx=0;LAB_STATE.compSourceIdx=0;LAB_STATE.compIndex=0;LAB_STATE.globalSelection=0;LAB_STATE.globalCategory=item.tipo==='biblioteca'?'Headers':'Todos';LAB_STATE.jsonBlock='';LAB_STATE.visualState='padrao';LAB_STATE.journey='cliente';LAB_STATE.online=true;LAB_RENDER()};LAB_DOM.macro.append(b)}
+
+  /* Macroaba independente: navegação externa, sem reinterpretar ou editar nenhum JSON. */
+  const camposButton=document.createElement('button');
+  camposButton.type='button';
+  camposButton.textContent='CAMPOS_UTILIZADOS';
+  camposButton.className=LAB_STATE.screenId===LAB_CAMPOS_ID?'active':'';
+  camposButton.setAttribute('aria-current',LAB_STATE.screenId===LAB_CAMPOS_ID?'page':'false');
+  camposButton.onclick=()=>{if(LAB_STATE.screenId===LAB_CAMPOS_ID)return;LAB_STATE.screenId=LAB_CAMPOS_ID;LAB_RENDER()};
+  LAB_DOM.macro.append(camposButton);
+
+  if(LAB_STATE.screenId===LAB_CAMPOS_ID){
+    LAB_DOM.minor.hidden=true;
+    LAB_DOM.tools.hidden=true;
+    LAB_DOM.main.classList.add('is-campos');
+    LAB_DOM.main.classList.remove('is-preview');
+    LAB_DOM.major.setAttribute('aria-label','Consultas de campos utilizados');
+    for(const sub of LAB_CAMPOS_SUBS){
+      const button=document.createElement('button');
+      button.type='button';
+      button.textContent=sub.name;
+      button.className=sub.id===LAB_CAMPOS_SELECTED?'active':'';
+      button.setAttribute('aria-current',sub.id===LAB_CAMPOS_SELECTED?'page':'false');
+      button.onclick=()=>{LAB_CAMPOS_SELECTED=sub.id;LAB_RENDER()};
+      LAB_DOM.major.append(button);
+    }
+    const selected=LAB_CAMPOS_SUBS.find(sub=>sub.id===LAB_CAMPOS_SELECTED);
+    const iframe=document.createElement('iframe');
+    iframe.title='Campos utilizados — '+selected.name;
+    iframe.src=new URL(selected.src,LAB_BASE_URL).href;
+    iframe.setAttribute('loading','eager');
+    iframe.setAttribute('referrerpolicy','no-referrer');
+    LAB_DOM.main.append(iframe);
+    LAB_RESIZE_CAMPOS();
+    return;
+  }
+  LAB_DOM.major.setAttribute('aria-label','Abas principais');
+  LAB_DOM.minor.hidden=false;
+  LAB_DOM.tools.hidden=false;
+  LAB_DOM.main.classList.remove('is-campos');
+  LAB_DOM.main.style.height='';
+
  for(const [id,label] of [['tela',LAB_IS_MODEL()?'Modelo':LAB_IS_GLOBAL()?'Padrões':'Tela'],['json','JSON'],['componentes',LAB_IS_MODEL()?'Componente':'Componentes']]){const b=document.createElement('button');b.textContent=label;b.className=LAB_STATE.major===id?'active':'';b.onclick=()=>{LAB_STATE.major=id;LAB_STATE.minor=(LAB_MINOR_FOR[id]||[])[0][0];LAB_STATE.compIndex=0;LAB_RENDER()};LAB_DOM.major.append(b)}
  for(const [id,label] of LAB_MINOR_FOR[LAB_STATE.major]){const b=document.createElement('button');b.textContent=label;b.className=LAB_STATE.minor===id?'active':'';b.onclick=()=>{LAB_STATE.minor=id;LAB_RENDER()};LAB_DOM.minor.append(b)}
  LAB_RENDER_TOOLS();LAB_RENDER_CONTENT();
