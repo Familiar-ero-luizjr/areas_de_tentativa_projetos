@@ -16,6 +16,7 @@ Cada projeto pode ser aberto sem depender dos demais:
 - [Projeto 4 — Laboratório de Telas JSON](./Projeto_4/)
 - [Projeto 5 — Advogado Já · Workspace Modular V6](./Projeto_5/)
 - [Projeto 6 — Advogado Já · Laboratórios de protótipos](./Projeto_6/)
+- [Projeto 9 — Advogado Já · Árvore modular de contratos](./Projeto_9/arvore_modular_de_contratos/)
 
 ## Organização e trabalho com IA
 
