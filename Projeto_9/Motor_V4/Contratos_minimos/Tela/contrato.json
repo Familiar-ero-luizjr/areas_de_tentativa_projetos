@@ -12,5 +12,31 @@
   ],
   "incluirComponentes": true,
   "status": "projecao_operacional",
-  "observacao": "Projeção mínima para composição e visualização; preserva somente os campos listados e as definições dos componentes referenciados."
+  "observacao": "Projeção mínima para composição e visualização; preserva somente os campos listados e as definições dos componentes referenciados.",
+  "classificacaoDetalhada": {
+    "origem": "documento.json → telas/<telaId>/classificacao",
+    "preservarIntegralmente": true,
+    "campos": {
+      "localizacao": [
+        "caminho"
+      ],
+      "escopo": [
+        "perfilRef"
+      ],
+      "jornadas": [
+        "jornadaRef",
+        "subjornadasRefs",
+        "id",
+        "numero",
+        "nome",
+        "subjornadas"
+      ],
+      "jornadas.subjornadas": [
+        "id",
+        "numero",
+        "nome"
+      ]
+    },
+    "compatibilidade": "Manter jornadaRef e subjornadasRefs para o Motor V4; id, numero, nome e subjornadas complementam a classificacao."
+  }
 }

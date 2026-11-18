@@ -94,6 +94,95 @@ A Visualização utiliza o mesmo `Dados_Motor_V4/documento.json` — não tem c�
 - Os três motores de contrato abriram suas projeções a partir da mesma fonte.
 - A Home foi renderizada em prévia isolada, incluindo a alteração visual para acesso restrito.
 
+## Guia de campos e responsabilidades por seção
+
+As seções seguintes documentam os blocos encontrados no documento compartilhado e os módulos que os consomem. O objetivo é evitar regras implícitas: cada tipo de dado possui origem, finalidade e limites claros.
+
+### 1. Identidade (`identidade`)
+
+- **Onde fica:** `Dados_Motor_V4/documento.json`, em cada tela ou componente.
+- **Campos observados:** `id`, `tipo`, `namespace`, `nome`, `nomeExibicao`, `descricao` (a presença varia conforme o item).
+- **Responsabilidade:** identificar um item de maneira estável, independente da localização da pasta e da forma como ele é exibido.
+- **Regra:** mudar o nome exibido não deve implicar mudar o ID; referências entre itens utilizam IDs.
+
+### 2. Classificação (`classificacao`)
+
+- **Onde fica:** em cada tela/componente do documento compartilhado; `docs/catalogo_jornadas.json` guarda o catálogo central de jornadas.
+- **Subblocos:** `localizacao.caminho`, `escopo.perfilRef`, `jornadas`.
+- **Comportamento documentado:** a árvore é agrupada pelo caminho de localização; o caminho não representa rota de navegação nem autorização.
+- **Estado dos dados recebidos:** uma entrada de jornada pode conter simultaneamente `jornadaRef`, `subjornadasRefs`, `id`, `numero`, `nome` e `subjornadas`. Isso expressa vínculo e metadados repetidos, não duas jornadas diferentes.
+- **Evolução recomendada (ainda não implementada):** uma representação canônica de vínculo por IDs, resolvendo `nome` e `numero` pelo catálogo. Por exemplo, `{"jornadas":[{"id":"advogado","subjornadas":[{"id":"home"}]}]}`. A migração depende de atualizar os leitores, editores e validadores do motor e os índices relacionados; não basta alterar o README.
+
+### 3. Estrutura (`estrutura`)
+
+- **Onde fica:** documento compartilhado, na definição de tela ou componente.
+- **HTML declarativo:** `raizRef`, `composicao` (instâncias da tela) e/ou `elementos` (árvore de elementos dos componentes), com `paiRef`, `slot`, `ordem`, `componenteRef`, `tag`, `atributos` e `texto` conforme o caso.
+- **CSS declarativo:** `tokens` e `regras` com identificadores estáveis.
+- **Responsabilidade:** descrever composição e aparência sem embutir definições específicas das telas no código do Motor.
+- **Limite:** uma referência de componente não deve ser confundida com cópia da definição desse componente.
+
+### 4. Estados (`estados`) e variantes (`variantes`)
+
+- **Estados observados:** `possiveis` e `fallbackSeguro`; cada estado pode incluir `id`, `nome`, `descricao`, `origemNo` e `pendente`.
+- **Variantes observadas:** `regras` com `gatilho`, `opcao`, `estadoAlvo`, `origem`, `jornadaRef` e notas.
+- **Responsabilidade:** documentar apresentações alternativas da **mesma tela**. No exemplo `advogado.home`, o estado de OAB modifica capacidades e conteúdo, sem criar uma segunda Home.
+- **Limite:** simular um estado visual não constitui autorização real de uso de funções protegidas.
+
+### 5. Interações (`interacoes`) e ações (`acoes`)
+
+- **Interações:** eventos observáveis no protótipo, como `eventosPrototipo` e atributos HTML (`data-action`).
+- **Ações:** decisões funcionais e rotas alternativas descritas em `itens`, `evento`, `rotas`, `destino` e `relacaoDireta`.
+- **Regra:** diferenciar clique simulado, decisão de fluxo e execução real. A documentação não deve transformar um evento demonstrativo em operação de backend.
+
+### 6. Navegação (`navegacao`)
+
+- **Campos observados:** `rotas` e `destinosDeclarados`; referências podem relacionar `instanciaRef`, `componenteRef`, `elementoRef` e `destinoRef`.
+- **Responsabilidade:** registrar destinos associados a elementos, mantendo a navegação independente da posição das pastas na biblioteca.
+- **Limite:** destinos declarados não significam, por si, que a navegação está implementada ou que a tela de destino já existe.
+
+### 7. Dados (`dados`) e mocks (`mocks`)
+
+- **Dados:** `fontes`, `operacoes` e `persistencia` descrevem integrações e armazenamento previstos; coleções vazias não comprovam implementação.
+- **Mocks:** `cenarios` identifica dados fictícios e seu uso de visualização/simulação.
+- **Regra:** separar cenários documentais de dados reais e de serviços homologados.
+
+### 8. Biblioteca (`Motor_V4/Biblioteca/`)
+
+- **Entrada:** documento compartilhado e índice `biblioteca.jsonl`.
+- **Responsabilidade:** navegar pela árvore de localização, editar definições, validar alterações, importar e exportar.
+- **Persistência atual:** alterações locais no `localStorage`, não gravação automática dos arquivos do projeto.
+- **Saída:** documento compartilhado, índice atualizado e ZIP da biblioteca, conforme comandos disponíveis.
+
+### 9. Contratos mínimos (`Motor_V4/Contratos_minimos/`)
+
+- **Catálogo dos contratos:** `Dados_Motor_V4/contratos_minimos.jsonl`.
+- **Contrato Tela:** `Contratos_minimos/Tela/contrato.json`, configura os campos projetados e a inclusão dos componentes referenciados. O arquivo de configuração enviado contempla `schema`, `schemaVersion`, `identidade`, `classificacao`, `estrutura` e `navegacao`.
+- **Contrato Fluxo:** projeção documental em definição; não assumir decisões/condições que não tenham sido fornecidas.
+- **Contrato Protótipo:** projeção documental em definição; não tratar a prévia como aplicação operacional.
+- **Regra:** contratos mínimos são configurações de seleção de campos, **não** cópias independentes dos dados da tela.
+
+### 10. Visualização (`Motor_V4/Visualizacao/`)
+
+- **Entrada:** documento compartilhado, a mesma fonte usada pela Biblioteca.
+- **Responsabilidade:** renderizar a estrutura declarativa em iframe isolado, alternar dispositivos e simular estados visuais.
+- **Limite:** os botões e destinos externos não executam serviços reais; a prévia exportada é uma representação visual.
+
+### 11. Validação, importação e exportação
+
+- **Validações documentadas:** identidade, localização, conflitos de caminho e referências de jornada.
+- **Importações:** documento JSON completo e ZIP no formato da biblioteca exportada.
+- **Exportações:** documento compartilhado, índice JSONL, ZIP da biblioteca e prévia HTML.
+- **Integridade:** depois de editar ou migrar campos, verificar se documentos, índice, catálogo e contratos continuam coerentes.
+
+### 12. Fonte única e prevenção de duplicação
+
+- **Definição de telas/componentes:** `Dados_Motor_V4/documento.json`.
+- **Índice de localização e busca:** `Dados_Motor_V4/biblioteca.jsonl`.
+- **Nomes, números e hierarquia de jornadas:** `docs/catalogo_jornadas.json`.
+- **Configuração das projeções:** os arquivos `contrato.json` e seu índice `contratos_minimos.jsonl`.
+
+**Nota de compatibilidade:** os documentos atualmente recebidos ainda armazenam metadados expandidos junto das referências de jornada. A remoção dessa duplicação é uma **proposta arquitetural**, não uma mudança já aplicada ao Motor V4. Qualquer migração deve ocorrer de forma coordenada entre dados, editor, validadores e exportadores.
+
 ## Escopo
 
 Este ZIP contém a nova organização do **Motor V4**, seus dados de partida e o catálogo de jornadas. Não substitui nem apaga as outras ferramentas já existentes no seu `Projeto_9` original. Ao integrar, mantenha outras pastas do projeto e acrescente/atualize estas pastas.
