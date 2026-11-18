@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdvogadoJá · Motor V3 · Telas, modelos e estados</title>
+<title>AdvogadoJá · 110 telas · Editor e visualizador modular</title>
 <link rel="stylesheet" href="./estilo.css">
 </head>
 <body>
-<header class="top"><div class="brand"><div class="brand-title"><div class="brand-logo">AJ</div><div><h1>Árvore modular de contratos</h1><p>AdvogadoJá · Motor V3 · Biblioteca central, modelos e estados visuais</p></div></div><div class="top-status"><i class="dot"></i><span id="persistenceStatus">Iniciando editor local…</span></div></div>
+<header class="top"><div class="brand"><div class="brand-title"><div class="brand-logo">AJ</div><div><h1>Árvore modular de contratos</h1><p>AdvogadoJá · 110 telas · JSONs modulares · Visualização HTML/CSS</p></div></div><div class="top-status"><i class="dot"></i><span id="persistenceStatus">Iniciando editor local…</span></div></div>
 <div class="top-toolbar" role="toolbar" aria-label="Ferramentas">
 <button class="btn btn-gold" id="addScreen">＋ Nova tela</button>
 <button class="btn btn-dark" id="addFolder">📁 Nova pasta</button>
@@ -24,7 +24,6 @@
 <nav class="macro-tabs" role="tablist" aria-label="Áreas de trabalho">
   <button id="tabTelas" class="macro-tab active" role="tab" type="button" aria-selected="true" aria-controls="tree">📚 Telas reais</button>
   <button id="tabModelo" class="macro-tab" role="tab" type="button" aria-selected="false" aria-controls="tree">🧩 Tela-Modelo · Fase 1</button>
-  <button id="tabComponentes" class="macro-tab" role="tab" type="button" aria-selected="false" aria-controls="tree">🧩 Componentes</button>
   <button id="tabVisualizador" class="macro-tab" role="tab" type="button" aria-selected="false" aria-controls="viewerPane">◩ Visualizador de Telas</button>
 </nav>
 <div class="tab-guide" id="tabGuide"><div class="guide-copy"><strong id="guideTitle">Telas reais · 110 contratos modulares</strong><p id="guideDesc">Edite as telas e seus READMEs. O ZIP da árvore completa inclui também o modelo; os contratos montados de produção não incluem o exemplo.</p></div><div class="guide-actions"><button class="btn btn-small" id="guideReadme">▤ README</button><button class="btn btn-small" id="exportTabJson">↧ JSON desta aba</button><button class="btn btn-small" id="guideMatrix" hidden>▤ Matriz</button><button class="btn btn-small" id="guidePreview" hidden>◩ Prévia HTML</button><button class="btn btn-small btn-primary" id="exportTabZip">↧ ZIP desta aba</button></div></div>
@@ -51,7 +50,7 @@
     <div class="viewer-feedback" id="viewerFeedback">Navegação real, dados e regras de negócio não são executados neste visualizador.</div>
   </section>
 </section>
-<div class="statusline" id="statusline" role="status"></div><p class="foot-note">Funciona inteiramente offline. Os arquivos só saem do computador quando você decide exportá-los. A persistência automática usa o armazenamento local do navegador quando permitido. Salve cópias JSON/ZIP como backup. A montagem V3 usa identidade, classificação, estrutura, modelos e estados visuais declarativos; nunca os dados documentais de <code>identidade.descricao.maps[]</code>.</p>
+<div class="statusline" id="statusline" role="status"></div><p class="foot-note">Funciona inteiramente offline. Os arquivos só saem do computador quando você decide exportá-los. A persistência automática usa o armazenamento local do navegador quando permitido. Salve cópias JSON/ZIP como backup. A montagem usa os blocos operacionais, nunca os dados documentais de <code>identidade.descricao.maps[]</code>.</p>
 </main>
 <dialog class="dialog" id="formDialog"><form method="dialog" id="modalForm"><div class="dialog-body"><h2 id="dialogTitle">Novo item</h2><p id="dialogInfo">Informe o nome.</p><label for="dialogInput">Nome</label><input id="dialogInput" autocomplete="off" required><label class="hidden" id="dialogLabel2" for="dialogSelect">Formato</label><select class="hidden" id="dialogSelect"><option value="json">JSON</option><option value="md">Markdown</option><option value="txt">Texto</option><option value="html">HTML (texto)</option></select><div class="dialog-foot"><button class="btn" value="cancel">Cancelar</button><button class="btn btn-primary" value="save" id="dialogConfirm">Confirmar</button></div></div></form></dialog>
 <input type="file" id="fileConvertZipJson" accept=".zip,application/zip" hidden><input type="file" id="fileImportDoc" multiple hidden><input type="file" id="fileImportJson" accept=".json,application/json" multiple hidden><input type="file" id="fileImportZip" accept=".zip,application/zip" hidden>

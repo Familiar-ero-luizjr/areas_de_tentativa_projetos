@@ -13,3 +13,8 @@ A Árvore modular de contratos já estava dividida; seus arquivos foram mantidos
 `Pastas_geradas_arvore_modular/` é somente armazenamento de ZIPs exportados e não está na navegação. Qualquer ZIP colocado ali será preservado, mas não aparecerá no index.
 
 Abra em servidor HTTP local, por exemplo `python -m http.server 8000`, e navegue até `http://localhost:8000/`. A leitura de JSON com `fetch` não funciona de forma confiável via `file://`.
+
+
+## Terceiro ambiente: Motor V4 (adicionado)
+
+O Motor V4 foi incluído em `Motor_V4/index.html`, com os dados compartilhados fora do Motor em `Dados_Motor_V4/` e o catálogo em `docs/`. O ambiente original de árvore modular e o Catálogo de IDs foram mantidos. Consulte `README_MOTOR_V4.md` para detalhes de uso, contratos e exportação.
