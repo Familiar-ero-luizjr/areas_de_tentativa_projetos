@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fluxo | Motor V3 autocontido · AdvogadoJá+</title>
+    <link rel="stylesheet" href="./estilo.css">
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="toolbar__brand">
+        <button
+          class="toolbar__mark"
+          id="toolsBtn"
+          type="button"
+          title="Ferramentas do motor: variáveis, validação, simulação"
+        >
+          F
+        </button>
+        <div>
+          <strong>Fluxo</strong><small>Catálogo V3 · editor visual V1</small>
+        </div>
+      </div>
+      <div class="toolbar__actions">
+        <span class="save-status" id="saveStatus">Salvo</span
+        ><span class="edition-status" id="docSource">trabalho local</span
+        ><button id="undoBtn" title="Desfazer" disabled>↶</button
+        ><button id="redoBtn" title="Refazer" disabled>↷</button
+        ><button id="emptyBtn">Novo vazio</button
+        ><button id="exportBtn">Exportar</button
+        ><button
+          id="generateBtn"
+          title="Reconstruir todas as conexões e bifurcações a partir de catalogo.telas"
+        >
+          Recriar do catálogo</button
+        ><button id="importBtn">Importar</button
+        ><button id="createBtn" title="Adicionar uma tela do catálogo atual">
+          Criar pelo catálogo</button
+        ><button
+          id="updateBtn"
+          title="Atualizar catálogo de telas e componentes sem apagar as conexões"
+        >
+          Atualizar base</button
+        ><button
+          id="restoreBtn"
+          title="Recuperar a cópia de segurança anterior"
+        >
+          Restaurar</button
+        ><a href="#" class="home-link" id="homeBtn">Início</a>
+      </div>
+    </header>
+    <main class="flow-canvas">
+      <div class="flow-canvas__heading">
+        <div>
+          <span>FLUXO PRINCIPAL</span>
+          <h1 id="projectName">Advogado Já · Fluxo completo inicial</h1>
+        </div>
+        <p>
+          Arraste uma tela ou bifurcação. Conexões por ID; estrutura visual da
+          V1.
+        </p>
+      </div>
+      <div
+        id="graph"
+        class="flow-sequence"
+        aria-label="Fluxo de navegação"
+      ></div>
+    </main>
+    <aside class="detail-panel" id="detail">
+      <div class="detail-head">
+        <div>
+          <small class="muted">INSPEÇÃO DE REFERÊNCIAS</small>
+          <h2 id="detailTitle">Tela</h2>
+        </div>
+        <button class="x-btn" id="closeDetail">Fechar ×</button>
+      </div>
+      <div class="detail-content" id="detailBody"></div>
+    </aside>
+    <div class="modal-root" id="modalRoot" role="presentation">
+      <section class="modal" id="modal" role="dialog" aria-modal="true">
+        <header>
+          <h2 id="modalTitle">Editor</h2>
+          <button class="x-btn" id="modalClose">Fechar ×</button>
+        </header>
+        <div class="modal-body" id="modalBody"></div>
+        <footer id="modalFooter"></footer>
+      </section>
+    </div>
+    <input id="fileInput" type="file" accept=".json,application/json" hidden />
+    <div class="notice" id="notice" role="status" aria-live="polite"></div>
+    <script src="./motor.js" defer></script>
+  </body>
+</html>
