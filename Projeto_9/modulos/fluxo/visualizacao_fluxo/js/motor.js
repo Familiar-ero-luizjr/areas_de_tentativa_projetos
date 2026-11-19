@@ -1385,7 +1385,7 @@
         by("emptyBtn").onclick = () => {
           if (
             !confirm(
-              "Criar fluxo vazio? O catálogo será mantido. A cópia anterior será preservada para Restaurar.",
+              "Criar fluxo vazio? As telas e componentes continuarão no catálogo; Restaurar base recupera o documento inicial.",
             )
           )
             return;
@@ -1407,16 +1407,16 @@
         by("generateBtn").onclick = () => {
           if (
             !confirm(
-              "Restaurar a apresentação com apenas a Splash? O catálogo V3 permanece disponível. As alterações não exportadas serão substituídas.",
+              "Recriar todas as conexões do catálogo completo do Fluxo? Alterações não exportadas serão substituídas.",
             )
           )
             return;
           try {
             localStorage.setItem(BACKUP_KEY, JSON.stringify(portableDoc(doc)));
           } catch {}
-          setDoc(initialFromReference(), "Catálogo V3 reconstruído");
+          setDoc(initialFromReference(), "Catálogo do Fluxo reconstruído");
           showNotice(
-            "Fluxo reconstruído com todas as relações encontradas no catálogo V3.",
+            "Fluxo reconstruído com as relações declaradas no próprio documento.json.",
           );
         };
         by("createBtn").onclick = () => addScreen(-1);
@@ -1755,6 +1755,14 @@
           d = v3FromV1(input);
         else throw Error("O arquivo precisa conter catalogo.telas.");
         const telas = d.catalogo?.telas || {};
+        // A importação de um V3 antigo recebe os contratos visuais já convertidos
+        // sem apagar sua navegação, estados ou identidade.
+        for(const [key,tela] of Object.entries(telas)){
+          if(!tela.visualizacaoJornadas && V3_BASE?.catalogo?.telas?.[key]?.visualizacaoJornadas)
+            tela.visualizacaoJornadas=copy(V3_BASE.catalogo.telas[key].visualizacaoJornadas);
+        }
+        if(!d.catalogo.componentesJornadas && V3_BASE?.catalogo?.componentesJornadas)
+          d.catalogo.componentesJornadas=V3_BASE.catalogo.componentesJornadas;
         const aliases = { ...V3_ALIASES, ...(d.apresentacao?.aliasMap || {}) };
         const canon = (key) => {
           if (!key) return "";
@@ -2338,8 +2346,8 @@
         const r = validation(),
           f = doc.fluxo;
         openModal(
-          "Ferramentas do motor V3",
-          `<p class="dialog-note">As telas são as definições canônicas do catálogo V3. A árvore editorial não limita os registros do catálogo. As conexões são armazenadas em <code>catalogo.telas[id].navegacao.saidas</code> e as bifurcações são inferidas.</p><div class="kv"><span>Telas no catálogo</span><span>${Object.keys(doc.catalogo.telas).length}</span></div><div class="kv"><span>Componentes</span><span>${Object.keys(doc.catalogo.componentes).length}</span></div><div class="kv"><span>Telas exibidas</span><span>${f.telasUsadas.length}</span></div><div class="kv"><span>Conexões visuais</span><span>${f.conexoes.length}</span></div><div class="kv"><span>Problemas</span><span>${r.errors.length + r.warnings.length}</span></div><div class="inline-actions" style="margin:20px 0"><button class="form-btn" id="openVarsTool">Variáveis</button><button class="form-btn" id="openValidationTool">Validar</button><button class="form-btn" id="startSimulationTool">Iniciar simulação</button><button class="form-btn" id="nextSimulationTool">Próxima saída</button><button class="form-btn" id="clearSimulationTool">Limpar</button></div>`,
+          "Ferramentas do Fluxo",
+          `<p class="dialog-note">As telas e os componentes são preservados integralmente de Jornadas. As conexões estão em <code>telas[id].navegacao.saidas</code> e as bifurcações são inferidas.</p><div class="kv"><span>Telas no catálogo</span><span>${Object.keys(doc.catalogo.telas).length}</span></div><div class="kv"><span>Componentes</span><span>${Object.keys(doc.catalogo.componentes).length}</span></div><div class="kv"><span>Telas exibidas</span><span>${f.telasUsadas.length}</span></div><div class="kv"><span>Conexões visuais</span><span>${f.conexoes.length}</span></div><div class="kv"><span>Problemas</span><span>${r.errors.length + r.warnings.length}</span></div><div class="inline-actions" style="margin:20px 0"><button class="form-btn" id="openVarsTool">Variáveis</button><button class="form-btn" id="openValidationTool">Validar</button><button class="form-btn" id="startSimulationTool">Iniciar simulação</button><button class="form-btn" id="nextSimulationTool">Próxima saída</button><button class="form-btn" id="clearSimulationTool">Limpar</button></div>`,
           `<button data-action="modal-close">Fechar</button>`,
         );
         const attach = (id, fn) => {
@@ -2366,21 +2374,266 @@
       }
       // Validação adicional: a importação deve preservar o modelo V3 e não converter uma vez mais.
 
-      // Os mesmos dados do HTML autocontido agora estão no documento.json.
-      async function carregarDocumentoOriginal() {
-        const resposta = await fetch('./documento.json');
-        if (!resposta.ok) throw new Error('Falha ao carregar documento.json (HTTP ' + resposta.status + ')');
-        const dados = await resposta.json();
-        DEFAULT_CATALOG = dados.DEFAULT_CATALOG;
-        LEGACY_REFERENCE = dados.LEGACY_REFERENCE;
-        V3_BASE = dados.V3_BASE;
-        if (!DEFAULT_CATALOG || !LEGACY_REFERENCE || !V3_BASE) throw new Error('documento.json incompleto');
-        V3_ALIASES = V3_BASE.apresentacao.aliasMap || {};
-        initialize();
+
+      // MOTOR CANÔNICO DE JORNADAS — definição visual lida DIRETO do documento.json.
+      // Não há visualizacaoJornadas no catálogo V3 nem conversão de elementos CSS/HTML.
+      let JORNADAS_SOURCE=null;
+      const AJ_JORNADAS_RUNTIME="'use strict';\n(function(){\n  const info=JSON.parse(document.getElementById('view-data').textContent);\n  const mount=document.getElementById('app-root');\n  const warning=document.getElementById('warnings');\n  const notification=document.getElementById('navigation-tip');\n  const composition=info.estrutura?.html?.composicao||{};\n  const definitions=info.definicoes||{};\n  const instances=info.instancias||{};\n  const warnings=[];\n  const perInstance=new Map();\n  const allElements=new Map();\n  const instanceRoots=new Map();\n  const stateByInstance=new Map();\n  const voids=new Set(['input','img','hr','br','meta','link','area','source','wbr']);\n  const deny=new Set(['script','iframe','object','embed','meta','link','base','form','style']);\n  const svgTags=new Set(['svg','g','path','circle','rect','line','ellipse','polyline','polygon','text','tspan','defs','clipPath','mask','linearGradient','radialGradient','stop','use','symbol']);\n  const $=s=>document.querySelector(s);\n  function showMessage(s){notification.hidden=false;notification.textContent=s;clearTimeout(window.__notice);window.__notice=setTimeout(()=>notification.hidden=true,3400)}\n  function createTree(def,inst){\n    const html=def?.estrutura?.html||{}, entries=Object.entries(html.elementos||{});\n    const children=new Map(), byKey=new Map(entries), registry=new Map();\n    for(const [id,data] of entries){const parent=data?.paiRef;if(parent&&byKey.has(parent)&&parent!==id){if(!children.has(parent))children.set(parent,[]);children.get(parent).push([id,data]);}}\n    for(const list of children.values())list.sort((a,b)=>(Number(a[1].ordem)||0)-(Number(b[1].ordem)||0));\n    const recursing=new Set();\n    function build(id,svg=false){\n      if(recursing.has(id))throw Error('Ciclo em elemento '+id+' / '+inst);\n      recursing.add(id);\n      const data=byKey.get(id)||{},tag=String(data.tag||'div');let el;\n      if(tag==='#text')el=document.createTextNode(String(data.texto??''));\n      else if(!/^[a-z][\\w:-]*$/i.test(tag)||deny.has(tag.toLowerCase()))el=document.createTextNode('');\n      else{\n        const isSvg=svg||svgTags.has(tag);el=isSvg?document.createElementNS('http://www.w3.org/2000/svg',tag):document.createElement(tag);\n        const attrs=data.atributos||{};\n        const pairs=Array.isArray(attrs)?attrs.map(a=>[a.nome,a.valor]):Object.entries(attrs);\n        for(const [k,value] of pairs){\n          const key=String(k),v=String(value??'');\n          if(!/^[a-z_:][\\w:.-]*$/i.test(key)||/^on/i.test(key)||['srcdoc','is'].includes(key.toLowerCase()))continue;\n          if(['href','src','xlink:href','action','formaction'].includes(key.toLowerCase())&&/^(javascript|data:text\\/html):/i.test(v.trim()))continue;\n          try{el.setAttribute(key,v)}catch(e){}\n        }\n        if(typeof data.texto==='string'&&data.texto)el.appendChild(document.createTextNode(data.texto));\n        if(!voids.has(tag.toLowerCase()))for(const [child] of children.get(id)||[])el.appendChild(build(child,isSvg));\n      }\n      if(el.nodeType===1)el.__instanceOrder=Number(data.ordem)||0;\n      registry.set(id,el);\n      if(!allElements.has(id))allElements.set(id,el);\n      recursing.delete(id);return el;\n    }\n    const rootRef=html.raizRef;\n    const top=entries.filter(([id,d])=>!d.paiRef||!byKey.has(d.paiRef)||id===d.paiRef);\n    top.sort((a,b)=>(a[0]===rootRef?-1:b[0]===rootRef?1:(Number(a[1].ordem)||0)-(Number(b[1].ordem)||0)));\n    const nodes=top.map(([id])=>build(id));\n    if(!nodes.length)warnings.push('Sem elementos: '+inst+' / '+(def?.identidade?.id||'?'));\n    perInstance.set(inst,registry);\n    instanceRoots.set(inst,nodes);\n    return nodes;\n  }\n  function baseStates(inst){const axes=definitions[instances[inst]]?.estrutura?.estadosVisuais||{};const selected=composition[inst]?.estadoVisual||{};const result={};\n    for(const [axis,details] of Object.entries(axes)){const choice=selected[axis]??details.inicial; if(details.opcoes?.[choice])result[axis]=choice;else warnings.push('Estado desconhecido em '+inst+': '+axis+'/'+choice);}\n    return result;\n  }\n  function applyStates(inst){const def=definitions[instances[inst]];const axes=def?.estrutura?.estadosVisuais||{};const elements=perInstance.get(inst)||new Map();const options=stateByInstance.get(inst)||{};\n    const affected=new Set();for(const axis of Object.values(axes))for(const option of Object.values(axis.opcoes||{}))for(const ref of Object.keys(option.elementos||{}))affected.add(ref);\n    for(const ref of affected){const el=elements.get(ref);if(!el||el.nodeType!==1)continue;if(!el.__visualBase){el.__visualBase={attrs:Array.from(el.attributes).map(a=>[a.name,a.value]),text:el.textContent}};\n      const base=el.__visualBase;for(const a of Array.from(el.attributes))el.removeAttribute(a.name);for(const [k,v] of base.attrs)el.setAttribute(k,v);if(!el.childElementCount)el.textContent=base.text;\n    }\n    for(const [axis,details] of Object.entries(axes)){\n      const selection=options[axis]??details.inicial;const option=details.opcoes?.[selection];if(!option)continue;\n      for(const [ref,mod] of Object.entries(option.elementos||{})){\n        const el=elements.get(ref);if(!el||el.nodeType!==1){warnings.push('Estado '+axis+' não encontra elemento '+ref);continue;}\n        if(mod.classesAdicionar)for(const n of mod.classesAdicionar)el.classList.add(n);\n        if(mod.classesRemover)for(const n of mod.classesRemover)el.classList.remove(n);\n        for(const [k,v] of Object.entries(mod.atributos||{})){if(/^on/i.test(k))continue;if(v==null)el.removeAttribute(k);else el.setAttribute(k,String(v));}\n        if(mod.texto!==undefined)el.textContent=String(mod.texto);\n        if(mod.visivel!==undefined)el.hidden=!mod.visivel;\n      }\n    }\n  }\n  function setVisualState(inst,axis,value){const config=definitions[instances[inst]]?.estrutura?.estadosVisuais?.[axis];if(!config?.opcoes?.[value])return false;\n    stateByInstance.set(inst,{...(stateByInstance.get(inst)||{}),[axis]:value});applyStates(inst);return true;}\n  try{\n    const allStyles=[`:root{${Object.entries(info.estrutura?.css?.tokens||{}).map(([k,v])=>k+':'+v+';').join('')}}`,...Object.values(info.estrutura?.css?.regras||{})];\n    const items=Object.entries(instances).map(([inst,ref],i)=>({inst,ref,index:i,order:Number(composition[inst]?.ordem)||0}));\n    for(const item of items){const def=definitions[item.ref];if(!def){warnings.push('Definição ausente: '+item.ref);continue;}\n      allStyles.push(...Object.values(def.estrutura?.css?.regras||{}));createTree(def,item.inst);stateByInstance.set(item.inst,baseStates(item.inst));}\n    const css=document.createElement('style');css.textContent=allStyles.join('\\n').replace(/:host\\b/g,':root');document.head.append(css);\n    const inserted=new Set(),first=info.estrutura?.html?.raizRef||items[0]?.inst;\n    function place(item){if(inserted.has(item.inst))return true;\n      let parent=mount;\n      if(item.inst!==first){const parentRef=composition[item.inst]?.paiRef;\n        if(parentRef){let target=allElements.get(parentRef);if(!target){\n            const parentInst=items.find(x=>x.inst===parentRef);\n            if(parentInst&&!inserted.has(parentInst.inst))place(parentInst);\n            target=allElements.get(parentRef)||instanceRoots.get(parentRef)?.[0];}\n          if(target)parent=target;else warnings.push('Pai não encontrado: '+parentRef+' / '+item.inst);\n        }\n      }\n      for(const el of instanceRoots.get(item.inst)||[]){el.__instanceOrder=item.order;const before=Array.from(parent.childNodes).find(x=>(x.__instanceOrder??-Infinity)>item.order);parent.insertBefore(el,before||null);}\n      inserted.add(item.inst);return true;}\n    items.sort((a,b)=>a.inst===first?-1:b.inst===first?1:a.order-b.order||a.index-b.index);\n    for(const item of items)place(item);\n    for(const item of items)applyStates(item.inst);\n    if(!mount.childNodes.length)throw Error('Nenhum componente renderizável');\n  }catch(err){warnings.push('Falha na montagem: '+err.message);mount.textContent='A estrutura não pôde ser montada. Verifique os contratos JSON.';}\n  const declared=info.navegacao?.destinosDeclarados||[];\n  function currentDrawer(){return Object.keys(instances).find(k=>k.includes('drawer')||definitions[instances[k]]?.classificacao?.categoria==='menu');}\n  function closeDrawer(){const inst=currentDrawer();if(inst&&setVisualState(inst,'painel','fechado'))return;\n    document.querySelectorAll('.prototype-drawer,.drawer,[data-overlay-root]').forEach(el=>{el.classList.remove('open','is-open');el.setAttribute('aria-hidden','true');});}\n  function openDrawer(){const inst=currentDrawer();if(inst&&setVisualState(inst,'painel','aberto'))return;\n    const el=$('.prototype-drawer')||$('[data-overlay-root]')||$('.drawer');if(el){el.classList.add('open');el.setAttribute('aria-hidden','false');}}\n  document.addEventListener('click',ev=>{\n    const el=ev.target.closest?.('button,a,[data-action],[data-goto]');if(!el)return;\n    const action=el.getAttribute('data-action')||'';\n    if(action==='drawer.open'||el.matches('.app-menu-button,[aria-label=\"Abrir menu\"]')){ev.preventDefault();openDrawer();return;}\n    if(action==='drawer.close'||el.matches('.drawer-backdrop,[aria-label=\"Fechar menu\"]')){ev.preventDefault();closeDrawer();return;}\n    if(el.matches('.aj-menu__switch[role=\"switch\"]')){ev.preventDefault();const inst=currentDrawer();if(inst){const v=stateByInstance.get(inst)?.disponibilidade||'online';setVisualState(inst,'disponibilidade',v==='online'?'offline':'online');}return;}\n    let elementId=null,instanceId=null;\n    for(const [inst,reg] of perInstance){for(const [ref,node] of reg){if(node===el){elementId=ref;instanceId=inst;break;}}if(instanceId)break;}\n    const destination=declared.find(d=>d.instanciaRef===instanceId&&d.elementoRef===elementId)?.destinoRef\n      ||declared.find(d=>!d.instanciaRef&&d.elementoRef===elementId)?.destinoRef\n      ||el.getAttribute('data-goto')||el.getAttribute('href');\n    if(destination&&destination!=='#'){ev.preventDefault();window.parent.postMessage({type:'advogadoja.flow.visual.navigate',destination:destination,action:action,instance:instanceId,element:elementId},'*');return;}\n    if(action&&action!=='drawer.open'&&action!=='drawer.close'){ev.preventDefault();window.parent.postMessage({type:'advogadoja.flow.visual.action',action:action,instance:instanceId,element:elementId},'*');return;}\n    if(el.hasAttribute('data-demo-action')){ev.preventDefault();showMessage('Ação demonstrativa: '+el.getAttribute('data-demo-action'));return;}\n    if(el.matches('button,a'))ev.preventDefault();\n  });\n  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});\n  window.addEventListener('message',e=>{if(e.source!==window.parent||e.data?.type!=='advogadoja.visualState')return;setVisualState(e.data.instance,e.data.axis,e.data.value)});\n  if(warnings.length){warning.textContent=Array.from(new Set(warnings)).join(' · ');warning.hidden=false;}\n  window.__advogadojaPreview={setVisualState,instances,stateByInstance};\n})();\n\nwindow.addEventListener('message',e=>{if(e.data?.type==='aj.v4.access'){const el=document.querySelector('.app');if(el)el.dataset.professionalAccess=e.data.value}});\n";
+      const AJ_VISUAL_INVERSE = {'auth.inicializacao.splash':'app.splash','auth.inicializacao.boas_vindas':'app.boas_vindas','auth.sessao.entrar':'auth.entrar','cliente.home.inicio':'cliente.home','admin.home.dashboard':'admin.dashboard','advogado.atendimentos.lista':'advogado.atendimentos_advogado'};
+      // Ponte entre identificadores canônicos V3 e identificadores reais de Jornadas.
+      // Apenas referências comprovadas no documento.json original, sem recriação de telas.
+      const JORNADAS_TELA_ALIAS = {
+        'admin.administrador_detalhe':'admin.governanca.administrador_detalhe',
+        'admin.administradores':'admin.governanca.administradores',
+        'admin.assinatura_detalhe':'admin.assinatura.detalhe',
+        'admin.assinaturas':'admin.assinatura.lista',
+        'admin.configuracoes':'admin.configuracao.geral',
+        'admin.dashboard':'admin.home.dashboard',
+        'admin.denuncia_detalhe':'admin.moderacao.denuncia_detalhe',
+        'admin.denuncias':'admin.moderacao.denuncias',
+        'admin.log_detalhe':'admin.auditoria.log_detalhe',
+        'admin.logs':'admin.auditoria.logs',
+        'admin.oab':'admin.oab.fila',
+        'admin.oab_detalhe':'admin.oab.detalhe',
+        'admin.perfil_detalhe':'admin.usuarios.perfil_detalhe',
+        'admin.perfis':'admin.usuarios.perfis',
+        'admin.seletor_perfil':'admin.acesso.seletor_perfil',
+        'advogado.atendimentos_advogado':'advogado.atendimentos.lista',
+        'advogado.dados_oab':'advogado.oab.dados',
+        'advogado.disponibilidade':'advogado.disponibilidade.painel',
+        'advogado.perfil_profissional':'advogado.perfil.visualizacao',
+        'advogado.validacao_profissional':'advogado.validacao.status',
+        'cliente.home':'cliente.home.inicio',
+        'cliente.home_cliente':'cliente.home.inicio',
+        'cliente.perfil_cliente':'cliente.perfil.visualizacao',
+        'estudante.home_estudante':'estudante.home.inicio'
+      };
+      function jornadasRef(key){
+        const known=JORNADAS_SOURCE?.telas||{};
+        if(known[key])return key;
+        if(known[JORNADAS_TELA_ALIAS[key]])return JORNADAS_TELA_ALIAS[key];
+        const canonical=doc?.catalogo?.telas?.[key]||V3_BASE?.catalogo?.telas?.[key];
+        for(const alias of canonical?.identidade?.aliasesLegados||[])if(known[alias])return alias;
+        if(V3_BASE?.apresentacao?.aliasMap){for(const [oldId,newId] of Object.entries(V3_BASE.apresentacao.aliasMap))if(newId===key&&known[oldId])return oldId;}
+        return null;
       }
-      carregarDocumentoOriginal().catch((erro) => {
-        console.error('Não foi possível inicializar o Fluxo V3:', erro);
-        const status = document.getElementById('saveStatus');
-        if (status) status.textContent = 'Erro ao carregar documento.json';
-      });
-    
+      function createJornadasFrame(key,state){
+        const visualId=jornadasRef(key),t=visualId?JORNADAS_SOURCE.telas[visualId]:null;
+        if(!t?.estrutura?.html?.composicao){
+          return '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><body style="font:14px system-ui;padding:24px;color:#344054"><h2>Contrato visual não encontrado em Jornadas</h2><p>O catálogo V3 possui a referência, mas Jornadas não possui uma tela correspondente com estrutura.html.composicao.</p><code>'+esc(key)+'</code></body></html>';
+        }
+        const refs={...(t.componentes?.instanciasRefs||{})};
+        for(const [inst,spec] of Object.entries(t.estrutura.html.composicao))if(spec?.componenteRef)refs[inst]=spec.componenteRef;
+        const definitions={};const originalDefinitions=JORNADAS_SOURCE.componentes||{};
+        for(const ref of new Set(Object.values(refs)))if(originalDefinitions[ref])definitions[ref]=originalDefinitions[ref];
+        const info={identidade:t.identidade,classificacao:t.classificacao,estrutura:t.estrutura,
+          definicoes:definitions,instancias:refs,navegacao:{destinosDeclarados:t.navegacao?.destinosDeclarados||[]}};
+        const data=JSON.stringify(info).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');
+        const css='html,body{margin:0;min-height:100%;}*{box-sizing:border-box}#app-root{min-height:100dvh}#warnings{position:fixed;top:4px;right:4px;max-width:80%;background:#fff1c9;color:#79551f;padding:5px;font:10px Arial;z-index:99999}#navigation-tip{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);background:#10233f;color:white;border-radius:6px;padding:8px;font:11px Arial;z-index:999999}';
+        return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob: https:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src data: https:"><style>${css}</style></head><body><div id="app-root"></div><div id="warnings" hidden></div><div id="navigation-tip" hidden></div><script type="application/json" id="view-data">${data}</script><script>${AJ_JORNADAS_RUNTIME.replace(/<\/script/gi,'<\\/script')}</script></body></html>`;
+      }
+      function staticPreview(key,state){return createJornadasFrame(key,state)}
+      let ajPreviewCurrent=null,ajPreviewHistory=[],ajVisualDevice='mobile';
+      function preview(key){
+        selected=key;ajPreviewCurrent=key;ajPreviewHistory=[];
+        previewState=doc.fluxo.variaveis.professionalAccess==='restricted'?'restricted':'enabled';
+        openModal('Visualização · '+nameOf(key),
+          '<div class="inline-actions" style="justify-content:space-between;margin:0 0 10px;gap:8px;flex-wrap:wrap"><div><button class="form-btn" id="mobileVisual">Mobile</button><button class="form-btn" id="desktopVisual">Desktop</button><button class="form-btn" id="stateEnabled">Habilitada</button><button class="form-btn" id="stateRestricted">Restrita</button><button class="form-btn" id="backVisual">Voltar</button></div><small class="muted" id="visualSource">Fluxo: telas e componentes completos do próprio documento.json</small></div><div id="ajDeviceContainer" style="display:flex;justify-content:center;background:#e9eef5;border:1px solid #d5e0eb;border-radius:12px;overflow:auto;padding:12px"><iframe id="previewIframe" title="Prévia da tela" class="preview-frame" sandbox="allow-scripts allow-forms" style="width:390px;max-width:100%;height:690px;flex:none;background:white;border:1px solid #dbe2eb;border-radius:10px"></iframe></div>',
+          '<button data-action="modal-close">Fechar</button>',{wide:true});
+        const render=()=>{
+          const frame=by('previewIframe');if(!frame)return;
+          frame.style.width=ajVisualDevice==='mobile'?'390px':'100%';frame.style.height=ajVisualDevice==='mobile'?'690px':'min(75vh,820px)';
+          frame.srcdoc=createJornadasFrame(ajPreviewCurrent,previewState);
+          by('modalTitle').textContent='Visualização · '+nameOf(ajPreviewCurrent);
+          frame.onload=()=>{try{frame.contentWindow.postMessage({type:'aj.v4.access',value:previewState},'*')}catch(e){}};
+          by('backVisual').disabled=!ajPreviewHistory.length;
+        };
+        by('backVisual').onclick=()=>{if(!ajPreviewHistory.length)return;ajPreviewCurrent=ajPreviewHistory.pop();render()};
+        by('mobileVisual').onclick=()=>{ajVisualDevice='mobile';render()};
+        by('desktopVisual').onclick=()=>{ajVisualDevice='desktop';render()};
+        by('stateEnabled').onclick=()=>{previewState='enabled';render()};
+        by('stateRestricted').onclick=()=>{previewState='restricted';render()};
+        window.__ajPreviewNavigate=(target)=>{ajPreviewHistory.push(ajPreviewCurrent);ajPreviewCurrent=target;render()};render();
+      }
+
+// CONTRATO PROGRESSIVO: esta etapa recebe o documento de Jornadas integralmente.
+// O motor do Fluxo NÃO consulta outro módulo: recebe seu próprio documento.json,
+// conserva identidade/classificacao/estrutura/componentes e acrescenta navegacao em telas[id].
+const AJ_NATIVE_STORE='advogadoja-fluxo-v4-progressivo-2026-11';
+function nativeRelationKey(origin,dest,w){return JSON.stringify([origin,dest,w?JSON.stringify([w.variavel,w.operador,w.valor]):'']);}
+function ajNativeUiCondition(w){if(!w||typeof w!=='object')return null;return {variavel:w.variavel||w.campo||'',operador:({'igual':'==','diferente':'!=','maior':'>','menor':'<','maior_igual':'>=','menor_igual':'<='}[w.operador]||w.operador||'=='),valor:w.valor};}
+function ajNativeWriteCondition(w){if(!w)return null;return {campo:w.variavel,operador:({'==':'igual','!=':'diferente','>':'maior','<':'menor','>=':'maior_igual','<=':'menor_igual'}[w.operador]||w.operador||'igual'),valor:w.valor};}
+function ajNativeEmptyNavigation(){return {entradas:[],saidas:[],bifurcacoes:[],condicoes:[],referencias:[]};}
+function normalize(input){
+ if(input?.catalogo?.telas&&input?.fluxo)return input; // estrutura interna do editor; nunca exportada
+ if(input?.catalogo?.telas&&!input?.telas){
+  // Compatibilidade: conversão de arquivos V3 antigos sem substituir os contratos visuais atuais.
+  const copyNative=copy(JORNADAS_SOURCE), sources=Object.entries(input.catalogo.telas);
+  const aliases={};for(const [key,t] of Object.entries(copyNative.telas)){
+    aliases[key]=key;for(const a of t.navegacao?.origensV3||[])aliases[a]=key;
+    for(const a of t.identidade?.aliasesLegados||[])aliases[a]=key;
+  }
+  for(const [legacyId,legacy] of sources){
+   const target=aliases[legacyId];
+   if(!target)continue;
+   const nav=copyNative.telas[target].navegacao||ajNativeEmptyNavigation();
+   for(const r of legacy.navegacao?.saidas||[])if(!nav.saidas.some(x=>x.id===r.id)){
+    const entry=copy(r);
+    for(const field of ['destinoRef','origemTelaRef','telaRef'])if(entry[field]&&aliases[entry[field]])entry[field]=aliases[entry[field]];
+    nav.saidas.push(entry);
+   }
+   copyNative.telas[target].navegacao=nav;
+  }
+  input=copyNative;
+ }
+ if(!input?.telas||!input?.componentes)throw Error('Este motor utiliza documento.json com tipo, versao, telas e componentes.');
+ const native=copy(input),used=Object.keys(native.telas),links=[],grouped=new Map(),allIds=[];
+ let collapsed=0,internal=0,pendentes=0;
+ for(const [key,screen] of Object.entries(native.telas)){
+  for(const relation of screen.navegacao?.saidas||[]){
+   if(relation.destinoTipo&&relation.destinoTipo!=='tela'){internal++;continue;}
+   const dest=relation.destinoRef||relation.para;
+   if(!dest||!native.telas[dest]){pendentes++;continue;}
+   const cond=ajNativeUiCondition(relation.quando);
+   const signature=nativeRelationKey(key,dest,cond);
+   const rid=relation.id||'link.'+key+'.'+dest+'.'+allIds.length;
+   allIds.push(rid);
+   const existing=grouped.get(signature);
+   if(existing){existing.referenciasOriginais.push(rid);collapsed++;continue;}
+   const entry={id:rid,de:key,para:dest,saida:relation.eventoOrigem||relation.acaoRef||'concluiu',tipo:cond?'condicional':'sequencial',rotulo:relation.rotulo||'',quando:cond,navegacao:relation.navegacaoEditor||'empilhar',referenciasOriginais:[rid]};
+   grouped.set(signature,entry);links.push(entry);
+  }
+ }
+ // Escolha inicial pelos metadados internos do catálogo; não pelo nome da Splash.
+ const indegree={};for(const k of used)indegree[k]=0;
+ for(const e of links)indegree[e.para]=(indegree[e.para]||0)+1;
+ const weight=k=>{
+  const nav=native.telas[k].navegacao||{};
+  const parts=nav.participacoes||[];
+  const start=parts.some(p=>p.contexto?.modo==='inicio'&&p.ordem===1);
+  const early=parts.some(p=>p.jornadaRef==='app'&&p.subjornadaRef==='app.inicializacao'&&p.ordem===1);
+  return [nav.inicial===true?0:early?1:start?2:indegree[k]===0?3:4,parts.find(x=>x.jornadaRef==='app')?.ordem??9999,k];
+ };
+ const ordered=used.sort((a,b)=>{const A=weight(a),B=weight(b);for(let i=0;i<A.length;i++){if(A[i]<B[i])return -1;if(A[i]>B[i])return 1;}return 0;});
+ const inicio=ordered[0]||null,queue=[],orderedUsed=[],visited=new Set();
+ const byOrigin=new Map();for(const e of links){if(!byOrigin.has(e.de))byOrigin.set(e.de,[]);byOrigin.get(e.de).push(e.para);}
+ function walk(k){queue.push(k);for(let i=0;i<queue.length;i++){const next=queue[i];if(!native.telas[next]||visited.has(next))continue;visited.add(next);orderedUsed.push(next);for(const x of byOrigin.get(next)||[])if(!visited.has(x))queue.push(x);}queue.length=0;}
+ if(inicio)walk(inicio);for(const key of ordered)if(!visited.has(key))walk(key);
+ const f={schemaVersion:4,inicio,telasUsadas:orderedUsed,conexoes:links,variaveis:{professionalAccess:'enabled',onboardingConcluido:true,primeiroAcesso:false,'sessao.perfil':'cliente'},configuracao:{politicaRetorno:'historico',bifurcacao:'automatica'}};
+ const snapshots={};for(const e of links)snapshots[e.id]=JSON.stringify({de:e.de,para:e.para,saida:e.saida,tipo:e.tipo,rotulo:e.rotulo,quando:e.quando,navegacao:e.navegacao});
+ return {tipo:native.tipo,versao:native.versao,catalogo:{telas:native.telas,componentes:native.componentes},fluxo:f,__initialEdgeState:snapshots,__editorLoadedIds:allIds,__editorProjection:{origem:'telas[id].navegacao.saidas',telas:orderedUsed.length,conexoes:links.length,agrupadas:collapsed,saidasInternas:internal,pendencias:pendentes},__editorDirty:false};
+}
+function portableDoc(src){
+ const output={tipo:src.tipo||'colecao_telas',versao:src.versao??1,telas:copy(src.catalogo.telas),componentes:copy(src.catalogo.componentes)};
+ const links=src.fluxo.conexoes,byId=new Set(links.flatMap(l=>l.referenciasOriginais?.length?l.referenciasOriginais:[l.id]));
+ const had=new Set(src.__editorLoadedIds||[]);
+ for(const screen of Object.values(output.telas)){
+  if(!screen.navegacao)continue;
+  screen.navegacao.saidas=(screen.navegacao.saidas||[]).filter(rel=>!had.has(rel.id)||byId.has(rel.id));
+  screen.navegacao.entradas=(screen.navegacao.entradas||[]).filter(rel=>!had.has(rel.relacaoRef)||byId.has(rel.relacaoRef));
+ }
+ for(const e of links){const target=output.telas[e.de];if(!target||!output.telas[e.para])continue;
+  const state=JSON.stringify({de:e.de,para:e.para,saida:e.saida,tipo:e.tipo,rotulo:e.rotulo,quando:e.quando,navegacao:e.navegacao});
+  if(src.__initialEdgeState?.[e.id]===state)continue; // preservar dados V3 originais sem perda em refs agrupadas
+  const nav=target.navegacao||(target.navegacao=ajNativeEmptyNavigation());
+  nav.saidas=nav.saidas||[];
+  const refs=e.referenciasOriginais?.length?e.referenciasOriginais:[e.id];
+  for(const rid of refs){let rel=nav.saidas.find(x=>x.id===rid);
+   const original=src.catalogo.telas[e.de]?.navegacao?.saidas?.find(x=>x.id===rid);
+   const unchanged=original&&original.destinoRef===e.para&&JSON.stringify(ajNativeUiCondition(original.quando))===JSON.stringify(e.quando||null)&&
+     (original.rotulo||'')===(e.rotulo||'')&&(original.eventoOrigem||original.acaoRef||'concluiu')===(e.saida||'concluiu');
+   if(unchanged)continue;
+   if(!rel){rel={id:rid,acaoRef:'editor.navegacao',origem:'editor_fluxo_v4'};nav.saidas.push(rel)}
+   rel.destinoTipo='tela';rel.destinoRef=e.para;rel.origemTelaRef=e.de;rel.eventoOrigem=e.saida;rel.rotulo=e.rotulo;
+   rel.quando=ajNativeWriteCondition(e.quando);rel.navegacaoEditor=e.navegacao;
+  }
+ }
+ return output;
+}
+function initialFromReference(){return copy(JORNADAS_SOURCE)}
+function freshFromCatalog(){return initialFromReference()}
+function initialSplashOnly(){return initialFromReference()}
+function initialize(){
+ bind();setDoc(initialFromReference(),'Catálogo completo do Fluxo',false);
+ by('saveStatus').textContent='Catálogo carregado';
+ restoreLocalV4(stored=>{if(stored?.telas&&stored?.componentes){try{setDoc(stored,'trabalho local restaurado',false);by('saveStatus').textContent='Trabalho local restaurado';}catch(e){console.warn(e)}}});
+}
+function restoreLocalV4(callback){try{if(!window.indexedDB)return callback(null);
+ const r=indexedDB.open(AJ_NATIVE_STORE,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('documentos'))r.result.createObjectStore('documentos')};
+ r.onerror=()=>callback(null);r.onsuccess=()=>{const db=r.result,tx=db.transaction('documentos','readonly'),req=tx.objectStore('documentos').get('principal');
+  req.onsuccess=()=>{const data=req.result;db.close();callback(data||null)};req.onerror=()=>{db.close();callback(null)};
+ };
+ }catch(e){callback(null)}}
+function persist(){dirty=false;by('saveStatus').textContent='Salvando…';
+ try{if(!window.indexedDB)throw Error('IndexedDB indisponível');const r=indexedDB.open(AJ_NATIVE_STORE,1);
+  r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('documentos'))r.result.createObjectStore('documentos')};
+  r.onerror=()=>{by('saveStatus').textContent='Exporte para salvar'};
+  r.onsuccess=()=>{try{const db=r.result,tx=db.transaction('documentos','readwrite');tx.objectStore('documentos').put(portableDoc(doc),'principal');
+   tx.oncomplete=()=>{by('saveStatus').textContent='Salvo localmente';db.close()};tx.onerror=()=>{by('saveStatus').textContent='Exporte para salvar';db.close()};
+  }catch(e){by('saveStatus').textContent='Exporte para salvar'}};
+ }catch(e){by('saveStatus').textContent='Exporte para salvar';console.warn(e)}}
+function renderDetail(){
+ const panel=by('detail');if(!selected||!doc.catalogo.telas[selected]){if(!selected)panel.classList.remove('open');return;}
+ panel.classList.add('open');by('detailTitle').textContent=nameOf(selected);
+ const screen=doc.catalogo.telas[selected],nav=screen.navegacao||{},comp=screen.estrutura?.html?.composicao||{};
+ const rows=[['ID de Jornadas/Fluxo',selected],['Nome',screen.identidade?.nomeExibicao],['Jornadas',(screen.classificacao?.jornadas||[]).map(j=>j.nome).join(', ')],['Componentes na tela',Object.keys(comp).length],['Entradas',incoming(selected).length],['Saídas visuais',outgoing(selected).length],['Relações originais',(nav.saidas||[]).length],['Saídas internas',(nav.saidas||[]).filter(x=>x.destinoTipo&&x.destinoTipo!=='tela').length]];
+ by('detailBody').innerHTML=rows.map(([k,v])=>`<div class="kv"><span>${esc(k)}</span><span>${esc(v??'—')}</span></div>`).join('')+
+ `<h3>Composição visual original</h3>`+(Object.keys(comp).length?'<ul>'+Object.entries(comp).map(([slot,x])=>'<li>'+esc(slot)+' → '+esc(x.componenteRef||'')+'</li>').join('')+'</ul>':'<p>Sem composição definida.</p>')+
+ '<h3>Saídas</h3>'+(nav.saidas||[]).map(r=>'<div class="relation"><strong>'+esc(r.rotulo||r.acaoRef||r.id)+' → '+esc(r.destinoRef||'?')+'</strong><small>'+esc(r.destinoTipo||'tela')+' · '+esc(r.quando?JSON.stringify(r.quando):'Sem condição')+'</small></div>').join('')+
+ `<div class="mini-row"><button data-action="preview" data-key="${esc(selected)}">Visual</button><button data-action="connect" data-key="${esc(selected)}">+ Nova conexão</button></div>`;
+}
+function createJornadasFrame(key,state){
+ // Mesmo HTML/CSS/componentes do renderer de Jornadas, lendo SOMENTE doc do Fluxo.
+ const t=doc?.catalogo?.telas?.[key];if(!t?.estrutura?.html?.composicao)return '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><body>Não existe composição visual para '+esc(key)+'</body></html>';
+ const refs={...(t.componentes?.instanciasRefs||{})};for(const [inst,spec] of Object.entries(t.estrutura.html.composicao))if(spec?.componenteRef)refs[inst]=spec.componenteRef;
+ const definitions={};for(const ref of new Set(Object.values(refs)))if(doc.catalogo.componentes[ref])definitions[ref]=doc.catalogo.componentes[ref];
+ // Os eventos visuais são interpretados pela navegação da própria tela, sem acesso a Jornadas.
+ const info={identidade:t.identidade,classificacao:t.classificacao,estrutura:t.estrutura,definicoes:definitions,instancias:refs,navegacao:{destinosDeclarados:t.navegacao?.destinosDeclarados||[]}};
+ const data=JSON.stringify(info).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');
+ const css='html,body{margin:0;min-height:100%;}*{box-sizing:border-box}#app-root{min-height:100dvh}#warnings{position:fixed;top:4px;right:4px;max-width:80%;background:#fff1c9;color:#79551f;padding:5px;font:10px Arial;z-index:99999}#navigation-tip{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);background:#10233f;color:white;border-radius:6px;padding:8px;font:11px Arial;z-index:999999}';
+ return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob: https:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src data: https:"><style>${css}</style></head><body><div id="app-root"></div><div id="warnings" hidden></div><div id="navigation-tip" hidden></div><script type="application/json" id="view-data">${data}</script><script>${AJ_JORNADAS_RUNTIME.replace(/<\/script/gi,'<\\/script')}</script></body></html>`;
+}
+function staticPreview(key,state){return createJornadasFrame(key,state)}
+function exportDoc(){const out=portableDoc(doc);download('documento_fluxo.json',JSON.stringify(out,null,2));showNotice('Exportado em quatro chaves: tipo, versao, telas e componentes.');}
+function updateCatalogOnly(input){
+ const latest=normalize(input),old=portableDoc(doc),incomingT=latest.catalogo.telas,incomingC=latest.catalogo.componentes;
+ const merged={tipo:latest.tipo||old.tipo,versao:latest.versao??old.versao,telas:{...old.telas,...incomingT},componentes:{...old.componentes,...incomingC}};
+ for(const [k,t] of Object.entries(old.telas))if(merged.telas[k]&&t.navegacao)merged.telas[k].navegacao=copy(t.navegacao);
+ setDoc(merged,'base atualizada');showNotice('Telas e componentes atualizados; conexões existentes preservadas por ID.');
+}
+function restoreBackup(){if(!confirm('Restaurar o documento.json original do módulo Fluxo? Alterações não exportadas serão substituídas.'))return;setDoc(initialFromReference(),'Base original restaurada');showNotice('Catálogo e conexões originais restaurados do JSON do próprio módulo.');}
+function ajNavigateFromFrame(event){
+ const frame=by('previewIframe');if(!frame||event.source!==frame.contentWindow)return;
+ const action=String(event.data?.action||'');const origin=ajPreviewCurrent;
+ if(event.data.type==='advogadoja.flow.visual.navigate'){
+  const target=event.data.destination;
+  if(doc.catalogo.telas[target]){window.__ajPreviewNavigate?.(target);return;}
+ }
+ if(event.data.type==='advogadoja.flow.visual.action'||event.data.type==='advogadoja.flow.visual.navigate'){
+  const matches=outgoing(origin).filter(c=>{
+   if(!action)return false;
+   const raw=doc.catalogo.telas[origin]?.navegacao?.saidas?.find(x=>x.id===c.id);
+   return c.saida===action||raw?.acaoRef===action||raw?.eventoOrigem===action;
+  });
+  const yes=matches.filter(c=>conditionMatch(c)===true);
+  if(yes.length===1){window.__ajPreviewNavigate?.(yes[0].para);return;}
+  if(yes.length>1){showNotice('Mais de um destino válido para '+action+'. Defina a condição ou escolha no fluxo.');return;}
+  showNotice('Ação '+action+' sem destino único conectado nesta tela.');
+ }
+}
+window.addEventListener('message',event=>{if(['advogadoja.flow.visual.action','advogadoja.flow.visual.navigate'].includes(event.data?.type))ajNavigateFromFrame(event)});
+
+function loadOwnDocument(){
+ const embedded=document.getElementById('fluxo-initial-data');
+ if(embedded){try{loadNative(JSON.parse(embedded.textContent));}catch(err){showBootError(err)};return;}
+ fetch('./data/documento.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('documento.json HTTP '+r.status);return r.json()}).then(loadNative).catch(showBootError);
+}
+function loadNative(native){
+ if(!native?.telas||!native?.componentes)throw Error('O documento do Fluxo precisa de telas e componentes.');
+ JORNADAS_SOURCE=copy(native);LEGACY_REFERENCE={catalog:{entries:[]}};
+ DEFAULT_CATALOG={catalogo:{telas:native.telas,componentes:native.componentes}};
+ V3_BASE={catalogo:{telas:native.telas,componentes:native.componentes},apresentacao:{aliasMap:{}}};V3_ALIASES={};
+ initialize();
+}
+function showBootError(err){console.error(err);const status=document.getElementById('saveStatus');if(status)status.textContent='Erro ao carregar: '+err.message;}
+loadOwnDocument();

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Fluxo | Motor V3 autocontido · AdvogadoJá+</title>
-    <link rel="stylesheet" href="./estilo.css">
+    <title>Fluxo | Motor progressivo V4 · AdvogadoJá+</title>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     <header class="toolbar">
@@ -18,7 +18,7 @@
           F
         </button>
         <div>
-          <strong>Fluxo</strong><small>Catálogo V3 · editor visual V1</small>
+          <strong>Fluxo</strong><small>Fluxo · catálogo progressivo próprio</small>
         </div>
       </div>
       <div class="toolbar__actions">
@@ -30,7 +30,7 @@
         ><button id="exportBtn">Exportar</button
         ><button
           id="generateBtn"
-          title="Reconstruir todas as conexões e bifurcações a partir de catalogo.telas"
+          title="Reconstruir conexões das telas do próprio documento.json"
         >
           Recriar do catálogo</button
         ><button id="importBtn">Importar</button
@@ -43,7 +43,7 @@
           Atualizar base</button
         ><button
           id="restoreBtn"
-          title="Recuperar a cópia de segurança anterior"
+          title="Restaurar a base original do Fluxo a partir de seu documento.json"
         >
           Restaurar</button
         ><a href="#" class="home-link" id="homeBtn">Início</a>
@@ -88,6 +88,6 @@
     </div>
     <input id="fileInput" type="file" accept=".json,application/json" hidden />
     <div class="notice" id="notice" role="status" aria-live="polite"></div>
-    <script src="./motor.js" defer></script>
+    <script src="./js/motor.js" defer></script>
   </body>
 </html>
