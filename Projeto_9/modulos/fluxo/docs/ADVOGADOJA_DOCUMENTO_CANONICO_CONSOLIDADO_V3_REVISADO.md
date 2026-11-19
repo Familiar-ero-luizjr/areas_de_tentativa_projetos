@@ -1,12 +1,16 @@
-# ADVOGADOJÁ — DOCUMENTO CANÔNICO CONSOLIDADO V2
-## Direção, contratos JSON de Telas e Componentes, equivalência estrutural, saneamento de legado e garantia de conversão do Fluxo
+# ADVOGADOJÁ — DOCUMENTO CANÔNICO CONSOLIDADO V3
+## Direção canônica, contratos JSON de Tela e Componente, navegação por rotas declaradas, frontend do Fluxo, saneamento do legado e conversão auditável
 
-**Versão editorial:** 2.0 — **19/11/2026**  
+**Versão editorial:** 3.1 — **19/11/2026** · Revisão da V3 aprovada pelo usuário  
 **Estado:** decisões de arquitetura e saneamento consolidadas; schema formal, conversores e motores ainda **não homologados**.  
 **Perfil auditado:** Advogado. **Aplicação conceitual:** padrão reutilizável para outros perfis, após verificação de seus próprios contratos.  
-**Natureza:** novo documento unificado e atualizado, que substitui **para novas decisões de modelagem** as orientações incompatíveis presentes nos três documentos V1. Não altera os arquivos JSON de origem.
+**Natureza:** consolidação evolutiva integral da V2 e dos dois anexos sobre navegação/frontend. Substitui, **para decisões novas de modelagem**, orientações incompatíveis das fontes anteriores; conserva observações, inventários e lacunas sem fingir homologação. **Não altera JSONs, implementações ou fontes originais.**
 
-> **Regra prevalente:** uma tela tem um ID canônico, componentes são referenciados por ID, valores pertencem a `props` da instância, comportamento operacional é declarado — jamais adivinhado —, e conteúdo legado só permanece no sistema novo quando necessário e não obsoleto. **Não utilizar `aliasMap`, `popup.screen-note` ou `modal.route-modal` no conjunto canônico/operacional.** O arquivo de origem histórico permanece íntegro e apartado.
+> **Regra prevalente V3.1:** cada tela é identificada por um único `identidade.id`, compõe componentes por referência e guarda `props` por instância. **A única fonte operacional das transições entre telas é `navegacao.rotas[]` de cada Tela**, com predicados opcionais em `navegacao.rotas[].quando`. Não criar blocos `conexoes`, `condicoes`, `aliasMap` ou `referencias.aliases[]`; não instalar `popup.screen-note` nem `modal.route-modal` no catálogo novo. Fluxo preserva ocorrências, sequências, ramos e caminhos editoriais, mas não guarda uma segunda lista de destinos. O motor deriva o diagrama sem inventar navegação.
+
+### Decisão adicional incorporada após a V3 original
+
+**[APROVADO — 19/11/2026]** O usuário rejeitou explicitamente os nomes de blocos `conexoes` e `condicoes`. Toda documentação anterior que propunha essas coleções fica superada **quanto à estrutura de armazenamento**. Isso não elimina a necessidade de representar navegação e regras reais: ambas são descritas diretamente na Tela por `navegacao.rotas[]` e declarações `quando`. A árvore de Fluxo preserva as ocorrências, sequências, ramos e caminhos editoriais, mas **não replica o registro de destinos**. As fontes anteriores podem conter aqueles nomes **somente como evidência histórica de migração**, nunca como estrutura nova aprovada.
 
 ### Escopo e fontes efetivamente examinadas
 
@@ -17,8 +21,12 @@
 | `ADVOGADOJA_GARANTIA_CONVERSAO_INTEGRAL_FLUXO_V1.md` | Preservação de estruturas Flow, divergências da V3, testes e requisitos de reconversão | Lido integralmente, requisitos incompatíveis revisados |
 | `advogado_catalogo_completo (1).json` | Fonte real de telas, componentes, instâncias e dados auxiliares | Inspecionado programaticamente; SHA-256 `670bbc235e8ced14a93228f48233f26d56bd4d1195b5fec0cc8b5460171fdcca` |
 | Modelo demonstrativo `AdvogadoJa_Arvores_Modelo_Telas_Componentes_V010 (1).html` | Estrutura de referência V0.10 | Seus campos foram descritos nas fontes e utilizados como referência estrutural; não homologação do app |
+| `ADVOGADOJA_DOCUMENTO_CANONICO_CONSOLIDADO_V2.md` | Base integral desta V3, já incorpora as decisões de exclusão e os inventários | Preservada, atualizada e complementada; **sem migração executada** |
+| `CONTRATO_CANONICO_V1.md` | Conexões, eventos, condições, bifurcação inferida, retornos, segmentos e painel de inspeção do Fluxo | Reavaliado: comportamento mantido quando compatível; aliases, escopo legado e duplicação de destinos **não adotados** |
+| `MAPEAMENTO_CAMPOS_FRONT.md` | Campo → consumo do frontend do Flow; inferência de bifurcações e controles de edição/exportação | Reavaliado: campos propostos tratados como **candidatos**; legado separado de fontes operacionais; aliases não utilizados |
 
-**Interpretação dos status:** **[APROVADO]** decisão expressa do usuário nesta conversa; **[DEFINIDO]** regra canônica mantida; **[OBSERVADO]** constatado em fonte; **[PENDENTE]** exige avaliação antes da migração; **[EXEMPLO]** ilustração, não definição de produção.
+
+**Interpretação dos status:** **[APROVADO]** decisão expressa do usuário; **[DEFINIDO]** princípio arquitetural consolidado; **[OBSERVADO]** fato registrado nos arquivos citados (com a fonte/versão indicada); **[PROPOSTO]** formato técnico candidato, ainda não homologado; **[PENDENTE]** definição, prova ou decisão em aberto; **[EXEMPLO]** demonstração que não descreve comportamento de produção. **Uma proposta técnica da V1 não vira aprovação por aparecer nesta V3.**
 
 ### Sumário
 
@@ -29,13 +37,17 @@
 5. [Mapa completo de equivalência estrutural e conversão](#5-mapa-completo-de-equivalência-estrutural-e-conversão)
 6. [Saneamento dos componentes e campos obsoletos](#6-saneamento-dos-componentes-e-campos-obsoletos)
 7. [Fluxo: identidade única, preservação e conversão integral](#7-fluxo-identidade-única-preservação-e-conversão-integral)
-8. [Validação, testes, interoperabilidade e homologação](#8-validação-testes-interoperabilidade-e-homologação)
-9. [Pendências, ordem de implementação e critérios de aceite](#9-pendências-ordem-de-implementação-e-critérios-de-aceite)
-10. [Anexo A — Inventário das 33 telas](#anexo-a--inventário-das-33-telas)
-11. [Anexo B — Inventário das 64 definições referenciadas](#anexo-b--inventário-das-64-definições-referenciadas)
-12. [Anexo C — Inventário das 35 definições locais](#anexo-c--inventário-das-35-definições-locais)
-13. [Anexo D — Dicionário de campos V0.10](#anexo-d--dicionário-de-campos-v010)
-14. [Anexo E — Rastreabilidade e histórico das mudanças](#anexo-e--rastreabilidade-e-histórico-das-mudanças)
+8. [Contrato de navegação da Tela e interpretação pelo Fluxo](#8-contrato-de-navegação-da-tela-e-interpretação-pelo-fluxo)
+9. [Mapeamento dos campos para o frontend do Fluxo](#9-mapeamento-dos-campos-para-o-frontend-do-fluxo)
+10. [Validação, testes, interoperabilidade e homologação](#10-validação-testes-interoperabilidade-e-homologação)
+11. [Pendências, ordem de implementação e critérios de aceite](#11-pendências-ordem-de-implementação-e-critérios-de-aceite)
+12. [Anexo A — Inventário das 33 telas](#anexo-a--inventário-das-33-telas)
+13. [Anexo B — Inventário das 64 definições referenciadas](#anexo-b--inventário-das-64-definições-referenciadas)
+14. [Anexo C — Inventário das 35 definições locais](#anexo-c--inventário-das-35-definições-locais)
+15. [Anexo D — Dicionário de campos V0.10](#anexo-d--dicionário-de-campos-v010)
+16. [Anexo E — Rastreabilidade e histórico das mudanças](#anexo-e--rastreabilidade-e-histórico-das-mudanças)
+17. [Anexo F — Correspondência integral dos dois novos documentos](#anexo-f--correspondência-integral-dos-dois-novos-documentos)
+18. [Anexo G — Critérios de cobertura e checklist documental V3](#anexo-g--critérios-de-cobertura-e-checklist-documental-v3)
 
 ---
 
@@ -47,9 +59,9 @@
 
 **Unidades distintas:** uma *tela* representa um objeto lógico; um *componente* é uma definição de UI; uma *instância* posiciona esse componente numa tela e recebe `props`; um *elemento* integra o DOM da definição; uma *ocorrência de Fluxo* é um nó contextual que aponta para a tela sem se tornar outra tela; um *item repetível* tem ID próprio quando é objeto referenciável.
 
-### 1.2 Decisões aprovadas nesta revisão
+### 1.2 Decisões aprovadas e regras prevalentes nesta revisão
 
-| Assunto | Regra V2 aprovada | Consequência operacional |
+| Assunto | Regra prevalente na V3 | Consequência operacional |
 |---|---|---|
 | Identidade única | **Proibido `aliasMap`** nos contratos, catálogos, módulos, arquivos operacionais e conversores da arquitetura nova. | Referências apontam diretamente a um único `identidade.id`; divergências são erros de referência, não resolvidas por tabela intermediária. |
 | Campos antigos | `participacoes`, `moduloRef`, `submoduloRef`, `escopo`, `secao` não são campos do padrão canônico. | Não gerar os campos; valores originais, se existirem, ficam na fonte histórica imutável ou relatório de migração. |
@@ -60,8 +72,11 @@
 | Metadados do motor | `screenConfig.enginePolicy`, `runtime`, `organization`, `dataRef` não vão por inércia no JSON unitário. | Colocar apenas dados efetivamente necessários no manifesto/adaptador, preservando origem. |
 | Dados por instância | Migrar `screen.content.components` para `composicao[instanciaId].props`. | A mesma definição de componente pode aparecer com textos e listas diferentes. |
 | Fluxo e Mapa | Preservar os vínculos contextuais separadamente da definição visual. | Nenhuma ocorrência cria outro contrato de tela. |
+| Frontend do Fluxo | Consultar/editar diretamente `tela.navegacao.rotas[]` e `rota.quando`, preservando a árvore editorial do Fluxo. | **[APROVADO]** Não existe cadastro próprio `conexoes` ou `condicoes` nem uma segunda fonte de destinos. |
+| Bifurcações | Distinguir branches **importados** (evidência editorial) dos losangos **calculados** (visualização de rotas comprovadas). | Nenhum losango visual gera outra rota ou regra persistida. |
 
-**Proibição de aliases sem renomeação silenciosa:** no catálogo auditado existe `advogado.home_advogado`. O exemplo V0.10 usa `advogado.home`, mas isso **não** homologa uma troca. O ID do catálogo permanece até decisão explícita de renomear e atualizar atomicamente todas as referências. **Não criar uma segunda Home para contornar o problema.**
+
+**Identidade única sem renomeação silenciosa:** no catálogo auditado existe `advogado.home_advogado`. O exemplo V0.10 usa `advogado.home`, mas isso **não** homologa uma troca. O ID do catálogo permanece até decisão explícita de renomear e atualizar atomicamente todas as referências. **Não criar uma segunda Home para contornar o problema.**
 
 ### 1.3 Precedência e legado
 
@@ -119,14 +134,14 @@ As regras físicas existentes do construtor para leitura de `data` e da bibliote
 |---|---|---|---|
 | **Tela** | Árvore da definição e dos componentes, props, estados e prévia | Contrato de tela e componentes por IDs | Inferir banco, fluxos ou regras reais apenas pelo texto visível. |
 | **Jornadas** | Ordem editorial, agrupamento, galeria e prévia fiel | Vínculos editoriais declarados e seleção de dispositivos | Transformar ordem editorial em rota operacional. |
-| **Fluxo** | Nós por ocorrência, conectores, alternativas e condições | Conexões declaradas e apresentação do grafo | Deduzir destinos de posição, sequência, rótulo ou nome de botão. |
+| **Fluxo** | Nós por ocorrência, conectores e alternativas | Lê/edita `navegacao.rotas[]` da Tela de origem, além da própria apresentação editorial | Deduzir destinos de posição, sequência, rótulo ou nome de botão. |
 | **Protótipo** | Simulação de estados, variações e percursos válidos | Sessão local + relações efetivas do contrato | Chamar serviços reais ou abrir `modal.route-modal` para fingir navegação. |
 
 ### 2.3 Regras de UX e interoperabilidade
 
 As interfaces dos quatro módulos **não precisam ser visualmente iguais**; precisam representar a **mesma tela do produto** usando o mesmo contrato. A galeria de Jornada não é grafo; o grafo de Fluxo não é simulador; o Protótipo simula somente destinos/condições explícitos. CSS de `.header`, `.menu` e demais seletores do produto deve ser isolado do CSS do editor. Produto mobile-first; ambiente de edição funcional em desktop e tablet; foco/teclado, contraste, estados vazios e erros visíveis.
 
-O Protótipo deve distinguir ação local (abrir menu, alternar estado, fechar modal real) de navegação entre telas; não reintroduzir um modal de simulação por conveniência. Uma conexão sem destino homologado é exibida como **pendência**, não como aviso genérico de “tela isolada”.
+O Protótipo deve distinguir ação local (abrir menu, alternar estado, fechar modal real) de navegação entre telas; não reintroduzir um modal de simulação por conveniência. Uma rota com destino não resolvido é exibida como **pendência**, não como aviso genérico de “tela isolada”.
 
 ### 2.4 Matriz de leitura/edição
 
@@ -136,7 +151,7 @@ O Protótipo deve distinguir ação local (abrir menu, alternar estado, fechar m
 | `classificacao.jornadas` | Inspeciona | Lê/edita vínculo, se aprovado | Contexto | Contexto |
 | `estrutura` + `props` | Edita e pré-visualiza | Renderiza | Prévia | Renderiza |
 | Definições de componente e CSS | Inspeciona/edita | Renderiza | Prévia | Renderiza |
-| `navegacao` | Inspeciona | Consulta | Edita relações autorizadas | Executa simulação |
+| `navegacao.rotas[]` + `.quando` | Inspeciona/edita | Consulta | Lê/edita a rota da Tela de origem | Executa simulação |
 | `estados` + `variantes` | Edita | Prévia local | Contexto/condições | Resolve na sessão |
 | `interacoes` + eventuais `acoes` | Edita | Só efeito local seguro | Contexto/evento | Simula efeitos |
 | `dados` | Declara/inspeciona | Apresenta | Contexto | Simula valores |
@@ -484,7 +499,7 @@ A comparação dos `template.html` da fonte mostrou **23 estruturas equivalentes
 | `header.titlebar.v01` | **1** | CSS próprio em `.app-titlebar` com padding/borda/cor/tamanho. | Comparar equivalência visual e papel de CSS compartilhado. |
 | `screen.advogado.configuracao.agenda_semanal.header.titlebar` | **1** | CSS próprio com min-height/flex/alinhamento. | Preservar variação se afetar layout; não fundir por similaridade de HTML. |
 
-**O exemplo V0.10 também precisa de saneamento:** o `seed` do HTML de referência inclui `screen.modal` usando `modal.route-modal.v02` e sua definição visual. Esses itens ilustrativos deixam de ser modelo operacional após a decisão desta V2; demais campos do V0.10 continuam referência estrutural.
+**O exemplo V0.10 também precisa de saneamento:** o `seed` do HTML de referência inclui `screen.modal` usando `modal.route-modal.v02` e sua definição visual. Esses itens ilustrativos deixam de ser modelo operacional após a decisão incorporada nesta V3; demais campos do V0.10 continuam referência estrutural.
 
 **Esse agrupamento não é homologação de duplicidade.** Se a consolidação for aprovada depois, reusar uma definição existente e migrar as diferenças para `props`/variantes **somente quando representáveis e visualmente equivalentes**. Não escolher um componente vencedor por contagem de uso.
 
@@ -514,7 +529,7 @@ A comparação dos `template.html` da fonte mostrou **23 estruturas equivalentes
 
 O módulo Fluxo representa **ocorrências, sequências, ramos, caminhos, condições e conexões**. O JSON de Tela define componentes e interações; não armazena todos os nós de edição de Fluxo. A presença de múltiplos nós em contextos distintos usa o **mesmo `telaId`**, cada nó com seu próprio `occurrenceId`. Um componente de UI não vira um nó de Fluxo só porque participa de navegação.
 
-**Nenhum `aliasMap`.** A resolução de cada nó usa o ID canônico que existe no catálogo carregado. Referências divergentes são `referencia_nao_resolvida` até que uma decisão explícita de migração substitua todas as referências correlatas. A Home `advogado.home_advogado` é a entrada real do recorte de 33 telas; `advogado.home` permanece caso de referência V0.10 até uma unificação aprovada e executada.
+**Nenhum mecanismo operacional de equivalências alternativas entre IDs.** A resolução de cada nó usa o ID canônico que existe no catálogo carregado. Referências divergentes são `referencia_nao_resolvida` até que uma decisão explícita de migração substitua todas as referências correlatas. A Home `advogado.home_advogado` é a entrada real do recorte de 33 telas; `advogado.home` permanece caso de referência V0.10 até uma unificação aprovada e executada.
 
 ### 7.2 Fontes do Fluxo descritas e diferenças constatadas no documento V1
 
@@ -526,7 +541,7 @@ Os números abaixo são evidência **reportada pela auditoria V1 do Fluxo** para
 | Projeção do Fluxo — demais blocos | Mesmo JSON | `core.screens` com `78` chaves; `catalog.entries` com `78` entradas; `domain.flow.state` com `nodes`, `paths`, `transitions`, `segments` vazios na fonte inspecionada, além de `history`; metadados, timestamps e revisões. |
 | Apresentação Flow V3 | `ADVOGADOJA_FLOW_V3_BASE_CONTRATO_V02 (1).zip` → `flow_apresentacao_v3.json` | `115` sequências, `197` ocorrências de tela, `33` branches e `114` paths; `aliasMap` com 11 entradas, `legacyScreens`, `politica` e metadados de origem. |
 | Catálogo referenciado no pacote V3 | ZIP → `catalogo/catalogo.json` | Índice de telas e componentes associado à apresentação; é uma **referência** do Fluxo, não autorização para alterar o modelo visual das telas. |
-| Documento de direção das conexões | `CONTRATO_CANONICO_TELAS_COMPONENTES_CONEXOES_FLUXO_V1.md` | Regras conceituais de IDs, conexões, bifurcação inferida, entradas, retornos, estados e não inferência de negócio. |
+| Documento de direção das conexões | `CONTRATO_CANONICO_V1.md` (anexo disponibilizado nesta revisão) | Regras conceituais de IDs, conexões, bifurcação inferida, entradas, retornos, estados e não inferência de negócio; **formas físicas ainda propostas**. |
 
 **[PRESERVAR]** As duas representações possuem 197 ocorrências no escopo daquela auditoria, mas diferem em três sequências, três ramos e três caminhos. **Isso é distinto** das 93 referências a ocorrências do Fluxo encontradas no catálogo de 33 telas; os conjuntos/fontes têm escopos diferentes e os números não devem ser somados ou declarados iguais.
 
@@ -549,68 +564,66 @@ Os números abaixo são evidência **reportada pela auditoria V1 do Fluxo** para
 | Sequência | `sequenceId` | Ordem e agrupamento, inclusive arrays vazios. |
 | Ramo | `branchId` | Título, tipo e opções de origem; não assumir condição executável. |
 | Caminho | `pathId` | Alternativa, ordem e `isDefault` explícito quando houver. |
-| Conexão | `connectionId` | Relação funcional declarada com origem/saída e destino/entrada. |
-| Condição | `conditionId` | Predicado conhecido e validado, sem interpretar rótulo como código. |
+| Rota funcional | `navegacao.rotas[].id` | Identifica a transição no JSON da Tela de origem; seu contexto define a origem. |
+| Predicado da rota | `navegacao.rotas[].quando` | Regra declarativa inline; não há coleção separada de predicados. |
 | Evento | ID de ação/interação | Ações de menu são opções, não uma bifurcação booleana automática. |
 | Estado / variante | IDs correspondentes | Mudança local não cria rota ou tela nova. |
 | Referência antiga | Campo original no snapshot | Não funciona como segundo identificador nem alias operacional. |
 
-### 7.5 Duas camadas, uma só semântica operacional
+### 7.5 Duas camadas, uma única fonte de navegação
 
 ```text
-ORIGEM HISTÓRICA / FLOW V3
-     │
-     ├── snapshot original íntegro e hash (somente auditoria)
-     └── leitura + inventário de objetos/IDs
-             │
-             ▼
-MODELO NOVO DO FLUXO
-     ├── apresentacao: sequence / screen / branch / path
-     ├── conexoesDeclaradas: somente navegação funcional comprovada
-     ├── referencias: telaId único por ocorrência; pendências explícitas
-     ├── condicoes/eventos: somente quando definidos
-     ├── extensoes: dados não excluídos sem equivalente direto
-     └── verificacao: histórico de decisões e diferenças de migração
-             │
-             ├── visualização de diagrama
-             ├── edição identificada e local
-             └── exportação / testes / diff
+BIBLIOTECA DE TELAS E COMPONENTES
+   ├── Tela.identidade.id
+   ├── Tela.navegacao.rotas[]          ← DESTINOS OPERACIONAIS
+   │        └── rota.quando?            ← REGRA INLINE, OPCIONAL
+   ├── Tela.interacoes.eventos[]       ← EFEITOS LOCAIS
+   └── Tela.estados / variantes         ← APRESENTAÇÃO
+                │ (consulta por ID)
+                ▼
+FLUXO (APRESENTAÇÃO EDITORIAL)
+   ├── sequence / screen / branch / path
+   ├── occurrenceId + telaRef
+   ├── layout e contexto do editor
+   ├── referências pendentes detectadas
+   └── extensões da árvore legada preservadas para conversão
+                │
+                ▼
+VISUALIZAÇÃO DERIVADA: linhas / alternativas / losangos / retornos
 ```
 
-A camada de **apresentação** preserva sequência/branch/path, títulos e ordem. A camada de **semântica de navegação** só tem conexões se houver gatilho/saída, destino/entrada e condição definida. Não transformar `sequence.items[]` em chamadas de navegação. Um losango pode ser **derivado no desenho** quando houver alternativas condicionais comprovadas; o branch importado, por sua vez, continua com ID próprio para preservar a árvore editorial.
+**[APROVADO]** O Fluxo não possui registro operacional independente de transições nem catálogo separado de predicados. A árvore editorial preserva `sequence`, `branch`, `path`, IDs, rótulos, opções e ordem original; uma sequência no desenho **não autoriza automaticamente** uma rota funcional. A visualização calcula arestas consultando `navegacao.rotas[]` de cada tela de origem. Predicados `quando` pertencem ao objeto que eles restringem e não recebem referências para uma lista global.
 
-### 7.6 Exemplo de contrato candidato do conversor (não homologado)
+### 7.6 Envelope do conversor de apresentação (exemplo não homologado)
+
+O envelope representa **somente os dados próprios do Fluxo**. Não copia para si a lista de rotas das telas. Para renderizar ou simular, recebe uma coleção de Telas/Componentes por IDs diretos.
 
 ```json
 {
-  "schema": "advogadoja.fluxo.conversao",
-  "schemaVersion": "2.0.0-candidato",
+  "schema": "advogadoja.fluxo.apresentacao",
+  "schemaVersion": "3.1.0-exemplo",
   "origem": {
     "formato": "advogadoja-flow-projection",
-    "arquivo": "<ARQUIVO_REAL>",
-    "sha256": "<HASH_CALCULADO>"
+    "arquivo": "ARQUIVO_REAL_A_IDENTIFICAR",
+    "sha256": "HASH_A_CALCULAR"
   },
   "apresentacao": {
-    "raizRef": "<ID_REAL>",
+    "raizRef": "ID_REAL_A_IDENTIFICAR",
     "arvore": {}
   },
-  "navegacao": {
-    "conexoesDeclaradas": [],
-    "condicoesDeclaradas": [],
-    "referenciasPendentes": []
-  },
+  "referenciasPendentes": [],
   "proveniencia": {
     "mapeamentosPorId": [],
     "exclusoesAprovadas": [],
     "camposResiduais": []
   },
-  "verificacao": {
-    "status": "nao_verificado"
-  }
+  "verificacao": {"status": "nao_verificado"}
 }
 ```
 
-Os placeholders e `arvore: {}` são apenas notação documental. A implementação transporta a árvore real, não string de demonstração; o campo `mapeamentosPorId` documenta correspondências de **objetos durante a migração**, nunca aliases permanentes de identidade.
+**[EXEMPLO]** `arvore: {}` e textos de identificação são abreviações didáticas: na conversão real, a árvore deve ser completa, inclusive ramos vazios e propriedades desconhecidas. `proveniencia` pertence ao **pacote de auditoria/conversão**, não ao contrato unitário da Tela; não é índice operacional de equivalência de IDs. Uma fonte legada pode conter estruturas rejeitadas: preservar os bytes da origem para rastreabilidade sem transformar essas chaves em dependências do novo sistema.
+
+---
 
 ### 7.7 Mapeamento por campo da projeção original
 
@@ -692,7 +705,7 @@ Os placeholders e `arvore: {}` são apenas notação documental. A implementaç�
 
 O desenho não é autoridade de navegação. Coordenadas, quando fornecidas pela origem como dados editoriais, podem ser preservadas sem transformar posição em destino.
 
-### 7.12 Invariantes de integridade adaptados para V2
+### 7.12 Invariantes de integridade adaptados para V3
 
 **I01 — Contagem:** números por tipo no JSON reconstruído iguais à origem, exceto alterações expressamente registradas.  
 **I02 — Identidade:** todos os IDs originais presentes, sem colisões novas, e toda ocorrência preservada.  
@@ -713,7 +726,7 @@ O desenho não é autoridade de navegação. Coordenadas, quando fornecidas pela
 
 **Complemento V2 obrigatório:** nenhum item I01–I16 legitima repor um campo conscientemente excluído no contrato novo. A validação roda em dois níveis: (a) **snapshot histórico** íntegro; (b) **artefato V2** sem elementos excluídos e com diff das exclusões permitidas. Preservação histórica não é a promessa de que dois contratos de formatos diferentes tenham diff literal vazio.
 
-### 7.13 Matriz completa de testes de conversão (V2)
+### 7.13 Matriz completa de testes de conversão (V3)
 
 | ID | Teste | Aceite |
 |---|---|---|
@@ -746,27 +759,311 @@ O desenho não é autoridade de navegação. Coordenadas, quando fornecidas pela
 | FLX-CONV-27 | Comparar exportação em dois ciclos sem alteração | Mesmo conteúdo semântico e estrutural; dados não editados estáveis. |
 | FLX-CONV-28 | Persistência de metadados de revisão | Revisões, timestamps de origem e dados de histórico mantidos, sem sobrescrever a proveniência. |
 
-**Adaptação dos testes históricos:** os antigos testes que exigiam transportar aliases operacionais foram substituídos pela prova de identidade única e pelo registro explícito de referências divergentes. Os testes que exigiam diff zero com a fonte só podem ser aplicados ao **modo de preservação sem exclusões**. Em migração para V2, exigir *diff zero em tudo que deve permanecer*, mais exatamente o conjunto de exclusões aprovadas.
+**Adaptação dos testes históricos:** os antigos testes que exigiam transportar aliases operacionais foram substituídos pela prova de identidade única e pelo registro explícito de referências divergentes. Os testes que exigiam diff zero com a fonte só podem ser aplicados ao **modo de preservação sem exclusões**. Em migração para V3, exigir *diff zero em tudo que deve permanecer*, mais exatamente o conjunto de exclusões aprovadas.
 
 ### 7.14 Atestado e pacotes de entrega
 
 Para cada conversão de Fluxo produzir:
 
 1. `fonte_original.json` — snapshot de bytes imutável para auditoria, sem ser lido como contrato operacional.
-2. `fluxo_normalizado_v2.json` — objetos e refs canônicas diretas, sem aliases operacionais.
+2. `fluxo_normalizado_v3.json` — objetos e refs canônicas diretas, sem aliases operacionais.
 3. `mapa_migracao_ids_e_campos.json` — **registro transitório de transformação**, por `jsonPointer`, objeto, ID de origem, ID final se aprovado, justificativa e decisão; não é `aliasMap` de execução.
 4. `extensoes_preservadas.json` — dados não excluídos sem representação canônica direta, tipos e origem; **não** instalar ali uma segunda autoridade para ID de tela.
 5. `exclusoes_aprovadas.json` — itens retirados do contrato V2, motivação e impacto; o conteúdo histórico completo continua recuperável no snapshot.
-6. `fluxo_reconstruido_v2.json` — versão de saída com a árvore inteira preservável e refs normalizadas.
+6. `fluxo_reconstruido_v3.json` — versão de saída com a árvore inteira preservável e refs normalizadas.
 7. `diff_migracao.json` e `relatorio_validacao.json` — contagens, diffs de migração permitidos, referências pendentes, perdas não autorizadas, testes.
 
 Status possíveis: `reprovado_por_perda`, `preservado_com_pendencias_semanticas`, `convertido_com_exclusoes_aprovadas`, `apto_a_homologacao_funcional` e `homologado`. **Não homologar** por JSON válido, mesmo número de screens, presença de diagrama, hash do snapshot ou aparência semelhante.
 
 ---
 
-## 8. Validação, testes, interoperabilidade e homologação
+## 8. Contrato de navegação da Tela e interpretação pelo Fluxo
 
-### 8.1 Níveis de aceite, sem atalhos
+**[APROVADO na revisão V3.1]** Não criar coleções operacionais `conexoes` ou `condicoes`. A navegação e as regras necessárias já têm lugar no contrato de cada Tela: `navegacao.rotas[]`, `navegacao.rotas[].quando`, `estados.itens[].quando` e `variantes.itens[].quando`. Esses campos são os pontos de extensão do padrão V0.10; o funcionamento real continua sujeito a teste e à especificação de operadores. O Fluxo é um leitor/editor dessas declarações e mantém **apenas** sua estrutura editorial própria.
+
+### 8.1 Responsabilidades e autoridade
+
+| Objeto | Onde vive | Responsabilidade | Não deve conter |
+|---|---|---|---|
+| **Tela** | `telas[identidade.id]` | Composição, props, eventos, estados e rotas de saída | Cópias das ocorrências do Fluxo, elementos do canvas |
+| **Componente** | `componentes[identidade.id]` | HTML/CSS, elementos, vínculo de props e eventos locais observáveis | Destinos presumidos, autorização de produção |
+| **Rota da tela** | `tela.navegacao.rotas[]` | Um disparador e seu destino/efeito declarado, com `quando` opcional | Segunda cópia no arquivo do Fluxo |
+| **Predicado contextual** | `rota.quando`, `estado.quando` ou `variante.quando` | Limitar a declaração específica, por campos/operadores tipados | Registro global de predicados com IDs alternativos |
+| **Ocorrência editorial** | Árvore do Fluxo | ID de ocorrência, posição, ramo, caminho e contexto de apresentação | Definição independente da tela e de suas rotas |
+| **Motor / frontend** | Código do módulo | Consulta refs, valida, calcula entradas reversas e desenha | Persistir um segundo catálogo de navegação |
+
+**Regra de edição:** editar uma ligação no canvas altera **a rota correspondente na Tela de origem**, identificada por `identidade.id` da Tela + `navegacao.rotas[].id`. Se o usuário alterar apenas o desenho editorial, só o contexto do Fluxo muda. Editar uma ocorrência jamais reescreve outra ocorrência nem clona a Tela.
+
+### 8.2 Dicionário mínimo da rota na V0.10
+
+| Campo | Significado | Verificação |
+|---|---|---|
+| `navegacao.rotas[]` | Lista de rotas da **própria Tela** | A única fonte operacional de destinos |
+| `navegacao.rotas[].id` | ID estável da rota **no escopo da Tela** | Não reutilizar para outra rota da mesma Tela |
+| `navegacao.rotas[].tipo` | Tipo de transição declarada (ex.: `direta`, `permanecer`) | Valores admitidos sujeitos ao schema formal |
+| `navegacao.rotas[].origem.instanciaRef` | Instância do componente disparador | Referência resolvida na composição da Tela |
+| `navegacao.rotas[].origem.elementoRef` | Elemento que dispara a rota | Referência resolvida no componente |
+| `navegacao.rotas[].origem.itemRef` | Item de coleção disparador, se houver | ID estável, nunca posição do array |
+| `navegacao.rotas[].destino.tipo` | Natureza do destino, quando existe | Não criar destino para efeito apenas local |
+| `navegacao.rotas[].destino.ref` | ID canônico da Tela de destino | Existe na biblioteca ou pendência explícita |
+| `navegacao.rotas[].evento` | Evento/gatilho identificado | Deve corresponder ao contrato visual quando aplicável |
+| `navegacao.rotas[].quando` | Predicado inline opcional | Campos, operadores e tipos reconhecidos; sem execução de JS arbitrário |
+
+A **Tela de origem** é o próprio objeto que contém a rota, portanto **não existe necessidade de gravar `origem.telaRef` dentro da rota**. Para montar o grafo completo, o frontend calcula `(tela.identidade.id, rota.id)` e suas referências; entradas de destino e contagem de consumidores são **índices derivados em memória**.
+
+### 8.3 Exemplo didático de Tela com navegação e regra inline
+
+O exemplo usa IDs e variáveis demonstrativos. **Não afirma** que os componentes/elementos/eventos abaixo existem na fonte nem que `conta.onboardingConcluido` está disponível no banco. Não implementar antes de resolver os IDs reais.
+
+```json
+{
+  "schema": "advogadoja.tela",
+  "schemaVersion": "0.10.0",
+  "identidade": {
+    "id": "exemplo.pos_login",
+    "tipo": "tela",
+    "nome": "Destino pós-login (exemplo)"
+  },
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.pos_login.home",
+        "tipo": "direta",
+        "origem": {
+          "instanciaRef": "screen.botao",
+          "elementoRef": "botao.confirmar"
+        },
+        "evento": "login.sucesso",
+        "destino": {
+          "tipo": "tela",
+          "ref": "advogado.home_advogado"
+        },
+        "quando": {
+          "campo": "conta.onboardingConcluido",
+          "operador": "igual",
+          "valor": true
+        }
+      },
+      {
+        "id": "rota.pos_login.onboarding",
+        "tipo": "direta",
+        "origem": {
+          "instanciaRef": "screen.botao",
+          "elementoRef": "botao.confirmar"
+        },
+        "evento": "login.sucesso",
+        "destino": {
+          "tipo": "tela",
+          "ref": "exemplo.tela_onboarding"
+        },
+        "quando": {
+          "campo": "conta.onboardingConcluido",
+          "operador": "igual",
+          "valor": false
+        }
+      }
+    ]
+  }
+}
+```
+
+**Exemplo parcial do bloco de navegação:** um contrato **completo** de Tela continua exigindo `estrutura` e referências de componentes, conforme a seção 3. O ID `advogado.home_advogado` existe no recorte auditado; o restante é ilustração, não rota de produção. A mesma Tela com duas rotas não cria dois JSONs nem exige bloco global adicional.
+
+### 8.4 Regras declarativas sem coleção separada
+
+Uma regra contextual fica **dentro da declaração a que se aplica**:
+
+- **Transição:** `navegacao.rotas[i].quando` delimita a rota; sua ausência indica ausência de filtro **declarado**, não autorização de negócio irrestrita.
+- **Seleção de estado:** `estados.itens[i].quando` pode expressar a situação resolvida por dados conhecidos.
+- **Aplicação visual:** `variantes.itens[i].quando` governa a variante, sem produzir uma rota.
+- **Interação local:** `interacoes.eventos[i].quando`, quando necessário, limita um efeito dentro da tela.
+
+| Situação | Apresentação e comportamento seguro |
+|---|---|
+| Uma rota válida sem `quando` | Saída direta conforme evento declarado, sem criar regra fictícia |
+| Duas rotas do mesmo evento com `igual true` e `igual false` para um campo tipado | Losango **derivado no diagrama** e avaliação apenas quando houver contexto suficiente |
+| Duas rotas do mesmo evento com predicados sobrepostos | Marcar conflito; não escolher a primeira apenas por ordem |
+| Nenhuma rota habilitada e nenhum fallback declarado | Marcar ausência de cobertura; não criar destino |
+| Predicado com variável desconhecida | Preservar texto, sinalizar pendência, não executar heurística |
+| Eventos distintos no menu | Mostrar alternativas por evento, sem falsa bifurcação booleana |
+
+**[PENDENTE]** Definir operadores aceitos, combinações (`e`/`ou`), precedência, fallback e fontes de dados. Nenhuma dessas pendências autoriza criar um registro global de regras. A autorização de backend permanece externa à apresentação.
+
+### 8.5 Ações locais e operações de domínio
+
+Um `data-action` visto no HTML é **evidência de gatilho**, não prova de integração. Abrir menu é `interacoes.eventos[]`/estado local; alternar disponibilidade pode exigir dado/serviço real, que permanece sem validação; navegar a outra tela usa `navegacao.rotas[]`. Ações complexas poderiam exigir uma definição específica **somente mediante novo caso e decisão**, mas não é criada nenhuma coleção adicional por este documento.
+
+### 8.6 Desenho derivado e apresentação importada
+
+O Fluxo consulta as rotas existentes em `telas[*].navegacao.rotas[]` e utiliza sua própria árvore `sequence/screen/branch/path` apenas para **posição e agrupamento**. Duas rotas de um mesmo evento com regras complementares podem gerar losango; eventos distintos geram saídas alternativas; várias origens chegando à mesma Tela geram junção; retorno à Tela existente produz laço sem novo ID. Um branch **importado** continua identificável e rastreável mesmo quando falta uma regra funcional.
+
+Uma sequência ou um rótulo de branch **não comprova** evento, predicado ou destino. Não reconstituir a semântica real de checkout apenas porque um ramo foi rotulado “resultado”. Os três agrupamentos omitidos na apresentação Flow V3 exigem recuperação por fonte de origem, não adivinhação.
+
+### 8.7 Compartilhamento sem cópias de rotas
+
+A mesma definição de Tela pode aparecer em muitas posições editoriais; suas rotas ficam na definição única da Tela. Para casos de fluxo em que o **contexto da ocorrência** precise mudar a saída, o modelo fino de contexto permanece [PENDENTE], mas **não** será resolvido duplicando a rota em um cadastro externo. Um segmento editorial compartilhado, se adotado futuramente, referencia ocorrências/IDs já existentes e não se torna outro repositório de destinos.
+
+### 8.8 Índices calculados pelo frontend
+
+A partir de `identidade.id` e `navegacao.rotas[]`, o frontend calcula: rotas de saída por Tela, entradas por `destino.ref`, rotas por evento, dependências por `componenteRef` e ocorrências por `telaRef`. Esses índices são **visões transitórias**, não arquivos canônicos concorrentes; devem ser atualizados após edição ou importação.
+
+### 8.9 Critérios de aceite da navegação (NAV-01 a NAV-16)
+
+| ID | Ensaio | Critério de aceite |
+|---|---|---|
+| `NAV-01` | Uma rota explícita | Aresta direta resolvida pelo ID da Tela e da rota |
+| `NAV-02` | Duas regras complementares `quando` | Losango derivado, sem segundo registro |
+| `NAV-03` | Dois itens de menu | Alternativas por evento, não por booleano inventado |
+| `NAV-04` | Regras simultaneamente verdadeiras | Conflito visível, sem navegação arbitrária |
+| `NAV-05` | Nenhuma regra verdadeira | Pendência/fallback somente se declarado |
+| `NAV-06` | Várias entradas à mesma Tela | Uma definição e várias arestas/ocorrências |
+| `NAV-07` | Retorno à Tela já visitada | Ciclo por referência, sem clone de tela |
+| `NAV-08` | Alteração aprovada de ID | Atualização atômica das referências diretas |
+| `NAV-09` | Rota sem elemento/evento/destino necessário | Mostrar pendência sem inventar ligação |
+| `NAV-10` | Branch importado sem regra funcional | Manter branch editorial, sem fabricar navegação |
+| `NAV-11` | Reuso editorial de segmento | Não copiar destinos para a apresentação |
+| `NAV-12` | Teste de autoridade única | Destinos somente em `tela.navegacao.rotas[]` |
+| `NAV-13` | Exclusão de modal artificial | Rota legítima não se perde com `modal.route-modal` |
+| `NAV-14` | Divergência de checkout | Recuperar branches ausentes apenas por fonte explícita |
+| `NAV-15` | UI restrita por capacidade | Variante/CSS não equivale a autorização real |
+| `NAV-16` | Round-trip sem alterações | Rotas e `quando` preservados; sem registros duplicados |
+
+---
+
+## 9. Mapeamento dos campos para o frontend do Fluxo
+
+A fonte histórica `MAPEAMENTO_CAMPOS_FRONT.md` descreve listas experimentais e controles de edição. **Nesta revisão** o comportamento útil é transferido para os campos já existentes do JSON de Tela, sem importar seus cadastros experimentais. O frontend preserva integralmente a árvore editorial recebida, mas a navegação operacional deriva **exclusivamente das Telas carregadas**.
+
+### 9.1 Mapa de campos → responsabilidades do frontend
+
+| Origem consultada | Status | Comportamento do frontend | Restrição |
+|---|---|---|---|
+| `telas[id].identidade.id` | [APROVADO] | Identificar tela única e abrir sua definição | Chave externa igual ao ID interno |
+| `telas[id].estrutura.html.composicao` | [DEFINIDO] | Resolver instâncias, slots e `props` | Sem copiar definições de componentes |
+| `componentes[id].estrutura.html` | [DEFINIDO] | Inspecionar elemento disparador, evento e item | Um `data-action` isolado não é destino validado |
+| `telas[id].navegacao.rotas[]` | [APROVADO] | Listar, selecionar, criar, editar e excluir rotas da **Tela de origem** | Fonte única das transições |
+| `navegacao.rotas[].id` | [DEFINIDO] | Identificar rota e localizar edição por ID | Único no escopo de sua Tela |
+| `navegacao.rotas[].origem.*` | [DEFINIDO] | Associar evento a instância/elemento/item de origem | Referências devem existir |
+| `navegacao.rotas[].evento` | [DEFINIDO quando declarado] | Agrupar rotas do mesmo gatilho | Nunca deduzir de rótulo |
+| `navegacao.rotas[].destino.ref` | [DEFINIDO quando declarado] | Exibir destino e identificar referências pendentes | ID de Tela direto, sem aliases |
+| `navegacao.rotas[].quando` | [APROVADO] | Mostrar/editar regra inline do vínculo selecionado | Sem coleção global de predicados |
+| `estados.itens[].quando` | [DEFINIDO quando usado] | Mostrar resolução declarativa de estado | Não transformar estado em navegação |
+| `variantes.itens[].quando` | [DEFINIDO quando usado] | Mostrar condição visual na mesma Tela | Não conceder autorização |
+| `interacoes.eventos[]` | [DEFINIDO] | Inspecionar efeitos locais e seus disparadores | Abrir menu não é rota |
+| Árvore editorial `sequence/screen/branch/path` | [PRESERVAR] | Desenhar ocorrências, ordem, ramificações e caminhos | Não converter ordem editorial em navegação |
+| Índices reversos calculados | [DERIVADO] | Buscar entradas/saídas e consumidores por ID | Não persistir espelhos independentes |
+| `sourceFiles`/manifesto legado | [AUDITORIA] | Exibir divergências e dados preservados na importação | Sem dependência em runtime |
+
+Campos legados como `navegacao.participacoes[]`, `navegacao.entradas[]`, `navegacao.saidas[]` e `navegacao.bifurcacoes[]` podem ser **lidos durante a conversão auditável**, mas não viram estruturas operacionais novas. Os dois cadastros experimentais de navegação e de predicados presentes nos anexos foram expressamente rejeitados pelo usuário. O frontend não os carrega como fonte de execução.
+
+### 9.2 Pipeline de leitura
+
+```text
+Telas e Componentes da biblioteca
+   ├── identidade.id
+   ├── estrutura.html / props
+   ├── navegacao.rotas[] + rota.quando?
+   └── interacoes / estados / variantes
+               │
+Fluxo: árvore editorial (ocorrências / sequências / ramos / caminhos)
+               │
+               ▼
+Frontend Flow: valida IDs e refs → gera índices reversos →
+desenha linhas / losangos / junções / ciclos / avisos →
+abre inspetor → edita a rota NA TELA DE ORIGEM →
+revalida → exporta as alterações de Tela e o Fluxo editorial
+```
+
+**Isolamento de arquivos:** a interface Flow pode consultar a biblioteca declarada e seu próprio JSON de dados segundo as regras do construtor; ela **não** grava cópias de `navegacao.rotas[]` no arquivo editorial. Se o módulo não tiver permissão/capacidade de modificar a biblioteca diretamente, deve gerar **patch/exportação do contrato de Tela com a mudança**, para aplicação explícita no local canônico, e informar o estado ainda não aplicado. Não afirmar que a alteração visual foi persistida até que isso ocorra.
+
+### 9.3 Controles do frontend
+
+| Comando | Fonte editada | Efeito | Validação |
+|---|---|---|---|
+| Selecionar Tela | Índice `telas[id]` + índices calculados | Exibir dados, ocorrências, saídas/entradas e prévia | Apenas ID direto |
+| Selecionar rota | `telas[id].navegacao.rotas[]` | Exibir origem, evento, destino e `quando` | ID da rota no escopo da Tela |
+| **＋ Rota** | `tela.navegacao.rotas[]` | Criar rota com ID, origem e destino declarados | Referências reais, não inventadas |
+| **Editar rota** | Rota identificada | Alterar somente os campos selecionados | Diff localizado e revalidação |
+| **Editar quando** | `rota.quando` | Alterar regra tipada daquela rota | Sem execução de JavaScript textual |
+| **Ver campos** | Contrato da Tela e JSON Pointer real | Abrir caminho do objeto selecionado | Não copiar para outro modelo mestre |
+| **Editar ocorrência** | Árvore editorial do Fluxo | Alterar posição/contexto da ocorrência | Não alterar rotas da Tela automaticamente |
+| **Exportar alterações** | JSON/patch de Tela + apresentação do Fluxo | Preservar campos desconhecidos e IDs | Sem sobrescrita silenciosa de fontes |
+| Mover/zoom | Estado temporário do editor | Ajustar apresentação | Sem mudar rotas |
+| Salvar rascunho | Sessão local, quando suportada | Guardar edição não aplicada | Não substituir a fonte da biblioteca |
+
+### 9.4 Painéis e inspeção
+
+**Tela selecionada:** ID canônico, título, composição/props, lista de rotas e eventos, estados/variantes, ocorrências, entradas reversas calculadas, componentes consumidores, dependências e pendências de referências. **Rota selecionada:** ID, instância/elemento/item, evento, tipo, destino e `quando` inline. **Componente selecionado:** ID, elementos HTML/CSS, props vinculadas, eventos e telas que o usam. Uma relação editorial importada pode ser exibida como **não operacional** quando faltarem dados de rota.
+
+### 9.5 Símbolos do diagrama
+
+| Evidência | Símbolo | Restrições |
+|---|---|---|
+| Uma rota válida para evento conhecido | Linha | IDs resolvidos |
+| Duas rotas do mesmo evento com `quando` complementar | Losango derivado | Não persistir outro ramo funcional |
+| Rotas com eventos diferentes | Saídas rotuladas | Não inferir booleano |
+| Várias rotas chegando à mesma Tela | Junção | Não duplicar Tela |
+| Destino igual a Tela já visitada | Retorno/laço | Política de histórico a validar |
+| Caminho editorial sem navegação comprovada | Ramo/agrupamento | Manter IDs/labels/ordem originais |
+| Referência ou regra não resolvida | Aviso | Nenhuma execução forçada |
+| Fim de percurso declarado | Marcador terminal | Não inventar próximo passo |
+
+### 9.6 Inventários de origem com escopos distintos
+
+| Fonte | Contagem observada | Leitura permitida |
+|---|---|---|
+| Catálogo Advogado | 33 Telas, 99 componentes antes de saneamento, 186 instâncias, 93 referências a ocorrências | Acervo de estrutura visual, não grafo completo |
+| Projeção (7) reportada pela Garantia V1 | 197 ocorrências, 118 sequências, 36 branches, 117 paths | Preservar ramo e ordem da árvore original |
+| Apresentação Flow V3 | 197 ocorrências, 115 sequências, 33 branches, 114 paths | Divergência de três agrupamentos de checkout |
+| Jornadas em `Projeto_9.zip` citado na V1 | 110 telas, 388 componentes | Outro acervo, sem fusão por nome |
+| `advogadoja-fluxo-projecao.json` do mapeamento frontend | Recorte parcial da Home | Não extrapolar como inventário de todo o Fluxo |
+
+Contagens exibidas devem ser recalculadas do arquivo carregado e identificadas pela fonte/versão; não podem ser tratadas como constantes universais.
+
+### 9.7 Erros e tratamento de dados desconhecidos
+
+IDs de tela, componente, instância, elemento, item, evento, destino ou campo de regra não resolvidos devem ser sinalizados com caminho JSON exato e gravidade; o editor não cria dados por semelhança. Os campos desconhecidos são preservados no round-trip. Mocks são distinguidos das fontes reais; CSS de produto não contamina CSS do editor; ações simuladas não usam serviços de produção. Não mostrar etiquetas `popup.screen-note` ou modais `modal.route-modal` como substitutos de comportamento.
+
+### 9.8 Testes do frontend (FRT-01 a FRT-24)
+
+| ID | Verificação | Critério de aceite |
+|---|---|---|
+| `FRT-01` | Tela com várias ocorrências | Uma definição e todos os IDs de ocorrência |
+| `FRT-02` | Composição da Tela | Instâncias, componentes e props por refs diretas |
+| `FRT-03` | Selecionar rota | Abrir rota certa por Tela + ID de rota |
+| `FRT-04` | Criar rota | Escrever em `Tela.navegacao.rotas[]` |
+| `FRT-05` | Editar rota | Alterar somente objeto selecionado |
+| `FRT-06` | Editar `quando` | Alterar regra inline, sem catálogo paralelo |
+| `FRT-07` | Uma rota válida | Linha direta, sem losango desnecessário |
+| `FRT-08` | `igual true` e `igual false` | Losango derivado, somente quando variáveis tipadas |
+| `FRT-09` | Regras sobrepostas | Aviso de conflito, sem resolver arbitrariamente |
+| `FRT-10` | Dois eventos de menu | Alternativas sem falsa condição booleana |
+| `FRT-11` | Ramo importado sem regra | Preservar apresentação; não inventar navegação |
+| `FRT-12` | Várias entradas à mesma Tela | Índice reverso, sem cópia de definição |
+| `FRT-13` | ID de Home divergente | Manter ID do catálogo até decisão explícita |
+| `FRT-14` | Arquivo com referências antigas | Não ativar resolução por alias |
+| `FRT-15` | Arrastar nó/editor | Nenhuma rota alterada por geometria |
+| `FRT-16` | Ver campos | Mostrar JSON Pointer original correto |
+| `FRT-17` | Exportar após edição | Contrato de Tela alterado, demais dados preservados |
+| `FRT-18` | Armazenamento local indisponível | Exportação ainda possível |
+| `FRT-19` | Componente/destino ausente | Pendência com ID e localização |
+| `FRT-20` | Navegação sem destino | Aviso, sem `modal.route-modal` |
+| `FRT-21` | Catálogo parcialmente carregado | Distinguir destino fora do recorte de destino inexistente |
+| `FRT-22` | Documento Flow contém destinos concorrentes | Rejeitar como autoridade; importar apenas apresentação editorial |
+| `FRT-23` | Campos legados | Preservar no histórico, não recriar no contrato novo |
+| `FRT-24` | Round-trip sem edição | IDs/valores/arrays preservados, excluídas alterações autorizadas |
+
+### 9.9 Pendências de implementação
+
+**[PENDENTE]** Gramática formal de `quando`, catálogo de variáveis e operadores, fallback, portas/eventos e política de histórico, aplicação e persistência de patches de Tela quando o módulo Flow não puder gravar a biblioteca, integração React/Flutter, fidelidade visual e reconciliação dos três ramos de checkout. **Não está pendente** a autoridade dos destinos: já foi escolhida `tela.navegacao.rotas[]`.
+
+Os critérios acima são **testes documentados**, não evidências de execução ou homologação.
+
+---
+
+## 10. Validação, testes, interoperabilidade e homologação
+
+### 10.1 Níveis de aceite, sem atalhos
 
 | Nível | Aceite mínimo | Não comprova |
 |---|---|---|
@@ -778,7 +1075,7 @@ Status possíveis: `reprovado_por_perda`, `preservado_com_pendencias_semanticas`
 | Integração | Serviços/autorizações reais validados separadamente | Aprovação do schema por si só. |
 | Homologação | Evidências, responsável, versão, testes, diferenças e aceite | Não é um status a atribuir antes da execução. |
 
-### 8.2 Checagens estruturais obrigatórias
+### 10.2 Checagens estruturais obrigatórias
 
 1. `identidade.id` único e consistente com índice externo quando existir.
 2. **Zero `aliasMap` no artefato novo** e nenhuma referência de tela dependente de tabela de aliases.
@@ -793,7 +1090,7 @@ Status possíveis: `reprovado_por_perda`, `preservado_com_pendencias_semanticas`
 11. Remoções aprovadas no diff; **qualquer outra perda bloqueia**.
 12. O snapshot original e o relatório de conversão identificam todas as alterações; o app não depende de arquivos históricos em runtime.
 
-### 8.3 Ensaios reais de Tela/Jornadas/Fluxo/Protótipo
+### 10.3 Ensaios reais de Tela/Jornadas/Fluxo/Protótipo
 
 | ID | Ensaio | Evidência esperada |
 |---|---|---|
@@ -808,15 +1105,17 @@ Status possíveis: `reprovado_por_perda`, `preservado_com_pendencias_semanticas`
 | `FLX-02` | Trocar destino A→B por A→C | Editar vínculo sem mudar identidade de tela. |
 | `FLX-03` | Branch condicional | Conservar ramificação de checkout e sinalizar semântica ausente. |
 | `PRT-01` | Alternar cenário | Sessão muda sem reescrever a tela ou usar modal artificial. |
-| `PRT-02` | Navegar em simulação | Conexões declaradas, sem `modal.route-modal`. |
+| `PRT-02` | Navegar em simulação | `navegacao.rotas[]` da Tela, sem `modal.route-modal`. |
 | `PRT-03` | Serviços reais | Nenhuma chamada de produção durante simulação. |
 | `EXP-01` | Exportar/reimportar | Dados não editados preservados e saneamento documentado. |
 | `CMP-01` | Reuso de componente | Prop isolada por instância; definição compartilhada atualizada conscientemente. |
 | `CMP-02` | Auditar titlebars | Comparação das 23 definições (21/1/1) com dependência CSS e props. |
 | `VIS-01` | Paridade | Visual equivalente nos quatro módulos, no mesmo estado e viewport. |
 | `CNV-01` | React/Flutter/HTML | Diferenças por atributo/componente reportadas; nenhuma adaptação silenciosa. |
+| `NAV-*` | Rotas e inferência visual (seção 8) | Executar NAV-01 a NAV-16; destinos somente na Tela. |
+| `FRT-*` | UI e edição do Fluxo (seção 9) | Executar FRT-01 a FRT-24; edição das rotas da Tela, IDs diretos e sem aliases. |
 
-### 8.4 Tratamento de CSS, JS e frameworks
+### 10.4 Tratamento de CSS, JS e frameworks
 
 - O JSON contém **declarações**, não funções JS arbitrárias executadas na importação.
 - HTML/CSS, React e Flutter precisam de adaptadores capazes de reconhecer elementos, slots, tokens, estado, eventos e limitações específicas; conversão V0.10 **não garante automaticamente** equivalência em Flutter.
@@ -824,7 +1123,7 @@ Status possíveis: `reprovado_por_perda`, `preservado_com_pendencias_semanticas`
 - JS legado que apenas exibia `modal.route-modal` deve ser excluído ou desativado no app, mas **um gatilho com rota legítima deve ser redirecionado para a navegação canônica**, após validação, não eliminado às cegas.
 - Em migração visual, registrar referência original, antes/depois, viewport, diferença e aceitação; não usar similaridade de código como prova de UX igual.
 
-### 8.5 Prova de integridade depois de exclusões aprovadas
+### 10.5 Prova de integridade depois de exclusões aprovadas
 
 ```text
 fonte = parse_json(snapshot)
@@ -846,9 +1145,9 @@ assert todos_os_ids_referenciados_sao_validos_ou_pendencias_explicitas
 
 ---
 
-## 9. Pendências, ordem de implementação e critérios de aceite
+## 11. Pendências, ordem de implementação e critérios de aceite
 
-### 9.1 Pendências objetivas do modelo
+### 11.1 Pendências objetivas do modelo
 
 | Tema | Status | O que resolver sem inventar |
 |---|---|---|
@@ -863,35 +1162,43 @@ assert todos_os_ids_referenciados_sao_validos_ou_pendencias_explicitas
 | Estados/condições | **[PENDENTE]** | Resolver concorrência, operadores, prioridades, fallback e fontes de estado. |
 | Conteúdo do Fluxo V3 | **[PENDENTE]** | Corrigir três ramos de checkout achatados apenas por evidência de origem. |
 | Empacotamento | **[PENDENTE]** | Definir transporte unitário/pacote, manifestos e controle de versões. |
-| Conversores e motores | **[PENDENTE]** | Implementar, testar e homologar V0.10/V2 com os quatro módulos. |
+| Navegação por rotas da Tela | **[APROVADO; detalhes pendentes]** | Autoridade única já definida: `navegacao.rotas[]`. Falta validar gatilhos, gramática de `quando`, política de histórico e casos reais. |
+| Frontend do Fluxo | **[PENDENTE de implementação]** | Ler/editar rotas da Tela, preservar a apresentação e exportar patches/contratos sem perda; executar `FRT-*`. |
+| Ações complexas e segmentos editoriais | **[PENDENTE]** | Só acrescentar modelo específico com caso real aprovado; nunca repetir rotas ou regras em novo registro. |
+| Conversores e motores | **[PENDENTE]** | Implementar, testar e homologar V0.10/V3 com os quatro módulos. |
 | Regras reais de OAB/backend | **[FORA DO ESCOPO]** | Exemplos de estado não provam autorização, serviço ou schema físico. |
 
-### 9.2 Ordem de execução recomendada e critérios de saída
+### 11.2 Ordem de execução recomendada e critérios de saída
 
 **Etapa A — congelar entradas:** snapshot do catálogo e do Fluxo, checksums, IDs, inventário e relatório de divergências.  
 **Etapa B — saneamento:** retirar 30 `screen-note` e 2 `route-modal` (63 instâncias), remover dependências da simulação e campos redundantes **somente na nova representação**; não tocar na fonte histórica.  
 **Etapa C — validação dos componentes:** auditar 23 titlebars; converter primeiro um componente simples, um com SVG/lista e um com condição; provar CSS e props.  
 **Etapa D — Tela piloto:** migrar uma tela real integral com `raizRef`, hierarquia, props, navegação e CSS, exportar e comparar com original em dispositivos/estados.  
 **Etapa E — conjunto:** migrar as 33 telas e os 67 componentes ainda candidatos; registrar colisões, dados incompatíveis e elementos pendentes, nunca inventar dados.  
-**Etapa F — Fluxo:** normalizar suas sequências/ocorrências/branches/paths, garantir referências diretas ao catálogo e preservar divergências checkout.  
-**Etapa G — módulos:** testar Tela/Jornadas/Fluxo/Protótipo usando o conjunto canônico, sem fontes visuais concorrentes nem modais de rota artificial.  
+**Etapa F — Fluxo:** normalizar sequências/ocorrências/branches/paths, garantir referências diretas ao catálogo, preservar divergências checkout e consultar exclusivamente as rotas já declaradas nas Telas. A autoridade da navegação está **definida**, não depende de aprovação de outro registro.  
+**Etapa G — frontend e módulos:** implementar inspeção e edição da rota por Tela+ID, predicado inline tipado, índices reversos derivados e exportação auditável; executar os testes `NAV-*`/`FRT-*` e Tela/Jornadas/Fluxo/Protótipo sem destinos concorrentes ou modais artificiais.  
 **Etapa H — homologação:** executar testes, registrar diff, aceitar ou corrigir todos os bloqueios e documentar compatibilidade de React/Flutter.
 
-### 9.3 Critérios finais de aceite desta especificação
+### 11.3 Critérios finais de aceite desta especificação
 
 - [x] Decisões sobre `aliasMap`, `screen-note`, `route-modal`, campos obsoletos e `props` incorporadas **documentadas**.
 - [x] Inventários originais de 33 telas, 64 + 35 definições, 186 instâncias e 93 referências a ocorrências do catálogo **conferidos**.
 - [x] Impacto aritmético controlado: 32 definições e 63 instâncias excluídas; **67 definições e 123 instâncias candidatas**.
 - [x] Equivalência de campos de Tela e Componente preservada e atualizada.
 - [x] Conversão de Fluxo separada da renderização, sem tabela de aliases operacional.
+- [x] Conceitos de origem, evento, destino, filtro e visualização dos anexos V1 integrados no modelo existente de `navegacao.rotas[]` e `.quando`, **sem cadastros adicionais**.
+- [x] Mapeamento completo do frontend incorporado: campos canônicos de Tela, apresentação editorial e índices reversos calculados, sem registros paralelos.
+- [x] Matriz `NAV-*` e `FRT-*` de validações prevista; **testes ainda não executados**.
 - [x] Três ramificações checkout ausentes na V3 preservadas como divergência a corrigir.
 - [ ] Definir o schema formal e as pendências de identidade/slots/props/condições.
 - [ ] Executar exclusões no JSON-alvo e confirmar diffs autorizados.
 - [ ] Converter/validar visualmente 67 definições e 33 telas (quantidades antes de qualquer consolidação futura de titlebars).
-- [ ] Implementar conversor Fluxo e provar regressões estruturais/semânticas.
+- [x] Decidido: `tela.navegacao.rotas[]` é a fonte única; não duplicar destinos no Fluxo.
+- [ ] Implementar frontend para ler/editar rotas e `quando` da Tela, índices derivados, seleção e exportação.
+- [ ] Executar testes `NAV-*`, `FRT-*` e conversor de apresentação do Fluxo, provando regressões estruturais/semânticas.
 - [ ] Testar os quatro módulos, aprovar evidências e homologar produção.
 
-**Resultado documental:** uma norma V2 única, com decisões aprovadas e mapa técnico completo. **Resultado de software:** nenhuma migração efetivamente realizada por este documento. O catálogo original, o Fluxo original e os contratos ainda precisam passar pelas etapas de implementação e validação.
+**Resultado documental:** revisão V3.1 única, com decisões aprovadas, navegação por rotas da Tela e mapa técnico completo. **Resultado de software:** nenhuma migração efetivamente realizada por este documento. O catálogo original, o Fluxo original e os contratos ainda precisam passar pelas etapas de implementação e validação.
 
 ---
 
@@ -1167,9 +1474,9 @@ Este é o dicionário **de estrutura observado na referência**, inclusive atrib
 
 ## Anexo E — Rastreabilidade e histórico das mudanças
 
-### E.1 Alterações entre documentos V1 e esta V2
+### E.1 Histórico das mudanças incorporadas na V2 (V1 → V2)
 
-| Origem anterior | Decisão V2 | Alteração principal |
+| Origem anterior | Decisão histórica na V2, mantida na V3 | Alteração principal |
 |---|---|---|
 | Direção Canônica V1 | **Mantida e atualizada** | Contratos V0.10 e separação dos quatro módulos permanecem; nenhuma fonte de identidade alternativa. |
 | Mapa de Equivalência V1 | **Atualizado** | Antes: 99 definições candidatas. Agora: **67 após exclusões aprovadas**; 23 titlebars sob auditoria. |
@@ -1179,10 +1486,10 @@ Este é o dicionário **de estrutura observado na referência**, inclusive atrib
 
 ### E.2 Tensão técnica resolvida: exclusão vs. preservação integral
 
-A direção antiga de garantir *diff estrutural vazio* em todo e qualquer cenário pressupõe que o formato de destino tenha a mesma estrutura e todos os campos da fonte. Isso **não pode ser prometido** quando o usuário aprovou excluir componentes, campos e mecanismos de alias. A regra V2 é separada:
+A direção antiga de garantir *diff estrutural vazio* em todo e qualquer cenário pressupõe que o formato de destino tenha a mesma estrutura e todos os campos da fonte. Isso **não pode ser prometido** quando o usuário aprovou excluir componentes, campos e mecanismos de alias. A regra prevalente na V3 é separada:
 
 - **Fonte histórica:** bytes originais, com todo o conteúdo que existia, guardados integralmente para auditoria/recuperação; não consumidos pelo sistema operacional novo.
-- **Contrato V2:** sem aliases e sem elementos obsoletos; tudo que permanece deve sobreviver sem perda.
+- **Contrato V3:** sem aliases e sem elementos obsoletos; tudo que permanece deve sobreviver sem perda.
 - **Relatório de migração:** identifica **cada remoção autorizada** com caminho JSON e ID e prova que nenhuma outra diferença ocorreu.
 - **Compatibilidade legada:** reconstruir um arquivo V3 idêntico com **campos expressamente proibidos no destino** não é objetivo de homologação do novo contrato; se uma ferramenta externa exigir isso, será uma tarefa separada de restauração histórica, nunca exigência para o novo motor.
 
@@ -1192,4 +1499,113 @@ Decididos pelo usuário nesta conversa: retirar `aliasMap`, excluir `modal.route
 
 Não decididos ainda: renomear a Home, quais titlebars devem ser fundidos, as estruturas completas `raizRef/paiRef`, a gramática de condições, as rotas reais e a homologação visual/funcional. Todos continuam rotulados **[PENDENTE]**.
 
-**Fim — Documento Canônico Consolidado V2, 19/11/2026.**
+### E.4 Atualizações da V3 e da revisão V3.1 (V2 → V3 → V3.1)
+
+| Documento incorporado | Acréscimo/conciliação | Status |
+|---|---|---|
+| `CONTRATO_CANONICO_V1.md` | Seção 8: origem, evento, destino, predicado inline, bifurcação derivada, retornos, estados e inspeção | Conceitos compatíveis mantidos; os dois registros globais propostos foram **rejeitados**. |
+| `MAPEAMENTO_CAMPOS_FRONT.md` | Seção 9: mapa de 17 famílias de campos, controles de edição, índices derivados, mensagens de pendência e exportação | Legado separado da representação nova; **nenhum resolver por alias**. |
+| V2, seção 7.6 | Envelope do Fluxo limitado à árvore editorial, aos metadados e à auditoria | Não expõe coleção de destinos nem de predicados. |
+| Matriz de testes | `NAV-01` a `NAV-16`, `FRT-01` a `FRT-24`, com rastreio de escopos | Critérios definidos no papel; execução [PENDENTE]. |
+| Anexos F e G | Mapa de incorporação por seção/campo, precedência e checklist V3.1 | Verificabilidade documental. |
+
+**Decisão central aprovada na V3.1:** a **única autoridade de destinos** está em `tela.navegacao.rotas[]`; regras pertencem a `rota.quando`, `estado.quando` ou `variante.quando`. O Fluxo não possui coleções paralelas de transições ou predicados.
+
+
+---
+
+## Anexo F — Correspondência integral dos dois novos documentos
+
+### F.1 `CONTRATO_CANONICO_V1.md` — reconciliação por tema
+
+| Seção/tópico de origem | Conteúdo aproveitado nesta V3 | Alteração ou ressalva necessária |
+|---|---|---|
+| §1 Fontes inspecionadas | Projeto_9: 110 telas/388 componentes; projeção (6): 78 telas/197 ocorrências | Números por fonte, não inventário global nem substitutos dos 33 JSONs auditados. |
+| §2 Decisões D01–D14 | Uma tela/um componente; refs estáveis; conexões declaradas; inferência do desenho; retorno e segurança | Preservar princípios sem declarar aprovados os **nomes físicos** das novas chaves. |
+| §3 Modelo de quatro peças e motor | Separação Tela, Componente, Conexão, Contexto e Motor | Excluir necessidade de vínculo alternativo entre dois IDs da Home. |
+| §4 Árvore de Jornadas | `identidade`, `composicao`, `estrutura.css`, estados visuais | `classificacao.escopo` é obsoleto; `estrutura.estadosVisuais` é evidência de fonte, não campo V0.10 obrigatório. |
+| §5 Árvore-alvo | Separação de Tela, ações/eventos e apresentação editorial | **Não adotar** os dois registros experimentais de transições/predicados nem aliases; destinos ficam na Tela. |
+| §6 Ligação funcional | Origem, gatilho, destino e predicado opcional | Mapear para `navegacao.rotas[]` da Tela, com `.quando` inline; nomes da V1 não são contrato novo. |
+| §7 Bifurcação inferida | Losango da mesma saída sob condições; ações distintas não são condição booleana | Branch editorial da fonte continua preservável por ID; não confundir. |
+| §8 Compartilhamento | Tela/componentes/segmentos por referência; edição local x compartilhada | Segmentos não implementados por simples semelhança; ID único por objeto. |
+| §9 Estados e retorno | Estados visuais, de domínio, de etapa e de navegação; retorno a Home | OAB e onboarding não implicam rotas/banco reais; nenhum clone da Home. |
+| §10 Pipeline | Ler, validar, normalizar, derivar grafo e renderizar | Retirar etapa “indexar aliases explícitos”; substituir por validação direta de `identidade.id`. |
+| §11 Indicadores/painel | Linha, losango, junção, retorno, pendência; relações ao clicar | Retirar o campo “Alias para documento Jornadas”. |
+| §12 Exemplos de ação e navegação | `data-action=online.toggle`, eventos e origem visual | Destino somente em rota de Tela; nomes de domínio exemplificativos não são contratos reais. |
+| §13 Migração | Inventário, conectividade, segmentos, inferência, runtime | Substituir “normalização por aliases” por referências diretas e renomeação atômica aprovada, se houver. |
+| §14 Critérios de aceite | Reuso, erro em destino, sobreposição de regras, terminal e retorno | Incorporados às matrizes `NAV-*`/`FRT-*`; nenhum teste executado. |
+| §15 Pendências | Schema físico, variáveis, histórico, segmentos, Splash, armazenamento | Mantidas e explicitadas nas seções 8, 9 e 11. |
+| §16 Regra final | Definições únicas + motor gera visual por relações, não por posição | Integralmente compatível com V3, sem aliases. |
+
+### F.2 `MAPEAMENTO_CAMPOS_FRONT.md` — correspondência exaustiva
+
+O arquivo possui tabela com **17 famílias de campos** (cinco blocos `navegacao`/`identidade`, oito blocos de conectividade/condições/segmentos incluindo as referências, mais os derivados) e três partes adicionais: *Bifurcação inferida*, comandos da interface e *Diferenças entre fontes*. A V3 os tratou individualmente em §9.1 a §9.9, preservando explicitamente o estatuto de proposta quando não homologado.
+
+| Área no documento front | Tratamento em V3 | Motivo |
+|---|---|---|
+| `identidade.id` | Mantido | Autoridade da definição da tela. |
+| `navegacao.participacoes/bifurcacoes` | Histórico apenas | Campos obsoletos no contrato V0.10/novo Fluxo. |
+| `navegacao.saidas/entradas` | Leitura legada, conversão verificada | Evitar duas fontes de transições. |
+| Registro experimental de ligações da V1 | **Rejeitado**: editar `tela.navegacao.rotas[]` diretamente | Não importar coleção operacional paralela. |
+| Registro experimental de predicados da V1 | **Rejeitado**: usar `rota.quando`, `estado.quando`, `variante.quando` | Sem lista global de regras. |
+| `segmentos.itens[]` | Candidato de compartilhamento | Vazio no recorte referido; sem deduplicação automática. |
+| `referencias.aliases[]` | **Não transportar** | Rejeição explícita de aliases operacionais. |
+| `referencias.composicaoBiblioteca[]` | Consulta derivada | Reusar composição da Tela, sem duplicar JSON. |
+| `referencias.eventosObservados[]` | Inspeção derivada do componente | Não confundir `data-action` com backend homologado. |
+| `referencias.indicesReversos` | Índice calculado/reconstruível | Não constitui outra autoridade. |
+| Bifurcação inferida | Preservar como algoritmo de visualização proposto | Sem criar condições/ramificações sem prova. |
+| Editar rota / ＋ Rota / Editar `quando` / Ver campos / Exportar | Incorporado a §9.3 e testes `FRT-*` | Modifica o contrato da Tela, não um modelo funcional duplicado. |
+| Armazenamento local no navegador | Capacidade opcional do frontend | Não substitui fonte canônica, nem requisito de ambiente não verificado. |
+| Catálogo parcial da Home versus fluxo amplo | Inventários apresentados separadamente | Não somar nem igualar contagens de acervos diferentes. |
+
+### F.3 Matriz de precedência da V3 contra o que ficou legado
+
+| Matéria | Antes (V1/anexos) | Agora (V3) | Natureza |
+|---|---|---|---|
+| Identidade | Duas chaves de Home e resolução por alias sugerida | Uma `identidade.id` por tela; `advogado.home_advogado` mantido neste recorte até mudança aprovada | [APROVADO]. |
+| Campo `classificacao.escopo` | Aparece em árvore histórica de Jornadas | Não transportar para contrato novo | [APROVADO]. |
+| `navegacao.participacoes` | Uma das fontes editoriais antigas | Rejeitado como campo do novo contrato; dados históricos preservados no snapshot | [APROVADO]. |
+| Bifurcação | Branch importado + losango inferido | Duas camadas semanticamente separadas, uma não substitui a outra | [DEFINIDO]. |
+| Navegação funcional | Cadastros propostos nos anexos V1 e de frontend | Rejeitados; usar exclusivamente `tela.navegacao.rotas[]` + `.quando` | [APROVADO]. |
+| `tela.navegacao.rotas[]` | Campo V0.10 da tela | Única autoridade de transições e destinos; o Fluxo apenas consulta e edita a Tela | [APROVADO]. |
+| Modais e etiquetas artificiais | `modal.route-modal`, `popup.screen-note` presentes na origem | Retirados no destino conforme decisão, com diff autorizado | [APROVADO]. |
+| HTML/CSS de componentes | Fontes de template e regras próprias | Devem ser convertidos sem simplificação visual; `props` na instância | [DEFINIDO]. |
+| Backend/OAB/checkout | Exemplos no contrato de conexões | Exigem prova/definição de fonte real; exemplos não homologam produção | [PENDENTE]. |
+
+---
+
+## Anexo G — Critérios de cobertura e checklist documental V3.1
+
+### G.1 Escopos e números que a V3.1 conserva
+
+| Escopo/fonte | Referência documental | Inventário |
+|---|---|---|
+| Catálogo Advogado original | `advogado_catalogo_completo (1).json`, inventário do mapa V1/V2 | 33 telas; 64 componentes referenciados + 35 incorporados = **99 definições**; 186 instâncias visuais; 93 referências a ocorrências. |
+| Catálogo Advogado **após saneamento aprovado, ainda não executado** | Seção 6 deste documento | 33 telas; **67 componentes candidatos**; **123 instâncias**; 23 `header.titlebar` ainda sob auditoria. |
+| Projeção (7) reportada em Garantia V1 | Outro acervo de Fluxo | 197 ocorrências, 118 sequências, 36 branches e 117 paths. |
+| Apresentação V3 reportada em Garantia V1 | Outra representação do mesmo Fluxo inspecionado | 197 ocorrências, 115 sequências, 33 branches e 114 paths; 3 ramos checkout não representados. |
+| `Projeto_9.zip` citado no Contrato V1 | Módulo Jornadas, outra versão | 110 telas; 388 componentes. |
+| Recorte Home do Mapeamento Front | `advogadoja-fluxo-projecao.json` mencionado no anexo | Não extrapolar contagem do recorte para todo o Fluxo. |
+
+### G.2 Checklist de especificação consolidada
+
+- [x] Manter integralmente contrato V0.10 de Tela/Componente e os mapas de origem → destino da V2.
+- [x] Manter os inventários de 33 Telas, 64 componentes referenciados, 35 locais e os dicionários de campos.
+- [x] Incorporar decisões aprovadas: zero aliases operacionais, zero coleções operacionais separadas de navegação/regras, zero `popup.screen-note` e `modal.route-modal` no destino; retirar famílias redundantes; `props` nas instâncias.
+- [x] Separar branches editoriais da fonte e losangos de condições inferidos; preservar os três casos checkout achatados para reconciliação.
+- [x] Redirecionar o contrato de ligação mínima para `tela.navegacao.rotas[]`, com `quando` inline e sem registros separados.
+- [x] Incorporar o mapeamento do frontend com edição de rotas da Tela, regras inline, índices derivados e exportação auditável.
+- [x] Adicionar critérios `NAV-01` a `NAV-16` e `FRT-01` a `FRT-24`.
+- [x] Preservar distinção entre 33/99, 78/197 e 110/388, pois vêm de fontes/versões diferentes.
+- [x] Definir autoridade única dos destinos em `tela.navegacao.rotas[]` e rejeitar cadastros paralelos.
+- [ ] Resolver `raizRef`, `paiRef`, instância, repetição, estados, variantes e tipos de `props` dos contratos reais.
+- [ ] Executar saneamento e migração dos JSONs com diffs e relatório por campo.
+- [ ] Provar continuidade visual/funcional nos quatro módulos e integridade de exportação/importação.
+- [ ] Resolver os três agrupamentos de checkout ausentes da apresentação Flow V3, conforme fontes de origem.
+- [ ] Homologar regras/variáveis de backend e a política de navegação real, quando estiverem no escopo de produto.
+
+### G.3 Critério final de entrega desta V3.1
+
+**Este arquivo é uma especificação consolidada**, não JSON migrado nem implementação do Motor V4. Somente pode ser chamada de “homologada” depois de: schema aprovado, conversor executado, ausência de perdas não autorizadas, testes estruturais/visuais/funcionais demonstrados, referências diretas consistentes e aceite documentado. Antes disso, o estado correto é **norma de trabalho V3, com decisões aprovadas e propostas pendentes explicitadas**.
+
+**Fim — Documento Canônico Consolidado V3.1, 19/11/2026.**
