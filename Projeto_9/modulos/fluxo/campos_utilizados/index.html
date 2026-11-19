@@ -38,20 +38,7 @@ html,body{height:auto!important;min-height:100%!important;background:#f3f6f5!imp
 .mode-intro{margin-top:0!important}
 .workspace-grid{grid-template-columns:minmax(280px,1.02fr) minmax(300px,.98fr)!important}
 @media(max-width:850px){.workspace-grid{grid-template-columns:minmax(0,1fr)!important}.main{padding:14px!important}.tree-scroll{max-height:52vh!important}.details-scroll{max-height:none!important}}
-</style><style>
-/* Extensão do Flow V1 – conectividade. Herda paleta, tipografia e controles do frontend existente. */
-#modeTabs{display:flex!important}
-.cx-quickbar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:17px}
-.cx-quickbar .btn{font-size:11px;padding:8px 10px}
-.cx-dialog{max-height:min(90vh,940px);overflow:auto;max-width:590px}
-.cx-dialog label{display:flex;flex-direction:column;gap:6px;margin:8px 0;font-size:11px;color:#4c6d66;font-weight:730}
-.cx-dialog label input,.cx-dialog label select{width:100%}
-.cx-stats,.cx-actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
-.cx-graph{display:grid;gap:12px;margin:14px 0}.cx-group{background:#f9fcfa;border:1px solid #d9e9e3;border-radius:13px;padding:13px}.cx-origin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:9px;font-size:12px;color:#1f524e}.cx-route{display:flex;gap:14px;padding:10px 0 0 12px;align-items:stretch}.cx-arrow{font-size:19px;color:#209884;min-width:22px;text-align:center}.cx-dest{border-left:2px solid #99cabd;padding:7px 14px 9px;flex:1;min-width:0}.cx-dest strong{font:600 12px/1.6 ui-monospace,monospace;overflow-wrap:anywhere;color:#264552}.cx-dest .module-inline{margin:6px 0 4px}.cx-dest .btn,.cx-components .btn{font-size:10px;padding:4px 7px}.cx-simulator{display:flex;gap:11px;align-items:center;flex-wrap:wrap;font-size:12px;color:#436b64;font-weight:700}.cx-simulator select{max-width:240px}
-.cx-demo{border:1px solid #e6eee8;border-radius:13px;background:#fcfefd;margin-top:13px;text-align:center;padding:14px}.cx-demo-origin{background:#e9f5ef;border-radius:9px;padding:10px;margin:auto;max-width:400px;font-size:12px;font-weight:750;color:#285b51}.cx-demo-diamond{padding:14px 0;font-size:13px;color:#996e22;font-weight:750}.cx-demo-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cx-demo-branch{display:flex;flex-direction:column;gap:8px;align-items:center;border:1px solid #dbe6df;border-radius:10px;background:#f9fcfb;padding:12px;opacity:.52}.cx-demo-branch.active{opacity:1;border-color:#20ad90;background:#edf9f4}.cx-demo-branch strong{font:700 11px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;color:#214c46}.cx-demo-branch small{font-size:10px;color:#57786f}.cx-components{max-height:350px;overflow:auto;display:grid;gap:5px}.cx-comp{display:flex;gap:7px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:11px;padding:7px 0;border-bottom:1px solid #edf3ef}.cx-comp strong{color:#276c61}.cx-comp span{color:#647f78;overflow-wrap:anywhere}
-@media(max-width:700px){.cx-demo-branches{grid-template-columns:1fr}.cx-dialog{width:96vw}}
-</style>
-</head>
+</style></head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
@@ -84,7 +71,7 @@ html,body{height:auto!important;min-height:100%!important;background:#f3f6f5!imp
 
     <div class="work-area">
       <header class="topbar">
-        <div class="topbar-title"><div class="eyebrow">LABORATÓRIO DE MODELAGEM · CONTRATO V1 / CAMPOS V0.3</div><h1>Uma árvore. Muitos módulos<span class="title-dot">.</span></h1><p>Flow · Módulo independente · dados exportáveis em JSON.</p></div>
+        <div class="topbar-title"><div class="eyebrow">LABORATÓRIO DE MODELAGEM · CONTRATO V0.2</div><h1>Uma árvore. Muitos módulos<span class="title-dot">.</span></h1><p>Flow · Módulo independente · dados exportáveis em JSON.</p></div>
         <div class="topbar-actions"><a class="btn btn-secondary" href="../index.html" style="text-decoration:none;display:inline-flex;align-items:center">⌂ Laboratório</a>
           <span class="saved-note" id="saveIndicator">Rascunho local</span>
           <button class="btn btn-ghost" id="undoBtn" title="Desfazer última alteração">↶ Desfazer</button>
@@ -94,15 +81,14 @@ html,body{height:auto!important;min-height:100%!important;background:#f3f6f5!imp
       </header>
 
       <main class="main">
-        <nav class="cx-quickbar" aria-label="Navegação local dos campos do Fluxo"><button class="btn btn-secondary" type="button" id="cxFlowShortcut">↗ Campos Flow</button><button class="btn btn-secondary" type="button" id="cxMasterShortcut">◇ Modelo mestre editável</button><button class="btn btn-secondary" type="button" id="cxExportShortcut">↓ Exportar JSON</button><button class="btn btn-secondary" type="button" id="cxProjectShortcut">↓ Exportar projeto</button><button class="btn btn-ghost" type="button" id="cxUndoShortcut">↶ Desfazer</button></nav>
         <div class="tab-strip" id="modeTabs" role="tablist" aria-label="Sub-abas do módulo"></div>
         <div class="mode-intro">
           <div><div class="eyebrow" id="modeEyebrow">CONTRATO MESTRE</div><h2 id="modeTitle">Estrutura completa</h2><p id="modeDescription">Cada campo pode ter uma finalidade diferente em cada motor.</p></div>
           <div class="mode-metric"><strong id="modeCount">—</strong><span id="modeCountLabel">campos no contrato</span></div>
         </div>
         <section class="flow-read-summary" id="flowReadSummary" hidden>
-          <div class="flow-read-summary-head"><div><div class="eyebrow">MODELO DE LEITURA · FLOW V0.3</div><h3>Campos e referências que o Flow interpreta</h3><p>A tela define a apresentação; as conexões por ID formam caminhos e bifurcações. Consulte a aba Conexões para editar e simular o fluxo.</p></div><div class="flow-read-numbers" id="flowReadNumbers"></div></div>
-          <div class="flow-read-actions"><button type="button" data-flow-focus="conexoes">Conexões canônicas</button><button type="button" data-flow-focus="condicoes">Condições</button><button type="button" data-flow-focus="referencias">Referências da biblioteca</button><button type="button" data-flow-focus="navegacao.participacoes">Jornadas e ocorrências</button><button type="button" data-flow-focus="navegacao.bifurcacoes">Bifurcações e caminhos</button><button type="button" data-flow-focus="navegacao.saidas">Relações e destinos</button><button type="button" data-flow-focus="acoes.itens">Ações e condições</button><button type="button" data-flow-focus="componentes.instancias">Componentes e slots</button><button type="button" data-flow-focus="estrutura.montagem">Apresentação</button></div>
+          <div class="flow-read-summary-head"><div><div class="eyebrow">MODELO DE LEITURA · FLOW V0.2</div><h3>O que o Flow precisa encontrar na Home Advogado</h3><p>Os dados estão na tela; o futuro módulo relaciona os IDs e apresenta cada funcionalidade.</p></div><div class="flow-read-numbers" id="flowReadNumbers"></div></div>
+          <div class="flow-read-actions"><button type="button" data-flow-focus="navegacao.participacoes">Jornadas e ocorrências</button><button type="button" data-flow-focus="navegacao.bifurcacoes">Bifurcações e caminhos</button><button type="button" data-flow-focus="navegacao.saidas">Relações e destinos</button><button type="button" data-flow-focus="acoes.itens">Ações e condições</button><button type="button" data-flow-focus="componentes.instancias">Componentes e slots</button><button type="button" data-flow-focus="estrutura.montagem">Apresentação</button></div>
         </section>
         <div class="workspace-grid" id="workspaceGrid">
           <section class="panel tree-panel">
@@ -130,26 +116,6 @@ html,body{height:auto!important;min-height:100%!important;background:#f3f6f5!imp
 
   <input id="importAuditFile" type="file" accept=".json,application/json" multiple hidden>
   <dialog id="functionDialog" class="dialog"><form class="dialog-card" id="functionForm"><div class="dialog-head"><div><div class="eyebrow">REQUISITOS DO MÓDULO</div><h2 id="functionDialogTitle">Adicionar funcionalidade</h2></div><button type="button" class="close-btn" data-close="functionDialog" aria-label="Fechar">×</button></div><label>ID estável<input id="functionId" required placeholder="flow.montar_nos"></label><label>Nome da funcionalidade<input id="functionName" required placeholder="Montar nós"></label><label>O que a funcionalidade deve fazer<textarea id="functionGoal" rows="3" required placeholder="Descreva o comportamento desejado..." ></textarea></label><label>Dados necessários (um caminho por linha)<textarea id="functionFields" rows="4" placeholder="identidade.id&#10;navegacao.saidas"></textarea></label><label>Regras / observações<textarea id="functionNotes" rows="3"></textarea></label><p class="form-error" id="functionError" hidden></p><div class="dialog-actions"><button type="button" class="btn btn-ghost" data-close="functionDialog">Cancelar</button><button type="submit" class="btn btn-primary">Salvar funcionalidade</button></div></form></dialog>
-
-
-  <dialog id="connectionDialog" class="dialog"><form id="connectionForm" class="dialog-card cx-dialog"><div class="dialog-head"><div><div class="eyebrow">CONEXÃO / ORIGEM → EVENTO → DESTINO</div><h2 id="connectionDialogTitle">Conexão</h2></div><button type="button" class="close-btn" data-close="connectionDialog" aria-label="Fechar">×</button></div>
-    <label>ID estável da conexão<input id="connectionId" required placeholder="cx.minha.conexao"></label>
-    <label>Tela de origem<input id="connectionOrigin" required placeholder="advogado.home"></label>
-    <label>Evento ou saída da origem<input id="connectionEvent" required placeholder="menu.inicio"></label>
-    <label>Tela de destino<input id="connectionDest" required placeholder="advogado.home"></label>
-    <label>Entrada do destino (opcional)<input id="connectionEntry" placeholder="principal"></label>
-    <label>Ação referenciada (opcional)<input id="connectionAction" placeholder="advogado.home.abrir_perfil"></label>
-    <label>Condição (opcional)<select id="connectionCondition"></select></label>
-    <label>Política de navegação (proposta)<select id="connectionNavigation"><option value="">A definir</option><option value="avancar">Avançar</option><option value="substituir">Substituir</option><option value="reiniciar">Reiniciar</option><option value="voltar">Voltar</option></select></label>
-    <p class="muted">Só edita o contrato. Não confirma os destinos ou as regras de backend.</p><div class="dialog-actions"><button class="btn btn-danger-lite" id="deleteConnectionBtn" type="button">Excluir</button><button class="btn btn-ghost" type="button" data-close="connectionDialog">Cancelar</button><button class="btn btn-primary" type="submit">Salvar conexão</button></div>
-  </form></dialog>
-  <dialog id="conditionDialog" class="dialog"><form id="conditionForm" class="dialog-card cx-dialog"><div class="dialog-head"><div><div class="eyebrow">CONDIÇÃO / REGRA DECLARATIVA</div><h2 id="conditionDialogTitle">Condição</h2></div><button type="button" class="close-btn" data-close="conditionDialog" aria-label="Fechar">×</button></div>
-    <label>ID estável<input id="conditionId" required placeholder="cond.meu.estado"></label>
-    <label>Variável / caminho no contexto<input id="conditionVariable" required placeholder="contexto.oabValidada"></label>
-    <label>Operador<select id="conditionOperator"><option value="igual">igual</option><option value="diferente_de">diferente de</option></select></label>
-    <label>Valor esperado<select id="conditionValue"><option value="true">true</option><option value="false">false</option><option value="null">null</option></select></label>
-    <p class="muted">A variável deve ser confirmada no contrato de dados antes de ser executada. Nenhum código dinâmico será interpretado.</p><div class="dialog-actions"><button class="btn btn-danger-lite" id="deleteConditionBtn" type="button">Excluir</button><button class="btn btn-ghost" type="button" data-close="conditionDialog">Cancelar</button><button class="btn btn-primary" type="submit">Salvar condição</button></div>
-  </form></dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="./motor.js"></script>

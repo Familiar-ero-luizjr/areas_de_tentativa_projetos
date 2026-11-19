@@ -1,0 +1,104 @@
+<div class="oab-shell">
+  <button class="oab-back" type="button" data-goto="advogado.configuracao.configuracao">{{content.voltar}}</button>
+
+  <section class="oab-hero">
+    <div class="oab-eyebrow">{{content.configuracoes_profissionais}}</div>
+    <h1>{{content.validacao_da_oab}}</h1>
+    <p class="oab-subtitle">{{content.tela_unica_para_consultar_enviar_e_atualizar_os_dados_usados_na_}}</p>
+  </section>
+
+  <section class="oab-context-banner" data-context-banner>
+    <div class="oab-context-icon">!</div>
+    <div>
+      <strong>{{content.validacao_necessaria_para_acessar_a_area_profissional}}</strong>
+      <p>{{content.se_o_banco_indicar_que_sua_oab_ainda_nao_foi_validada_esta_tela_}}</p>
+    </div>
+  </section>
+
+  <section class="oab-status-card">
+    <div>
+      <strong data-status-title>{{content.validacao_pendente}}</strong>
+      <p data-status-copy>{{content.preencha_os_dados_da_oab_e_envie_o_documento_para_analise}}</p>
+    </div>
+    <span class="oab-status-pill is-pending" data-status-pill>{{content.pendente}}</span>
+  </section>
+
+  <section class="oab-card">
+    <div class="oab-card-head">
+      <h2>{{content.dados_da_inscricao}}</h2>
+      <p>{{content.os_campos_abaixo_tambem_podem_ser_atualizados_depois_em_configur}}</p>
+    </div>
+
+    <div class="oab-grid">
+      <label class="oab-field oab-field--full">
+        <span>{{content.numero_da_oab}}</span>
+        <input type="text" placeholder="{{content.ex_123456_placeholder}}" data-oab-number>
+      </label>
+
+      <label class="oab-field">
+        <span>{{content.uf_da_oab}}</span>
+        <select data-oab-uf>
+          <option value="">{{content.selecionar}}</option>
+          <option>{{content.ac}}</option><option>{{content.al}}</option><option>{{content.ap}}</option><option>{{content.am}}</option><option>{{content.ba}}</option><option>{{content.ce}}</option>
+          <option>{{content.df}}</option><option>{{content.es}}</option><option>{{content.go}}</option><option>{{content.ma}}</option><option>{{content.mt}}</option><option>{{content.ms}}</option>
+          <option>{{content.mg}}</option><option>{{content.pa}}</option><option>{{content.pb}}</option><option>{{content.pr}}</option><option>{{content.pe}}</option><option>{{content.pi}}</option>
+          <option>{{content.rj}}</option><option>{{content.rn}}</option><option>{{content.rs}}</option><option>{{content.ro}}</option><option>{{content.rr}}</option><option>{{content.sc}}</option>
+          <option>{{content.sp}}</option><option>{{content.se}}</option><option>{{content.to}}</option>
+        </select>
+      </label>
+
+      <label class="oab-field">
+        <span>{{content.tipo_da_inscricao}}</span>
+        <select data-oab-type>
+          <option value="">{{content.selecionar_2}}</option>
+          <option>{{content.principal}}</option>
+          <option>{{content.suplementar}}</option>
+          <option>{{content.transferida}}</option>
+        </select>
+      </label>
+
+      <div class="oab-field oab-field--full">
+        <span>{{content.documento_da_oab}}</span>
+        <div class="oab-upload-box">
+          <div class="oab-upload-copy">
+            <strong>{{content.foto_ou_pdf_para_validacao}}</strong>
+            <small>{{content.envie_uma_imagem_legivel_ou_um_pdf_do_documento_profissional}}</small>
+            <div class="oab-file-name" data-file-name>{{content.nenhum_arquivo_selecionado}}</div>
+          </div>
+          <div class="oab-upload-actions">
+            <input type="file" accept="image/*,.pdf" hidden data-oab-file>
+            <button class="oab-upload-btn" type="button" data-pick-file>{{content.escolher_arquivo}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="oab-card">
+    <div class="oab-card-head">
+      <h2>{{content.informacoes_da_validacao}}</h2>
+      <p>{{content.esse_resumo_ajuda_a_visualizar_o_estado_atual_da_validacao}}</p>
+    </div>
+    <div class="oab-info-list">
+      <div class="oab-info-row"><span>{{content.status}}</span><strong data-info-status>{{content.pendente_2}}</strong></div>
+      <div class="oab-info-row"><span>{{content.ultima_atualizacao}}</span><strong data-info-date>—</strong></div>
+      <div class="oab-info-row"><span>{{content.observacao}}</span><strong data-info-note>{{content.aguardando_envio_dos_dados}}</strong></div>
+    </div>
+  </section>
+
+  <div class="oab-actions">
+    <button class="oab-btn oab-btn--secondary" type="button" data-goto="advogado.configuracao.configuracao">{{content.cancelar}}</button>
+    <button class="oab-btn oab-btn--primary" type="button" data-submit-oab-validation>{{content.enviar_para_validacao}}</button>
+  </div>
+
+  <section class="oab-demo-box">
+    <div class="oab-demo-divider"></div>
+    <div class="oab-demo-note">{{content.simulacao_de_estados_nao_faz_parte_da_tela_final}}</div>
+    <div class="oab-demo-actions">
+      <button type="button" class="oab-demo-btn active" data-demo-state="pending">{{content.pendente_3}}</button>
+      <button type="button" class="oab-demo-btn" data-demo-state="review">{{content.em_analise}}</button>
+      <button type="button" class="oab-demo-btn" data-demo-state="validated">{{content.validada}}</button>
+      <button type="button" class="oab-demo-btn" data-demo-state="rejected">{{content.correcao_necessaria}}</button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+<header class="app-header">
+  <button class="app-menu-button" type="button" data-action="drawer.open" aria-label="{{content.abrir_menu_aria_label}}">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="app-brand">
+    <img src="{{_assetBase}}brand_symbol.svg" alt="">
+    <div class="app-brand-copy">
+      <strong>{{brand}}</strong>
+      <small>{{role}}</small>
+    </div>
+  </div>
+
+  <button class="app-notifications" type="button" data-goto="{{notificationsGoto}}" aria-label="{{content.abrir_notificacoes_aria_label}}">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+    </svg>
+    <span class="app-notifications-badge">{{unreadCount}}</span>
+  </button>
+</header>

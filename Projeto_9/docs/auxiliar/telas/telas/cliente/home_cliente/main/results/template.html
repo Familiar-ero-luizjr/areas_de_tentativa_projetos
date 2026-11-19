@@ -1,0 +1,32 @@
+<section class="professional-results" aria-labelledby="professional-results-title">
+  <div class="results-head">
+    <div>
+      <h2 id="professional-results-title">{{content.profissionais_proximos}}</h2>
+      <p>{{content.mapa_e_lista_usam_sempre_o_mesmo_recorte}}</p>
+    </div>
+    <span class="result-count" data-result-count>{{content.valor_0}}</span>
+  </div>
+
+  <div class="professional-map" role="img" aria-label="{{content.mapa_ilustrativo_com_profissionais_proximos_aria_label}}">
+    <span class="map-road road-a"></span><span class="map-road road-b"></span><span class="map-road road-c"></span>
+    <span class="map-center" aria-label="{{content.sua_localizacao_aria_label}}"></span>
+    {{#each items}}<button class="map-marker" type="button" title="{{name}} · {{distance}}" data-professional data-goto="cliente.profissionais.perfil_publico" data-professional-id="{{id}}" data-type="{{type}}" data-areas="{{areasCsv}}" data-km="{{km}}" data-x="{{x}}" data-y="{{y}}"><span>{{initials}}</span></button>{{/each}}
+  </div>
+
+  <div class="active-filters" data-active-filters aria-label="{{content.filtros_aplicados_aria_label}}"></div>
+
+  <div class="result-order">
+    <span class="order-icon">{{content.km}}</span>
+    <div><strong data-result-message-title>{{content.ordenado_por_proximidade}}</strong><small data-result-message>{{content.todos_os_profissionais_dentro_de_10_km_aparecem_primeiro}}</small></div>
+  </div>
+
+  <div class="professional-list" data-professional-list>
+    {{#each items}}<button class="professional-item" type="button" data-professional data-result-item data-goto="cliente.profissionais.perfil_publico" data-professional-id="{{id}}" data-type="{{type}}" data-areas="{{areasCsv}}" data-km="{{km}}">
+      <span class="professional-avatar">{{initials}}</span>
+      <span class="professional-copy"><strong>{{name}}</strong><small>{{oab}} · {{areaLabels}} · {{distance}}</small></span>
+      <span class="professional-status status-{{status}}">{{statusLabel}}</span>
+      <span class="professional-chevron">›</span>
+    </button>{{/each}}
+    <div class="results-empty" data-results-empty hidden><strong>{{content.nenhum_profissional_encontrado}}</strong><span>{{content.amplie_o_raio_ou_ajuste_os_filtros}}</span></div>
+  </div>
+</section>

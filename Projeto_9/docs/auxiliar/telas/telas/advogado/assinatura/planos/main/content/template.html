@@ -1,0 +1,170 @@
+<main class="plans-shell">
+  <section class="plans-heading">
+    <h1>{{title}}</h1>
+    <p>{{subtitle}}</p>
+  </section>
+
+  <section class="current-summary" aria-label="{{content.plano_atual_aria_label}}">
+    <div>
+      <strong>{{content.seu_plano_atual_profissional}}</strong>
+      <span>{{content.renovacao_prevista_para_19_10_2026}}</span>
+    </div>
+    <span class="current-pill">{{content.ativo}}</span>
+  </section>
+
+  <section class="plans-grid" aria-label="{{content.planos_disponiveis_aria_label}}">
+
+    <article class="plan-card">
+      <span class="plan-badge">{{content.entrada}}</span>
+      <h2>{{content.essencial}}</h2>
+      <p class="plan-description">{{content.para_comecar_a_receber_oportunidades_e_manter_um_perfil_profissi}}</p>
+      <div class="price">{{content.r_29_90}} <small>{{content.mes}}</small></div>
+
+      <div class="course-access course-none">
+        <div class="course-icon">—</div>
+        <div>
+          <strong>{{content.cursos}}</strong>
+          <span>{{content.este_plano_nao_inclui_acesso_aos_cursos_da_parceria_educacional}}</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>✓</b><span>{{content.perfil_profissional_na_plataforma}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.recebimento_de_solicitacoes_compativeis}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.agenda_e_raio_basico_de_atendimento}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.notificacoes_essenciais_e_suporte}}</span></div>
+      </div>
+
+      <button class="plan-primary" type="button" data-goto="advogado.assinatura.checkout">{{content.escolher_essencial}}</button>
+    </article>
+
+    <article class="plan-card current">
+      <span class="plan-badge">{{content.plano_atual}}</span>
+      <h2>{{content.profissional}}</h2>
+      <p class="plan-description">{{content.para_profissionais_que_desejam_ampliar_a_operacao_e_acessar_bene}}</p>
+      <div class="price">{{content.r_79_90}} <small>{{content.mes_2}}</small></div>
+
+      <div class="course-access">
+        <div class="course-icon">{{content.a_5}}</div>
+        <div>
+          <strong>{{content.cursos_basicos_incluidos}}</strong>
+          <span>{{content.acesso_ao_catalogo_educacional_de_nivel_basico_disponibilizado_p}}</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>✓</b><span>{{content.todos_os_recursos_do_essencial}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.raio_de_atendimento_ampliado}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.preferencias_adicionais_de_notificacao}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.conveniencias_operacionais_adicionais}}</span></div>
+      </div>
+
+      <button class="plan-primary current-button" type="button" data-goto="advogado.assinatura.gestao_assinatura">{{content.gerenciar_assinatura}}</button>
+      <span class="renewal">{{content.plano_ativo_renovacao_em_19_10_2026}}</span>
+    </article>
+
+    <article class="plan-card">
+      <span class="plan-badge">{{content.avancado}}</span>
+      <h2>{{content.executivo}}</h2>
+      <p class="plan-description">{{content.para_quem_busca_mais_capacidade_operacional_e_acesso_educacional}}</p>
+      <div class="price">{{content.r_119_90}} <small>{{content.mes_3}}</small></div>
+
+      <div class="course-access">
+        <div class="course-icon">{{content.a}}</div>
+        <div>
+          <strong>{{content.cursos_basicos_e_avancados}}</strong>
+          <span>{{content.acesso_ampliado_ao_catalogo_educacional_incluindo_conteudos_avan}}</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>✓</b><span>{{content.todos_os_recursos_do_profissional}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.raio_maximo_conforme_regra_do_plano}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.recursos_organizacionais_adicionais}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.suporte_diferenciado_se_confirmado_comercialmente}}</span></div>
+      </div>
+
+      <button class="plan-primary" type="button" data-goto="advogado.assinatura.checkout">{{content.escolher_executivo}}</button>
+    </article>
+
+    <article class="plan-card">
+      <span class="plan-badge">{{content.equipe}}</span>
+      <h2>{{content.escritorio}}</h2>
+      <p class="plan-description">{{content.para_operacoes_com_mais_de_um_profissional_e_recursos_de_gestao_}}</p>
+      <div class="price">{{content.r_199_90}} <small>{{content.mes_4}}</small></div>
+
+      <div class="course-access">
+        <div class="course-icon">{{content.a_2}}</div>
+        <div>
+          <strong>{{content.cursos_basicos_e_avancados_2}}</strong>
+          <span>{{content.acesso_educacional_ampliado_associado_ao_nivel_do_plano}}</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>✓</b><span>{{content.criacao_e_gestao_de_escritorio}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.equipe_juridica_e_convites}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.distribuicao_interna}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.recursos_organizacionais_do_escritorio}}</span></div>
+      </div>
+
+      <button class="plan-primary" type="button" data-goto="advogado.assinatura.checkout">{{content.escolher_escritorio}}</button>
+    </article>
+
+    <article class="plan-card">
+      <span class="plan-badge">{{content.empresa}}</span>
+      <h2>{{content.empresa_gold}}</h2>
+      <p class="plan-description">{{content.para_pequenas_sociedades_de_advogados_que_desejam_ampliar_a_capa}}</p>
+      <div class="price">{{content.r_139_99}} <small>{{content.mes_5}}</small></div>
+
+      <div class="course-access">
+        <div class="course-icon">{{content.a_3}}</div>
+        <div>
+          <strong>{{content.cursos_basicos_e_avancados_3}}</strong>
+          <span>{{content.acesso_educacional_ampliado_associado_ao_plano_empresarial}}</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>✓</b><span>{{content.ate_3_advogados_as}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.chat_em_tempo_real}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.suporte_24_7}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.seguro_de_vida_acidentes_pessoais_sulamerica}}</span></div>
+      </div>
+
+      <button class="plan-primary" type="button" data-goto="advogado.assinatura.checkout">{{content.escolher_empresa_gold}}</button>
+    </article>
+
+    <article class="plan-card">
+      <span class="plan-badge">{{content.empresa_2}}</span>
+      <h2>{{content.infinity}}</h2>
+      <p class="plan-description">{{content.para_sociedades_de_medio_porte_que_desejam_ampliar_suas_areas_de}}</p>
+      <div class="price">{{content.r_299_99}} <small>{{content.mes_6}}</small></div>
+
+      <div class="course-access">
+        <div class="course-icon">{{content.a_4}}</div>
+        <div>
+          <strong>{{content.cursos_basicos_e_avancados_4}}</strong>
+          <span>{{content.acesso_educacional_ampliado_associado_ao_nivel_superior_do_model}}</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>✓</b><span>{{content.ate_10_usuarios}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.chat_em_tempo_real_2}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.suporte_24_7_2}}</span></div>
+        <div class="feature"><b>✓</b><span>{{content.seguro_de_vida_acidentes_pessoais_sulamerica_2}}</span></div>
+      </div>
+
+      <button class="plan-primary" type="button" data-goto="advogado.assinatura.checkout">{{content.escolher_infinity}}</button>
+    </article>
+
+  </section>
+
+  <aside class="commercial-note">
+    <strong>{{content.modelo_em_validacao}}</strong>
+    <span>{{content.nomes_precos_limites_raios_e_distribuicao_final_dos_cursos_ainda}}</span>
+  </aside>
+
+  <div class="op-toast" role="status" aria-live="polite"></div>
+</main>

@@ -1,0 +1,77 @@
+<section
+  class="professional-search"
+  aria-labelledby="professional-search-title"
+>
+  <div class="search-heading">
+    <h2 id="professional-search-title">{{content.filtrar_profissionais}}</h2>
+    <p>
+      {{content.o_inicio_ja_mostra_todos_os_profissionais_dentro_do_raio_padrao_}}
+    </p>
+  </div>
+
+  <div class="search-group">
+    <span class="search-label">{{content.tipo_de_atendimento}}</span>
+    <div class="type-options" role="group" aria-label="{{content.tipo_de_atendimento_aria_label}}">
+      {{#each types}}<button
+        class="type-option {{activeClass}}"
+        type="button"
+        data-action="professionals.type"
+        data-filter-type="{{value}}"
+        aria-pressed="false"
+      >
+        {{label}}</button
+      >{{/each}}
+    </div>
+  </div>
+
+  <div class="filter-grid">
+    <div class="filter-field">
+      <span>{{content.areas}}</span>
+      <div class="area-add-row">
+        <select
+          data-filter-area-choice
+          aria-label="{{content.escolher_area_para_adicionar_aria_label}}"
+        >
+          {{#each areas}}
+          <option value="{{value}}">{{label}}</option>
+          {{/each}}
+        </select>
+        <button
+          class="area-add"
+          type="button"
+          data-action="professionals.area.add"
+        >
+          {{content.adicionar}}
+        </button>
+      </div>
+      <div class="selected-areas" data-selected-areas aria-live="polite">
+        <span class="selected-area-empty" data-area-empty>{{content.todas_as_areas}}</span>
+      </div>
+    </div>
+    <label class="filter-field">
+      <span>{{content.raio}}</span>
+      <select data-filter-radius>
+        <option value="5">{{content.texto_5_km}}</option>
+        <option value="10" selected>{{content.texto_10_km}}</option>
+        <option value="20">{{content.texto_20_km}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="filter-actions">
+    <button
+      class="filter-apply"
+      type="button"
+      data-action="professionals.apply"
+    >
+      {{content.aplicar_filtro}}
+    </button>
+    <button
+      class="filter-clear"
+      type="button"
+      data-action="professionals.reset"
+    >
+      {{content.limpar_filtros}}
+    </button>
+  </div>
+</section>

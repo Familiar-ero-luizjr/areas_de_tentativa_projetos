@@ -1,0 +1,71 @@
+<aside class="prototype-drawer drawer-v3 drawer-v3--profissional" aria-hidden="true">
+  <button class="drawer-backdrop" type="button" data-menu-close aria-label="{{content.fechar_menu_aria_label}}"></button>
+  <div class="drawer-panel">
+    <div class="drawer-top">
+      <div class="drawer-identity">
+        <div class="drawer-avatar">{{content.dp}}</div>
+        <div class="drawer-profile">
+          <strong>{{content.dr_profissional}}</strong>
+          <small>{{content.profissional}}</small>
+        </div>
+      </div>
+    </div>
+        {{#if canToggleOnline}}<button class="drawer-online" type="button" data-online-toggle>
+          <span class="online-dot" aria-hidden="true"></span>
+          <span class="drawer-online-copy"><strong data-online-status>{{content.online}}</strong><small data-online-copy>{{content.recebendo_novas_solicitacoes}}</small></span>
+          <i class="online-switch" aria-hidden="true"><b></b></i>
+        </button>{{/if}}
+    <nav class="drawer-nav" data-capability-menu="professional" aria-label="{{content.menu_principal_aria_label}}">
+          <button type="button" data-goto="advogado.home_advogado">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>{{content.dashboard}}</span>
+          </button>
+          {{#if canValidateOab}}<button type="button" data-goto="advogado.configuracao.validacao_oab">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6M4 4h16v16H4z"/></svg>
+            <span>{{content.validar_oab}}</span>
+          </button>{{/if}}
+          {{#if canReceiveRequests}}<button type="button" data-goto="advogado.clientes.solicitacoes_recebidas">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            <span>{{content.solicitacoes}}</span>
+          </button>{{/if}}
+          {{#if canActProfessionally}}<button type="button" data-goto="advogado.disponibilidade">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+            <span>{{content.disponibilidade}}</span>
+          </button>
+          <button type="button" data-goto="advogado.configuracao.agenda_semanal">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span>{{content.agenda}}</span>
+          </button>{{/if}}
+          <button type="button" data-goto="advogado.perfil_profissional">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>{{content.perfil_profissional}}</span>
+          </button>
+          {{#if canActProfessionally}}<button type="button" data-goto="escritorio.gestao.escritorio">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+            <span>{{content.escritorio}}</span>
+          </button>{{/if}}
+          <button type="button" data-goto="advogado.assinatura.gestao_assinatura">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+            <span>{{content.plano_da_plataforma}}</span>
+          </button>
+          <button type="button" data-goto="notificacoes.lista.notificacoes">
+            <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+            <span>{{content.notificacoes}}</span>
+          </button>
+    
+          <button type="button" data-goto="advogado.configuracao.configuracao">
+            <span class="drawer-symbol">⚙</span><span>{{content.configuracoes}}</span>
+          </button>
+</nav>
+    <div class="drawer-footer">
+      <div class="drawer-footer-top">
+        <button class="drawer-logout" type="button" data-goto="auth.sessao.entrar">
+          <svg class="drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><path d="M12 2v10"/></svg>
+          <span>{{content.sair}}</span>
+        </button>
+        <small>{{content.versao_1_0_55}}</small>
+      </div>
+      <button class="drawer-emergency" type="button" data-action-message="Simulação: ligando para o 190. Nenhuma chamada real é feita.">{{content.disque_190}}</button>
+    </div>
+  </div>
+</aside>

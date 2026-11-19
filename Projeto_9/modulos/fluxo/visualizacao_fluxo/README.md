@@ -1,65 +1,89 @@
-# AdvogadoJá — Fluxo progressivo (Jornadas → Fluxo)
+# AdvogadoJá — Módulo Fluxo / visualizacao_fluxo
 
-## Decisão canônica implementada
+**Revisão:** 19/11/2026 · **Origem:** `projeto_9.zip` / `modulos/fluxo/visualizacao_fluxo/` · **Escopo:** correções do motor e auditoria de conversão, sem alterar o documento de origem.
 
-O **Fluxo possui seu próprio `data/documento.json`**, com a mesma estrutura física usada no módulo Jornadas:
+## 1. Contrato e isolamento
+
+Este módulo trabalha com **seu próprio** `data/documento.json` (não consulta Jornadas, Protótipo ou outras pastas em execução). O contrato nativo contém exatamente as chaves de raiz:
 
 ```text
 documento.json
 ├── tipo
 ├── versao
 ├── telas
-│   └── <id-da-tela>
-│       ├── identidade
-│       ├── classificacao
-│       ├── estrutura
-│       │   ├── html
-│       │   └── css
-│       └── navegacao       ← conteúdo acrescentado pelo Fluxo
+│   └── <telaId>
+│       ├── identidade / classificacao / estrutura
+│       └── navegacao
+│           ├── entradas
+│           ├── saidas
+│           ├── bifurcacoes
+│           ├── caminhosLineares
+│           ├── participacoes
+│           ├── ocorrenciasEditoriais / apresentacoesBifurcacoes
+│           └── demais metadados nativos existentes
 └── componentes
+    └── <componenteId>
 ```
 
-**O Fluxo não carrega, importa em tempo de execução nem consulta a pasta Jornadas.** Usa somente o seu `data/documento.json`. O mesmo motor de montagem visual foi incorporado ao `js/motor.js`, não duplicado nos dados de cada tela. O arquivo HTML único carrega a mesma coleção diretamente de um bloco JSON incorporado.
+`fluxo` e `catalogo` são estruturas **temporárias de edição na memória**, nunca adicionadas à raiz do JSON exportado. Os componentes e a composição visual são mantidos como no Projeto 9. Não se cria tela nova para representar estado, processo ou opção de menu.
 
-## Procedência e preservação
+## 2. Preservação e resultados da revisão
 
-- **110 telas** e **388 componentes**, copiados do `jornadas.zip` sem alterar suas definições originais.
-- Acrescentou-se `telas[id].navegacao`, aproveitando as relações declaradas no Flow V3 disponível. As 103 identidades da fonte V3 foram resolvidas para 99 IDs distintos de Jornadas. As outras 11 telas de Jornadas também permanecem no catálogo.
-- São preservadas **163 saídas declaradas**: **106 conexões visuais** identificadas após agrupamento de 13 referências redundantes, além de **44 saídas internas** para estado/processo (que não viram telas artificiais). As entradas, bifurcações, participações e demais metadados da fonte V3 permanecem na navegação da tela quando existentes.
-- Não existe uma chave raiz `fluxo`, nem um catálogo `catalogo.telas` adicional no documento persistido. A estrutura de edição interna pode gerar índices em memória, mas a exportação mantém **apenas** `tipo`, `versao`, `telas` e `componentes`.
-- IDs visuais preservados conforme Jornadas; referências V3 convertidas para os IDs correspondentes, mantendo `origensV3` para rastreabilidade.
+| Informação | No documento original | Nesta revisão |
+|---|---:|---|
+| Telas | 110 | preservadas |
+| Componentes | 388 | preservados |
+| Relações de `navegacao.saidas` | 163 | preservadas |
+| Relações entre telas | 119 | **119 relações independentes por ID** |
+| Saídas de estado/processo | 44 | preservadas e inspecionáveis no grafo |
+| Agrupamentos que fundiam IDs diferentes | 13 referências antes agrupadas | **nenhuma fusão de identidades** |
 
-## Arquivos
+As ações diferentes com a mesma origem e destino (ex.: criação de conta de cliente ou advogado) deixam de ser fundidas. O editor pode **agrupar visualmente por evento**, mas editar/desconectar opera sempre sobre a relação identificada.
 
-- `index.html`: editor, com estrutura visual V1, seleção de telas, abas de bifurcação, inspeção e prévia.
-- `css/style.css`: estilos do editor.
-- `js/motor.js`: ligações, importação/exportação, validação, simulação e **composição visual do JSON**.
-- `data/documento.json`: documento completo **da própria etapa Fluxo**.
-- `Fluxo_V4_Progressivo_Autocontido.html`: versão de arquivo único no ZIP, que não depende dos outros arquivos.
+A visualização mostra saídas de estado/processo em um bloco expansível junto à tela de origem; essas saídas não são tratadas como telas ou conexões para destinos inventados. Bifurcação condicional é diferenciada de opções de ações distintas.
 
-## Como abrir
+## 3. Edição e exportação
 
-**HTML único:** abra `Fluxo_V4_Progressivo_Autocontido.html` no navegador. Catálogo, motor e estilos já estão incorporados. Pode abrir sem servidor.
+- **Edição por ID:** atualizar uma relação altera apenas seu `navegacao.saidas[id]`, mantendo as outras relações.
+- **Relações derivadas:** quando a relação muda, o exportador sincroniza espelhos `entradas` e os vínculos diretos em `bifurcacoes[].caminhos` / `caminhosLineares` que usam `relacaoRef`. Uma mudança de destino invalida explicitamente a participação contextual de destino (`destinoParticipacaoRef` / `destinoNoRef`), pois não é correto adivinhar outra participação.
+- **Exclusão:** remover relação identificada retira sua saída e espelhos diretos relacionados, preservando as conexões independentes e os objetos editoriais que não foram selecionados.
+- **Sem edição:** o teste de ida e volta (`normalize` → `portableDoc`) preservou integralmente o objeto nativo original, incluindo arrays, componentes, estados e metadados editoriais.
+- **Importação rigorosa:** aceita contratos nativos com `tipo`, `versao`, `telas`, `componentes`. Rejeita explicitamente formatos V3 legados e campos extras desconhecidos na raiz quando não houver conversor validado sem perdas. Não elimina IDs desconhecidos silenciosamente.
+- **IDs:** referências duplicadas tornam a importação inválida; destinos não resolvidos aparecem na validação e não recebem correção automática.
+- **Simulação:** segue apenas relações declaradas; uma ação visual não pode impor um destino arbitrário no iframe sem correspondência na navegação do documento.
 
-**Módulo em pastas:** rode um servidor estático na pasta que contém `modulos`, por exemplo `python -m http.server 8000`, e acesse `http://localhost:8000/modulos/fluxo/index.html`. A única leitura de dados é `./data/documento.json`.
+**Limite importante:** uma alteração no fluxo não autoriza deduzir regras de domínio, destino de API, dados de sessão ou associação com jornada/subjornada. Ao alterar o destino de uma relação, vínculos editoriais de ocorrência e sequência que dependam de contexto deverão ser revisados no caso concreto. O motor não promete atualizar automaticamente arquivos independentes fora deste módulo.
 
-## Uso
+## 4. Arquivos
 
-- **Importar**: lê um documento de quatro campos; aceita também algumas projeções antigas e conserva o conteúdo visual nativo que já existe no módulo.
-- **Exportar**: produz `documento_fluxo.json`, no contrato progressivo de quatro campos.
-- **Recriar do catálogo**: interpreta o `documento.json` original do módulo e monta as conexões. Não fixa manualmente a Splash: a tela inicial é inferida dos metadados.
-- **Visual**: renderiza HTML/CSS/componentes com o mesmo mecanismo de Jornadas; suporta estados e ações demonstrativas (menu do advogado testado).
-- **Conectar / Editar / Remover**: atuam sobre os IDs; bifurcações são inferidas automaticamente das saídas.
-- **Ferramentas** (ícone F): validação, configuração de variáveis e simulação de navegação.
-- **Novo vazio** remove as conexões da edição; **Restaurar base** recupera o documento original do próprio módulo.
+```text
+visualizacao_fluxo/
+├── index.html                 # editor
+├── css/style.css             # CSS do editor
+├── js/motor.js               # motor, editor e exportador do Fluxo
+├── data/documento.json      # coleção completa ORIGINAL do Projeto 9
+├── tests/fluxo_integridade.test.js  # testes Node (sem dependências externas)
+├── TESTES_E_CONVERSAO.md     # cobertura e limitações comprovadas
+└── README.md
+```
 
-> Prévia offline não faz autenticação real, escrita em banco ou chamadas a APIs. Se uma ação não estiver vinculada a uma saída única, o motor informa a pendência; não inventa o destino.
+## 5. Executar
 
-## Testes feitos
+Na raiz do Projeto 9 (a pasta que contém `modulos/`):
 
-- Auditoria de preservação por igualdade: as **110 telas**, retirando somente `navegacao`, permanecem idênticas às telas de Jornadas; os **388 componentes são idênticos**.
-- Cada tela contém composição visual, e todos os seus `componenteRef` existentes resolvem no mesmo documento.
-- Renderização de Splash, Entrar e Home do advogado no Chromium sem erros JavaScript.
-- Ação visual de abrir o menu do advogado funcionou na prévia.
-- Criação de saída condicional gerou bifurcação; a condição foi persistida, reimportada e removida em um ciclo de teste.
-- Exportação sem alterações reproduziu o documento original do módulo sem perdas e sem chave raiz `fluxo`.
+```bash
+python -m http.server 8000
+```
+
+Abrir `http://localhost:8000/modulos/fluxo/visualizacao_fluxo/index.html`. O módulo precisa de um servidor estático para carregar seu JSON; o ZIP não inclui um HTML autocontido duplicando os 10 MB de dados.
+
+Para testar a lógica de conversão e edição:
+
+```bash
+node --check modulos/fluxo/visualizacao_fluxo/js/motor.js
+node modulos/fluxo/visualizacao_fluxo/tests/fluxo_integridade.test.js
+```
+
+## 6. Política de aceitação
+
+A revisão cobre a estrutura de arquivos, leitura, conversão sem edição e mudanças individuais de relações em testes automatizados. **Não significa que todos os percursos de negócio tenham sido homologados**, nem substitui testes funcionais da aplicação. A execução gráfica em navegador completo ainda requer validação no ambiente de integração; o teste de navegação automatizado foi impedido por restrição de acesso do navegador neste ambiente.

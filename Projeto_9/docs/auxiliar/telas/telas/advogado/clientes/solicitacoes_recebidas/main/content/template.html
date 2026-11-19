@@ -1,0 +1,12 @@
+<main class="op-shell">
+        
+        
+        <div class="op-tabs"><button class="active" type="button" data-request-tab="new">{{content.novas}}</button><button type="button" data-request-tab="accepted">{{content.aceitas}}</button><button type="button" data-request-tab="declined">{{content.recusadas}}</button></div>
+<button class="op-card" type="button" data-request-state="new" data-goto="advogado.clientes.detalhe_solicitacao" style="width:100%;text-align:left;cursor:pointer">
+  <h3>{{content.direito_do_consumidor}}</h3><p>{{content.contato_prioritario_sao_paulo_sp_online}}</p><span class="status-chip waiting">{{content.waiting}}</span>
+</button>
+<div class="op-empty" data-request-empty hidden>{{content.nenhuma_solicitacao_neste_estado}}</div>
+<div class="op-card" data-request-state="accepted" hidden><h3>{{content.solicitacoes_aceitas}}</h3><p>{{content.nenhuma_solicitacao_neste_estado_2}}</p></div>
+<div class="op-card" data-request-state="declined" hidden><h3>{{content.solicitacoes_recusadas}}</h3><p>{{content.nenhuma_solicitacao_neste_estado_3}}</p></div>
+        <div class="op-toast" role="status" aria-live="polite"></div>
+      </main>

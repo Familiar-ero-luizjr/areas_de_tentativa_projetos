@@ -464,6 +464,7 @@
           t = doc.catalogo.telas;
         if (f.inicio && !t[f.inicio])
           errors.push(`A tela inicial ${f.inicio} não existe no catálogo.`);
+        for (const issue of doc.__editorProjection?.avisos || []) warnings.push(issue);
         const ids = new Set();
         for (const c of f.conexoes) {
           if (ids.has(c.id)) errors.push(`Conexão com ID duplicado: ${c.id}`);
@@ -482,15 +483,13 @@
             warnings.push(`Tela no fluxo não encontrada no catálogo: ${k}`);
         }
         for (const key of new Set(f.conexoes.map((c) => c.de))) {
-          const same = outgoing(key).filter((c) => c.tipo === "condicional");
-          if (same.length > 1) {
-            const trueCount = same.filter(
-              (c) => conditionMatch(c) === true,
-            ).length;
-            if (trueCount > 1)
-              warnings.push(
-                `Mais de uma condição verdadeira na saída de ${key}.`,
-              );
+          const byEvent = new Map();
+          for (const c of outgoing(key)) {
+            const arr = byEvent.get(c.saida) || []; arr.push(c); byEvent.set(c.saida,arr);
+          }
+          for(const [event,arr] of byEvent)if(arr.length > 1){
+            const trueCount=arr.filter(c=>conditionMatch(c)===true).length;
+            if(trueCount>1)warnings.push(`Mais de uma saída válida para ${key} · ${event}.`);
           }
         }
         return { errors, warnings };
@@ -518,7 +517,11 @@
       function cardHtml(key, index) {
         const obj = doc.catalogo.telas[key];
         const start = index === 0;
-        return `<div class="flow-sequence__slot sequence-slot" data-card="${esc(key)}"><div class="sortable-node" draggable="true" data-drag="${esc(key)}"><article class="flow-card ${active === key ? "flow-card--active" : ""} ${selected === key ? "flow-card--selected" : ""}"><button class="drag-handle" aria-label="Arrastar tela" title="Arrastar tela">⋮⋮</button><div class="flow-card__body" data-action="inspect" data-key="${esc(key)}" role="button" tabindex="0" title="Abrir campos, entradas, saídas e componentes"><div class="flow-card__meta"><span class="kind-badge kind-badge--screen">TELA</span><span class="meta-segment">${esc(descOf(key))}</span><span class="definition-badge">Mapa: A DEFINIR</span></div><strong>${esc(nameOf(key))}</strong><small>${esc(key)}</small></div><div class="flow-card__actions"><button data-action="move-up" data-key="${esc(key)}" ${index === 0 ? "disabled" : ""} title="Subir na organização visual">↑</button><button data-action="move-down" data-key="${esc(key)}" ${index === doc.fluxo.telasUsadas.length - 1 ? "disabled" : ""} title="Descer na organização visual">↓</button><button data-action="preview" data-key="${esc(key)}">Visual</button><button class="danger" data-action="remove-screen" data-key="${esc(key)}">Remover</button></div></article></div></div>`;
+        const internal = (obj?.navegacao?.saidas || []).filter(r => r.destinoTipo && r.destinoTipo !== 'tela');
+        const pending = (obj?.navegacao?.saidas || []).filter(r => r.destinoTipo === 'tela' && (!r.destinoRef || !doc.catalogo.telas[r.destinoRef]));
+        const internals = internal.length || pending.length
+          ? `<details class="flow-internal-refs"><summary>${internal.length} estado(s)/processo(s) interno(s) · ${pending.length} destino(s) pendente(s)</summary><ul>${[...internal,...pending].map(r=>`<li><strong>${esc(r.rotulo||r.acaoRef||r.id)}</strong><small>${esc(r.id||'sem ID')} · ${esc(r.destinoTipo||'tela')} · ${esc(r.destinoRef||'não definido')}</small></li>`).join('')}</ul></details>` : '';
+        return `<div class="flow-sequence__slot sequence-slot" data-card="${esc(key)}"><div class="sortable-node" draggable="true" data-drag="${esc(key)}"><article class="flow-card ${active === key ? "flow-card--active" : ""} ${selected === key ? "flow-card--selected" : ""}"><button class="drag-handle" aria-label="Arrastar tela" title="Arrastar tela">⋮⋮</button><div class="flow-card__body" data-action="inspect" data-key="${esc(key)}" role="button" tabindex="0" title="Abrir campos, entradas, saídas e componentes"><div class="flow-card__meta"><span class="kind-badge kind-badge--screen">TELA</span><span class="meta-segment">${esc(descOf(key))}</span><span class="definition-badge">Mapa: A DEFINIR</span></div><strong>${esc(nameOf(key))}</strong><small>${esc(key)}</small></div><div class="flow-card__actions"><button data-action="move-up" data-key="${esc(key)}" ${index === 0 ? "disabled" : ""} title="Subir na organização visual">↑</button><button data-action="move-down" data-key="${esc(key)}" ${index === doc.fluxo.telasUsadas.length - 1 ? "disabled" : ""} title="Descer na organização visual">↓</button><button data-action="preview" data-key="${esc(key)}">Visual</button><button class="danger" data-action="remove-screen" data-key="${esc(key)}">Remover</button></div></article>${internals}</div></div>`;
       }
       function groupEdges(key) {
         const edges = outgoing(key),
@@ -530,7 +533,7 @@
           if (!g) {
             g = {
               key: groupKey,
-              label: c.grupo || c.rotulo || c.saida || "Caminho",
+              label: nested ? (c.rotulo || c.saida || "Caminho") : (c.saida || c.rotulo || "Caminho"),
               edges: [],
             };
             groups.push(g);
@@ -550,7 +553,7 @@
         if (!edges.length) return "";
         let groups = [];
         for (const c of edges) {
-          const gkey = c.grupo || "id-" + c.id;
+          const gkey = nested ? "id-" + c.id : "evento-" + (c.saida || c.id);
           let g = groups.find((x) => x.key === gkey);
           if (!g) {
             g = {
@@ -562,9 +565,9 @@
           }
           g.edges.push(c);
         }
-        const mode = edges.some((c) => c.tipo === "condicional")
-          ? "condition"
-          : "navigation";
+        const singleEvent = new Set(edges.map(c => c.saida)).size === 1;
+        const mode = singleEvent && edges.some(c => c.tipo === "condicional")
+          ? "condition" : "navigation";
         const isLogin = key === "auth.sessao.entrar",
           title = isLogin
             ? "Fluxo de login"
@@ -572,7 +575,7 @@
               ? "Destino após autenticação"
               : mode === "condition"
                 ? "Bifurcação condicional"
-                : "Opções de navegação";
+                : singleEvent ? "Alternativas do mesmo evento" : "Opções de navegação";
         const preferred = tabState[key];
         let group =
           groups.find(
@@ -600,7 +603,7 @@
             nested: true,
           });
         }
-        return `<section class="branch-card" data-branch="${esc(key)}"><div class="branch-card__header"><button class="drag-handle drag-handle--branch" title="Bifurcação derivada das saídas; reorganize a tela de origem">⋮⋮</button><div class="branch-card__titleblock"><span class="kind-badge kind-badge--branch">BIFURCAÇÃO</span><strong>${esc(title)}</strong></div><div class="branch-card__actions"><button data-action="tools" title="Verificar condições">↑</button><button data-action="tools" title="Verificar condições">↓</button><button data-action="edit-branch" data-key="${esc(nested ? edges[0].de : key)}">Editar</button><button class="danger" data-action="remove-branch" data-key="${esc(nested ? edges[0].de : key)}">Remover</button></div></div><div class="branch-tabs">${tabs}</div><div class="branch-card__content"><div class="flow-sequence flow-sequence--nested">${dividerHtml(edges[0].de || key, null, { disconnected: false })}${contents}</div></div></section>`;
+        return `<section class="branch-card" data-branch="${esc(key)}"><div class="branch-card__header"><button class="drag-handle drag-handle--branch" title="Bifurcação derivada das saídas; reorganize a tela de origem">⋮⋮</button><div class="branch-card__titleblock"><span class="kind-badge kind-badge--branch">BIFURCAÇÃO</span><strong>${esc(title)}</strong></div><div class="branch-card__actions"><button data-action="tools" title="Verificar condições">↑</button><button data-action="tools" title="Verificar condições">↓</button><button data-action="edit-branch" data-key="${esc(nested ? edges[0].de : key)}">Editar</button><button class="danger" data-action="remove-branch" data-key="${esc(nested ? edges[0].de : key)}">Remover todas as saídas</button></div></div><div class="branch-tabs">${tabs}</div><div class="branch-card__content"><div class="flow-sequence flow-sequence--nested">${dividerHtml(edges[0].de || key, null, { disconnected: false })}${contents}</div></div></section>`;
       }
       function flowPath(key, seen, stack, depth = 0) {
         if (!key)
@@ -641,7 +644,7 @@
         // status de armazenamento é controlado pelo persist() V3, sem sucesso presumido
         by("docSource").textContent =
           sourceLabel === "trabalho local" ? "trabalho local" : sourceLabel;
-        by("projectName").textContent = "Advogado Já · Fluxo do catálogo V3";
+        by("projectName").textContent = "Advogado Já · Fluxo do catálogo V4";
         by("undoBtn").disabled = !history.length;
         by("redoBtn").disabled = !future.length;
         if (!t.length) {
@@ -2464,89 +2467,160 @@ function nativeRelationKey(origin,dest,w){return JSON.stringify([origin,dest,w?J
 function ajNativeUiCondition(w){if(!w||typeof w!=='object')return null;return {variavel:w.variavel||w.campo||'',operador:({'igual':'==','diferente':'!=','maior':'>','menor':'<','maior_igual':'>=','menor_igual':'<='}[w.operador]||w.operador||'=='),valor:w.valor};}
 function ajNativeWriteCondition(w){if(!w)return null;return {campo:w.variavel,operador:({'==':'igual','!=':'diferente','>':'maior','<':'menor','>=':'maior_igual','<=':'menor_igual'}[w.operador]||w.operador||'igual'),valor:w.valor};}
 function ajNativeEmptyNavigation(){return {entradas:[],saidas:[],bifurcacoes:[],condicoes:[],referencias:[]};}
-function normalize(input){
- if(input?.catalogo?.telas&&input?.fluxo)return input; // estrutura interna do editor; nunca exportada
- if(input?.catalogo?.telas&&!input?.telas){
-  // Compatibilidade: conversão de arquivos V3 antigos sem substituir os contratos visuais atuais.
-  const copyNative=copy(JORNADAS_SOURCE), sources=Object.entries(input.catalogo.telas);
-  const aliases={};for(const [key,t] of Object.entries(copyNative.telas)){
-    aliases[key]=key;for(const a of t.navegacao?.origensV3||[])aliases[a]=key;
-    for(const a of t.identidade?.aliasesLegados||[])aliases[a]=key;
-  }
-  for(const [legacyId,legacy] of sources){
-   const target=aliases[legacyId];
-   if(!target)continue;
-   const nav=copyNative.telas[target].navegacao||ajNativeEmptyNavigation();
-   for(const r of legacy.navegacao?.saidas||[])if(!nav.saidas.some(x=>x.id===r.id)){
-    const entry=copy(r);
-    for(const field of ['destinoRef','origemTelaRef','telaRef'])if(entry[field]&&aliases[entry[field]])entry[field]=aliases[entry[field]];
-    nav.saidas.push(entry);
-   }
-   copyNative.telas[target].navegacao=nav;
-  }
-  input=copyNative;
+// Cada relacao visivel corresponde a UMA saida canonica (ID unico).
+// Relacoes de estado/processo continuam documentadas e sao exibidas sem criar telas.
+function ajEdgeState(e){return JSON.stringify({de:e.de,para:e.para,saida:e.saida,tipo:e.tipo,rotulo:e.rotulo,quando:e.quando,navegacao:e.navegacao});}
+function ajNativeOriginEvent(rel){return rel.eventoOrigem||rel.acaoRef||rel.rotaAliasLegada||'concluiu';}
+function ajNativeRelationIndexes(native){
+ const result=new Map();
+ for(const [key,screen] of Object.entries(native.telas||{}))for(const rel of screen.navegacao?.saidas||[]){
+  if(rel.id){if(result.has(rel.id))throw Error('ID de relacao duplicado na origem: '+rel.id);result.set(rel.id,{origin:key,relation:rel});}
  }
- if(!input?.telas||!input?.componentes)throw Error('Este motor utiliza documento.json com tipo, versao, telas e componentes.');
- const native=copy(input),used=Object.keys(native.telas),links=[],grouped=new Map(),allIds=[];
- let collapsed=0,internal=0,pendentes=0;
+ return result;
+}
+function normalize(input){
+ if(input?.catalogo?.telas&&input?.fluxo&&input?.__initialEdgeState)return input; // projecao interna, jamais exportada
+ if(input?.catalogo?.telas&&!input?.telas){
+  // Nao converter parcialmente o legado V3: preservacao integral e obrigatoria.
+  const aliases={};for(const [key,t] of Object.entries(JORNADAS_SOURCE?.telas||{})){
+   aliases[key]=key;for(const a of t.navegacao?.origensV3||[])aliases[a]=key;
+   for(const a of t.identidade?.aliasesLegados||[])aliases[a]=key;
+  }
+  const unknown=Object.keys(input.catalogo.telas).filter(key=>!aliases[key]);
+  throw Error('Importacao do formato catalogo/V3 bloqueada para evitar perdas. '+
+   (unknown.length?'IDs sem correspondencia: '+unknown.slice(0,12).join(', ')+(unknown.length>12?' (e mais '+(unknown.length-12)+')':'')+'. ':'')+
+   'Use um contrato nativo com tipo, versao, telas e componentes ou um conversor V3 de equivalencia integral validada.');
+ }
+ if(!input?.telas||!input?.componentes||!Object.hasOwn(input,'tipo')||!Object.hasOwn(input,'versao'))throw Error('Contrato invalido: esperado tipo, versao, telas e componentes.');
+ const extra=Object.keys(input).filter(k=>!['tipo','versao','telas','componentes'].includes(k));
+ if(extra.length)throw Error('Campos de raiz nao suportados sem conversao integral: '+extra.join(', '));
+ const native=copy(input), used=Object.keys(native.telas),links=[],allIds=[],issues=[];
+ // Falha explicita em duplicatas: sobrescrever relacao por chave destruiria identidade.
+ ajNativeRelationIndexes(native);
+ let internal=0,pendentes=0;
  for(const [key,screen] of Object.entries(native.telas)){
   for(const relation of screen.navegacao?.saidas||[]){
    if(relation.destinoTipo&&relation.destinoTipo!=='tela'){internal++;continue;}
-   const dest=relation.destinoRef||relation.para;
-   if(!dest||!native.telas[dest]){pendentes++;continue;}
+   const dest=relation.destinoRef||relation.para||null;
+   if(!dest||!native.telas[dest]){pendentes++;issues.push('Destino nao resolvido: '+(relation.id||key)+' → '+(dest||'(ausente)'));}
    const cond=ajNativeUiCondition(relation.quando);
-   const signature=nativeRelationKey(key,dest,cond);
-   const rid=relation.id||'link.'+key+'.'+dest+'.'+allIds.length;
+   const rid=relation.id||null;
+   // Uma saida sem ID nao pode ser alterada com seguranca: reportar, nao inventar identificador estavel.
+   if(!rid){issues.push('Relacao sem ID em '+key+'; mantida no JSON, edicao indisponivel');continue;}
    allIds.push(rid);
-   const existing=grouped.get(signature);
-   if(existing){existing.referenciasOriginais.push(rid);collapsed++;continue;}
-   const entry={id:rid,de:key,para:dest,saida:relation.eventoOrigem||relation.acaoRef||'concluiu',tipo:cond?'condicional':'sequencial',rotulo:relation.rotulo||'',quando:cond,navegacao:relation.navegacaoEditor||'empilhar',referenciasOriginais:[rid]};
-   grouped.set(signature,entry);links.push(entry);
+   links.push({id:rid,de:key,para:dest,saida:ajNativeOriginEvent(relation),
+    tipo:cond?'condicional':relation.tipo==='rota'?'navegacao':'sequencial',
+    rotulo:relation.rotulo||'',quando:cond,navegacao:relation.navegacaoEditor||'empilhar',
+    referenciasOriginais:[rid]});
   }
  }
- // Escolha inicial pelos metadados internos do catálogo; não pelo nome da Splash.
  const indegree={};for(const k of used)indegree[k]=0;
- for(const e of links)indegree[e.para]=(indegree[e.para]||0)+1;
+ for(const e of links)if(e.para&&native.telas[e.para])indegree[e.para]++;
  const weight=k=>{
-  const nav=native.telas[k].navegacao||{};
-  const parts=nav.participacoes||[];
+  const nav=native.telas[k].navegacao||{},parts=nav.participacoes||[];
   const start=parts.some(p=>p.contexto?.modo==='inicio'&&p.ordem===1);
   const early=parts.some(p=>p.jornadaRef==='app'&&p.subjornadaRef==='app.inicializacao'&&p.ordem===1);
   return [nav.inicial===true?0:early?1:start?2:indegree[k]===0?3:4,parts.find(x=>x.jornadaRef==='app')?.ordem??9999,k];
  };
  const ordered=used.sort((a,b)=>{const A=weight(a),B=weight(b);for(let i=0;i<A.length;i++){if(A[i]<B[i])return -1;if(A[i]>B[i])return 1;}return 0;});
  const inicio=ordered[0]||null,queue=[],orderedUsed=[],visited=new Set();
- const byOrigin=new Map();for(const e of links){if(!byOrigin.has(e.de))byOrigin.set(e.de,[]);byOrigin.get(e.de).push(e.para);}
- function walk(k){queue.push(k);for(let i=0;i<queue.length;i++){const next=queue[i];if(!native.telas[next]||visited.has(next))continue;visited.add(next);orderedUsed.push(next);for(const x of byOrigin.get(next)||[])if(!visited.has(x))queue.push(x);}queue.length=0;}
+ const byOrigin=new Map();for(const e of links)if(e.para&&native.telas[e.para]){
+  if(!byOrigin.has(e.de))byOrigin.set(e.de,[]);byOrigin.get(e.de).push(e.para);
+ }
+ function walk(k){queue.push(k);for(let i=0;i<queue.length;i++){
+  const next=queue[i];if(!native.telas[next]||visited.has(next))continue;
+  visited.add(next);orderedUsed.push(next);
+  for(const x of byOrigin.get(next)||[])if(!visited.has(x))queue.push(x);
+ }queue.length=0;}
  if(inicio)walk(inicio);for(const key of ordered)if(!visited.has(key))walk(key);
- const f={schemaVersion:4,inicio,telasUsadas:orderedUsed,conexoes:links,variaveis:{professionalAccess:'enabled',onboardingConcluido:true,primeiroAcesso:false,'sessao.perfil':'cliente'},configuracao:{politicaRetorno:'historico',bifurcacao:'automatica'}};
- const snapshots={};for(const e of links)snapshots[e.id]=JSON.stringify({de:e.de,para:e.para,saida:e.saida,tipo:e.tipo,rotulo:e.rotulo,quando:e.quando,navegacao:e.navegacao});
- return {tipo:native.tipo,versao:native.versao,catalogo:{telas:native.telas,componentes:native.componentes},fluxo:f,__initialEdgeState:snapshots,__editorLoadedIds:allIds,__editorProjection:{origem:'telas[id].navegacao.saidas',telas:orderedUsed.length,conexoes:links.length,agrupadas:collapsed,saidasInternas:internal,pendencias:pendentes},__editorDirty:false};
+ const f={schemaVersion:4,inicio,telasUsadas:orderedUsed,conexoes:links,
+  variaveis:{professionalAccess:'enabled',onboardingConcluido:true,primeiroAcesso:false,'sessao.perfil':'cliente'},
+  configuracao:{politicaRetorno:'historico',bifurcacao:'automatica'}};
+ const snapshots={};for(const e of links)snapshots[e.id]=ajEdgeState(e);
+ return {tipo:native.tipo,versao:native.versao,catalogo:{telas:native.telas,componentes:native.componentes},fluxo:f,
+  __initialEdgeState:snapshots,__editorLoadedIds:allIds,
+  __editorProjection:{origem:'telas[id].navegacao.saidas',telas:orderedUsed.length,
+   conexoes:links.length,agrupadas:0,saidasInternas:internal,pendencias:pendentes,avisos:issues},__editorDirty:false};
+}
+// Preserva os dados editoriais e sincroniza apenas referencias diretas da relacao alterada.
+function ajSyncRelationDependents(output,rid,oldDest,newDest,edited,deleted){
+ const old=oldDest&&output.telas[oldDest]?.navegacao;
+ const newNav=newDest&&output.telas[newDest]&&(output.telas[newDest].navegacao||(output.telas[newDest].navegacao=ajNativeEmptyNavigation()));
+ let mirror=null;
+ for(const screen of Object.values(output.telas)){
+  const nav=screen.navegacao;if(!nav)continue;
+  if(Array.isArray(nav.entradas)){
+   const matching=nav.entradas.filter(x=>x.relacaoRef===rid);
+   if(matching.length){if(!mirror)mirror=copy(matching[0]);nav.entradas=nav.entradas.filter(x=>x.relacaoRef!==rid);}
+  }
+  // Caminhos lineares e ramificacoes fazem referencia aos mesmos IDs; nao deixar espelhos antigos.
+  if(Array.isArray(nav.caminhosLineares)){
+   nav.caminhosLineares=nav.caminhosLineares.filter(p=>p.relacaoRef!==rid||!deleted);
+   if(!deleted)for(const path of nav.caminhosLineares)if(path.relacaoRef===rid){
+    path.destinoTipo='tela';path.destinoRef=newDest;path.quando=ajNativeWriteCondition(edited.quando);path.rotulo=edited.rotulo;
+   }
+  }
+  if(Array.isArray(nav.bifurcacoes)){
+   for(const group of nav.bifurcacoes){
+    if(!Array.isArray(group.caminhos))continue;
+    group.caminhos=group.caminhos.filter(p=>p.relacaoRef!==rid||!deleted);
+    if(!deleted)for(const path of group.caminhos)if(path.relacaoRef===rid){
+     path.destinoTipo='tela';path.destinoRef=newDest;path.quando=ajNativeWriteCondition(edited.quando);path.rotulo=edited.rotulo;
+     for(const item of path.itens||[])if(item.relacaoRef===rid&&item.tipo==='tela'){
+      item.telaRef=newDest;
+      if(oldDest!==newDest)item.participacaoRef=null;
+     }
+    }
+   }
+   // Preserva o agrupamento mesmo vazio para permitir rastreabilidade; validacao apontara lacuna.
+  }
+ }
+ if(!deleted&&newNav){
+  if(!mirror)mirror={id:'in.'+rid,relacaoRef:rid,tipo:'acao_ou_rota',origem:'espelho_derivado_editor_fluxo'};
+  mirror.relacaoRef=rid;mirror.origemTelaRef=edited.de;
+  mirror.destinoTipo='tela';mirror.destinoRef=newDest;mirror.eventoOrigem=edited.saida;
+  mirror.rotulo=edited.rotulo;mirror.quando=ajNativeWriteCondition(edited.quando);
+  if(oldDest!==newDest){mirror.participacaoRef=null;mirror.destinoNoRef=null;}
+  newNav.entradas=newNav.entradas||[];
+  if(!newNav.entradas.some(x=>x.relacaoRef===rid))newNav.entradas.push(mirror);
+ }
 }
 function portableDoc(src){
- const output={tipo:src.tipo||'colecao_telas',versao:src.versao??1,telas:copy(src.catalogo.telas),componentes:copy(src.catalogo.componentes)};
- const links=src.fluxo.conexoes,byId=new Set(links.flatMap(l=>l.referenciasOriginais?.length?l.referenciasOriginais:[l.id]));
- const had=new Set(src.__editorLoadedIds||[]);
- for(const screen of Object.values(output.telas)){
-  if(!screen.navegacao)continue;
-  screen.navegacao.saidas=(screen.navegacao.saidas||[]).filter(rel=>!had.has(rel.id)||byId.has(rel.id));
-  screen.navegacao.entradas=(screen.navegacao.entradas||[]).filter(rel=>!had.has(rel.relacaoRef)||byId.has(rel.relacaoRef));
- }
- for(const e of links){const target=output.telas[e.de];if(!target||!output.telas[e.para])continue;
-  const state=JSON.stringify({de:e.de,para:e.para,saida:e.saida,tipo:e.tipo,rotulo:e.rotulo,quando:e.quando,navegacao:e.navegacao});
-  if(src.__initialEdgeState?.[e.id]===state)continue; // preservar dados V3 originais sem perda em refs agrupadas
-  const nav=target.navegacao||(target.navegacao=ajNativeEmptyNavigation());
-  nav.saidas=nav.saidas||[];
-  const refs=e.referenciasOriginais?.length?e.referenciasOriginais:[e.id];
-  for(const rid of refs){let rel=nav.saidas.find(x=>x.id===rid);
-   const original=src.catalogo.telas[e.de]?.navegacao?.saidas?.find(x=>x.id===rid);
-   const unchanged=original&&original.destinoRef===e.para&&JSON.stringify(ajNativeUiCondition(original.quando))===JSON.stringify(e.quando||null)&&
-     (original.rotulo||'')===(e.rotulo||'')&&(original.eventoOrigem||original.acaoRef||'concluiu')===(e.saida||'concluiu');
-   if(unchanged)continue;
-   if(!rel){rel={id:rid,acaoRef:'editor.navegacao',origem:'editor_fluxo_v4'};nav.saidas.push(rel)}
-   rel.destinoTipo='tela';rel.destinoRef=e.para;rel.origemTelaRef=e.de;rel.eventoOrigem=e.saida;rel.rotulo=e.rotulo;
-   rel.quando=ajNativeWriteCondition(e.quando);rel.navegacaoEditor=e.navegacao;
+ const output={tipo:src.tipo||'colecao_telas',versao:src.versao??1,
+  telas:copy(src.catalogo.telas),componentes:copy(src.catalogo.componentes)};
+ const edges=src.fluxo.conexoes,seen=new Set(),oldIndex=ajNativeRelationIndexes(output);
+ for(const e of edges){
+  if(!e.id||seen.has(e.id))throw Error('ID ausente ou duplicado na edicao: '+(e.id||'(vazio)'));
+  seen.add(e.id);
+  if(!output.telas[e.de]||!e.para||!output.telas[e.para]){
+   // Relacao carregada e incompleta permanece intacta; nao criar destino imaginario.
+   if(!src.__initialEdgeState?.[e.id]||src.__initialEdgeState[e.id]!==ajEdgeState(e))
+    throw Error('Nao e possivel gravar alteracao com origem/destino nao resolvido: '+e.id);
+   continue;
   }
+  const previous=oldIndex.get(e.id);
+  if(src.__initialEdgeState?.[e.id]===ajEdgeState(e))continue;
+  if(previous&&previous.origin!==e.de)throw Error('Alteracao de origem exige uma nova relacao com ID proprio: '+e.id);
+  const nav=output.telas[e.de].navegacao||(output.telas[e.de].navegacao=ajNativeEmptyNavigation());
+  nav.saidas=nav.saidas||[];
+  let rel=nav.saidas.find(x=>x.id===e.id);
+  if(!rel){rel={id:e.id,acaoRef:'editor.navegacao',origem:'editor_fluxo_v4'};nav.saidas.push(rel);}
+  const previousDest=previous?.relation?.destinoRef||previous?.relation?.para||null;
+  const wasSameDestination=previousDest===e.para;
+  const wasSameType=previous&&JSON.parse(src.__initialEdgeState?.[e.id]||'null')?.tipo===e.tipo;
+  rel.destinoTipo='tela';rel.destinoRef=e.para;rel.origemTelaRef=e.de;
+  rel.eventoOrigem=e.saida;rel.rotulo=e.rotulo;
+  rel.quando=ajNativeWriteCondition(e.quando);rel.navegacaoEditor=e.navegacao;
+  if(!wasSameType)rel.tipo=e.tipo==='sequencial'?'direto':'rota';
+  if(!wasSameDestination){rel.destinoParticipacaoRef=null;rel.destinoNoRef=null;}
+  ajSyncRelationDependents(output,e.id,previousDest,e.para,e,false);
+ }
+ const loaded=new Set(src.__editorLoadedIds||[]);
+ for(const rid of loaded)if(!seen.has(rid)){
+  const prev=oldIndex.get(rid);if(!prev)continue;
+  const nav=output.telas[prev.origin].navegacao;
+  nav.saidas=(nav.saidas||[]).filter(x=>x.id!==rid);
+  ajSyncRelationDependents(output,rid,prev.relation.destinoRef||prev.relation.para||null,null,null,true);
  }
  return output;
 }
@@ -2604,22 +2678,19 @@ function updateCatalogOnly(input){
 function restoreBackup(){if(!confirm('Restaurar o documento.json original do módulo Fluxo? Alterações não exportadas serão substituídas.'))return;setDoc(initialFromReference(),'Base original restaurada');showNotice('Catálogo e conexões originais restaurados do JSON do próprio módulo.');}
 function ajNavigateFromFrame(event){
  const frame=by('previewIframe');if(!frame||event.source!==frame.contentWindow)return;
- const action=String(event.data?.action||'');const origin=ajPreviewCurrent;
- if(event.data.type==='advogadoja.flow.visual.navigate'){
-  const target=event.data.destination;
-  if(doc.catalogo.telas[target]){window.__ajPreviewNavigate?.(target);return;}
+ const action=String(event.data?.action||'');const requested=String(event.data?.destination||'');
+ const origin=ajPreviewCurrent;if(!origin||!doc.catalogo.telas[origin])return;
+ const matches=outgoing(origin).filter(c=>{
+  const raw=doc.catalogo.telas[origin]?.navegacao?.saidas?.find(x=>x.id===c.id);
+  return (action&&(c.saida===action||raw?.acaoRef===action||raw?.eventoOrigem===action)) ||
+   (!action&&requested&&c.para===requested);
+ }).filter(c=>!requested||c.para===requested);
+ const yes=matches.filter(c=>conditionMatch(c)===true);
+ if(yes.length===1&&yes[0].para&&doc.catalogo.telas[yes[0].para]){
+  window.__ajPreviewNavigate?.(yes[0].para);return;
  }
- if(event.data.type==='advogadoja.flow.visual.action'||event.data.type==='advogadoja.flow.visual.navigate'){
-  const matches=outgoing(origin).filter(c=>{
-   if(!action)return false;
-   const raw=doc.catalogo.telas[origin]?.navegacao?.saidas?.find(x=>x.id===c.id);
-   return c.saida===action||raw?.acaoRef===action||raw?.eventoOrigem===action;
-  });
-  const yes=matches.filter(c=>conditionMatch(c)===true);
-  if(yes.length===1){window.__ajPreviewNavigate?.(yes[0].para);return;}
-  if(yes.length>1){showNotice('Mais de um destino válido para '+action+'. Defina a condição ou escolha no fluxo.');return;}
-  showNotice('Ação '+action+' sem destino único conectado nesta tela.');
- }
+ if(yes.length>1){showNotice('Mais de uma conexao valida. Defina a condicao ou escolha no Fluxo.');return;}
+ showNotice('Acao sem destino unico declarado na navegacao desta tela.');
 }
 window.addEventListener('message',event=>{if(['advogadoja.flow.visual.action','advogadoja.flow.visual.navigate'].includes(event.data?.type))ajNavigateFromFrame(event)});
 

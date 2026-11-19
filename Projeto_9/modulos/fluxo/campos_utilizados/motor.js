@@ -88,15 +88,9 @@ const V02_FIELD_RULES = [
   {test:/^mocks\.(cenarioPadraoRef|cenarios)(?:\[|\.|$)/,description:'Cenários simulados para estados e prévia, sem implicar dados reais.',uses:{prototype:'Executa cenários simulados de estado e apresentação.',audit:'Verifica cobertura de cenários e fallback.'}},
   {test:/^localizacao\.(?:caminhoLogico|arquivoContrato|implementacoes|origensLegadas)(?:\[|\.|$)/,description:'Caminhos lógicos, alvos React/Flutter e origem histórica dos arquivos.',uses:{catalog:'Organiza recursos na árvore lógica.',generator:'Gera ou resolve caminhos de implementação.',audit:'Rastreia localizações e aliases antigos.'}}
 ];
-const V03_FIELD_RULES = [
-  {test:/^conexoes(?:\.|$)/,description:'Conexões normalizadas a partir das saídas existentes: origem, evento/ação, destino e condição; fonte de ligação para o Flow sem alterar o HTML.',uses:{flow:'Lê origem.telaRef, origem.saida, destino.telaRef, condicaoRef e navegação para desenhar relações, bifurcações inferidas e pendências.',audit:'Compara relações normalizadas às saídas de origem e acusa destinos não resolvidos.'}},
-  {test:/^condicoes(?:\.|$)/,description:'Registro de condições declarativas referenciadas pelas conexões, sem expressões executáveis.',uses:{flow:'Associa variáveis tipadas e valores aos caminhos e simula decisões com contexto controlado.',audit:'Verifica se condições são conhecidas e se dois ramos podem concorrer.'}},
-  {test:/^segmentos(?:\.|$)/,description:'Trechos compartilhados somente quando a equivalência e o vínculo foram explicitamente aprovados.',uses:{flow:'Reutiliza segmentos declarados sem copiar caminhos por semelhança.',audit:'Valida IDs compartilhados antes de consolidar caminhos repetidos.'}},
-  {test:/^referencias(?:\.|$)/,description:'Referências provenientes da biblioteca, aliases não homologados, eventos observados e política de índices reversos.',uses:{flow:'Resolve visualmente composição, eventos e relações sem promover aliases candidatos a vínculos oficiais.',prototype:'Relaciona slots e componentes por IDs observados na biblioteca.',audit:'Destaca referências não confirmadas, divergências de IDs e componentes não resolvidos.'}}
-];
 function guideFor(path){
   if(FIELD_GUIDE[path])return FIELD_GUIDE[path];
-  const entry=[...V03_FIELD_RULES,...V02_FIELD_RULES].find(r=>r.test.test(path));
+  const entry=V02_FIELD_RULES.find(r=>r.test.test(path));
   return entry?[entry.description,entry.uses]:null;
 }
 
@@ -112,16 +106,6 @@ const FLOW_REQUIREMENTS_V02 = [
   {id:'flow.preview_telas',name:'Pré-visualizar telas',goal:'Montar a apresentação da tela com slots, componentes, templates e ordem explícita.',fields:['estrutura.montagem.slots[]','componentes.instancias[].componenteRef','componentes.instancias[].slot','componentes.instancias[].ordem','componentes.instancias[].baseTemplate','componentes.instancias[].props'],notes:'Prévia é visualização da tela; o canvas de Flow é a árvore editorial de navegação.'},
   {id:'flow.estilizar_previa',name:'Aplicar tema e layout da prévia',goal:'Reproduzir estilos, tema e composição responsiva identificados na implementação de origem.',fields:['estilos.fontesCss','estilos.temaOrigemFlowV2','estilos.layoutOrigemFlowV2'],notes:'O contrato preserva a referência e o gerador poderá convertê-la para Flutter/React.'},
   {id:'flow.validar_integridade',name:'Validar a estrutura antes de apresentar',goal:'Verificar unicidade de IDs, referências a caminhos e ações, e compatibilidade de saídas e entradas.',fields:['identidade.id','navegacao.participacoes','navegacao.bifurcacoes','navegacao.saidas','navegacao.entradas','componentes.instancias','estrutura.montagem'],notes:'Referências externas devem ser declaradas, nunca reconstruídas por heurística.'}
-];
-
-// Requisitos adicionais do contrato canônico V1. Os legados continuam separados.
-const FLOW_REQUIREMENTS_V03 = [
-  {id:'flow.conexoes_canonicas',name:'Conectar telas por ID, evento e destino',goal:'Usar conexões registradas, não proximidade de blocos ou rótulos de botões; manter os vínculos legados rastreáveis.',fields:['conexoes.itens[].id','conexoes.itens[].origem.telaRef','conexoes.itens[].origem.saida','conexoes.itens[].destino.telaRef','conexoes.itens[].condicaoRef','conexoes.itens[].navegacao'],notes:'Uma conexão tem fonte, evento, destino e condição opcional. Fonte autoritativa original preservada em navegacao.saidas.'},
-  {id:'flow.inferir_bifurcacoes',name:'Inferir bifurcação automaticamente',goal:'Ao identificar o mesmo evento de saída com condições distintas, gerar losango no desenho; eventos diferentes formam alternativas de ação.',fields:['conexoes.itens[].origem.saida','conexoes.itens[].condicaoRef','condicoes.itens[].variavel','condicoes.itens[].operador','condicoes.itens[].valor'],notes:'Não persistir um branch manual para cada bifurcação condicional; demonstrar o comportamento sem modificar rotas reais.'},
-  {id:'flow.indice_reverso',name:'Mostrar entradas, saídas e consumidores',goal:'Ao selecionar uma tela ou componente, listar as conexões e os consumidores pelas referências sem duplicar entidades.',fields:['conexoes.itens','referencias.composicaoBiblioteca','referencias.eventosObservados','referencias.indicesReversos'],notes:'Índices reversos gerados em memória; não duplicar definicões de tela.'},
-  {id:'flow.pendencias',name:'Identificar conexões pendentes e conflitos',goal:'Exibir referência incompleta, condição desconhecida, alias não validado, falta de cobertura e rotas fora do recorte.',fields:['conexoes.itens','condicoes.itens','referencias.aliases'],notes:'Não assumir que tela fora do recorte é inexistente no projeto completo.'},
-  {id:'flow.segmentos_compartilhados',name:'Referenciar segmentos compartilhados',goal:'Permitir que jornadas reutilizem um segmento por ID sem replicar suas transições.',fields:['segmentos.itens'],notes:'Sem segmentos homologados nesta revisão. Não deduplicar automaticamente caminhos parecidos.'},
-  {id:'flow.componentes_observados',name:'Relacionar eventos e composição do front',goal:'Apresentar slots, componentes e atributos data-action realmente observados sem converter cliques em rota por adivinhação.',fields:['referencias.composicaoBiblioteca','referencias.eventosObservados','componentes.instancias','interacoes.itens'],notes:'data-action=online.toggle é comando local, não prova de uma mudança de tela ou persistência no backend.'}
 ];
 
 let serial = 0;
@@ -142,7 +126,7 @@ function toValue(node){
 }
 function makeProject(){
   const tree=Object.entries(INIT_MODEL).map(([k,v])=>makeNode(k,v));
-  const p={format:'advogadoja.contrato-vivo.projeto',formatVersion:4,templateVersion:3,screen:'advogado.home',tree,meta:{},sources:[],modules:{flow:{audits:[],functions:[...FLOW_REQUIREMENTS_V02,...FLOW_REQUIREMENTS_V03].map(f=>({internalId:uid(),...structuredClone(f)})),links:{},definition:'Contrato V1: telas e componentes reutilizáveis, origem + evento + destino + condição opcional em conexões separadas; o motor infere bifurcações condicionais para o mesmo evento, mostra alternativas para ações diferentes e aponta pendências. Blocos e saídas legados permanecem como evidência; exemplos de onboarding, OAB e aliases não são automaticamente homologados.'}},createdAt:new Date().toISOString()};
+  const p={format:'advogadoja.contrato-vivo.projeto',formatVersion:3,templateVersion:2,screen:'advogado.home',tree,meta:{},sources:[],modules:{flow:{audits:[],functions:FLOW_REQUIREMENTS_V02.map(f=>({internalId:uid(),...structuredClone(f)})),links:{},definition:'Flow V0.2: apresentar nós, jornadas, ocorrências, bifurcações, caminhos, relações e prévias usando os IDs, condições, slots e ordem declarados no JSON de tela. O módulo não deduz ações, estados nem relações a partir de nomes; as referências externas são explícitas. Regras de negócio pendentes não são consideradas confirmadas.'}},createdAt:new Date().toISOString()};
   walkTree(tree,({node,path})=>{
     const cfg=guideFor(path);
     if(cfg)p.meta[node.uid]={description:cfg[0],uses:structuredClone(cfg[1])};
@@ -150,7 +134,7 @@ function makeProject(){
   });
   return p;
 }
-function upgradeTemplateV03(){
+function upgradeTemplateV02(){
   /* Mescla inclusões de forma aditiva: IDs e valores locais existentes têm prioridade. */
   const template=makeProject();
   const merge=(dest,incoming)=>{
@@ -179,11 +163,11 @@ function upgradeTemplateV03(){
   });
   ensureModuleData();
   const flow=project.modules.flow;
-  for(const example of [...FLOW_REQUIREMENTS_V02,...FLOW_REQUIREMENTS_V03]){
+  for(const example of FLOW_REQUIREMENTS_V02){
     if(!flow.functions.some(x=>x.id===example.id))flow.functions.push({internalId:uid(),...structuredClone(example)});
   }
   if(!flow.definition.trim())flow.definition=template.modules.flow.definition;
-  project.formatVersion=4;project.templateVersion=3;
+  project.formatVersion=3;project.templateVersion=2;
 }
 function ensureModuleData(){
   if(!project.modules||typeof project.modules!=='object')project.modules={};
@@ -238,7 +222,7 @@ try{
   else project=makeProject();
 }catch(err){project=makeProject();}
 ensureModuleData();
-if((project.templateVersion||0)<3)upgradeTemplateV03();
+if((project.templateVersion||0)<2)upgradeTemplateV02();
 let mode='flow',subview='overview',selectedUid=findPath('identidade.id')?.node.uid||project.tree[0]?.uid;
 let expanded=new Set(project.tree.map(x=>x.uid));
 let history=[],sourceIndex=-1,sourceSelection=null,searchTerm='',toastTimer=null,editingFunctionId=null;
@@ -284,8 +268,7 @@ function renderFlowSummary(){
   const paths=branches.reduce((sum,b)=>sum+(b.caminhos?.length||0),0);
   const relations=(navigation.saidas||[]).filter(s=>s.origem==='flow_v2_relations_outbound').length;
   const visuals=(components.instancias||[]).filter(c=>String(c.origem||'').startsWith('flow_v2_fragment')).length;
-  const cons=toValue(findPath('conexoes.itens')?.node||{kind:'array',children:[]});
-  const counts=[[occurrences,'ocorrências'],[branches.length,'bifurcações editoriais legadas'],[paths,'caminhos legados'],[cons.length,'conexões por referência'],[visuals,'fragmentos visuais']];
+  const counts=[[occurrences,'ocorrências'],[branches.length,'bifurcações'],[paths,'caminhos'],[relations,'saídas do Flow V2'],[visuals,'fragmentos visuais']];
   getEl('flowReadNumbers').innerHTML=counts.map(([n,label])=>`<span><strong>${n}</strong> ${label}</span>`).join('');
 }
 function focusFlowField(path){
@@ -294,13 +277,6 @@ function focusFlowField(path){
   let parent=found.parent;while(parent){expanded.add(parent.uid);parent=findNode(parent.uid)?.parent||null;}
   if(found.node.children)expanded.add(found.node.uid);
   mode='flow';subview='overview';renderAll();getEl('modelTree').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-function focusMasterField(path){
-  const f=findPath(path);if(!f){toast('Campo não encontrado: '+path);return;}
-  mode='master';subview='overview';searchTerm='';getEl('treeSearch').value='';selectedUid=f.node.uid;
-  let parent=f.parent;while(parent){expanded.add(parent.uid);parent=findNode(parent.uid)?.parent||null;}
-  if(f.node.children)expanded.add(f.node.uid);
-  renderAll();getEl('modelTree').scrollIntoView({behavior:'smooth',block:'center'});
 }
 function renderTabs(){
   const menu=getEl('moduleMenu');menu.innerHTML='';
@@ -313,7 +289,6 @@ function renderTabs(){
   const host=getEl('modeTabs');host.innerHTML='';host.hidden=mode==='master';if(mode==='master')return;
   const entries=[
     {id:'overview',name:'Campos da tela',icon:'◈',count:countUsed(mode)},
-    ...(mode==='flow'?[{id:'connections',name:'Conexões',icon:'⌘',count:(toValue(findPath('conexoes.itens')?.node||{kind:'array',children:[]})||[]).length}]:[]),
     {id:'functions',name:'Funcionalidades',icon:'☑',count:moduleData().functions.length},
     {id:'compare',name:'Comparar',icon:'⇄',count:moduleData().audits.length},
     {id:'definition',name:'Definição final',icon:'✎'},
@@ -346,15 +321,14 @@ function renderMetrics(){
   const master=mode==='master';const e=ENGINE_BY_ID[mode];
   const special=!master&&subview!=='overview';
   const detail=special?{
-    connections:['Conexões por IDs','Entradas, saídas, condições, ramos inferidos e referências observadas no front; sem criar rotas por aproximação.',(toValue(findPath('conexoes.itens')?.node||{kind:'array',children:[]})||[]).length,'conexões candidatas'],
     functions:['Funcionalidades desejadas','Defina o que o módulo precisa fazer, antes de decidir como o motor será implementado.',moduleData().functions.length,'funcionalidades definidas'],
     compare:['Comparação entre auditorias','Compare campos lidos, nomes equivalentes e operações das implementações importadas.',moduleData().audits.length,'auditorias disponíveis'],
     definition:['Definição consolidada','Registre suas decisões, com base nas funcionalidades desejadas e nas evidências.',moduleData().functions.length,'funcionalidades desejadas'],
     template:['Modelo de auditoria para IA','Exporte o padrão, envie à IA com uma implementação existente e importe sua análise.',moduleData().audits.length,'análises já importadas']
   }[subview]||['Auditoria importada','Investigação da implementação original; nenhuma decisão é aplicada automaticamente.',moduleData().audits.length,'fontes deste módulo']:null;
   getEl('modeEyebrow').textContent=master?'CONTRATO MESTRE':'MÓDULO / '+e.name.toUpperCase();
-  getEl('modeTitle').textContent=master?'Home Advogado · contrato V1 / campos V0.3':special?detail[0]:e.name+' · campos necessários';
-  getEl('modeDescription').textContent=master?'Base completa com 19 seções: selecione cada campo e defina de que funcionalidades os módulos precisam.':special?detail[1]:e.intro;
+  getEl('modeTitle').textContent=master?'Home Advogado · contrato V0.2':special?detail[0]:e.name+' · campos necessários';
+  getEl('modeDescription').textContent=master?'Base completa com 15 seções: selecione cada campo e defina de que funcionalidades os módulos precisam.':special?detail[1]:e.intro;
   getEl('modeCount').textContent=master?countFields():special?detail[2]:countUsed(mode);
   getEl('modeCountLabel').textContent=master?'campos no contrato':special?detail[3]:'campos necessários para '+e.name;
   getEl('treeHeading').textContent=master?'Modelo mestre':'Campos vistos pelo '+e.name;
@@ -652,149 +626,12 @@ function sourceAuditName(a){return a.report.auditoria?.nome||a.fileName||'Audito
 function renderModuleContent(){
   const host=getEl('moduleContent');host.innerHTML='';
   if(mode==='master'||subview==='overview')return;
-  if(subview==='connections'&&mode==='flow')renderConnections(host);
-  else if(subview==='functions')renderFunctions(host);
+  if(subview==='functions')renderFunctions(host);
   else if(subview==='compare')renderComparison(host);
   else if(subview==='definition')renderDefinition(host);
   else if(subview==='template')renderTemplate(host);
   else if(subview.startsWith('audit:'))renderAudit(host,subview.slice(6));
 }
-// Conectividade: lida diretamente do modelo exportável; não é um grafo paralelo.
-let scenarioOab=false, scenarioOnboarding=false, editingConnectionIndex=-1, editingConditionIndex=-1;
-const flowCollection=(path,def=[])=>{const node=findPath(path)?.node;return node?toValue(node):def;};
-function eqCondition(c,value){
-  if(!c||!['igual','diferente_de'].includes(c.operador))return null;
-  if(value===undefined)return null;
-  const eq=value===c.valor;
-  return c.operador==='igual'?eq:!eq;
-}
-function statusForConnection(connection,conditions,model){
-  if(!connection.origem?.telaRef||!connection.origem?.saida||!connection.destino?.telaRef)return 'pendente';
-  if(connection.condicaoRef&&!conditions.some(c=>c.id===connection.condicaoRef))return 'condição desconhecida';
-  return connection.status||'configurada';
-}
-function inferConnections(rows,conds){
-  const groups=new Map();
-  for(const row of rows){
-    const key=String(row.origem?.telaRef||'sem origem')+' • '+String(row.origem?.saida||'sem evento');
-    if(!groups.has(key))groups.set(key,[]);groups.get(key).push(row);
-  }
-  return [...groups].map(([key,items])=>{
-    const present=items.filter(i=>i.condicaoRef),known=present.every(i=>conds.some(c=>c.id===i.condicaoRef));
-    const list=present.map(i=>conds.find(c=>c.id===i.condicaoRef));
-    const exclusive=known&&list.length===2&&list[0].variavel===list[1].variavel&&((list[0].operador==='igual'&&list[1].operador==='igual'&&typeof list[0].valor==='boolean'&&list[0].valor!==list[1].valor)||(list[0].valor===list[1].valor&&new Set([list[0].operador,list[1].operador]).has('igual')&&new Set([list[0].operador,list[1].operador]).has('diferente_de')));
-    const tipo=items.length===1?(present.length?'saída condicional':'conexão direta'):(present.length===items.length&&known?(exclusive?'bifurcação automática':'bifurcação a validar'):'conflito / incompleto');
-    return {key,items,tipo};
-  });
-}
-function renderConnections(host){
-  const rows=flowCollection('conexoes.itens'),cond=flowCollection('condicoes.itens'),refs=flowCollection('referencias',{});
-  const groups=inferConnections(rows,cond), targets=new Set([flowCollection('identidade.id','advogado.home')]);
-  const unknown=rows.filter(r=>r.destino?.telaRef&&!targets.has(r.destino.telaRef)).length;
-  const status=(label,cls='')=>`<span class="data-pill ${cls}">${escapeHtml(label)}</span>`;
-  const link=(path,label='Editar no modelo mestre')=>`<button type="button" class="btn btn-ghost" data-master-path="${escapeHtml(path)}">${escapeHtml(label)}</button>`;
-  let html=moduleHeader('Conexões candidatas normalizadas do legado. A visualização é calculada do JSON atual; o editor mestre permanece autoritativo. Não trate destinos fora deste recorte como inexistentes.',
-   `<button class="btn btn-secondary" id="addConditionBtn">＋ Condição</button><button class="btn btn-primary" id="addConnectionBtn">＋ Conexão</button>`);
-  html+=`<section class="module-card"><div class="eyebrow">LEITURA DO CONTRATO</div><h3>Conectividade da Home</h3><div class="cx-stats">${status(rows.length+' conexões')}${status(cond.length+' condições')}${status(groups.filter(g=>g.tipo==='bifurcação automática').length+' bifurcações inferidas','ok')}${status(unknown+' destinos fora deste recorte','warn')}${status((refs.composicaoBiblioteca||[]).length+' slots de composição')}</div><p>O motor agrupa cada ligação por <code>origem.telaRef + origem.saida</code>. Eventos diferentes criam opções de navegação; somente alternativas condicionais de um mesmo evento podem gerar bifurcação.</p></section>`;
-  html+=`<section class="module-card"><div class="eyebrow">GRAFO RECONSTRUÍDO DO JSON</div><h3>Saídas, destinos e indicadores</h3><div class="cx-graph">`;
-  for(const group of groups){
-    html+=`<div class="cx-group"><div class="cx-origin"><strong>${escapeHtml(group.key)}</strong>${status(group.tipo,group.tipo==='bifurcação automática'?'ok':group.tipo.includes('conflito')?'warn':'')}</div>`;
-    for(const c of group.items){const i=rows.indexOf(c),ref=cond.find(x=>x.id===c.condicaoRef);
-      let resolved=ref?eqCondition(ref,ref.variavel==='contexto.oabValidada'?scenarioOab:undefined):null;
-      const color=resolved===true?'ok':resolved===false?'soft':'warn';
-      html+=`<div class="cx-route"><div class="cx-arrow">${group.tipo==='bifurcação automática'?'◇':'↓'}</div><div class="cx-dest"><strong>${escapeHtml(c.destino?.telaRef||'Destino não indicado')}</strong><div class="module-inline">${status(c.condicaoRef?(ref?ref.variavel+' '+ref.operador+' '+String(ref.valor):'Condição não localizada'):'sem condição',ref?color:'soft')}${status(statusForConnection(c,cond),'soft')}${c.destino?.telaRef&&!targets.has(c.destino.telaRef)?status('fora do recorte','warn'):''}</div><div class="cx-actions"><button class="btn btn-ghost" data-edit-cx="${i}">Editar</button>${link('conexoes.itens['+i+']','Ver campos')}</div></div></div>`;
-    }
-    html+='</div>';
-  }
-  html+=`</div><label class="cx-simulator">Simular apenas valor visual da OAB <select id="scenarioOab"><option value="false" ${!scenarioOab?'selected':''}>OAB pendente (false)</option><option value="true" ${scenarioOab?'selected':''}>OAB validada (true)</option></select></label><p class="module-note">Prévia local de condições propostas; não consulta o banco nem concede permissões.</p></section>`;
-  // A demonstrative split is not merged into the actual canonical connection collection.
-  const demo=DOCUMENTO_FLUXO_CAMPOS.demonstracaoNaoExecutavel||{conexoes:[],condicoes:[]};
-  const dg=inferConnections(demo.conexoes,demo.condicoes)[0];
-  html+=`<section class="module-card"><div class="eyebrow">EXEMPLO DIDÁTICO — NÃO SALVO COMO ROTA REAL</div><h3>Como a bifurcação aparece automaticamente</h3><p>As duas conexões abaixo têm o mesmo evento e condições excludentes. Alterar a variável simulada muda somente qual saída fica destacada.</p><label class="cx-simulator">onboardingConcluido <select id="scenarioOnboarding"><option value="false" ${!scenarioOnboarding?'selected':''}>false → onboarding</option><option value="true" ${scenarioOnboarding?'selected':''}>true → Home</option></select></label><div class="cx-demo"><div class="cx-demo-origin">Login • login.sucesso</div><div class="cx-demo-diamond">◇ ${escapeHtml(dg?.tipo||'sem grupos')}</div><div class="cx-demo-branches">`;
-  for(const row of demo.conexoes){const c=demo.condicoes.find(x=>x.id===row.condicaoRef),active=eqCondition(c,scenarioOnboarding);
-    html+=`<div class="cx-demo-branch ${active?'active':''}">${status(c?'quando '+c.variavel+' = '+String(c.valor):'sem condição',active?'ok':'soft')}<strong>${escapeHtml(row.destino?.telaRef||'—')}</strong>${active?'<small>● caminho selecionado na simulação</small>':'<small>caminho alternativo</small>'}</div>`;
-  }
-  html+=`</div></div></section>`;
-  html+=`<div class="module-grid"><section class="module-card"><div class="eyebrow">CONDIÇÕES DECLARATIVAS</div><h3>Variáveis e estados</h3><div class="module-list">`;
-  cond.forEach((item,i)=>{html+=`<div class="module-list-item"><h4>${escapeHtml(item.id)}</h4><p><code>${escapeHtml(item.variavel||'variável desconhecida')}</code> ${escapeHtml(item.operador)} <code>${escapeHtml(String(item.valor))}</code></p><div class="cx-actions"><button class="btn btn-ghost" data-edit-cond="${i}">Editar condição</button>${link('condicoes.itens['+i+']','Ver campos')}</div></div>`;});
-  html+=`</div></section><section class="module-card"><div class="eyebrow">BIBLIOTECA REAL</div><h3>Componentes e eventos observados</h3><p>A composição foi lida de <code>advogadoja-fluxo-projecao.json</code>; os atributos <code>data-action</code> não se tornam navegação automaticamente.</p><div class="cx-components">`;
-  (refs.composicaoBiblioteca||[]).forEach((item,i)=>{html+=`<div class="cx-comp"><strong>${escapeHtml(item.slotId)}</strong><span>${escapeHtml(item.componenteRef)}</span>${link('referencias.composicaoBiblioteca['+i+']','↳')}</div>`;});
-  html+=`</div><details><summary>Eventos/atributos do HTML (${(refs.eventosObservados||[]).length})</summary><div class="cx-components">`;
-  (refs.eventosObservados||[]).forEach((item,i)=>{html+=`<div class="cx-comp"><strong>${escapeHtml(item.valor)}</strong><span>${escapeHtml(item.componenteRef+' • '+item.elementoRef+' • '+item.atributo)}</span>${link('referencias.eventosObservados['+i+']','↳')}</div>`;});
-  html+=`</div></details></section></div>`;
-  html+=`<section class="module-card"><div class="eyebrow">PENDÊNCIAS DE HOMOLOGAÇÃO</div><h3>O que o motor não deve adivinhar</h3><p>Aliás de IDs, nomes oficiais de variáveis do backend, política de histórico, equivalência de segmentos e destinos que não aparecem no catálogo parcial. As telas <code>advogado.home</code> e <code>advogado.home_advogado</code> seguem sem alias confirmado.</p>${link('referencias.aliases','Inspecionar aliases')}${link('segmentos','Inspecionar segmentos')}${link('navegacao.bifurcacoes','Ver bifurcações editoriais legadas')}</section>`;
-  host.innerHTML=html;
-  host.querySelectorAll('[data-master-path]').forEach(button=>button.onclick=()=>focusMasterField(button.dataset.masterPath));
-  host.querySelectorAll('[data-edit-cx]').forEach(button=>button.onclick=()=>openConnectionDialog(Number(button.dataset.editCx)));
-  host.querySelectorAll('[data-edit-cond]').forEach(button=>button.onclick=()=>openConditionDialog(Number(button.dataset.editCond)));
-  getEl('addConnectionBtn').onclick=()=>openConnectionDialog(-1);
-  getEl('addConditionBtn').onclick=()=>openConditionDialog(-1);
-  getEl('scenarioOab').onchange=e=>{scenarioOab=e.target.value==='true';renderConnections(host);};
-  getEl('scenarioOnboarding').onchange=e=>{scenarioOnboarding=e.target.value==='true';renderConnections(host);};
-}
-function buildConditionOptions(selected){
-  return '<option value="">Sem condição</option>'+flowCollection('condicoes.itens').map(x=>`<option value="${escapeHtml(x.id)}" ${x.id===selected?'selected':''}>${escapeHtml(x.id)}</option>`).join('');
-}
-function openConnectionDialog(index){
-  editingConnectionIndex=index;const c=index>=0?flowCollection('conexoes.itens')[index]:null;
-  getEl('connectionDialogTitle').textContent=c?'Editar conexão':'Nova conexão';
-  getEl('connectionId').value=c?.id||'';
-  getEl('connectionOrigin').value=c?.origem?.telaRef||flowCollection('identidade.id','advogado.home');
-  getEl('connectionEvent').value=c?.origem?.saida||'';
-  getEl('connectionDest').value=c?.destino?.telaRef||'';
-  getEl('connectionEntry').value=c?.destino?.entrada||'';
-  getEl('connectionAction').value=c?.acaoRef||'';
-  getEl('connectionCondition').innerHTML=buildConditionOptions(c?.condicaoRef);
-  getEl('connectionNavigation').value=c?.navegacao||'';
-  getEl('deleteConnectionBtn').hidden=!c;
-  getEl('connectionDialog').showModal();
-}
-function addTreeMember(path,value,index){
-  const target=findPath(path)?.node;if(!target||target.kind!=='array')throw Error('Campo de destino não é uma lista.');
-  if(index>=0){removeDescendantMeta(target.children[index]);delete project.meta[target.children[index].uid];target.children[index]=makeNode(String(index),value);addMissingMeta(target.children[index]);}
-  else{const node=makeNode(String(target.children.length),value);target.children.push(node);addMissingMeta(node);}
-  target.children.forEach((node,i)=>node.key=String(i));
-  walkTree(target.children,({node,path})=>{const cfg=guideFor(path);const m=meta(node);if(!m.description&&cfg)m.description=cfg[0];});
-}
-function saveConnection(event){
-  event.preventDefault();
-  const id=getEl('connectionId').value.trim(),origin=getEl('connectionOrigin').value.trim(),saida=getEl('connectionEvent').value.trim(),dest=getEl('connectionDest').value.trim();
-  const rows=flowCollection('conexoes.itens');
-  if(!id||!origin||!saida||!dest){toast('Informe ID, origem, evento e destino.');return;}
-  if(rows.some((c,i)=>c.id===id&&i!==editingConnectionIndex)){toast('ID da conexão já utilizado.');return;}
-  const base=editingConnectionIndex>=0?rows[editingConnectionIndex]:{};
-  const result={...base,id,origem:{telaRef:origin,saida},destino:{telaRef:dest,entrada:getEl('connectionEntry').value.trim()||null},acaoRef:getEl('connectionAction').value.trim()||null,condicaoRef:getEl('connectionCondition').value||null,navegacao:getEl('connectionNavigation').value||null,status:'rascunho_usuario',eventoValidado:false,
-     observacao:'Definida no editor do contrato. Validar destinos, evento visual e política de navegação antes do runtime.'};
-  checkpoint();addTreeMember('conexoes.itens',result,editingConnectionIndex);getEl('connectionDialog').close();changed('Conexão atualizada no JSON mestre.');
-}
-function deleteConnection(){
-  if(editingConnectionIndex<0||!confirm('Excluir somente esta conexão candidata?'))return;
-  checkpoint();const node=findPath('conexoes.itens')?.node;const removed=node.children.splice(editingConnectionIndex,1)[0];removeDescendantMeta(removed);delete project.meta[removed.uid];node.children.forEach((c,i)=>c.key=String(i));
-  getEl('connectionDialog').close();changed('Conexão excluída do contrato.');
-}
-function openConditionDialog(index){
-  editingConditionIndex=index;const c=index>=0?flowCollection('condicoes.itens')[index]:null;
-  getEl('conditionDialogTitle').textContent=c?'Editar condição':'Nova condição';
-  getEl('conditionId').value=c?.id||'';getEl('conditionVariable').value=c?.variavel||'';getEl('conditionOperator').value=c?.operador||'igual';
-  getEl('conditionValue').value=c?.valor===false?'false':c?.valor===true?'true':'null';
-  getEl('deleteConditionBtn').hidden=!c;getEl('conditionDialog').showModal();
-}
-function saveCondition(event){
-  event.preventDefault();const id=getEl('conditionId').value.trim(),variable=getEl('conditionVariable').value.trim();const rows=flowCollection('condicoes.itens');
-  if(!id||!variable){toast('Informe ID e variável da condição.');return;}
-  if(rows.some((c,i)=>c.id===id&&i!==editingConditionIndex)){toast('ID da condição já existe.');return;}
-  const orig=editingConditionIndex>=0?rows[editingConditionIndex]:{};
-  const result={...orig,id,variavel:variable,operador:getEl('conditionOperator').value,valor:JSON.parse(getEl('conditionValue').value),status:'rascunho_usuario',fonteAutorizativa:'pendente_validacao_backend'};
-  checkpoint();addTreeMember('condicoes.itens',result,editingConditionIndex);getEl('conditionDialog').close();changed('Condição atualizada no modelo.');
-}
-function deleteCondition(){
-  if(editingConditionIndex<0)return;const rows=flowCollection('condicoes.itens'),id=rows[editingConditionIndex].id;
-  if(flowCollection('conexoes.itens').some(c=>c.condicaoRef===id)){toast('Condição em uso. Desvincule as conexões antes de excluir.');return;}
-  if(!confirm('Excluir esta condição do registro?'))return;
-  checkpoint();const node=findPath('condicoes.itens')?.node;const removed=node.children.splice(editingConditionIndex,1)[0];removeDescendantMeta(removed);delete project.meta[removed.uid];node.children.forEach((c,i)=>c.key=String(i));
-  getEl('conditionDialog').close();changed('Condição excluída.');
-}
-
 function renderFunctions(host){
   host.innerHTML=moduleHeader('Cadastre as funcionalidades desejadas para este módulo. Elas não precisam reproduzir as implementações antigas.',`<button class="btn btn-secondary" id="functionImportAudit">＋ Importar auditoria</button><button class="btn btn-primary" id="newFunctionBtn">＋ Funcionalidade</button>`);
   getEl('newFunctionBtn').onclick=()=>openFunctionDialog();
@@ -936,19 +773,10 @@ function init(){
   getEl('importSourceFile').onchange=async e=>{await readSources([...e.target.files]);e.target.value='';};
   getEl('importAuditFile').onchange=async e=>{await readAuditFiles([...e.target.files]);e.target.value='';};
   getEl('functionForm').addEventListener('submit',saveFunction);
-  getEl('connectionForm').addEventListener('submit',saveConnection);
-  getEl('conditionForm').addEventListener('submit',saveCondition);
-  getEl('deleteConnectionBtn').onclick=deleteConnection;
-  getEl('deleteConditionBtn').onclick=deleteCondition;
   getEl('importProjectFile').onchange=async e=>{if(e.target.files[0])await readProject(e.target.files[0]);e.target.value='';};
   getEl('sourceConflict').onchange=()=>getEl('sourceError').hidden=true;
   getEl('incorporateBtn').onclick=incorporateSource;
   getEl('exportModelBtn').onclick=exportModel;getEl('exportProjectBtn').onclick=exportProject;getEl('exportUsageBtn').onclick=exportUsages;
-  getEl('cxFlowShortcut').onclick=()=>showMode('flow');
-  getEl('cxMasterShortcut').onclick=()=>showMode('master');
-  getEl('cxExportShortcut').onclick=exportModel;
-  getEl('cxProjectShortcut').onclick=exportProject;
-  getEl('cxUndoShortcut').onclick=()=>getEl('undoBtn').click();
   getEl('undoBtn').onclick=()=>{if(!history.length)return;project=JSON.parse(history.pop());ensureModuleData();selectedUid=findNode(selectedUid)?.node.uid||project.tree[0]?.uid||null;if(subview.startsWith('audit:')&&!moduleData()?.audits.some(a=>'audit:'+a.internalId===subview))subview='compare';save();renderAll();toast('Última alteração desfeita.');};
   getEl('resetBtn').onclick=()=>{if(!confirm('Restaurar o exemplo inicial? O modelo e todas as auditorias serão substituídos (use Exportar projeto para preservar).'))return;checkpoint();project=makeProject();ensureModuleData();mode='flow';subview='overview';selectedUid=findPath('identidade.id')?.node.uid;expanded=new Set(project.tree.map(n=>n.uid));changed('Exemplo inicial restaurado.');};
   document.querySelectorAll('[data-close]').forEach(el=>el.onclick=()=>getEl(el.dataset.close).close());

@@ -1,0 +1,136 @@
+<main class="preferences-shell">
+  <button class="preferences-back" type="button" data-goto="advogado.configuracao.configuracao">{{content.voltar_as_configuracoes}}</button>
+
+  <section class="preferences-heading">
+    <h1>{{content.preferencias_atendimento}}</h1>
+    <p>{{content.defina_como_onde_e_em_quais_areas_voce_deseja_receber_solicitaco}}</p>
+  </section>
+
+  <aside class="preferences-notice">
+    <strong>{{content.agenda_fica_separada}}</strong>
+    {{content.esta_tela_controla_disponibilidade_geral_modalidades_regiao_raio}} <button type="button" data-goto="advogado.configuracao.agenda_semanal">{{content.agenda}}</button>.
+  </aside>
+
+  <section class="preferences-card">
+    <div class="preferences-card-head">
+      <div>
+        <h2>{{content.disponibilidade_geral}}</h2>
+        <p>{{content.controle_se_seu_perfil_esta_apto_a_receber_novas_solicitacoes}}</p>
+      </div>
+    </div>
+
+    <button class="availability-row" type="button" data-online-toggle>
+      <span>
+        <strong data-online-status>{{content.online}}</strong>
+        <small data-online-copy>{{content.recebendo_novas_solicitacoes_compativeis}}</small>
+      </span>
+      <i class="preferences-switch on" aria-hidden="true"><b></b></i>
+    </button>
+  </section>
+
+  <section class="preferences-card">
+    <div class="preferences-card-head">
+      <div>
+        <h2>{{content.modalidades_atendidas}}</h2>
+        <p>{{content.voce_pode_atender_online_presencialmente_ou_nas_duas_modalidades}}</p>
+      </div>
+    </div>
+
+    <div class="modality-list">
+      <label class="modality-option">
+        <input type="checkbox" checked data-modality="online">
+        <span><strong>{{content.online_2}}</strong><small>{{content.atendimentos_remotos}}</small></span>
+      </label>
+      <label class="modality-option">
+        <input type="checkbox" checked data-modality="presential">
+        <span><strong>{{content.presencial}}</strong><small>{{content.atendimentos_presenciais_dentro_da_regiao_configurada_abaixo}}</small></span>
+      </label>
+    </div>
+  </section>
+
+  <section class="preferences-card" data-presential-region>
+    <div class="preferences-card-head">
+      <div>
+        <h2>{{content.regiao_de_atendimento_presencial}}</h2>
+        <p>{{content.defina_a_localizacao_de_referencia_e_o_alcance_que_deseja_atende}}</p>
+      </div>
+      <span class="mode-badge" data-presential-badge>{{content.ativa}}</span>
+    </div>
+
+    <div class="region-grid">
+      <label class="preferences-field">
+        <span>{{content.cidade_principal}}</span>
+        <input type="text" value="São Paulo" data-city>
+      </label>
+      <label class="preferences-field uf-field">
+        <span>{{content.uf}}</span>
+        <select data-uf>
+          <option>{{content.ac}}</option><option>{{content.al}}</option><option>{{content.ap}}</option><option>{{content.am}}</option><option>{{content.ba}}</option>
+          <option>{{content.ce}}</option><option>{{content.df}}</option><option>{{content.es}}</option><option>{{content.go}}</option><option>{{content.ma}}</option>
+          <option>{{content.mt}}</option><option>{{content.ms}}</option><option>{{content.mg}}</option><option>{{content.pa}}</option><option>{{content.pb}}</option>
+          <option>{{content.pr}}</option><option>{{content.pe}}</option><option>{{content.pi}}</option><option>{{content.rj}}</option><option>{{content.rn}}</option>
+          <option>{{content.rs}}</option><option>{{content.ro}}</option><option>{{content.rr}}</option><option>{{content.sc}}</option>
+          <option selected>{{content.sp}}</option><option>{{content.se}}</option><option>{{content.to}}</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="preferences-field">
+      <span>{{content.bairro_zona_ou_regiao_de_referencia}}</span>
+      <input type="text" value="Centro expandido / Zona Sul" data-region-reference>
+    </label>
+
+    <label class="preferences-field">
+      <span>{{content.raio_de_atendimento_presencial}}</span>
+      <div class="radius-control">
+        <input type="number" min="1" step="1" inputmode="numeric" value="10" data-radius-km aria-describedby="radius-help">
+        <b>{{content.km}}</b>
+      </div>
+      <small class="field-help" id="radius-help">{{content.informe_o_raio_desejado_o_campo_nao_possui_uma_lista_fixa_de_5_1}}</small>
+    </label>
+  </section>
+
+  <section class="preferences-card">
+    <div class="preferences-card-head">
+      <div>
+        <h2>{{content.especialidades}}</h2>
+        <p>{{content.selecione_uma_ou_mais_areas_o_catalogo_e_o_mesmo_utilizado_no_on}}</p>
+      </div>
+      <span class="specialty-count" data-specialty-count>{{content.texto_2_selecionadas}}</span>
+    </div>
+
+    <div class="specialty-actions">
+      <button type="button" class="small-button" data-specialty-select-all>{{content.marcar_todas}}</button>
+      <button type="button" class="small-button" data-specialty-clear>{{content.limpar}}</button>
+    </div>
+
+    <div class="selected-specialties">
+      <strong>{{content.selecionadas}}</strong>
+      <div class="specialty-chips" data-specialty-chips></div>
+      <small data-specialty-empty hidden>{{content.nenhuma_especialidade_selecionada}}</small>
+    </div>
+
+    <div class="specialty-grid">
+      <label class="specialty-option"><input type="checkbox" value="Criminal" data-practice-area checked><span>{{content.criminal}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Cível" data-practice-area><span>{{content.civel}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Trabalhista" data-practice-area><span>{{content.trabalhista}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Consumidor" data-practice-area><span>{{content.consumidor}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Família" data-practice-area checked><span>{{content.familia}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Previdenciário" data-practice-area><span>{{content.previdenciario}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Direito Intelectual" data-practice-area><span>{{content.direito_intelectual}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Tributário" data-practice-area><span>{{content.tributario}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Trânsito" data-practice-area><span>{{content.transito}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Imobiliário" data-practice-area><span>{{content.imobiliario}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Bancário" data-practice-area><span>{{content.bancario}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Empresarial" data-practice-area><span>{{content.empresarial}}</span></label>
+      <label class="specialty-option"><input type="checkbox" value="Não sei informar" data-practice-area><span>{{content.nao_sei_informar}}</span></label>
+    </div>
+  </section>
+
+  <div class="preferences-actions">
+    <button class="secondary-button" type="button" data-action-message="Alterações descartadas no protótipo.">{{content.cancelar}}</button>
+    <button class="primary-button" type="button" data-save-preferences>{{content.salvar_alteracoes}}</button>
+  </div>
+
+  <div class="op-toast" role="status" aria-live="polite"></div>
+</main>

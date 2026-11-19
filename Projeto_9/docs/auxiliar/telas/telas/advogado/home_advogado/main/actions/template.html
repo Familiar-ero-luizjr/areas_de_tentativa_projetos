@@ -1,0 +1,25 @@
+<section class="requests-block" aria-labelledby="requests-title">
+  <div class="requests-heading">
+    <div>
+      <h2 id="requests-title">{{title}}</h2>
+      <p>{{count}}</p>
+    </div>
+  </div>
+
+  <div class="requests-list">
+    {{#each items}}
+    <button class="request-card" type="button" data-goto="{{goto}}">
+      <div class="request-top">
+        <span class="request-priority">{{priority}}</span>
+        <span class="request-time">{{time}}</span>
+      </div>
+
+      <h3>{{area}}</h3>
+      <p class="request-meta">{{requestType}} · {{location}} · {{mode}}</p>
+      <p class="request-summary">{{summary}}</p>
+
+      <span class="request-open">{{content.ver_solicitacao}} <b>›</b></span>
+    </button>
+    {{/each}}
+  </div>
+</section>

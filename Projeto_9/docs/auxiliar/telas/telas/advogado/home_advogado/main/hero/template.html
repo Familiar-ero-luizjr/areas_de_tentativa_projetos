@@ -1,0 +1,11 @@
+<section class="home-intro" data-professional-state="enabled">
+  <span class="home-eyebrow">{{eyebrow}}</span>
+  <h1>{{title}}</h1>
+  <p>{{subtitle}}</p>
+</section>
+{{#if restricted}}<section class="home-access-card" data-professional-state="restricted" hidden>
+  <span class="home-eyebrow">{{restricted.eyebrow}}</span>
+  <h1>{{restricted.title}}</h1>
+  <p>{{restricted.subtitle}}</p>
+  <button type="button" class="home-access-card__cta" data-goto="{{restricted.ctaGoto}}">{{restricted.ctaLabel}}</button>
+</section>{{/if}}
