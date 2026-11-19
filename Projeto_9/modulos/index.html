@@ -1,21 +1,138 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdvogadoJá · Projeto 9 · Módulos</title>
-<style>
-:root{color-scheme:light;--navy:#172d48;--blue:#26466b;--gold:#d2a85b;--bg:#f4f6fa;--ink:#182d44;--border:#dce4ee}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}header{background:linear-gradient(110deg,#112742,#254c73);color:#fff;padding:28px clamp(18px,5vw,56px)}header h1{font-size:25px;margin:0;font-weight:700}header p{margin:4px 0 0;color:#cbd9e8}main{max-width:1000px;margin:30px auto;padding:0 20px}h2{font-size:16px;margin:0 0 15px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}.item{background:#fff;border:1px solid var(--border);border-radius:14px;padding:23px;color:inherit;text-decoration:none;display:block;box-shadow:0 2px 10px #122c4510;transition:box-shadow .15s,border-color .15s}.item:hover,.item:focus-visible{border-color:#a38a60;box-shadow:0 6px 20px #122c4520;outline:none}.item strong{display:block;font-size:19px;color:var(--navy);margin:4px 0 8px}.item span{display:block;color:#526b83;font-size:13px}.mark{font-size:24px}.link{margin-top:20px!important;color:#214b74!important;font-weight:700}.back{display:inline-block;margin-top:24px;color:#214b74;font-weight:700;text-decoration:none}.back:hover{text-decoration:underline}
-</style>
-</head>
-<body>
-<header><h1>AdvogadoJá · Projeto 9</h1><p>Módulos independentes</p></header>
-<main>
-<h2>Selecione um módulo</h2>
-<div class="grid">
-  <a class="item" href="./jornadas/index.html"><div class="mark">🧭</div><strong>Jornadas</strong><span>Galeria de telas por jornada e subjornada, com importação, edição e exportação do documento JSON canônico.</span><span class="link">Abrir jornadas</span></a>
-</div>
-<a class="back" href="../index.html">← Voltar ao Projeto 9</a>
-</main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdvogadoJá · Projeto 9 · Módulos</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --navy: #172d48;
+        --blue: #26466b;
+        --gold: #d2a85b;
+        --bg: #f4f6fa;
+        --ink: #182d44;
+        --border: #dce4ee;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          15px/1.6 system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+      }
+      header {
+        background: linear-gradient(110deg, #112742, #254c73);
+        color: #fff;
+        padding: 28px clamp(18px, 5vw, 56px);
+      }
+      header h1 {
+        font-size: 25px;
+        margin: 0;
+        font-weight: 700;
+      }
+      header p {
+        margin: 4px 0 0;
+        color: #cbd9e8;
+      }
+      main {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+      h2 {
+        font-size: 16px;
+        margin: 0 0 15px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .item {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 23px;
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        box-shadow: 0 2px 10px #122c4510;
+        transition:
+          box-shadow 0.15s,
+          border-color 0.15s;
+      }
+      .item:hover,
+      .item:focus-visible {
+        border-color: #a38a60;
+        box-shadow: 0 6px 20px #122c4520;
+        outline: none;
+      }
+      .item strong {
+        display: block;
+        font-size: 19px;
+        color: var(--navy);
+        margin: 4px 0 8px;
+      }
+      .item span {
+        display: block;
+        color: #526b83;
+        font-size: 13px;
+      }
+      .mark {
+        font-size: 24px;
+      }
+      .link {
+        margin-top: 20px !important;
+        color: #214b74 !important;
+        font-weight: 700;
+      }
+      .back {
+        display: inline-block;
+        margin-top: 24px;
+        color: #214b74;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .back:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>AdvogadoJá · Projeto 9</h1>
+      <p>Módulos independentes</p>
+    </header>
+    <main>
+      <h2>Selecione um módulo</h2>
+      <div class="grid">
+        <a class="item" href="./jornadas/index.html"
+          ><div class="mark">🧭</div>
+          <strong>Jornadas</strong
+          ><span
+            >Galeria de telas por jornada e subjornada, com importação, edição e
+            exportação do documento JSON canônico.</span
+          ><span class="link">Abrir jornadas</span></a
+        >
+      </div>
+      <div class="grid">
+        <a class="item" href="./fluxo/index.html"
+          ><div class="mark">🔄</div>
+          <strong>Fluxo</strong
+          ><span
+            >Galeria de telas por jornada e subjornada, com importação, edição e
+            exportação do documento JSON canônico.</span
+          ><span class="link">Abrir jornadas</span></a
+        >
+      </div>
+      <a class="back" href="../index.html">← Voltar ao Projeto 9</a>
+    </main>
+  </body>
 </html>

@@ -48,51 +48,35 @@
 
 <script>
 'use strict';
-const views={fields:{name:'Campos utilizados',desc:'Leitura dos campos necessários ao Fluxo, com árvore e detalhes no padrão do P7.',source:'Referência · Projeto 7',note:'A estrutura de leitura é a original do P7.'},visual:{name:'Visualização do fluxo',desc:'Sequências, decisões, ramificações e prévias das telas no Fluxo V2.',source:'Referência · Fluxo V2',note:'Visualização real do Fluxo V2, sem um segundo módulo.'}};
-const ready={};
-async function decodePayload(key){
- const compressed=document.querySelector('#payload-'+key).textContent.trim();
- const raw=Uint8Array.from(atob(compressed),c=>c.charCodeAt(0));
- if(!window.DecompressionStream)throw new Error('Seu navegador não oferece DecompressionStream. Use uma versão atualizada do Chrome ou Edge.');
- const bytes=await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
- return new TextDecoder().decode(bytes);
-}
-async function load(view){
- if(ready[view])return ready[view];
- const loading=document.querySelector('#loading-'+view);
- ready[view]=(async()=>{
-  const html=await decodePayload(view);
-  const frame=document.querySelector('#frame-'+view);
-  frame.addEventListener('load',()=>{
-    if(view==='visual'){
-      frame.contentWindow.__FLOW_OPEN_PREVIEW_URL__=(screenKey)=>{
-        const intro='<head><script>
-'use strict';
 const views={
- fields:{name:'Campos utilizados',desc:'Leitura dos campos necessários ao Fluxo, com árvore e detalhes no padrão do P7.',source:'Referência · Projeto 7',note:'A estrutura de leitura é a original do P7.'},
- visual:{name:'Visualização do fluxo',desc:'Sequências, decisões, ramificações e prévias das telas no Fluxo V2.',source:'Referência · Fluxo V2',note:'Visualização real do Fluxo V2, sem um segundo módulo.'}
+  fields:{name:'Campos utilizados',desc:'Leitura dos campos necessários ao Fluxo, com árvore e detalhes no padrão do P7.',source:'Referência · Projeto 7',note:'A estrutura de leitura é a original do P7.'},
+  visual:{name:'Visualização do fluxo',desc:'Sequências, decisões, ramificações e prévias das telas no Fluxo V2.',source:'Referência · Fluxo V2',note:'Visualização real do Fluxo V2, sem um segundo módulo.'}
 };
 const ready={};
 function load(view){
- if(ready[view])return;
- const frame=document.querySelector('#frame-'+view);
- const loading=document.querySelector('#loading-'+view);
- frame.addEventListener('load',()=>{ loading.hidden=true; },{once:true});
- frame.addEventListener('error',()=>{loading.innerHTML='<div><strong>Não foi possível abrir a visualização</strong>Verifique se os arquivos locais estão sendo servidos por HTTP.</div>';},{once:true});
- frame.src=view==='fields'?'campos_utilizados/index.html':'visualizacao_fluxo/index.html';
- ready[view]=true;
+  if(ready[view])return;
+  const frame=document.querySelector('#frame-'+view);
+  const loading=document.querySelector('#loading-'+view);
+  frame.addEventListener('load',()=>{loading.hidden=true;},{once:true});
+  frame.addEventListener('error',()=>{loading.innerHTML='<div><strong>Não foi possível abrir a visualização</strong>Verifique se os arquivos locais estão sendo servidos por HTTP.</div>';},{once:true});
+  frame.src=view==='fields'?'campos_utilizados/index.html':'visualizacao_fluxo/index.html';
+  ready[view]=true;
 }
 function change(view){
- if(!views[view])return;
- document.querySelectorAll('[data-view]').forEach(btn=>{const active=btn.dataset.view===view;btn.classList.toggle('active',active);if(btn.classList.contains('subitem'))active?btn.setAttribute('aria-current','page'):btn.removeAttribute('aria-current');});
- document.querySelectorAll('.screen').forEach(box=>box.classList.toggle('active',box.id==='screen-'+view));
- document.querySelector('#headline').textContent='Fluxo · '+views[view].name;
- document.querySelector('#description').textContent=views[view].desc;
- document.querySelector('#sourceLabel').textContent=views[view].source;
- document.querySelector('#subnote').textContent=views[view].note;
- document.querySelector('#crumb').textContent='Workspace › Fluxo › '+views[view].name;
- try{history.replaceState({},'',location.pathname+'#'+view);}catch(_){}
- load(view);
+  if(!views[view])return;
+  document.querySelectorAll('[data-view]').forEach(btn=>{
+    const active=btn.dataset.view===view;
+    btn.classList.toggle('active',active);
+    if(btn.classList.contains('subitem'))active?btn.setAttribute('aria-current','page'):btn.removeAttribute('aria-current');
+  });
+  document.querySelectorAll('.screen').forEach(box=>box.classList.toggle('active',box.id==='screen-'+view));
+  document.querySelector('#headline').textContent='Fluxo · '+views[view].name;
+  document.querySelector('#description').textContent=views[view].desc;
+  document.querySelector('#sourceLabel').textContent=views[view].source;
+  document.querySelector('#subnote').textContent=views[view].note;
+  document.querySelector('#crumb').textContent='Workspace › Fluxo › '+views[view].name;
+  try{history.replaceState({},'',location.pathname+'#'+view);}catch(_){ }
+  load(view);
 }
 document.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>change(btn.dataset.view)));
 change(location.hash==='#visual'?'visual':'fields');
