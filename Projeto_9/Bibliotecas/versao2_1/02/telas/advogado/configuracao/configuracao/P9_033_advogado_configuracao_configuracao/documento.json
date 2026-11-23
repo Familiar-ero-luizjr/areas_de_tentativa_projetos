@@ -1,0 +1,1865 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.configuracao",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Configurações",
+    "nomeExibicao": "Configurações"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/advogado/configuracao/configuracao/P9_033_advogado_configuracao_configuracao/documento.json"
+    },
+    "perfilRef": "advogado",
+    "jornadaRefs": [
+      "advogado"
+    ],
+    "subjornadaRefs": [
+      "advogado.operacao.configuracoes"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {}
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 12,
+          "props": {}
+        },
+        "screen.modal.01": {
+          "id": "screen.modal.01",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.modal.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 14,
+          "props": {}
+        },
+        "screen.popup.01": {
+          "id": "screen.popup.01",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.popup.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 15,
+          "props": {}
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.header",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 5,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 6,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 900,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado.configuracao.configuracao.estilo.base",
+          "ordem": 10,
+          "css": "b1.05.001\nb1.05.002\nb1.05.003\nb1.05.004\nb1.05.005\nb1.05.006\nb1.05.007\nb1.05.008\nb1.05.009\nb1.05.010\nb1.05.011\nb1.05.012\nb1.05.013\nb1.05.014\nb1.05.015\nb1.05.016\nb1.05.017\ncanonica\ncanonica\ncanonica"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.1",
+          "ordem": 100,
+          "css": "b1.01.001"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.2",
+          "ordem": 101,
+          "css": "b1.01.002"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.3",
+          "ordem": 102,
+          "css": "b1.01.003"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.4",
+          "ordem": 103,
+          "css": "b1.01.004"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.5",
+          "ordem": 104,
+          "css": "b1.01.005"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.6",
+          "ordem": 105,
+          "css": "b1.01.006"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.7",
+          "ordem": 106,
+          "css": "b1.01.007"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.8",
+          "ordem": 107,
+          "css": "b1.01.008"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.9",
+          "ordem": 108,
+          "css": "b1.01.009"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.10",
+          "ordem": 109,
+          "css": "b1.01.010"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.11",
+          "ordem": 110,
+          "css": "b1.01.011"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.12",
+          "ordem": 111,
+          "css": "b1.01.012"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.13",
+          "ordem": 112,
+          "css": "b1.01.013"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.14",
+          "ordem": 113,
+          "css": "b1.01.014"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.15",
+          "ordem": 114,
+          "css": "b1.01.015"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.16",
+          "ordem": 115,
+          "css": "b1.01.016"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.17",
+          "ordem": 116,
+          "css": "b1.01.017"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.18",
+          "ordem": 117,
+          "css": "b1.01.018"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.19",
+          "ordem": 118,
+          "css": "b1.01.019"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.20",
+          "ordem": 119,
+          "css": "b1.01.020"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.21",
+          "ordem": 120,
+          "css": "b1.01.021"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.22",
+          "ordem": 121,
+          "css": "b1.01.022"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.23",
+          "ordem": 122,
+          "css": "b1.01.023"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.24",
+          "ordem": 123,
+          "css": "b1.01.024"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.25",
+          "ordem": 124,
+          "css": "b1.01.025"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.26",
+          "ordem": 125,
+          "css": "b1.01.026"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.27",
+          "ordem": 126,
+          "css": "b1.01.027"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.28",
+          "ordem": 127,
+          "css": "b1.01.028"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.29",
+          "ordem": 128,
+          "css": "b1.01.029"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.30",
+          "ordem": 129,
+          "css": "b1.01.030"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.31",
+          "ordem": 130,
+          "css": "b1.01.031"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.32",
+          "ordem": 131,
+          "css": "b1.01.032"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.33",
+          "ordem": 132,
+          "css": "b1.01.033"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.34",
+          "ordem": 133,
+          "css": "b1.01.034"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.35",
+          "ordem": 134,
+          "css": "b1.01.035"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.36",
+          "ordem": 135,
+          "css": "b1.01.036"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.37",
+          "ordem": 136,
+          "css": "b1.01.037"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.38",
+          "ordem": 137,
+          "css": "b1.01.038"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.39",
+          "ordem": 138,
+          "css": "b1.01.039"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.40",
+          "ordem": 139,
+          "css": "b1.01.040"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.41",
+          "ordem": 140,
+          "css": "b1.01.041"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.42",
+          "ordem": 141,
+          "css": "b1.01.042"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.43",
+          "ordem": 142,
+          "css": "b1.01.043"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.44",
+          "ordem": 143,
+          "css": "b1.01.044"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.45",
+          "ordem": 144,
+          "css": "b1.01.045"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.46",
+          "ordem": 145,
+          "css": "b1.01.046"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.47",
+          "ordem": 146,
+          "css": "b1.01.047"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.48",
+          "ordem": 147,
+          "css": "b1.01.048"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.49",
+          "ordem": 148,
+          "css": "b1.01.049"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.50",
+          "ordem": 149,
+          "css": "b1.01.050"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.51",
+          "ordem": 150,
+          "css": "b1.01.051"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.52",
+          "ordem": 151,
+          "css": "b1.01.052"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.53",
+          "ordem": 152,
+          "css": "b1.01.053"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.54",
+          "ordem": 153,
+          "css": "b1.01.054"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.55",
+          "ordem": 154,
+          "css": "b1.01.055"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.56",
+          "ordem": 155,
+          "css": "b1.01.056"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.57",
+          "ordem": 156,
+          "css": "b1.01.057"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.58",
+          "ordem": 157,
+          "css": "b1.01.058"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.59",
+          "ordem": 158,
+          "css": "b1.01.059"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.60",
+          "ordem": 159,
+          "css": "b1.01.060"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.61",
+          "ordem": 160,
+          "css": "b1.01.061"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.62",
+          "ordem": 161,
+          "css": "b1.01.062"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.63",
+          "ordem": 162,
+          "css": "b1.01.063"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.64",
+          "ordem": 163,
+          "css": "b1.01.064"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.65",
+          "ordem": 164,
+          "css": "b1.01.065"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.66",
+          "ordem": 165,
+          "css": "b1.01.066"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.67",
+          "ordem": 166,
+          "css": "b1.01.067"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.68",
+          "ordem": 167,
+          "css": "b1.01.068"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.69",
+          "ordem": 168,
+          "css": "b1.01.069"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.70",
+          "ordem": 169,
+          "css": "b1.01.070"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.71",
+          "ordem": 170,
+          "css": "b1.01.071"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.72",
+          "ordem": 171,
+          "css": "b1.01.072"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.73",
+          "ordem": 172,
+          "css": "b1.01.073"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.74",
+          "ordem": 173,
+          "css": "b1.01.074"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.75",
+          "ordem": 174,
+          "css": "b1.01.075"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.76",
+          "ordem": 175,
+          "css": "b1.01.076"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.77",
+          "ordem": 176,
+          "css": "b1.01.077"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.78",
+          "ordem": 177,
+          "css": "b1.01.078"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.79",
+          "ordem": 178,
+          "css": "b1.01.079"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.80",
+          "ordem": 179,
+          "css": "b1.01.080"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.81",
+          "ordem": 180,
+          "css": "b1.01.081"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.82",
+          "ordem": 181,
+          "css": "b1.01.082"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.83",
+          "ordem": 182,
+          "css": "b1.01.083"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.84",
+          "ordem": 183,
+          "css": "b1.01.084"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.85",
+          "ordem": 184,
+          "css": "b1.01.085"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.86",
+          "ordem": 185,
+          "css": "b1.01.086"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.87",
+          "ordem": 186,
+          "css": "b1.01.087"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.88",
+          "ordem": 187,
+          "css": "b1.01.088"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.89",
+          "ordem": 188,
+          "css": "b1.01.089"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.90",
+          "ordem": 189,
+          "css": "b1.01.090"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.91",
+          "ordem": 190,
+          "css": "b1.01.091"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.92",
+          "ordem": 191,
+          "css": "b1.01.092"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.93",
+          "ordem": 192,
+          "css": "b1.01.093"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.94",
+          "ordem": 193,
+          "css": "b1.01.094"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.95",
+          "ordem": 194,
+          "css": "b1.01.095"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.96",
+          "ordem": 195,
+          "css": "b1.01.096"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.97",
+          "ordem": 196,
+          "css": "b1.01.097"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.98",
+          "ordem": 197,
+          "css": "b1.01.098"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.99",
+          "ordem": 198,
+          "css": "b1.01.099"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.100",
+          "ordem": 199,
+          "css": "b1.01.100"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.101",
+          "ordem": 200,
+          "css": "b1.01.101"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.102",
+          "ordem": 201,
+          "css": "b1.01.102"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.103",
+          "ordem": 202,
+          "css": "b1.01.103"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.104",
+          "ordem": 203,
+          "css": "b1.01.104"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.105",
+          "ordem": 204,
+          "css": "b1.01.105"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.106",
+          "ordem": 205,
+          "css": "b1.01.106"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.107",
+          "ordem": 206,
+          "css": "b1.01.107"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.108",
+          "ordem": 207,
+          "css": "b1.01.108"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.109",
+          "ordem": 208,
+          "css": "b1.01.109"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.110",
+          "ordem": 209,
+          "css": "b1.01.110"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.111",
+          "ordem": 210,
+          "css": "b1.01.111"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.112",
+          "ordem": 211,
+          "css": "b1.01.112"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.113",
+          "ordem": 212,
+          "css": "b1.01.113"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.114",
+          "ordem": 213,
+          "css": "b1.01.114"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.115",
+          "ordem": 214,
+          "css": "b1.01.115"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.116",
+          "ordem": 215,
+          "css": "b1.01.116"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.117",
+          "ordem": 216,
+          "css": "b1.01.117"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.118",
+          "ordem": 217,
+          "css": "b1.01.118"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.119",
+          "ordem": 218,
+          "css": "b1.01.119"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.120",
+          "ordem": 219,
+          "css": "b1.01.120"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.121",
+          "ordem": 220,
+          "css": "b1.01.121"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.122",
+          "ordem": 221,
+          "css": "b1.01.122"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.123",
+          "ordem": 222,
+          "css": "b1.01.123"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.124",
+          "ordem": 223,
+          "css": "b1.01.124"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.125",
+          "ordem": 224,
+          "css": "b1.01.125"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.126",
+          "ordem": 225,
+          "css": "b1.01.126"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.127",
+          "ordem": 226,
+          "css": "b1.01.127"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.128",
+          "ordem": 227,
+          "css": "b1.01.128"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.129",
+          "ordem": 228,
+          "css": "b1.01.129"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.130",
+          "ordem": 229,
+          "css": "b1.01.130"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.131",
+          "ordem": 230,
+          "css": "b1.01.131"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.132",
+          "ordem": 231,
+          "css": "b1.01.132"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.133",
+          "ordem": 232,
+          "css": "b1.01.133"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.134",
+          "ordem": 233,
+          "css": "b1.01.134"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.135",
+          "ordem": 234,
+          "css": "b1.01.135"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.136",
+          "ordem": 235,
+          "css": "b1.01.136"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.137",
+          "ordem": 236,
+          "css": "b1.01.137"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.138",
+          "ordem": 237,
+          "css": "b1.01.138"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.139",
+          "ordem": 238,
+          "css": "b1.01.139"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.140",
+          "ordem": 239,
+          "css": "b1.01.140"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.141",
+          "ordem": 240,
+          "css": "b1.01.141"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.142",
+          "ordem": 241,
+          "css": "b1.01.142"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.143",
+          "ordem": 242,
+          "css": "b1.01.143"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.144",
+          "ordem": 243,
+          "css": "b1.01.144"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.145",
+          "ordem": 244,
+          "css": "b1.01.145"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.146",
+          "ordem": 245,
+          "css": "b1.01.146"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.147",
+          "ordem": 246,
+          "css": "b1.01.147"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.148",
+          "ordem": 247,
+          "css": "b1.01.148"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.149",
+          "ordem": 248,
+          "css": "b1.01.149"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.150",
+          "ordem": 249,
+          "css": "b1.01.150"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.151",
+          "ordem": 250,
+          "css": "b1.01.151"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.152",
+          "ordem": 251,
+          "css": "b1.01.152"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.153",
+          "ordem": 252,
+          "css": "b1.01.153"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.154",
+          "ordem": 253,
+          "css": "b1.01.154"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.155",
+          "ordem": 254,
+          "css": "b1.01.155"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.156",
+          "ordem": 255,
+          "css": "b1.01.156"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.157",
+          "ordem": 256,
+          "css": "b1.01.157"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.158",
+          "ordem": 257,
+          "css": "b1.01.158"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.159",
+          "ordem": 258,
+          "css": "b1.01.159"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.160",
+          "ordem": 259,
+          "css": "b1.01.160"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.161",
+          "ordem": 260,
+          "css": "b1.01.161"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.162",
+          "ordem": 261,
+          "css": "b1.01.162"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.163",
+          "ordem": 262,
+          "css": "b1.01.163"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.164",
+          "ordem": 263,
+          "css": "b1.01.164"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.165",
+          "ordem": 264,
+          "css": "b1.01.165"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.166",
+          "ordem": 265,
+          "css": "b1.01.166"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.167",
+          "ordem": 266,
+          "css": "b1.01.167"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.168",
+          "ordem": 267,
+          "css": "b1.01.168"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.169",
+          "ordem": 268,
+          "css": "b1.01.169"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.170",
+          "ordem": 269,
+          "css": "b1.01.170"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.171",
+          "ordem": 270,
+          "css": "b1.01.171"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.172",
+          "ordem": 271,
+          "css": "b1.01.172"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.173",
+          "ordem": 272,
+          "css": "b1.01.173"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.174",
+          "ordem": 273,
+          "css": "b1.01.174"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.175",
+          "ordem": 274,
+          "css": "b1.01.175"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.176",
+          "ordem": 275,
+          "css": "b1.01.176"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.177",
+          "ordem": 276,
+          "css": "b1.01.177"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.178",
+          "ordem": 277,
+          "css": "b1.01.178"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.179",
+          "ordem": 278,
+          "css": "b1.01.179"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.180",
+          "ordem": 279,
+          "css": "b1.01.180"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.181",
+          "ordem": 280,
+          "css": "b1.01.181"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.182",
+          "ordem": 281,
+          "css": "b1.01.182"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.183",
+          "ordem": 282,
+          "css": "b1.01.183"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.184",
+          "ordem": 283,
+          "css": "b1.01.184"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.185",
+          "ordem": 284,
+          "css": "b1.01.185"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.186",
+          "ordem": 285,
+          "css": "b1.01.186"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.187",
+          "ordem": 286,
+          "css": "b1.01.187"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.188",
+          "ordem": 287,
+          "css": "b1.01.188"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.189",
+          "ordem": 288,
+          "css": "b1.01.189"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.190",
+          "ordem": 289,
+          "css": "b1.01.190"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.191",
+          "ordem": 290,
+          "css": "b1.01.191"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.192",
+          "ordem": 291,
+          "css": "b1.01.192"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.193",
+          "ordem": 292,
+          "css": "b1.01.193"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.194",
+          "ordem": 293,
+          "css": "b1.01.194"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.195",
+          "ordem": 294,
+          "css": "b1.01.195"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.196",
+          "ordem": 295,
+          "css": "b1.01.196"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.197",
+          "ordem": 296,
+          "css": "b1.01.197"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.198",
+          "ordem": 297,
+          "css": "b1.01.198"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.199",
+          "ordem": 298,
+          "css": "b1.01.199"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.200",
+          "ordem": 299,
+          "css": "b1.01.200"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.201",
+          "ordem": 300,
+          "css": "b1.01.201"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.202",
+          "ordem": 301,
+          "css": "b1.01.202"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.203",
+          "ordem": 302,
+          "css": "b1.01.203"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.204",
+          "ordem": 303,
+          "css": "b1.01.204"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.205",
+          "ordem": 304,
+          "css": "b1.01.205"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.206",
+          "ordem": 305,
+          "css": "b1.01.206"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.207",
+          "ordem": 306,
+          "css": "b1.01.207"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.208",
+          "ordem": 307,
+          "css": "b1.01.208"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.209",
+          "ordem": 308,
+          "css": "b1.01.209"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.210",
+          "ordem": 309,
+          "css": "b1.01.210"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.211",
+          "ordem": 310,
+          "css": "b1.01.211"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.212",
+          "ordem": 311,
+          "css": "b1.01.212"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.213",
+          "ordem": 312,
+          "css": "b1.01.213"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.214",
+          "ordem": 313,
+          "css": "b1.01.214"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.215",
+          "ordem": 314,
+          "css": "b1.01.215"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.216",
+          "ordem": 315,
+          "css": "b1.01.216"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.217",
+          "ordem": 316,
+          "css": "b1.01.217"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.218",
+          "ordem": 317,
+          "css": "b1.01.218"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.219",
+          "ordem": 318,
+          "css": "b1.01.219"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.220",
+          "ordem": 319,
+          "css": "b1.01.220"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.221",
+          "ordem": 320,
+          "css": "b1.01.221"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.222",
+          "ordem": 321,
+          "css": "b1.01.222"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.223",
+          "ordem": 322,
+          "css": "b1.01.223"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.224",
+          "ordem": 323,
+          "css": "b1.01.224"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.225",
+          "ordem": 324,
+          "css": "b1.01.225"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.226",
+          "ordem": 325,
+          "css": "b1.01.226"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.227",
+          "ordem": 326,
+          "css": "b1.01.227"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.228",
+          "ordem": 327,
+          "css": "b1.01.228"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.229",
+          "ordem": 328,
+          "css": "b1.01.229"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.230",
+          "ordem": 329,
+          "css": "b1.01.230"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.231",
+          "ordem": 330,
+          "css": "b1.01.231"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.232",
+          "ordem": 331,
+          "css": "b1.01.232"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.233",
+          "ordem": 332,
+          "css": "b1.01.233"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.234",
+          "ordem": 333,
+          "css": "b1.01.234"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.235",
+          "ordem": 334,
+          "css": "b1.01.235"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.236",
+          "ordem": 335,
+          "css": "b1.01.236"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.237",
+          "ordem": 336,
+          "css": "b1.01.237"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.238",
+          "ordem": 337,
+          "css": "b1.01.238"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.239",
+          "ordem": 338,
+          "css": "b1.01.239"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.240",
+          "ordem": 339,
+          "css": "b1.01.240"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.241",
+          "ordem": 340,
+          "css": "b1.01.241"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.242",
+          "ordem": 341,
+          "css": "b1.01.242"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.243",
+          "ordem": 342,
+          "css": "b1.01.243"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.244",
+          "ordem": 343,
+          "css": "b1.01.244"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.245",
+          "ordem": 344,
+          "css": "b1.01.245"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.246",
+          "ordem": 345,
+          "css": "b1.01.246"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.247",
+          "ordem": 346,
+          "css": "b1.01.247"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.248",
+          "ordem": 347,
+          "css": "b1.01.248"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.249",
+          "ordem": 348,
+          "css": "b1.01.249"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.250",
+          "ordem": 349,
+          "css": "b1.01.250"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.251",
+          "ordem": 350,
+          "css": "b1.01.251"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.252",
+          "ordem": 351,
+          "css": "b1.01.252"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.253",
+          "ordem": 352,
+          "css": "b1.01.253"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.254",
+          "ordem": 353,
+          "css": "b1.01.254"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.255",
+          "ordem": 354,
+          "css": "b1.01.255"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.256",
+          "ordem": 355,
+          "css": "b1.01.256"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.257",
+          "ordem": 356,
+          "css": "b1.01.257"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.258",
+          "ordem": 357,
+          "css": "b1.01.258"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.259",
+          "ordem": 358,
+          "css": "b1.01.259"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.260",
+          "ordem": 359,
+          "css": "b1.01.260"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.261",
+          "ordem": 360,
+          "css": "b1.01.261"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.262",
+          "ordem": 361,
+          "css": "b1.01.262"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.263",
+          "ordem": 362,
+          "css": "b1.01.263"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.264",
+          "ordem": 363,
+          "css": "b1.01.264"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.265",
+          "ordem": 364,
+          "css": "b1.01.265"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.266",
+          "ordem": 365,
+          "css": "b1.01.266"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.267",
+          "ordem": 366,
+          "css": "b1.01.267"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.268",
+          "ordem": 367,
+          "css": "b1.01.268"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.269",
+          "ordem": 368,
+          "css": "b1.01.269"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.270",
+          "ordem": 369,
+          "css": "b1.01.270"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.271",
+          "ordem": 370,
+          "css": "b1.01.271"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.272",
+          "ordem": 371,
+          "css": "b1.01.272"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.273",
+          "ordem": 372,
+          "css": "b1.01.273"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.274",
+          "ordem": 373,
+          "css": "b1.01.274"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.275",
+          "ordem": 374,
+          "css": "b1.01.275"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.276",
+          "ordem": 375,
+          "css": "b1.01.276"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.277",
+          "ordem": 376,
+          "css": "b1.01.277"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.278",
+          "ordem": 377,
+          "css": "b1.01.278"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.279",
+          "ordem": 378,
+          "css": "b1.01.279"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.280",
+          "ordem": 379,
+          "css": "b1.01.280"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.281",
+          "ordem": 380,
+          "css": "b1.01.281"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.282",
+          "ordem": 381,
+          "css": "b1.01.282"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.283",
+          "ordem": 382,
+          "css": "b1.01.283"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.284",
+          "ordem": 383,
+          "css": "b1.01.284"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.285",
+          "ordem": 384,
+          "css": "b1.01.285"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.286",
+          "ordem": 385,
+          "css": "b1.01.286"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.287",
+          "ordem": 386,
+          "css": "b1.01.287"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.288",
+          "ordem": 387,
+          "css": "b1.01.288"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.289",
+          "ordem": 388,
+          "css": "b1.01.289"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.290",
+          "ordem": 389,
+          "css": "b1.01.290"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.291",
+          "ordem": 390,
+          "css": "b1.01.291"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.292",
+          "ordem": 391,
+          "css": "b1.01.292"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.293",
+          "ordem": 392,
+          "css": "b1.01.293"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.294",
+          "ordem": 393,
+          "css": "b1.01.294"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.295",
+          "ordem": 394,
+          "css": "b1.01.295"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.296",
+          "ordem": 395,
+          "css": "b1.01.296"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.297",
+          "ordem": 396,
+          "css": "b1.01.297"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.298",
+          "ordem": 397,
+          "css": "b1.01.298"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.299",
+          "ordem": 398,
+          "css": "b1.01.299"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.300",
+          "ordem": 399,
+          "css": "b1.01.300"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.301",
+          "ordem": 400,
+          "css": "b1.01.301"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.302",
+          "ordem": 401,
+          "css": "b1.01.302"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.303",
+          "ordem": 402,
+          "css": "b1.01.303"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.304",
+          "ordem": 403,
+          "css": "b1.01.304"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.305",
+          "ordem": 404,
+          "css": "b1.01.305"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.306",
+          "ordem": 405,
+          "css": "b1.01.306"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.307",
+          "ordem": 406,
+          "css": "b1.01.307"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.308",
+          "ordem": 407,
+          "css": "b1.01.308"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.309",
+          "ordem": 408,
+          "css": "b1.02.001"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.310",
+          "ordem": 409,
+          "css": "b1.02.002"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.311",
+          "ordem": 410,
+          "css": "b1.02.003"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.312",
+          "ordem": 411,
+          "css": "b1.02.004"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.313",
+          "ordem": 412,
+          "css": "b1.02.005"
+        },
+        {
+          "id": "advogado.configuracao.configuracao.estilo.314",
+          "ordem": 413,
+          "css": "b1.02.006"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.advogado.configuracao.configuracao.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.configuracao.configuracao.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.advogado.configuracao.configuracao.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.configuracao.configuracao.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.advogado.configuracao.configuracao.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "acessoOab": {
+      "id": "estado.advogado.configuracao.configuracao.acessoOab",
+      "inicial": "enabled",
+      "opcoes": {
+        "enabled": {
+          "id": "estado.advogado.configuracao.configuracao.acessoOab.enabled",
+          "alvos": []
+        },
+        "restricted": {
+          "id": "estado.advogado.configuracao.configuracao.acessoOab.restricted",
+          "alvos": []
+        }
+      }
+    },
+    "disponibilidade": {
+      "id": "estado.advogado.configuracao.configuracao.disponibilidade",
+      "inicial": "online",
+      "opcoes": {
+        "online": {
+          "id": "estado.advogado.configuracao.configuracao.disponibilidade.online",
+          "alvos": []
+        },
+        "offline": {
+          "id": "estado.advogado.configuracao.configuracao.disponibilidade.offline",
+          "alvos": []
+        }
+      }
+    },
+    "vinculoEscritorio": {
+      "id": "estado.advogado.configuracao.configuracao.vinculoEscritorio",
+      "inicial": "sem_escritorio",
+      "opcoes": {
+        "sem_escritorio": {
+          "id": "estado.advogado.configuracao.configuracao.vinculoEscritorio.sem_escritorio",
+          "alvos": []
+        },
+        "convite_pendente": {
+          "id": "estado.advogado.configuracao.configuracao.vinculoEscritorio.convite_pendente",
+          "alvos": []
+        },
+        "ativo": {
+          "id": "estado.advogado.configuracao.configuracao.vinculoEscritorio.ativo",
+          "alvos": []
+        },
+        "suspenso": {
+          "id": "estado.advogado.configuracao.configuracao.vinculoEscritorio.suspenso",
+          "alvos": []
+        }
+      }
+    },
+    "grupoEscritorio": {
+      "id": "estado.advogado.configuracao.configuracao.grupoEscritorio",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.configuracao.configuracao.grupoEscritorio.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.advogado.configuracao.configuracao.grupoEscritorio.aberto",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.agenda_semanal.b1.13.main.12.n0009",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0009"
+        },
+        "destinoRef": "advogado.configuracao.agenda_semanal",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.preferencias_atendimento.b1.13.main.12.n0019",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0019"
+        },
+        "destinoRef": "advogado.configuracao.preferencias_atendimento",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.validacao_oab.b1.13.main.12.n0029",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0029"
+        },
+        "destinoRef": "advogado.configuracao.validacao_oab",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.termos_privacidade.b1.13.main.12.n0039",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0039"
+        },
+        "destinoRef": "advogado.configuracao.termos_privacidade",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.suporte.b1.13.main.12.n0049",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0049"
+        },
+        "destinoRef": "advogado.configuracao.suporte",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.agenda_semanal.button",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0009"
+        },
+        "destinoRef": "advogado.configuracao.agenda_semanal",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.preferencias_atendimento.button",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0019"
+        },
+        "destinoRef": "advogado.configuracao.preferencias_atendimento",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.validacao_oab.button",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0029"
+        },
+        "destinoRef": "advogado.configuracao.validacao_oab",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.termos_privacidade.button",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0039"
+        },
+        "destinoRef": "advogado.configuracao.termos_privacidade",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado.configuracao.suporte.button",
+        "origem": {
+          "instanciaRef": "screen.main.01",
+          "eventoRef": "event.v21.02.telas.advogado.configuracao.configuracao.P9_033_advogado_configuracao_configuracao.screen.main.01.b1.13.main.12.n0049"
+        },
+        "destinoRef": "advogado.configuracao.suporte",
+        "status": "referencia_explicita_na_fonte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

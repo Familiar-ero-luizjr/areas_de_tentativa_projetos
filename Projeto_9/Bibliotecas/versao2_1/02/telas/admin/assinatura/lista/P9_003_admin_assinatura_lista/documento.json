@@ -1,0 +1,237 @@
+{
+  "identidade": {
+    "id": "admin.assinatura.lista",
+    "tipo": "tela",
+    "namespace": "admin",
+    "nome": "Assinaturas",
+    "nomeExibicao": "Assinaturas"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/admin/assinatura/lista/P9_003_admin_assinatura_lista/documento.json"
+    },
+    "perfilRef": "admin",
+    "jornadaRefs": [
+      "admin"
+    ],
+    "subjornadaRefs": [
+      "admin.operacao.assinatura"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.02.telas.admin.assinatura.lista.P9_003_admin_assinatura_lista.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {}
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "v21.02.telas.admin.assinatura.lista.P9_003_admin_assinatura_lista.screen.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 12,
+          "props": {}
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "v21.02.telas.admin.assinatura.lista.P9_003_admin_assinatura_lista.screen.header",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 5,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.02.telas.admin.assinatura.lista.P9_003_admin_assinatura_lista.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 6,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.02.telas.admin.assinatura.lista.P9_003_admin_assinatura_lista.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 900,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "admin.assinatura.lista.estilo.base",
+          "ordem": 10,
+          "css": "b1.05.001\nb1.05.002\nb1.05.003\nb1.05.004\nb1.05.005\nb1.05.006\nb1.05.007\nb1.05.008\nb1.05.009\nb1.05.010\nb1.05.011\nb1.05.012\nb1.05.013\nb1.05.014\nb1.05.015\nb1.05.016\nb1.05.017\nb1.05.018\nb1.05.019\nb1.05.020\nb1.05.021\nb1.05.022\nb1.05.023\nb1.05.024\nb1.05.025\nb1.05.026\nb1.05.027\nb1.05.028\nb1.05.029\nb1.05.030\nb1.05.031\nb1.05.032\nb1.05.033\nb1.05.034\nb1.05.035\ncanonica\ncanonica\ncanonica"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.1",
+          "ordem": 100,
+          "css": "b1.01.001"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.2",
+          "ordem": 101,
+          "css": "b1.01.002"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.3",
+          "ordem": 102,
+          "css": "b1.01.003"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.4",
+          "ordem": 103,
+          "css": "b1.01.004"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.5",
+          "ordem": 104,
+          "css": "b1.01.005"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.6",
+          "ordem": 105,
+          "css": "b1.01.006"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.7",
+          "ordem": 106,
+          "css": "b1.02.001"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.8",
+          "ordem": 107,
+          "css": "b1.02.002"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.9",
+          "ordem": 108,
+          "css": "b1.02.003"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.10",
+          "ordem": 109,
+          "css": "b1.02.004"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.11",
+          "ordem": 110,
+          "css": "b1.02.005"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.12",
+          "ordem": 111,
+          "css": "b1.02.006"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.13",
+          "ordem": 112,
+          "css": "b1.02.007"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.14",
+          "ordem": 113,
+          "css": "b1.02.008"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.15",
+          "ordem": 114,
+          "css": "b1.02.009"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.16",
+          "ordem": 115,
+          "css": "b1.02.010"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.17",
+          "ordem": 116,
+          "css": "b1.02.011"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.18",
+          "ordem": 117,
+          "css": "b1.02.012"
+        },
+        {
+          "id": "admin.assinatura.lista.estilo.19",
+          "ordem": 118,
+          "css": "b1.02.013"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.admin.assinatura.lista.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.admin.assinatura.lista.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.admin.assinatura.lista.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.admin.assinatura.lista.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.admin.assinatura.lista.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "permissao": {
+      "id": "estado.admin.assinatura.lista.permissao",
+      "inicial": "gestor",
+      "opcoes": {
+        "gestor": {
+          "id": "estado.admin.assinatura.lista.permissao.gestor",
+          "alvos": []
+        },
+        "operador": {
+          "id": "estado.admin.assinatura.lista.permissao.operador",
+          "alvos": []
+        },
+        "auditor": {
+          "id": "estado.admin.assinatura.lista.permissao.auditor",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

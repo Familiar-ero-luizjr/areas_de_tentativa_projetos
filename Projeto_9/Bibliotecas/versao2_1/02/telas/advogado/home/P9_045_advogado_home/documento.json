@@ -1,0 +1,290 @@
+{
+  "identidade": {
+    "id": "advogado.home",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Início do advogado",
+    "nomeExibicao": "Início do advogado"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/advogado/home/P9_045_advogado_home/documento.json"
+    },
+    "perfilRef": "advogado",
+    "jornadaRefs": [
+      "advogado"
+    ],
+    "subjornadaRefs": [
+      "advogado.operacao.inicio"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {}
+        },
+        "screen.hero": {
+          "id": "screen.hero",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.hero",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 20,
+          "props": {}
+        },
+        "screen.online": {
+          "id": "screen.online",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.online",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 30,
+          "props": {}
+        },
+        "screen.actions": {
+          "id": "screen.actions",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.actions",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 40,
+          "props": {}
+        },
+        "screen.modal": {
+          "id": "screen.modal",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.modal",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 60,
+          "props": {}
+        },
+        "screen.toast": {
+          "id": "screen.toast",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.toast",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 70,
+          "props": {}
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.header",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 5,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 6,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.02.telas.advogado.home.P9_045_advogado_home.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 900,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado.home.estilo.base",
+          "ordem": 10,
+          "css": "r900\nr901\nr902\nr907\nr023\nr024\nr025\nr026\nr027\nr028\nr029\nr030\nr031\nr032\nr033\nr034\nr035\nr036\nr037\nr038\nr039\nr040\nr041\nr042\nr043\nr044\nr045\nr046\nr047\nr048\nr049\nr050\nr051\nr052\nr053\nr054\nr079\nr080\nr081\nr082\nr083\nr084\nr085\nr086\nr087\nr088\ncanonica\ncanonica\ncanonica"
+        },
+        {
+          "id": "advogado.home.estilo.1",
+          "ordem": 100,
+          "css": "r001"
+        },
+        {
+          "id": "advogado.home.estilo.2",
+          "ordem": 101,
+          "css": "r002"
+        },
+        {
+          "id": "advogado.home.estilo.3",
+          "ordem": 102,
+          "css": "r003"
+        },
+        {
+          "id": "advogado.home.estilo.4",
+          "ordem": 103,
+          "css": "r004"
+        },
+        {
+          "id": "advogado.home.estilo.5",
+          "ordem": 104,
+          "css": "r005"
+        },
+        {
+          "id": "advogado.home.estilo.6",
+          "ordem": 105,
+          "css": "r006"
+        },
+        {
+          "id": "advogado.home.estilo.7",
+          "ordem": 106,
+          "css": "r007"
+        },
+        {
+          "id": "advogado.home.estilo.8",
+          "ordem": 107,
+          "css": "r008"
+        },
+        {
+          "id": "advogado.home.estilo.9",
+          "ordem": 108,
+          "css": "r022"
+        },
+        {
+          "id": "advogado.home.estilo.10",
+          "ordem": 109,
+          "css": "r055"
+        },
+        {
+          "id": "advogado.home.estilo.11",
+          "ordem": 110,
+          "css": "r903"
+        },
+        {
+          "id": "advogado.home.estilo.12",
+          "ordem": 111,
+          "css": "r904"
+        },
+        {
+          "id": "advogado.home.estilo.13",
+          "ordem": 112,
+          "css": "r905"
+        },
+        {
+          "id": "advogado.home.estilo.14",
+          "ordem": 113,
+          "css": "r906"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.advogado.home.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.home.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.advogado.home.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.home.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.advogado.home.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "acessoOab": {
+      "id": "estado.advogado.home.acessoOab",
+      "inicial": "enabled",
+      "opcoes": {
+        "enabled": {
+          "id": "estado.advogado.home.acessoOab.enabled",
+          "alvos": []
+        },
+        "restricted": {
+          "id": "estado.advogado.home.acessoOab.restricted",
+          "alvos": []
+        }
+      }
+    },
+    "disponibilidade": {
+      "id": "estado.advogado.home.disponibilidade",
+      "inicial": "online",
+      "opcoes": {
+        "online": {
+          "id": "estado.advogado.home.disponibilidade.online",
+          "alvos": []
+        },
+        "offline": {
+          "id": "estado.advogado.home.disponibilidade.offline",
+          "alvos": []
+        }
+      }
+    },
+    "vinculoEscritorio": {
+      "id": "estado.advogado.home.vinculoEscritorio",
+      "inicial": "sem_escritorio",
+      "opcoes": {
+        "sem_escritorio": {
+          "id": "estado.advogado.home.vinculoEscritorio.sem_escritorio",
+          "alvos": []
+        },
+        "convite_pendente": {
+          "id": "estado.advogado.home.vinculoEscritorio.convite_pendente",
+          "alvos": []
+        },
+        "ativo": {
+          "id": "estado.advogado.home.vinculoEscritorio.ativo",
+          "alvos": []
+        },
+        "suspenso": {
+          "id": "estado.advogado.home.vinculoEscritorio.suspenso",
+          "alvos": []
+        }
+      }
+    },
+    "grupoEscritorio": {
+      "id": "estado.advogado.home.grupoEscritorio",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.home.grupoEscritorio.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.advogado.home.grupoEscritorio.aberto",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

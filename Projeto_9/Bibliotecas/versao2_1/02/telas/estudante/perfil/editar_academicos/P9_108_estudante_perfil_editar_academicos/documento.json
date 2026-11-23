@@ -1,0 +1,159 @@
+{
+  "identidade": {
+    "id": "estudante.perfil.editar_academicos",
+    "tipo": "tela",
+    "namespace": "estudante",
+    "nome": "Dados acadêmicos",
+    "nomeExibicao": "Dados acadêmicos"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/estudante/perfil/editar_academicos/P9_108_estudante_perfil_editar_academicos/documento.json"
+    },
+    "perfilRef": "estudante",
+    "jornadaRefs": [
+      "estudante"
+    ],
+    "subjornadaRefs": [
+      "estudante.operacao.estudante"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.02.telas.estudante.perfil.editar_academicos.P9_108_estudante_perfil_editar_academicos.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {}
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "v21.02.telas.estudante.perfil.editar_academicos.P9_108_estudante_perfil_editar_academicos.screen.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 12,
+          "props": {}
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "v21.02.telas.estudante.perfil.editar_academicos.P9_108_estudante_perfil_editar_academicos.screen.header",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 5,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.02.telas.estudante.perfil.editar_academicos.P9_108_estudante_perfil_editar_academicos.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 6,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.02.telas.estudante.perfil.editar_academicos.P9_108_estudante_perfil_editar_academicos.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 900,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "estudante.perfil.editar_academicos.estilo.base",
+          "ordem": 10,
+          "css": "b1.01\nb1.02\nb1.04\nb1.05\ncanonica\ncanonica\ncanonica"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.estudante.perfil.editar_academicos.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.estudante.perfil.editar_academicos.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.estudante.perfil.editar_academicos.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.estudante.perfil.editar_academicos.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.estudante.perfil.editar_academicos.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "planoEstudante": {
+      "id": "estado.estudante.perfil.editar_academicos.planoEstudante",
+      "inicial": "sem_plano",
+      "opcoes": {
+        "sem_plano": {
+          "id": "estado.estudante.perfil.editar_academicos.planoEstudante.sem_plano",
+          "alvos": []
+        },
+        "pendente": {
+          "id": "estado.estudante.perfil.editar_academicos.planoEstudante.pendente",
+          "alvos": []
+        },
+        "ativo": {
+          "id": "estado.estudante.perfil.editar_academicos.planoEstudante.ativo",
+          "alvos": []
+        },
+        "vencido": {
+          "id": "estado.estudante.perfil.editar_academicos.planoEstudante.vencido",
+          "alvos": []
+        }
+      }
+    },
+    "grupoEstudante": {
+      "id": "estado.estudante.perfil.editar_academicos.grupoEstudante",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.estudante.perfil.editar_academicos.grupoEstudante.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.estudante.perfil.editar_academicos.grupoEstudante.aberto",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

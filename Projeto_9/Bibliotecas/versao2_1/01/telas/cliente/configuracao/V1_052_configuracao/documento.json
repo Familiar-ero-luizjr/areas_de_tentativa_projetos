@@ -1,0 +1,185 @@
+{
+  "identidade": {
+    "id": "cliente.configuracao.configuracao",
+    "tipo": "tela",
+    "namespace": "cliente",
+    "nome": "Cliente · Configurações",
+    "nomeExibicao": "Cliente · Configurações"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/cliente/configuracao/V1_052_configuracao/documento.json"
+    },
+    "perfilRef": "cliente",
+    "jornadaRefs": [
+      "cliente"
+    ],
+    "subjornadaRefs": [
+      "cliente.operacao.configuracoes"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        },
+        "screen.app_header": {
+          "id": "screen.app_header",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.app_header",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 120,
+          "props": {}
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 230,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 310,
+          "props": {}
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.route_modal",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 410,
+          "props": {}
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.screen_note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 510,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "cliente.configuracao.configuracao.estilo.base",
+          "ordem": 10,
+          "css": ".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n\n.aj-layout-titlebar{width:100%;min-height:38px;display:flex;align-items:center;padding:10px 18px;border-bottom:1px solid #dbe3ee;background:#fff;color:#10233f;font:700 13px/1.35 Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-titlebar strong{font-weight:700;font-size:13px}\n\n.settings-grid{display:grid;gap:10px}.settings-grid .op-action{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left}.settings-grid .op-action>span:first-child{display:grid;gap:4px}.settings-grid .op-action strong,.settings-grid .op-action small{display:block}.settings-grid .op-action small{color:var(--muted);font-size:12px;line-height:1.4}\n\n.aj-layout-drawer.prototype-drawer{position:fixed!important;inset:0!important;z-index:9998!important;display:none!important;pointer-events:none}.aj-layout-drawer.prototype-drawer.open{display:block!important;pointer-events:auto}\n.aj-layout-drawer .aj-layout-backdrop{position:absolute;inset:0;width:100%;border:0;background:rgba(7,16,30,.60);cursor:pointer}\n.aj-layout-drawer .aj-layout-panel{position:absolute;inset:0 auto 0 0;width:min(80vw,360px);max-width:100vw;display:flex;flex-direction:column;overflow:hidden;background:#3b4a7d;color:#fff;box-shadow:12px 0 30px #0005;font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-drawer .aj-layout-identity{display:flex;align-items:center;gap:13px;padding:29px 20px 17px;flex:none}.aj-layout-avatar{width:52px;height:52px;flex:none;display:grid;place-items:center;border:2px solid #ffffff40;border-radius:50%;background:#dbeafe;color:#1e3a8a;font-size:18px;font-weight:850}\n.aj-layout-status{min-height:46px;display:flex;justify-content:space-between;align-items:center;gap:9px;margin:0 20px 10px;padding:9px 12px;border:1px solid #ffffff33;border-radius:10px;background:#ffffff12;color:#fff;cursor:pointer;font-size:12px;text-align:left}.aj-layout-status[hidden]{display:none!important}.aj-layout-status .aj-status-dot{width:9px;height:9px;flex:none;border-radius:50%;background:#4ade80}.aj-layout-drawer[data-disponibilidade=\"offline\"] .aj-status-dot{background:#b8c0cb}.aj-layout-status b{font-size:12px}.aj-layout-status small{font-size:10px;display:block;color:#bfd4f4}.aj-layout-status-copy{flex:1}\n.aj-layout-drawer .drawer-nav{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;flex:1;overscroll-behavior:contain;padding-bottom:8px}.aj-layout-drawer .drawer-nav button{width:100%;min-height:49px;display:flex;align-items:center;gap:13px;padding:12px 20px;border:0;border-bottom:1px solid #ffffff1d;background:transparent;color:#fff;text-align:left;font:500 13px Inter,\"Segoe UI\",Arial,sans-serif;cursor:pointer}.aj-layout-drawer .drawer-nav button:hover{background:#ffffff15}.aj-layout-drawer .drawer-nav svg{width:19px;height:19px;flex:none;stroke:#bcccec;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.aj-layout-drawer .drawer-nav button strong{font-weight:650;flex:1}.aj-layout-drawer .drawer-nav .aj-subitem{min-height:41px;padding-left:49px;font-size:12px;background:#00000013}.aj-layout-drawer .drawer-nav .aj-subitem svg{width:15px;height:15px}.aj-layout-drawer .drawer-nav .aj-item-hint{margin-left:auto;font-size:10px;opacity:.8}.aj-layout-drawer .drawer-nav .aj-menu-group{background:#ffffff0c}.aj-layout-drawer .drawer-nav .aj-menu-group b{font-size:12px}\n.aj-layout-drawer [data-aj-group-content=\"estudante\"],.aj-layout-drawer [data-aj-group-content=\"escritorio\"]{display:none!important}.aj-layout-drawer[data-estudante-menu=\"aberto\"] [data-aj-group-content=\"estudante\"]{display:flex!important}.aj-layout-drawer[data-escritorio-menu=\"aberto\"] [data-aj-group-content=\"escritorio\"]{display:flex!important}\n.aj-layout-drawer[data-plano=\"sem_plano\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"pendente\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"vencido\"] [data-aj-protegido]{opacity:.52}\n.aj-layout-drawer[data-oab=\"restricted\"] [data-aj-oab-only=\"enabled\"]{opacity:.5}\n.aj-layout-drawer[data-permissao=\"auditor\"] [data-aj-admin-only=\"gestor\"],.aj-layout-drawer[data-permissao=\"operador\"] [data-aj-admin-only=\"gestor\"]{opacity:.5}\n.aj-layout-drawer[data-vinculo-escritorio=\"sem_escritorio\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"convite_pendente\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"suspenso\"] [data-aj-requer-escritorio]{opacity:.5}\n.aj-layout-drawer .aj-layout-footer{padding:14px 20px 23px;background:#00000019;flex:none;font-size:11px}.aj-layout-footer-row{display:flex;justify-content:space-between;align-items:center;gap:10px}.aj-layout-footer button{border:0;background:transparent;color:#fff;font-size:13px;padding:6px 0;cursor:pointer}.aj-layout-footer small{font-size:10px;color:#b0c2df}.aj-layout-emergency{width:100%;margin-top:12px;padding:10px!important;border:1px solid #ffffff80!important;border-radius:99px!important;font-weight:750!important}\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.cliente.configuracao.configuracao.online",
+      "inicial": "false",
+      "opcoes": {
+        "false": {
+          "id": "estado.cliente.configuracao.configuracao.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.cliente.configuracao.configuracao.online.true",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente.onboarding.preferencias_contato.b1.13.main.12.n0007",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "event.v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content.screen_content.e0008"
+        },
+        "destinoRef": "cliente.onboarding.preferencias_contato",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente.configuracao.termos_privacidade.b1.13.main.12.n0015",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "event.v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content.screen_content.e0016"
+        },
+        "destinoRef": "cliente.configuracao.termos_privacidade",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente.configuracao.suporte.b1.13.main.12.n0023",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "event.v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content.screen_content.e0024"
+        },
+        "destinoRef": "cliente.configuracao.suporte",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente.onboarding.preferencias_contato.button",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "event.v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content.screen_content.e0008"
+        },
+        "destinoRef": "cliente.onboarding.preferencias_contato",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente.configuracao.termos_privacidade.button",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "event.v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content.screen_content.e0016"
+        },
+        "destinoRef": "cliente.configuracao.termos_privacidade",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente.configuracao.suporte.button",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "event.v21.01.telas.cliente.configuracao.V1_052_configuracao.screen.content.screen_content.e0024"
+        },
+        "destinoRef": "cliente.configuracao.suporte",
+        "status": "referencia_explicita_na_fonte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}
