@@ -1,0 +1,1238 @@
+{
+  "identidade": {
+    "id": "advogado.clientes.recusa_confirmada",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Solicitação recusada",
+    "nomeExibicao": "Solicitação recusada"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/advogado/clientes/recusa_confirmada/P9_027_advogado_clientes_recusa_confirmada/documento.json"
+    },
+    "perfilRef": "advogado",
+    "jornadaRefs": [
+      "advogado"
+    ],
+    "subjornadaRefs": [
+      "advogado.operacao.solicitacoes"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "visual.b1.advogado.clientes.recusa_confirmada",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {},
+          "elementos": {
+            "screen.root": {
+              "tag": "div",
+              "ordem": 1,
+              "atributos": {
+                "class": "screen-runtime b1-screen-runtime"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "advogado.clientes.recusa_confirmada.content.01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 12,
+          "props": {},
+          "elementos": {
+            "atual.draft.root": {
+              "tag": "div",
+              "ordem": 12,
+              "atributos": {
+                "class": "draft-root"
+              },
+              "texto": ""
+            },
+            "atual.draft.header": {
+              "tag": "header",
+              "paiRef": "atual.draft.root",
+              "ordem": 1,
+              "atributos": {
+                "class": "draft-header"
+              },
+              "texto": "AdvogadoJá · Rascunho"
+            },
+            "atual.draft.main": {
+              "tag": "main",
+              "paiRef": "atual.draft.root",
+              "ordem": 2,
+              "atributos": {
+                "class": "draft-main"
+              },
+              "texto": ""
+            },
+            "atual.draft.title": {
+              "tag": "h1",
+              "paiRef": "atual.draft.main",
+              "ordem": 1,
+              "atributos": {},
+              "texto": "Solicitação recusada"
+            },
+            "atual.draft.desc": {
+              "tag": "p",
+              "paiRef": "atual.draft.main",
+              "ordem": 2,
+              "atributos": {},
+              "texto": "Exibir confirmação da recusa e destino da solicitação."
+            },
+            "atual.draft.note": {
+              "tag": "p",
+              "paiRef": "atual.draft.main",
+              "ordem": 3,
+              "atributos": {
+                "class": "draft-note"
+              },
+              "texto": "Interface provisória para revisão. Nenhuma função de produção foi homologada."
+            }
+          },
+          "eventos": []
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 5,
+          "props": {},
+          "elementos": {
+            "layout_header_app.n0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-internal",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "advogado",
+                "data-variante": "autenticado"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0002": {
+              "tag": "button",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-icon-button app-menu-button",
+                "type": "button",
+                "data-action": "drawer.open",
+                "aria-label": "Abrir menu"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0003": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0004": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 40,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0005": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0006": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 60,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0007": {
+              "tag": "img",
+              "paiRef": "layout_header_app.n0006",
+              "ordem": 70,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0008": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0006",
+              "ordem": 80,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0009": {
+              "tag": "strong",
+              "paiRef": "layout_header_app.n0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0010": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0009",
+              "ordem": 100,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            },
+            "layout_header_app.n0011": {
+              "tag": "small",
+              "paiRef": "layout_header_app.n0008",
+              "ordem": 110,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0012": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0011",
+              "ordem": 120,
+              "atributos": {},
+              "texto": "Profissional"
+            },
+            "layout_header_app.n0013": {
+              "tag": "button",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 130,
+              "atributos": {
+                "class": "aj-layout-icon-button app-notifications",
+                "type": "button",
+                "data-aj-route": "notificacoes.lista.notificacoes",
+                "aria-label": "Notificações"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0014": {
+              "tag": "svg",
+              "paiRef": "layout_header_app.n0013",
+              "ordem": 140,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0015": {
+              "tag": "path",
+              "paiRef": "layout_header_app.n0014",
+              "ordem": 150,
+              "atributos": {
+                "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0016": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0013",
+              "ordem": 160,
+              "atributos": {
+                "class": "aj-layout-badge"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0017": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0016",
+              "ordem": 170,
+              "atributos": {},
+              "texto": "2"
+            }
+          },
+          "eventos": []
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "layout.header.title",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 6,
+          "props": {},
+          "elementos": {
+            "layout_header_title.n0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-titlebar",
+                "data-aj-canonical": "layout.header.title"
+              },
+              "texto": ""
+            },
+            "layout_header_title.n0002": {
+              "tag": "strong",
+              "paiRef": "layout_header_title.n0001",
+              "ordem": 20,
+              "atributos": {
+                "data-aj-title": ""
+              },
+              "texto": ""
+            },
+            "layout_header_title.n0003": {
+              "tag": "#text",
+              "paiRef": "layout_header_title.n0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": "Solicitação recusada"
+            }
+          },
+          "eventos": []
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "layout.menu.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 900,
+          "props": {},
+          "elementos": {
+            "layout_menu_drawer.n0001": {
+              "tag": "aside",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-drawer prototype-drawer",
+                "data-aj-canonical": "layout.menu.drawer",
+                "data-perfil": "advogado",
+                "data-plano": "sem_plano",
+                "data-estudante-menu": "fechado",
+                "data-escritorio-menu": "fechado",
+                "data-oab": "enabled",
+                "data-permissao": "gestor",
+                "data-disponibilidade": "online",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0002": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-backdrop drawer-backdrop",
+                "data-action": "drawer.close",
+                "type": "button",
+                "aria-label": "Fechar menu"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0003": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0001",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj-layout-panel drawer-panel"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0004": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-identity"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0005": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0004",
+              "ordem": 50,
+              "atributos": {
+                "class": "aj-layout-avatar"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0006": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "DP"
+            },
+            "layout_menu_drawer.n0007": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0004",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0008": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0009": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": "Dr. Profissional"
+            },
+            "layout_menu_drawer.n0010": {
+              "tag": "small",
+              "paiRef": "layout_menu_drawer.n0007",
+              "ordem": 100,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0011": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "PROFISSIONAL"
+            },
+            "layout_menu_drawer.n0012": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 120,
+              "atributos": {
+                "type": "button",
+                "class": "aj-layout-status",
+                "data-aj-toggle": "disponibilidade"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0013": {
+              "tag": "span",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 130,
+              "atributos": {
+                "class": "aj-status-dot"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0014": {
+              "tag": "span",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 140,
+              "atributos": {
+                "class": "aj-layout-status-copy"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0015": {
+              "tag": "b",
+              "paiRef": "layout_menu_drawer.n0014",
+              "ordem": 150,
+              "atributos": {
+                "data-aj-online-label": ""
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0016": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0015",
+              "ordem": 160,
+              "atributos": {},
+              "texto": "Online"
+            },
+            "layout_menu_drawer.n0017": {
+              "tag": "small",
+              "paiRef": "layout_menu_drawer.n0014",
+              "ordem": 170,
+              "atributos": {
+                "data-aj-online-copy": ""
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0018": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0017",
+              "ordem": 180,
+              "atributos": {},
+              "texto": "Recebendo novas solicitações"
+            },
+            "layout_menu_drawer.n0019": {
+              "tag": "span",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 190,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0020": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0019",
+              "ordem": 200,
+              "atributos": {},
+              "texto": "⏻"
+            },
+            "layout_menu_drawer.n0021": {
+              "tag": "nav",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 210,
+              "atributos": {
+                "class": "drawer-nav",
+                "aria-label": "Menu principal"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0022": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 220,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.home"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0023": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0022",
+              "ordem": 230,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0024": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0023",
+              "ordem": 240,
+              "atributos": {
+                "d": "M3 11.5 12 4l9 7.5M5 10v10h14V10M9 20v-6h6v6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0025": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0022",
+              "ordem": 250,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0026": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0025",
+              "ordem": 260,
+              "atributos": {},
+              "texto": "Início"
+            },
+            "layout_menu_drawer.n0027": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 270,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.configuracao.validacao_oab"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0028": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0027",
+              "ordem": 280,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0029": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0028",
+              "ordem": 290,
+              "atributos": {
+                "d": "M5 12l4 4L19 6M4 4h16v16H4z"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0030": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0027",
+              "ordem": 300,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0031": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0030",
+              "ordem": 310,
+              "atributos": {},
+              "texto": "Validar OAB"
+            },
+            "layout_menu_drawer.n0032": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 320,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.atendimentos.lista",
+                "data-aj-oab-only": "enabled"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0033": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0032",
+              "ordem": 330,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0034": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0033",
+              "ordem": 340,
+              "atributos": {
+                "d": "M8 4h8M6 6h12v15H6zM9 11h6M9 15h6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0035": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0032",
+              "ordem": 350,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0036": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0035",
+              "ordem": 360,
+              "atributos": {},
+              "texto": "Atendimentos"
+            },
+            "layout_menu_drawer.n0037": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 370,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.perfil.profissional"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0038": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0037",
+              "ordem": 380,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0039": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0038",
+              "ordem": 390,
+              "atributos": {
+                "d": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0040": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0037",
+              "ordem": 400,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0041": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0040",
+              "ordem": 410,
+              "atributos": {},
+              "texto": "Meu perfil"
+            },
+            "layout_menu_drawer.n0042": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 420,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.assinatura.gestao_assinatura"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0043": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0042",
+              "ordem": 430,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0044": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0043",
+              "ordem": 440,
+              "atributos": {
+                "d": "M3 5h18v14H3zM3 10h18M7 15h4"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0045": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0042",
+              "ordem": 450,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0046": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0045",
+              "ordem": 460,
+              "atributos": {},
+              "texto": "Planos"
+            },
+            "layout_menu_drawer.n0047": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 470,
+              "atributos": {
+                "class": "aj-menu-group",
+                "type": "button",
+                "data-aj-toggle": "escritorio"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0048": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0047",
+              "ordem": 480,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0049": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0048",
+              "ordem": 490,
+              "atributos": {
+                "d": "M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0050": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0047",
+              "ordem": 500,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0051": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0050",
+              "ordem": 510,
+              "atributos": {},
+              "texto": "Escritório"
+            },
+            "layout_menu_drawer.n0052": {
+              "tag": "span",
+              "paiRef": "layout_menu_drawer.n0047",
+              "ordem": 520,
+              "atributos": {
+                "class": "aj-item-hint",
+                "data-aj-caret": "escritorio"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0053": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0052",
+              "ordem": 530,
+              "atributos": {},
+              "texto": "▸"
+            },
+            "layout_menu_drawer.n0054": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 540,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.gestao.escritorio",
+                "data-aj-group-content": "escritorio",
+                "data-aj-requer-escritorio": "ativo"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0055": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0054",
+              "ordem": 550,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0056": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0055",
+              "ordem": 560,
+              "atributos": {
+                "d": "M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0057": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0054",
+              "ordem": 570,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0058": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0057",
+              "ordem": 580,
+              "atributos": {},
+              "texto": "Visão do escritório"
+            },
+            "layout_menu_drawer.n0059": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 590,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.equipe.equipe",
+                "data-aj-group-content": "escritorio",
+                "data-aj-requer-escritorio": "ativo"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0060": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0059",
+              "ordem": 600,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0061": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0060",
+              "ordem": 610,
+              "atributos": {
+                "d": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0062": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0059",
+              "ordem": 620,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0063": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0062",
+              "ordem": 630,
+              "atributos": {},
+              "texto": "Equipe jurídica"
+            },
+            "layout_menu_drawer.n0064": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 640,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.equipe.convites",
+                "data-aj-group-content": "escritorio"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0065": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0064",
+              "ordem": 650,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0066": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0065",
+              "ordem": 660,
+              "atributos": {
+                "d": "M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h8"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0067": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0064",
+              "ordem": 670,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0068": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0067",
+              "ordem": 680,
+              "atributos": {},
+              "texto": "Convites"
+            },
+            "layout_menu_drawer.n0069": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 690,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.distribuicao.distribuicao_interna",
+                "data-aj-group-content": "escritorio",
+                "data-aj-requer-escritorio": "ativo"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0070": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0069",
+              "ordem": 700,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0071": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0070",
+              "ordem": 710,
+              "atributos": {
+                "d": "M8 4h8M6 6h12v15H6zM9 11h6M9 15h6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0072": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0069",
+              "ordem": 720,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0073": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0072",
+              "ordem": 730,
+              "atributos": {},
+              "texto": "Distribuição interna"
+            },
+            "layout_menu_drawer.n0074": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 740,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.configuracao.dados",
+                "data-aj-group-content": "escritorio"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0075": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0074",
+              "ordem": 750,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0076": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0075",
+              "ordem": 760,
+              "atributos": {
+                "d": "M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0077": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0074",
+              "ordem": 770,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0078": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0077",
+              "ordem": 780,
+              "atributos": {},
+              "texto": "Dados do escritório"
+            },
+            "layout_menu_drawer.n0079": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 790,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.configuracao.configuracao"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0080": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0079",
+              "ordem": 800,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0081": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0080",
+              "ordem": 810,
+              "atributos": {
+                "d": "M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0082": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0079",
+              "ordem": 820,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0083": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0082",
+              "ordem": 830,
+              "atributos": {},
+              "texto": "Configurações"
+            },
+            "layout_menu_drawer.n0084": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 840,
+              "atributos": {
+                "class": "aj-layout-footer"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0085": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0084",
+              "ordem": 850,
+              "atributos": {
+                "class": "aj-layout-footer-row"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0086": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0085",
+              "ordem": 860,
+              "atributos": {
+                "type": "button",
+                "data-aj-route": "auth.sessao.entrar"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0087": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0086",
+              "ordem": 870,
+              "atributos": {},
+              "texto": "Sair"
+            },
+            "layout_menu_drawer.n0088": {
+              "tag": "small",
+              "paiRef": "layout_menu_drawer.n0085",
+              "ordem": 880,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0089": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0088",
+              "ordem": 890,
+              "atributos": {},
+              "texto": "Versão: 1.0.55"
+            },
+            "layout_menu_drawer.n0090": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0084",
+              "ordem": 900,
+              "atributos": {
+                "class": "aj-layout-emergency",
+                "type": "button",
+                "data-aj-route": "emergencia.190"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0091": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0090",
+              "ordem": 910,
+              "atributos": {},
+              "texto": "Disque 190"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado.clientes.recusa_confirmada.estilo.base",
+          "ordem": 10,
+          "css": "b1.01\nb1.05\nb1.04\ncanonica\ncanonica\ncanonica"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.advogado.clientes.recusa_confirmada.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.clientes.recusa_confirmada.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.advogado.clientes.recusa_confirmada.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.clientes.recusa_confirmada.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.advogado.clientes.recusa_confirmada.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "acessoOab": {
+      "id": "estado.advogado.clientes.recusa_confirmada.acessoOab",
+      "inicial": "enabled",
+      "opcoes": {
+        "enabled": {
+          "id": "estado.advogado.clientes.recusa_confirmada.acessoOab.enabled",
+          "alvos": []
+        },
+        "restricted": {
+          "id": "estado.advogado.clientes.recusa_confirmada.acessoOab.restricted",
+          "alvos": []
+        }
+      }
+    },
+    "disponibilidade": {
+      "id": "estado.advogado.clientes.recusa_confirmada.disponibilidade",
+      "inicial": "online",
+      "opcoes": {
+        "online": {
+          "id": "estado.advogado.clientes.recusa_confirmada.disponibilidade.online",
+          "alvos": []
+        },
+        "offline": {
+          "id": "estado.advogado.clientes.recusa_confirmada.disponibilidade.offline",
+          "alvos": []
+        }
+      }
+    },
+    "vinculoEscritorio": {
+      "id": "estado.advogado.clientes.recusa_confirmada.vinculoEscritorio",
+      "inicial": "sem_escritorio",
+      "opcoes": {
+        "sem_escritorio": {
+          "id": "estado.advogado.clientes.recusa_confirmada.vinculoEscritorio.sem_escritorio",
+          "alvos": []
+        },
+        "convite_pendente": {
+          "id": "estado.advogado.clientes.recusa_confirmada.vinculoEscritorio.convite_pendente",
+          "alvos": []
+        },
+        "ativo": {
+          "id": "estado.advogado.clientes.recusa_confirmada.vinculoEscritorio.ativo",
+          "alvos": []
+        },
+        "suspenso": {
+          "id": "estado.advogado.clientes.recusa_confirmada.vinculoEscritorio.suspenso",
+          "alvos": []
+        }
+      }
+    },
+    "grupoEscritorio": {
+      "id": "estado.advogado.clientes.recusa_confirmada.grupoEscritorio",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.advogado.clientes.recusa_confirmada.grupoEscritorio.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.advogado.clientes.recusa_confirmada.grupoEscritorio.aberto",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

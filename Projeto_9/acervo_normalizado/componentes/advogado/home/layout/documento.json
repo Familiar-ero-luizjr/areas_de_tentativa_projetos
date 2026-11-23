@@ -1,0 +1,102 @@
+{
+  "identidade": {
+    "id": "advogado.home.layout",
+    "tipo": "componente",
+    "nome": "advogado.home.layout"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/home/layout/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "home",
+            "numero": "2.4",
+            "nome": "Home única e capabilities"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "layout.app",
+      "elementos": {
+        "layout.app": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 10,
+          "atributos": {
+            "class": "app",
+            "data-professional-access": "enabled"
+          },
+          "texto": ""
+        },
+        "layout.main": {
+          "tag": "main",
+          "paiRef": "layout.app",
+          "ordem": 30,
+          "atributos": {
+            "class": "app-main"
+          },
+          "texto": ""
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {
+    "acessoProfissional": {
+      "inicial": "enabled",
+      "opcoes": {
+        "enabled": {
+          "alvos": [
+            {
+              "tipo": "elemento",
+              "ref": "layout.app",
+              "classes": {},
+              "atributos": {
+                "data-professional-access": "enabled"
+              }
+            }
+          ]
+        },
+        "restricted": {
+          "alvos": [
+            {
+              "tipo": "elemento",
+              "ref": "layout.app",
+              "classes": {},
+              "atributos": {
+                "data-professional-access": "restricted"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

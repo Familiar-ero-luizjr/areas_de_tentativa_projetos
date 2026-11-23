@@ -1,0 +1,296 @@
+{
+  "identidade": {
+    "id": "advogado.assinatura.resultado_checkout",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Resultado do checkout",
+    "nomeExibicao": "Resultado do checkout",
+    "descricao": "Exibir resultado de pagamento integralmente fictício."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/advogado/assinatura/resultado_checkout/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "assinatura",
+            "numero": "2.8",
+            "nome": "Assinatura"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "visual.b1.advogado.assinatura.resultado_checkout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "ui.advogado.header.principal",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.titlebar": {
+          "componenteRef": "component.titlebar.application.v2",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 11,
+          "props": {},
+          "estados": {}
+        },
+        "screen.drawer": {
+          "componenteRef": "ui.aj.menu.advogado.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 13,
+          "props": {},
+          "estados": {
+            "painel": "fechado",
+            "disponibilidade": "online"
+          }
+        },
+        "screen.main.01": {
+          "componenteRef": "advogado.assinatura.resultado_checkout.content.01",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 12,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header.v1": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": -10,
+          "props": {
+            "perfil": "Profissional",
+            "notificacoes": "2"
+          },
+          "estados": {
+            "ambiente": "interno"
+          }
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.app_header.e001.chrome.002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.2",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.3",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "disponibilidade",
+        "valor": "offline"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0023"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.home"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0028"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.configuracao.validacao_oab"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.6",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0043"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.assinatura.gestao_assinatura"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.7",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0048"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "escritorio.gestao.escritorio"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.8",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0053"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.configuracao.configuracao"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.9",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0060"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "auth.sessao.entrar"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.10",
+      "origem": {
+        "instanciaRef": "screen.header.v1",
+        "eventoRef": "event.ui_aj_header_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "advogado.assinatura.resultado_checkout.link.11",
+      "origem": {
+        "instanciaRef": "screen.header.v1",
+        "eventoRef": "event.ui_aj_header_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "advogado.assinatura.resultado_checkout.cenario.1",
+        "nome": "screen.drawer: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "fechado"
+        }
+      },
+      {
+        "id": "advogado.assinatura.resultado_checkout.cenario.2",
+        "nome": "screen.drawer: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "aberto"
+        }
+      },
+      {
+        "id": "advogado.assinatura.resultado_checkout.cenario.3",
+        "nome": "screen.drawer: disponibilidade=online",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.disponibilidade": "online"
+        }
+      },
+      {
+        "id": "advogado.assinatura.resultado_checkout.cenario.4",
+        "nome": "screen.drawer: disponibilidade=offline",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.disponibilidade": "offline"
+        }
+      },
+      {
+        "id": "advogado.assinatura.resultado_checkout.cenario.5",
+        "nome": "screen.header.v1: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.v1.ambiente": "interno"
+        }
+      },
+      {
+        "id": "advogado.assinatura.resultado_checkout.cenario.6",
+        "nome": "screen.header.v1: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.v1.ambiente": "publico"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,568 @@
+{
+  "identidade": {
+    "id": "admin.acesso.seletor_perfil",
+    "tipo": "tela",
+    "namespace": "admin",
+    "nome": "Selecionar perfil",
+    "nomeExibicao": "Selecionar perfil"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/admin/acesso/seletor_perfil/P9_001_admin_acesso_seletor_perfil/documento.json"
+    },
+    "perfilRef": "admin",
+    "jornadaRefs": [
+      "admin"
+    ],
+    "subjornadaRefs": [
+      "admin.operacao.perfil"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "visual.b1.admin.acesso.seletor_perfil",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {},
+          "elementos": {
+            "screen.root": {
+              "tag": "div",
+              "ordem": 1,
+              "atributos": {
+                "class": "screen-runtime b1-screen-runtime"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "admin.acesso.seletor_perfil.content.01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 12,
+          "props": {},
+          "elementos": {
+            "atual.html.n00000": {
+              "tag": "div",
+              "ordem": 12,
+              "atributos": {
+                "class": "screen-runtime"
+              },
+              "texto": ""
+            },
+            "atual.html.n00001": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00000",
+              "ordem": 2,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00002": {
+              "tag": "div",
+              "paiRef": "atual.html.n00000",
+              "ordem": 3,
+              "atributos": {
+                "class": "prototype-screen operational admin-ui"
+              },
+              "texto": ""
+            },
+            "atual.html.n00003": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00002",
+              "ordem": 4,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00015": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00002",
+              "ordem": 16,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00018": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00002",
+              "ordem": 19,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00019": {
+              "tag": "main",
+              "paiRef": "atual.html.n00002",
+              "ordem": 20,
+              "atributos": {
+                "class": "op-shell"
+              },
+              "texto": ""
+            },
+            "atual.html.n00020": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00019",
+              "ordem": 21,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00021": {
+              "tag": "div",
+              "paiRef": "atual.html.n00019",
+              "ordem": 22,
+              "atributos": {
+                "class": "admin-nav"
+              },
+              "texto": ""
+            },
+            "atual.html.n00022": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00021",
+              "ordem": 23,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00023": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 24,
+              "atributos": {
+                "class": "active"
+              },
+              "texto": ""
+            },
+            "atual.html.n00024": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00023",
+              "ordem": 25,
+              "atributos": {},
+              "texto": "Dashboard"
+            },
+            "atual.html.n00025": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 26,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00026": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00025",
+              "ordem": 27,
+              "atributos": {},
+              "texto": "Perfis"
+            },
+            "atual.html.n00027": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 28,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00028": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00027",
+              "ordem": 29,
+              "atributos": {},
+              "texto": "OAB"
+            },
+            "atual.html.n00029": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 30,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00030": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00029",
+              "ordem": 31,
+              "atributos": {},
+              "texto": "Denúncias"
+            },
+            "atual.html.n00031": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 32,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00032": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00031",
+              "ordem": 33,
+              "atributos": {},
+              "texto": "Assinaturas"
+            },
+            "atual.html.n00033": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 34,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00034": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00033",
+              "ordem": 35,
+              "atributos": {},
+              "texto": "Logs"
+            },
+            "atual.html.n00035": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00021",
+              "ordem": 36,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00036": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00019",
+              "ordem": 37,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00037": {
+              "tag": "p",
+              "paiRef": "atual.html.n00019",
+              "ordem": 38,
+              "atributos": {
+                "class": "admin-kicker"
+              },
+              "texto": ""
+            },
+            "atual.html.n00038": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00037",
+              "ordem": 39,
+              "atributos": {},
+              "texto": "Conta com múltiplos perfis"
+            },
+            "atual.html.n00039": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00019",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00040": {
+              "tag": "h1",
+              "paiRef": "atual.html.n00019",
+              "ordem": 41,
+              "atributos": {
+                "class": "admin-title"
+              },
+              "texto": ""
+            },
+            "atual.html.n00041": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00040",
+              "ordem": 42,
+              "atributos": {},
+              "texto": "Como você quer entrar?"
+            },
+            "atual.html.n00042": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00019",
+              "ordem": 43,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00043": {
+              "tag": "p",
+              "paiRef": "atual.html.n00019",
+              "ordem": 44,
+              "atributos": {
+                "class": "admin-copy"
+              },
+              "texto": ""
+            },
+            "atual.html.n00044": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00043",
+              "ordem": 45,
+              "atributos": {},
+              "texto": "Quando a mesma identidade possui dois ou mais perfis, a seleção reaparece em cada nova abertura autenticada."
+            },
+            "atual.html.n00045": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00019",
+              "ordem": 46,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00046": {
+              "tag": "div",
+              "paiRef": "atual.html.n00019",
+              "ordem": 47,
+              "atributos": {
+                "class": "profile-options"
+              },
+              "texto": ""
+            },
+            "atual.html.n00047": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00046",
+              "ordem": 48,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00048": {
+              "tag": "button",
+              "paiRef": "atual.html.n00046",
+              "ordem": 49,
+              "atributos": {
+                "class": "profile-option"
+              },
+              "texto": ""
+            },
+            "atual.html.n00049": {
+              "tag": "strong",
+              "paiRef": "atual.html.n00048",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00050": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00049",
+              "ordem": 51,
+              "atributos": {},
+              "texto": "Cliente"
+            },
+            "atual.html.n00051": {
+              "tag": "small",
+              "paiRef": "atual.html.n00048",
+              "ordem": 52,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00052": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00051",
+              "ordem": 53,
+              "atributos": {},
+              "texto": "Acessar a experiência de cliente."
+            },
+            "atual.html.n00053": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00046",
+              "ordem": 54,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00054": {
+              "tag": "button",
+              "paiRef": "atual.html.n00046",
+              "ordem": 55,
+              "atributos": {
+                "class": "profile-option"
+              },
+              "texto": ""
+            },
+            "atual.html.n00055": {
+              "tag": "strong",
+              "paiRef": "atual.html.n00054",
+              "ordem": 56,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00056": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00055",
+              "ordem": 57,
+              "atributos": {},
+              "texto": "Advogado"
+            },
+            "atual.html.n00057": {
+              "tag": "small",
+              "paiRef": "atual.html.n00054",
+              "ordem": 58,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00058": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00057",
+              "ordem": 59,
+              "atributos": {},
+              "texto": "Acessar a área profissional."
+            },
+            "atual.html.n00059": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00046",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00060": {
+              "tag": "button",
+              "paiRef": "atual.html.n00046",
+              "ordem": 61,
+              "atributos": {
+                "class": "profile-option admin"
+              },
+              "texto": ""
+            },
+            "atual.html.n00061": {
+              "tag": "strong",
+              "paiRef": "atual.html.n00060",
+              "ordem": 62,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00062": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00061",
+              "ordem": 63,
+              "atributos": {},
+              "texto": "Administrador"
+            },
+            "atual.html.n00063": {
+              "tag": "small",
+              "paiRef": "atual.html.n00060",
+              "ordem": 64,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00064": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00063",
+              "ordem": 65,
+              "atributos": {},
+              "texto": "Acessar as funções administrativas autorizadas para esta conta."
+            },
+            "atual.html.n00065": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00046",
+              "ordem": 66,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00066": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00019",
+              "ordem": 67,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00067": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00002",
+              "ordem": 68,
+              "atributos": {},
+              "texto": "\n"
+            },
+            "atual.html.n00068": {
+              "tag": "#text",
+              "paiRef": "atual.html.n00000",
+              "ordem": 69,
+              "atributos": {},
+              "texto": "\n"
+            }
+          },
+          "eventos": []
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 5,
+          "props": {},
+          "elementos": {
+            "layout_header_app.n0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-public",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "comum",
+                "data-variante": "publico"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0002": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0003": {
+              "tag": "img",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 30,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0004": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0005": {
+              "tag": "strong",
+              "paiRef": "layout_header_app.n0004",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0006": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "admin.acesso.seletor_perfil.estilo.base",
+          "ordem": 10,
+          "css": "b1.01\nb1.03\nb1.04\nb1.05\ncanonica"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

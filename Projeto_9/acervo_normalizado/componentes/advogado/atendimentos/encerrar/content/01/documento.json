@@ -1,0 +1,157 @@
+{
+  "identidade": {
+    "id": "advogado.atendimentos.encerrar.content.01",
+    "tipo": "componente",
+    "nome": "Encerrar atendimento · composição visual B1"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/atendimentos/encerrar/content/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "operacao",
+            "numero": "2.6",
+            "nome": "Solicitações e atendimentos"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "atual.draft.root",
+      "elementos": {
+        "atual.draft.root": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 12,
+          "atributos": {
+            "class": "draft-root"
+          },
+          "texto": ""
+        },
+        "atual.draft.header": {
+          "tag": "header",
+          "paiRef": "atual.draft.root",
+          "ordem": 1,
+          "atributos": {
+            "class": "draft-header"
+          },
+          "texto": ""
+        },
+        "atual.draft.main": {
+          "tag": "main",
+          "paiRef": "atual.draft.root",
+          "ordem": 2,
+          "atributos": {
+            "class": "draft-main"
+          },
+          "texto": ""
+        },
+        "atual.draft.title": {
+          "tag": "h1",
+          "paiRef": "atual.draft.main",
+          "ordem": 1,
+          "atributos": {},
+          "texto": ""
+        },
+        "atual.draft.desc": {
+          "tag": "p",
+          "paiRef": "atual.draft.main",
+          "ordem": 2,
+          "atributos": {},
+          "texto": ""
+        },
+        "atual.draft.note": {
+          "tag": "p",
+          "paiRef": "atual.draft.main",
+          "ordem": 3,
+          "atributos": {
+            "class": "draft-note"
+          },
+          "texto": ""
+        },
+        "atual.draft.header.texto": {
+          "tag": "#text",
+          "paiRef": "atual.draft.header",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "AdvogadoJá · Rascunho"
+        },
+        "atual.draft.title.texto": {
+          "tag": "#text",
+          "paiRef": "atual.draft.title",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Encerrar atendimento"
+        },
+        "atual.draft.desc.texto": {
+          "tag": "#text",
+          "paiRef": "atual.draft.desc",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Registrar encerramento sem executar mensagens externas."
+        },
+        "atual.draft.note.texto": {
+          "tag": "#text",
+          "paiRef": "atual.draft.note",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Interface provisória para revisão. Nenhuma função de produção foi homologada."
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "advogado_atendimentos_encerrar_content_01.r0001",
+          "ordem": 10,
+          "css": ".draft-root{font:14px/1.5 system-ui,sans-serif;background:#f2f6fb;min-height:100vh;color:#192b43}"
+        },
+        {
+          "id": "advogado_atendimentos_encerrar_content_01.r0002",
+          "ordem": 20,
+          "css": ".draft-header{background:#10233f;color:white;padding:18px;font-weight:700}"
+        },
+        {
+          "id": "advogado_atendimentos_encerrar_content_01.r0003",
+          "ordem": 30,
+          "css": ".draft-main{padding:25px 20px}"
+        },
+        {
+          "id": "advogado_atendimentos_encerrar_content_01.r0004",
+          "ordem": 40,
+          "css": ".draft-main h1{font-size:22px;margin:0 0 12px}"
+        },
+        {
+          "id": "advogado_atendimentos_encerrar_content_01.r0005",
+          "ordem": 50,
+          "css": ".draft-note{border:1px dashed #b88932;padding:12px;border-radius:10px;color:#845b20;background:#fff8e8}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdvogadoJá · Projeto 10 · Legado</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar"><div><a class="back" href="../index.html">← Projeto 10</a><h1>Acervo de legado</h1><p>Uma aba para cada HTML autocontido registrado no catálogo.</p></div><span id="count" class="count">Carregando…</span></header>
+<main>
+ <section class="workspace" aria-label="Visualizador de legado">
+  <nav id="tabs" class="tabs" aria-label="HTMLs de legado" role="tablist"></nav>
+  <section class="viewer-head"><div><strong id="title">Carregando acervo…</strong><p id="description">O motor está lendo catalogo.json.</p></div><a id="openFile" class="open" href="#" target="_blank" rel="noopener">Abrir em nova aba ↗</a></section>
+  <iframe id="viewer" title="Visualização do HTML de legado" sandbox="allow-scripts allow-forms allow-popups allow-modals"></iframe>
+ </section>
+ <aside id="message" class="message" hidden></aside>
+</main>
+<script src="./motor.js"></script>
+</body>
+</html>

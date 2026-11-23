@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Fluxo | Motor progressivo V4 · AdvogadoJá+</title>
+
+<link href="./style.css" rel="stylesheet"/></head>
+<body>
+<header class="toolbar">
+<div class="toolbar__brand">
+<button class="toolbar__mark" id="toolsBtn" title="Ferramentas do motor: variáveis, validação, simulação" type="button">
+          F
+        </button>
+<div>
+<strong>Fluxo</strong><small>Fluxo · catálogo progressivo próprio</small>
+</div>
+</div>
+<div class="toolbar__actions">
+<span class="save-status" id="saveStatus">Salvo</span><span class="edition-status" id="docSource">trabalho local</span><button disabled="" id="undoBtn" title="Desfazer">↶</button><button disabled="" id="redoBtn" title="Refazer">↷</button><button id="emptyBtn">Novo vazio</button><button id="exportBtn">Exportar</button><button id="generateBtn" title="Reconstruir conexões das telas do próprio documento.json">
+          Recriar do catálogo</button><button id="importBtn">Importar</button><button id="createBtn" title="Adicionar uma tela do catálogo atual">
+          Criar pelo catálogo</button><button id="updateBtn" title="Atualizar catálogo de telas e componentes sem apagar as conexões">
+          Atualizar base</button><button id="restoreBtn" title="Restaurar a base original do Fluxo a partir de seu documento.json">
+          Restaurar</button><a class="home-link" href="#" id="homeBtn">Início</a>
+<button id="ajMapExportButton">Exportar Mapa JSON</button></div>
+</header>
+<main class="flow-canvas">
+<div class="flow-canvas__heading">
+<div>
+<span>FLUXO PRINCIPAL</span>
+<h1 id="projectName">Advogado Já · Fluxo completo inicial</h1>
+</div>
+<p>
+          Arraste uma tela ou bifurcação. Conexões por ID; estrutura visual da
+          V1.
+        </p>
+</div>
+<div aria-label="Fluxo de navegação" class="flow-sequence" id="graph"></div>
+</main>
+<aside class="detail-panel" id="detail">
+<div class="detail-head">
+<div>
+<small class="muted">MAPA DA TELA · REFERÊNCIAS</small>
+<h2 id="detailTitle">Tela</h2>
+</div>
+<button class="x-btn" id="closeDetail">Fechar ×</button>
+</div>
+<div class="detail-content" id="detailBody"></div>
+</aside>
+<div class="modal-root" id="modalRoot" role="presentation">
+<section aria-modal="true" class="modal" id="modal" role="dialog">
+<header>
+<h2 id="modalTitle">Editor</h2>
+<button class="x-btn" id="modalClose">Fechar ×</button>
+</header>
+<div class="modal-body" id="modalBody"></div>
+<footer id="modalFooter"></footer>
+</section>
+</div>
+<input accept=".json,application/json" hidden="" id="fileInput" type="file"/>
+<div aria-live="polite" class="notice" id="notice" role="status"></div>
+
+<script src="./motor.js"></script></body>
+</html>

@@ -1,0 +1,145 @@
+{
+  "identidade": {
+    "id": "escritorio.equipe.equipe.main.01",
+    "tipo": "componente",
+    "nome": "escritorio.equipe.equipe.main.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/escritorio/equipe/equipe/main/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "escritorio"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "escritorio",
+            "numero": "2.9",
+            "nome": "Escritório"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.13.main.12.n0000",
+      "elementos": {
+        "b1.13.main.12.n0000": {
+          "tag": "main",
+          "paiRef": null,
+          "ordem": 12,
+          "atributos": {
+            "class": "op-shell"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0001": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "op-empty"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0003": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 4,
+          "atributos": {
+            "class": "op-buttons"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0004": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0003",
+          "ordem": 5,
+          "atributos": {
+            "class": "button",
+            "type": "button",
+            "data-goto": "escritorio.equipe.convidar_advogado"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0006": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0003",
+          "ordem": 7,
+          "atributos": {
+            "class": "op-secondary",
+            "type": "button",
+            "data-goto": "escritorio.gestao.escritorio"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0008": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 9,
+          "atributos": {
+            "class": "op-toast",
+            "role": "status",
+            "aria-live": "polite"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0001.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Nenhum advogado na equipe."
+        },
+        "b1.13.main.12.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Adicionar advogado"
+        },
+        "b1.13.main.12.n0006.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Voltar ao escritório"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.13.main.12.n0004",
+      "elementoRef": "b1.13.main.12.n0004",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.13.main.12.n0006",
+      "elementoRef": "b1.13.main.12.n0006",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

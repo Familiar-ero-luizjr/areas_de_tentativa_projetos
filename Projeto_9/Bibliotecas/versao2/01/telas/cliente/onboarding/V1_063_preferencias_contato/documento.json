@@ -1,0 +1,553 @@
+{
+  "identidade": {
+    "id": "cliente.onboarding.preferencias_contato",
+    "tipo": "tela",
+    "namespace": "cliente",
+    "nome": "Cliente · Onboarding · Preferências de contato",
+    "nomeExibicao": "Cliente · Onboarding · Preferências de contato"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/cliente/onboarding/V1_063_preferencias_contato/documento.json"
+    },
+    "perfilRef": "cliente",
+    "jornadaRefs": [
+      "cliente"
+    ],
+    "subjornadaRefs": [
+      "cliente.onboarding"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "cliente.onboarding.preferencias_contato.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "elementos": {},
+          "eventos": []
+        },
+        "screen.app_header": {
+          "id": "screen.app_header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "elementos": {
+            "screen_app_header.e0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-public",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "cliente",
+                "data-variante": "publico"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0002": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0003": {
+              "tag": "img",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 30,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0004": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0005": {
+              "tag": "strong",
+              "paiRef": "screen_app_header.e0004",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            },
+            "screen_app_header.e0007": {
+              "tag": "small",
+              "paiRef": "screen_app_header.e0004",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Cliente"
+            }
+          },
+          "eventos": []
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "cliente.onboarding.preferencias_contato.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 130,
+          "props": {},
+          "elementos": {
+            "screen_content.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "registration__shell"
+              },
+              "texto": ""
+            },
+            "screen_content.e0002": {
+              "tag": "div",
+              "paiRef": "screen_content.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "registration__intro"
+              },
+              "texto": ""
+            },
+            "screen_content.e0003": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "eyebrow"
+              },
+              "texto": ""
+            },
+            "screen_content.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "Onboarding do Cliente"
+            },
+            "screen_content.e0005": {
+              "tag": "h1",
+              "paiRef": "screen_content.e0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Como prefere ser contatado?"
+            },
+            "screen_content.e0007": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Essas preferências orientam o contato depois que um profissional aceitar a solicitação."
+            },
+            "screen_content.e0009": {
+              "tag": "form",
+              "paiRef": "screen_content.e0001",
+              "ordem": 90,
+              "atributos": {
+                "class": "form-card",
+                "data-client-onboarding-form": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0010": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 100,
+              "atributos": {
+                "class": "client-chip-row"
+              },
+              "texto": ""
+            },
+            "screen_content.e0011": {
+              "tag": "button",
+              "paiRef": "screen_content.e0010",
+              "ordem": 110,
+              "atributos": {
+                "class": "client-chip active",
+                "type": "button",
+                "data-client-toggle": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0012": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0011",
+              "ordem": 120,
+              "atributos": {},
+              "texto": "WhatsApp"
+            },
+            "screen_content.e0013": {
+              "tag": "button",
+              "paiRef": "screen_content.e0010",
+              "ordem": 130,
+              "atributos": {
+                "class": "client-chip",
+                "type": "button",
+                "data-client-toggle": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0014": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0013",
+              "ordem": 140,
+              "atributos": {},
+              "texto": "Ligação"
+            },
+            "screen_content.e0015": {
+              "tag": "button",
+              "paiRef": "screen_content.e0010",
+              "ordem": 150,
+              "atributos": {
+                "class": "client-chip",
+                "type": "button",
+                "data-client-toggle": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0016": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0015",
+              "ordem": 160,
+              "atributos": {},
+              "texto": "E-mail"
+            },
+            "screen_content.e0017": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 170,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0018": {
+              "tag": "input",
+              "paiRef": "screen_content.e0017",
+              "ordem": 180,
+              "atributos": {
+                "id": "client-best-time",
+                "type": "text",
+                "value": "18h às 21h"
+              },
+              "texto": ""
+            },
+            "screen_content.e0019": {
+              "tag": "label",
+              "paiRef": "screen_content.e0017",
+              "ordem": 190,
+              "atributos": {
+                "for": "client-best-time"
+              },
+              "texto": ""
+            },
+            "screen_content.e0020": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0019",
+              "ordem": 200,
+              "atributos": {},
+              "texto": "Melhor horário"
+            },
+            "screen_content.e0021": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 210,
+              "atributos": {
+                "class": "form-note"
+              },
+              "texto": ""
+            },
+            "screen_content.e0022": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0021",
+              "ordem": 220,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0023": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0022",
+              "ordem": 230,
+              "atributos": {},
+              "texto": "Privacidade"
+            },
+            "screen_content.e0024": {
+              "tag": "span",
+              "paiRef": "screen_content.e0021",
+              "ordem": 240,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0025": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0024",
+              "ordem": 250,
+              "atributos": {},
+              "texto": "Os dados de contato só são compartilhados após o profissional aceitar a solicitação."
+            },
+            "screen_content.e0026": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 260,
+              "atributos": {
+                "class": "op-buttons"
+              },
+              "texto": ""
+            },
+            "screen_content.e0027": {
+              "tag": "button",
+              "paiRef": "screen_content.e0026",
+              "ordem": 270,
+              "atributos": {
+                "class": "button",
+                "type": "submit",
+                "data-next": "cliente.onboarding.concluido"
+              },
+              "texto": ""
+            },
+            "screen_content.e0028": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0027",
+              "ordem": 280,
+              "atributos": {},
+              "texto": "Salvar preferências"
+            },
+            "screen_content.e0029": {
+              "tag": "p",
+              "paiRef": "screen_content.e0009",
+              "ordem": 290,
+              "atributos": {
+                "class": "form-status",
+                "aria-live": "polite"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "modal.route-modal.v01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 210,
+          "props": {},
+          "elementos": {
+            "screen_route_modal.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-route-modal",
+                "aria-hidden": "true",
+                "role": "dialog",
+                "aria-modal": "true",
+                "aria-label": "Navegação simulada"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0002": {
+              "tag": "div",
+              "paiRef": "screen_route_modal.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj08-route-card"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0003": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj08-kicker"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "08 · tela isolada"
+            },
+            "screen_route_modal.e0005": {
+              "tag": "h2",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 50,
+              "atributos": {
+                "data-route-title": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Navegação simulada"
+            },
+            "screen_route_modal.e0007": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 70,
+              "atributos": {
+                "data-route-text": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Esta ação não abre outra tela nesta biblioteca."
+            },
+            "screen_route_modal.e0009": {
+              "tag": "code",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 90,
+              "atributos": {
+                "data-route-code": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0010": {
+              "tag": "button",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 100,
+              "atributos": {
+                "type": "button",
+                "data-aj08-close": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0011": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "Fechar"
+            }
+          },
+          "eventos": []
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "screen.cliente.onboarding.preferencias_contato.popup.screen-note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 310,
+          "props": {},
+          "elementos": {
+            "screen_screen_note.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-static-note"
+              },
+              "texto": ""
+            },
+            "screen_screen_note.e0002": {
+              "tag": "#text",
+              "paiRef": "screen_screen_note.e0001",
+              "ordem": 20,
+              "atributos": {},
+              "texto": "cliente.onboarding.preferencias_contato · tela isolada · 08"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "cliente.onboarding.preferencias_contato.estilo.base",
+          "ordem": 10,
+          "css": ".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n\n/* cliente.onboarding.preferencias_contato · Cliente · Onboarding · Preferências de contato */\n\n/* arquivo local da tela; mantenha aqui apenas ajustes específicos deste HTML isolado */\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.cliente.onboarding.preferencias_contato.online",
+      "inicial": "false",
+      "opcoes": {
+        "false": {
+          "id": "estado.cliente.onboarding.preferencias_contato.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.cliente.onboarding.preferencias_contato.online.true",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

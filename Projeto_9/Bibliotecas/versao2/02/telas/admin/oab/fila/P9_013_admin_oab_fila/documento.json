@@ -1,0 +1,1238 @@
+{
+  "identidade": {
+    "id": "admin.oab.fila",
+    "tipo": "tela",
+    "namespace": "admin",
+    "nome": "Validação da OAB",
+    "nomeExibicao": "Validação da OAB"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/admin/oab/fila/P9_013_admin_oab_fila/documento.json"
+    },
+    "perfilRef": "admin",
+    "jornadaRefs": [
+      "admin"
+    ],
+    "subjornadaRefs": [
+      "admin.operacao.validacao"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "admin.oab.fila.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "elementos": {
+            "layout.root": {
+              "tag": "div",
+              "ordem": 1,
+              "atributos": {
+                "class": "screen-runtime b1-screen-runtime"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "admin.oab.fila.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 12,
+          "props": {},
+          "elementos": {
+            "atual.html.n00000": {
+              "tag": "div",
+              "ordem": 12,
+              "atributos": {
+                "class": "screen-runtime"
+              },
+              "texto": ""
+            },
+            "atual.html.n00002": {
+              "tag": "div",
+              "paiRef": "atual.html.n00000",
+              "ordem": 3,
+              "atributos": {
+                "class": "prototype-screen operational admin-ui"
+              },
+              "texto": ""
+            },
+            "atual.html.n00019": {
+              "tag": "main",
+              "paiRef": "atual.html.n00002",
+              "ordem": 20,
+              "atributos": {
+                "class": "op-shell"
+              },
+              "texto": ""
+            },
+            "atual.html.n00021": {
+              "tag": "div",
+              "paiRef": "atual.html.n00019",
+              "ordem": 22,
+              "atributos": {
+                "class": "admin-nav"
+              },
+              "texto": ""
+            },
+            "atual.html.n00023": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 24,
+              "atributos": {
+                "class": "active"
+              },
+              "texto": "Dashboard"
+            },
+            "atual.html.n00025": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 26,
+              "atributos": {},
+              "texto": "Perfis"
+            },
+            "atual.html.n00027": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 28,
+              "atributos": {},
+              "texto": "OAB"
+            },
+            "atual.html.n00029": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 30,
+              "atributos": {},
+              "texto": "Denúncias"
+            },
+            "atual.html.n00031": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 32,
+              "atributos": {},
+              "texto": "Assinaturas"
+            },
+            "atual.html.n00033": {
+              "tag": "span",
+              "paiRef": "atual.html.n00021",
+              "ordem": 34,
+              "atributos": {},
+              "texto": "Logs"
+            },
+            "atual.html.n00037": {
+              "tag": "p",
+              "paiRef": "atual.html.n00019",
+              "ordem": 38,
+              "atributos": {
+                "class": "admin-kicker"
+              },
+              "texto": "Fila profissional"
+            },
+            "atual.html.n00040": {
+              "tag": "h1",
+              "paiRef": "atual.html.n00019",
+              "ordem": 41,
+              "atributos": {
+                "class": "admin-title"
+              },
+              "texto": "Registros para análise"
+            },
+            "atual.html.n00043": {
+              "tag": "p",
+              "paiRef": "atual.html.n00019",
+              "ordem": 44,
+              "atributos": {
+                "class": "admin-copy"
+              },
+              "texto": "A validação da OAB é um processo próprio, posterior ao onboarding do advogado."
+            },
+            "atual.html.n00046": {
+              "tag": "div",
+              "paiRef": "atual.html.n00019",
+              "ordem": 47,
+              "atributos": {
+                "class": "admin-table"
+              },
+              "texto": ""
+            },
+            "atual.html.n00048": {
+              "tag": "div",
+              "paiRef": "atual.html.n00046",
+              "ordem": 49,
+              "atributos": {
+                "class": "tr head"
+              },
+              "texto": ""
+            },
+            "atual.html.n00049": {
+              "tag": "span",
+              "paiRef": "atual.html.n00048",
+              "ordem": 50,
+              "atributos": {},
+              "texto": "Advogado"
+            },
+            "atual.html.n00051": {
+              "tag": "span",
+              "paiRef": "atual.html.n00048",
+              "ordem": 52,
+              "atributos": {},
+              "texto": "OAB"
+            },
+            "atual.html.n00053": {
+              "tag": "span",
+              "paiRef": "atual.html.n00048",
+              "ordem": 54,
+              "atributos": {},
+              "texto": "Estado"
+            },
+            "atual.html.n00055": {
+              "tag": "span",
+              "paiRef": "atual.html.n00048",
+              "ordem": 56,
+              "atributos": {},
+              "texto": ""
+            },
+            "atual.html.n00057": {
+              "tag": "div",
+              "paiRef": "atual.html.n00046",
+              "ordem": 58,
+              "atributos": {
+                "class": "tr"
+              },
+              "texto": ""
+            },
+            "atual.html.n00058": {
+              "tag": "strong",
+              "paiRef": "atual.html.n00057",
+              "ordem": 59,
+              "atributos": {},
+              "texto": "Rafael Lima"
+            },
+            "atual.html.n00060": {
+              "tag": "span",
+              "paiRef": "atual.html.n00057",
+              "ordem": 61,
+              "atributos": {},
+              "texto": "OAB/SE 000000"
+            },
+            "atual.html.n00062": {
+              "tag": "span",
+              "paiRef": "atual.html.n00057",
+              "ordem": 63,
+              "atributos": {
+                "class": "status-pill wait"
+              },
+              "texto": "Pendente"
+            },
+            "atual.html.n00064": {
+              "tag": "b",
+              "paiRef": "atual.html.n00057",
+              "ordem": 65,
+              "atributos": {},
+              "texto": "›"
+            },
+            "atual.html.n00067": {
+              "tag": "div",
+              "paiRef": "atual.html.n00046",
+              "ordem": 68,
+              "atributos": {
+                "class": "tr"
+              },
+              "texto": ""
+            },
+            "atual.html.n00068": {
+              "tag": "strong",
+              "paiRef": "atual.html.n00067",
+              "ordem": 69,
+              "atributos": {},
+              "texto": "Bianca Reis"
+            },
+            "atual.html.n00070": {
+              "tag": "span",
+              "paiRef": "atual.html.n00067",
+              "ordem": 71,
+              "atributos": {},
+              "texto": "OAB/SP 000000"
+            },
+            "atual.html.n00072": {
+              "tag": "span",
+              "paiRef": "atual.html.n00067",
+              "ordem": 73,
+              "atributos": {
+                "class": "status-pill wait"
+              },
+              "texto": "Em análise"
+            },
+            "atual.html.n00074": {
+              "tag": "b",
+              "paiRef": "atual.html.n00067",
+              "ordem": 75,
+              "atributos": {},
+              "texto": "›"
+            }
+          },
+          "eventos": []
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 5,
+          "props": {},
+          "elementos": {
+            "layout_header_app.n0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-internal",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "admin",
+                "data-variante": "autenticado"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0002": {
+              "tag": "button",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-icon-button app-menu-button",
+                "type": "button",
+                "data-action": "drawer.open",
+                "aria-label": "Abrir menu"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0003": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0004": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 40,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0005": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0006": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 60,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0007": {
+              "tag": "img",
+              "paiRef": "layout_header_app.n0006",
+              "ordem": 70,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0008": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0006",
+              "ordem": 80,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0009": {
+              "tag": "strong",
+              "paiRef": "layout_header_app.n0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0010": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0009",
+              "ordem": 100,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            },
+            "layout_header_app.n0011": {
+              "tag": "small",
+              "paiRef": "layout_header_app.n0008",
+              "ordem": 110,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0012": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0011",
+              "ordem": 120,
+              "atributos": {},
+              "texto": "Administrador"
+            },
+            "layout_header_app.n0013": {
+              "tag": "button",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 130,
+              "atributos": {
+                "class": "aj-layout-icon-button app-notifications",
+                "type": "button",
+                "data-aj-route": "notificacoes.lista.notificacoes",
+                "aria-label": "Notificações"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0014": {
+              "tag": "svg",
+              "paiRef": "layout_header_app.n0013",
+              "ordem": 140,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0015": {
+              "tag": "path",
+              "paiRef": "layout_header_app.n0014",
+              "ordem": 150,
+              "atributos": {
+                "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0016": {
+              "tag": "span",
+              "paiRef": "layout_header_app.n0013",
+              "ordem": 160,
+              "atributos": {
+                "class": "aj-layout-badge"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0017": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0016",
+              "ordem": 170,
+              "atributos": {},
+              "texto": "2"
+            }
+          },
+          "eventos": []
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "layout.header.title",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 6,
+          "props": {},
+          "elementos": {
+            "layout_header_title.n0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-titlebar",
+                "data-aj-canonical": "layout.header.title"
+              },
+              "texto": ""
+            },
+            "layout_header_title.n0002": {
+              "tag": "strong",
+              "paiRef": "layout_header_title.n0001",
+              "ordem": 20,
+              "atributos": {
+                "data-aj-title": ""
+              },
+              "texto": ""
+            },
+            "layout_header_title.n0003": {
+              "tag": "#text",
+              "paiRef": "layout_header_title.n0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": "Validação da OAB"
+            }
+          },
+          "eventos": []
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "layout.menu.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 900,
+          "props": {},
+          "elementos": {
+            "layout_menu_drawer.n0001": {
+              "tag": "aside",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-drawer prototype-drawer",
+                "data-aj-canonical": "layout.menu.drawer",
+                "data-perfil": "admin",
+                "data-plano": "sem_plano",
+                "data-estudante-menu": "fechado",
+                "data-escritorio-menu": "fechado",
+                "data-oab": "enabled",
+                "data-permissao": "gestor",
+                "data-disponibilidade": "online",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0002": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-backdrop drawer-backdrop",
+                "data-action": "drawer.close",
+                "type": "button",
+                "aria-label": "Fechar menu"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0003": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0001",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj-layout-panel drawer-panel"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0004": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-identity"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0005": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0004",
+              "ordem": 50,
+              "atributos": {
+                "class": "aj-layout-avatar"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0006": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "AD"
+            },
+            "layout_menu_drawer.n0007": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0004",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0008": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0009": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": "Administração"
+            },
+            "layout_menu_drawer.n0010": {
+              "tag": "small",
+              "paiRef": "layout_menu_drawer.n0007",
+              "ordem": 100,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0011": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "ACESSO INTERNO"
+            },
+            "layout_menu_drawer.n0012": {
+              "tag": "nav",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 120,
+              "atributos": {
+                "class": "drawer-nav",
+                "aria-label": "Menu principal"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0013": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 130,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.home.dashboard"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0014": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0013",
+              "ordem": 140,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0015": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0014",
+              "ordem": 150,
+              "atributos": {
+                "d": "M3 11.5 12 4l9 7.5M5 10v10h14V10M9 20v-6h6v6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0016": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0013",
+              "ordem": 160,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0017": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0016",
+              "ordem": 170,
+              "atributos": {},
+              "texto": "Painel"
+            },
+            "layout_menu_drawer.n0018": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 180,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.usuarios.perfis"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0019": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0018",
+              "ordem": 190,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0020": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0019",
+              "ordem": 200,
+              "atributos": {
+                "d": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0021": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0018",
+              "ordem": 210,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0022": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0021",
+              "ordem": 220,
+              "atributos": {},
+              "texto": "Gestão de usuários"
+            },
+            "layout_menu_drawer.n0023": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 230,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.oab.fila"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0024": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0023",
+              "ordem": 240,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0025": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0024",
+              "ordem": 250,
+              "atributos": {
+                "d": "M5 12l4 4L19 6M4 4h16v16H4z"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0026": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0023",
+              "ordem": 260,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0027": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0026",
+              "ordem": 270,
+              "atributos": {},
+              "texto": "Validação OAB"
+            },
+            "layout_menu_drawer.n0028": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 280,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.usuarios.perfis"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0029": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0028",
+              "ordem": 290,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0030": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0029",
+              "ordem": 300,
+              "atributos": {
+                "d": "M8 4h8M6 6h12v15H6zM9 11h6M9 15h6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0031": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0028",
+              "ordem": 310,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0032": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0031",
+              "ordem": 320,
+              "atributos": {},
+              "texto": "Moderação"
+            },
+            "layout_menu_drawer.n0033": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 330,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.moderacao.denuncias"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0034": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0033",
+              "ordem": 340,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0035": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0034",
+              "ordem": 350,
+              "atributos": {
+                "d": "M12 2 2 21h20L12 2zM12 9v5M12 18h.01"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0036": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0033",
+              "ordem": 360,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0037": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0036",
+              "ordem": 370,
+              "atributos": {},
+              "texto": "Denúncias"
+            },
+            "layout_menu_drawer.n0038": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 380,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.assinatura.lista"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0039": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0038",
+              "ordem": 390,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0040": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0039",
+              "ordem": 400,
+              "atributos": {
+                "d": "M3 5h18v14H3zM3 10h18M7 15h4"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0041": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0038",
+              "ordem": 410,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0042": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0041",
+              "ordem": 420,
+              "atributos": {},
+              "texto": "Assinaturas"
+            },
+            "layout_menu_drawer.n0043": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 430,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.auditoria.logs"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0044": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0043",
+              "ordem": 440,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0045": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0044",
+              "ordem": 450,
+              "atributos": {
+                "d": "M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h8"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0046": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0043",
+              "ordem": 460,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0047": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0046",
+              "ordem": 470,
+              "atributos": {},
+              "texto": "Logs"
+            },
+            "layout_menu_drawer.n0048": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 480,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.governanca.administradores",
+                "data-aj-admin-only": "gestor"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0049": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0048",
+              "ordem": 490,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0050": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0049",
+              "ordem": 500,
+              "atributos": {
+                "d": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0051": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0048",
+              "ordem": 510,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0052": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0051",
+              "ordem": 520,
+              "atributos": {},
+              "texto": "Administradores"
+            },
+            "layout_menu_drawer.n0053": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0012",
+              "ordem": 530,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "admin.configuracao.geral",
+                "data-aj-admin-only": "gestor"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0054": {
+              "tag": "svg",
+              "paiRef": "layout_menu_drawer.n0053",
+              "ordem": 540,
+              "atributos": {
+                "aria-hidden": "true",
+                "viewBox": "0 0 24 24"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0055": {
+              "tag": "path",
+              "paiRef": "layout_menu_drawer.n0054",
+              "ordem": 550,
+              "atributos": {
+                "d": "M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0056": {
+              "tag": "strong",
+              "paiRef": "layout_menu_drawer.n0053",
+              "ordem": 560,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0057": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0056",
+              "ordem": 570,
+              "atributos": {},
+              "texto": "Configurações"
+            },
+            "layout_menu_drawer.n0058": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0003",
+              "ordem": 580,
+              "atributos": {
+                "class": "aj-layout-footer"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0059": {
+              "tag": "div",
+              "paiRef": "layout_menu_drawer.n0058",
+              "ordem": 590,
+              "atributos": {
+                "class": "aj-layout-footer-row"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0060": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0059",
+              "ordem": 600,
+              "atributos": {
+                "type": "button",
+                "data-aj-route": "auth.sessao.entrar"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0061": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0060",
+              "ordem": 610,
+              "atributos": {},
+              "texto": "Sair"
+            },
+            "layout_menu_drawer.n0062": {
+              "tag": "small",
+              "paiRef": "layout_menu_drawer.n0059",
+              "ordem": 620,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_menu_drawer.n0063": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0062",
+              "ordem": 630,
+              "atributos": {},
+              "texto": "Versão: 1.0.55"
+            },
+            "layout_menu_drawer.n0064": {
+              "tag": "button",
+              "paiRef": "layout_menu_drawer.n0058",
+              "ordem": 640,
+              "atributos": {
+                "class": "aj-layout-emergency",
+                "type": "button",
+                "data-aj-route": "emergencia.190"
+              },
+              "texto": ""
+            },
+            "layout_menu_drawer.n0065": {
+              "tag": "#text",
+              "paiRef": "layout_menu_drawer.n0064",
+              "ordem": 650,
+              "atributos": {},
+              "texto": "Disque 190"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "admin.oab.fila.estilo.base",
+          "ordem": 10,
+          "css": "b1.05.001\nb1.05.002\nb1.05.003\nb1.05.004\nb1.05.005\nb1.05.006\nb1.05.007\nb1.05.008\nb1.05.009\nb1.05.010\nb1.05.011\nb1.05.012\nb1.05.013\nb1.05.014\nb1.05.015\nb1.05.016\nb1.05.017\nb1.05.018\nb1.05.019\nb1.05.020\nb1.05.021\nb1.05.022\nb1.05.023\nb1.05.024\nb1.05.025\nb1.05.026\nb1.05.027\nb1.05.028\nb1.05.029\nb1.05.030\nb1.05.031\nb1.05.032\nb1.05.033\nb1.05.034\nb1.05.035\ncanonica\ncanonica\ncanonica"
+        },
+        {
+          "id": "admin.oab.fila.estilo.1",
+          "ordem": 100,
+          "css": "b1.01.001"
+        },
+        {
+          "id": "admin.oab.fila.estilo.2",
+          "ordem": 101,
+          "css": "b1.01.002"
+        },
+        {
+          "id": "admin.oab.fila.estilo.3",
+          "ordem": 102,
+          "css": "b1.01.003"
+        },
+        {
+          "id": "admin.oab.fila.estilo.4",
+          "ordem": 103,
+          "css": "b1.01.004"
+        },
+        {
+          "id": "admin.oab.fila.estilo.5",
+          "ordem": 104,
+          "css": "b1.01.005"
+        },
+        {
+          "id": "admin.oab.fila.estilo.6",
+          "ordem": 105,
+          "css": "b1.01.006"
+        },
+        {
+          "id": "admin.oab.fila.estilo.7",
+          "ordem": 106,
+          "css": "b1.02.001"
+        },
+        {
+          "id": "admin.oab.fila.estilo.8",
+          "ordem": 107,
+          "css": "b1.02.002"
+        },
+        {
+          "id": "admin.oab.fila.estilo.9",
+          "ordem": 108,
+          "css": "b1.02.003"
+        },
+        {
+          "id": "admin.oab.fila.estilo.10",
+          "ordem": 109,
+          "css": "b1.02.004"
+        },
+        {
+          "id": "admin.oab.fila.estilo.11",
+          "ordem": 110,
+          "css": "b1.02.005"
+        },
+        {
+          "id": "admin.oab.fila.estilo.12",
+          "ordem": 111,
+          "css": "b1.02.006"
+        },
+        {
+          "id": "admin.oab.fila.estilo.13",
+          "ordem": 112,
+          "css": "b1.02.007"
+        },
+        {
+          "id": "admin.oab.fila.estilo.14",
+          "ordem": 113,
+          "css": "b1.02.008"
+        },
+        {
+          "id": "admin.oab.fila.estilo.15",
+          "ordem": 114,
+          "css": "b1.02.009"
+        },
+        {
+          "id": "admin.oab.fila.estilo.16",
+          "ordem": 115,
+          "css": "b1.02.010"
+        },
+        {
+          "id": "admin.oab.fila.estilo.17",
+          "ordem": 116,
+          "css": "b1.02.011"
+        },
+        {
+          "id": "admin.oab.fila.estilo.18",
+          "ordem": 117,
+          "css": "b1.02.012"
+        },
+        {
+          "id": "admin.oab.fila.estilo.19",
+          "ordem": 118,
+          "css": "b1.02.013"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.admin.oab.fila.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.admin.oab.fila.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.admin.oab.fila.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.admin.oab.fila.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.admin.oab.fila.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "permissao": {
+      "id": "estado.admin.oab.fila.permissao",
+      "inicial": "gestor",
+      "opcoes": {
+        "gestor": {
+          "id": "estado.admin.oab.fila.permissao.gestor",
+          "alvos": []
+        },
+        "operador": {
+          "id": "estado.admin.oab.fila.permissao.operador",
+          "alvos": []
+        },
+        "auditor": {
+          "id": "estado.admin.oab.fila.permissao.auditor",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

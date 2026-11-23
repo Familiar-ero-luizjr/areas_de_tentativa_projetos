@@ -1,0 +1,647 @@
+{
+  "identidade": {
+    "id": "auth.cadastro.identificacao.main.01",
+    "tipo": "componente",
+    "nome": "auth.cadastro.identificacao.main.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/auth/cadastro/identificacao/main/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "auth"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "cadastro",
+            "numero": "1.2",
+            "nome": "Cadastro comum"
+          }
+        ]
+      },
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "cadastro",
+            "numero": "2.2",
+            "nome": "Cadastro comum"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.12.main.11.n0000",
+      "elementos": {
+        "b1.12.main.11.n0000": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 11,
+          "atributos": {
+            "class": "registration__shell"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0001": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "registration__intro"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0002": {
+          "tag": "p",
+          "paiRef": "b1.12.main.11.n0001",
+          "ordem": 3,
+          "atributos": {
+            "class": "eyebrow"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0004": {
+          "tag": "h1",
+          "paiRef": "b1.12.main.11.n0001",
+          "ordem": 5,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0006": {
+          "tag": "p",
+          "paiRef": "b1.12.main.11.n0001",
+          "ordem": 7,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0008": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0000",
+          "ordem": 9,
+          "atributos": {
+            "class": "progress",
+            "aria-label": "Etapa 2 de 7"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0009": {
+          "tag": "span",
+          "paiRef": "b1.12.main.11.n0008",
+          "ordem": 10,
+          "atributos": {
+            "style": "width:28.57%"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0010": {
+          "tag": "form",
+          "paiRef": "b1.12.main.11.n0000",
+          "ordem": 11,
+          "atributos": {
+            "class": "form-card",
+            "data-registration-form": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0011": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 12,
+          "atributos": {
+            "class": "field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0012": {
+          "tag": "input",
+          "paiRef": "b1.12.main.11.n0011",
+          "ordem": 13,
+          "atributos": {
+            "id": "reg-name",
+            "name": "name",
+            "type": "text",
+            "placeholder": " ",
+            "autocomplete": "given-name",
+            "data-reg-field": "name",
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0013": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0011",
+          "ordem": 14,
+          "atributos": {
+            "for": "reg-name"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0015": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 16,
+          "atributos": {
+            "class": "field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0016": {
+          "tag": "input",
+          "paiRef": "b1.12.main.11.n0015",
+          "ordem": 17,
+          "atributos": {
+            "id": "reg-surname",
+            "name": "surname",
+            "type": "text",
+            "placeholder": " ",
+            "autocomplete": "family-name",
+            "data-reg-field": "surname",
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0017": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0015",
+          "ordem": 18,
+          "atributos": {
+            "for": "reg-surname"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0019": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 20,
+          "atributos": {
+            "class": "field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0020": {
+          "tag": "input",
+          "paiRef": "b1.12.main.11.n0019",
+          "ordem": 21,
+          "atributos": {
+            "id": "reg-username",
+            "name": "username",
+            "type": "text",
+            "placeholder": " ",
+            "autocomplete": "username",
+            "data-reg-field": "username",
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0021": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0019",
+          "ordem": 22,
+          "atributos": {
+            "for": "reg-username"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0023": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 24,
+          "atributos": {
+            "class": "field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0024": {
+          "tag": "input",
+          "paiRef": "b1.12.main.11.n0023",
+          "ordem": 25,
+          "atributos": {
+            "id": "reg-cpf",
+            "name": "cpf",
+            "type": "text",
+            "placeholder": " ",
+            "inputmode": "numeric",
+            "autocomplete": "off",
+            "data-reg-field": "cpf",
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0025": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0023",
+          "ordem": 26,
+          "atributos": {
+            "for": "reg-cpf"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0027": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 28,
+          "atributos": {
+            "class": "field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0028": {
+          "tag": "input",
+          "paiRef": "b1.12.main.11.n0027",
+          "ordem": 29,
+          "atributos": {
+            "id": "reg-birthday",
+            "name": "birthday",
+            "type": "date",
+            "placeholder": " ",
+            "autocomplete": "bday",
+            "data-reg-field": "birthday",
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0029": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0027",
+          "ordem": 30,
+          "atributos": {
+            "for": "reg-birthday"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0031": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 32,
+          "atributos": {
+            "class": "select-field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0032": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0031",
+          "ordem": 33,
+          "atributos": {
+            "for": "reg-gender"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0034": {
+          "tag": "select",
+          "paiRef": "b1.12.main.11.n0031",
+          "ordem": 35,
+          "atributos": {
+            "id": "reg-gender",
+            "name": "gender",
+            "data-reg-field": "gender",
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0035": {
+          "tag": "option",
+          "paiRef": "b1.12.main.11.n0034",
+          "ordem": 36,
+          "atributos": {
+            "value": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0037": {
+          "tag": "option",
+          "paiRef": "b1.12.main.11.n0034",
+          "ordem": 38,
+          "atributos": {
+            "value": "feminino"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0039": {
+          "tag": "option",
+          "paiRef": "b1.12.main.11.n0034",
+          "ordem": 40,
+          "atributos": {
+            "value": "masculino"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0041": {
+          "tag": "option",
+          "paiRef": "b1.12.main.11.n0034",
+          "ordem": 42,
+          "atributos": {
+            "value": "nao-informar"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0043": {
+          "tag": "label",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 44,
+          "atributos": {
+            "class": "upload-field"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0044": {
+          "tag": "span",
+          "paiRef": "b1.12.main.11.n0043",
+          "ordem": 45,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0045": {
+          "tag": "strong",
+          "paiRef": "b1.12.main.11.n0044",
+          "ordem": 46,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0047": {
+          "tag": "small",
+          "paiRef": "b1.12.main.11.n0044",
+          "ordem": 48,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0049": {
+          "tag": "span",
+          "paiRef": "b1.12.main.11.n0043",
+          "ordem": 50,
+          "atributos": {
+            "class": "upload-button"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0051": {
+          "tag": "input",
+          "paiRef": "b1.12.main.11.n0043",
+          "ordem": 52,
+          "atributos": {
+            "id": "reg-photo",
+            "type": "file",
+            "accept": "image/jpeg,image/png",
+            "data-reg-file": "profilePhoto"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0052": {
+          "tag": "em",
+          "paiRef": "b1.12.main.11.n0043",
+          "ordem": 53,
+          "atributos": {
+            "data-file-name": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0054": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 55,
+          "atributos": {
+            "class": "form-actions"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0055": {
+          "tag": "button",
+          "paiRef": "b1.12.main.11.n0054",
+          "ordem": 56,
+          "atributos": {
+            "class": "secondary-action",
+            "type": "button",
+            "data-goto": "auth.cadastro.tipo_conta"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0057": {
+          "tag": "button",
+          "paiRef": "b1.12.main.11.n0054",
+          "ordem": 58,
+          "atributos": {
+            "class": "button",
+            "type": "submit",
+            "data-next": "auth.cadastro.contato"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0059": {
+          "tag": "p",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 60,
+          "atributos": {
+            "class": "form-status",
+            "aria-live": "polite"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0002.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Dados pessoais"
+        },
+        "b1.12.main.11.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Identificação"
+        },
+        "b1.12.main.11.n0006.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Este bloco é comum para Cliente e Advogado."
+        },
+        "b1.12.main.11.n0013.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Nome"
+        },
+        "b1.12.main.11.n0017.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0017",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Sobrenome"
+        },
+        "b1.12.main.11.n0021.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0021",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Nome de usuário"
+        },
+        "b1.12.main.11.n0025.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0025",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "CPF"
+        },
+        "b1.12.main.11.n0029.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0029",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Data de nascimento"
+        },
+        "b1.12.main.11.n0032.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0032",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Gênero"
+        },
+        "b1.12.main.11.n0035.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0035",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Selecionar"
+        },
+        "b1.12.main.11.n0037.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0037",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Feminino"
+        },
+        "b1.12.main.11.n0039.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0039",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Masculino"
+        },
+        "b1.12.main.11.n0041.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0041",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Prefiro não informar"
+        },
+        "b1.12.main.11.n0045.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0045",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Foto de perfil"
+        },
+        "b1.12.main.11.n0047.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0047",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Opcional · JPG ou PNG"
+        },
+        "b1.12.main.11.n0049.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0049",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Escolher foto"
+        },
+        "b1.12.main.11.n0052.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0052",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Nenhum arquivo selecionado"
+        },
+        "b1.12.main.11.n0055.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0055",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Voltar"
+        },
+        "b1.12.main.11.n0057.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0057",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Continuar"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.12.main.11.n0012",
+      "elementoRef": "b1.12.main.11.n0012",
+      "evento": "input"
+    },
+    {
+      "id": "event.b1.12.main.11.n0016",
+      "elementoRef": "b1.12.main.11.n0016",
+      "evento": "input"
+    },
+    {
+      "id": "event.b1.12.main.11.n0020",
+      "elementoRef": "b1.12.main.11.n0020",
+      "evento": "input"
+    },
+    {
+      "id": "event.b1.12.main.11.n0024",
+      "elementoRef": "b1.12.main.11.n0024",
+      "evento": "input"
+    },
+    {
+      "id": "event.b1.12.main.11.n0028",
+      "elementoRef": "b1.12.main.11.n0028",
+      "evento": "input"
+    },
+    {
+      "id": "event.b1.12.main.11.n0034",
+      "elementoRef": "b1.12.main.11.n0034",
+      "evento": "change"
+    },
+    {
+      "id": "event.b1.12.main.11.n0051",
+      "elementoRef": "b1.12.main.11.n0051",
+      "evento": "input"
+    },
+    {
+      "id": "event.b1.12.main.11.n0055",
+      "elementoRef": "b1.12.main.11.n0055",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.12.main.11.n0057",
+      "elementoRef": "b1.12.main.11.n0057",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

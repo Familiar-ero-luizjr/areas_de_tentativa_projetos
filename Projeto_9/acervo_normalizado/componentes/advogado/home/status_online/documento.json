@@ -1,0 +1,190 @@
+{
+  "identidade": {
+    "id": "advogado.home.status_online",
+    "tipo": "componente",
+    "nome": "advogado.home.status_online"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/home/status_online/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "home",
+            "numero": "2.4",
+            "nome": "Home única e capabilities"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "online_status.e001",
+      "elementos": {
+        "online_status.e001": {
+          "tag": "button",
+          "paiRef": null,
+          "ordem": 10,
+          "atributos": {
+            "class": "online-card ",
+            "data-component": "online-status",
+            "data-action": "online.toggle",
+            "type": "button",
+            "aria-label": "Alternar status online"
+          },
+          "texto": ""
+        },
+        "online_status.e002": {
+          "tag": "span",
+          "paiRef": "online_status.e001",
+          "ordem": 10,
+          "atributos": {
+            "class": "online-dot"
+          },
+          "texto": ""
+        },
+        "online_status.e003": {
+          "tag": "span",
+          "paiRef": "online_status.e001",
+          "ordem": 20,
+          "atributos": {
+            "class": "online-copy"
+          },
+          "texto": ""
+        },
+        "online_status.e004": {
+          "tag": "strong",
+          "paiRef": "online_status.e003",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "online_status.e005": {
+          "tag": "small",
+          "paiRef": "online_status.e003",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "online_status.e006": {
+          "tag": "span",
+          "paiRef": "online_status.e001",
+          "ordem": 30,
+          "atributos": {
+            "class": "online-switch"
+          },
+          "texto": ""
+        },
+        "online_status.e007": {
+          "tag": "b",
+          "paiRef": "online_status.e006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "online_status.e004.texto": {
+          "tag": "#text",
+          "paiRef": "online_status.e004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Online"
+        },
+        "online_status.e005.texto": {
+          "tag": "#text",
+          "paiRef": "online_status.e005",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Recebendo novas solicitações"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "advogado_home_status_online.r0001",
+          "ordem": 10,
+          "css": ".online-card{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 15px;border:1px solid #a8dfc8;border-radius:16px;background:#f1fbf6;color:var(--text);text-align:left}"
+        },
+        {
+          "id": "advogado_home_status_online.r0002",
+          "ordem": 20,
+          "css": ".online-card.is-offline{border-color:var(--line);background:#f8fafc}"
+        },
+        {
+          "id": "advogado_home_status_online.r0003",
+          "ordem": 30,
+          "css": ".online-dot{width:10px;height:10px;border-radius:50%;background:#15945e;box-shadow:0 0 0 4px #15945e1f}"
+        },
+        {
+          "id": "advogado_home_status_online.r0004",
+          "ordem": 40,
+          "css": ".is-offline .online-dot{background:#98a2b3;box-shadow:none}"
+        },
+        {
+          "id": "advogado_home_status_online.r0005",
+          "ordem": 50,
+          "css": ".online-copy strong,.online-copy small{display:block}"
+        },
+        {
+          "id": "advogado_home_status_online.r0006",
+          "ordem": 60,
+          "css": ".online-copy strong{font-size:14px;color:var(--primary)}"
+        },
+        {
+          "id": "advogado_home_status_online.r0007",
+          "ordem": 70,
+          "css": ".online-copy small{margin-top:3px;color:var(--muted);font-size:12px}"
+        },
+        {
+          "id": "advogado_home_status_online.r0008",
+          "ordem": 80,
+          "css": ".online-switch{position:relative;width:40px;height:23px;border-radius:999px;background:#22c55e}"
+        },
+        {
+          "id": "advogado_home_status_online.r0009",
+          "ordem": 90,
+          "css": ".online-switch b{position:absolute;top:3px;right:3px;width:17px;height:17px;border-radius:50%;background:#fff}"
+        },
+        {
+          "id": "advogado_home_status_online.r0010",
+          "ordem": 100,
+          "css": ".is-offline .online-switch{background:#98a2b3}"
+        },
+        {
+          "id": "advogado_home_status_online.r0011",
+          "ordem": 110,
+          "css": ".is-offline .online-switch b{right:20px}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.online_status.e001",
+      "elementoRef": "online_status.e001",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

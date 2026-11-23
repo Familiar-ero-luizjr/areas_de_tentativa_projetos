@@ -1,0 +1,318 @@
+{
+  "identidade": {
+    "id": "admin.home.dashboard",
+    "tipo": "tela",
+    "namespace": "admin",
+    "nome": "Painel administrativo",
+    "nomeExibicao": "Painel administrativo",
+    "descricao": "Ponto central da operação administrativa. Os módulos exibidos devem respeitar as permissões que forem definidas para o Administrador."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/admin/home/dashboard/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "admin"
+    },
+    "jornadas": [
+      {
+        "id": "admin",
+        "numero": 3,
+        "nome": "Administrador",
+        "subjornadas": [
+          {
+            "id": "home",
+            "numero": "3.3",
+            "nome": "Painel administrativo"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "admin.home.dashboard.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.title.01": {
+          "componenteRef": "admin.home.dashboard.title.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 11,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.01": {
+          "componenteRef": "admin.home.dashboard.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 12,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 10,
+          "props": {
+            "perfil": "Administração",
+            "notificacoes": "0"
+          },
+          "estados": {
+            "ambiente": "interno"
+          }
+        },
+        "screen.drawer": {
+          "componenteRef": "ui.aj.menu.admin.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 13,
+          "props": {},
+          "estados": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "admin_home_dashboard.r0001",
+          "ordem": 10,
+          "css": ":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0002",
+          "ordem": 20,
+          "css": "*, *::before, *::after { box-sizing: border-box; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0003",
+          "ordem": 30,
+          "css": "button, input, select, textarea { font: inherit; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0004",
+          "ordem": 40,
+          "css": "button { -webkit-tap-highlight-color: transparent; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0005",
+          "ordem": 50,
+          "css": "a { color: inherit; text-decoration: none; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0006",
+          "ordem": 60,
+          "css": "[hidden] { display: none !important; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0007",
+          "ordem": 70,
+          "css": ".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0008",
+          "ordem": 80,
+          "css": ".app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0009",
+          "ordem": 90,
+          "css": ".app-menu-button { gap: 4px; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0010",
+          "ordem": 100,
+          "css": ".app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0011",
+          "ordem": 110,
+          "css": ".app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0012",
+          "ordem": 120,
+          "css": ".app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0013",
+          "ordem": 130,
+          "css": ".app-brand-copy { min-width: 0; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0014",
+          "ordem": 140,
+          "css": ".app-brand-copy strong,\n.app-brand-copy small { display:block; }"
+        },
+        {
+          "id": "admin_home_dashboard.r0015",
+          "ordem": 150,
+          "css": ".app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0016",
+          "ordem": 160,
+          "css": ".app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0017",
+          "ordem": 170,
+          "css": ".app-notifications {\n  position: relative;\n  justify-self: end;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0018",
+          "ordem": 180,
+          "css": ".app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}"
+        },
+        {
+          "id": "admin_home_dashboard.r0019",
+          "ordem": 190,
+          "css": ".app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "admin.home.dashboard.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.ui_aj_header_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "admin.home.dashboard.link.2",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.ui_aj_header_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    },
+    {
+      "id": "admin.home.dashboard.link.3",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_admin_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "admin.home.dashboard.link.4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_admin_v1.e0014"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "admin.home.dashboard"
+      }
+    },
+    {
+      "id": "admin.home.dashboard.link.5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_admin_v1.e0034"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "admin.assinatura.lista"
+      }
+    },
+    {
+      "id": "admin.home.dashboard.link.6",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_admin_v1.e0039"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "admin.auditoria.logs"
+      }
+    },
+    {
+      "id": "admin.home.dashboard.link.7",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_admin_v1.e0046"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "auth.sessao.entrar"
+      }
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "admin.home.dashboard.cenario.1",
+        "nome": "screen.header: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.ambiente": "interno"
+        }
+      },
+      {
+        "id": "admin.home.dashboard.cenario.2",
+        "nome": "screen.header: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.ambiente": "publico"
+        }
+      },
+      {
+        "id": "admin.home.dashboard.cenario.3",
+        "nome": "screen.drawer: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "fechado"
+        }
+      },
+      {
+        "id": "admin.home.dashboard.cenario.4",
+        "nome": "screen.drawer: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "aberto"
+        }
+      }
+    ]
+  }
+}

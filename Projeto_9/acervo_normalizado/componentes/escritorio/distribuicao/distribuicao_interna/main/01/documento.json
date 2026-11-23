@@ -1,0 +1,198 @@
+{
+  "identidade": {
+    "id": "escritorio.distribuicao.distribuicao_interna.main.01",
+    "tipo": "componente",
+    "nome": "escritorio.distribuicao.distribuicao_interna.main.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/escritorio/distribuicao/distribuicao_interna/main/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "escritorio"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "escritorio",
+            "numero": "2.9",
+            "nome": "Escritório"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.13.main.12.n0000",
+      "elementos": {
+        "b1.13.main.12.n0000": {
+          "tag": "main",
+          "paiRef": null,
+          "ordem": 12,
+          "atributos": {
+            "class": "op-shell"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0001": {
+          "tag": "form",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "op-card op-form",
+            "data-prototype-form": "",
+            "data-success-message": "Estratégia salva na simulação."
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0002": {
+          "tag": "h2",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 3,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0004": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 5,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0006": {
+          "tag": "label",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 7,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0008": {
+          "tag": "select",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 9,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0009": {
+          "tag": "option",
+          "paiRef": "b1.13.main.12.n0008",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0011": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 12,
+          "atributos": {
+            "class": "button",
+            "type": "submit"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0013": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 14,
+          "atributos": {
+            "class": "op-secondary",
+            "type": "button",
+            "data-goto": "escritorio.gestao.escritorio"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0015": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 16,
+          "atributos": {
+            "class": "op-toast",
+            "role": "status",
+            "aria-live": "polite"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0002.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Como distribuir solicitações?"
+        },
+        "b1.13.main.12.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Esta regra organiza somente o fluxo interno do escritório."
+        },
+        "b1.13.main.12.n0006.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 8,
+          "atributos": {},
+          "texto": "Estratégia"
+        },
+        "b1.13.main.12.n0009.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0009",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Distribuição manual"
+        },
+        "b1.13.main.12.n0011.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0011",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Salvar"
+        },
+        "b1.13.main.12.n0013.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Voltar"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.13.main.12.n0008",
+      "elementoRef": "b1.13.main.12.n0008",
+      "evento": "change"
+    },
+    {
+      "id": "event.b1.13.main.12.n0011",
+      "elementoRef": "b1.13.main.12.n0011",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.13.main.12.n0013",
+      "elementoRef": "b1.13.main.12.n0013",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

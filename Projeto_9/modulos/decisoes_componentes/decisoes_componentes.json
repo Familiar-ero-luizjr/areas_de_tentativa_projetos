@@ -1,0 +1,786 @@
+{
+  "formato": "advogadoja.galeria.componentes.offline",
+  "versao": 2,
+  "proposito": "Decisões de componentes: o HTML é editor/visualizador, o JSON exportado contém apenas os itens mantidos. Menu unificado possui estados condicionais.",
+  "abaAtiva": "headers-homes",
+  "abas": [
+    {
+      "id": "header",
+      "nome": "Header",
+      "itens": []
+    },
+    {
+      "id": "headers-inicializacao",
+      "nome": "Headers · Inicialização",
+      "itens": []
+    },
+    {
+      "id": "headers-acesso",
+      "nome": "Headers · Acesso",
+      "itens": []
+    },
+    {
+      "id": "headers-cadastro",
+      "nome": "Headers · Cadastro",
+      "itens": []
+    },
+    {
+      "id": "headers-onboarding",
+      "nome": "Headers · Onboarding",
+      "itens": []
+    },
+    {
+      "id": "headers-homes",
+      "nome": "Headers · Homes",
+      "itens": [
+        {
+          "id": "biblioteca-p9-component-header-application-v2-headers-homes",
+          "nome": "P9 · Header Administração",
+          "descricao": "Extraído de P9_009 (admin.home.dashboard)",
+          "referencia": "component.header.application.v2",
+          "origem": "02/telas/admin/home/dashboard/P9_009_admin_home_dashboard.html",
+          "tokens": {
+            "--primary": "#10233f",
+            "--primary-soft": "#173c6b",
+            "--gold": "#b88932",
+            "--page": "#eef2f6",
+            "--surface": "#fff",
+            "--line": "#dbe3ee",
+            "--text": "#172033",
+            "--muted": "#667085"
+          },
+          "css": [
+            ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}",
+            ".app-header{min-height:64px;display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:10px;align-items:center;padding:8px 14px;background:var(--primary);color:#fff;box-shadow:0 4px 14px #10233f2e;position:sticky;top:0;z-index:10}",
+            ".app-menu-button,.app-notifications{width:40px;height:40px;display:grid;place-content:center;border:0;border-radius:10px;background:transparent;color:#fff}",
+            ".app-menu-button{gap:4px}",
+            ".app-menu-button span{width:20px;height:2px;border-radius:8px;background:#fff}",
+            ".app-brand{display:flex;align-items:center;gap:9px;min-width:0}",
+            ".brand-symbol{width:28px;height:28px;flex:none}",
+            ".app-brand-copy strong,.app-brand-copy small{display:block}",
+            ".app-brand-copy strong{font-size:16px;letter-spacing:-.02em;white-space:nowrap}",
+            ".app-brand-copy small{font-size:9px;font-weight:800;letter-spacing:.08em;opacity:.72;margin-top:1px;text-transform:uppercase}",
+            ".app-notifications{position:relative;justify-self:end}",
+            ".app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}",
+            ".app-notifications-badge{position:absolute;top:4px;right:2px;min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center;border:2px solid var(--primary);border-radius:99px;background:#ef4444;font-size:9px;font-weight:800}"
+          ],
+          "definicao": {
+            "identidade": {
+              "id": "component.header.application.v2",
+              "tipo": "componente",
+              "nome": "P9 · Header Administração"
+            },
+            "classificacao": {
+              "localizacao": {
+                "caminho": "biblioteca/componentes/component/header/application/v2"
+              },
+              "escopo": {
+                "perfilRef": "admin"
+              },
+              "jornadas": [
+                {
+                  "id": "admin",
+                  "numero": 3,
+                  "nome": "Administrador",
+                  "subjornadas": [
+                    {
+                      "id": "home",
+                      "numero": "3.3",
+                      "nome": "Painel administrativo"
+                    }
+                  ]
+                }
+              ]
+            },
+            "estrutura": {
+              "html": {
+                "raizRef": "b1.11.header.10.n0000",
+                "elementos": {
+                  "b1.11.header.10.n0000": {
+                    "tag": "header",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "app-header",
+                      "data-component": "app-header"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.002": {
+                    "tag": "button",
+                    "paiRef": "b1.11.header.10.n0000",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "app-menu-button",
+                      "type": "button",
+                      "data-action": "drawer.open",
+                      "aria-label": "Abrir menu"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.003": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.002",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.004": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.002",
+                    "ordem": 20,
+                    "atributos": {},
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.005": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.002",
+                    "ordem": 30,
+                    "atributos": {},
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.006": {
+                    "tag": "div",
+                    "paiRef": "b1.11.header.10.n0000",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-brand"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.007": {
+                    "tag": "svg",
+                    "paiRef": "b1.11.header.10.n0000.chrome.006",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "brand-symbol",
+                      "xmlns": "http://www.w3.org/2000/svg",
+                      "viewBox": "0 0 100 100",
+                      "aria-label": "Advogado Já"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.008": {
+                    "tag": "g",
+                    "paiRef": "b1.11.header.10.n0000.chrome.007",
+                    "ordem": 10,
+                    "atributos": {
+                      "fill": "none",
+                      "stroke": "#fff",
+                      "stroke-width": "2.6",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.009": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 10,
+                    "atributos": {
+                      "d": "M50 7C34.8 7 23 18.7 23 34.2c0 17 27 46.8 27 46.8s27-29.8 27-46.8C77 18.7 65.2 7 50 7Z"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.010": {
+                    "tag": "circle",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 20,
+                    "atributos": {
+                      "cx": "50",
+                      "cy": "34",
+                      "r": "9.3"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.011": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 30,
+                    "atributos": {
+                      "d": "M28 60.5C15.1 64.1 8 70.2 8 77.2 8 88.6 26.8 97 50 97s42-8.4 42-19.8c0-7-7.1-13.1-20-16.7"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.012": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 40,
+                    "atributos": {
+                      "d": "M35.5 68.2C27 70.4 22 74 22 78c0 6 12.5 10.5 28 10.5S78 84 78 78c0-4-5-7.6-13.5-9.8"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.013": {
+                    "tag": "div",
+                    "paiRef": "b1.11.header.10.n0000.chrome.006",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-brand-copy"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.014": {
+                    "tag": "strong",
+                    "paiRef": "b1.11.header.10.n0000.chrome.013",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": "AdvogadoJá+"
+                  },
+                  "b1.11.header.10.n0000.chrome.015": {
+                    "tag": "small",
+                    "paiRef": "b1.11.header.10.n0000.chrome.013",
+                    "ordem": 20,
+                    "atributos": {},
+                    "texto": "Administrador"
+                  },
+                  "b1.11.header.10.n0000.chrome.016": {
+                    "tag": "button",
+                    "paiRef": "b1.11.header.10.n0000",
+                    "ordem": 30,
+                    "atributos": {
+                      "class": "app-notifications",
+                      "type": "button",
+                      "data-goto": "notificacoes.lista.notificacoes",
+                      "aria-label": "Abrir notificações"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.017": {
+                    "tag": "svg",
+                    "paiRef": "b1.11.header.10.n0000.chrome.016",
+                    "ordem": 10,
+                    "atributos": {
+                      "viewBox": "0 0 24 24"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.018": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.017",
+                    "ordem": 10,
+                    "atributos": {
+                      "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.019": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.016",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-notifications-badge"
+                    },
+                    "texto": "2"
+                  }
+                }
+              },
+              "css": {
+                "regras": {
+                  "b1.03.001": ".app-titlebar{padding:10px 18px;border-bottom:1px solid var(--line);background:#fff;color:var(--primary);font-size:13px;}",
+                  "home-professional.r009": ".app-header{min-height:64px;display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:10px;align-items:center;padding:8px 14px;background:var(--primary);color:#fff;box-shadow:0 4px 14px #10233f2e;position:sticky;top:0;z-index:10}",
+                  "home-professional.r010": ".app-menu-button,.app-notifications{width:40px;height:40px;display:grid;place-content:center;border:0;border-radius:10px;background:transparent;color:#fff}",
+                  "home-professional.r011": ".app-menu-button{gap:4px}",
+                  "home-professional.r012": ".app-menu-button span{width:20px;height:2px;border-radius:8px;background:#fff}",
+                  "home-professional.r013": ".app-brand{display:flex;align-items:center;gap:9px;min-width:0}",
+                  "home-professional.r014": ".brand-symbol{width:28px;height:28px;flex:none}",
+                  "home-professional.r015": ".app-brand-copy strong,.app-brand-copy small{display:block}",
+                  "home-professional.r016": ".app-brand-copy strong{font-size:16px;letter-spacing:-.02em;white-space:nowrap}",
+                  "home-professional.r017": ".app-brand-copy small{font-size:9px;font-weight:800;letter-spacing:.08em;opacity:.72;margin-top:1px;text-transform:uppercase}",
+                  "home-professional.r018": ".app-notifications{position:relative;justify-self:end}",
+                  "home-professional.r019": ".app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}",
+                  "home-professional.r020": ".app-notifications-badge{position:absolute;top:4px;right:2px;min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center;border:2px solid var(--primary);border-radius:99px;background:#ef4444;font-size:9px;font-weight:800}"
+                }
+              }
+            }
+          },
+          "fonteBiblioteca": "02 · Projeto 9",
+          "secaoDecisao": "headers-homes",
+          "decisao": "manter",
+          "padraoId": "header.homes.administracao",
+          "tipoPadrao": "header",
+          "escolhidoEm": "2026-11-23",
+          "fonteEscolha": "arquivo selecionado pelo usuário: p9_header_administracao-componente.json"
+        },
+        {
+          "id": "biblioteca-p9-component-header-application-v1-headers-homes",
+          "nome": "P9 · Header Cliente",
+          "descricao": "Extraído de P9_079 (cliente.home.inicio)",
+          "referencia": "component.header.application.v1",
+          "origem": "02/telas/cliente/home/inicio/P9_079_cliente_home_inicio.html",
+          "tokens": {
+            "--primary": "#10233f",
+            "--primary-soft": "#173c6b",
+            "--gold": "#b88932",
+            "--page": "#eef2f6",
+            "--surface": "#fff",
+            "--line": "#dbe3ee",
+            "--text": "#172033",
+            "--muted": "#667085"
+          },
+          "css": [
+            ".app-header{min-height:64px;display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:10px;align-items:center;padding:8px 14px;background:var(--primary);color:#fff;box-shadow:0 4px 14px #10233f2e;position:sticky;top:0;z-index:10}",
+            ".app-menu-button,.app-notifications{width:40px;height:40px;display:grid;place-content:center;border:0;border-radius:10px;background:transparent;color:#fff}",
+            ".app-menu-button{gap:4px}",
+            ".app-menu-button span{width:20px;height:2px;border-radius:8px;background:#fff}",
+            ".app-brand{display:flex;align-items:center;gap:9px;min-width:0}",
+            ".brand-symbol{width:28px;height:28px;flex:none}",
+            ".app-brand-copy strong,.app-brand-copy small{display:block}",
+            ".app-brand-copy strong{font-size:16px;letter-spacing:-.02em;white-space:nowrap}",
+            ".app-brand-copy small{font-size:9px;font-weight:800;letter-spacing:.08em;opacity:.72;margin-top:1px;text-transform:uppercase}",
+            ".app-notifications{position:relative;justify-self:end}",
+            ".app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}",
+            ".app-notifications-badge{position:absolute;top:4px;right:2px;min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center;border:2px solid var(--primary);border-radius:99px;background:#ef4444;font-size:9px;font-weight:800}"
+          ],
+          "definicao": {
+            "identidade": {
+              "id": "component.header.application.v1",
+              "tipo": "componente",
+              "nome": "P9 · Header Cliente"
+            },
+            "classificacao": {
+              "localizacao": {
+                "caminho": "biblioteca/componentes/component/header/application/v1"
+              },
+              "escopo": {
+                "perfilRef": "cliente"
+              },
+              "jornadas": [
+                {
+                  "id": "cliente",
+                  "numero": 1,
+                  "nome": "Cliente + Estudante",
+                  "subjornadas": [
+                    {
+                      "id": "home",
+                      "numero": "1.4",
+                      "nome": "Home Cliente"
+                    }
+                  ]
+                }
+              ]
+            },
+            "estrutura": {
+              "html": {
+                "raizRef": "b1.11.header.10.n0000",
+                "elementos": {
+                  "b1.11.header.10.n0000": {
+                    "tag": "header",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "app-header",
+                      "data-component": "app-header"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.002": {
+                    "tag": "button",
+                    "paiRef": "b1.11.header.10.n0000",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "app-menu-button",
+                      "type": "button",
+                      "data-action": "drawer.open",
+                      "aria-label": "Abrir menu"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.003": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.002",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.004": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.002",
+                    "ordem": 20,
+                    "atributos": {},
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.005": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.002",
+                    "ordem": 30,
+                    "atributos": {},
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.006": {
+                    "tag": "div",
+                    "paiRef": "b1.11.header.10.n0000",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-brand"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.007": {
+                    "tag": "svg",
+                    "paiRef": "b1.11.header.10.n0000.chrome.006",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "brand-symbol",
+                      "xmlns": "http://www.w3.org/2000/svg",
+                      "viewBox": "0 0 100 100",
+                      "aria-label": "Advogado Já"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.008": {
+                    "tag": "g",
+                    "paiRef": "b1.11.header.10.n0000.chrome.007",
+                    "ordem": 10,
+                    "atributos": {
+                      "fill": "none",
+                      "stroke": "#fff",
+                      "stroke-width": "2.6",
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.009": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 10,
+                    "atributos": {
+                      "d": "M50 7C34.8 7 23 18.7 23 34.2c0 17 27 46.8 27 46.8s27-29.8 27-46.8C77 18.7 65.2 7 50 7Z"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.010": {
+                    "tag": "circle",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 20,
+                    "atributos": {
+                      "cx": "50",
+                      "cy": "34",
+                      "r": "9.3"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.011": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 30,
+                    "atributos": {
+                      "d": "M28 60.5C15.1 64.1 8 70.2 8 77.2 8 88.6 26.8 97 50 97s42-8.4 42-19.8c0-7-7.1-13.1-20-16.7"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.012": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.008",
+                    "ordem": 40,
+                    "atributos": {
+                      "d": "M35.5 68.2C27 70.4 22 74 22 78c0 6 12.5 10.5 28 10.5S78 84 78 78c0-4-5-7.6-13.5-9.8"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.013": {
+                    "tag": "div",
+                    "paiRef": "b1.11.header.10.n0000.chrome.006",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-brand-copy"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.014": {
+                    "tag": "strong",
+                    "paiRef": "b1.11.header.10.n0000.chrome.013",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": "AdvogadoJá+"
+                  },
+                  "b1.11.header.10.n0000.chrome.015": {
+                    "tag": "small",
+                    "paiRef": "b1.11.header.10.n0000.chrome.013",
+                    "ordem": 20,
+                    "atributos": {},
+                    "texto": "Cliente"
+                  },
+                  "b1.11.header.10.n0000.chrome.016": {
+                    "tag": "button",
+                    "paiRef": "b1.11.header.10.n0000",
+                    "ordem": 30,
+                    "atributos": {
+                      "class": "app-notifications",
+                      "type": "button",
+                      "data-goto": "notificacoes.lista.notificacoes",
+                      "aria-label": "Abrir notificações"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.017": {
+                    "tag": "svg",
+                    "paiRef": "b1.11.header.10.n0000.chrome.016",
+                    "ordem": 10,
+                    "atributos": {
+                      "viewBox": "0 0 24 24"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.018": {
+                    "tag": "path",
+                    "paiRef": "b1.11.header.10.n0000.chrome.017",
+                    "ordem": 10,
+                    "atributos": {
+                      "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                    },
+                    "texto": ""
+                  },
+                  "b1.11.header.10.n0000.chrome.019": {
+                    "tag": "span",
+                    "paiRef": "b1.11.header.10.n0000.chrome.016",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-notifications-badge"
+                    },
+                    "texto": "2"
+                  }
+                }
+              },
+              "css": {
+                "regras": {
+                  "home-professional.r009": ".app-header{min-height:64px;display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:10px;align-items:center;padding:8px 14px;background:var(--primary);color:#fff;box-shadow:0 4px 14px #10233f2e;position:sticky;top:0;z-index:10}",
+                  "home-professional.r010": ".app-menu-button,.app-notifications{width:40px;height:40px;display:grid;place-content:center;border:0;border-radius:10px;background:transparent;color:#fff}",
+                  "home-professional.r011": ".app-menu-button{gap:4px}",
+                  "home-professional.r012": ".app-menu-button span{width:20px;height:2px;border-radius:8px;background:#fff}",
+                  "home-professional.r013": ".app-brand{display:flex;align-items:center;gap:9px;min-width:0}",
+                  "home-professional.r014": ".brand-symbol{width:28px;height:28px;flex:none}",
+                  "home-professional.r015": ".app-brand-copy strong,.app-brand-copy small{display:block}",
+                  "home-professional.r016": ".app-brand-copy strong{font-size:16px;letter-spacing:-.02em;white-space:nowrap}",
+                  "home-professional.r017": ".app-brand-copy small{font-size:9px;font-weight:800;letter-spacing:.08em;opacity:.72;margin-top:1px;text-transform:uppercase}",
+                  "home-professional.r018": ".app-notifications{position:relative;justify-self:end}",
+                  "home-professional.r019": ".app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}",
+                  "home-professional.r020": ".app-notifications-badge{position:absolute;top:4px;right:2px;min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center;border:2px solid var(--primary);border-radius:99px;background:#ef4444;font-size:9px;font-weight:800}"
+                }
+              }
+            }
+          },
+          "fonteBiblioteca": "02 · Projeto 9",
+          "secaoDecisao": "headers-homes",
+          "decisao": "manter",
+          "padraoId": "header.homes.cliente",
+          "tipoPadrao": "header",
+          "escolhidoEm": "2026-11-23",
+          "fonteEscolha": "arquivo selecionado pelo usuário: p9_header_cliente-componente.json"
+        },
+        {
+          "id": "biblioteca-v1-advogado-home-advogado-header-header-app-header-v04",
+          "nome": "V1 · Home Advogado",
+          "descricao": "Componente extraído de V1_031 (advogado.home_advogado).",
+          "referencia": "header.app-header.v04",
+          "origem": "01/telas/advogado/V1_031_home_advogado.html",
+          "tokens": {
+            "primary": "#10233f",
+            "primarySoft": "#173c6b",
+            "gold": "#b88932",
+            "page": "#eef2f6",
+            "surface": "#ffffff",
+            "line": "#dbe3ee",
+            "text": "#172033",
+            "muted": "#667085"
+          },
+          "css": [
+            ".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}\n.app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}\n.app-menu-button { gap: 4px; }\n.app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}\n.app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}\n.app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}\n.app-brand-copy { min-width: 0; }\n.app-brand-copy strong,\n.app-brand-copy small { display:block; }\n.app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}\n.app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}\n.app-notifications {\n  position: relative;\n  justify-self: end;\n}\n.app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n.app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}\n"
+          ],
+          "definicao": {
+            "identidade": {
+              "id": "header.app-header.v04",
+              "tipo": "componente",
+              "nome": "V1 · Home Advogado"
+            },
+            "classificacao": {
+              "localizacao": {
+                "caminho": "components/headers/app-header/v04/"
+              },
+              "escopo": {
+                "perfilRef": "advogado"
+              }
+            },
+            "estrutura": {
+              "html": {
+                "raizRef": "preview.n0001",
+                "elementos": {
+                  "preview.n0001": {
+                    "tag": "header",
+                    "ordem": 10,
+                    "atributos": {
+                      "class": "app-header"
+                    },
+                    "texto": ""
+                  },
+                  "preview.n0002": {
+                    "tag": "button",
+                    "ordem": 20,
+                    "atributos": {
+                      "class": "app-menu-button",
+                      "type": "button",
+                      "data-action": "drawer.open",
+                      "aria-label": "Abrir menu"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0001"
+                  },
+                  "preview.n0003": {
+                    "tag": "span",
+                    "ordem": 20,
+                    "atributos": {},
+                    "texto": "",
+                    "paiRef": "preview.n0002"
+                  },
+                  "preview.n0004": {
+                    "tag": "span",
+                    "ordem": 30,
+                    "atributos": {},
+                    "texto": "",
+                    "paiRef": "preview.n0002"
+                  },
+                  "preview.n0005": {
+                    "tag": "span",
+                    "ordem": 40,
+                    "atributos": {},
+                    "texto": "",
+                    "paiRef": "preview.n0002"
+                  },
+                  "preview.n0006": {
+                    "tag": "div",
+                    "ordem": 40,
+                    "atributos": {
+                      "class": "app-brand"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0001"
+                  },
+                  "preview.n0007": {
+                    "tag": "img",
+                    "ordem": 20,
+                    "atributos": {
+                      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                      "alt": ""
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0006"
+                  },
+                  "preview.n0008": {
+                    "tag": "div",
+                    "ordem": 40,
+                    "atributos": {
+                      "class": "app-brand-copy"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0006"
+                  },
+                  "preview.n0009": {
+                    "tag": "strong",
+                    "ordem": 20,
+                    "atributos": {},
+                    "texto": "",
+                    "paiRef": "preview.n0008"
+                  },
+                  "preview.n0010": {
+                    "tag": "#text",
+                    "paiRef": "preview.n0009",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": "AdvogadoJá+"
+                  },
+                  "preview.n0011": {
+                    "tag": "small",
+                    "ordem": 40,
+                    "atributos": {},
+                    "texto": "",
+                    "paiRef": "preview.n0008"
+                  },
+                  "preview.n0012": {
+                    "tag": "#text",
+                    "paiRef": "preview.n0011",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": "Profissional"
+                  },
+                  "preview.n0013": {
+                    "tag": "button",
+                    "ordem": 60,
+                    "atributos": {
+                      "class": "app-notifications",
+                      "type": "button",
+                      "data-goto": "notificacoes.lista.notificacoes",
+                      "aria-label": "Abrir notificações"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0001"
+                  },
+                  "preview.n0014": {
+                    "tag": "svg",
+                    "ordem": 20,
+                    "atributos": {
+                      "viewbox": "0 0 24 24",
+                      "aria-hidden": "true"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0013"
+                  },
+                  "preview.n0015": {
+                    "tag": "path",
+                    "ordem": 20,
+                    "atributos": {
+                      "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0014"
+                  },
+                  "preview.n0016": {
+                    "tag": "span",
+                    "ordem": 40,
+                    "atributos": {
+                      "class": "app-notifications-badge"
+                    },
+                    "texto": "",
+                    "paiRef": "preview.n0013"
+                  },
+                  "preview.n0017": {
+                    "tag": "#text",
+                    "paiRef": "preview.n0016",
+                    "ordem": 10,
+                    "atributos": {},
+                    "texto": "2"
+                  }
+                }
+              }
+            }
+          },
+          "fonteBiblioteca": "01 · V1",
+          "secaoDecisao": "headers-homes",
+          "decisao": "manter",
+          "padraoId": "header.homes.profissional",
+          "tipoPadrao": "header",
+          "escolhidoEm": "2026-11-23",
+          "fonteEscolha": "arquivo selecionado pelo usuário: v1_home_advogado-componente.json"
+        }
+      ]
+    },
+    {
+      "id": "headers-internas",
+      "nome": "Headers · Internas",
+      "itens": []
+    },
+    {
+      "id": "menus-cliente",
+      "nome": "Menus · Cliente + Estudante",
+      "itens": []
+    },
+    {
+      "id": "menus-advogado",
+      "nome": "Menus · Advogado",
+      "itens": []
+    },
+    {
+      "id": "menus-outros",
+      "nome": "Menus · Escritório e Admin",
+      "itens": []
+    }
+  ]
+}

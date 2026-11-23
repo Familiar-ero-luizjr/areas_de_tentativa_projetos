@@ -1,0 +1,230 @@
+{
+  "identidade": {
+    "id": "auth.global.sessao.esqueceusenha",
+    "tipo": "tela",
+    "namespace": "auth.global.sessao",
+    "nome": "Esqueceu a senha",
+    "nomeExibicao": "Esqueceu a senha"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/auth/global/sessao/esqueceusenha/documento.json"
+    },
+    "jornadaRefs": [
+      "global.acesso"
+    ],
+    "subjornadaRefs": [
+      "global.acesso.recuperacao"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "auth.global.sessao.esqueceusenha.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "id": "screen.root"
+        },
+        "screen.header": {
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": "auth.global.sessao.esqueceusenha.layout.e0001",
+          "ordem": 10,
+          "props": {
+            "marca": "AdvogadoJá+",
+            "perfil": "comum",
+            "variante": "publica",
+            "notificacoesNaoLidas": 0
+          },
+          "estados": {
+            "ambiente": "publico",
+            "notificacoes": "sem_nao_lidas"
+          },
+          "id": "screen.header"
+        },
+        "screen.conteudo": {
+          "componenteRef": "auth.global.sessao.esqueceusenha.conteudo",
+          "paiRef": "screen.root",
+          "alvoRef": "auth.global.sessao.esqueceusenha.layout.e0001",
+          "ordem": 30,
+          "props": {},
+          "id": "screen.conteudo"
+        },
+        "screen.rodape": {
+          "componenteRef": "auth.global.sessao.esqueceusenha.rodape",
+          "paiRef": "screen.root",
+          "alvoRef": "auth.global.sessao.esqueceusenha.layout.e0001",
+          "ordem": 90,
+          "props": {},
+          "id": "screen.rodape"
+        },
+        "screen.titlebar": {
+          "componenteRef": "layout.header.title",
+          "paiRef": "screen.root",
+          "alvoRef": "auth.global.sessao.esqueceusenha.layout.e0001",
+          "ordem": 15,
+          "props": {
+            "titulo": "Esqueceu a senha?",
+            "variante": "padrao"
+          },
+          "estados": {
+            "visibilidade": "visivel"
+          },
+          "id": "screen.titlebar"
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--text": "#172033"
+      },
+      "regras": [
+        {
+          "id": "layout.recuperacao.largura.uniforme",
+          "ordem": 20,
+          "css": ".mobile{width:100%;max-width:100%;margin:0;box-shadow:none}"
+        }
+      ],
+      "folhasRefs": [
+        "layout.estilos.recuperacao.v1"
+      ]
+    }
+  },
+  "estados": {
+    "formulario": {
+      "inicial": "inicial",
+      "opcoes": {
+        "inicial": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "atributos": {
+                "data-form-state": "inicial"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.conteudo",
+              "ref": "auth.global.sessao.esqueceusenha.conteudo.e0019",
+              "classes": {
+                "show": false,
+                "error": false
+              },
+              "texto": ""
+            }
+          ],
+          "id": "estado.auth.global.sessao.esqueceusenha.formulario.inicial"
+        },
+        "enviado": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "atributos": {
+                "data-form-state": "enviado"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.conteudo",
+              "ref": "auth.global.sessao.esqueceusenha.conteudo.e0019",
+              "classes": {
+                "show": true,
+                "error": false
+              },
+              "texto": "Simulação concluída. Nenhum e-mail foi enviado."
+            }
+          ],
+          "id": "estado.auth.global.sessao.esqueceusenha.formulario.enviado"
+        },
+        "erro": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "atributos": {
+                "data-form-state": "erro"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.conteudo",
+              "ref": "auth.global.sessao.esqueceusenha.conteudo.e0019",
+              "classes": {
+                "show": true,
+                "error": true
+              },
+              "texto": "Confira as informações e tente novamente."
+            }
+          ],
+          "id": "estado.auth.global.sessao.esqueceusenha.formulario.erro"
+        }
+      },
+      "id": "estado.auth.global.sessao.esqueceusenha.formulario"
+    },
+    "linkValido": {
+      "id": "estado.auth.global.sessao.esqueceusenha.linkValido",
+      "inicial": "nao",
+      "origemValor": "simulação de link de recuperação",
+      "opcoes": {
+        "sim": {
+          "id": "estado.auth.global.sessao.esqueceusenha.linkValido.sim",
+          "alvos": []
+        },
+        "nao": {
+          "id": "estado.auth.global.sessao.esqueceusenha.linkValido.nao",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.global.sessao.esqueceusenha.recuperacao_confirmada",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "recuperacao.confirmada"
+        },
+        "destinoRef": "auth.global.sessao.resetarsenha",
+        "quando": {
+          "estadoRef": "estado.auth.global.sessao.esqueceusenha.linkValido",
+          "igual": "sim"
+        }
+      },
+      {
+        "id": "rota.auth.global.sessao.esqueceusenha.voltar",
+        "origem": {
+          "instanciaRef": "screen.conteudo",
+          "eventoRef": "voltar"
+        },
+        "destinoRef": "auth.global.sessao.entrar"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "mock.auth.global.sessao.esqueceusenha.cenario_2",
+        "nome": "Mensagem de demonstração",
+        "valores": {
+          "estado.auth.global.sessao.esqueceusenha.formulario": "enviado"
+        }
+      }
+    ]
+  }
+}
