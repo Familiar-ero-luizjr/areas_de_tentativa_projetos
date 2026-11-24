@@ -1,0 +1,201 @@
+{
+  "identidade": {
+    "id": "cliente.onboarding.localizacao.main.01",
+    "tipo": "componente",
+    "nome": "cliente.onboarding.localizacao.main.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/cliente/onboarding/localizacao/main/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "cliente"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "onboarding",
+            "numero": "1.3",
+            "nome": "Onboarding Cliente"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.12.main.11.n0000",
+      "elementos": {
+        "b1.12.main.11.n0000": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 11,
+          "atributos": {
+            "class": "registration__shell"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0001": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "registration__intro"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0002": {
+          "tag": "p",
+          "paiRef": "b1.12.main.11.n0001",
+          "ordem": 3,
+          "atributos": {
+            "class": "eyebrow"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0004": {
+          "tag": "h1",
+          "paiRef": "b1.12.main.11.n0001",
+          "ordem": 5,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0006": {
+          "tag": "p",
+          "paiRef": "b1.12.main.11.n0001",
+          "ordem": 7,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.main.11.n0008": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0000",
+          "ordem": 9,
+          "atributos": {
+            "class": "client-map",
+            "aria-label": "Mapa ilustrativo"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0009": {
+          "tag": "form",
+          "paiRef": "b1.12.main.11.n0000",
+          "ordem": 10,
+          "atributos": {
+            "class": "form-card",
+            "data-client-onboarding-form": ""
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0010": {
+          "tag": "div",
+          "paiRef": "b1.12.main.11.n0009",
+          "ordem": 11,
+          "atributos": {
+            "class": "op-buttons"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0011": {
+          "tag": "button",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 12,
+          "atributos": {
+            "class": "button",
+            "type": "submit",
+            "data-next": "cliente.onboarding.preferencias_contato"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0013": {
+          "tag": "button",
+          "paiRef": "b1.12.main.11.n0010",
+          "ordem": 14,
+          "atributos": {
+            "class": "op-secondary",
+            "type": "submit",
+            "data-next": "cliente.onboarding.preferencias_contato"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0015": {
+          "tag": "p",
+          "paiRef": "b1.12.main.11.n0009",
+          "ordem": 16,
+          "atributos": {
+            "class": "form-status",
+            "aria-live": "polite"
+          },
+          "texto": ""
+        },
+        "b1.12.main.11.n0002.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Onboarding do Cliente"
+        },
+        "b1.12.main.11.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Profissionais na sua região"
+        },
+        "b1.12.main.11.n0006.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Usamos a localização para organizar a busca por cidade, raio e modalidade. Você também pode informar a cidade manualmente."
+        },
+        "b1.12.main.11.n0011.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0011",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Permitir localização e continuar"
+        },
+        "b1.12.main.11.n0013.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.main.11.n0013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Informar cidade manualmente"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.12.main.11.n0011",
+      "elementoRef": "b1.12.main.11.n0011",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.12.main.11.n0013",
+      "elementoRef": "b1.12.main.11.n0013",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

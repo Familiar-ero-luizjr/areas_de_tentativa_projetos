@@ -1,0 +1,275 @@
+{
+  "identidade": {
+    "id": "estudante.assinatura.historico_assinatura",
+    "tipo": "tela",
+    "namespace": "estudante",
+    "nome": "Histórico do Plano Estudante",
+    "nomeExibicao": "Histórico do Plano Estudante",
+    "descricao": "Registros do plano e seus estados, sem criar um segundo perfil."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/estudante/assinatura/historico_assinatura/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "estudante"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "plano",
+            "numero": "1.9",
+            "nome": "Contratação e assinatura"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "visual.b1.estudante.assinatura.historico_assinatura",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "component.header.student.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.titlebar": {
+          "componenteRef": "component.titlebar.application.v2",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 11,
+          "props": {},
+          "estados": {}
+        },
+        "screen.drawer": {
+          "componenteRef": "ui.aj.menu.estudante.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 13,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.01": {
+          "componenteRef": "estudante.assinatura.historico_assinatura.content.01",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 12,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header.v1": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": -10,
+          "props": {
+            "perfil": "Estudante",
+            "notificacoes": "0"
+          },
+          "estados": {
+            "ambiente": "interno"
+          }
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.b1.11.header.10.n0001"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.2",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.b1.11.header.10.n0009"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.3",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0014"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "estudante.home.inicio"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0019"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "estudante.cursos.catalogo"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.6",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0024"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "estudante.cursos.meus_cursos"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.7",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0029"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "estudante.assinatura.planos"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.8",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0034"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "estudante.perfil.editar_academicos"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.9",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_estudante_v1.e0041"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "auth.sessao.entrar"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.10",
+      "origem": {
+        "instanciaRef": "screen.header.v1",
+        "eventoRef": "event.ui_aj_header_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "estudante.assinatura.historico_assinatura.link.11",
+      "origem": {
+        "instanciaRef": "screen.header.v1",
+        "eventoRef": "event.ui_aj_header_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "estudante.assinatura.historico_assinatura.cenario.1",
+        "nome": "screen.drawer: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "fechado"
+        }
+      },
+      {
+        "id": "estudante.assinatura.historico_assinatura.cenario.2",
+        "nome": "screen.drawer: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "aberto"
+        }
+      },
+      {
+        "id": "estudante.assinatura.historico_assinatura.cenario.3",
+        "nome": "screen.header.v1: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.v1.ambiente": "interno"
+        }
+      },
+      {
+        "id": "estudante.assinatura.historico_assinatura.cenario.4",
+        "nome": "screen.header.v1: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.v1.ambiente": "publico"
+        }
+      }
+    ]
+  }
+}

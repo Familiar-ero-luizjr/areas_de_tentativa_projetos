@@ -1,0 +1,159 @@
+{
+  "identidade": {
+    "id": "notificacoes.detalhe.notificacao",
+    "tipo": "tela",
+    "namespace": "notificacoes",
+    "nome": "Detalhe da notificação",
+    "nomeExibicao": "Detalhe da notificação"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/notificacoes/detalhe/notificacao/P9_109_notificacoes_detalhe_notificacao/documento.json"
+    },
+    "perfilRef": "notificacoes",
+    "jornadaRefs": [
+      "notificacoes"
+    ],
+    "subjornadaRefs": [
+      "notificacoes.operacao.notificacoes"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.02.telas.notificacoes.detalhe.notificacao.P9_109_notificacoes_detalhe_notificacao.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {}
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "v21.02.telas.notificacoes.detalhe.notificacao.P9_109_notificacoes_detalhe_notificacao.screen.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 12,
+          "props": {}
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "v21.02.telas.notificacoes.detalhe.notificacao.P9_109_notificacoes_detalhe_notificacao.screen.header",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 5,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.02.telas.notificacoes.detalhe.notificacao.P9_109_notificacoes_detalhe_notificacao.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 6,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.02.telas.notificacoes.detalhe.notificacao.P9_109_notificacoes_detalhe_notificacao.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 900,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "notificacoes.detalhe.notificacao.estilo.base",
+          "ordem": 10,
+          "css": "b1.01\nb1.02\nb1.05\nb1.04\ncanonica\ncanonica\ncanonica"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "screen_drawer_painel": {
+      "id": "estado.notificacoes.detalhe.notificacao.screen_drawer_painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.notificacoes.detalhe.notificacao.screen_drawer_painel.fechado",
+          "alvos": []
+        }
+      }
+    },
+    "painel": {
+      "id": "estado.notificacoes.detalhe.notificacao.painel",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.notificacoes.detalhe.notificacao.painel.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.notificacoes.detalhe.notificacao.painel.aberto",
+          "alvos": []
+        }
+      }
+    },
+    "planoEstudante": {
+      "id": "estado.notificacoes.detalhe.notificacao.planoEstudante",
+      "inicial": "sem_plano",
+      "opcoes": {
+        "sem_plano": {
+          "id": "estado.notificacoes.detalhe.notificacao.planoEstudante.sem_plano",
+          "alvos": []
+        },
+        "pendente": {
+          "id": "estado.notificacoes.detalhe.notificacao.planoEstudante.pendente",
+          "alvos": []
+        },
+        "ativo": {
+          "id": "estado.notificacoes.detalhe.notificacao.planoEstudante.ativo",
+          "alvos": []
+        },
+        "vencido": {
+          "id": "estado.notificacoes.detalhe.notificacao.planoEstudante.vencido",
+          "alvos": []
+        }
+      }
+    },
+    "grupoEstudante": {
+      "id": "estado.notificacoes.detalhe.notificacao.grupoEstudante",
+      "inicial": "fechado",
+      "opcoes": {
+        "fechado": {
+          "id": "estado.notificacoes.detalhe.notificacao.grupoEstudante.fechado",
+          "alvos": []
+        },
+        "aberto": {
+          "id": "estado.notificacoes.detalhe.notificacao.grupoEstudante.aberto",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

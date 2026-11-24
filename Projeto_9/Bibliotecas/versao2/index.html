@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AdvogadoJá+ · Biblioteca V2</title>
+  <link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+  <header class="top"><div><span class="overline">ADVOGADOJÁ+ · BIBLIOTECAS 01 E 02 · V2</span><h1>Execução por divisões</h1><p>As telas permanecem nas duas fontes originais, organizadas pelas fases já registradas na auditoria de conversão.</p></div><div class="stats" id="stats" aria-live="polite"></div></header>
+  <main>
+    <section class="intro"><h2>Ordem de navegação</h2><p>Selecione uma fase para consultar apenas as telas daquela divisão, ou combine a fase com a origem 01 ou 02.</p><nav class="phaseNav" id="phaseNav" aria-label="Fases do acervo"></nav></section>
+    <section class="controls"><input id="search" type="search" placeholder="Buscar por tela, ID ou caminho" aria-label="Buscar telas"><select id="source" aria-label="Filtrar biblioteca"><option value="">Bibliotecas 01 e 02</option><option value="01">Biblioteca 01</option><option value="02">Biblioteca 02</option></select></section>
+    <p class="status" id="status">Carregando divisão do acervo…</p>
+    <section class="tableWrap"><table><thead><tr><th>Fase</th><th>Biblioteca</th><th>Tela</th><th>Instâncias</th><th>Rotas</th><th>Documentação</th></tr></thead><tbody id="rows"></tbody></table></section>
+  </main>
+  <script src="catalogo.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Biblioteca — Motor V4</title><link rel="stylesheet" href="../motor.css"><link rel="stylesheet" href="biblioteca.css"></head><body>
+<main class="container">
+ <div class="page-head"><div><h1>▤ Biblioteca · Telas e Componentes</h1><p class="subtitle">Organização por <code>classificacao.localizacao.caminho</code> · documento completo por item · exportação independente</p></div><span class="tag" id="dataStatus">Carregando...</span></div>
+ <div class="toolbar" aria-label="Ações da Biblioteca">
+  <button class="btn btn-gold" id="btnNewScreen">＋ Tela</button><button class="btn" id="btnNewComponent">＋ Componente</button>
+  <button class="btn" id="btnImportJson">↥ Importar JSON</button><button class="btn" id="btnImportZip">↥ Importar ZIP</button>
+  <button class="btn btn-primary" id="btnExportZip">↧ Exportar Biblioteca ZIP</button>
+  <button class="btn" id="btnExportIndex">↧ Índice JSONL</button><button class="btn" id="btnExportDoc">↧ Documento compartilhado</button>
+  <button class="btn btn-danger" id="btnRestore">↻ Restaurar base</button>
+ </div>
+ <div class="metrics" id="metrics" style="margin-top:14px"></div>
+ <div class="split">
+  <section class="panel"><div class="panel-head"><h2>Árvore da Biblioteca</h2><input id="search" class="selector full" type="search" placeholder="Buscar por nome, ID ou localização…" aria-label="Buscar na Biblioteca"/><div class="toolbar" style="margin-top:8px"><button class="btn btn-small" id="expandAll">Expandir</button><button class="btn btn-small" id="collapseAll">Recolher</button></div></div><div id="tree" class="tree-list" role="tree" aria-label="Estrutura da Biblioteca"></div><div class="panel-head meta" id="treeInfo">Selecione um documento para editar.</div></section>
+  <section class="panel"><div class="panel-head"><h2 id="editorTitle">Documento</h2><div class="meta" id="editorPath">—</div></div><div class="panel-body"><div class="toolbar" style="margin-bottom:11px"><button class="btn btn-primary" id="btnSave">Salvar JSON</button><button class="btn" id="btnFormat">Formatar</button><button class="btn" id="btnDownloadSingle">Baixar item</button><button class="btn" id="btnPreview">◩ Visualizar tela</button><button class="btn btn-danger" id="btnRemove">Excluir</button></div><textarea class="code-editor" id="editor" spellcheck="false" autocomplete="off" aria-label="Editor JSON do documento"></textarea><div class="status" id="status" role="status"></div><p class="notice">O documento editado é persistido no armazenamento deste navegador. Para salvar fora do navegador, use <strong>Exportar Biblioteca ZIP</strong> ou <strong>Documento compartilhado</strong>. A pasta do Motor não recebe telas.</p></div></section>
+ </div>
+ <input id="fileJson" type="file" accept=".json,application/json" multiple hidden><input id="fileZip" type="file" accept=".zip,application/zip" hidden>
+</main><script src="../motor.js"></script><script src="motor.js"></script></body></html>

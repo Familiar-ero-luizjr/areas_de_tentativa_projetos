@@ -1,0 +1,438 @@
+{
+  "identidade": {
+    "id": "advogado.perfil.visualizacao",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Perfil profissional",
+    "nomeExibicao": "Perfil profissional",
+    "descricao": "Dados pessoais, profissionais e públicos do advogado."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/advogado/perfil/visualizacao/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "conta",
+            "numero": "2.10",
+            "nome": "Perfil e configurações"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "advogado.perfil.visualizacao.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.01": {
+          "componenteRef": "advogado.perfil.visualizacao.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 12,
+          "props": {},
+          "estados": {}
+        },
+        "screen.modal.01": {
+          "componenteRef": "advogado.perfil.visualizacao.modal.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 14,
+          "props": {},
+          "estados": {}
+        },
+        "screen.popup.01": {
+          "componenteRef": "advogado.perfil.visualizacao.popup.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 15,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 10,
+          "props": {
+            "perfil": "Profissional",
+            "notificacoes": "2"
+          },
+          "estados": {
+            "ambiente": "interno"
+          }
+        },
+        "screen.titlebar": {
+          "componenteRef": "component.titlebar.application.v3",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 11,
+          "props": {},
+          "estados": {}
+        },
+        "screen.drawer": {
+          "componenteRef": "ui.aj.menu.advogado.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 13,
+          "props": {},
+          "estados": {
+            "painel": "fechado",
+            "disponibilidade": "online"
+          }
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado_perfil_visualizacao.r0001",
+          "ordem": 10,
+          "css": ":root{--primary:#10233f;--primary-soft:#173c6b;--gold:#b88932;--page:#eef2f6;--surface:#fff;--line:#dbe3ee;--text:#172033;--muted:#667085;--main-max:720px;--main-padding-x:16px;--main-padding-top:22px;--main-padding-bottom:28px;--section-gap:12px;--nav-desktop-width:210px;font-family:\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0002",
+          "ordem": 20,
+          "css": "*{box-sizing:border-box}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0003",
+          "ordem": 30,
+          "css": "html,body{min-width:320px;min-height:100%;margin:0}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0004",
+          "ordem": 40,
+          "css": "body{min-height:100dvh;background:var(--page);color:var(--text);overflow-x:hidden}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0005",
+          "ordem": 50,
+          "css": "#screen-root,.screen-runtime{min-height:100dvh;background:var(--page)}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0006",
+          "ordem": 60,
+          "css": "screen-section{display:block;width:100%}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0007",
+          "ordem": 70,
+          "css": ".screen-slot{min-width:0;width:100%}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0008",
+          "ordem": 80,
+          "css": ".screen-slot--header{position:sticky;top:0;z-index:30;background:var(--page)}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0009",
+          "ordem": 90,
+          "css": ".screen-slot--header>screen-section+screen-section{margin-top:0}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0010",
+          "ordem": 100,
+          "css": ".screen-layout{min-height:calc(100dvh - 1px);display:block}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0011",
+          "ordem": 110,
+          "css": ".screen-slot--main{width:min(100%,var(--main-max));margin:0 auto;padding:var(--main-padding-top) var(--main-padding-x) calc(var(--main-padding-bottom) + 76px)}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0012",
+          "ordem": 120,
+          "css": ".screen-slot--main>screen-section+screen-section{margin-top:var(--section-gap)}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0013",
+          "ordem": 130,
+          "css": ".screen-slot--navigation{position:fixed;z-index:20;right:0;bottom:0;left:0}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0014",
+          "ordem": 140,
+          "css": ".screen-slot--navigation:not([data-active=\"true\"]){display:none}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0015",
+          "ordem": 150,
+          "css": ".screen-slot--menu,.screen-slot--modal,.screen-slot--popup,.screen-slot--alert{height:0;position:relative;z-index:40}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0016",
+          "ordem": 160,
+          "css": ".screen-slot--modal{z-index:50}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0017",
+          "ordem": 170,
+          "css": ".screen-slot--popup{z-index:60}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0018",
+          "ordem": 180,
+          "css": ".screen-slot--alert{z-index:70}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0019",
+          "ordem": 190,
+          "css": "@media(min-width:900px){.screen-layout{display:grid;grid-template-columns:var(--nav-desktop-width) minmax(0,1fr);align-items:start}.screen-runtime:not([data-has-navigation=\"true\"]) .screen-layout{grid-template-columns:minmax(0,1fr)}.screen-slot--navigation{position:sticky;top:0;right:auto;bottom:auto;left:auto;grid-column:1;grid-row:1;align-self:start;min-height:100%;padding-top:18px}.screen-slot--main{grid-column:2;grid-row:1;padding-bottom:var(--main-padding-bottom)}.screen-runtime:not([data-has-navigation=\"true\"]) .screen-slot--main{grid-column:1}}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0020",
+          "ordem": 200,
+          "css": ".screen-loading,.screen-error{width:min(100% - 32px,720px);margin:32px auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff;line-height:1.55}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0021",
+          "ordem": 210,
+          "css": ".screen-error h1{margin:0 0 8px;color:var(--primary);font-size:20px}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0022",
+          "ordem": 220,
+          "css": ".screen-error code{display:block;margin-top:12px;padding:10px;border-radius:8px;background:#eef2f6;overflow-wrap:anywhere}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0023",
+          "ordem": 230,
+          "css": ".section-runtime-warning{max-width:var(--main-max,720px);margin:12px auto;padding:12px 14px;border:1px dashed #b8c2cf;border-radius:12px;background:#fff;color:#334155;display:grid;gap:4px}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0024",
+          "ordem": 240,
+          "css": ":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0025",
+          "ordem": 250,
+          "css": "*, *::before, *::after { box-sizing: border-box; }"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0026",
+          "ordem": 260,
+          "css": "button, input, select, textarea { font: inherit; }"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0027",
+          "ordem": 270,
+          "css": "button { -webkit-tap-highlight-color: transparent; }"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0028",
+          "ordem": 280,
+          "css": "a { color: inherit; text-decoration: none; }"
+        },
+        {
+          "id": "advogado_perfil_visualizacao.r0029",
+          "ordem": 290,
+          "css": "[hidden] { display: none !important; }"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "advogado.perfil.visualizacao.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.ui_aj_header_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.2",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.ui_aj_header_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.3",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "disponibilidade",
+        "valor": "offline"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0023"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.home"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.6",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0028"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.configuracao.validacao_oab"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.7",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0043"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.assinatura.gestao_assinatura"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.8",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0048"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "escritorio.gestao.escritorio"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.9",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0053"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "advogado.configuracao.configuracao"
+      }
+    },
+    {
+      "id": "advogado.perfil.visualizacao.link.10",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0060"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "auth.sessao.entrar"
+      }
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "advogado.perfil.visualizacao.cenario.1",
+        "nome": "screen.header: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.ambiente": "interno"
+        }
+      },
+      {
+        "id": "advogado.perfil.visualizacao.cenario.2",
+        "nome": "screen.header: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.ambiente": "publico"
+        }
+      },
+      {
+        "id": "advogado.perfil.visualizacao.cenario.3",
+        "nome": "screen.drawer: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "fechado"
+        }
+      },
+      {
+        "id": "advogado.perfil.visualizacao.cenario.4",
+        "nome": "screen.drawer: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "aberto"
+        }
+      },
+      {
+        "id": "advogado.perfil.visualizacao.cenario.5",
+        "nome": "screen.drawer: disponibilidade=online",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.disponibilidade": "online"
+        }
+      },
+      {
+        "id": "advogado.perfil.visualizacao.cenario.6",
+        "nome": "screen.drawer: disponibilidade=offline",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.disponibilidade": "offline"
+        }
+      }
+    ]
+  }
+}

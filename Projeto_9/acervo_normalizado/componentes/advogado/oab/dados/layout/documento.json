@@ -1,0 +1,62 @@
+{
+  "identidade": {
+    "id": "advogado.oab.dados.layout",
+    "tipo": "componente",
+    "nome": "advogado.oab.dados.layout"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/oab/dados/layout/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "oab",
+            "numero": "2.5",
+            "nome": "Validação da OAB"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "layout.root",
+      "elementos": {
+        "layout.root": {
+          "tag": "section",
+          "paiRef": null,
+          "ordem": 1,
+          "atributos": {
+            "class": "professional-onboarding screen-runtime b1-screen-runtime"
+          },
+          "texto": ""
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

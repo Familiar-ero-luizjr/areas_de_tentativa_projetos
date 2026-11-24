@@ -1,0 +1,168 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.validacao_oab",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Validação da OAB",
+    "nomeExibicao": "Validação da OAB"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/advogado/configuracao/V1_028_validacao_oab/documento.json"
+    },
+    "perfilRef": "advogado",
+    "jornadaRefs": [
+      "advogado"
+    ],
+    "subjornadaRefs": [
+      "advogado.operacao.configuracoes"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.root",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        },
+        "screen.app_header": {
+          "id": "screen.app_header",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.app_header",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {}
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.titlebar",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 120,
+          "props": {}
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 230,
+          "props": {}
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 310,
+          "props": {}
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.route_modal",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 410,
+          "props": {}
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "v21.01.telas.advogado.configuracao.V1_028_validacao_oab.screen.screen_note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 510,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado.configuracao.validacao_oab.estilo.base",
+          "ordem": 10,
+          "css": ".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n\n.aj-layout-titlebar{width:100%;min-height:38px;display:flex;align-items:center;padding:10px 18px;border-bottom:1px solid #dbe3ee;background:#fff;color:#10233f;font:700 13px/1.35 Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-titlebar strong{font-weight:700;font-size:13px}\n\n.oab-shell{width:min(100%,760px);margin:0 auto;padding:28px 16px 40px}.oab-back{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;border:0;background:transparent;color:var(--primary);font-size:12px;font-weight:800;padding:0}.oab-hero{margin:0 2px 14px}.oab-eyebrow{font-size:10px;font-weight:900;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}.oab-hero h1{margin:6px 0 0;color:var(--primary);font-size:24px;letter-spacing:-.025em}.oab-subtitle{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}.oab-context-banner{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px;padding:12px 13px;border:1px solid #ead7a8;border-radius:13px;background:#fffaf0;color:#735c2c;font-size:10px;line-height:1.5}.oab-context-banner strong{display:block;color:#6d4d10;font-size:11px;margin-bottom:2px}.oab-context-banner p{margin:0}.oab-context-icon{width:28px;height:28px;display:grid;place-items:center;flex:none;border-radius:9px;background:#fff1c7;color:#7b560d;font-weight:900}.oab-status-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 15px;border:1px solid var(--line);border-radius:15px;background:#fff;box-shadow:0 3px 10px rgba(16,35,63,.035)}.oab-status-card strong{display:block;color:var(--primary);font-size:13px}.oab-status-card p{margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.5}.oab-status-pill{display:inline-flex;align-items:center;justify-content:center;min-height:27px;padding:4px 10px;border-radius:999px;font-size:9px;font-weight:900;white-space:nowrap}.oab-status-pill.is-pending,.oab-status-pill.is-review{background:#fff4d9;color:#8a5a08}.oab-status-pill.is-valid{background:#e5f7ee;color:#08744e}.oab-status-pill.is-error{background:#feeceb;color:#b42318}.oab-card{margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 3px 10px rgba(16,35,63,.035)}.oab-card-head{margin-bottom:12px}.oab-card-head h2{margin:0;color:var(--primary);font-size:15px}.oab-card-head p{margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.5}.oab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.oab-field{display:block}.oab-field--full{grid-column:1/-1}.oab-field span{display:block;margin-bottom:5px;color:var(--primary);font-size:10px;font-weight:800}.oab-field input,.oab-field select{width:100%;min-height:43px;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text);font-size:11px}.oab-upload-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px;border:1px dashed #b8c6d8;border-radius:12px;background:#fbfdff}.oab-upload-copy strong{display:block;color:var(--primary);font-size:11px}.oab-upload-copy small{display:block;margin-top:3px;color:var(--muted);font-size:9px;line-height:1.45}.oab-file-name{margin-top:7px;color:var(--muted);font-size:9px}.oab-upload-btn{min-height:36px;padding:7px 11px;border:1px solid var(--line);border-radius:9px;background:#eef3f8;color:var(--primary);font-size:10px;font-weight:800}.oab-info-list{display:grid;gap:8px}.oab-info-row{display:flex;justify-content:space-between;gap:14px;padding-bottom:8px;border-bottom:1px solid #edf1f5;font-size:10px}.oab-info-row:last-child{padding-bottom:0;border-bottom:0}.oab-info-row span{color:var(--muted)}.oab-info-row strong{color:var(--text);text-align:right}.oab-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.oab-btn{min-height:43px;padding:9px 14px;border-radius:10px;font-size:11px;font-weight:800}.oab-btn--primary{border:0;background:var(--primary);color:#fff}.oab-btn--secondary{border:1px solid var(--line);background:#fff;color:var(--primary)}.oab-demo-box{margin-top:18px;padding-top:14px;text-align:center}.oab-demo-divider{height:1px;background:var(--line);margin-bottom:12px}.oab-demo-note{margin-bottom:10px;color:var(--muted);font-size:8px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.oab-demo-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}.oab-demo-btn{min-height:31px;padding:6px 9px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#475467;font-size:9px;font-weight:800}.oab-demo-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}@media(max-width:620px){.oab-shell{padding-left:13px;padding-right:13px}.oab-grid{grid-template-columns:1fr}.oab-field--full{grid-column:auto}.oab-status-card,.oab-upload-box{grid-template-columns:1fr}.oab-actions{flex-direction:column-reverse}.oab-actions button,.oab-upload-btn{width:100%}}\n.aj-layout-drawer.prototype-drawer{position:fixed!important;inset:0!important;z-index:9998!important;display:none!important;pointer-events:none}.aj-layout-drawer.prototype-drawer.open{display:block!important;pointer-events:auto}\n.aj-layout-drawer .aj-layout-backdrop{position:absolute;inset:0;width:100%;border:0;background:rgba(7,16,30,.60);cursor:pointer}\n.aj-layout-drawer .aj-layout-panel{position:absolute;inset:0 auto 0 0;width:min(80vw,360px);max-width:100vw;display:flex;flex-direction:column;overflow:hidden;background:#3b4a7d;color:#fff;box-shadow:12px 0 30px #0005;font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-drawer .aj-layout-identity{display:flex;align-items:center;gap:13px;padding:29px 20px 17px;flex:none}.aj-layout-avatar{width:52px;height:52px;flex:none;display:grid;place-items:center;border:2px solid #ffffff40;border-radius:50%;background:#dbeafe;color:#1e3a8a;font-size:18px;font-weight:850}\n.aj-layout-status{min-height:46px;display:flex;justify-content:space-between;align-items:center;gap:9px;margin:0 20px 10px;padding:9px 12px;border:1px solid #ffffff33;border-radius:10px;background:#ffffff12;color:#fff;cursor:pointer;font-size:12px;text-align:left}.aj-layout-status[hidden]{display:none!important}.aj-layout-status .aj-status-dot{width:9px;height:9px;flex:none;border-radius:50%;background:#4ade80}.aj-layout-drawer[data-disponibilidade=\"offline\"] .aj-status-dot{background:#b8c0cb}.aj-layout-status b{font-size:12px}.aj-layout-status small{font-size:10px;display:block;color:#bfd4f4}.aj-layout-status-copy{flex:1}\n.aj-layout-drawer .drawer-nav{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;flex:1;overscroll-behavior:contain;padding-bottom:8px}.aj-layout-drawer .drawer-nav button{width:100%;min-height:49px;display:flex;align-items:center;gap:13px;padding:12px 20px;border:0;border-bottom:1px solid #ffffff1d;background:transparent;color:#fff;text-align:left;font:500 13px Inter,\"Segoe UI\",Arial,sans-serif;cursor:pointer}.aj-layout-drawer .drawer-nav button:hover{background:#ffffff15}.aj-layout-drawer .drawer-nav svg{width:19px;height:19px;flex:none;stroke:#bcccec;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.aj-layout-drawer .drawer-nav button strong{font-weight:650;flex:1}.aj-layout-drawer .drawer-nav .aj-subitem{min-height:41px;padding-left:49px;font-size:12px;background:#00000013}.aj-layout-drawer .drawer-nav .aj-subitem svg{width:15px;height:15px}.aj-layout-drawer .drawer-nav .aj-item-hint{margin-left:auto;font-size:10px;opacity:.8}.aj-layout-drawer .drawer-nav .aj-menu-group{background:#ffffff0c}.aj-layout-drawer .drawer-nav .aj-menu-group b{font-size:12px}\n.aj-layout-drawer [data-aj-group-content=\"estudante\"],.aj-layout-drawer [data-aj-group-content=\"escritorio\"]{display:none!important}.aj-layout-drawer[data-estudante-menu=\"aberto\"] [data-aj-group-content=\"estudante\"]{display:flex!important}.aj-layout-drawer[data-escritorio-menu=\"aberto\"] [data-aj-group-content=\"escritorio\"]{display:flex!important}\n.aj-layout-drawer[data-plano=\"sem_plano\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"pendente\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"vencido\"] [data-aj-protegido]{opacity:.52}\n.aj-layout-drawer[data-oab=\"restricted\"] [data-aj-oab-only=\"enabled\"]{opacity:.5}\n.aj-layout-drawer[data-permissao=\"auditor\"] [data-aj-admin-only=\"gestor\"],.aj-layout-drawer[data-permissao=\"operador\"] [data-aj-admin-only=\"gestor\"]{opacity:.5}\n.aj-layout-drawer[data-vinculo-escritorio=\"sem_escritorio\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"convite_pendente\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"suspenso\"] [data-aj-requer-escritorio]{opacity:.5}\n.aj-layout-drawer .aj-layout-footer{padding:14px 20px 23px;background:#00000019;flex:none;font-size:11px}.aj-layout-footer-row{display:flex;justify-content:space-between;align-items:center;gap:10px}.aj-layout-footer button{border:0;background:transparent;color:#fff;font-size:13px;padding:6px 0;cursor:pointer}.aj-layout-footer small{font-size:10px;color:#b0c2df}.aj-layout-emergency{width:100%;margin-top:12px;padding:10px!important;border:1px solid #ffffff80!important;border-radius:99px!important;font-weight:750!important}\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.advogado.configuracao.validacao_oab.online",
+      "inicial": "true",
+      "opcoes": {
+        "false": {
+          "id": "estado.advogado.configuracao.validacao_oab.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.advogado.configuracao.validacao_oab.online.true",
+          "alvos": []
+        }
+      }
+    },
+    "oabValidationState": {
+      "id": "estado.advogado.configuracao.validacao_oab.oabValidationState",
+      "inicial": "pending",
+      "opcoes": {
+        "pending": {
+          "id": "estado.advogado.configuracao.validacao_oab.oabValidationState.pending",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.validacao_oab.advogado.configuracao.configuracao.b1.13.main.12.n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": null
+        },
+        "destinoRef": "advogado.configuracao.configuracao",
+        "status": "pendente_vinculo_evento"
+      },
+      {
+        "id": "rota.advogado.configuracao.validacao_oab.advogado.configuracao.configuracao.b1.13.main.12.n0147",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": null
+        },
+        "destinoRef": "advogado.configuracao.configuracao",
+        "status": "pendente_vinculo_evento"
+      },
+      {
+        "id": "rota.advogado.configuracao.validacao_oab.advogado.configuracao.configuracao.button",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": null
+        },
+        "destinoRef": "advogado.configuracao.configuracao",
+        "status": "pendente_vinculo_evento"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

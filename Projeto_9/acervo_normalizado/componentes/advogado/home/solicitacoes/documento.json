@@ -1,0 +1,592 @@
+{
+  "identidade": {
+    "id": "advogado.home.solicitacoes",
+    "tipo": "componente",
+    "nome": "advogado.home.solicitacoes"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/home/solicitacoes/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "home",
+            "numero": "2.4",
+            "nome": "Home única e capabilities"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "actions.e001",
+      "elementos": {
+        "actions.e001": {
+          "tag": "section",
+          "paiRef": null,
+          "ordem": 10,
+          "atributos": {
+            "class": "requests-block",
+            "data-component": "actions"
+          },
+          "texto": ""
+        },
+        "actions.e002": {
+          "tag": "div",
+          "paiRef": "actions.e001",
+          "ordem": 10,
+          "atributos": {
+            "class": "requests-heading"
+          },
+          "texto": ""
+        },
+        "actions.e003": {
+          "tag": "div",
+          "paiRef": "actions.e002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e004": {
+          "tag": "h2",
+          "paiRef": "actions.e003",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e005": {
+          "tag": "p",
+          "paiRef": "actions.e003",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e006": {
+          "tag": "div",
+          "paiRef": "actions.e001",
+          "ordem": 20,
+          "atributos": {
+            "class": "requests-list"
+          },
+          "texto": ""
+        },
+        "actions.e007": {
+          "tag": "button",
+          "paiRef": "actions.e006",
+          "ordem": 10,
+          "atributos": {
+            "type": "button",
+            "class": "request-card",
+            "data-index": "0"
+          },
+          "texto": ""
+        },
+        "actions.e008": {
+          "tag": "div",
+          "paiRef": "actions.e007",
+          "ordem": 10,
+          "atributos": {
+            "class": "request-top"
+          },
+          "texto": ""
+        },
+        "actions.e009": {
+          "tag": "span",
+          "paiRef": "actions.e008",
+          "ordem": 10,
+          "atributos": {
+            "class": "request-priority"
+          },
+          "texto": ""
+        },
+        "actions.e010": {
+          "tag": "span",
+          "paiRef": "actions.e008",
+          "ordem": 20,
+          "atributos": {
+            "class": "request-time"
+          },
+          "texto": ""
+        },
+        "actions.e011": {
+          "tag": "h3",
+          "paiRef": "actions.e007",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e012": {
+          "tag": "p",
+          "paiRef": "actions.e007",
+          "ordem": 30,
+          "atributos": {
+            "class": "request-meta"
+          },
+          "texto": ""
+        },
+        "actions.e013": {
+          "tag": "p",
+          "paiRef": "actions.e007",
+          "ordem": 40,
+          "atributos": {
+            "class": "request-summary"
+          },
+          "texto": ""
+        },
+        "actions.e014": {
+          "tag": "span",
+          "paiRef": "actions.e007",
+          "ordem": 50,
+          "atributos": {
+            "class": "request-open"
+          },
+          "texto": ""
+        },
+        "actions.e015": {
+          "tag": "b",
+          "paiRef": "actions.e014",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e016": {
+          "tag": "button",
+          "paiRef": "actions.e006",
+          "ordem": 20,
+          "atributos": {
+            "type": "button",
+            "class": "request-card",
+            "data-index": "1"
+          },
+          "texto": ""
+        },
+        "actions.e017": {
+          "tag": "div",
+          "paiRef": "actions.e016",
+          "ordem": 10,
+          "atributos": {
+            "class": "request-top"
+          },
+          "texto": ""
+        },
+        "actions.e018": {
+          "tag": "span",
+          "paiRef": "actions.e017",
+          "ordem": 10,
+          "atributos": {
+            "class": "request-priority"
+          },
+          "texto": ""
+        },
+        "actions.e019": {
+          "tag": "span",
+          "paiRef": "actions.e017",
+          "ordem": 20,
+          "atributos": {
+            "class": "request-time"
+          },
+          "texto": ""
+        },
+        "actions.e020": {
+          "tag": "h3",
+          "paiRef": "actions.e016",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e021": {
+          "tag": "p",
+          "paiRef": "actions.e016",
+          "ordem": 30,
+          "atributos": {
+            "class": "request-meta"
+          },
+          "texto": ""
+        },
+        "actions.e022": {
+          "tag": "p",
+          "paiRef": "actions.e016",
+          "ordem": 40,
+          "atributos": {
+            "class": "request-summary"
+          },
+          "texto": ""
+        },
+        "actions.e023": {
+          "tag": "span",
+          "paiRef": "actions.e016",
+          "ordem": 50,
+          "atributos": {
+            "class": "request-open"
+          },
+          "texto": ""
+        },
+        "actions.e024": {
+          "tag": "b",
+          "paiRef": "actions.e023",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e025": {
+          "tag": "button",
+          "paiRef": "actions.e006",
+          "ordem": 30,
+          "atributos": {
+            "type": "button",
+            "class": "request-card",
+            "data-index": "2"
+          },
+          "texto": ""
+        },
+        "actions.e026": {
+          "tag": "div",
+          "paiRef": "actions.e025",
+          "ordem": 10,
+          "atributos": {
+            "class": "request-top"
+          },
+          "texto": ""
+        },
+        "actions.e027": {
+          "tag": "span",
+          "paiRef": "actions.e026",
+          "ordem": 10,
+          "atributos": {
+            "class": "request-priority"
+          },
+          "texto": ""
+        },
+        "actions.e028": {
+          "tag": "span",
+          "paiRef": "actions.e026",
+          "ordem": 20,
+          "atributos": {
+            "class": "request-time"
+          },
+          "texto": ""
+        },
+        "actions.e029": {
+          "tag": "h3",
+          "paiRef": "actions.e025",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e030": {
+          "tag": "p",
+          "paiRef": "actions.e025",
+          "ordem": 30,
+          "atributos": {
+            "class": "request-meta"
+          },
+          "texto": ""
+        },
+        "actions.e031": {
+          "tag": "p",
+          "paiRef": "actions.e025",
+          "ordem": 40,
+          "atributos": {
+            "class": "request-summary"
+          },
+          "texto": ""
+        },
+        "actions.e032": {
+          "tag": "span",
+          "paiRef": "actions.e025",
+          "ordem": 50,
+          "atributos": {
+            "class": "request-open"
+          },
+          "texto": ""
+        },
+        "actions.e033": {
+          "tag": "b",
+          "paiRef": "actions.e032",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "actions.e004.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Novas solicitações"
+        },
+        "actions.e005.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e005",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "3 aguardando análise"
+        },
+        "actions.e009.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e009",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Prioritário"
+        },
+        "actions.e010.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e010",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "há 8 min"
+        },
+        "actions.e011.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e011",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Direito do Consumidor"
+        },
+        "actions.e012.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e012",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Contato prioritário · São Paulo/SP · Online"
+        },
+        "actions.e013.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Problema com cobrança indevida e tentativa de cancelamento sem solução."
+        },
+        "actions.e014.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e014",
+          "ordem": 9,
+          "atributos": {},
+          "texto": "Ver solicitação"
+        },
+        "actions.e015.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e015",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "›"
+        },
+        "actions.e018.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e018",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Nova"
+        },
+        "actions.e019.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e019",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "há 24 min"
+        },
+        "actions.e020.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e020",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Direito de Família"
+        },
+        "actions.e021.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e021",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Consultoria · Campinas/SP · Online"
+        },
+        "actions.e022.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e022",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Orientação inicial sobre guarda e regulamentação de convivência."
+        },
+        "actions.e023.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e023",
+          "ordem": 9,
+          "atributos": {},
+          "texto": "Ver solicitação"
+        },
+        "actions.e024.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e024",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "›"
+        },
+        "actions.e027.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e027",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Nova"
+        },
+        "actions.e028.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e028",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "há 41 min"
+        },
+        "actions.e029.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e029",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Direito Trabalhista"
+        },
+        "actions.e030.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e030",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Consultoria · São Paulo/SP · Presencial"
+        },
+        "actions.e031.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e031",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Dúvidas sobre verbas rescisórias após desligamento da empresa."
+        },
+        "actions.e032.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e032",
+          "ordem": 9,
+          "atributos": {},
+          "texto": "Ver solicitação"
+        },
+        "actions.e033.texto": {
+          "tag": "#text",
+          "paiRef": "actions.e033",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "›"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "advogado_home_solicitacoes.r0001",
+          "ordem": 10,
+          "css": ".requests-block{display:grid;gap:12px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0002",
+          "ordem": 20,
+          "css": ".requests-heading{display:flex;justify-content:space-between;align-items:end;gap:12px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0003",
+          "ordem": 30,
+          "css": ".requests-heading h2{margin:0;color:var(--primary);font-size:18px;letter-spacing:-.015em}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0004",
+          "ordem": 40,
+          "css": ".requests-heading p{margin:4px 0 0;color:var(--muted);font-size:12px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0005",
+          "ordem": 50,
+          "css": ".requests-list{display:grid;gap:10px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0006",
+          "ordem": 60,
+          "css": ".request-card{width:100%;display:block;padding:15px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--text);text-align:left;box-shadow:0 2px 7px #10233f09}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0007",
+          "ordem": 70,
+          "css": ".request-card:hover{border-color:#8ba9c8}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0008",
+          "ordem": 80,
+          "css": ".request-top{display:flex;justify-content:space-between;align-items:center;gap:10px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0009",
+          "ordem": 90,
+          "css": ".request-priority{display:inline-flex;align-items:center;min-height:24px;padding:3px 9px;border-radius:99px;background:#fff7e8;color:#8a5a08;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.045em}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0010",
+          "ordem": 100,
+          "css": ".request-time{color:var(--muted);font-size:11px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0011",
+          "ordem": 110,
+          "css": ".request-card h3{margin:12px 0 0;color:var(--primary);font-size:16px}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0012",
+          "ordem": 120,
+          "css": ".request-meta{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.45}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0013",
+          "ordem": 130,
+          "css": ".request-summary{margin:11px 0 0;color:#344054;font-size:13px;line-height:1.5}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0014",
+          "ordem": 140,
+          "css": ".request-open{margin-top:13px;display:flex;justify-content:flex-end;align-items:center;gap:6px;color:var(--primary-soft);font-size:12px;font-weight:800}"
+        },
+        {
+          "id": "advogado_home_solicitacoes.r0015",
+          "ordem": 150,
+          "css": ".request-open b{color:var(--gold);font-size:20px;line-height:1}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.actions.e007",
+      "elementoRef": "actions.e007",
+      "evento": "click"
+    },
+    {
+      "id": "event.actions.e016",
+      "elementoRef": "actions.e016",
+      "evento": "click"
+    },
+    {
+      "id": "event.actions.e025",
+      "elementoRef": "actions.e025",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

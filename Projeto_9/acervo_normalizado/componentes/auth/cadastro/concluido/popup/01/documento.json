@@ -1,0 +1,81 @@
+{
+  "identidade": {
+    "id": "auth.cadastro.concluido.popup.01",
+    "tipo": "componente",
+    "nome": "auth.cadastro.concluido.popup.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/auth/cadastro/concluido/popup/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "auth"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "cadastro",
+            "numero": "1.2",
+            "nome": "Cadastro comum"
+          }
+        ]
+      },
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "cadastro",
+            "numero": "2.2",
+            "nome": "Cadastro comum"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.14.popup.13.n0000",
+      "elementos": {
+        "b1.14.popup.13.n0000": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 13,
+          "atributos": {
+            "class": "aj08-static-note"
+          },
+          "texto": ""
+        },
+        "b1.14.popup.13.n0000.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.popup.13.n0000",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "auth.cadastro.concluido · tela isolada · 08"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "identidade": {
+    "id": "auth.global.boas_vindas",
+    "tipo": "tela",
+    "namespace": "auth.global",
+    "nome": "Boas-vindas",
+    "nomeExibicao": "Boas-vindas"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/auth/global/boas_vindas/documento.json"
+    },
+    "jornadaRefs": [
+      "global.acesso"
+    ],
+    "subjornadaRefs": [
+      "global.acesso.inicializacao"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "auth.global.boas_vindas.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "id": "screen.root"
+        },
+        "screen.content": {
+          "componenteRef": "auth.global.boas_vindas.conteudo",
+          "paiRef": "screen.root",
+          "alvoRef": "auth.global.boas_vindas.layout.e0001",
+          "ordem": 30,
+          "props": {},
+          "id": "screen.content"
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--text": "#172033",
+        "--primary-soft": "#173c6b",
+        "--line": "#dbe3ee"
+      },
+      "regras": [],
+      "folhasRefs": [
+        "layout.estilos.base.v1"
+      ]
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.global.boas_vindas.continuar",
+        "origem": {
+          "instanciaRef": "screen.content",
+          "eventoRef": "continuar"
+        },
+        "destinoRef": "auth.global.sessao.entrar"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

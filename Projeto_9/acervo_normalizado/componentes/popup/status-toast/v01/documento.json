@@ -1,0 +1,76 @@
+{
+  "identidade": {
+    "id": "popup.status-toast.v01",
+    "tipo": "componente",
+    "nome": "popup.status-toast.v01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/popup/status-toast/v01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "popup"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "home",
+            "numero": "2.4",
+            "nome": "Home única e capabilities"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "status_toast.e001",
+      "elementos": {
+        "status_toast.e001": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 10,
+          "atributos": {
+            "class": "status-toast",
+            "data-component": "status-toast",
+            "role": "status",
+            "aria-live": "polite"
+          },
+          "texto": ""
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "popup_status-toast_v01.r0001",
+          "ordem": 10,
+          "css": ".status-toast{position:absolute;left:50%;bottom:30px;z-index:60;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:99px;background:#10233f;color:#fff;box-shadow:0 10px 30px #0003;transition:.2s;font-size:13px;white-space:nowrap}"
+        },
+        {
+          "id": "popup_status-toast_v01.r0002",
+          "ordem": 20,
+          "css": ".status-toast.show{opacity:1;transform:translate(-50%,0)}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

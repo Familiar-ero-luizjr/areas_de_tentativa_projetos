@@ -1,4 +1,4 @@
-# Biblioteca AdvogadoJá V2.1.1 — reconstrução no molde V3
+# Biblioteca AdvogadoJá V2.1 — reconstrução no molde V3
 
 ## Entrega
 192 pastas em `01/telas` e `02/telas`, cada qual com `index.html`, `style.css`, `motor.js` e `documento.json`. O motor é o mesmo em todas. As instâncias referenciam componentes em `componentes/catalogo.json`; os elementos HTML saíram dos JSONs de tela.
@@ -13,6 +13,3 @@
 
 ## Servir
 Na pasta `ADVOGADOJA_BIBLIOTECA_V2_1`, execute `python -m http.server 8765`. Abra uma das telas em `01/telas/.../index.html` ou `02/telas/.../index.html`; a pasta `componentes/catalogo.json` é consumida pelo motor. Use `?debug` para selecionar estados visuais.
-
-## Atualização V2.1.1
-Coleções de 7 componentes foram reconstruídas com os dados de demonstração dos HTMLs V1. Marcadores Handlebars deixam de aparecer na interface. As rotas pendentes permanecem identificadas; homologação visual e funcional ainda é necessária.

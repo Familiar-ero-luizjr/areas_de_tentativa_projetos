@@ -1,0 +1,395 @@
+{
+  "identidade": {
+    "id": "cliente.home.inicio",
+    "tipo": "tela",
+    "namespace": "cliente",
+    "nome": "Início do cliente",
+    "nomeExibicao": "Início do cliente",
+    "descricao": "Hub do Cliente: as funções jurídicas originais continuam disponíveis, e Estudante é item permanente no menu."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/cliente/home/inicio/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "cliente"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "home",
+            "numero": "1.4",
+            "nome": "Home Cliente"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "cliente.home.inicio.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.01": {
+          "componenteRef": "cliente.home.inicio.main.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 11,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.02": {
+          "componenteRef": "cliente.home.inicio.main.02",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 12,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.03": {
+          "componenteRef": "cliente.home.inicio.main.03",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 13,
+          "props": {},
+          "estados": {}
+        },
+        "screen.modal.01": {
+          "componenteRef": "cliente.home.inicio.modal.01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 15,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 10,
+          "props": {
+            "perfil": "Cliente",
+            "notificacoes": "3"
+          },
+          "estados": {
+            "ambiente": "interno"
+          }
+        },
+        "screen.drawer": {
+          "componenteRef": "ui.aj.menu.cliente.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.root",
+          "ordem": 14,
+          "props": {},
+          "estados": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "cliente_home_inicio.r0001",
+          "ordem": 10,
+          "css": ":root{--primary:#10233f;--primary-soft:#173c6b;--gold:#b88932;--page:#eef2f6;--surface:#fff;--line:#dbe3ee;--text:#172033;--muted:#667085;--main-max:720px;--main-padding-x:16px;--main-padding-top:22px;--main-padding-bottom:28px;--section-gap:12px;--nav-desktop-width:210px;font-family:\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}"
+        },
+        {
+          "id": "cliente_home_inicio.r0002",
+          "ordem": 20,
+          "css": "*{box-sizing:border-box}"
+        },
+        {
+          "id": "cliente_home_inicio.r0003",
+          "ordem": 30,
+          "css": "html,body{min-width:320px;min-height:100%;margin:0}"
+        },
+        {
+          "id": "cliente_home_inicio.r0004",
+          "ordem": 40,
+          "css": "body{min-height:100dvh;background:var(--page);color:var(--text);overflow-x:hidden}"
+        },
+        {
+          "id": "cliente_home_inicio.r0005",
+          "ordem": 50,
+          "css": "#screen-root,.screen-runtime{min-height:100dvh;background:var(--page)}"
+        },
+        {
+          "id": "cliente_home_inicio.r0006",
+          "ordem": 60,
+          "css": "screen-section{display:block;width:100%}"
+        },
+        {
+          "id": "cliente_home_inicio.r0007",
+          "ordem": 70,
+          "css": ".screen-slot{min-width:0;width:100%}"
+        },
+        {
+          "id": "cliente_home_inicio.r0008",
+          "ordem": 80,
+          "css": ".screen-slot--header{position:sticky;top:0;z-index:30;background:var(--page)}"
+        },
+        {
+          "id": "cliente_home_inicio.r0009",
+          "ordem": 90,
+          "css": ".screen-slot--header>screen-section+screen-section{margin-top:0}"
+        },
+        {
+          "id": "cliente_home_inicio.r0010",
+          "ordem": 100,
+          "css": ".screen-layout{min-height:calc(100dvh - 1px);display:block}"
+        },
+        {
+          "id": "cliente_home_inicio.r0011",
+          "ordem": 110,
+          "css": ".screen-slot--main{width:min(100%,var(--main-max));margin:0 auto;padding:var(--main-padding-top) var(--main-padding-x) calc(var(--main-padding-bottom) + 76px)}"
+        },
+        {
+          "id": "cliente_home_inicio.r0012",
+          "ordem": 120,
+          "css": ".screen-slot--main>screen-section+screen-section{margin-top:var(--section-gap)}"
+        },
+        {
+          "id": "cliente_home_inicio.r0013",
+          "ordem": 130,
+          "css": ".screen-slot--navigation{position:fixed;z-index:20;right:0;bottom:0;left:0}"
+        },
+        {
+          "id": "cliente_home_inicio.r0014",
+          "ordem": 140,
+          "css": ".screen-slot--navigation:not([data-active=\"true\"]){display:none}"
+        },
+        {
+          "id": "cliente_home_inicio.r0015",
+          "ordem": 150,
+          "css": ".screen-slot--menu,.screen-slot--modal,.screen-slot--popup,.screen-slot--alert{height:0;position:relative;z-index:40}"
+        },
+        {
+          "id": "cliente_home_inicio.r0016",
+          "ordem": 160,
+          "css": ".screen-slot--modal{z-index:50}"
+        },
+        {
+          "id": "cliente_home_inicio.r0017",
+          "ordem": 170,
+          "css": ".screen-slot--popup{z-index:60}"
+        },
+        {
+          "id": "cliente_home_inicio.r0018",
+          "ordem": 180,
+          "css": ".screen-slot--alert{z-index:70}"
+        },
+        {
+          "id": "cliente_home_inicio.r0019",
+          "ordem": 190,
+          "css": "@media(min-width:900px){.screen-layout{display:grid;grid-template-columns:var(--nav-desktop-width) minmax(0,1fr);align-items:start}.screen-runtime:not([data-has-navigation=\"true\"]) .screen-layout{grid-template-columns:minmax(0,1fr)}.screen-slot--navigation{position:sticky;top:0;right:auto;bottom:auto;left:auto;grid-column:1;grid-row:1;align-self:start;min-height:100%;padding-top:18px}.screen-slot--main{grid-column:2;grid-row:1;padding-bottom:var(--main-padding-bottom)}.screen-runtime:not([data-has-navigation=\"true\"]) .screen-slot--main{grid-column:1}}"
+        },
+        {
+          "id": "cliente_home_inicio.r0020",
+          "ordem": 200,
+          "css": ".screen-loading,.screen-error{width:min(100% - 32px,720px);margin:32px auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff;line-height:1.55}"
+        },
+        {
+          "id": "cliente_home_inicio.r0021",
+          "ordem": 210,
+          "css": ".screen-error h1{margin:0 0 8px;color:var(--primary);font-size:20px}"
+        },
+        {
+          "id": "cliente_home_inicio.r0022",
+          "ordem": 220,
+          "css": ".screen-error code{display:block;margin-top:12px;padding:10px;border-radius:8px;background:#eef2f6;overflow-wrap:anywhere}"
+        },
+        {
+          "id": "cliente_home_inicio.r0023",
+          "ordem": 230,
+          "css": ".section-runtime-warning{max-width:var(--main-max,720px);margin:12px auto;padding:12px 14px;border:1px dashed #b8c2cf;border-radius:12px;background:#fff;color:#334155;display:grid;gap:4px}"
+        },
+        {
+          "id": "cliente_home_inicio.r0024",
+          "ordem": 240,
+          "css": ":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}"
+        },
+        {
+          "id": "cliente_home_inicio.r0025",
+          "ordem": 250,
+          "css": "*, *::before, *::after { box-sizing: border-box; }"
+        },
+        {
+          "id": "cliente_home_inicio.r0026",
+          "ordem": 260,
+          "css": "button, input, select, textarea { font: inherit; }"
+        },
+        {
+          "id": "cliente_home_inicio.r0027",
+          "ordem": 270,
+          "css": "button { -webkit-tap-highlight-color: transparent; }"
+        },
+        {
+          "id": "cliente_home_inicio.r0028",
+          "ordem": 280,
+          "css": "a { color: inherit; text-decoration: none; }"
+        },
+        {
+          "id": "cliente_home_inicio.r0029",
+          "ordem": 290,
+          "css": "[hidden] { display: none !important; }"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "cliente.home.inicio.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.ui_aj_header_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.2",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.ui_aj_header_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.3",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0014"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.home.inicio"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0019"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.profissionais.minhas_solicitacoes"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.6",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0024"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.profissionais.contatos_liberados"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.7",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0034"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.configuracao.configuracao"
+      }
+    },
+    {
+      "id": "cliente.home.inicio.link.8",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0041"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "auth.sessao.entrar"
+      }
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "cliente.home.inicio.cenario.1",
+        "nome": "screen.header: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.ambiente": "interno"
+        }
+      },
+      {
+        "id": "cliente.home.inicio.cenario.2",
+        "nome": "screen.header: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.ambiente": "publico"
+        }
+      },
+      {
+        "id": "cliente.home.inicio.cenario.3",
+        "nome": "screen.drawer: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "fechado"
+        }
+      },
+      {
+        "id": "cliente.home.inicio.cenario.4",
+        "nome": "screen.drawer: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.drawer.painel": "aberto"
+        }
+      }
+    ]
+  }
+}

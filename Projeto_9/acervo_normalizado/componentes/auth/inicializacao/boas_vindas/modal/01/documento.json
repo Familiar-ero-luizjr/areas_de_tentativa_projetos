@@ -1,0 +1,179 @@
+{
+  "identidade": {
+    "id": "auth.inicializacao.boas_vindas.modal.01",
+    "tipo": "componente",
+    "nome": "auth.inicializacao.boas_vindas.modal.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/auth/inicializacao/boas_vindas/modal/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "auth"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "1.1",
+            "nome": "Acesso e autenticação"
+          }
+        ]
+      },
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "2.1",
+            "nome": "Acesso e autenticação"
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "numero": 3,
+        "nome": "Administrador",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "3.1",
+            "nome": "Acesso e autorização"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.12.modal.11.n0000",
+      "elementos": {
+        "b1.12.modal.11.n0000": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 11,
+          "atributos": {
+            "class": "aj08-route-modal",
+            "aria-hidden": "true",
+            "role": "dialog",
+            "aria-modal": "true",
+            "aria-label": "Navegação simulada"
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0001": {
+          "tag": "div",
+          "paiRef": "b1.12.modal.11.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "aj08-route-card"
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0002": {
+          "tag": "p",
+          "paiRef": "b1.12.modal.11.n0001",
+          "ordem": 3,
+          "atributos": {
+            "class": "aj08-kicker"
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0004": {
+          "tag": "h2",
+          "paiRef": "b1.12.modal.11.n0001",
+          "ordem": 5,
+          "atributos": {
+            "data-route-title": ""
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0006": {
+          "tag": "p",
+          "paiRef": "b1.12.modal.11.n0001",
+          "ordem": 7,
+          "atributos": {
+            "data-route-text": ""
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0008": {
+          "tag": "code",
+          "paiRef": "b1.12.modal.11.n0001",
+          "ordem": 9,
+          "atributos": {
+            "data-route-code": ""
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0009": {
+          "tag": "button",
+          "paiRef": "b1.12.modal.11.n0001",
+          "ordem": 10,
+          "atributos": {
+            "type": "button",
+            "data-aj08-close": ""
+          },
+          "texto": ""
+        },
+        "b1.12.modal.11.n0002.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.modal.11.n0002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "08 · tela isolada"
+        },
+        "b1.12.modal.11.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.modal.11.n0004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Navegação simulada"
+        },
+        "b1.12.modal.11.n0006.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.modal.11.n0006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Esta ação não abre outra tela nesta biblioteca."
+        },
+        "b1.12.modal.11.n0009.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.modal.11.n0009",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Fechar"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.12.modal.11.n0009",
+      "elementoRef": "b1.12.modal.11.n0009",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

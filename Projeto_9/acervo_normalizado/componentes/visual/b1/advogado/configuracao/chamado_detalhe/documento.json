@@ -1,0 +1,268 @@
+{
+  "identidade": {
+    "id": "visual.b1.advogado.configuracao.chamado_detalhe",
+    "tipo": "componente",
+    "nome": "Detalhes do chamado · composição visual B1"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/visual/b1/advogado/configuracao/chamado_detalhe/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "visual"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "legal",
+            "numero": "2.11",
+            "nome": "Documentos e suporte"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "elementos": {
+        "screen.root": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 1,
+          "atributos": {
+            "class": "screen-runtime b1-screen-runtime"
+          },
+          "texto": ""
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0001",
+          "ordem": 10,
+          "css": ":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0002",
+          "ordem": 20,
+          "css": "*, *::before, *::after { box-sizing: border-box; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0003",
+          "ordem": 30,
+          "css": "button, input, select, textarea { font: inherit; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0004",
+          "ordem": 40,
+          "css": "button { -webkit-tap-highlight-color: transparent; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0005",
+          "ordem": 50,
+          "css": "a { color: inherit; text-decoration: none; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0006",
+          "ordem": 60,
+          "css": "[hidden] { display: none !important; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0007",
+          "ordem": 70,
+          "css": ".prototype-drawer {\n  position: fixed;\n  z-index: 40;\n  inset: 0;\n  display: none;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0008",
+          "ordem": 80,
+          "css": ".prototype-drawer.open { display: block; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0009",
+          "ordem": 90,
+          "css": ".drawer-backdrop {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: rgba(7, 16, 30, .60);\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0010",
+          "ordem": 100,
+          "css": ".drawer-panel {\n  position: absolute;\n  inset: 0 auto 0 0;\n  width: min(80vw, 360px);\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  background: #3b4a7d;\n  color: #fff;\n  box-shadow: 12px 0 30px rgba(0, 0, 0, .32);\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0011",
+          "ordem": 110,
+          "css": ".drawer-top {\n  flex: 0 0 auto;\n  min-height: 106px;\n  padding: 30px 22px 20px;\n  display: flex;\n  align-items: center;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0012",
+          "ordem": 120,
+          "css": ".drawer-identity {\n  min-width: 0;\n  display: flex;\n  gap: 14px;\n  align-items: center;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0013",
+          "ordem": 130,
+          "css": ".drawer-avatar {\n  flex: 0 0 56px;\n  width: 56px;\n  height: 56px;\n  display: grid;\n  place-items: center;\n  border: 2px solid rgba(255, 255, 255, .20);\n  border-radius: 50%;\n  background: #dbeafe;\n  color: #1e3a8a;\n  font-size: 20px;\n  font-weight: 800;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0014",
+          "ordem": 140,
+          "css": ".drawer-profile { min-width: 0; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0015",
+          "ordem": 150,
+          "css": ".drawer-profile strong,\n.drawer-profile small { display: block; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0016",
+          "ordem": 160,
+          "css": ".drawer-profile strong {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 16px;\n  font-weight: 600;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0017",
+          "ordem": 170,
+          "css": ".drawer-profile small {\n  margin-top: 2px;\n  color: #bfdbfe;\n  font-size: 11px;\n  font-weight: 400;\n  text-transform: lowercase;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0018",
+          "ordem": 180,
+          "css": ".drawer-online {\n  flex: 0 0 auto;\n  width: calc(100% - 44px);\n  margin: 0 22px 10px;\n  display: grid;\n  grid-template-columns: auto 1fr auto;\n  gap: 10px;\n  align-items: center;\n  border: 1px solid rgba(255, 255, 255, .18);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: rgba(255, 255, 255, .08);\n  color: #fff;\n  text-align: left;\n  cursor: pointer;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0019",
+          "ordem": 190,
+          "css": ".drawer-online-copy strong,\n.drawer-online-copy small { display: block; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0020",
+          "ordem": 200,
+          "css": ".drawer-online-copy strong { font-size: 13px; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0021",
+          "ordem": 210,
+          "css": ".drawer-online-copy small { margin-top: 2px; color: #bfdbfe; font-size: 10px; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0022",
+          "ordem": 220,
+          "css": ".online-dot {\n  width: 9px;\n  height: 9px;\n  border-radius: 50%;\n  background: #4ade80;\n  box-shadow: 0 0 0 4px rgba(74, 222, 128, .14);\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0023",
+          "ordem": 230,
+          "css": ".drawer-online.is-offline .online-dot { background: #98a2b3; box-shadow: none; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0024",
+          "ordem": 240,
+          "css": ".online-switch { position: relative; width: 38px; height: 22px; border-radius: 999px; background: #22c55e; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0025",
+          "ordem": 250,
+          "css": ".online-switch b { position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0026",
+          "ordem": 260,
+          "css": ".drawer-online.is-offline .online-switch { background: #64748b; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0027",
+          "ordem": 270,
+          "css": ".drawer-online.is-offline .online-switch b { right: 19px; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0028",
+          "ordem": 280,
+          "css": ".drawer-nav {\n  flex: 1 1 auto;\n  min-height: 0;\n  display: block;\n  margin: 0;\n  padding: 0 0 8px;\n  overflow-x: hidden;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  -webkit-overflow-scrolling: touch;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(255, 255, 255, .35) transparent;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0029",
+          "ordem": 290,
+          "css": ".drawer-nav::-webkit-scrollbar { width: 5px; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0030",
+          "ordem": 300,
+          "css": ".drawer-nav::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(255, 255, 255, .35); }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0031",
+          "ordem": 310,
+          "css": ".drawer-nav button {\n  width: 100%;\n  min-height: 51px;\n  padding: 14px 22px;\n  border: 0;\n  border-bottom: 1px solid rgba(255, 255, 255, .10);\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  text-align: left;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0032",
+          "ordem": 320,
+          "css": ".drawer-nav button:hover { background: rgba(255, 255, 255, .08); }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0033",
+          "ordem": 330,
+          "css": ".drawer-icon { flex: 0 0 20px; width: 20px; height: 20px; color: #aebee5; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0034",
+          "ordem": 340,
+          "css": ".drawer-footer {\n  flex: 0 0 auto;\n  margin-top: 0;\n  padding: 16px 22px 30px;\n  display: flex;\n  flex-direction: column;\n  gap: 22px;\n  background: rgba(0, 0, 0, .10);\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0035",
+          "ordem": 350,
+          "css": ".drawer-footer-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0036",
+          "ordem": 360,
+          "css": ".drawer-logout {\n  min-height: 32px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: #f8fafc;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  font-size: 14px;\n  cursor: pointer;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0037",
+          "ordem": 370,
+          "css": ".drawer-logout svg { width: 18px; height: 18px; color: #aebee5; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0038",
+          "ordem": 380,
+          "css": ".drawer-footer small { color: #aebee5; font-size: 10px; }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0039",
+          "ordem": 390,
+          "css": ".drawer-emergency {\n  min-height: 41px;\n  border: 1px solid rgba(255, 255, 255, .54);\n  border-radius: 999px;\n  background: transparent;\n  color: #fff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n}"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0040",
+          "ordem": 400,
+          "css": ".drawer-emergency:hover { background: rgba(255, 255, 255, .08); }"
+        },
+        {
+          "id": "visual_b1_advogado_configuracao_chamado_detalhe.r0041",
+          "ordem": 410,
+          "css": "@media (max-width: 420px) {\n  .drawer-panel { width: 80vw; }\n  .drawer-top { padding-top: 24px; }\n}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

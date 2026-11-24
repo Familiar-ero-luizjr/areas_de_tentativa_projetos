@@ -1,0 +1,172 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recuperar senha — Estudo JSON AdvogadoJá</title><style>
+:root{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#1b2b45;background:#f1f5fb}
+*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}button{cursor:pointer}a{color:#2165b5;text-decoration:none}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #9cc8ff;outline-offset:2px}
+.header{padding:15px 22px;display:flex;align-items:center;gap:12px;justify-content:space-between;background:white;border-bottom:1px solid #dce4ef;flex-wrap:wrap}
+.header h1{margin:4px 0 0;font-size:20px;letter-spacing:-.03em}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#256bc1}.subtle{color:#697c93;font-size:12px}
+.actions,.tabbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.btn{font-size:12px;font-weight:700;padding:9px 12px;border:1px solid #d2dfed;border-radius:9px;background:#fff;color:#29405e}.btn.active,.btn.primary{color:#fff;border-color:#1c64b9;background:#2169c4}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;max-width:1760px;margin:0 auto;min-height:calc(100vh - 100px)}.stage{padding:18px 20px;min-width:0}.inspector{border-left:1px solid #dbe4ef;background:#fff;padding:16px;min-width:0}
+.viewport-shell{width:100%;min-height:650px;background:#fff;outline:1px solid #d4deeb;border-radius:12px;overflow:hidden;box-shadow:0 15px 38px #18324d11;}
+#viewport{width:100%;height:100%;min-height:650px;max-width:390px;margin:auto;transition:max-width .2s;border-left:1px solid #ecf0f5;border-right:1px solid #ecf0f5;background:#eef2f6}
+#viewport::before{content:none}#viewport:empty{min-height:80vh}.stage-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap}.inspector h2{font-size:14px;margin:6px 0 12px}.inspector h3{font-size:12px;color:#49617f;margin:16px 0 9px}
+.panel{display:none}.panel:not([hidden]){display:block}.state-row{display:flex;flex-direction:column;gap:4px;padding:8px 0;border-bottom:1px solid #edf1f8}.state-row span{overflow-wrap:anywhere;font:11px/1.5 ui-monospace,monospace;color:#536780}.state-row select{padding:8px;border:1px solid #d3deed;border-radius:8px;background:white;font-size:12px}
+.route-row{font:11px/1.55 ui-monospace,monospace;padding:8px 0;overflow-wrap:anywhere;border-bottom:1px solid #edf0f5}.json{white-space:pre-wrap;word-break:break-word;background:#101e30;color:#e8f0fc;padding:13px;border-radius:8px;max-height:70vh;overflow:auto;font:10px/1.6 ui-monospace,monospace}.scenario{border:1px solid #dce7f5;border-radius:6px;padding:7px 8px;font-size:11px;background:#eff6ff;color:#235393;display:inline-block;margin:3px}.notice{padding:9px 13px;background:#fffaf0;color:#78571f;border:1px solid #eeddb8;border-radius:9px;font-size:11px;line-height:1.6}.statusbar{margin-top:12px;font-size:12px;color:#375475;min-height:34px}.statusbar.bad{color:#ab3449}
+[hidden]{display:none!important}
+@media(max-width:960px){.grid{grid-template-columns:1fr}.inspector{border-left:0;border-top:1px solid #dbe4ef}.stage{padding:12px}.header{padding:12px}.viewport-shell{min-height:510px}}
+</style></head><body>
+<header class="header"><div><div class="eyebrow">AdvogadoJá · Contrato canônico UI · referência V1</div><h1 id="id-title">Recuperar senha</h1><span class="subtle" id="id-key">auth.sessao.recuperar_senha</span></div><div class="actions"><a class="btn" href="../../../../index.html">Índice de telas</a><button class="btn primary" id="export-json">Exportar JSON</button></div></header>
+<div class="grid"><main class="stage"><div class="stage-bar"><span class="subtle">Visualização isolada · nenhum clique abre outra tela</span><div class="actions"><button class="btn active" data-width="mobile">Mobile</button><button class="btn" data-width="desktop">Ampliada</button><button class="btn" id="reset-states">Restaurar estados</button></div></div><div class="viewport-shell"><div id="viewport"></div></div><p id="status" class="statusbar" role="status">Pronto: interações e estados são simulados nesta tela.</p><p class="notice">Fonte de conteúdo: acervo Projeto 9. Header/menu: padrão visual das Homes V1. Ações funcionais reais e fidelidade visual por tela exigem homologação.</p></main>
+<aside class="inspector"><div class="tabbar"><button class="btn active" data-panel="estados">Estados <b id="state-count"></b></button><button class="btn" data-panel="interacoes">Interações <b id="link-count"></b></button><button class="btn" data-panel="json">JSON</button></div>
+<section data-content="estados"><h2>Estados das instâncias</h2><div id="state-controls"></div><h3>Cenários de referência</h3><div id="scenario-controls"></div></section>
+<section data-content="interacoes" hidden><h2>Relações internas e destinos registrados</h2><div id="routes"></div></section>
+<section data-content="json" hidden><h2>Contrato completo desta visualização</h2><p class="subtle">A cópia embutida resolve os componentes apenas para execução offline. Os documentos canônicos estão separados na pasta componentes.</p><pre class="json" id="json-view"></pre></section>
+</aside></div><script type="application/json" id="context-json">[]</script><script type="application/json" id="embedded-json">{"schema":"advogadoja.ui.bundle","schemaVersion":"1.0.0","telas":{"auth.sessao.recuperar_senha":{"identidade":{"id":"auth.sessao.recuperar_senha","tipo":"tela","namespace":"auth","nome":"Recuperar senha","nomeExibicao":"Recuperar senha","descricao":"Solicitar recuperação de senha (simulada)."},"classificacao":{"localizacao":{"caminho":"telas/auth/sessao/recuperar_senha/documento.json"},"escopo":{"perfilRef":"auth"},"jornadas":[{"id":"cliente","numero":1,"nome":"Cliente + Estudante","subjornadas":[{"id":"acesso","numero":"1.1","nome":"Acesso e autenticação"}]},{"id":"advogado","numero":2,"nome":"Advogado","subjornadas":[{"id":"acesso","numero":"2.1","nome":"Acesso e autenticação"}]},{"id":"admin","numero":3,"nome":"Administrador","subjornadas":[{"id":"acesso","numero":"3.1","nome":"Acesso e autorização"}]}]},"estrutura":{"html":{"raizRef":"screen.root","composicao":{"screen.root":{"componenteRef":"visual.b1.auth.sessao.recuperar_senha","paiRef":null,"alvoRef":null,"ordem":1,"props":{},"estados":{}},"screen.main.01":{"componenteRef":"auth.sessao.recuperar_senha.content.01","paiRef":"screen.root","alvoRef":"screen.root","ordem":10,"props":{},"estados":{}},"screen.header.v1":{"componenteRef":"ui.aj.header.v1","paiRef":"screen.root","alvoRef":"screen.root","ordem":-10,"props":{"perfil":"","notificacoes":"3"},"estados":{"ambiente":"publico"}}}},"css":{"tokens":{"--primary":"#10233f","--gold":"#b88932","--page":"#eef2f6","--surface":"#fff","--line":"#dbe3ee","--text":"#172033","--muted":"#667085"},"regras":[]}},"estados":{},"variantes":[],"interacoes":[{"id":"auth.sessao.recuperar_senha.link.1","origem":{"instanciaRef":"screen.header.v1","eventoRef":"event.ui_aj_header_v1.e0013"},"efeito":{"tipo":"navegar","destinoRef":"notificacoes.lista.notificacoes"}}],"dados":{"fontes":[],"operacoes":[]},"mocks":{"cenarios":[{"id":"auth.sessao.recuperar_senha.cenario.1","nome":"screen.header.v1: ambiente=interno","tipo":"estado_visual","valores":{"screen.header.v1.ambiente":"interno"}},{"id":"auth.sessao.recuperar_senha.cenario.2","nome":"screen.header.v1: ambiente=publico","tipo":"estado_visual","valores":{"screen.header.v1.ambiente":"publico"}}]}}},"componentes":{"auth.sessao.recuperar_senha.content.01":{"identidade":{"id":"auth.sessao.recuperar_senha.content.01","tipo":"componente","nome":"Recuperar senha · composição visual B1"},"classificacao":{"localizacao":{"caminho":"componentes/auth/sessao/recuperar_senha/content/01/documento.json"},"escopo":{"perfilRef":"auth"},"jornadas":[{"id":"cliente","numero":1,"nome":"Cliente + Estudante","subjornadas":[{"id":"acesso","numero":"1.1","nome":"Acesso e autenticação"}]},{"id":"advogado","numero":2,"nome":"Advogado","subjornadas":[{"id":"acesso","numero":"2.1","nome":"Acesso e autenticação"}]},{"id":"admin","numero":3,"nome":"Administrador","subjornadas":[{"id":"acesso","numero":"3.1","nome":"Acesso e autorização"}]}]},"estrutura":{"html":{"raizRef":"atual.draft.root","elementos":{"atual.draft.root":{"tag":"div","paiRef":null,"ordem":10,"atributos":{"class":"draft-root"},"texto":""},"atual.draft.header":{"tag":"header","paiRef":"atual.draft.root","ordem":1,"atributos":{"class":"draft-header"},"texto":""},"atual.draft.main":{"tag":"main","paiRef":"atual.draft.root","ordem":2,"atributos":{"class":"draft-main"},"texto":""},"atual.draft.title":{"tag":"h1","paiRef":"atual.draft.main","ordem":1,"atributos":{},"texto":""},"atual.draft.desc":{"tag":"p","paiRef":"atual.draft.main","ordem":2,"atributos":{},"texto":""},"atual.draft.note":{"tag":"p","paiRef":"atual.draft.main","ordem":3,"atributos":{"class":"draft-note"},"texto":""},"atual.draft.header.texto":{"tag":"#text","paiRef":"atual.draft.header","ordem":10,"atributos":{},"texto":"AdvogadoJá · Rascunho"},"atual.draft.title.texto":{"tag":"#text","paiRef":"atual.draft.title","ordem":10,"atributos":{},"texto":"Recuperar senha"},"atual.draft.desc.texto":{"tag":"#text","paiRef":"atual.draft.desc","ordem":10,"atributos":{},"texto":"Solicitar recuperação de senha (simulada)."},"atual.draft.note.texto":{"tag":"#text","paiRef":"atual.draft.note","ordem":10,"atributos":{},"texto":"Interface provisória para revisão. Nenhuma função de produção foi homologada."}},"vinculos":[],"colecoes":[],"condicionais":[]},"css":{"tokens":{},"regras":[{"id":"auth_sessao_recuperar_senha_content_01.r0001","ordem":10,"css":".draft-root{font:14px/1.5 system-ui,sans-serif;background:#f2f6fb;min-height:100vh;color:#192b43}"},{"id":"auth_sessao_recuperar_senha_content_01.r0002","ordem":20,"css":".draft-header{background:#10233f;color:white;padding:18px;font-weight:700}"},{"id":"auth_sessao_recuperar_senha_content_01.r0003","ordem":30,"css":".draft-main{padding:25px 20px}"},{"id":"auth_sessao_recuperar_senha_content_01.r0004","ordem":40,"css":".draft-main h1{font-size:22px;margin:0 0 12px}"},{"id":"auth_sessao_recuperar_senha_content_01.r0005","ordem":50,"css":".draft-note{border:1px dashed #b88932;padding:12px;border-radius:10px;color:#845b20;background:#fff8e8}"}]}},"estados":{},"variantes":[],"interacoes":[],"dados":{"fontes":[],"operacoes":[]},"mocks":{"cenarios":[]}},"ui.aj.header.v1":{"identidade":{"id":"ui.aj.header.v1","tipo":"componente","nome":"ui.aj.header.v1"},"classificacao":{"localizacao":{"caminho":"componentes/ui/aj/header/v1/documento.json"},"escopo":{"perfilRef":"comum"},"jornadas":[]},"estrutura":{"html":{"raizRef":"ui_aj_header_v1.e0001","elementos":{"ui_aj_header_v1.e0001":{"tag":"header","paiRef":null,"ordem":10,"atributos":{"class":"app-header","data-aj-header":"v1"},"texto":""},"ui_aj_header_v1.e0002":{"tag":"button","paiRef":"ui_aj_header_v1.e0001","ordem":10,"atributos":{"class":"app-menu-button","type":"button","data-action":"drawer.open","aria-label":"Abrir menu"},"texto":""},"ui_aj_header_v1.e0003":{"tag":"span","paiRef":"ui_aj_header_v1.e0002","ordem":10,"atributos":{},"texto":""},"ui_aj_header_v1.e0004":{"tag":"span","paiRef":"ui_aj_header_v1.e0002","ordem":20,"atributos":{},"texto":""},"ui_aj_header_v1.e0005":{"tag":"span","paiRef":"ui_aj_header_v1.e0002","ordem":30,"atributos":{},"texto":""},"ui_aj_header_v1.e0006":{"tag":"div","paiRef":"ui_aj_header_v1.e0001","ordem":20,"atributos":{"class":"app-brand"},"texto":""},"ui_aj_header_v1.e0007":{"tag":"img","paiRef":"ui_aj_header_v1.e0006","ordem":10,"atributos":{"src":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K","alt":""},"texto":""},"ui_aj_header_v1.e0008":{"tag":"div","paiRef":"ui_aj_header_v1.e0006","ordem":20,"atributos":{"class":"app-brand-copy"},"texto":""},"ui_aj_header_v1.e0009":{"tag":"strong","paiRef":"ui_aj_header_v1.e0008","ordem":10,"atributos":{},"texto":""},"ui_aj_header_v1.e0010":{"tag":"#text","paiRef":"ui_aj_header_v1.e0009","ordem":10,"atributos":{},"texto":"AdvogadoJá+"},"ui_aj_header_v1.e0011":{"tag":"small","paiRef":"ui_aj_header_v1.e0008","ordem":20,"atributos":{},"texto":""},"ui_aj_header_v1.e0012":{"tag":"#text","paiRef":"ui_aj_header_v1.e0011","ordem":10,"atributos":{},"texto":"Profissional"},"ui_aj_header_v1.e0013":{"tag":"button","paiRef":"ui_aj_header_v1.e0001","ordem":30,"atributos":{"class":"app-notifications","type":"button","data-goto":"notificacoes.lista.notificacoes","aria-label":"Abrir notificações"},"texto":""},"ui_aj_header_v1.e0014":{"tag":"svg","paiRef":"ui_aj_header_v1.e0013","ordem":10,"atributos":{"viewbox":"0 0 24 24","aria-hidden":"true"},"texto":""},"ui_aj_header_v1.e0015":{"tag":"path","paiRef":"ui_aj_header_v1.e0014","ordem":10,"atributos":{"d":"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"},"texto":""},"ui_aj_header_v1.e0016":{"tag":"span","paiRef":"ui_aj_header_v1.e0013","ordem":20,"atributos":{"class":"app-notifications-badge"},"texto":""},"ui_aj_header_v1.e0017":{"tag":"#text","paiRef":"ui_aj_header_v1.e0016","ordem":10,"atributos":{},"texto":"2"}},"vinculos":[{"id":"header.v.ui_aj_header_v1.e0012","elementoRef":"ui_aj_header_v1.e0012","alvo":"texto","campo":"props.perfil"},{"id":"header.v.ui_aj_header_v1.e0017","elementoRef":"ui_aj_header_v1.e0017","alvo":"texto","campo":"props.notificacoes"}],"colecoes":[],"condicionais":[]},"css":{"tokens":{},"regras":[{"id":"ui_aj_header_v1.r0001","ordem":10,"css":".app-header {\n  min-height: 64px;\n  display: grid;\n  grid-template-columns: 42px minmax(0,1fr) 42px;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);\n}"},{"id":"ui_aj_header_v1.r0002","ordem":20,"css":".app-menu-button,\n.app-notifications {\n  width: 40px;\n  height: 40px;\n  display: grid;\n  place-content: center;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n  cursor: pointer;\n}"},{"id":"ui_aj_header_v1.r0003","ordem":30,"css":".app-menu-button { gap: 4px; }"},{"id":"ui_aj_header_v1.r0004","ordem":40,"css":".app-menu-button span {\n  width: 20px;\n  height: 2px;\n  border-radius: 9px;\n  background: currentColor;\n}"},{"id":"ui_aj_header_v1.r0005","ordem":50,"css":".app-brand {\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  gap: 9px;\n}"},{"id":"ui_aj_header_v1.r0006","ordem":60,"css":".app-brand img {\n  width: 28px;\n  height: 28px;\n  object-fit: contain;\n  filter: brightness(0) invert(1);\n}"},{"id":"ui_aj_header_v1.r0007","ordem":70,"css":".app-brand-copy { min-width: 0; }"},{"id":"ui_aj_header_v1.r0008","ordem":80,"css":".app-brand-copy strong,\n.app-brand-copy small { display:block; }"},{"id":"ui_aj_header_v1.r0009","ordem":90,"css":".app-brand-copy strong {\n  overflow:hidden;\n  text-overflow:ellipsis;\n  white-space:nowrap;\n  font-size:16px;\n  letter-spacing:-.02em;\n}"},{"id":"ui_aj_header_v1.r0010","ordem":100,"css":".app-brand-copy small {\n  margin-top:1px;\n  font-size:9px;\n  font-weight:800;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  opacity:.72;\n}"},{"id":"ui_aj_header_v1.r0011","ordem":110,"css":".app-notifications {\n  position: relative;\n  justify-self: end;\n}"},{"id":"ui_aj_header_v1.r0012","ordem":120,"css":".app-notifications svg {\n  width: 22px;\n  height: 22px;\n  fill: none;\n  stroke: currentColor;\n  stroke-width: 1.7;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}"},{"id":"ui_aj_header_v1.r0013","ordem":130,"css":".app-notifications-badge {\n  position:absolute;\n  top:4px;\n  right:2px;\n  min-width:16px;\n  height:16px;\n  padding:0 4px;\n  display:grid;\n  place-items:center;\n  border:2px solid var(--primary);\n  border-radius:999px;\n  background:#ef4444;\n  color:#fff;\n  font-size:9px;\n  font-weight:800;\n}"},{"id":"ui_aj_header_v1.r0014","ordem":140,"css":".app-header[data-aj-header=\"v1\"]{position:sticky;top:0;z-index:35;grid-template-columns:42px minmax(0,1fr) 42px;min-height:64px}"},{"id":"ui_aj_header_v1.r0015","ordem":150,"css":".app-header[data-aj-header=\"v1\"] .app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}"},{"id":"ui_aj_header_v1.r0016","ordem":160,"css":".app-header[data-aj-header=\"v1\"] .app-notifications{position:relative}"},{"id":"ui_aj_header_v1.r0017","ordem":170,"css":".app-header[data-aj-header=\"v1\"] .app-notifications-badge{position:absolute;top:2px;right:0;min-width:17px;height:17px;border-radius:20px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:800}"},{"id":"ui_aj_header_v1.r0018","ordem":180,"css":".app-header[data-aj-header=\"v1\"] [hidden]{display:none!important}"},{"id":"ui_aj_header_v1.r0019","ordem":190,"css":".app-header[data-aj-header=\"v1\"] .app-brand-copy{display:flex;flex-direction:column}"},{"id":"ui_aj_header_v1.r0020","ordem":200,"css":".app-header[data-aj-header=\"v1\"] .app-brand-copy strong{font-size:16px;white-space:nowrap}"},{"id":"ui_aj_header_v1.r0021","ordem":210,"css":".app-header[data-aj-header=\"v1\"] .app-brand-copy small{font-size:10px;opacity:.75}"},{"id":"ui_aj_header_v1.r0022","ordem":220,"css":".app-header[data-aj-header=\"v1\"][data-ambiente=\"publico\"] .app-brand{justify-self:center}"},{"id":"ui_aj_header_v1.r0023","ordem":230,"css":".app-header[data-aj-header=\"v1\"][data-ambiente=\"publico\"]{grid-template-columns:42px minmax(0,1fr) 42px}"}]}},"estados":{"ambiente":{"inicial":"interno","opcoes":{"interno":{"alvos":[{"tipo":"elemento","ref":"ui_aj_header_v1.e0001","classes":{},"atributos":{"data-ambiente":"interno"}},{"tipo":"elemento","ref":"ui_aj_header_v1.e0002","classes":{},"atributos":{"hidden":false}},{"tipo":"elemento","ref":"ui_aj_header_v1.e0013","classes":{},"atributos":{"hidden":false}},{"tipo":"elemento","ref":"ui_aj_header_v1.e0011","classes":{},"atributos":{"hidden":false}}]},"publico":{"alvos":[{"tipo":"elemento","ref":"ui_aj_header_v1.e0001","classes":{},"atributos":{"data-ambiente":"publico"}},{"tipo":"elemento","ref":"ui_aj_header_v1.e0002","classes":{},"atributos":{"hidden":true}},{"tipo":"elemento","ref":"ui_aj_header_v1.e0013","classes":{},"atributos":{"hidden":true}},{"tipo":"elemento","ref":"ui_aj_header_v1.e0011","classes":{},"atributos":{"hidden":true}}]}}}},"variantes":[],"interacoes":[{"id":"event.ui_aj_header_v1.e0002","elementoRef":"ui_aj_header_v1.e0002","evento":"click"},{"id":"event.ui_aj_header_v1.e0013","elementoRef":"ui_aj_header_v1.e0013","evento":"click"}],"dados":{"fontes":[],"operacoes":[]},"mocks":{"cenarios":[]}},"visual.b1.auth.sessao.recuperar_senha":{"identidade":{"id":"visual.b1.auth.sessao.recuperar_senha","tipo":"componente","nome":"Recuperar senha · composição visual B1"},"classificacao":{"localizacao":{"caminho":"componentes/visual/b1/auth/sessao/recuperar_senha/documento.json"},"escopo":{"perfilRef":"visual"},"jornadas":[{"id":"cliente","numero":1,"nome":"Cliente + Estudante","subjornadas":[{"id":"acesso","numero":"1.1","nome":"Acesso e autenticação"}]},{"id":"advogado","numero":2,"nome":"Advogado","subjornadas":[{"id":"acesso","numero":"2.1","nome":"Acesso e autenticação"}]},{"id":"admin","numero":3,"nome":"Administrador","subjornadas":[{"id":"acesso","numero":"3.1","nome":"Acesso e autorização"}]}]},"estrutura":{"html":{"raizRef":"screen.root","elementos":{"screen.root":{"tag":"div","paiRef":null,"ordem":1,"atributos":{"class":"screen-runtime b1-screen-runtime"},"texto":""}},"vinculos":[],"colecoes":[],"condicionais":[]},"css":{"tokens":{},"regras":[{"id":"visual_b1_auth_sessao_recuperar_senha.r0001","ordem":10,"css":":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}"},{"id":"visual_b1_auth_sessao_recuperar_senha.r0002","ordem":20,"css":"*, *::before, *::after { box-sizing: border-box; }"},{"id":"visual_b1_auth_sessao_recuperar_senha.r0003","ordem":30,"css":"button, input, select, textarea { font: inherit; }"},{"id":"visual_b1_auth_sessao_recuperar_senha.r0004","ordem":40,"css":"button { -webkit-tap-highlight-color: transparent; }"},{"id":"visual_b1_auth_sessao_recuperar_senha.r0005","ordem":50,"css":"a { color: inherit; text-decoration: none; }"},{"id":"visual_b1_auth_sessao_recuperar_senha.r0006","ordem":60,"css":"[hidden] { display: none !important; }"}]}},"estados":{},"variantes":[],"interacoes":[],"dados":{"fontes":[],"operacoes":[]},"mocks":{"cenarios":[]}}}}</script><script>(()=>{'use strict';
+const B=JSON.parse(document.getElementById('embedded-json').textContent);
+const S=Object.values(B.telas)[0];const C=B.componentes;const copies={};const values={};
+const sh=document.querySelector('#viewport').attachShadow({mode:'open'});
+const q=id=>document.getElementById(id);const status=q('status');
+const initial={...{'--primary':'#10233f','--primary-soft':'#173c6b','--gold':'#b88932','--page':'#eef2f6','--surface':'#fff','--line':'#dbe3ee','--text':'#172033','--muted':'#667085'},...S.estrutura.css.tokens};
+let style=':host{display:block;min-height:100%;background:var(--page,#eef2f6);color:var(--text,#172033);'+Object.entries(initial).map(([k,v])=>`${k}:${v};`).join('')+'}\n*,*::before,*::after{box-sizing:border-box}button,input,select,textarea{font:inherit}button{cursor:pointer}[hidden]{display:none!important}\n';
+// Screen CSS before components, same ownership boundaries as the bundle.
+for(const r of S.estrutura.css.regras||[])style+='\n'+r.css;
+const comp= S.estrutura.html.composicao;
+const refOrder=Object.entries(comp).sort((a,b)=>a[1].ordem-b[1].ordem);
+const unique=[...new Set(refOrder.map(([k,v])=>v.componenteRef))];
+for(const id of unique){const c=C[id];if(!c)continue;
+ for(const r of c.estrutura.css.regras||[])style+='\n'+r.css;
+}
+const styles=document.createElement('style');styles.textContent=style;sh.append(styles);
+const mount=document.createElement('div');mount.id='render-root';sh.append(mount);
+const svgNS='http://www.w3.org/2000/svg';
+const svgTags=new Set(['svg','path','g','circle','rect','line','polygon','polyline','ellipse','defs','lineargradient','stop','mask','clippath','use','symbol','text']);
+function build(ik){
+ const ins=comp[ik],c=C[ins.componenteRef];if(!c)throw Error('Componente ausente: '+ins.componenteRef);
+ const els=c.estrutura.html.elementos,map={},memo=new Set();
+ function create(id,guard=0){
+  if(map[id])return map[id];if(guard>30)throw Error('Ciclo de DOM em '+id);
+  const e=els[id];if(!e)throw Error('Elemento ausente: '+id);
+  let node;
+  if(e.tag==='#text'){node=document.createTextNode(e.texto||'');}
+  else{
+   const t=(e.tag||'div').toLowerCase();const inSVG=svgTags.has(t)||svgTags.has((els[e.paiRef]?.tag||'').toLowerCase());
+   node=inSVG?document.createElementNS(svgNS,t):document.createElement(t);
+   node.dataset.uiNode=id;
+   for(const [attr,val] of Object.entries(e.atributos||{})){
+    if(attr==='hidden'&&String(val)==='false')continue;
+    if(attr.startsWith('on')||attr==='srcdoc'||attr==='formaction')continue;
+    if((attr==='href'||attr==='src')&&/^\s*(javascript:|https?:\/\/)/i.test(String(val)))continue;
+    try{node.setAttribute(attr,String(val));}catch(_){/* malformed legacy attribute */}
+   }
+  }
+  map[id]=node;
+  const kids=Object.keys(els).filter(k=>els[k].paiRef===id).sort((a,b)=>els[a].ordem-els[b].ordem);
+  for(const child of kids)node.append(create(child,guard+1));
+  return node;
+ }
+ const root=create(c.estrutura.html.raizRef);
+ // Resolve unbound static props without duplicating the header component for each role.
+ for(const binding of c.estrutura.html.vinculos||[]){
+  let v=ins.props;const parts=binding.campo.split('.').slice(1);
+  for(const part of parts)v=v?.[part];
+  if(v===undefined||v===null)continue;
+  const el=map[binding.elementoRef];if(!el)continue;
+  if(binding.alvo==='texto'&&el.nodeType===Node.TEXT_NODE)el.data=String(v);
+  else if(binding.alvo==='atributo')el.setAttribute(binding.atributo,String(v));
+ }
+ // attach declarative event IDs to actual elements
+ for(const event of c.interacoes||[]){const el=map[event.elementoRef];if(el?.nodeType===1)el.setAttribute('data-ui-eventkey',ik+'|'+event.id);}
+ copies[ik]={root,map,component:c};values[ik]={};
+ return root;
+}
+function attachChildren(pid){
+ const children=Object.entries(comp).filter(([k,v])=>v.paiRef===pid).sort((a,b)=>a[1].ordem-b[1].ordem);
+ for(const [ik,ins] of children){
+  const parent=copies[pid];const target=parent.map[ins.alvoRef]||parent.root;
+  const instance=build(ik);
+  if(ins.componenteRef==='ui.aj.header.v1')target.prepend(instance);else target.append(instance);
+  attachChildren(ik);
+ }
+}
+const rt=S.estrutura.html.raizRef;
+try{mount.append(build(rt));attachChildren(rt)}catch(err){status.textContent='Falha na montagem: '+err.message;status.className='bad';console.error(err);}
+function setState(ik,dim,option,silent=false){
+ const inst=copies[ik];if(!inst)return;
+ const def=inst.component.estados?.[dim];if(!def||!def.opcoes?.[option])return;
+ values[ik][dim]=option;
+ for(const target of def.opcoes[option].alvos||[]){
+  const node=target.tipo==='instancia'?inst.root:inst.map[target.ref];if(!node)continue;
+  if(node.nodeType===1){
+   for(const [name,flag] of Object.entries(target.classes||{}))node.classList.toggle(name,!!flag);
+   for(const [name,v] of Object.entries(target.atributos||{})){
+    if(v===null||v===false)node.removeAttribute(name);
+    else node.setAttribute(name,v===true?'':String(v));
+   }
+  }
+  if(Object.prototype.hasOwnProperty.call(target,'texto')){
+   if(node.nodeType===Node.TEXT_NODE)node.data=target.texto;
+   else {const child=[...node.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);if(child)child.data=target.texto;else node.prepend(document.createTextNode(target.texto));}
+  }
+ }
+ if(!silent){show('Estado alterado: '+ik+' / '+dim+' → '+option);syncStateInputs(ik,dim,option);}
+}
+for(const [ik,obj] of Object.entries(copies)){
+ const d=obj.component.estados||{};
+ for(const [dim,def] of Object.entries(d))setState(ik,dim,comp[ik].estados?.[dim]||def.inicial,true);
+}
+function show(message){status.textContent=message;status.className='';}
+function syncStateInputs(ik,dim,v){const s=document.querySelector(`[data-state-ik="${CSS.escape(ik)}"][data-state-dim="${CSS.escape(dim)}"]`);if(s)s.value=v;}
+function makeStates(){
+ const container=q('state-controls');container.replaceChildren();let n=0;
+ for(const [ik,obj] of Object.entries(copies))for(const [dim,def] of Object.entries(obj.component.estados||{})){
+  n++;const row=document.createElement('label');row.className='state-row';
+  const top=document.createElement('span');top.textContent=ik+'  ·  '+dim;row.append(top);
+  const sel=document.createElement('select');sel.dataset.stateIk=ik;sel.dataset.stateDim=dim;
+  for(const val of Object.keys(def.opcoes||{})){const op=document.createElement('option');op.value=val;op.textContent=val;sel.append(op);}
+  sel.value=values[ik][dim];sel.addEventListener('change',()=>setState(ik,dim,sel.value));row.append(sel);container.append(row);
+ }
+ if(!n){const p=document.createElement('p');p.textContent='Esta tela não possui estados alternativos declarados na fonte.';container.append(p);}
+}
+makeStates();
+const bound=new Map(S.interacoes.map(e=>[e.origem.instanciaRef+'|'+e.origem.eventoRef,e]));
+sh.addEventListener('click',e=>{
+ const element=e.target.closest?.('[data-ui-eventkey],a,button');if(!element)return;
+ e.preventDefault();const key=element.getAttribute('data-ui-eventkey');const link=bound.get(key);
+ if(link){const ef=link.efeito;
+  if(ef.tipo==='definir_estado'){
+   let target=ef.valor;
+   if(element.getAttribute('data-action')==='online.toggle'){
+    const old=values[ef.instanciaRef]?.[ef.dimensao];const choices=Object.keys(copies[ef.instanciaRef].component.estados[ef.dimensao].opcoes);
+    target=choices.find(x=>x!==old)||target;
+   }
+   setState(ef.instanciaRef,ef.dimensao,target);
+  }else if(ef.tipo==='navegar'){show('Relação registrada: '+S.identidade.id+' → '+ef.destinoRef+' (navegação desativada neste estudo).');if(values)closeDrawer();}
+  else show('Efeito declarado: '+ef.tipo);
+ }else{show('Controle identificado, mas sem efeito validado nesta tela.');}
+});
+function closeDrawer(){for(const [ik,obj] of Object.entries(copies))if(obj.component.estados?.painel?.opcoes?.fechado)setState(ik,'painel','fechado',true);syncAll();}
+function syncAll(){for(const [ik,dims] of Object.entries(values))for(const [d,v] of Object.entries(dims))syncStateInputs(ik,d,v);}
+sh.addEventListener('submit',e=>{e.preventDefault();show('Formulário simulado: nenhum dado foi enviado.');});
+const routes=q('routes');routes.replaceChildren();
+for(const l of S.interacoes){const p=document.createElement('div');p.className='route-row';
+ p.textContent=l.origem.instanciaRef+' · '+l.efeito.tipo+(l.id.endsWith('.candidata')?' (sequência inferida)':'')+(l.efeito.destinoRef?' → '+l.efeito.destinoRef:' · '+l.efeito.dimensao+'='+l.efeito.valor);routes.append(p);}
+if(!routes.childElementCount)routes.textContent='Não foram encontradas ligações funcionais explícitas nesta tela.';
+const contextTag=document.getElementById('context-json');
+if(contextTag){const context=JSON.parse(contextTag.textContent);if(context.length){const h=document.createElement('h3');h.textContent='Sequência entre telas (proposta de estudo)';routes.append(h);for(const r of context){const div=document.createElement('div');div.className='route-row';div.textContent=(r.origem===S.identidade.id?'Próxima: '+r.destino:'Anterior: '+r.origem)+' · '+r.evidencia+' · não executa navegação';routes.append(div);}}}
+q('json-view').textContent=JSON.stringify(B,null,2);
+q('id-title').textContent=S.identidade.nome||S.identidade.id;
+q('id-key').textContent=S.identidade.id;
+q('state-count').textContent=String(Object.values(copies).reduce((n,c)=>n+Object.keys(c.component.estados||{}).length,0));
+q('link-count').textContent=String(S.interacoes.length);
+q('reset-states').addEventListener('click',()=>{for(const [ik,o] of Object.entries(copies))for(const [dim,def] of Object.entries(o.component.estados||{}))setState(ik,dim,comp[ik].estados?.[dim]||def.inicial,true);syncAll();show('Estados restaurados para os valores iniciais.');});
+for(const t of document.querySelectorAll('[data-panel]'))t.addEventListener('click',()=>{
+ const name=t.dataset.panel;for(const x of document.querySelectorAll('[data-panel]'))x.classList.toggle('active',x.dataset.panel===name);
+ for(const x of document.querySelectorAll('[data-content]'))x.hidden=x.dataset.content!==name;
+});
+for(const t of document.querySelectorAll('[data-width]'))t.addEventListener('click',()=>{
+ q('viewport').style.maxWidth=t.dataset.width==='mobile'?'390px':'100%';for(const x of document.querySelectorAll('[data-width]'))x.classList.toggle('active',x===t);
+});
+q('export-json').addEventListener('click',()=>{
+ const a=document.createElement('a');const b=new Blob([JSON.stringify(S,null,2)+'\n'],{type:'application/json'});a.href=URL.createObjectURL(b);a.download=S.identidade.id+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+});
+for(const s of S.mocks?.cenarios||[]){const b=document.createElement('button');b.className='scenario';b.textContent=s.nome;b.onclick=()=>{for(const [key,value] of Object.entries(s.valores||{})){const bits=key.split('.');const d=bits.pop();const ik=bits.join('.');setState(ik,d,value);} };q('scenario-controls').append(b);}
+})();
+</script></body></html>

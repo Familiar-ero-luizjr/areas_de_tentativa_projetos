@@ -1,0 +1,3425 @@
+{
+  "identidade": {
+    "id": "advogado.assinatura.planos",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Planos",
+    "nomeExibicao": "Planos"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/advogado/assinatura/V1_010_planos/documento.json"
+    },
+    "perfilRef": "advogado",
+    "jornadaRefs": [
+      "advogado"
+    ],
+    "subjornadaRefs": [
+      "advogado.operacao.assinatura"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "advogado.assinatura.planos.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "elementos": {},
+          "eventos": []
+        },
+        "screen.app_header": {
+          "id": "screen.app_header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "elementos": {
+            "screen_app_header.e0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-internal",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "advogado",
+                "data-variante": "autenticado"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0002": {
+              "tag": "button",
+              "paiRef": "screen_app_header.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-icon-button app-menu-button",
+                "type": "button",
+                "data-action": "drawer.open",
+                "aria-label": "Abrir menu"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0003": {
+              "tag": "span",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0004": {
+              "tag": "span",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 40,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0005": {
+              "tag": "span",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0006": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0001",
+              "ordem": 60,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0007": {
+              "tag": "img",
+              "paiRef": "screen_app_header.e0006",
+              "ordem": 70,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0008": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0006",
+              "ordem": 80,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0009": {
+              "tag": "strong",
+              "paiRef": "screen_app_header.e0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0010": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0009",
+              "ordem": 100,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            },
+            "screen_app_header.e0011": {
+              "tag": "small",
+              "paiRef": "screen_app_header.e0008",
+              "ordem": 110,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0012": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0011",
+              "ordem": 120,
+              "atributos": {},
+              "texto": "Profissional"
+            },
+            "screen_app_header.e0013": {
+              "tag": "button",
+              "paiRef": "screen_app_header.e0001",
+              "ordem": 130,
+              "atributos": {
+                "class": "aj-layout-icon-button app-notifications",
+                "type": "button",
+                "data-aj-route": "notificacoes.lista.notificacoes",
+                "aria-label": "Notificações"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0014": {
+              "tag": "svg",
+              "paiRef": "screen_app_header.e0013",
+              "ordem": 140,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0015": {
+              "tag": "path",
+              "paiRef": "screen_app_header.e0014",
+              "ordem": 150,
+              "atributos": {
+                "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0016": {
+              "tag": "span",
+              "paiRef": "screen_app_header.e0013",
+              "ordem": 160,
+              "atributos": {
+                "class": "aj-layout-badge"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0017": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0016",
+              "ordem": 170,
+              "atributos": {},
+              "texto": "2"
+            }
+          },
+          "eventos": []
+        },
+        "screen.titlebar": {
+          "id": "screen.titlebar",
+          "componenteRef": "layout.header.title",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 120,
+          "props": {},
+          "elementos": {
+            "screen_titlebar.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-titlebar",
+                "data-aj-canonical": "layout.header.title"
+              },
+              "texto": ""
+            },
+            "screen_titlebar.e0002": {
+              "tag": "strong",
+              "paiRef": "screen_titlebar.e0001",
+              "ordem": 20,
+              "atributos": {
+                "data-aj-title": ""
+              },
+              "texto": ""
+            },
+            "screen_titlebar.e0003": {
+              "tag": "#text",
+              "paiRef": "screen_titlebar.e0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": "Planos"
+            }
+          },
+          "eventos": []
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "advogado.assinatura.planos.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 230,
+          "props": {},
+          "elementos": {
+            "screen_content.e0001": {
+              "tag": "main",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "plans-shell"
+              },
+              "texto": ""
+            },
+            "screen_content.e0002": {
+              "tag": "section",
+              "paiRef": "screen_content.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "plans-heading"
+              },
+              "texto": ""
+            },
+            "screen_content.e0003": {
+              "tag": "h1",
+              "paiRef": "screen_content.e0002",
+              "ordem": 30,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "Planos"
+            },
+            "screen_content.e0005": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Compare os recursos disponíveis e escolha o plano adequado para sua atuação profissional."
+            },
+            "screen_content.e0007": {
+              "tag": "section",
+              "paiRef": "screen_content.e0001",
+              "ordem": 70,
+              "atributos": {
+                "class": "current-summary",
+                "aria-label": "Plano atual"
+              },
+              "texto": ""
+            },
+            "screen_content.e0008": {
+              "tag": "div",
+              "paiRef": "screen_content.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0009": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0010": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0009",
+              "ordem": 100,
+              "atributos": {},
+              "texto": "Seu plano atual: Profissional"
+            },
+            "screen_content.e0011": {
+              "tag": "span",
+              "paiRef": "screen_content.e0008",
+              "ordem": 110,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0012": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0011",
+              "ordem": 120,
+              "atributos": {},
+              "texto": "Renovação prevista para 19/10/2026."
+            },
+            "screen_content.e0013": {
+              "tag": "span",
+              "paiRef": "screen_content.e0007",
+              "ordem": 130,
+              "atributos": {
+                "class": "current-pill"
+              },
+              "texto": ""
+            },
+            "screen_content.e0014": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0013",
+              "ordem": 140,
+              "atributos": {},
+              "texto": "Ativo"
+            },
+            "screen_content.e0015": {
+              "tag": "section",
+              "paiRef": "screen_content.e0001",
+              "ordem": 150,
+              "atributos": {
+                "class": "plans-grid",
+                "aria-label": "Planos disponíveis"
+              },
+              "texto": ""
+            },
+            "screen_content.e0016": {
+              "tag": "article",
+              "paiRef": "screen_content.e0015",
+              "ordem": 160,
+              "atributos": {
+                "class": "plan-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0017": {
+              "tag": "span",
+              "paiRef": "screen_content.e0016",
+              "ordem": 170,
+              "atributos": {
+                "class": "plan-badge"
+              },
+              "texto": ""
+            },
+            "screen_content.e0018": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0017",
+              "ordem": 180,
+              "atributos": {},
+              "texto": "Entrada"
+            },
+            "screen_content.e0019": {
+              "tag": "h2",
+              "paiRef": "screen_content.e0016",
+              "ordem": 190,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0020": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0019",
+              "ordem": 200,
+              "atributos": {},
+              "texto": "Essencial"
+            },
+            "screen_content.e0021": {
+              "tag": "p",
+              "paiRef": "screen_content.e0016",
+              "ordem": 210,
+              "atributos": {
+                "class": "plan-description"
+              },
+              "texto": ""
+            },
+            "screen_content.e0022": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0021",
+              "ordem": 220,
+              "atributos": {},
+              "texto": "Para começar a receber oportunidades e manter um perfil profissional ativo."
+            },
+            "screen_content.e0023": {
+              "tag": "div",
+              "paiRef": "screen_content.e0016",
+              "ordem": 230,
+              "atributos": {
+                "class": "price"
+              },
+              "texto": ""
+            },
+            "screen_content.e0024": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0023",
+              "ordem": 240,
+              "atributos": {},
+              "texto": "R$ 29,90 "
+            },
+            "screen_content.e0025": {
+              "tag": "small",
+              "paiRef": "screen_content.e0023",
+              "ordem": 250,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0026": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0025",
+              "ordem": 260,
+              "atributos": {},
+              "texto": "/ mês"
+            },
+            "screen_content.e0027": {
+              "tag": "div",
+              "paiRef": "screen_content.e0016",
+              "ordem": 270,
+              "atributos": {
+                "class": "course-access course-none"
+              },
+              "texto": ""
+            },
+            "screen_content.e0028": {
+              "tag": "div",
+              "paiRef": "screen_content.e0027",
+              "ordem": 280,
+              "atributos": {
+                "class": "course-icon"
+              },
+              "texto": ""
+            },
+            "screen_content.e0029": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0028",
+              "ordem": 290,
+              "atributos": {},
+              "texto": "—"
+            },
+            "screen_content.e0030": {
+              "tag": "div",
+              "paiRef": "screen_content.e0027",
+              "ordem": 300,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0031": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0030",
+              "ordem": 310,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0032": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0031",
+              "ordem": 320,
+              "atributos": {},
+              "texto": "Cursos"
+            },
+            "screen_content.e0033": {
+              "tag": "span",
+              "paiRef": "screen_content.e0030",
+              "ordem": 330,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0034": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0033",
+              "ordem": 340,
+              "atributos": {},
+              "texto": "Este plano não inclui acesso aos cursos da parceria educacional."
+            },
+            "screen_content.e0035": {
+              "tag": "div",
+              "paiRef": "screen_content.e0016",
+              "ordem": 350,
+              "atributos": {
+                "class": "features"
+              },
+              "texto": ""
+            },
+            "screen_content.e0036": {
+              "tag": "div",
+              "paiRef": "screen_content.e0035",
+              "ordem": 360,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0037": {
+              "tag": "b",
+              "paiRef": "screen_content.e0036",
+              "ordem": 370,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0038": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0037",
+              "ordem": 380,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0039": {
+              "tag": "span",
+              "paiRef": "screen_content.e0036",
+              "ordem": 390,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0040": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0039",
+              "ordem": 400,
+              "atributos": {},
+              "texto": "Perfil profissional na plataforma"
+            },
+            "screen_content.e0041": {
+              "tag": "div",
+              "paiRef": "screen_content.e0035",
+              "ordem": 410,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0042": {
+              "tag": "b",
+              "paiRef": "screen_content.e0041",
+              "ordem": 420,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0043": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0042",
+              "ordem": 430,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0044": {
+              "tag": "span",
+              "paiRef": "screen_content.e0041",
+              "ordem": 440,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0045": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0044",
+              "ordem": 450,
+              "atributos": {},
+              "texto": "Recebimento de solicitações compatíveis"
+            },
+            "screen_content.e0046": {
+              "tag": "div",
+              "paiRef": "screen_content.e0035",
+              "ordem": 460,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0047": {
+              "tag": "b",
+              "paiRef": "screen_content.e0046",
+              "ordem": 470,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0048": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0047",
+              "ordem": 480,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0049": {
+              "tag": "span",
+              "paiRef": "screen_content.e0046",
+              "ordem": 490,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0050": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0049",
+              "ordem": 500,
+              "atributos": {},
+              "texto": "Agenda e raio básico de atendimento"
+            },
+            "screen_content.e0051": {
+              "tag": "div",
+              "paiRef": "screen_content.e0035",
+              "ordem": 510,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0052": {
+              "tag": "b",
+              "paiRef": "screen_content.e0051",
+              "ordem": 520,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0053": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0052",
+              "ordem": 530,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0054": {
+              "tag": "span",
+              "paiRef": "screen_content.e0051",
+              "ordem": 540,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0055": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0054",
+              "ordem": 550,
+              "atributos": {},
+              "texto": "Notificações essenciais e suporte"
+            },
+            "screen_content.e0056": {
+              "tag": "button",
+              "paiRef": "screen_content.e0016",
+              "ordem": 560,
+              "atributos": {
+                "class": "plan-primary",
+                "type": "button",
+                "data-goto": "advogado.assinatura.checkout"
+              },
+              "texto": ""
+            },
+            "screen_content.e0057": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0056",
+              "ordem": 570,
+              "atributos": {},
+              "texto": "Escolher Essencial"
+            },
+            "screen_content.e0058": {
+              "tag": "article",
+              "paiRef": "screen_content.e0015",
+              "ordem": 580,
+              "atributos": {
+                "class": "plan-card current"
+              },
+              "texto": ""
+            },
+            "screen_content.e0059": {
+              "tag": "span",
+              "paiRef": "screen_content.e0058",
+              "ordem": 590,
+              "atributos": {
+                "class": "plan-badge"
+              },
+              "texto": ""
+            },
+            "screen_content.e0060": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0059",
+              "ordem": 600,
+              "atributos": {},
+              "texto": "Plano atual"
+            },
+            "screen_content.e0061": {
+              "tag": "h2",
+              "paiRef": "screen_content.e0058",
+              "ordem": 610,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0062": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0061",
+              "ordem": 620,
+              "atributos": {},
+              "texto": "Profissional"
+            },
+            "screen_content.e0063": {
+              "tag": "p",
+              "paiRef": "screen_content.e0058",
+              "ordem": 630,
+              "atributos": {
+                "class": "plan-description"
+              },
+              "texto": ""
+            },
+            "screen_content.e0064": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0063",
+              "ordem": 640,
+              "atributos": {},
+              "texto": "Para profissionais que desejam ampliar a operação e acessar benefícios adicionais."
+            },
+            "screen_content.e0065": {
+              "tag": "div",
+              "paiRef": "screen_content.e0058",
+              "ordem": 650,
+              "atributos": {
+                "class": "price"
+              },
+              "texto": ""
+            },
+            "screen_content.e0066": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0065",
+              "ordem": 660,
+              "atributos": {},
+              "texto": "R$ 79,90 "
+            },
+            "screen_content.e0067": {
+              "tag": "small",
+              "paiRef": "screen_content.e0065",
+              "ordem": 670,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0068": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0067",
+              "ordem": 680,
+              "atributos": {},
+              "texto": "/ mês"
+            },
+            "screen_content.e0069": {
+              "tag": "div",
+              "paiRef": "screen_content.e0058",
+              "ordem": 690,
+              "atributos": {
+                "class": "course-access"
+              },
+              "texto": ""
+            },
+            "screen_content.e0070": {
+              "tag": "div",
+              "paiRef": "screen_content.e0069",
+              "ordem": 700,
+              "atributos": {
+                "class": "course-icon"
+              },
+              "texto": ""
+            },
+            "screen_content.e0071": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0070",
+              "ordem": 710,
+              "atributos": {},
+              "texto": "A"
+            },
+            "screen_content.e0072": {
+              "tag": "div",
+              "paiRef": "screen_content.e0069",
+              "ordem": 720,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0073": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0072",
+              "ordem": 730,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0074": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0073",
+              "ordem": 740,
+              "atributos": {},
+              "texto": "Cursos básicos incluídos"
+            },
+            "screen_content.e0075": {
+              "tag": "span",
+              "paiRef": "screen_content.e0072",
+              "ordem": 750,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0076": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0075",
+              "ordem": 760,
+              "atributos": {},
+              "texto": "Acesso ao catálogo educacional de nível básico disponibilizado pela parceria."
+            },
+            "screen_content.e0077": {
+              "tag": "div",
+              "paiRef": "screen_content.e0058",
+              "ordem": 770,
+              "atributos": {
+                "class": "features"
+              },
+              "texto": ""
+            },
+            "screen_content.e0078": {
+              "tag": "div",
+              "paiRef": "screen_content.e0077",
+              "ordem": 780,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0079": {
+              "tag": "b",
+              "paiRef": "screen_content.e0078",
+              "ordem": 790,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0080": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0079",
+              "ordem": 800,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0081": {
+              "tag": "span",
+              "paiRef": "screen_content.e0078",
+              "ordem": 810,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0082": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0081",
+              "ordem": 820,
+              "atributos": {},
+              "texto": "Todos os recursos do Essencial"
+            },
+            "screen_content.e0083": {
+              "tag": "div",
+              "paiRef": "screen_content.e0077",
+              "ordem": 830,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0084": {
+              "tag": "b",
+              "paiRef": "screen_content.e0083",
+              "ordem": 840,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0085": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0084",
+              "ordem": 850,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0086": {
+              "tag": "span",
+              "paiRef": "screen_content.e0083",
+              "ordem": 860,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0087": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0086",
+              "ordem": 870,
+              "atributos": {},
+              "texto": "Raio de atendimento ampliado"
+            },
+            "screen_content.e0088": {
+              "tag": "div",
+              "paiRef": "screen_content.e0077",
+              "ordem": 880,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0089": {
+              "tag": "b",
+              "paiRef": "screen_content.e0088",
+              "ordem": 890,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0090": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0089",
+              "ordem": 900,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0091": {
+              "tag": "span",
+              "paiRef": "screen_content.e0088",
+              "ordem": 910,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0092": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0091",
+              "ordem": 920,
+              "atributos": {},
+              "texto": "Preferências adicionais de notificação"
+            },
+            "screen_content.e0093": {
+              "tag": "div",
+              "paiRef": "screen_content.e0077",
+              "ordem": 930,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0094": {
+              "tag": "b",
+              "paiRef": "screen_content.e0093",
+              "ordem": 940,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0095": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0094",
+              "ordem": 950,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0096": {
+              "tag": "span",
+              "paiRef": "screen_content.e0093",
+              "ordem": 960,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0097": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0096",
+              "ordem": 970,
+              "atributos": {},
+              "texto": "Conveniências operacionais adicionais"
+            },
+            "screen_content.e0098": {
+              "tag": "button",
+              "paiRef": "screen_content.e0058",
+              "ordem": 980,
+              "atributos": {
+                "class": "plan-primary current-button",
+                "type": "button",
+                "data-goto": "advogado.assinatura.gestao_assinatura"
+              },
+              "texto": ""
+            },
+            "screen_content.e0099": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0098",
+              "ordem": 990,
+              "atributos": {},
+              "texto": "Gerenciar assinatura"
+            },
+            "screen_content.e0100": {
+              "tag": "span",
+              "paiRef": "screen_content.e0058",
+              "ordem": 1000,
+              "atributos": {
+                "class": "renewal"
+              },
+              "texto": ""
+            },
+            "screen_content.e0101": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0100",
+              "ordem": 1010,
+              "atributos": {},
+              "texto": "Plano ativo · renovação em 19/10/2026"
+            },
+            "screen_content.e0102": {
+              "tag": "article",
+              "paiRef": "screen_content.e0015",
+              "ordem": 1020,
+              "atributos": {
+                "class": "plan-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0103": {
+              "tag": "span",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1030,
+              "atributos": {
+                "class": "plan-badge"
+              },
+              "texto": ""
+            },
+            "screen_content.e0104": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0103",
+              "ordem": 1040,
+              "atributos": {},
+              "texto": "Avançado"
+            },
+            "screen_content.e0105": {
+              "tag": "h2",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1050,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0106": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0105",
+              "ordem": 1060,
+              "atributos": {},
+              "texto": "Executivo"
+            },
+            "screen_content.e0107": {
+              "tag": "p",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1070,
+              "atributos": {
+                "class": "plan-description"
+              },
+              "texto": ""
+            },
+            "screen_content.e0108": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0107",
+              "ordem": 1080,
+              "atributos": {},
+              "texto": "Para quem busca mais capacidade operacional e acesso educacional ampliado."
+            },
+            "screen_content.e0109": {
+              "tag": "div",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1090,
+              "atributos": {
+                "class": "price"
+              },
+              "texto": ""
+            },
+            "screen_content.e0110": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0109",
+              "ordem": 1100,
+              "atributos": {},
+              "texto": "R$ 119,90 "
+            },
+            "screen_content.e0111": {
+              "tag": "small",
+              "paiRef": "screen_content.e0109",
+              "ordem": 1110,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0112": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0111",
+              "ordem": 1120,
+              "atributos": {},
+              "texto": "/ mês"
+            },
+            "screen_content.e0113": {
+              "tag": "div",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1130,
+              "atributos": {
+                "class": "course-access"
+              },
+              "texto": ""
+            },
+            "screen_content.e0114": {
+              "tag": "div",
+              "paiRef": "screen_content.e0113",
+              "ordem": 1140,
+              "atributos": {
+                "class": "course-icon"
+              },
+              "texto": ""
+            },
+            "screen_content.e0115": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0114",
+              "ordem": 1150,
+              "atributos": {},
+              "texto": "A+"
+            },
+            "screen_content.e0116": {
+              "tag": "div",
+              "paiRef": "screen_content.e0113",
+              "ordem": 1160,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0117": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0116",
+              "ordem": 1170,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0118": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0117",
+              "ordem": 1180,
+              "atributos": {},
+              "texto": "Cursos básicos e avançados"
+            },
+            "screen_content.e0119": {
+              "tag": "span",
+              "paiRef": "screen_content.e0116",
+              "ordem": 1190,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0120": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0119",
+              "ordem": 1200,
+              "atributos": {},
+              "texto": "Acesso ampliado ao catálogo educacional, incluindo conteúdos avançados."
+            },
+            "screen_content.e0121": {
+              "tag": "div",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1210,
+              "atributos": {
+                "class": "features"
+              },
+              "texto": ""
+            },
+            "screen_content.e0122": {
+              "tag": "div",
+              "paiRef": "screen_content.e0121",
+              "ordem": 1220,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0123": {
+              "tag": "b",
+              "paiRef": "screen_content.e0122",
+              "ordem": 1230,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0124": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0123",
+              "ordem": 1240,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0125": {
+              "tag": "span",
+              "paiRef": "screen_content.e0122",
+              "ordem": 1250,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0126": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0125",
+              "ordem": 1260,
+              "atributos": {},
+              "texto": "Todos os recursos do Profissional"
+            },
+            "screen_content.e0127": {
+              "tag": "div",
+              "paiRef": "screen_content.e0121",
+              "ordem": 1270,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0128": {
+              "tag": "b",
+              "paiRef": "screen_content.e0127",
+              "ordem": 1280,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0129": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0128",
+              "ordem": 1290,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0130": {
+              "tag": "span",
+              "paiRef": "screen_content.e0127",
+              "ordem": 1300,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0131": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0130",
+              "ordem": 1310,
+              "atributos": {},
+              "texto": "Raio máximo conforme regra do plano"
+            },
+            "screen_content.e0132": {
+              "tag": "div",
+              "paiRef": "screen_content.e0121",
+              "ordem": 1320,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0133": {
+              "tag": "b",
+              "paiRef": "screen_content.e0132",
+              "ordem": 1330,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0134": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0133",
+              "ordem": 1340,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0135": {
+              "tag": "span",
+              "paiRef": "screen_content.e0132",
+              "ordem": 1350,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0136": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0135",
+              "ordem": 1360,
+              "atributos": {},
+              "texto": "Recursos organizacionais adicionais"
+            },
+            "screen_content.e0137": {
+              "tag": "div",
+              "paiRef": "screen_content.e0121",
+              "ordem": 1370,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0138": {
+              "tag": "b",
+              "paiRef": "screen_content.e0137",
+              "ordem": 1380,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0139": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0138",
+              "ordem": 1390,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0140": {
+              "tag": "span",
+              "paiRef": "screen_content.e0137",
+              "ordem": 1400,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0141": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0140",
+              "ordem": 1410,
+              "atributos": {},
+              "texto": "Suporte diferenciado, se confirmado comercialmente"
+            },
+            "screen_content.e0142": {
+              "tag": "button",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1420,
+              "atributos": {
+                "class": "plan-primary",
+                "type": "button",
+                "data-goto": "advogado.assinatura.checkout"
+              },
+              "texto": ""
+            },
+            "screen_content.e0143": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0142",
+              "ordem": 1430,
+              "atributos": {},
+              "texto": "Escolher Executivo"
+            },
+            "screen_content.e0144": {
+              "tag": "article",
+              "paiRef": "screen_content.e0015",
+              "ordem": 1440,
+              "atributos": {
+                "class": "plan-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0145": {
+              "tag": "span",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1450,
+              "atributos": {
+                "class": "plan-badge"
+              },
+              "texto": ""
+            },
+            "screen_content.e0146": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0145",
+              "ordem": 1460,
+              "atributos": {},
+              "texto": "Equipe"
+            },
+            "screen_content.e0147": {
+              "tag": "h2",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1470,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0148": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0147",
+              "ordem": 1480,
+              "atributos": {},
+              "texto": "Escritório"
+            },
+            "screen_content.e0149": {
+              "tag": "p",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1490,
+              "atributos": {
+                "class": "plan-description"
+              },
+              "texto": ""
+            },
+            "screen_content.e0150": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0149",
+              "ordem": 1500,
+              "atributos": {},
+              "texto": "Para operações com mais de um profissional e recursos de gestão em equipe."
+            },
+            "screen_content.e0151": {
+              "tag": "div",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1510,
+              "atributos": {
+                "class": "price"
+              },
+              "texto": ""
+            },
+            "screen_content.e0152": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0151",
+              "ordem": 1520,
+              "atributos": {},
+              "texto": "R$ 199,90 "
+            },
+            "screen_content.e0153": {
+              "tag": "small",
+              "paiRef": "screen_content.e0151",
+              "ordem": 1530,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0154": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0153",
+              "ordem": 1540,
+              "atributos": {},
+              "texto": "/ mês"
+            },
+            "screen_content.e0155": {
+              "tag": "div",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1550,
+              "atributos": {
+                "class": "course-access"
+              },
+              "texto": ""
+            },
+            "screen_content.e0156": {
+              "tag": "div",
+              "paiRef": "screen_content.e0155",
+              "ordem": 1560,
+              "atributos": {
+                "class": "course-icon"
+              },
+              "texto": ""
+            },
+            "screen_content.e0157": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0156",
+              "ordem": 1570,
+              "atributos": {},
+              "texto": "A+"
+            },
+            "screen_content.e0158": {
+              "tag": "div",
+              "paiRef": "screen_content.e0155",
+              "ordem": 1580,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0159": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0158",
+              "ordem": 1590,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0160": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0159",
+              "ordem": 1600,
+              "atributos": {},
+              "texto": "Cursos básicos e avançados"
+            },
+            "screen_content.e0161": {
+              "tag": "span",
+              "paiRef": "screen_content.e0158",
+              "ordem": 1610,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0162": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0161",
+              "ordem": 1620,
+              "atributos": {},
+              "texto": "Acesso educacional ampliado associado ao nível do plano."
+            },
+            "screen_content.e0163": {
+              "tag": "div",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1630,
+              "atributos": {
+                "class": "features"
+              },
+              "texto": ""
+            },
+            "screen_content.e0164": {
+              "tag": "div",
+              "paiRef": "screen_content.e0163",
+              "ordem": 1640,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0165": {
+              "tag": "b",
+              "paiRef": "screen_content.e0164",
+              "ordem": 1650,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0166": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0165",
+              "ordem": 1660,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0167": {
+              "tag": "span",
+              "paiRef": "screen_content.e0164",
+              "ordem": 1670,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0168": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0167",
+              "ordem": 1680,
+              "atributos": {},
+              "texto": "Criação e gestão de Escritório"
+            },
+            "screen_content.e0169": {
+              "tag": "div",
+              "paiRef": "screen_content.e0163",
+              "ordem": 1690,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0170": {
+              "tag": "b",
+              "paiRef": "screen_content.e0169",
+              "ordem": 1700,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0171": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0170",
+              "ordem": 1710,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0172": {
+              "tag": "span",
+              "paiRef": "screen_content.e0169",
+              "ordem": 1720,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0173": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0172",
+              "ordem": 1730,
+              "atributos": {},
+              "texto": "Equipe jurídica e convites"
+            },
+            "screen_content.e0174": {
+              "tag": "div",
+              "paiRef": "screen_content.e0163",
+              "ordem": 1740,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0175": {
+              "tag": "b",
+              "paiRef": "screen_content.e0174",
+              "ordem": 1750,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0176": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0175",
+              "ordem": 1760,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0177": {
+              "tag": "span",
+              "paiRef": "screen_content.e0174",
+              "ordem": 1770,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0178": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0177",
+              "ordem": 1780,
+              "atributos": {},
+              "texto": "Distribuição interna"
+            },
+            "screen_content.e0179": {
+              "tag": "div",
+              "paiRef": "screen_content.e0163",
+              "ordem": 1790,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0180": {
+              "tag": "b",
+              "paiRef": "screen_content.e0179",
+              "ordem": 1800,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0181": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0180",
+              "ordem": 1810,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0182": {
+              "tag": "span",
+              "paiRef": "screen_content.e0179",
+              "ordem": 1820,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0183": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0182",
+              "ordem": 1830,
+              "atributos": {},
+              "texto": "Recursos organizacionais do Escritório"
+            },
+            "screen_content.e0184": {
+              "tag": "button",
+              "paiRef": "screen_content.e0144",
+              "ordem": 1840,
+              "atributos": {
+                "class": "plan-primary",
+                "type": "button",
+                "data-goto": "advogado.assinatura.checkout"
+              },
+              "texto": ""
+            },
+            "screen_content.e0185": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0184",
+              "ordem": 1850,
+              "atributos": {},
+              "texto": "Escolher Escritório"
+            },
+            "screen_content.e0186": {
+              "tag": "article",
+              "paiRef": "screen_content.e0015",
+              "ordem": 1860,
+              "atributos": {
+                "class": "plan-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0187": {
+              "tag": "span",
+              "paiRef": "screen_content.e0186",
+              "ordem": 1870,
+              "atributos": {
+                "class": "plan-badge"
+              },
+              "texto": ""
+            },
+            "screen_content.e0188": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0187",
+              "ordem": 1880,
+              "atributos": {},
+              "texto": "Empresa"
+            },
+            "screen_content.e0189": {
+              "tag": "h2",
+              "paiRef": "screen_content.e0186",
+              "ordem": 1890,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0190": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0189",
+              "ordem": 1900,
+              "atributos": {},
+              "texto": "Empresa Gold"
+            },
+            "screen_content.e0191": {
+              "tag": "p",
+              "paiRef": "screen_content.e0186",
+              "ordem": 1910,
+              "atributos": {
+                "class": "plan-description"
+              },
+              "texto": ""
+            },
+            "screen_content.e0192": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0191",
+              "ordem": 1920,
+              "atributos": {},
+              "texto": "Para pequenas sociedades de advogados que desejam ampliar a capacidade de atendimento."
+            },
+            "screen_content.e0193": {
+              "tag": "div",
+              "paiRef": "screen_content.e0186",
+              "ordem": 1930,
+              "atributos": {
+                "class": "price"
+              },
+              "texto": ""
+            },
+            "screen_content.e0194": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0193",
+              "ordem": 1940,
+              "atributos": {},
+              "texto": "R$ 139,99 "
+            },
+            "screen_content.e0195": {
+              "tag": "small",
+              "paiRef": "screen_content.e0193",
+              "ordem": 1950,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0196": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0195",
+              "ordem": 1960,
+              "atributos": {},
+              "texto": "/ mês"
+            },
+            "screen_content.e0197": {
+              "tag": "div",
+              "paiRef": "screen_content.e0186",
+              "ordem": 1970,
+              "atributos": {
+                "class": "course-access"
+              },
+              "texto": ""
+            },
+            "screen_content.e0198": {
+              "tag": "div",
+              "paiRef": "screen_content.e0197",
+              "ordem": 1980,
+              "atributos": {
+                "class": "course-icon"
+              },
+              "texto": ""
+            },
+            "screen_content.e0199": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0198",
+              "ordem": 1990,
+              "atributos": {},
+              "texto": "A+"
+            },
+            "screen_content.e0200": {
+              "tag": "div",
+              "paiRef": "screen_content.e0197",
+              "ordem": 2000,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0201": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0200",
+              "ordem": 2010,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0202": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0201",
+              "ordem": 2020,
+              "atributos": {},
+              "texto": "Cursos básicos e avançados"
+            },
+            "screen_content.e0203": {
+              "tag": "span",
+              "paiRef": "screen_content.e0200",
+              "ordem": 2030,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0204": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0203",
+              "ordem": 2040,
+              "atributos": {},
+              "texto": "Acesso educacional ampliado associado ao plano empresarial."
+            },
+            "screen_content.e0205": {
+              "tag": "div",
+              "paiRef": "screen_content.e0186",
+              "ordem": 2050,
+              "atributos": {
+                "class": "features"
+              },
+              "texto": ""
+            },
+            "screen_content.e0206": {
+              "tag": "div",
+              "paiRef": "screen_content.e0205",
+              "ordem": 2060,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0207": {
+              "tag": "b",
+              "paiRef": "screen_content.e0206",
+              "ordem": 2070,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0208": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0207",
+              "ordem": 2080,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0209": {
+              "tag": "span",
+              "paiRef": "screen_content.e0206",
+              "ordem": 2090,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0210": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0209",
+              "ordem": 2100,
+              "atributos": {},
+              "texto": "Até 3 advogados(as)"
+            },
+            "screen_content.e0211": {
+              "tag": "div",
+              "paiRef": "screen_content.e0205",
+              "ordem": 2110,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0212": {
+              "tag": "b",
+              "paiRef": "screen_content.e0211",
+              "ordem": 2120,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0213": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0212",
+              "ordem": 2130,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0214": {
+              "tag": "span",
+              "paiRef": "screen_content.e0211",
+              "ordem": 2140,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0215": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0214",
+              "ordem": 2150,
+              "atributos": {},
+              "texto": "Chat em tempo real"
+            },
+            "screen_content.e0216": {
+              "tag": "div",
+              "paiRef": "screen_content.e0205",
+              "ordem": 2160,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0217": {
+              "tag": "b",
+              "paiRef": "screen_content.e0216",
+              "ordem": 2170,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0218": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0217",
+              "ordem": 2180,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0219": {
+              "tag": "span",
+              "paiRef": "screen_content.e0216",
+              "ordem": 2190,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0220": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0219",
+              "ordem": 2200,
+              "atributos": {},
+              "texto": "Suporte 24/7"
+            },
+            "screen_content.e0221": {
+              "tag": "div",
+              "paiRef": "screen_content.e0205",
+              "ordem": 2210,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0222": {
+              "tag": "b",
+              "paiRef": "screen_content.e0221",
+              "ordem": 2220,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0223": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0222",
+              "ordem": 2230,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0224": {
+              "tag": "span",
+              "paiRef": "screen_content.e0221",
+              "ordem": 2240,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0225": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0224",
+              "ordem": 2250,
+              "atributos": {},
+              "texto": "Seguro de vida / acidentes pessoais SulAmérica"
+            },
+            "screen_content.e0226": {
+              "tag": "button",
+              "paiRef": "screen_content.e0186",
+              "ordem": 2260,
+              "atributos": {
+                "class": "plan-primary",
+                "type": "button",
+                "data-goto": "advogado.assinatura.checkout"
+              },
+              "texto": ""
+            },
+            "screen_content.e0227": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0226",
+              "ordem": 2270,
+              "atributos": {},
+              "texto": "Escolher Empresa Gold"
+            },
+            "screen_content.e0228": {
+              "tag": "article",
+              "paiRef": "screen_content.e0015",
+              "ordem": 2280,
+              "atributos": {
+                "class": "plan-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0229": {
+              "tag": "span",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2290,
+              "atributos": {
+                "class": "plan-badge"
+              },
+              "texto": ""
+            },
+            "screen_content.e0230": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0229",
+              "ordem": 2300,
+              "atributos": {},
+              "texto": "Empresa"
+            },
+            "screen_content.e0231": {
+              "tag": "h2",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2310,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0232": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0231",
+              "ordem": 2320,
+              "atributos": {},
+              "texto": "Infinity"
+            },
+            "screen_content.e0233": {
+              "tag": "p",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2330,
+              "atributos": {
+                "class": "plan-description"
+              },
+              "texto": ""
+            },
+            "screen_content.e0234": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0233",
+              "ordem": 2340,
+              "atributos": {},
+              "texto": "Para sociedades de médio porte que desejam ampliar suas áreas de atuação e capacidade operacional."
+            },
+            "screen_content.e0235": {
+              "tag": "div",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2350,
+              "atributos": {
+                "class": "price"
+              },
+              "texto": ""
+            },
+            "screen_content.e0236": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0235",
+              "ordem": 2360,
+              "atributos": {},
+              "texto": "R$ 299,99 "
+            },
+            "screen_content.e0237": {
+              "tag": "small",
+              "paiRef": "screen_content.e0235",
+              "ordem": 2370,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0238": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0237",
+              "ordem": 2380,
+              "atributos": {},
+              "texto": "/ mês"
+            },
+            "screen_content.e0239": {
+              "tag": "div",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2390,
+              "atributos": {
+                "class": "course-access"
+              },
+              "texto": ""
+            },
+            "screen_content.e0240": {
+              "tag": "div",
+              "paiRef": "screen_content.e0239",
+              "ordem": 2400,
+              "atributos": {
+                "class": "course-icon"
+              },
+              "texto": ""
+            },
+            "screen_content.e0241": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0240",
+              "ordem": 2410,
+              "atributos": {},
+              "texto": "A+"
+            },
+            "screen_content.e0242": {
+              "tag": "div",
+              "paiRef": "screen_content.e0239",
+              "ordem": 2420,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0243": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0242",
+              "ordem": 2430,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0244": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0243",
+              "ordem": 2440,
+              "atributos": {},
+              "texto": "Cursos básicos e avançados"
+            },
+            "screen_content.e0245": {
+              "tag": "span",
+              "paiRef": "screen_content.e0242",
+              "ordem": 2450,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0246": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0245",
+              "ordem": 2460,
+              "atributos": {},
+              "texto": "Acesso educacional ampliado associado ao nível superior do modelo."
+            },
+            "screen_content.e0247": {
+              "tag": "div",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2470,
+              "atributos": {
+                "class": "features"
+              },
+              "texto": ""
+            },
+            "screen_content.e0248": {
+              "tag": "div",
+              "paiRef": "screen_content.e0247",
+              "ordem": 2480,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0249": {
+              "tag": "b",
+              "paiRef": "screen_content.e0248",
+              "ordem": 2490,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0250": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0249",
+              "ordem": 2500,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0251": {
+              "tag": "span",
+              "paiRef": "screen_content.e0248",
+              "ordem": 2510,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0252": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0251",
+              "ordem": 2520,
+              "atributos": {},
+              "texto": "Até 10 usuários"
+            },
+            "screen_content.e0253": {
+              "tag": "div",
+              "paiRef": "screen_content.e0247",
+              "ordem": 2530,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0254": {
+              "tag": "b",
+              "paiRef": "screen_content.e0253",
+              "ordem": 2540,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0255": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0254",
+              "ordem": 2550,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0256": {
+              "tag": "span",
+              "paiRef": "screen_content.e0253",
+              "ordem": 2560,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0257": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0256",
+              "ordem": 2570,
+              "atributos": {},
+              "texto": "Chat em tempo real"
+            },
+            "screen_content.e0258": {
+              "tag": "div",
+              "paiRef": "screen_content.e0247",
+              "ordem": 2580,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0259": {
+              "tag": "b",
+              "paiRef": "screen_content.e0258",
+              "ordem": 2590,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0260": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0259",
+              "ordem": 2600,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0261": {
+              "tag": "span",
+              "paiRef": "screen_content.e0258",
+              "ordem": 2610,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0262": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0261",
+              "ordem": 2620,
+              "atributos": {},
+              "texto": "Suporte 24/7"
+            },
+            "screen_content.e0263": {
+              "tag": "div",
+              "paiRef": "screen_content.e0247",
+              "ordem": 2630,
+              "atributos": {
+                "class": "feature"
+              },
+              "texto": ""
+            },
+            "screen_content.e0264": {
+              "tag": "b",
+              "paiRef": "screen_content.e0263",
+              "ordem": 2640,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0265": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0264",
+              "ordem": 2650,
+              "atributos": {},
+              "texto": "✓"
+            },
+            "screen_content.e0266": {
+              "tag": "span",
+              "paiRef": "screen_content.e0263",
+              "ordem": 2660,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0267": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0266",
+              "ordem": 2670,
+              "atributos": {},
+              "texto": "Seguro de vida / acidentes pessoais SulAmérica"
+            },
+            "screen_content.e0268": {
+              "tag": "button",
+              "paiRef": "screen_content.e0228",
+              "ordem": 2680,
+              "atributos": {
+                "class": "plan-primary",
+                "type": "button",
+                "data-goto": "advogado.assinatura.checkout"
+              },
+              "texto": ""
+            },
+            "screen_content.e0269": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0268",
+              "ordem": 2690,
+              "atributos": {},
+              "texto": "Escolher Infinity"
+            },
+            "screen_content.e0270": {
+              "tag": "aside",
+              "paiRef": "screen_content.e0001",
+              "ordem": 2700,
+              "atributos": {
+                "class": "commercial-note"
+              },
+              "texto": ""
+            },
+            "screen_content.e0271": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0270",
+              "ordem": 2710,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0272": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0271",
+              "ordem": 2720,
+              "atributos": {},
+              "texto": "Modelo em validação"
+            },
+            "screen_content.e0273": {
+              "tag": "span",
+              "paiRef": "screen_content.e0270",
+              "ordem": 2730,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0274": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0273",
+              "ordem": 2740,
+              "atributos": {},
+              "texto": "Nomes, preços, limites, raios e distribuição final dos cursos ainda dependem de fechamento comercial. O acesso a cursos deve ser implementado por entitlement, e não por comparação direta do nome do plano."
+            },
+            "screen_content.e0275": {
+              "tag": "div",
+              "paiRef": "screen_content.e0001",
+              "ordem": 2750,
+              "atributos": {
+                "class": "op-toast",
+                "role": "status",
+                "aria-live": "polite"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.drawer": {
+          "id": "screen.drawer",
+          "componenteRef": "layout.menu.drawer",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 310,
+          "props": {},
+          "elementos": {
+            "screen_drawer.e0001": {
+              "tag": "aside",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-drawer prototype-drawer",
+                "data-aj-canonical": "layout.menu.drawer",
+                "data-perfil": "advogado",
+                "data-plano": "sem_plano",
+                "data-estudante-menu": "fechado",
+                "data-escritorio-menu": "fechado",
+                "data-oab": "enabled",
+                "data-permissao": "gestor",
+                "data-disponibilidade": "online",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0002": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-backdrop drawer-backdrop",
+                "data-action": "drawer.close",
+                "type": "button",
+                "aria-label": "Fechar menu"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0003": {
+              "tag": "div",
+              "paiRef": "screen_drawer.e0001",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj-layout-panel drawer-panel"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0004": {
+              "tag": "div",
+              "paiRef": "screen_drawer.e0003",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-identity"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0005": {
+              "tag": "div",
+              "paiRef": "screen_drawer.e0004",
+              "ordem": 50,
+              "atributos": {
+                "class": "aj-layout-avatar"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "DP"
+            },
+            "screen_drawer.e0007": {
+              "tag": "div",
+              "paiRef": "screen_drawer.e0004",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0008": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0009": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0008",
+              "ordem": 90,
+              "atributos": {},
+              "texto": "Dr. Profissional"
+            },
+            "screen_drawer.e0010": {
+              "tag": "small",
+              "paiRef": "screen_drawer.e0007",
+              "ordem": 100,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0011": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "PROFISSIONAL"
+            },
+            "screen_drawer.e0012": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0003",
+              "ordem": 120,
+              "atributos": {
+                "type": "button",
+                "class": "aj-layout-status",
+                "data-aj-toggle": "disponibilidade"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0013": {
+              "tag": "span",
+              "paiRef": "screen_drawer.e0012",
+              "ordem": 130,
+              "atributos": {
+                "class": "aj-status-dot"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0014": {
+              "tag": "span",
+              "paiRef": "screen_drawer.e0012",
+              "ordem": 140,
+              "atributos": {
+                "class": "aj-layout-status-copy"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0015": {
+              "tag": "b",
+              "paiRef": "screen_drawer.e0014",
+              "ordem": 150,
+              "atributos": {
+                "data-aj-online-label": ""
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0016": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0015",
+              "ordem": 160,
+              "atributos": {},
+              "texto": "Online"
+            },
+            "screen_drawer.e0017": {
+              "tag": "small",
+              "paiRef": "screen_drawer.e0014",
+              "ordem": 170,
+              "atributos": {
+                "data-aj-online-copy": ""
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0018": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0017",
+              "ordem": 180,
+              "atributos": {},
+              "texto": "Recebendo novas solicitações"
+            },
+            "screen_drawer.e0019": {
+              "tag": "span",
+              "paiRef": "screen_drawer.e0012",
+              "ordem": 190,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0020": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0019",
+              "ordem": 200,
+              "atributos": {},
+              "texto": "⏻"
+            },
+            "screen_drawer.e0021": {
+              "tag": "nav",
+              "paiRef": "screen_drawer.e0003",
+              "ordem": 210,
+              "atributos": {
+                "class": "drawer-nav",
+                "aria-label": "Menu principal"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0022": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 220,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.home"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0023": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0022",
+              "ordem": 230,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0024": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0023",
+              "ordem": 240,
+              "atributos": {
+                "d": "M3 11.5 12 4l9 7.5M5 10v10h14V10M9 20v-6h6v6"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0025": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0022",
+              "ordem": 250,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0026": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0025",
+              "ordem": 260,
+              "atributos": {},
+              "texto": "Início"
+            },
+            "screen_drawer.e0027": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 270,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.configuracao.validacao_oab"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0028": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0027",
+              "ordem": 280,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0029": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0028",
+              "ordem": 290,
+              "atributos": {
+                "d": "M5 12l4 4L19 6M4 4h16v16H4z"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0030": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0027",
+              "ordem": 300,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0031": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0030",
+              "ordem": 310,
+              "atributos": {},
+              "texto": "Validar OAB"
+            },
+            "screen_drawer.e0032": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 320,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.atendimentos.lista",
+                "data-aj-oab-only": "enabled"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0033": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0032",
+              "ordem": 330,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0034": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0033",
+              "ordem": 340,
+              "atributos": {
+                "d": "M8 4h8M6 6h12v15H6zM9 11h6M9 15h6"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0035": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0032",
+              "ordem": 350,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0036": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0035",
+              "ordem": 360,
+              "atributos": {},
+              "texto": "Atendimentos"
+            },
+            "screen_drawer.e0037": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 370,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.perfil.profissional"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0038": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0037",
+              "ordem": 380,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0039": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0038",
+              "ordem": 390,
+              "atributos": {
+                "d": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0040": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0037",
+              "ordem": 400,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0041": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0040",
+              "ordem": 410,
+              "atributos": {},
+              "texto": "Meu perfil"
+            },
+            "screen_drawer.e0042": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 420,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.assinatura.gestao_assinatura"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0043": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0042",
+              "ordem": 430,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0044": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0043",
+              "ordem": 440,
+              "atributos": {
+                "d": "M3 5h18v14H3zM3 10h18M7 15h4"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0045": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0042",
+              "ordem": 450,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0046": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0045",
+              "ordem": 460,
+              "atributos": {},
+              "texto": "Planos"
+            },
+            "screen_drawer.e0047": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 470,
+              "atributos": {
+                "class": "aj-menu-group",
+                "type": "button",
+                "data-aj-toggle": "escritorio"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0048": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0047",
+              "ordem": 480,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0049": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0048",
+              "ordem": 490,
+              "atributos": {
+                "d": "M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0050": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0047",
+              "ordem": 500,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0051": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0050",
+              "ordem": 510,
+              "atributos": {},
+              "texto": "Escritório"
+            },
+            "screen_drawer.e0052": {
+              "tag": "span",
+              "paiRef": "screen_drawer.e0047",
+              "ordem": 520,
+              "atributos": {
+                "class": "aj-item-hint",
+                "data-aj-caret": "escritorio"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0053": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0052",
+              "ordem": 530,
+              "atributos": {},
+              "texto": "▸"
+            },
+            "screen_drawer.e0054": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 540,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.gestao.escritorio",
+                "data-aj-group-content": "escritorio",
+                "data-aj-requer-escritorio": "ativo"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0055": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0054",
+              "ordem": 550,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0056": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0055",
+              "ordem": 560,
+              "atributos": {
+                "d": "M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0057": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0054",
+              "ordem": 570,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0058": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0057",
+              "ordem": 580,
+              "atributos": {},
+              "texto": "Visão do escritório"
+            },
+            "screen_drawer.e0059": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 590,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.equipe.equipe",
+                "data-aj-group-content": "escritorio",
+                "data-aj-requer-escritorio": "ativo"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0060": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0059",
+              "ordem": 600,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0061": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0060",
+              "ordem": 610,
+              "atributos": {
+                "d": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0062": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0059",
+              "ordem": 620,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0063": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0062",
+              "ordem": 630,
+              "atributos": {},
+              "texto": "Equipe jurídica"
+            },
+            "screen_drawer.e0064": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 640,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.equipe.convites",
+                "data-aj-group-content": "escritorio"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0065": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0064",
+              "ordem": 650,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0066": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0065",
+              "ordem": 660,
+              "atributos": {
+                "d": "M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h8"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0067": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0064",
+              "ordem": 670,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0068": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0067",
+              "ordem": 680,
+              "atributos": {},
+              "texto": "Convites"
+            },
+            "screen_drawer.e0069": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 690,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.distribuicao.distribuicao_interna",
+                "data-aj-group-content": "escritorio",
+                "data-aj-requer-escritorio": "ativo"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0070": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0069",
+              "ordem": 700,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0071": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0070",
+              "ordem": 710,
+              "atributos": {
+                "d": "M8 4h8M6 6h12v15H6zM9 11h6M9 15h6"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0072": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0069",
+              "ordem": 720,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0073": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0072",
+              "ordem": 730,
+              "atributos": {},
+              "texto": "Distribuição interna"
+            },
+            "screen_drawer.e0074": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 740,
+              "atributos": {
+                "type": "button",
+                "class": "aj-subitem",
+                "data-aj-route": "escritorio.configuracao.dados",
+                "data-aj-group-content": "escritorio"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0075": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0074",
+              "ordem": 750,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0076": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0075",
+              "ordem": 760,
+              "atributos": {
+                "d": "M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0077": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0074",
+              "ordem": 770,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0078": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0077",
+              "ordem": 780,
+              "atributos": {},
+              "texto": "Dados do escritório"
+            },
+            "screen_drawer.e0079": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0021",
+              "ordem": 790,
+              "atributos": {
+                "type": "button",
+                "class": "",
+                "data-aj-route": "advogado.configuracao.configuracao"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0080": {
+              "tag": "svg",
+              "paiRef": "screen_drawer.e0079",
+              "ordem": 800,
+              "atributos": {
+                "viewbox": "0 0 24 24",
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0081": {
+              "tag": "path",
+              "paiRef": "screen_drawer.e0080",
+              "ordem": 810,
+              "atributos": {
+                "d": "M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0082": {
+              "tag": "strong",
+              "paiRef": "screen_drawer.e0079",
+              "ordem": 820,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0083": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0082",
+              "ordem": 830,
+              "atributos": {},
+              "texto": "Configurações"
+            },
+            "screen_drawer.e0084": {
+              "tag": "div",
+              "paiRef": "screen_drawer.e0003",
+              "ordem": 840,
+              "atributos": {
+                "class": "aj-layout-footer"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0085": {
+              "tag": "div",
+              "paiRef": "screen_drawer.e0084",
+              "ordem": 850,
+              "atributos": {
+                "class": "aj-layout-footer-row"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0086": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0085",
+              "ordem": 860,
+              "atributos": {
+                "type": "button",
+                "data-aj-route": "auth.sessao.entrar"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0087": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0086",
+              "ordem": 870,
+              "atributos": {},
+              "texto": "Sair"
+            },
+            "screen_drawer.e0088": {
+              "tag": "small",
+              "paiRef": "screen_drawer.e0085",
+              "ordem": 880,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_drawer.e0089": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0088",
+              "ordem": 890,
+              "atributos": {},
+              "texto": "Versão: 1.0.55"
+            },
+            "screen_drawer.e0090": {
+              "tag": "button",
+              "paiRef": "screen_drawer.e0084",
+              "ordem": 900,
+              "atributos": {
+                "class": "aj-layout-emergency",
+                "type": "button",
+                "data-aj-route": "emergencia.190"
+              },
+              "texto": ""
+            },
+            "screen_drawer.e0091": {
+              "tag": "#text",
+              "paiRef": "screen_drawer.e0090",
+              "ordem": 910,
+              "atributos": {},
+              "texto": "Disque 190"
+            }
+          },
+          "eventos": []
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "modal.route-modal.v01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 410,
+          "props": {},
+          "elementos": {
+            "screen_route_modal.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-route-modal",
+                "aria-hidden": "true",
+                "role": "dialog",
+                "aria-modal": "true",
+                "aria-label": "Navegação simulada"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0002": {
+              "tag": "div",
+              "paiRef": "screen_route_modal.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj08-route-card"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0003": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj08-kicker"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "08 · tela isolada"
+            },
+            "screen_route_modal.e0005": {
+              "tag": "h2",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 50,
+              "atributos": {
+                "data-route-title": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Navegação simulada"
+            },
+            "screen_route_modal.e0007": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 70,
+              "atributos": {
+                "data-route-text": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Esta ação não abre outra tela nesta biblioteca."
+            },
+            "screen_route_modal.e0009": {
+              "tag": "code",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 90,
+              "atributos": {
+                "data-route-code": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0010": {
+              "tag": "button",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 100,
+              "atributos": {
+                "type": "button",
+                "data-aj08-close": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0011": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "Fechar"
+            }
+          },
+          "eventos": []
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "screen.advogado.assinatura.planos.popup.screen-note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 510,
+          "props": {},
+          "elementos": {
+            "screen_screen_note.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-static-note"
+              },
+              "texto": ""
+            },
+            "screen_screen_note.e0002": {
+              "tag": "#text",
+              "paiRef": "screen_screen_note.e0001",
+              "ordem": 20,
+              "atributos": {},
+              "texto": "advogado.assinatura.planos · tela isolada · 08"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado.assinatura.planos.estilo.base",
+          "ordem": 10,
+          "css": ".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n\n.aj-layout-titlebar{width:100%;min-height:38px;display:flex;align-items:center;padding:10px 18px;border-bottom:1px solid #dbe3ee;background:#fff;color:#10233f;font:700 13px/1.35 Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-titlebar strong{font-weight:700;font-size:13px}\n\n.plans-shell {\n  width:min(100%,980px);\n  margin:0 auto;\n  padding:26px 16px 42px;\n  color:var(--text);\n}\n.plans-heading h1 { margin:0;color:var(--primary);font-size:26px;letter-spacing:-.03em; }\n.plans-heading p { max-width:680px;margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.55; }\n\n.current-summary {\n  margin:18px 0;\n  padding:12px 14px;\n  display:flex;\n  justify-content:space-between;\n  align-items:center;\n  gap:12px;\n  border:1px solid #ead7a8;\n  border-radius:14px;\n  background:#fffaf0;\n}\n.current-summary strong { display:block;color:#6d4d10;font-size:13px; }\n.current-summary span { display:block;margin-top:3px;color:#806a3b;font-size:11px; }\n.current-pill {\n  flex:none!important;margin:0!important;padding:5px 10px;border-radius:999px;background:#fff1c7;\n  color:#77510b!important;font-size:10px!important;font-weight:900;text-transform:uppercase;letter-spacing:.04em;\n}\n\n.plans-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px; }\n.plan-card {\n  min-width:0;display:flex;flex-direction:column;padding:18px;border:1px solid var(--line);\n  border-radius:18px;background:#fff;box-shadow:0 3px 12px rgba(16,35,63,.04);\n}\n.plan-card.current { border:1.5px solid #d6b76e;background:#fffdf8;box-shadow:0 8px 22px rgba(184,137,50,.10); }\n.plan-badge {\n  align-self:flex-start;min-height:24px;display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;\n  background:#f2f4f7;color:#475467;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.045em;\n}\n.current .plan-badge { background:#fff2c8;color:#7b560d; }\n.plan-card h2 { margin:14px 0 4px;color:var(--primary);font-size:20px;letter-spacing:-.02em; }\n.plan-description { min-height:38px;margin:0;color:var(--muted);font-size:12px;line-height:1.5; }\n.price { margin:18px 0 0;color:var(--primary);font-size:27px;font-weight:900;letter-spacing:-.03em; }\n.price small { color:var(--muted);font-size:11px;font-weight:700;letter-spacing:0; }\n\n.course-access {\n  margin:14px 0 0;padding:11px 12px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;\n  border:1px solid #dbe3ee;border-radius:12px;background:#f8fafc;\n}\n.course-icon { width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:#e8eef6;color:var(--primary);font-size:12px;font-weight:900; }\n.course-access strong { display:block;color:var(--primary);font-size:11px; }\n.course-access span { display:block;margin-top:2px;color:var(--muted);font-size:10px;line-height:1.4; }\n.course-none { background:#fafafa; }\n.course-none .course-icon { background:#f2f4f7;color:#98a2b3; }\n\n.features { display:grid;gap:9px;margin:16px 0 20px;padding-top:15px;border-top:1px solid #edf1f5; }\n.feature { display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px;align-items:start;color:#344054;font-size:12px;line-height:1.45; }\n.feature b {\n  width:18px;height:18px;display:grid;place-items:center;border-radius:50%;background:#e9f7ef;color:#08744e;font-size:11px;\n}\n.plan-primary {\n  width:100%;min-height:44px;margin-top:auto;padding:10px 14px;border:0;border-radius:11px;background:var(--primary);\n  color:#fff;font-size:12px;font-weight:900;cursor:pointer;\n}\n.current-button { background:#7c5a18; }\n.renewal { margin-top:9px;color:var(--muted);font-size:10px;text-align:center; }\n.commercial-note {\n  margin-top:18px;padding:12px 14px;display:grid;gap:4px;border:1px solid var(--line);\n  border-radius:13px;background:#f8fafc;color:var(--muted);font-size:10px;line-height:1.5;\n}\n.commercial-note strong { color:var(--primary);font-size:11px; }\n.op-toast {\n  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;\n  display:none;max-width:min(92vw,460px);padding:10px 14px;border-radius:10px;background:#172033;color:#fff;font-size:11px;\n}\n.op-toast.show { display:block; }\n\n@media(max-width:700px) {\n  .plans-grid { grid-template-columns:1fr; }\n  .current-summary { align-items:flex-start;flex-direction:column; }\n  .plans-shell { padding-left:13px;padding-right:13px; }\n  .plan-description { min-height:0; }\n}\n\n.aj-layout-drawer.prototype-drawer{position:fixed!important;inset:0!important;z-index:9998!important;display:none!important;pointer-events:none}.aj-layout-drawer.prototype-drawer.open{display:block!important;pointer-events:auto}\n.aj-layout-drawer .aj-layout-backdrop{position:absolute;inset:0;width:100%;border:0;background:rgba(7,16,30,.60);cursor:pointer}\n.aj-layout-drawer .aj-layout-panel{position:absolute;inset:0 auto 0 0;width:min(80vw,360px);max-width:100vw;display:flex;flex-direction:column;overflow:hidden;background:#3b4a7d;color:#fff;box-shadow:12px 0 30px #0005;font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-drawer .aj-layout-identity{display:flex;align-items:center;gap:13px;padding:29px 20px 17px;flex:none}.aj-layout-avatar{width:52px;height:52px;flex:none;display:grid;place-items:center;border:2px solid #ffffff40;border-radius:50%;background:#dbeafe;color:#1e3a8a;font-size:18px;font-weight:850}\n.aj-layout-status{min-height:46px;display:flex;justify-content:space-between;align-items:center;gap:9px;margin:0 20px 10px;padding:9px 12px;border:1px solid #ffffff33;border-radius:10px;background:#ffffff12;color:#fff;cursor:pointer;font-size:12px;text-align:left}.aj-layout-status[hidden]{display:none!important}.aj-layout-status .aj-status-dot{width:9px;height:9px;flex:none;border-radius:50%;background:#4ade80}.aj-layout-drawer[data-disponibilidade=\"offline\"] .aj-status-dot{background:#b8c0cb}.aj-layout-status b{font-size:12px}.aj-layout-status small{font-size:10px;display:block;color:#bfd4f4}.aj-layout-status-copy{flex:1}\n.aj-layout-drawer .drawer-nav{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;flex:1;overscroll-behavior:contain;padding-bottom:8px}.aj-layout-drawer .drawer-nav button{width:100%;min-height:49px;display:flex;align-items:center;gap:13px;padding:12px 20px;border:0;border-bottom:1px solid #ffffff1d;background:transparent;color:#fff;text-align:left;font:500 13px Inter,\"Segoe UI\",Arial,sans-serif;cursor:pointer}.aj-layout-drawer .drawer-nav button:hover{background:#ffffff15}.aj-layout-drawer .drawer-nav svg{width:19px;height:19px;flex:none;stroke:#bcccec;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.aj-layout-drawer .drawer-nav button strong{font-weight:650;flex:1}.aj-layout-drawer .drawer-nav .aj-subitem{min-height:41px;padding-left:49px;font-size:12px;background:#00000013}.aj-layout-drawer .drawer-nav .aj-subitem svg{width:15px;height:15px}.aj-layout-drawer .drawer-nav .aj-item-hint{margin-left:auto;font-size:10px;opacity:.8}.aj-layout-drawer .drawer-nav .aj-menu-group{background:#ffffff0c}.aj-layout-drawer .drawer-nav .aj-menu-group b{font-size:12px}\n.aj-layout-drawer [data-aj-group-content=\"estudante\"],.aj-layout-drawer [data-aj-group-content=\"escritorio\"]{display:none!important}.aj-layout-drawer[data-estudante-menu=\"aberto\"] [data-aj-group-content=\"estudante\"]{display:flex!important}.aj-layout-drawer[data-escritorio-menu=\"aberto\"] [data-aj-group-content=\"escritorio\"]{display:flex!important}\n.aj-layout-drawer[data-plano=\"sem_plano\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"pendente\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"vencido\"] [data-aj-protegido]{opacity:.52}\n.aj-layout-drawer[data-oab=\"restricted\"] [data-aj-oab-only=\"enabled\"]{opacity:.5}\n.aj-layout-drawer[data-permissao=\"auditor\"] [data-aj-admin-only=\"gestor\"],.aj-layout-drawer[data-permissao=\"operador\"] [data-aj-admin-only=\"gestor\"]{opacity:.5}\n.aj-layout-drawer[data-vinculo-escritorio=\"sem_escritorio\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"convite_pendente\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"suspenso\"] [data-aj-requer-escritorio]{opacity:.5}\n.aj-layout-drawer .aj-layout-footer{padding:14px 20px 23px;background:#00000019;flex:none;font-size:11px}.aj-layout-footer-row{display:flex;justify-content:space-between;align-items:center;gap:10px}.aj-layout-footer button{border:0;background:transparent;color:#fff;font-size:13px;padding:6px 0;cursor:pointer}.aj-layout-footer small{font-size:10px;color:#b0c2df}.aj-layout-emergency{width:100%;margin-top:12px;padding:10px!important;border:1px solid #ffffff80!important;border-radius:99px!important;font-weight:750!important}\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.advogado.assinatura.planos.online",
+      "inicial": "true",
+      "opcoes": {
+        "false": {
+          "id": "estado.advogado.assinatura.planos.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.advogado.assinatura.planos.online.true",
+          "alvos": []
+        }
+      }
+    },
+    "currentPlan": {
+      "id": "estado.advogado.assinatura.planos.currentPlan",
+      "inicial": "professional",
+      "opcoes": {
+        "professional": {
+          "id": "estado.advogado.assinatura.planos.currentPlan.professional",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.checkout.b1.13.main.12.n0055",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.13.main.12.n0055"
+        },
+        "destinoRef": "advogado.assinatura.checkout",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.gestao_assinatura.b1.13.main.12.n0097",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.13.main.12.n0097"
+        },
+        "destinoRef": "advogado.assinatura.gestao_assinatura",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.checkout.b1.13.main.12.n0141",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.13.main.12.n0141"
+        },
+        "destinoRef": "advogado.assinatura.checkout",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.checkout.b1.13.main.12.n0183",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.13.main.12.n0183"
+        },
+        "destinoRef": "advogado.assinatura.checkout",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.checkout.b1.13.main.12.n0225",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.13.main.12.n0225"
+        },
+        "destinoRef": "advogado.assinatura.checkout",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.checkout.b1.13.main.12.n0267",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.13.main.12.n0267"
+        },
+        "destinoRef": "advogado.assinatura.checkout",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.checkout.button",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "button"
+        },
+        "destinoRef": "advogado.assinatura.checkout",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.advogado.assinatura.planos.advogado.assinatura.gestao_assinatura.button",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "button"
+        },
+        "destinoRef": "advogado.assinatura.gestao_assinatura",
+        "status": "referencia_explicita_na_fonte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

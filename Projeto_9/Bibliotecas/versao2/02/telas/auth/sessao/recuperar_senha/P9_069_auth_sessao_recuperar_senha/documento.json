@@ -1,0 +1,202 @@
+{
+  "identidade": {
+    "id": "auth.sessao.recuperar_senha",
+    "tipo": "tela",
+    "namespace": "auth",
+    "nome": "Recuperar senha",
+    "nomeExibicao": "Recuperar senha"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "02/telas/auth/sessao/recuperar_senha/P9_069_auth_sessao_recuperar_senha/documento.json"
+    },
+    "perfilRef": "auth",
+    "jornadaRefs": [
+      "global"
+    ],
+    "subjornadaRefs": [
+      "global.acesso.recuperacao"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "visual.b1.auth.sessao.recuperar_senha",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {},
+          "elementos": {
+            "screen.root": {
+              "tag": "div",
+              "ordem": 1,
+              "atributos": {
+                "class": "screen-runtime b1-screen-runtime"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.main.01": {
+          "id": "screen.main.01",
+          "componenteRef": "auth.sessao.recuperar_senha.content.01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "elementos": {
+            "atual.draft.root": {
+              "tag": "div",
+              "ordem": 10,
+              "atributos": {
+                "class": "draft-root"
+              },
+              "texto": ""
+            },
+            "atual.draft.header": {
+              "tag": "header",
+              "paiRef": "atual.draft.root",
+              "ordem": 1,
+              "atributos": {
+                "class": "draft-header"
+              },
+              "texto": "AdvogadoJá · Rascunho"
+            },
+            "atual.draft.main": {
+              "tag": "main",
+              "paiRef": "atual.draft.root",
+              "ordem": 2,
+              "atributos": {
+                "class": "draft-main"
+              },
+              "texto": ""
+            },
+            "atual.draft.title": {
+              "tag": "h1",
+              "paiRef": "atual.draft.main",
+              "ordem": 1,
+              "atributos": {},
+              "texto": "Recuperar senha"
+            },
+            "atual.draft.desc": {
+              "tag": "p",
+              "paiRef": "atual.draft.main",
+              "ordem": 2,
+              "atributos": {},
+              "texto": "Solicitar recuperação de senha (simulada)."
+            },
+            "atual.draft.note": {
+              "tag": "p",
+              "paiRef": "atual.draft.main",
+              "ordem": 3,
+              "atributos": {
+                "class": "draft-note"
+              },
+              "texto": "Interface provisória para revisão. Nenhuma função de produção foi homologada."
+            }
+          },
+          "eventos": []
+        },
+        "screen.header": {
+          "id": "screen.header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 5,
+          "props": {},
+          "elementos": {
+            "layout_header_app.n0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-public",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "comum",
+                "data-variante": "publico"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0002": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0003": {
+              "tag": "img",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 30,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0004": {
+              "tag": "div",
+              "paiRef": "layout_header_app.n0002",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "layout_header_app.n0005": {
+              "tag": "strong",
+              "paiRef": "layout_header_app.n0004",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "layout_header_app.n0006": {
+              "tag": "#text",
+              "paiRef": "layout_header_app.n0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "auth.sessao.recuperar_senha.estilo.base",
+          "ordem": 10,
+          "css": "b1.01\nb1.02\ncanonica"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": []
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

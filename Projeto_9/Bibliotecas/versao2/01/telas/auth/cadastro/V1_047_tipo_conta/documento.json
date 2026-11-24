@@ -1,0 +1,665 @@
+{
+  "identidade": {
+    "id": "auth.cadastro.tipo_conta",
+    "tipo": "tela",
+    "namespace": "auth",
+    "nome": "Cadastro · Tipo de conta",
+    "nomeExibicao": "Cadastro · Tipo de conta"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/auth/cadastro/V1_047_tipo_conta/documento.json"
+    },
+    "perfilRef": "auth",
+    "jornadaRefs": [
+      "global"
+    ],
+    "subjornadaRefs": [
+      "global.acesso.cadastro"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "auth.cadastro.tipo_conta.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "elementos": {},
+          "eventos": []
+        },
+        "screen.app_header": {
+          "id": "screen.app_header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "elementos": {
+            "screen_app_header.e0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-public",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "comum",
+                "data-variante": "publico"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0002": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0003": {
+              "tag": "img",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 30,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0004": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0005": {
+              "tag": "strong",
+              "paiRef": "screen_app_header.e0004",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            }
+          },
+          "eventos": []
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "auth.cadastro.tipo_conta.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 130,
+          "props": {},
+          "elementos": {
+            "screen_content.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "registration__shell"
+              },
+              "texto": ""
+            },
+            "screen_content.e0002": {
+              "tag": "div",
+              "paiRef": "screen_content.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "registration__intro"
+              },
+              "texto": ""
+            },
+            "screen_content.e0003": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "eyebrow"
+              },
+              "texto": ""
+            },
+            "screen_content.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "Criar conta"
+            },
+            "screen_content.e0005": {
+              "tag": "h1",
+              "paiRef": "screen_content.e0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Como você vai usar o AdvogadoJá?"
+            },
+            "screen_content.e0007": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "O cadastro de dados pessoais é o mesmo para todos. Esta escolha define o onboarding que vem depois."
+            },
+            "screen_content.e0009": {
+              "tag": "div",
+              "paiRef": "screen_content.e0001",
+              "ordem": 90,
+              "atributos": {
+                "class": "progress",
+                "aria-label": "Etapa 1 de 7"
+              },
+              "texto": ""
+            },
+            "screen_content.e0010": {
+              "tag": "span",
+              "paiRef": "screen_content.e0009",
+              "ordem": 100,
+              "atributos": {
+                "style": "width:14.285%"
+              },
+              "texto": ""
+            },
+            "screen_content.e0011": {
+              "tag": "form",
+              "paiRef": "screen_content.e0001",
+              "ordem": 110,
+              "atributos": {
+                "class": "form-card",
+                "data-registration-form": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0012": {
+              "tag": "fieldset",
+              "paiRef": "screen_content.e0011",
+              "ordem": 120,
+              "atributos": {
+                "class": "choice-group"
+              },
+              "texto": ""
+            },
+            "screen_content.e0013": {
+              "tag": "legend",
+              "paiRef": "screen_content.e0012",
+              "ordem": 130,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0014": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0013",
+              "ordem": 140,
+              "atributos": {},
+              "texto": "Tipo de conta"
+            },
+            "screen_content.e0015": {
+              "tag": "label",
+              "paiRef": "screen_content.e0012",
+              "ordem": 150,
+              "atributos": {
+                "class": "choice-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0016": {
+              "tag": "input",
+              "paiRef": "screen_content.e0015",
+              "ordem": 160,
+              "atributos": {
+                "type": "radio",
+                "name": "accountType",
+                "value": "cliente",
+                "data-reg-field": "accountType",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0017": {
+              "tag": "span",
+              "paiRef": "screen_content.e0015",
+              "ordem": 170,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0018": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0017",
+              "ordem": 180,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0019": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0018",
+              "ordem": 190,
+              "atributos": {},
+              "texto": "Cliente"
+            },
+            "screen_content.e0020": {
+              "tag": "small",
+              "paiRef": "screen_content.e0017",
+              "ordem": 200,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0021": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0020",
+              "ordem": 210,
+              "atributos": {},
+              "texto": "Quero encontrar e entrar em contato com profissionais."
+            },
+            "screen_content.e0022": {
+              "tag": "b",
+              "paiRef": "screen_content.e0015",
+              "ordem": 220,
+              "atributos": {
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_content.e0023": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0022",
+              "ordem": 230,
+              "atributos": {},
+              "texto": "›"
+            },
+            "screen_content.e0024": {
+              "tag": "label",
+              "paiRef": "screen_content.e0012",
+              "ordem": 240,
+              "atributos": {
+                "class": "choice-card"
+              },
+              "texto": ""
+            },
+            "screen_content.e0025": {
+              "tag": "input",
+              "paiRef": "screen_content.e0024",
+              "ordem": 250,
+              "atributos": {
+                "type": "radio",
+                "name": "accountType",
+                "value": "advogado",
+                "data-reg-field": "accountType",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0026": {
+              "tag": "span",
+              "paiRef": "screen_content.e0024",
+              "ordem": 260,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0027": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0026",
+              "ordem": 270,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0028": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0027",
+              "ordem": 280,
+              "atributos": {},
+              "texto": "Advogado"
+            },
+            "screen_content.e0029": {
+              "tag": "small",
+              "paiRef": "screen_content.e0026",
+              "ordem": 290,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0030": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0029",
+              "ordem": 300,
+              "atributos": {},
+              "texto": "Quero criar meu perfil profissional e receber solicitações."
+            },
+            "screen_content.e0031": {
+              "tag": "b",
+              "paiRef": "screen_content.e0024",
+              "ordem": 310,
+              "atributos": {
+                "aria-hidden": "true"
+              },
+              "texto": ""
+            },
+            "screen_content.e0032": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0031",
+              "ordem": 320,
+              "atributos": {},
+              "texto": "›"
+            },
+            "screen_content.e0033": {
+              "tag": "div",
+              "paiRef": "screen_content.e0011",
+              "ordem": 330,
+              "atributos": {
+                "class": "form-note"
+              },
+              "texto": ""
+            },
+            "screen_content.e0034": {
+              "tag": "strong",
+              "paiRef": "screen_content.e0033",
+              "ordem": 340,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0035": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0034",
+              "ordem": 350,
+              "atributos": {},
+              "texto": "Administrador"
+            },
+            "screen_content.e0036": {
+              "tag": "span",
+              "paiRef": "screen_content.e0033",
+              "ordem": 360,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0037": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0036",
+              "ordem": 370,
+              "atributos": {},
+              "texto": "O acesso administrativo não é criado pelo cadastro público; ele é concedido internamente."
+            },
+            "screen_content.e0038": {
+              "tag": "div",
+              "paiRef": "screen_content.e0011",
+              "ordem": 380,
+              "atributos": {
+                "class": "form-actions"
+              },
+              "texto": ""
+            },
+            "screen_content.e0039": {
+              "tag": "button",
+              "paiRef": "screen_content.e0038",
+              "ordem": 390,
+              "atributos": {
+                "class": "secondary-action",
+                "type": "button",
+                "data-goto": "auth.sessao.entrar"
+              },
+              "texto": ""
+            },
+            "screen_content.e0040": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0039",
+              "ordem": 400,
+              "atributos": {},
+              "texto": "Voltar"
+            },
+            "screen_content.e0041": {
+              "tag": "button",
+              "paiRef": "screen_content.e0038",
+              "ordem": 410,
+              "atributos": {
+                "class": "button",
+                "type": "submit",
+                "data-next": "auth.cadastro.identificacao"
+              },
+              "texto": ""
+            },
+            "screen_content.e0042": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0041",
+              "ordem": 420,
+              "atributos": {},
+              "texto": "Continuar"
+            },
+            "screen_content.e0043": {
+              "tag": "p",
+              "paiRef": "screen_content.e0011",
+              "ordem": 430,
+              "atributos": {
+                "class": "form-status",
+                "aria-live": "polite"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "modal.route-modal.v01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 210,
+          "props": {},
+          "elementos": {
+            "screen_route_modal.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-route-modal",
+                "aria-hidden": "true",
+                "role": "dialog",
+                "aria-modal": "true",
+                "aria-label": "Navegação simulada"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0002": {
+              "tag": "div",
+              "paiRef": "screen_route_modal.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj08-route-card"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0003": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj08-kicker"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "08 · tela isolada"
+            },
+            "screen_route_modal.e0005": {
+              "tag": "h2",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 50,
+              "atributos": {
+                "data-route-title": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Navegação simulada"
+            },
+            "screen_route_modal.e0007": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 70,
+              "atributos": {
+                "data-route-text": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Esta ação não abre outra tela nesta biblioteca."
+            },
+            "screen_route_modal.e0009": {
+              "tag": "code",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 90,
+              "atributos": {
+                "data-route-code": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0010": {
+              "tag": "button",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 100,
+              "atributos": {
+                "type": "button",
+                "data-aj08-close": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0011": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "Fechar"
+            }
+          },
+          "eventos": []
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "screen.auth.cadastro.tipo_conta.popup.screen-note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 310,
+          "props": {},
+          "elementos": {
+            "screen_screen_note.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-static-note"
+              },
+              "texto": ""
+            },
+            "screen_screen_note.e0002": {
+              "tag": "#text",
+              "paiRef": "screen_screen_note.e0001",
+              "ordem": 20,
+              "atributos": {},
+              "texto": "auth.cadastro.tipo_conta · tela isolada · 08"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "auth.cadastro.tipo_conta.estilo.base",
+          "ordem": 10,
+          "css": ".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n\n/* auth.cadastro.tipo_conta · Cadastro · Tipo de conta */\n\n/* arquivo local da tela; mantenha aqui apenas ajustes específicos deste HTML isolado */\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.auth.cadastro.tipo_conta.online",
+      "inicial": "false",
+      "opcoes": {
+        "false": {
+          "id": "estado.auth.cadastro.tipo_conta.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.auth.cadastro.tipo_conta.online.true",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.cadastro.tipo_conta.auth.sessao.entrar.b1.12.main.11.n0038",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.12.main.11.n0038"
+        },
+        "destinoRef": "auth.sessao.entrar",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.auth.cadastro.tipo_conta.auth.sessao.entrar.button",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "button"
+        },
+        "destinoRef": "auth.sessao.entrar",
+        "status": "referencia_explicita_na_fonte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

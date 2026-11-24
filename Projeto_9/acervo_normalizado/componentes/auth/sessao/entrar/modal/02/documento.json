@@ -1,0 +1,506 @@
+{
+  "identidade": {
+    "id": "auth.sessao.entrar.modal.02",
+    "tipo": "componente",
+    "nome": "auth.sessao.entrar.modal.02"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/auth/sessao/entrar/modal/02/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "auth"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "1.1",
+            "nome": "Acesso e autenticação"
+          }
+        ]
+      },
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "2.1",
+            "nome": "Acesso e autenticação"
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "numero": 3,
+        "nome": "Administrador",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "3.1",
+            "nome": "Acesso e autorização"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.14.modal.13.n0000",
+      "elementos": {
+        "b1.14.modal.13.n0000": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 13,
+          "atributos": {
+            "class": "flow-overlay",
+            "data-overlay-root": "",
+            "aria-hidden": "true",
+            "role": "dialog",
+            "aria-modal": "true",
+            "aria-label": "Escolha o perfil"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0001": {
+          "tag": "div",
+          "paiRef": "b1.14.modal.13.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "flow-card"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0002": {
+          "tag": "div",
+          "paiRef": "b1.14.modal.13.n0001",
+          "ordem": 3,
+          "atributos": {
+            "class": "flow-head"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0003": {
+          "tag": "div",
+          "paiRef": "b1.14.modal.13.n0002",
+          "ordem": 4,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0004": {
+          "tag": "span",
+          "paiRef": "b1.14.modal.13.n0003",
+          "ordem": 5,
+          "atributos": {
+            "class": "flow-kicker"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0006": {
+          "tag": "h2",
+          "paiRef": "b1.14.modal.13.n0003",
+          "ordem": 7,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0008": {
+          "tag": "button",
+          "paiRef": "b1.14.modal.13.n0002",
+          "ordem": 9,
+          "atributos": {
+            "class": "flow-x",
+            "type": "button",
+            "data-flow-close": "",
+            "aria-label": "Fechar"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0010": {
+          "tag": "p",
+          "paiRef": "b1.14.modal.13.n0001",
+          "ordem": 11,
+          "atributos": {
+            "class": "flow-copy"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0012": {
+          "tag": "section",
+          "paiRef": "b1.14.modal.13.n0001",
+          "ordem": 13,
+          "atributos": {
+            "class": "role"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0013": {
+          "tag": "strong",
+          "paiRef": "b1.14.modal.13.n0012",
+          "ordem": 14,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0015": {
+          "tag": "span",
+          "paiRef": "b1.14.modal.13.n0012",
+          "ordem": 16,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0017": {
+          "tag": "div",
+          "paiRef": "b1.14.modal.13.n0012",
+          "ordem": 18,
+          "atributos": {
+            "class": "actions"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0018": {
+          "tag": "button",
+          "paiRef": "b1.14.modal.13.n0017",
+          "ordem": 19,
+          "atributos": {
+            "type": "button",
+            "data-flow-target": "cliente.home_cliente"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0020": {
+          "tag": "button",
+          "paiRef": "b1.14.modal.13.n0017",
+          "ordem": 21,
+          "atributos": {
+            "type": "button",
+            "data-flow-target": "cliente.onboarding.localizacao"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0022": {
+          "tag": "section",
+          "paiRef": "b1.14.modal.13.n0001",
+          "ordem": 23,
+          "atributos": {
+            "class": "role"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0023": {
+          "tag": "strong",
+          "paiRef": "b1.14.modal.13.n0022",
+          "ordem": 24,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0025": {
+          "tag": "span",
+          "paiRef": "b1.14.modal.13.n0022",
+          "ordem": 26,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0027": {
+          "tag": "div",
+          "paiRef": "b1.14.modal.13.n0022",
+          "ordem": 28,
+          "atributos": {
+            "class": "actions"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0028": {
+          "tag": "button",
+          "paiRef": "b1.14.modal.13.n0027",
+          "ordem": 29,
+          "atributos": {
+            "type": "button",
+            "data-flow-target": "advogado.home_advogado"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0030": {
+          "tag": "button",
+          "paiRef": "b1.14.modal.13.n0027",
+          "ordem": 31,
+          "atributos": {
+            "type": "button",
+            "data-flow-target": "advogado.onboarding.dados_academicos"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0032": {
+          "tag": "section",
+          "paiRef": "b1.14.modal.13.n0001",
+          "ordem": 33,
+          "atributos": {
+            "class": "role"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0033": {
+          "tag": "strong",
+          "paiRef": "b1.14.modal.13.n0032",
+          "ordem": 34,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0035": {
+          "tag": "span",
+          "paiRef": "b1.14.modal.13.n0032",
+          "ordem": 36,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.14.modal.13.n0037": {
+          "tag": "div",
+          "paiRef": "b1.14.modal.13.n0032",
+          "ordem": 38,
+          "atributos": {
+            "class": "actions"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0038": {
+          "tag": "button",
+          "paiRef": "b1.14.modal.13.n0037",
+          "ordem": 39,
+          "atributos": {
+            "type": "button",
+            "data-flow-target": "admin.dashboard.dashboard"
+          },
+          "texto": ""
+        },
+        "b1.14.modal.13.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0004",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Decisão de rota"
+        },
+        "b1.14.modal.13.n0006.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Escolha o perfil"
+        },
+        "b1.14.modal.13.n0008.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0008",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "×"
+        },
+        "b1.14.modal.13.n0010.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0010",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Escolha o caminho que será seguido após o login."
+        },
+        "b1.14.modal.13.n0013.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Cliente"
+        },
+        "b1.14.modal.13.n0015.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0015",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Solicitar contato com profissional."
+        },
+        "b1.14.modal.13.n0018.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0018",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Entrar direto"
+        },
+        "b1.14.modal.13.n0020.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0020",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Ver onboarding"
+        },
+        "b1.14.modal.13.n0023.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0023",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Advogado"
+        },
+        "b1.14.modal.13.n0025.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0025",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Gerenciar perfil, disponibilidade e solicitações."
+        },
+        "b1.14.modal.13.n0028.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0028",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Entrar direto"
+        },
+        "b1.14.modal.13.n0030.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0030",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Ver onboarding"
+        },
+        "b1.14.modal.13.n0033.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0033",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Administrativo"
+        },
+        "b1.14.modal.13.n0035.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0035",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Acesso interno à operação administrativa."
+        },
+        "b1.14.modal.13.n0038.texto": {
+          "tag": "#text",
+          "paiRef": "b1.14.modal.13.n0038",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Entrar direto"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "auth_sessao_entrar_modal_02.r0001",
+          "ordem": 10,
+          "css": "[data-overlay-root]{position:fixed;inset:0;z-index:110;display:none;place-items:center;padding:18px;background:rgba(15,23,42,.58)}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0002",
+          "ordem": 20,
+          "css": "[data-overlay-root].open{display:grid}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0003",
+          "ordem": 30,
+          "css": ".flow-card{width:min(100%,520px);max-height:88dvh;overflow:auto;border-radius:20px;background:#fff;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.28)}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0004",
+          "ordem": 40,
+          "css": ".flow-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0005",
+          "ordem": 50,
+          "css": ".flow-head h2{margin:4px 0 0;color:#10233f}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0006",
+          "ordem": 60,
+          "css": ".flow-kicker{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#b88932}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0007",
+          "ordem": 70,
+          "css": ".flow-x{border:0;background:#eef2f6;width:36px;height:36px;border-radius:50%;font-size:22px;cursor:pointer}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0008",
+          "ordem": 80,
+          "css": ".flow-copy{color:#667085;line-height:1.5}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0009",
+          "ordem": 90,
+          "css": ".role{display:grid;gap:6px;border:1px solid #dbe3ee;border-radius:14px;padding:14px;margin-top:12px}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0010",
+          "ordem": 100,
+          "css": ".role strong{color:#10233f}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0011",
+          "ordem": 110,
+          "css": ".role span{font-size:13px;color:#667085}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0012",
+          "ordem": 120,
+          "css": ".actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0013",
+          "ordem": 130,
+          "css": ".actions button{border:0;border-radius:10px;padding:10px 12px;background:#10233f;color:#fff;font-weight:800;cursor:pointer}"
+        },
+        {
+          "id": "auth_sessao_entrar_modal_02.r0014",
+          "ordem": 140,
+          "css": ".actions button+button{background:#eef2f6;color:#10233f}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.14.modal.13.n0008",
+      "elementoRef": "b1.14.modal.13.n0008",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.14.modal.13.n0018",
+      "elementoRef": "b1.14.modal.13.n0018",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.14.modal.13.n0020",
+      "elementoRef": "b1.14.modal.13.n0020",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.14.modal.13.n0028",
+      "elementoRef": "b1.14.modal.13.n0028",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.14.modal.13.n0030",
+      "elementoRef": "b1.14.modal.13.n0030",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.14.modal.13.n0038",
+      "elementoRef": "b1.14.modal.13.n0038",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

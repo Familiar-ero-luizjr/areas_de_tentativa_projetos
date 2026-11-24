@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AdvogadoJá · Fluxo · Dois subitens em um módulo</title>
+<style>
+:root{--navy:#10233f;--side:#142c3a;--green:#079a90;--bg:#f3f6f5;--ink:#1b333f;--muted:#71848e;--line:#dce5e9;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg)}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #19a899;outline-offset:2px}
+.shell{height:100dvh;min-height:500px;display:grid;grid-template-rows:56px minmax(0,1fr)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 18px;background:var(--navy);color:#fff;box-shadow:0 1px 8px #10233f25}
+.top-brand{display:flex;align-items:center;gap:10px}.top-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:#f2faf8;color:#183538;font-size:14px;font-weight:900;letter-spacing:-1px}.top strong{font-size:14px;line-height:1}.top small{font-size:10px;color:#b4c8d6;display:block;margin-top:4px}.top-right{font-size:11px;color:#b9cddd}.layout{min-height:0;display:grid;grid-template-columns:236px minmax(0,1fr)}
+.sidebar{background:var(--side);color:#e9f4f4;padding:23px 13px;display:flex;flex-direction:column;gap:12px;min-height:0}.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.2px;color:#5ed2c2;margin:10px 7px 4px}.module{display:flex;gap:10px;align-items:center;padding:12px 11px;border-radius:8px;background:#164b50;font-weight:800;font-size:13px}.module svg{width:16px;height:16px}.module .arrow{margin-left:auto;color:#b8ceca}.subitems{display:grid;gap:5px;margin-left:12px;border-left:1px solid #46616c;padding-left:10px}.subitem{display:flex;align-items:center;gap:9px;width:100%;background:transparent;border:1px solid transparent;border-radius:7px;color:#bdcdd3;font-size:12px;text-align:left;padding:12px 10px}.subitem:hover{background:#ffffff0e;color:#fff}.subitem.active{background:#2c545f;color:#fff;border-color:#4e6e7b;box-shadow:inset 3px 0 #17b8a9}.subitem svg{width:15px;height:15px;flex:none}.caption{margin-top:auto;border-top:1px solid #ffffff1a;padding:15px 7px 0;color:#94b2be;font-size:11px;line-height:1.6}
+.content{min-width:0;min-height:0;display:flex;flex-direction:column}.content-header{background:white;border-bottom:1px solid var(--line);padding:18px 22px 15px}.crumb{font-size:11px;color:#8a9cab;margin-bottom:6px}.section-row{display:flex;justify-content:space-between;align-items:center;gap:14px}.section-row h1{margin:0;font-size:22px;letter-spacing:-.7px;line-height:1.2}.section-row p{margin:5px 0 0;font-size:12px;line-height:1.5;color:#7c8d97}.source{font-size:10px;color:#748894;background:#f3f7f7;border:1px solid #e0e9eb;border-radius:999px;padding:6px 10px;white-space:nowrap}.frame-zone{flex:1;min-height:0;position:relative;background:#f3f6f5}.screen{display:none;position:absolute;inset:0}.screen.active{display:block}iframe{width:100%;height:100%;border:0;background:#f3f6f5}.loading{position:absolute;inset:0;display:grid;place-items:center;z-index:2;background:var(--bg);text-align:center;color:var(--muted);font-size:12px;padding:30px}.loading[hidden]{display:none}.loading strong{color:#243a46;display:block;font-size:16px;margin-bottom:5px}
+.mobile-choices{display:none}.info{display:flex;align-items:center;gap:8px;color:#95a2a8;font-size:11px;margin-top:8px}.info span{display:inline-flex;gap:6px;align-items:center}
+@media(max-width:820px){.layout{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:15px 9px}.content-header{padding:15px}}
+@media(max-width:640px){.layout{display:block}.sidebar{display:none}.content-header{padding:14px 15px}.top{padding:0 12px}.top-right{display:none}.section-row h1{font-size:18px}.section-row{align-items:flex-start}.source{display:none}.mobile-choices{display:flex;gap:5px;padding-top:11px}.mobile-choices button{border:1px solid #d9e5e6;border-radius:6px;background:#fff;color:#375661;padding:8px;font-size:11px;flex:1}.mobile-choices button.active{background:#dcf5ef;border-color:#92d6cc;color:#0c756e;font-weight:750}.info{display:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top"><div class="top-brand"><div class="top-mark">AJ</div><div><strong>AdvogadoJá</strong><small>WORKSPACE UNIFICADO · CONCEITO</small></div></div><div class="top-right">Módulo único · duas funcionalidades</div></header>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Navegação de módulos">
+      <div class="eyebrow">ESTRUTURA</div>
+      <div class="module"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4v6h12M6 10v10h12M18 7v6M18 17v6"/></svg>Fluxo <span class="arrow">⌄</span></div>
+      <nav class="subitems" aria-label="Subitens do Fluxo">
+        <button type="button" class="subitem active" data-view="fields" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4zM4 10h16M10 10v10"/></svg>Campos utilizados</button>
+        <button type="button" class="subitem" data-view="visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/><path d="M10 6h4v12"/></svg>Visualização do fluxo</button>
+      </nav>
+      <p class="caption">Mesmo domínio, duas formas de leitura. A estrutura do menu não precisa duplicar os dados nem o módulo.</p>
+    </aside>
+    <main class="content">
+      <div class="content-header">
+        <div class="crumb" id="crumb">Workspace › Fluxo › Campos utilizados</div>
+        <div class="section-row"><div><h1 id="headline">Fluxo · Campos utilizados</h1><p id="description">Leitura dos campos necessários ao Fluxo, com árvore e detalhes no padrão do P7.</p></div><span class="source" id="sourceLabel">Referência · Projeto 7</span></div>
+        <div class="mobile-choices"><button data-view="fields" class="active">Campos utilizados</button><button data-view="visual">Visualização do fluxo</button></div>
+        <div class="info"><span id="subnote">A estrutura de leitura é a original do P7.</span></div>
+      </div>
+      <div class="frame-zone">
+        <section class="screen active" id="screen-fields" aria-label="Campos utilizados"><div class="loading" id="loading-fields"><div><strong>Preparando campos utilizados</strong>Carregando a interface do Projeto 7 incorporada ao arquivo.</div></div><iframe id="frame-fields" title="Leitura dos campos do Fluxo · P7"></iframe></section>
+        <section class="screen" id="screen-visual" aria-label="Visualização do fluxo"><div class="loading" id="loading-visual"><div><strong>Preparando visualização do fluxo</strong>Carregando a estrutura real do Fluxo V2 e suas prévias, incorporadas ao arquivo.</div></div><iframe id="frame-visual" title="Fluxo V2 · visualização e prévias"></iframe></section>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+<script>
+'use strict';
+const views={
+  fields:{name:'Campos utilizados',desc:'Leitura dos campos necessários ao Fluxo, com árvore e detalhes no padrão do P7.',source:'Referência · Projeto 7',note:'A estrutura de leitura é a original do P7.'},
+  visual:{name:'Visualização do fluxo',desc:'Sequências, decisões, ramificações e prévias das telas no Fluxo V2.',source:'Referência · Fluxo V2',note:'Visualização real do Fluxo V2, sem um segundo módulo.'}
+};
+const ready={};
+function load(view){
+  if(ready[view])return;
+  const frame=document.querySelector('#frame-'+view);
+  const loading=document.querySelector('#loading-'+view);
+  frame.addEventListener('load',()=>{loading.hidden=true;},{once:true});
+  frame.addEventListener('error',()=>{loading.innerHTML='<div><strong>Não foi possível abrir a visualização</strong>Verifique se os arquivos locais estão sendo servidos por HTTP.</div>';},{once:true});
+  frame.src=view==='fields'?'campos_utilizados/index.html':'visualizacao_fluxo/index.html';
+  ready[view]=true;
+}
+function change(view){
+  if(!views[view])return;
+  document.querySelectorAll('[data-view]').forEach(btn=>{
+    const active=btn.dataset.view===view;
+    btn.classList.toggle('active',active);
+    if(btn.classList.contains('subitem'))active?btn.setAttribute('aria-current','page'):btn.removeAttribute('aria-current');
+  });
+  document.querySelectorAll('.screen').forEach(box=>box.classList.toggle('active',box.id==='screen-'+view));
+  document.querySelector('#headline').textContent='Fluxo · '+views[view].name;
+  document.querySelector('#description').textContent=views[view].desc;
+  document.querySelector('#sourceLabel').textContent=views[view].source;
+  document.querySelector('#subnote').textContent=views[view].note;
+  document.querySelector('#crumb').textContent='Workspace › Fluxo › '+views[view].name;
+  try{history.replaceState({},'',location.pathname+'#'+view);}catch(_){ }
+  load(view);
+}
+document.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>change(btn.dataset.view)));
+change(location.hash==='#visual'?'visual':'fields');
+</script>
+</body>
+</html>

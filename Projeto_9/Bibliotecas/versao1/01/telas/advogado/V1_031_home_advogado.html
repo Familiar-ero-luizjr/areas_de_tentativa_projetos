@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="AdvogadoJá V1 - exportação HTML autocontida">
+<meta name="v1-screen-key" content="advogado.home_advogado">
+<meta name="v1-screen-number" content="V1_031">
+<meta name="component-registry" content="./__src/components/__registry__.json">
+<meta name="asset-base" content="./assets/">
+<title>Início Profissional · AdvogadoJá V1 · V1_031</title>
+<style>/* Casca macro: posição e responsividade. Componentes cuidam do conteúdo interno. */
+:root{--primary:#10233f;--primary-soft:#173c6b;--gold:#b88932;--page:#eef2f6;--surface:#fff;--line:#dbe3ee;--text:#172033;--muted:#667085;--main-max:720px;--main-padding-x:16px;--main-padding-top:22px;--main-padding-bottom:28px;--section-gap:12px;--nav-desktop-width:210px;font-family:"Plus Jakarta Sans","Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}html,body{min-width:320px;min-height:100%;margin:0}body{min-height:100dvh;background:var(--page);color:var(--text);overflow-x:hidden}#screen-root,.screen-runtime{min-height:100dvh;background:var(--page)}screen-section{display:block;width:100%}.screen-slot{min-width:0;width:100%}
+.screen-slot--header{position:sticky;top:0;z-index:30;background:var(--page)}.screen-slot--header>screen-section+screen-section{margin-top:0}
+.screen-layout{min-height:calc(100dvh - 1px);display:block}.screen-slot--main{width:min(100%,var(--main-max));margin:0 auto;padding:var(--main-padding-top) var(--main-padding-x) calc(var(--main-padding-bottom) + 76px)}.screen-slot--main>screen-section+screen-section{margin-top:var(--section-gap)}
+.screen-slot--navigation{position:fixed;z-index:20;right:0;bottom:0;left:0}.screen-slot--navigation:not([data-active="true"]){display:none}.screen-slot--menu,.screen-slot--modal,.screen-slot--popup,.screen-slot--alert{height:0;position:relative;z-index:40}.screen-slot--modal{z-index:50}.screen-slot--popup{z-index:60}.screen-slot--alert{z-index:70}
+@media(min-width:900px){.screen-layout{display:grid;grid-template-columns:var(--nav-desktop-width) minmax(0,1fr);align-items:start}.screen-runtime:not([data-has-navigation="true"]) .screen-layout{grid-template-columns:minmax(0,1fr)}.screen-slot--navigation{position:sticky;top:0;right:auto;bottom:auto;left:auto;grid-column:1;grid-row:1;align-self:start;min-height:100%;padding-top:18px}.screen-slot--main{grid-column:2;grid-row:1;padding-bottom:var(--main-padding-bottom)}.screen-runtime:not([data-has-navigation="true"]) .screen-slot--main{grid-column:1}}
+.screen-loading,.screen-error{width:min(100% - 32px,720px);margin:32px auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff;line-height:1.55}.screen-error h1{margin:0 0 8px;color:var(--primary);font-size:20px}.screen-error code{display:block;margin-top:12px;padding:10px;border-radius:8px;background:#eef2f6;overflow-wrap:anywhere}.section-runtime-warning{max-width:var(--main-max,720px);margin:12px auto;padding:12px 14px;border:1px dashed #b8c2cf;border-radius:12px;background:#fff;color:#334155;display:grid;gap:4px}
+</style>
+<style id="aj-lab-style">
+#aj-lab-launch {position:fixed;z-index:2147483601;bottom:13px;right:12px;max-width:calc(100vw - 24px);padding:10px 13px;border-radius:999px;border:1px solid #d8bf83;background:#10233f;color:#fff;font:700 12px system-ui;box-shadow:0 8px 22px #10233f55;cursor:pointer}
+#aj-lab-panel {position:fixed;z-index:2147483603;right:12px;bottom:57px;width:min(350px,calc(100vw - 24px));max-height:calc(100dvh - 72px);overflow:auto;background:#fff;color:#172033;padding:15px;border-radius:14px;border:1px solid #bfd0e2;box-shadow:0 14px 40px #10233f55;font:13px/1.45 system-ui}
+#aj-lab-panel[hidden],#aj-lab-drawer[hidden]{display:none!important}
+#aj-lab-panel h3{font-size:14px;margin:0 0 5px;color:#10233f}
+#aj-lab-panel p{margin:0 0 12px;color:#607289;font-size:11px}
+#aj-lab-panel select{width:100%;padding:10px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:9px;color:#14233c;font:12px system-ui;margin:5px 0 9px}
+#aj-lab-panel button{cursor:pointer;border:1px solid #c4d3e5;padding:9px 12px;border-radius:8px;background:#f2f6fb;font:700 12px system-ui;color:#133453}
+#aj-lab-panel .aj-lab-row{display:flex;gap:8px;flex-wrap:wrap}
+.aj-state-callout{position:relative;z-index:2;background:#fdf9ed;color:#374151;border:1px solid #e8cf94;border-left:4px solid #b88932;padding:13px 14px;margin:10px 12px 14px;border-radius:11px;box-shadow:0 4px 12px #17203312;font:13px/1.42 system-ui}
+.aj-state-callout[data-tone="ok"]{background:#f0fdf5;border-color:#9dcfb5;border-left-color:#188651}
+.aj-state-callout[data-tone="warn"]{background:#fff7eb;border-color:#edbe83;border-left-color:#d18524}
+.aj-state-callout strong{display:block;color:#152f4e;font:800 14px/1.3 system-ui;margin-bottom:4px}
+.aj-state-callout p{color:#556274;margin:0 0 9px;font:12px/1.5 system-ui}
+.aj-state-callout button{font:750 11px system-ui;background:#10233f;color:white;border:0;border-radius:7px;padding:9px 12px;cursor:pointer}
+.aj-state-callout .aj-state-origin{display:inline-block;margin-left:7px;font:700 10px system-ui;color:#91681c}
+#aj-lab-drawer {position:fixed;inset:0;z-index:2147483604;font:13px system-ui}
+#aj-lab-drawer .aj-drawer-shade{position:absolute;inset:0;background:rgba(11,22,43,.64)}
+#aj-lab-drawer .aj-drawer-content{position:absolute;inset:0 auto 0 0;width:min(332px,89vw);overflow:auto;background:#fff;padding:16px;box-shadow:10px 0 35px #10233f40}
+#aj-lab-drawer h2{font:800 17px system-ui;color:#10233f;margin:4px 0 3px}
+#aj-lab-drawer small{color:#66758a;font:11px system-ui}
+#aj-lab-drawer .aj-drawer-top{display:flex;align-items:start;justify-content:space-between;gap:8px;border-bottom:1px solid #dce4ee;padding-bottom:13px;margin-bottom:12px}
+#aj-lab-drawer .aj-drawer-top button{background:#f3f6fa;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+#aj-lab-drawer .aj-drawer-link{display:flex;align-items:center;gap:9px;width:100%;padding:12px 9px;margin:4px 0;background:white;color:#172c49;border:1px solid #e5eaf3;border-radius:9px;text-align:left;font:650 12px system-ui;cursor:pointer}
+#aj-lab-drawer .aj-drawer-link[disabled]{background:#f4f6f9;color:#8b98aa;cursor:not-allowed}
+#aj-lab-drawer .aj-drawer-link .aj-right{margin-left:auto;color:#8794a4;font-size:10px}
+#aj-lab-drawer .aj-drawer-note{margin:14px 3px;font:11px/1.5 system-ui;color:#64748b}
+body.aj-state-student .prototype-drawer{display:none!important}
+body.aj-oab-restricted .aj-menu__nav-item[data-item-id="solicitacoes"],body.aj-oab-restricted .aj-menu__nav-item[data-item-id="disponibilidade"],body.aj-oab-restricted .aj-menu__nav-item[data-item-id="agenda"]{display:none!important}
+body.aj-oab-restricted .aj-menu__availability{display:none!important}
+body.aj-student-locked .aj-demo-protected{filter:grayscale(.2);opacity:.7}
+</style>
+</head>
+<body>
+<div id="screen-root"></div>
+<script type="application/json" id="v1-embedded-bundle">{"metadata":{"key":"advogado.home_advogado","label":"V1_031","name":"Início Profissional","feature":"advogado","origin":"telas/advogado/home_advogado","behavior":"behavior-06","shell":"shell-02"},"config":{"schemaVersion":"5.0.0","screen":{"key":"advogado.home_advogado","name":"Início Profissional","feature":"advogado","featureLabel":"Advogado","section":"home","sectionLabel":"Home","order":1,"flutterRoute":"/professional/home","screenId":"scr_advogado_home_advogado"},"layout":{"preset":"mobile-first-adaptive","mainMaxWidth":"720px","mainPaddingX":"16px","mainPaddingTop":"22px","mainPaddingBottom":"28px","sectionGap":"12px","desktopNavigationWidth":"210px","navigationBehavior":{"mobile":"bottom","desktop":"left"}},"theme":{"primary":"#10233f","primarySoft":"#173c6b","gold":"#b88932","page":"#eef2f6","surface":"#ffffff","line":"#dbe3ee","text":"#172033","muted":"#667085"},"state":{"online":true,"professionalAccess":"enabled"},"routes":{"auth.sessao.entrar":{"name":"Entrar","flutterRoute":"/entrar"},"advogado.home_advogado":{"name":"Home Profissional","flutterRoute":"/professional/home"},"advogado.disponibilidade":{"name":"Disponibilidade","flutterRoute":"/professional/availability"},"advogado.configuracao.agenda_semanal":{"name":"Agenda semanal","flutterRoute":"/professional/schedule"},"advogado.perfil_profissional":{"name":"Perfil profissional","flutterRoute":"/professional/profile"},"escritorio.gestao.escritorio":{"name":"Escritório","flutterRoute":"/office"},"advogado.assinatura.gestao_assinatura":{"name":"Assinatura","flutterRoute":"/subscription"},"notificacoes.lista.notificacoes":{"name":"Notificações","flutterRoute":"/notifications"},"advogado.configuracao.suporte":{"name":"Suporte","flutterRoute":"/support"},"advogado.configuracao.termos_privacidade":{"name":"Termos e privacidade","flutterRoute":"/legal/notices"},"advogado.clientes.detalhe_solicitacao":{"name":"Detalhe da solicitação","flutterRoute":"/requests/professional/detail"},"advogado.atendimentos_advogado":{"name":"Atendimentos","flutterRoute":"/professional/appointments"},"advogado.configuracao.configuracao":{"name":"Configurações","flutterRoute":"/professional/settings"},"advogado.configuracao.validacao_oab":{"name":"Validação da OAB","flutterRoute":"/professional/settings/oab-validation"}},"enginePolicy":{"sectionFailure":"isolate","missingSection":"skip","unknownSlot":"reject","unsafeSource":"reject","placementRule":"O slot e a ordem são definidos pela composição no Catálogo Mestre. Componentes shared usam ref; componentes locais usam source.","dependencyRule":"Referências shared precisam existir em entities.components do Catálogo Mestre."},"slots":{"header":{"purpose":"Faixa superior de largura total.","flow":"vertical"},"main":{"purpose":"Conteúdo central responsivo. No desktop é centralizado; no mobile ocupa a largura disponível.","flow":"vertical"},"navigation":{"purpose":"Navegação principal. Mobile: inferior. Desktop: lateral esquerda.","flow":"adaptive"},"menu":{"purpose":"Menus sobrepostos, como drawer lateral.","flow":"layer"},"modal":{"purpose":"Modais sobre a tela.","flow":"layer"},"popup":{"purpose":"Pop-ups, toasts e avisos flutuantes.","flow":"layer"},"alert":{"purpose":"Alertas independentes sobre a tela.","flow":"layer"}},"organization":{"rule":"A pasta telas/ contém somente fontes visuais. Composição, dados, contratos e engenharia vivem no Catálogo Mestre.","screenFolder":"visual-only","compositionSource":"catalog-master"},"composition":{"header":[{"id":"app-header","order":10,"sourceType":"shared","enabled":true,"required":true,"slot":"header","ref":"layout.header.app"},{"id":"titlebar","order":20,"sourceType":"shared","enabled":true,"required":true,"slot":"header","ref":"layout.header.title"}],"main":[{"id":"hero","source":"main/hero","order":20,"sourceType":"local","enabled":true,"required":false,"slot":"main","componentId":"cmp_advogado_home_advogado_main_hero"},{"id":"online-status","source":"main/online-status","order":30,"sourceType":"local","enabled":true,"required":false,"slot":"main","componentId":"cmp_advogado_home_advogado_main_online_status"},{"id":"actions","source":"main/actions","order":40,"sourceType":"local","enabled":true,"required":false,"slot":"main","componentId":"cmp_advogado_home_advogado_main_actions"}],"navigation":[],"menu":[{"id":"drawer","order":10,"sourceType":"shared","enabled":true,"required":true,"slot":"menu","ref":"layout.menu.drawer"}],"modal":[{"id":"route-modal","order":10,"sourceType":"shared","enabled":true,"required":false,"slot":"modal","componentId":"shared_modal_route-modal_v02","ref":"modal.route-modal.v02","label":"Modal de navegação simulada","previousComponentId":"cmp_advogado_home_advogado_modal_route_modal"}],"popup":[{"id":"status-toast","slot":"popup","order":10,"sourceType":"shared","enabled":true,"required":false,"componentId":"shared_popup_status-toast_v01","ref":"popup.status-toast.v01","label":"Toast de alteração de status","previousComponentId":"cmp_advogado_home_advogado_popup_status_toast"}]},"package":{"type":"composed-screen","layer":"presentation","feature":"advogado","variant":"Telas propostas em construção"},"runtime":{"dataPolicy":"Conteúdo e dados da tela são lidos do Catálogo Mestre; HTML/CSS permanecem como fontes visuais físicas.","engine":"catalog-master","behaviorProfile":"behavior-06","shellProfile":"shell-02","screenBase":"telas/advogado/home_advogado/","professionalAccessContract":"professional-access-v1","professionalAccessSource":"capability-resolver","prototypeOverrideQuery":"professionalAccess"},"dataRef":"__catalog_data__.json"},"data":{"schemaVersion":1,"screenKey":"advogado.home_advogado","meta":{"name":"Início Profissional","documentTitle":"Início — AdvogadoJá+","feature":"advogado","section":"home"},"components":{"hero":{"eyebrow":"Novas solicitações","title":"Olá, Dr. Profissional","subtitle":"Analise os novos pedidos de contato que aguardam sua resposta.","restricted":{"eyebrow":"Habilitação profissional","title":"Valide sua OAB para começar a atuar","subtitle":"Seu perfil já pode ser configurado, mas o recebimento e o aceite de solicitações ficam bloqueados até a validação da OAB.","ctaLabel":"Validar OAB","ctaGoto":"advogado.configuracao.validacao_oab"}},"online-status":{"content":{"online":"Online","recebendo_novas_solicitacoes":"Recebendo novas solicitações"}},"actions":{"title":"Novas solicitações","count":"3 aguardando análise","items":[{"goto":"advogado.clientes.detalhe_solicitacao","area":"Direito do Consumidor","requestType":"Contato prioritário","location":"São Paulo/SP","mode":"Online","time":"há 8 min","summary":"Problema com cobrança indevida e tentativa de cancelamento sem solução.","priority":"Prioritário"},{"goto":"advogado.clientes.detalhe_solicitacao","area":"Direito de Família","requestType":"Consultoria","location":"Campinas/SP","mode":"Online","time":"há 24 min","summary":"Orientação inicial sobre guarda e regulamentação de convivência.","priority":"Nova"},{"goto":"advogado.clientes.detalhe_solicitacao","area":"Direito Trabalhista","requestType":"Consultoria","location":"São Paulo/SP","mode":"Presencial","time":"há 41 min","summary":"Dúvidas sobre verbas rescisórias após desligamento da empresa.","priority":"Nova"}],"content":{"ver_solicitacao":"Ver solicitação"}},"route-modal":{"content":{"navegacao_simulada_aria_label":"Navegação simulada","tela_modular_navegacao_simulada":"Tela modular · navegação simulada","navegacao_simulada":"Navegação simulada","esta_acao_nao_abre_outra_tela_nesta_biblioteca":"Esta ação não abre outra tela nesta biblioteca.","fechar":"Fechar"}},"status-toast":{"message":"Status atualizado"},"app-header":{"brand":"AdvogadoJá+","role":"Profissional","notificationCount":2},"titlebar":{"title":"Início"},"drawer":{"profile":"advogado"}},"runtime":{"stateLabels":{"online":{"on":{"status":"Online","copy":"Recebendo novas solicitações"},"off":{"status":"Offline","copy":"Pausado para novas solicitações"}}},"professionalAccess":{"contractVersion":1,"resolver":"capability-resolver","sourceReference":{"field":"oabValidationStatus","validatedValue":"validated","status":"modelo-previsto-a-confirmar-na-implementacao"},"states":{"restricted":{"canReceiveRequests":false,"canToggleOnline":false,"canActProfessionally":false,"canValidateOab":true},"enabled":{"canReceiveRequests":true,"canToggleOnline":true,"canActProfessionally":true,"canValidateOab":false}},"fallback":"restricted","note":"O Protótipo usa professionalAccess como override de sessão. O seletor aparece na Home, mas o estado acompanha a navegação e filtra menu/rotas; em produção o estado é derivado dos dados/capacidades do profissional."}}},"registry":{"schemaVersion":2,"source":"catalogo/catalogo_master.json","components":{"modal.route-modal.v02":{"path":"modals/route-modal/v02","slot":"modal","id":"route-modal","name":"Modal de navegação simulada"},"popup.status-toast.v01":{"path":"popups/status-toast/v01","slot":"popup","id":"status-toast","name":"Toast de alteração de status"},"layout.header.app":{"path":"layout/header/app","slot":"header","id":"app-header","name":"layout.header.app"},"layout.header.title":{"path":"layout/header/title","slot":"header","id":"titlebar","name":"layout.header.title"},"layout.menu.drawer":{"path":"layout/menu/drawer","slot":"menu","id":"drawer","name":"layout.menu.drawer"}}},"files":{"engine/section-base.css":":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n","telas/advogado/home_advogado/main/hero/template.html":"\u003csection class=\"home-intro\" data-professional-state=\"enabled\"\u003e\n  \u003cspan class=\"home-eyebrow\"\u003e{{eyebrow}}\u003c/span\u003e\n  \u003ch1\u003e{{title}}\u003c/h1\u003e\n  \u003cp\u003e{{subtitle}}\u003c/p\u003e\n\u003c/section\u003e\n{{#if restricted}}\u003csection class=\"home-access-card\" data-professional-state=\"restricted\" hidden\u003e\n  \u003cspan class=\"home-eyebrow\"\u003e{{restricted.eyebrow}}\u003c/span\u003e\n  \u003ch1\u003e{{restricted.title}}\u003c/h1\u003e\n  \u003cp\u003e{{restricted.subtitle}}\u003c/p\u003e\n  \u003cbutton type=\"button\" class=\"home-access-card__cta\" data-goto=\"{{restricted.ctaGoto}}\"\u003e{{restricted.ctaLabel}}\u003c/button\u003e\n\u003c/section\u003e{{/if}}\n","telas/advogado/home_advogado/main/hero/style.css":".home-intro {\n  padding: 2px 2px 4px;\n}\n.home-eyebrow {\n  display:block;\n  margin-bottom:6px;\n  color:var(--gold);\n  font-size:11px;\n  font-weight:900;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n}\n.home-intro h1,\n.home-access-card h1 {\n  margin:0;\n  color:var(--primary);\n  font-size:24px;\n  line-height:1.15;\n  letter-spacing:-.025em;\n}\n.home-intro p,\n.home-access-card p {\n  max-width:560px;\n  margin:8px 0 0;\n  color:var(--muted);\n  font-size:14px;\n  line-height:1.5;\n}\n.home-access-card {\n  padding:18px;\n  border:1px solid #e2c27b;\n  border-radius:14px;\n  background:#fffaf0;\n  box-shadow:0 8px 22px rgba(16,35,63,.07);\n}\n.home-access-card__cta {\n  width:100%;\n  min-height:46px;\n  margin-top:16px;\n  border:0;\n  border-radius:10px;\n  padding:11px 16px;\n  background:var(--primary);\n  color:#fff;\n  font:inherit;\n  font-weight:800;\n  cursor:pointer;\n}\n.home-access-card__cta:hover {filter:brightness(1.05)}\n","telas/advogado/home_advogado/main/hero/section.json":"{\"id\":\"hero\",\"name\":\"Apresentação Profissional\",\"kind\":\"content\",\"data\":{},\"defaultSlot\":\"main\"}","telas/advogado/home_advogado/main/online-status/template.html":"\u003cbutton class=\"online-card\" type=\"button\" data-action=\"online.toggle\" data-online-root\u003e\n  \u003cspan class=\"online-dot\"\u003e\u003c/span\u003e\n  \u003cspan class=\"online-copy\"\u003e\n    \u003cstrong data-online-status\u003e{{content.online}}\u003c/strong\u003e\n    \u003csmall data-online-copy\u003e{{content.recebendo_novas_solicitacoes}}\u003c/small\u003e\n  \u003c/span\u003e\n  \u003cspan class=\"online-switch\" aria-hidden=\"true\"\u003e\u003cb\u003e\u003c/b\u003e\u003c/span\u003e\n\u003c/button\u003e\n","telas/advogado/home_advogado/main/online-status/style.css":".online-card {\n  width:100%;\n  display:grid;\n  grid-template-columns:auto minmax(0,1fr) auto;\n  gap:12px;\n  align-items:center;\n  padding:14px 15px;\n  border:1px solid #a8dfc8;\n  border-radius:16px;\n  background:#f1fbf6;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n}\n.online-card.is-offline {\n  border-color:var(--line);\n  background:#f8fafc;\n}\n.online-dot {\n  width:10px;\n  height:10px;\n  border-radius:50%;\n  background:#15945e;\n  box-shadow:0 0 0 4px rgba(21,148,94,.12);\n}\n.is-offline .online-dot {\n  background:#98a2b3;\n  box-shadow:none;\n}\n.online-copy strong,\n.online-copy small { display:block; }\n.online-copy strong {\n  color:var(--primary);\n  font-size:14px;\n}\n.online-copy small {\n  margin-top:3px;\n  color:var(--muted);\n  font-size:12px;\n}\n.online-switch {\n  position:relative;\n  width:40px;\n  height:23px;\n  border-radius:999px;\n  background:#22c55e;\n}\n.online-switch b {\n  position:absolute;\n  top:3px;\n  right:3px;\n  width:17px;\n  height:17px;\n  border-radius:50%;\n  background:#fff;\n}\n.is-offline .online-switch { background:#98a2b3; }\n.is-offline .online-switch b { right:20px; }\n","telas/advogado/home_advogado/main/online-status/section.json":"{\"id\":\"online-status\",\"name\":\"Status Online\",\"kind\":\"content\",\"data\":{},\"defaultSlot\":\"main\"}","telas/advogado/home_advogado/main/actions/template.html":"\u003csection class=\"requests-block\" aria-labelledby=\"requests-title\"\u003e\n  \u003cdiv class=\"requests-heading\"\u003e\n    \u003cdiv\u003e\n      \u003ch2 id=\"requests-title\"\u003e{{title}}\u003c/h2\u003e\n      \u003cp\u003e{{count}}\u003c/p\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\n  \u003cdiv class=\"requests-list\"\u003e\n    {{#each items}}\n    \u003cbutton class=\"request-card\" type=\"button\" data-goto=\"{{goto}}\"\u003e\n      \u003cdiv class=\"request-top\"\u003e\n        \u003cspan class=\"request-priority\"\u003e{{priority}}\u003c/span\u003e\n        \u003cspan class=\"request-time\"\u003e{{time}}\u003c/span\u003e\n      \u003c/div\u003e\n\n      \u003ch3\u003e{{area}}\u003c/h3\u003e\n      \u003cp class=\"request-meta\"\u003e{{requestType}} · {{location}} · {{mode}}\u003c/p\u003e\n      \u003cp class=\"request-summary\"\u003e{{summary}}\u003c/p\u003e\n\n      \u003cspan class=\"request-open\"\u003e{{content.ver_solicitacao}} \u003cb\u003e›\u003c/b\u003e\u003c/span\u003e\n    \u003c/button\u003e\n    {{/each}}\n  \u003c/div\u003e\n\u003c/section\u003e\n","telas/advogado/home_advogado/main/actions/style.css":".requests-block { display:grid; gap:12px; }\n.requests-heading {\n  display:flex;\n  justify-content:space-between;\n  gap:12px;\n  align-items:end;\n}\n.requests-heading h2 {\n  margin:0;\n  color:var(--primary);\n  font-size:18px;\n  letter-spacing:-.015em;\n}\n.requests-heading p {\n  margin:4px 0 0;\n  color:var(--muted);\n  font-size:12px;\n}\n.requests-list { display:grid; gap:10px; }\n.request-card {\n  width:100%;\n  display:block;\n  padding:15px;\n  border:1px solid var(--line);\n  border-radius:16px;\n  background:#fff;\n  color:var(--text);\n  text-align:left;\n  cursor:pointer;\n  box-shadow:0 2px 7px rgba(16,35,63,.035);\n}\n.request-card:hover { border-color:#bac7d8; }\n.request-top {\n  display:flex;\n  justify-content:space-between;\n  gap:10px;\n  align-items:center;\n}\n.request-priority {\n  display:inline-flex;\n  align-items:center;\n  min-height:24px;\n  padding:3px 9px;\n  border-radius:999px;\n  background:#fff7e8;\n  color:#8a5a08;\n  font-size:10px;\n  font-weight:900;\n  text-transform:uppercase;\n  letter-spacing:.045em;\n}\n.request-time {\n  color:var(--muted);\n  font-size:11px;\n}\n.request-card h3 {\n  margin:12px 0 0;\n  color:var(--primary);\n  font-size:16px;\n}\n.request-meta {\n  margin:5px 0 0;\n  color:var(--muted);\n  font-size:12px;\n  line-height:1.45;\n}\n.request-summary {\n  margin:11px 0 0;\n  color:#344054;\n  font-size:13px;\n  line-height:1.5;\n}\n.request-open {\n  margin-top:13px;\n  display:flex;\n  justify-content:flex-end;\n  gap:6px;\n  align-items:center;\n  color:var(--primary-soft);\n  font-size:12px;\n  font-weight:800;\n}\n.request-open b {\n  color:var(--gold);\n  font-size:20px;\n  line-height:1;\n}\n@media(min-width:680px) {\n  .requests-list { grid-template-columns:1fr 1fr; }\n  .request-card:first-child { grid-column:1 / -1; }\n}\n","telas/advogado/home_advogado/main/actions/section.json":"{\"id\":\"actions\",\"name\":\"Novas solicitações\",\"kind\":\"content\",\"data\":{},\"defaultSlot\":\"main\"}","components/modals/route-modal/v02/template.html":"\u003cdiv class=\"route-modal\" data-overlay-root aria-hidden=\"true\" role=\"dialog\" aria-modal=\"true\" aria-label=\"{{content.navegacao_simulada_aria_label}}\"\u003e\n  \u003cdiv class=\"route-card\"\u003e\n    \u003cp class=\"kicker\"\u003e{{content.tela_modular_navegacao_simulada}}\u003c/p\u003e\n    \u003ch2 data-route-title\u003e{{content.navegacao_simulada}}\u003c/h2\u003e\n    \u003cp data-route-text\u003e{{content.esta_acao_nao_abre_outra_tela_nesta_biblioteca}}\u003c/p\u003e\n    \u003ccode data-route-code\u003e\u003c/code\u003e\n    \u003cbutton type=\"button\" data-action=\"route.close\"\u003e{{content.fechar}}\u003c/button\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n","components/modals/route-modal/v02/style.css":".route-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(15,23,42,.52)}.route-modal.open{display:flex}.route-card{width:min(100%,520px);border-radius:18px;padding:18px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.25)}.kicker{margin:0 0 7px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.route-card h2{margin:0 0 8px;color:var(--primary);font-size:20px}.route-card p:not(.kicker){margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.5}.route-card code{display:block;overflow-wrap:anywhere;margin:0 0 14px;padding:10px 12px;border-radius:10px;background:#eef2f6;color:var(--primary);font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.route-card button{width:100%;min-height:46px;border:0;border-radius:11px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}\n\n","components/modals/route-modal/v02/section.json":"{\"id\":\"route-modal\",\"name\":\"Modal de navegação simulada\",\"kind\":\"route-modal\",\"data\":{},\"defaultSlot\":\"modal\"}","components/popups/status-toast/v01/template.html":"\u003cdiv class=\"status-toast\" data-toast-root role=\"status\" aria-live=\"polite\"\u003e\u003cspan data-toast-text\u003e{{message}}\u003c/span\u003e\u003c/div\u003e","components/popups/status-toast/v01/style.css":".status-toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:999px;background:#10233f;color:#fff;font-size:13px;box-shadow:0 10px 30px #0003;transition:.2s ease}.status-toast.show{opacity:1;transform:translate(-50%,0)}@media(min-width:900px){.status-toast{bottom:28px}}","components/popups/status-toast/v01/section.json":"{\"id\":\"status-toast\",\"name\":\"Toast de alteração de status\",\"kind\":\"status-toast\",\"data\":{},\"defaultSlot\":\"popup\"}","components/layout/header/app/template.html":"\u003cheader class=\"aj-layout-app-header app-header aj-internal\" data-aj-canonical=\"layout.header.app\" data-profile=\"advogado\" data-variante=\"autenticado\"\u003e\u003cbutton class=\"aj-layout-icon-button app-menu-button\" type=\"button\" data-action=\"drawer.open\" aria-label=\"Abrir menu\"\u003e\u003cspan\u003e\u003c/span\u003e\u003cspan\u003e\u003c/span\u003e\u003cspan\u003e\u003c/span\u003e\u003c/button\u003e\u003cdiv class=\"aj-layout-brand\"\u003e\u003cimg src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K\" alt=\"\"/\u003e\u003cdiv class=\"aj-layout-brand-copy\"\u003e\u003cstrong\u003eAdvogadoJá+\u003c/strong\u003e\u003csmall\u003eProfissional\u003c/small\u003e\u003c/div\u003e\u003c/div\u003e\u003cbutton class=\"aj-layout-icon-button app-notifications\" type=\"button\" data-aj-route=\"notificacoes.lista.notificacoes\" aria-label=\"Notificações\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4\"/\u003e\u003c/svg\u003e\u003cspan class=\"aj-layout-badge\"\u003e2\u003c/span\u003e\u003c/button\u003e\u003c/header\u003e","components/layout/header/app/style.css":".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n","components/layout/header/app/section.json":"{\"id\": \"app-header\", \"name\": \"layout.header.app\", \"kind\": \"header\", \"data\": {}, \"defaultSlot\": \"header\"}","components/layout/header/title/template.html":"\u003cdiv class=\"aj-layout-titlebar\" data-aj-canonical=\"layout.header.title\"\u003e\u003cstrong data-aj-title\u003eInício\u003c/strong\u003e\u003c/div\u003e","components/layout/header/title/style.css":".aj-layout-titlebar{width:100%;min-height:38px;display:flex;align-items:center;padding:10px 18px;border-bottom:1px solid #dbe3ee;background:#fff;color:#10233f;font:700 13px/1.35 Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-titlebar strong{font-weight:700;font-size:13px}\n","components/layout/header/title/section.json":"{\"id\": \"titlebar\", \"name\": \"layout.header.title\", \"kind\": \"titlebar\", \"data\": {}, \"defaultSlot\": \"header\"}","components/layout/menu/drawer/template.html":"\u003caside class=\"aj-layout-drawer prototype-drawer\" data-aj-canonical=\"layout.menu.drawer\" data-perfil=\"advogado\" data-plano=\"sem_plano\" data-estudante-menu=\"fechado\" data-escritorio-menu=\"fechado\" data-oab=\"enabled\" data-permissao=\"gestor\" data-disponibilidade=\"online\" aria-hidden=\"true\"\u003e\u003cbutton class=\"aj-layout-backdrop drawer-backdrop\" data-action=\"drawer.close\" type=\"button\" aria-label=\"Fechar menu\"\u003e\u003c/button\u003e\u003cdiv class=\"aj-layout-panel drawer-panel\"\u003e\u003cdiv class=\"aj-layout-identity\"\u003e\u003cdiv class=\"aj-layout-avatar\"\u003eDP\u003c/div\u003e\u003cdiv\u003e\u003cstrong\u003eDr. Profissional\u003c/strong\u003e\u003csmall\u003ePROFISSIONAL\u003c/small\u003e\u003c/div\u003e\u003c/div\u003e\u003cbutton type=\"button\" class=\"aj-layout-status\" data-aj-toggle=\"disponibilidade\"\u003e\u003cspan class=\"aj-status-dot\"\u003e\u003c/span\u003e\u003cspan class=\"aj-layout-status-copy\"\u003e\u003cb data-aj-online-label\u003eOnline\u003c/b\u003e\u003csmall data-aj-online-copy\u003eRecebendo novas solicitações\u003c/small\u003e\u003c/span\u003e\u003cspan\u003e⏻\u003c/span\u003e\u003c/button\u003e\u003cnav class=\"drawer-nav\" aria-label=\"Menu principal\"\u003e\u003cbutton type=\"button\" class=\"\" data-aj-route=\"advogado.home\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M3 11.5 12 4l9 7.5M5 10v10h14V10M9 20v-6h6v6\"/\u003e\u003c/svg\u003e\u003cstrong\u003eInício\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"\" data-aj-route=\"advogado.configuracao.validacao_oab\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M5 12l4 4L19 6M4 4h16v16H4z\"/\u003e\u003c/svg\u003e\u003cstrong\u003eValidar OAB\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"\" data-aj-route=\"advogado.atendimentos.lista\" data-aj-oab-only=\"enabled\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M8 4h8M6 6h12v15H6zM9 11h6M9 15h6\"/\u003e\u003c/svg\u003e\u003cstrong\u003eAtendimentos\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"\" data-aj-route=\"advogado.perfil.profissional\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87\"/\u003e\u003c/svg\u003e\u003cstrong\u003eMeu perfil\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"\" data-aj-route=\"advogado.assinatura.gestao_assinatura\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M3 5h18v14H3zM3 10h18M7 15h4\"/\u003e\u003c/svg\u003e\u003cstrong\u003ePlanos\u003c/strong\u003e\u003c/button\u003e\u003cbutton class=\"aj-menu-group\" type=\"button\" data-aj-toggle=\"escritorio\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18\"/\u003e\u003c/svg\u003e\u003cstrong\u003eEscritório\u003c/strong\u003e\u003cspan class=\"aj-item-hint\" data-aj-caret=\"escritorio\"\u003e▸\u003c/span\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"aj-subitem\" data-aj-route=\"escritorio.gestao.escritorio\" data-aj-group-content=\"escritorio\" data-aj-requer-escritorio=\"ativo\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18\"/\u003e\u003c/svg\u003e\u003cstrong\u003eVisão do escritório\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"aj-subitem\" data-aj-route=\"escritorio.equipe.equipe\" data-aj-group-content=\"escritorio\" data-aj-requer-escritorio=\"ativo\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87\"/\u003e\u003c/svg\u003e\u003cstrong\u003eEquipe jurídica\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"aj-subitem\" data-aj-route=\"escritorio.equipe.convites\" data-aj-group-content=\"escritorio\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h8\"/\u003e\u003c/svg\u003e\u003cstrong\u003eConvites\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"aj-subitem\" data-aj-route=\"escritorio.distribuicao.distribuicao_interna\" data-aj-group-content=\"escritorio\" data-aj-requer-escritorio=\"ativo\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M8 4h8M6 6h12v15H6zM9 11h6M9 15h6\"/\u003e\u003c/svg\u003e\u003cstrong\u003eDistribuição interna\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"aj-subitem\" data-aj-route=\"escritorio.configuracao.dados\" data-aj-group-content=\"escritorio\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6\"/\u003e\u003c/svg\u003e\u003cstrong\u003eDados do escritório\u003c/strong\u003e\u003c/button\u003e\u003cbutton type=\"button\" class=\"\" data-aj-route=\"advogado.configuracao.configuracao\"\u003e\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\"\u003e\u003cpath d=\"M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6\"/\u003e\u003c/svg\u003e\u003cstrong\u003eConfigurações\u003c/strong\u003e\u003c/button\u003e\u003c/nav\u003e\u003cdiv class=\"aj-layout-footer\"\u003e\u003cdiv class=\"aj-layout-footer-row\"\u003e\u003cbutton type=\"button\" data-aj-route=\"auth.sessao.entrar\"\u003eSair\u003c/button\u003e\u003csmall\u003eVersão: 1.0.55\u003c/small\u003e\u003c/div\u003e\u003cbutton class=\"aj-layout-emergency\" type=\"button\" data-aj-route=\"emergencia.190\"\u003eDisque 190\u003c/button\u003e\u003c/div\u003e\u003c/div\u003e\u003c/aside\u003e","components/layout/menu/drawer/style.css":".aj-layout-drawer.prototype-drawer{position:fixed!important;inset:0!important;z-index:9998!important;display:none!important;pointer-events:none}.aj-layout-drawer.prototype-drawer.open{display:block!important;pointer-events:auto}\n.aj-layout-drawer .aj-layout-backdrop{position:absolute;inset:0;width:100%;border:0;background:rgba(7,16,30,.60);cursor:pointer}\n.aj-layout-drawer .aj-layout-panel{position:absolute;inset:0 auto 0 0;width:min(80vw,360px);max-width:100vw;display:flex;flex-direction:column;overflow:hidden;background:#3b4a7d;color:#fff;box-shadow:12px 0 30px #0005;font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-drawer .aj-layout-identity{display:flex;align-items:center;gap:13px;padding:29px 20px 17px;flex:none}.aj-layout-avatar{width:52px;height:52px;flex:none;display:grid;place-items:center;border:2px solid #ffffff40;border-radius:50%;background:#dbeafe;color:#1e3a8a;font-size:18px;font-weight:850}\n.aj-layout-status{min-height:46px;display:flex;justify-content:space-between;align-items:center;gap:9px;margin:0 20px 10px;padding:9px 12px;border:1px solid #ffffff33;border-radius:10px;background:#ffffff12;color:#fff;cursor:pointer;font-size:12px;text-align:left}.aj-layout-status[hidden]{display:none!important}.aj-layout-status .aj-status-dot{width:9px;height:9px;flex:none;border-radius:50%;background:#4ade80}.aj-layout-drawer[data-disponibilidade=\"offline\"] .aj-status-dot{background:#b8c0cb}.aj-layout-status b{font-size:12px}.aj-layout-status small{font-size:10px;display:block;color:#bfd4f4}.aj-layout-status-copy{flex:1}\n.aj-layout-drawer .drawer-nav{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;flex:1;overscroll-behavior:contain;padding-bottom:8px}.aj-layout-drawer .drawer-nav button{width:100%;min-height:49px;display:flex;align-items:center;gap:13px;padding:12px 20px;border:0;border-bottom:1px solid #ffffff1d;background:transparent;color:#fff;text-align:left;font:500 13px Inter,\"Segoe UI\",Arial,sans-serif;cursor:pointer}.aj-layout-drawer .drawer-nav button:hover{background:#ffffff15}.aj-layout-drawer .drawer-nav svg{width:19px;height:19px;flex:none;stroke:#bcccec;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.aj-layout-drawer .drawer-nav button strong{font-weight:650;flex:1}.aj-layout-drawer .drawer-nav .aj-subitem{min-height:41px;padding-left:49px;font-size:12px;background:#00000013}.aj-layout-drawer .drawer-nav .aj-subitem svg{width:15px;height:15px}.aj-layout-drawer .drawer-nav .aj-item-hint{margin-left:auto;font-size:10px;opacity:.8}.aj-layout-drawer .drawer-nav .aj-menu-group{background:#ffffff0c}.aj-layout-drawer .drawer-nav .aj-menu-group b{font-size:12px}\n.aj-layout-drawer [data-aj-group-content=\"estudante\"],.aj-layout-drawer [data-aj-group-content=\"escritorio\"]{display:none!important}.aj-layout-drawer[data-estudante-menu=\"aberto\"] [data-aj-group-content=\"estudante\"]{display:flex!important}.aj-layout-drawer[data-escritorio-menu=\"aberto\"] [data-aj-group-content=\"escritorio\"]{display:flex!important}\n.aj-layout-drawer[data-plano=\"sem_plano\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"pendente\"] [data-aj-protegido],.aj-layout-drawer[data-plano=\"vencido\"] [data-aj-protegido]{opacity:.52}\n.aj-layout-drawer[data-oab=\"restricted\"] [data-aj-oab-only=\"enabled\"]{opacity:.5}\n.aj-layout-drawer[data-permissao=\"auditor\"] [data-aj-admin-only=\"gestor\"],.aj-layout-drawer[data-permissao=\"operador\"] [data-aj-admin-only=\"gestor\"]{opacity:.5}\n.aj-layout-drawer[data-vinculo-escritorio=\"sem_escritorio\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"convite_pendente\"] [data-aj-requer-escritorio],.aj-layout-drawer[data-vinculo-escritorio=\"suspenso\"] [data-aj-requer-escritorio]{opacity:.5}\n.aj-layout-drawer .aj-layout-footer{padding:14px 20px 23px;background:#00000019;flex:none;font-size:11px}.aj-layout-footer-row{display:flex;justify-content:space-between;align-items:center;gap:10px}.aj-layout-footer button{border:0;background:transparent;color:#fff;font-size:13px;padding:6px 0;cursor:pointer}.aj-layout-footer small{font-size:10px;color:#b0c2df}.aj-layout-emergency{width:100%;margin-top:12px;padding:10px!important;border:1px solid #ffffff80!important;border-radius:99px!important;font-weight:750!important}\n","components/layout/menu/drawer/section.json":"{\"id\": \"drawer\", \"name\": \"layout.menu.drawer\", \"kind\": \"drawer\", \"data\": {}, \"defaultSlot\": \"menu\"}"}}</script>
+<script>
+// Adaptador independente de rede: todos os fragmentos, estilos, dados e
+// manifestos utilizados por esta tela já estão incorporados no próprio HTML.
+(function(){
+  'use strict';
+  const embedded=JSON.parse(document.getElementById('v1-embedded-bundle').textContent);
+  window.__V1_SCREEN__=embedded.metadata;
+  window.__SCREEN_CONTEXT__={
+    key:embedded.metadata.key,
+    configUrl:'./__catalog_screen__.json',
+    screenBaseUrl:'./__src/'+embedded.metadata.origin+'/'
+  };
+  function makeResponse(value,asJson){
+    return new Response(asJson?JSON.stringify(value):String(value),{status:200,headers:{'Content-Type':asJson?'application/json;charset=utf-8':'text/plain;charset=utf-8'}});
+  }
+  window.fetch=function(file){
+    let url;
+    try{ url=new URL(file instanceof URL?file.href:typeof file==='string'?file:file.url,location.href); }
+    catch(error){return Promise.reject(error);}
+    const path=decodeURIComponent(url.pathname);
+    if(path.endsWith('/__catalog_screen__.json'))return Promise.resolve(makeResponse(embedded.config,true));
+    if(path.endsWith('/__catalog_data__.json'))return Promise.resolve(makeResponse(embedded.data,true));
+    if(path.endsWith('/__src/components/__registry__.json'))return Promise.resolve(makeResponse(embedded.registry,true));
+    const marker='/__src/';const at=path.lastIndexOf(marker);
+    if(at!==-1){
+      const id=path.slice(at+marker.length);
+      if(Object.prototype.hasOwnProperty.call(embedded.files,id))return Promise.resolve(makeResponse(embedded.files[id],false));
+    }
+    return Promise.resolve(new Response('Recurso não incluído neste HTML autocontido: '+path,{status:404,headers:{'Content-Type':'text/plain;charset=utf-8'}}));
+  };
+  window.addEventListener('modular-screen:ready',function(event){
+    const diagnostics=window.ModularScreen?.getDiagnostics?.()||[];
+    if(diagnostics.length)console.warn('V1 - composição com avisos:',diagnostics);
+  });
+})();
+</script>
+<script>
+const ROOT = document.querySelector('#screen-root');
+const SCREEN_URL=new URL(window.__SCREEN_CONTEXT__.configUrl,location.href);
+const SCREEN_BASE_URL=new URL(window.__SCREEN_CONTEXT__.screenBaseUrl,location.href);
+const SECTION_BASE_URL=new URL('./__src/engine/section-base.css',location.href);
+const STANDARD_SLOTS = Object.freeze(['header','main','navigation','menu','modal','popup','alert']);
+const PAGE_URL = new URL(location.href);
+const PROTOTYPE_MODE = PAGE_URL.searchParams.get('mode') === 'prototype';
+const PROFESSIONAL_ACCESS_STATES = Object.freeze(['restricted','enabled']);
+const runtime = { config:null, sectionBaseCss:'', sections:new Map(), state:{}, diagnostics:[], shell:null, toastTimer:null };
+boot().catch(showBootError);
+
+async function boot(){
+  ROOT.innerHTML='<div class="screen-loading">Montando tela…</div>';
+  const [baseConfig, sectionBaseCss] = await Promise.all([fetchJson(SCREEN_URL), fetchText(SECTION_BASE_URL)]);
+  const baseErrors = validateScreenConfig(baseConfig);
+  if(baseErrors.length) throw new Error('configuração de tela inválida: '+baseErrors.join(' | '));
+
+  const config=baseConfig;
+  runtime.config=config;
+  runtime.data=await loadScreenData(config);
+  runtime.sectionBaseCss=sectionBaseCss;
+  runtime.state=structuredClone(config.state||{});
+  runtime.state.professionalAccess=resolveInitialProfessionalAccess();
+  applyScreenMetadata(config);
+  buildRuntimeShell();
+
+  for(const entry of flattenComposition(config.composition||{})){
+    try{ await mountSection(entry); }
+    catch(error){ handleSectionFailure(entry,error); }
+  }
+
+  applyProfessionalAccess();
+  refreshOnlineBindings();
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAllOverlays(); });
+  if(PROTOTYPE_MODE)window.addEventListener('message',handlePrototypeMessage);
+  window.ModularScreen=Object.freeze({
+    getConfig:()=>structuredClone(runtime.config),getData:()=>structuredClone(runtime.data||{}),
+    getState:()=>structuredClone(runtime.state),
+    listSections:()=>[...runtime.sections.keys()],
+    getDiagnostics:()=>structuredClone(runtime.diagnostics),
+    getStructure:()=>[...runtime.sections.values()].map(s=>({id:s.id,kind:s.manifest.kind||null,slot:s.slot,order:s.entry.order??null,source:s.entry.source||s.entry.ref})),
+    setProfessionalAccess:value=>setProfessionalAccess(value,'runtime-api'),
+    emit:dispatchScreenEvent
+  });
+  window.dispatchEvent(new CustomEvent('modular-screen:ready',{detail:{screen:config.screen,feature:config.screen?.feature||null,slots:STANDARD_SLOTS,sections:window.ModularScreen.getStructure(),state:window.ModularScreen.getState()}}));
+}
+
+function resolveInitialProfessionalAccess(){
+  const queryValue=PAGE_URL.searchParams.get('professionalAccess');
+  if(PROTOTYPE_MODE&&PROFESSIONAL_ACCESS_STATES.includes(queryValue))return queryValue;
+  const configured=runtime.state.professionalAccess;
+  if(PROFESSIONAL_ACCESS_STATES.includes(configured))return configured;
+  const dataValue=runtime.data?.runtime?.professionalAccess?.resolvedState;
+  if(PROFESSIONAL_ACCESS_STATES.includes(dataValue))return dataValue;
+  return 'enabled';
+}
+function handlePrototypeMessage(event){
+  if(event.source!==window.parent||event.origin!==location.origin)return;
+  const message=event.data;
+  if(!message||message.source!=='advogadoja-prototype'||message.type!=='professional-access')return;
+  setProfessionalAccess(message.value,'prototype-message');
+}
+function setProfessionalAccess(value,source='runtime'){
+  if(!PROFESSIONAL_ACCESS_STATES.includes(value))return false;
+  if(runtime.state.professionalAccess===value){applyProfessionalAccess();return true;}
+  runtime.state.professionalAccess=value;
+  applyProfessionalAccess();
+  dispatchScreenEvent('state.change',{key:'professionalAccess',value,source});
+  return true;
+}
+function isProfessionalRestricted(){return runtime.state.professionalAccess==='restricted'}
+function professionalCapabilities(access=runtime.state.professionalAccess){const enabled=access==='enabled';return{canActProfessionally:enabled,canReceiveRequests:enabled,canToggleOnline:enabled,canValidateOab:!enabled}}
+function applyProfessionalAccess(){
+  const restricted=isProfessionalRestricted(),capabilities=professionalCapabilities();
+  document.body.dataset.professionalAccess=runtime.state.professionalAccess;
+  if(runtime.shell)runtime.shell.dataset.professionalAccess=runtime.state.professionalAccess;
+  setSectionVisible('online-status',capabilities.canToggleOnline);
+  setSectionVisible('actions',capabilities.canReceiveRequests);
+  const hero=runtime.sections.get('hero');
+  if(hero)hero.shadow.querySelectorAll('[data-professional-state]').forEach(node=>{node.hidden=node.getAttribute('data-professional-state')!==(restricted?'restricted':'enabled')});
+  const drawer=runtime.sections.get('drawer');
+  if(drawer){
+    drawer.shadow.querySelectorAll('[data-professional-capability]').forEach(node=>{const capability=node.getAttribute('data-professional-capability');node.hidden=Boolean(capability)&&capabilities[capability]!==true});
+    drawer.shadow.querySelectorAll('[data-online-root]').forEach(node=>{node.hidden=!capabilities.canToggleOnline});
+  }
+  refreshOnlineBindings();
+}
+function setSectionVisible(id,visible){
+  const section=runtime.sections.get(id);if(!section)return;
+  section.host.hidden=!visible;
+  section.host.setAttribute('aria-hidden',visible?'false':'true');
+}
+
+function validateScreenConfig(config){
+  const errors=[];
+  if(!isPlainObject(config)) return ['raiz precisa ser objeto'];
+  if(!config.screen?.key) errors.push('screen.key é obrigatório');
+  if(!isPlainObject(config.composition)) errors.push('composition precisa ser objeto');
+  const ids=new Set();
+  for(const [group,list] of Object.entries(config.composition||{})){
+    if(!STANDARD_SLOTS.includes(group)){errors.push('grupo desconhecido: '+group);continue}
+    if(!Array.isArray(list)){errors.push('composition.'+group+' precisa ser array');continue}
+    for(const entry of list){
+      if(!entry?.id) errors.push(group+': item sem id'); else if(ids.has(entry.id)) errors.push('id duplicado: '+entry.id); else ids.add(entry.id);
+      const shared=entry?.sourceType==='shared'||Boolean(entry?.ref);
+      if(shared){if(typeof entry.ref!=='string'||!entry.ref.trim()) errors.push((entry?.id||group)+': ref compartilhada inválida');}
+      else if(!isSafeLocalSource(entry?.source)) errors.push((entry?.id||group)+': source local inválido');
+      if(entry?.slot&&entry.slot!==group) errors.push((entry?.id||group)+': slot explícito deve coincidir com '+group);
+    }
+  }
+  return errors;
+}
+function isSafeLocalSource(source){if(typeof source!=='string'||!source.trim())return false;const normalized=source.trim().replaceAll('\\','/');if(normalized.startsWith('/')||normalized.startsWith('./')||normalized.includes('://')||normalized.includes('?')||normalized.includes('#'))return false;const parts=normalized.split('/');return!parts.some(part=>!part||part==='.'||part==='..')&&parts.every(part=>/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(part))}
+
+function flattenComposition(composition){
+  const entries=[]; let idx=0;
+  for(const slotName of STANDARD_SLOTS){
+    const list=composition?.[slotName]; if(!Array.isArray(list)) continue;
+    for(const entry of list){
+      if(!entry||entry.enabled===false) continue;
+      entries.push({...entry,slot:slotName,__configIndex:idx++});
+    }
+  }
+  return entries.sort((a,b)=>STANDARD_SLOTS.indexOf(a.slot)-STANDARD_SLOTS.indexOf(b.slot)||normalizeOrder(a.order)-normalizeOrder(b.order)||a.__configIndex-b.__configIndex);
+}
+
+function buildRuntimeShell(){
+  const preset=runtime.config.layout?.preset||'mobile-first-adaptive';
+  ROOT.innerHTML=`<div class="screen-runtime" data-screen-runtime data-layout-preset="${escapeHtml(preset)}">
+    <div class="screen-slot screen-slot--header" data-slot="header"></div>
+    <div class="screen-layout" data-screen-layout>
+      <nav class="screen-slot screen-slot--navigation" data-slot="navigation" aria-label="Navegação da tela"></nav>
+      <main class="screen-slot screen-slot--main" data-slot="main"></main>
+    </div>
+    <div class="screen-slot screen-slot--menu" data-slot="menu"></div>
+    <div class="screen-slot screen-slot--modal" data-slot="modal"></div>
+    <div class="screen-slot screen-slot--popup" data-slot="popup"></div>
+    <div class="screen-slot screen-slot--alert" data-slot="alert"></div>
+  </div>`;
+  runtime.shell=ROOT.querySelector('[data-screen-runtime]');
+}
+
+async function loadScreenData(config){
+  if(!config?.dataRef)return {components:{}};
+  const dataUrl=new URL(config.dataRef,SCREEN_URL);let data=await fetchJson(dataUrl);
+  return data&&typeof data==='object'?data:{components:{}};
+}
+function applyScreenMetadata(config){
+  document.title=runtime.data?.meta?.documentTitle||config.screen?.title||config.screen?.name||'Tela modular';
+  document.body.dataset.screenKey=config.screen?.key||'';
+  for(const [name,value] of Object.entries(config.theme||{})){
+    document.documentElement.style.setProperty(name.startsWith('--')?name:`--${camelToKebab(name)}`,String(value));
+  }
+  const layout=config.layout||{};
+  const vars={'--main-max':layout.mainMaxWidth,'--main-padding-x':layout.mainPaddingX,'--main-padding-top':layout.mainPaddingTop,'--main-padding-bottom':layout.mainPaddingBottom,'--section-gap':layout.sectionGap,'--nav-desktop-width':layout.desktopNavigationWidth};
+  for(const [key,value] of Object.entries(vars)) if(value!=null) document.documentElement.style.setProperty(key,String(value));
+}
+
+let __componentRegistryPromise=null;
+function componentRegistryUrl(){const value=document.querySelector('meta[name="component-registry"]')?.content;return value?new URL(value,location.href):null}
+function assetBaseUrl(){const value=document.querySelector('meta[name="asset-base"]')?.content;return value?new URL(value,location.href):new URL('assets/',location.href)}
+async function getComponentRegistry(){if(!__componentRegistryPromise){const url=componentRegistryUrl();__componentRegistryPromise=url?fetchJson(url):Promise.resolve({components:{}})}return __componentRegistryPromise}
+async function resolveComponentEntry(entry){
+  if(entry.sourceType==='shared'||entry.ref){
+    const registry=await getComponentRegistry();const record=registry?.components?.[entry.ref];if(!record)throw new Error('componente compartilhado não registrado: '+entry.ref);
+    const root=new URL('./',componentRegistryUrl());return{baseUrl:new URL(normalizeDir(record.path),root),sourceLabel:entry.ref,sourceType:'shared'};
+  }
+  if(!isSafeLocalSource(entry.source))throw new Error('source inseguro: '+entry.source);
+  return{baseUrl:new URL(normalizeDir(entry.source),SCREEN_BASE_URL),sourceLabel:entry.source,sourceType:'local'};
+}
+async function mountSection(entry){
+  const slotName=entry.slot;if(!STANDARD_SLOTS.includes(slotName))throw new Error(`slot desconhecido: ${slotName}`);
+  const resolved=await resolveComponentEntry(entry);const baseUrl=resolved.baseUrl;const [manifest,template,css]=await Promise.all([fetchJson(new URL('section.json',baseUrl)),fetchText(new URL('template.html',baseUrl)),fetchOptionalText(new URL('style.css',baseUrl))]);
+  const manifestErrors=validateManifest(manifest,entry,slotName);if(manifestErrors.length)throw new Error(manifestErrors.join(' | '));
+  const id=entry.id||manifest.id;if(runtime.sections.has(id))throw new Error(`id duplicado em runtime: ${id}`);const slot=ROOT.querySelector(`[data-slot="${cssEscape(slotName)}"]`);if(!slot)throw new Error(`slot ausente no shell: ${slotName}`);
+  const host=document.createElement('screen-section');Object.assign(host.dataset,{sectionId:id,sectionKind:manifest.kind||'content',sectionSource:resolved.sourceLabel,sourceType:resolved.sourceType,slot:slotName,order:String(entry.order??'')});
+  const shadowRoot=host.attachShadow({mode:'open'});const mergedData=deepMerge(deepMerge(structuredClone(manifest.data||{}),structuredClone(runtime.data?.components?.[entry.id]||{})),entry.overrides||{});shadowRoot.innerHTML=`<style>${runtime.sectionBaseCss}\n${css}</style>${renderTemplate(template,{...mergedData,_screen:runtime.config.screen||{},_state:runtime.state,_assetBase:assetBaseUrl().href})}`;
+  slot.appendChild(host);slot.dataset.active='true';runtime.shell.dataset[`has${toDatasetKey(slotName)}`]='true';runtime.sections.set(id,{id,host,shadow:shadowRoot,manifest,entry,data:mergedData,slot:slotName});wireSectionEvents(runtime.sections.get(id));
+}
+
+function validateManifest(manifest,entry,slotName){
+  const errors=[];
+  if(!isPlainObject(manifest)) return ['manifesto de seção precisa ser objeto'];
+  if(!manifest.id) errors.push('manifest sem id');
+  if(manifest.defaultSlot&&!STANDARD_SLOTS.includes(manifest.defaultSlot)) errors.push(`defaultSlot inválido: ${manifest.defaultSlot}`);
+  if(manifest.defaultSlot&&manifest.defaultSlot!==slotName) errors.push(`defaultSlot ${manifest.defaultSlot} difere do grupo ${slotName}`);
+  if(entry.id&&manifest.id&&entry.id!==manifest.id) errors.push(`id da composição (${entry.id}) difere do manifest (${manifest.id})`);
+  return errors;
+}
+
+function handleSectionFailure(entry,error){
+  const diagnostic={type:'section-load-error',sectionId:entry.id||null,source:entry.source||entry.ref||null,slot:entry.slot||null,required:entry.required===true,message:error?.message||String(error)};
+  runtime.diagnostics.push(diagnostic);
+  if(entry.required===true){ console.error('[Tela modular] Seção obrigatória indisponível:',diagnostic); renderRequiredSectionError(entry,error); }
+  else console.warn('[Tela modular] Seção ignorada:',diagnostic);
+}
+function renderRequiredSectionError(entry,error){
+  const slotName=STANDARD_SLOTS.includes(entry.slot)?entry.slot:'main'; const slot=ROOT.querySelector(`[data-slot="${cssEscape(slotName)}"]`)||ROOT.querySelector('[data-slot="main"]'); if(!slot)return;
+  const host=document.createElement('div'); host.className='section-runtime-warning'; host.innerHTML=`<strong>Seção obrigatória indisponível</strong><span>${escapeHtml(entry.id||entry.source||'Seção')}</span><small>${escapeHtml(error?.message||String(error))}</small>`; slot.appendChild(host); slot.dataset.active='true';
+}
+
+function wireSectionEvents(section){
+  section.shadow.addEventListener('click',event=>{
+    const actionable=event.composedPath().find(node=>node instanceof Element&&(node.hasAttribute?.('data-action')||node.hasAttribute?.('data-goto'))); if(!actionable)return;
+    const action=actionable.getAttribute('data-action'),goto=actionable.getAttribute('data-goto'); if(action)handleAction(action,actionable,section); if(goto)handleNavigation(goto,actionable,section);
+  });
+}
+function handleAction(action,element,section){
+  switch(action){
+    case 'drawer.open': setOverlayOpen('drawer',true); break;
+    case 'drawer.close': setOverlayOpen('drawer',false); break;
+    case 'route.close': setOverlayOpen('route-modal',false); break;
+    case 'online.toggle':
+      if(isProfessionalRestricted()){showStatusToast('Valide sua OAB para ficar online e receber solicitações.');return;}
+      runtime.state.online=!Boolean(runtime.state.online); refreshOnlineBindings(); showStatusToast(runtime.state.online?'Você está Online':'Você está Offline'); dispatchScreenEvent('state.change',{key:'online',value:runtime.state.online}); break;
+    default: dispatchScreenEvent(action,{sectionId:section.id,dataset:{...element.dataset}});
+  }
+}
+
+function openTechnicalFlowModal(targetId){
+  const map={
+    'auth.sessao.caminho-login':'flow-login-choice',
+    'advogado.assinatura.retorno-checkout':'flow-checkout-return'
+  };
+  const id=map[targetId]; if(!id)return false;
+  const section=runtime.sections?.get?.(id)||[...(runtime.sections?.values?.()||[])].find(s=>s.id===id); if(!section)return false;
+  const root=section.shadow.querySelector('[data-overlay-root]')||section.shadow.firstElementChild; if(!root)return false;
+  if(!section.__technicalFlowWired){
+    section.__technicalFlowWired=true;
+    section.shadow.addEventListener('click',event=>{
+      const node=event.composedPath().find(el=>el instanceof Element&&(el.hasAttribute?.('data-flow-close')||el.hasAttribute?.('data-flow-target'))); if(!node)return;
+      if(node.hasAttribute('data-flow-close')){root.classList.remove('open');root.setAttribute('aria-hidden','true');return;}
+      const target=node.getAttribute('data-flow-target'); if(target){root.classList.remove('open');root.setAttribute('aria-hidden','true');handleNavigation(target,node,section);}
+    });
+  }
+  root.classList.add('open');root.setAttribute('aria-hidden','false');
+  window.dispatchEvent(new CustomEvent('modular-screen:technical-flow',{detail:{from:runtime.config?.screen?.key||null,flowKey:targetId,modalId:id}}));
+  return true;
+}
+
+function handleNavigation(targetId,element,section){
+  if(isProfessionalRestricted()&&ACTUATION_TARGETS.has(targetId)){showStatusToast('Valide sua OAB para liberar recursos de atuação.');return;}
+  if(openTechnicalFlowModal(targetId))return;
+  const route=runtime.config.routes?.[targetId]||{};
+  const detail={type:'navigate',from:runtime.config.screen?.key||null,target:targetId,action:(element?.dataset?.prototypeAction||element?.textContent||targetId).trim(),route,sectionId:section?.id||null,sourceDataset:{...(element?.dataset||{})}};
+  window.dispatchEvent(new CustomEvent('modular-screen:navigate',{detail}));
+  if(PROTOTYPE_MODE&&window.parent&&window.parent!==window){window.parent.postMessage({source:'modular-screen',...detail},location.origin);return}
+  const modalSection=findSectionByKind('route-modal');
+  if(modalSection){
+    const title=modalSection.shadow.querySelector('[data-route-title]'),text=modalSection.shadow.querySelector('[data-route-text]'),code=modalSection.shadow.querySelector('[data-route-code]');
+    if(title)title.textContent=route.name||`Ir para ${targetId}`; if(text)text.textContent=route.description||'Navegação simulada nesta tela isolada.'; if(code)code.textContent=route.flutterRoute||targetId; setOverlayOpen('route-modal',true);
+  }
+  if(window.parent&&window.parent!==window)window.parent.postMessage({source:'modular-screen',...detail},'*');
+}
+function setOverlayOpen(kind,open){ const section=findSectionByKind(kind); if(!section)return; const root=section.shadow.querySelector('[data-overlay-root]')||section.shadow.firstElementChild; if(!root)return; root.classList.toggle('open',Boolean(open)); root.setAttribute('aria-hidden',open?'false':'true'); }
+function closeAllOverlays(){ setOverlayOpen('drawer',false); setOverlayOpen('route-modal',false); }
+function findSectionByKind(kind){ return [...runtime.sections.values()].find(s=>s.manifest.kind===kind)||null; }
+function refreshOnlineBindings(){
+  const online=Boolean(runtime.state.online); const copy=(runtime.data?.runtime?.stateLabels||runtime.config.stateLabels)?.online||{on:{status:'Online',copy:'Recebendo novas solicitações'},off:{status:'Offline',copy:'Pausado para novas solicitações'}}; const current=online?copy.on:copy.off;
+  for(const section of runtime.sections.values()){ section.shadow.querySelectorAll('[data-online-root]').forEach(el=>el.classList.toggle('is-offline',!online)); section.shadow.querySelectorAll('[data-online-status]').forEach(el=>el.textContent=current.status); section.shadow.querySelectorAll('[data-online-copy]').forEach(el=>el.textContent=current.copy); }
+}
+function showStatusToast(message){
+  const section=findSectionByKind('status-toast'); if(!section)return; const root=section.shadow.querySelector('[data-toast-root]'); const text=section.shadow.querySelector('[data-toast-text]'); if(!root)return; if(text)text.textContent=message; root.classList.add('show'); clearTimeout(runtime.toastTimer); runtime.toastTimer=setTimeout(()=>root.classList.remove('show'),1800);
+}
+function dispatchScreenEvent(type,detail={}){ window.dispatchEvent(new CustomEvent(`modular-screen:${type}`,{detail})); }
+
+function renderTemplate(template,data){
+  let output=template; const eachRe=/{{#each\s+([\w.$-]+)}}([\s\S]*?){{\/each}}/g; let guard=0;
+  while(eachRe.test(output)&&guard++<50){ eachRe.lastIndex=0; output=output.replace(eachRe,(_,path,block)=>{ const items=getPath(data,path); if(!Array.isArray(items))return''; return items.map((item,index)=>renderTemplate(block,{...data,...(isPlainObject(item)?item:{value:item}),$index:index,$value:item})).join(''); }); }
+  output=output.replace(/{{#if\s+([\w.$-]+)}}([\s\S]*?){{\/if}}/g,(_,path,block)=>getPath(data,path)?renderTemplate(block,data):'');
+  return output.replace(/{{\s*([\w.$-]+)\s*}}/g,(_,path)=>escapeHtml(getPath(data,path)??''));
+}
+function getPath(obj,path){ if(path==='$value')return obj.$value; if(path==='$index')return obj.$index; return String(path).split('.').reduce((acc,key)=>acc==null?undefined:acc[key],obj); }
+function deepMerge(base,patch){ if(!isPlainObject(base)||!isPlainObject(patch))return structuredClone(patch); for(const[key,value]of Object.entries(patch)){ if(isPlainObject(value)&&isPlainObject(base[key]))base[key]=deepMerge(base[key],value); else base[key]=structuredClone(value); } return base; }
+function isPlainObject(v){return v!=null&&typeof v==='object'&&!Array.isArray(v)}
+function normalizeOrder(v){const n=Number(v);return Number.isFinite(n)?n:1000}
+function escapeHtml(v){return String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+async function fetchJson(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`${r.status} ao carregar ${url.pathname}`);return r.json()}
+async function fetchText(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`${r.status} ao carregar ${url.pathname}`);return r.text()}
+async function fetchOptionalText(url){const r=await fetch(url,{cache:'no-store'});if(r.status===404)return'';if(!r.ok)throw new Error(`${r.status} ao carregar ${url.pathname}`);return r.text()}
+function normalizeDir(p){return p.endsWith('/')?p:`${p}/`}
+function camelToKebab(v){return v.replace(/[A-Z]/g,c=>`-${c.toLowerCase()}`)}
+function cssEscape(v){return window.CSS?.escape?CSS.escape(v):String(v).replace(/["\\]/g,'\\$&')}
+function toDatasetKey(v){return v.replace(/-([a-z])/g,(_,c)=>c.toUpperCase()).replace(/^./,c=>c.toUpperCase())}
+
+function showBootError(error){ console.error(error); const fileMode=location.protocol==='file:'; ROOT.innerHTML=`<div class="screen-error"><h1>Não foi possível montar a tela</h1><p>${escapeHtml(error.message||String(error))}</p>${fileMode?'<p>Abra esta pasta por um servidor local. Ex.: <code>python -m http.server 8000</code></p>':''}</div>`; }
+
+</script>
+<script id="aj-lab-script">
+(()=>{
+'use strict';
+const CFG={"profile":"advogado","key":"advogado.home_advogado","screenName":"Início Profissional","isProfessionalHome":true,"scenarios":[{"id":"pro_validado","label":"OAB validada · plano ativo · online","oab":"validada","plan":"ativo","online":"online","source":"fonte+proposta"},{"id":"pro_sem_oab","label":"Sem OAB · acesso restrito","oab":"sem_oab","plan":"ativo","online":"offline","source":"fonte"},{"id":"pro_pendente","label":"OAB em análise · acesso restrito","oab":"em_analise","plan":"ativo","online":"offline","source":"proposta"},{"id":"pro_rejeitada","label":"OAB não validada · corrigir dados","oab":"rejeitada","plan":"ativo","online":"offline","source":"proposta"},{"id":"pro_sem_plano","label":"OAB validada · sem plano","oab":"validada","plan":"sem_plano","online":"online","source":"proposta"},{"id":"pro_offline","label":"OAB validada · profissional offline","oab":"validada","plan":"ativo","online":"offline","source":"fonte"}],"menu":[["🏠","Início","advogado.home","all"],["🛡️","Validar OAB","advogado.configuracao.validacao_oab","restricted"],["📬","Solicitações","advogado.clientes.solicitacoes_recebidas","enabled"],["📅","Disponibilidade e agenda","advogado.configuracao.agenda_semanal","enabled"],["👤","Meu perfil profissional","advogado.perfil_profissional","all"],["💳","Planos e assinatura","advogado.assinatura.planos","all"],["🏢","Escritório","escritorio.gestao.escritorio","enabled"],["⚙️","Configurações","advogado.configuracao.configuracao","all"],["❔","Ajuda","advogado.configuracao.central_ajuda","all"]],"routes":{"advogado.home":"V1_031_home_advogado.html","advogado.configuracao.validacao_oab":"configuracao/V1_028_validacao_oab.html","advogado.clientes.solicitacoes_recebidas":"clientes/V1_016_solicitacoes_recebidas.html","advogado.configuracao.agenda_semanal":"configuracao/V1_017_agenda_semanal.html","advogado.perfil_profissional":"V1_038_perfil_profissional.html","advogado.assinatura.planos":"assinatura/V1_010_planos.html","escritorio.gestao.escritorio":"../escritorio/gestao/V1_075_escritorio.html","advogado.configuracao.configuracao":"configuracao/V1_019_configuracao.html","advogado.configuracao.central_ajuda":"configuracao/V1_018_central_ajuda.html"}};
+const data=new URLSearchParams(location.search);
+const scenarios=CFG.scenarios;
+let sel=scenarios.find(x=>x.oab===data.get('aj_oab')&&x.plan===data.get('aj_plan')&&x.online===data.get('aj_online'))||scenarios.find(x=>x.id===data.get('aj_scenario'))||scenarios[0];
+const el=(tag,cl,content)=>{const n=document.createElement(tag);if(cl)n.className=cl;if(content!==undefined)n.textContent=content;return n};
+let live=null,box=null,menu=null;
+function menuList(){
+ const restricted=CFG.profile==='advogado'&&sel.oab!=='validada';
+ const active=sel.plan==='ativo';
+ return CFG.menu.filter(([icon,title,key,rule])=>rule==='all'||rule==='restricted'&&restricted||rule==='enabled'&&!restricted||rule==='active').map(([icon,title,key,rule])=>({icon,title,key,locked:rule==='active'&&!active}));
+}
+function routeTo(key){
+ const path=CFG.routes[key];
+ if(!path){alert('Tela não disponível nesta biblioteca: '+key);return;}
+ const url=new URL(path,location.href);
+ url.searchParams.set('aj_oab',sel.oab);url.searchParams.set('aj_plan',sel.plan);url.searchParams.set('aj_online',sel.online);url.searchParams.set('aj_scenario',sel.id);
+ const parent=window.parent;
+ if(parent!==window){parent.postMessage({type:'aj-state-navigate',key,scenario:sel.id},'*');}
+ else location.href=url.href;
+}
+function openMenu(){
+ if(!menu){menu=el('div');menu.id='aj-lab-drawer';menu.innerHTML='<div class="aj-drawer-shade"></div><div class="aj-drawer-content"><div class="aj-drawer-top"><div><h2>Menu da jornada</h2><small id="aj-drawer-status"></small></div><button type="button" aria-label="Fechar menu">✕</button></div><nav id="aj-drawer-items" aria-label="Menu contextual"></nav><p class="aj-drawer-note">Simulação de menu por estado. As opções bloqueadas estão indicadas; regras complementares são propostas para revisão.</p></div>';
+ document.body.append(menu);menu.querySelector('.aj-drawer-shade').onclick=()=>menu.hidden=true;menu.querySelector('.aj-drawer-top button').onclick=()=>menu.hidden=true;}
+ menu.querySelector('#aj-drawer-status').textContent=CFG.profile==='advogado'?('OAB: '+sel.oab.replaceAll('_',' ')+' · plano: '+sel.plan.replaceAll('_',' ')):('Cliente com área estudante · '+sel.plan.replaceAll('_',' '));
+ const nav=menu.querySelector('#aj-drawer-items');nav.replaceChildren();
+ for(const item of menuList()){const b=el('button','aj-drawer-link');b.type='button';b.disabled=item.locked;b.innerHTML='<span></span><span></span><span class="aj-right"></span>';b.children[0].textContent=item.icon;b.children[1].textContent=item.title;b.children[2].textContent=item.locked?'🔒 Plano ativo necessário':'›';b.onclick=()=>routeTo(item.key);nav.append(b)}
+ menu.hidden=false;
+}
+function configureInterface(){
+ const isPro=CFG.profile==='advogado';
+ const restricted=isPro&&sel.oab!=='validada';
+ const active=sel.plan==='ativo';
+ document.body.classList.toggle('aj-oab-restricted',restricted);
+ document.body.classList.toggle('aj-state-student',!isPro);
+ document.body.classList.toggle('aj-student-locked',!isPro&&!active);
+ document.body.dataset.ajOab=sel.oab;document.body.dataset.ajPlan=sel.plan;
+ if(isPro){
+   if(window.ModularScreen?.setProfessionalAccess)window.ModularScreen.setProfessionalAccess(restricted?'restricted':'enabled');
+   const app=document.querySelector('.app');if(app)app.dataset.professionalAccess=restricted?'restricted':'enabled';
+   document.querySelectorAll('.aj-menu__nav-item[data-item-id]').forEach(n=>{
+     const action=n.dataset.itemId;const shouldHide=restricted&&['solicitacoes','disponibilidade','agenda'].includes(action);
+     n.hidden=shouldHide;
+   });
+   // Native V1 and Projeto 9 Home also have OAB access logic. This enhances it rather than replacing it.
+ }
+ const title=CFG.screenName;
+ const nativeHome=CFG.isProfessionalHome;
+ let show=!nativeHome||(!active||!isPro);
+ const main=document.querySelector('.demo-body,.app-main,.screen-slot--main,main,#screen-root,#app-root');
+ if(main&&!box){box=el('section','aj-state-callout');box.id='aj-state-screen-message';const anchor=(main.classList.contains('demo-body')||main.classList.contains('app-main')||main.classList.contains('screen-slot--main'))?main:main;anchor.prepend(box)}
+ if(box){
+  const dataMsg=(() => {
+   if(isPro){
+    if(restricted){const names={'sem_oab':'OAB não informada','em_analise':'OAB em análise','rejeitada':'OAB não validada'};
+      return [names[sel.oab]||'OAB pendente',sel.oab==='em_analise'?'Seu cadastro está em análise. Solicitações e disponibilidade profissional ficam temporariamente indisponíveis.':sel.oab==='rejeitada'?'Revise os dados enviados e solicite nova validação. Solicitações ficam indisponíveis.':'Complete a validação da OAB para receber e responder solicitações.', 'Validar / revisar OAB','advogado.configuracao.validacao_oab','warn'];}
+    if(!active)return ['Profissional habilitado · plano não ativo','A OAB está validada. A assinatura pode limitar serviços adicionais; definição de quais serviços exigem plano é uma proposta revisável.','Ver planos','advogado.assinatura.planos','warn'];
+    if(sel.online==='offline')return ['Profissional habilitado · offline','A OAB está validada, mas o recebimento de novos contatos está pausado neste cenário.','Abrir disponibilidade','advogado.configuracao.agenda_semanal','ok'];
+    return ['Profissional habilitado · online','OAB validada. Solicitações, agenda e disponibilidade estão liberadas neste cenário.','Ver solicitações','advogado.clientes.solicitacoes_recebidas','ok'];
+   }
+   if(sel.plan==='ativo')return ['Plano Estudante ativo','Área de cursos liberada. Catálogo, ementas e recursos contratados podem ser acessados.','Acessar meus cursos','estudante.cursos.meus_cursos','ok'];
+   if(sel.plan==='pendente')return ['Pagamento em análise','Você continua com acesso ao catálogo, mas os cursos contratados aguardam a confirmação do pagamento.','Ver assinatura','estudante.assinatura.gestao_assinatura','warn'];
+   if(sel.plan==='vencido')return ['Plano Estudante vencido','O catálogo segue visível, mas o acesso aos cursos exige renovação da assinatura.','Renovar plano','estudante.assinatura.planos','warn'];
+   return ['Conheça o Plano Estudante','Você continua como Cliente e pode ver o catálogo. Para abrir os conteúdos exclusivos, é necessária uma assinatura ativa.','Conhecer planos','estudante.assinatura.planos','warn'];
+  })();
+  show=show||CFG.profile==='estudante';
+  box.hidden=!show;
+  box.dataset.tone=dataMsg[4];
+  box.replaceChildren();const heading=el('strong','',dataMsg[0]);box.append(heading);const p=el('p','',dataMsg[1]);box.append(p);const btn=el('button','',dataMsg[2]);btn.type='button';btn.onclick=()=>routeTo(dataMsg[3]);box.append(btn);const origin=el('span','aj-state-origin',sel.source.includes('proposta')?'Estado demonstrativo':'Regra de acesso do acervo');box.append(origin);
+ }
+ // Student content: show catalog in all states and block actions that open protected courses.
+ if(!isPro){
+  document.querySelectorAll('#app-root button').forEach(b=>{
+   if(b.closest('#aj-lab-panel,#aj-lab-drawer,#aj-state-screen-message'))return;
+   const txt=b.textContent.trim().toLocaleLowerCase('pt-BR');
+   const protectedAction=/acessar (conteúdo|curso)|abrir (curso|conteúdo)|iniciar curso|meus cursos/.test(txt);
+   if(protectedAction){b.dataset.ajProtected='true';b.disabled=!active;b.title=!active?'Requer plano Estudante ativo (estado de demonstração)':'';b.style.opacity=active?'':'0.57';}
+  });
+ }
+ if(live){live.textContent=isPro?((restricted?'🔒 OAB '+sel.oab.replaceAll('_',' '):'✓ OAB validada')+' · '+sel.plan.replaceAll('_',' ')):('🎓 Estudante · '+sel.plan.replaceAll('_',' '))}
+ if(menu&&!menu.hidden)openMenu();
+ window.__AJ_ESTADO__={profile:CFG.profile,screen:CFG.key,scenario:sel,menu:menuList()};
+ window.dispatchEvent(new CustomEvent('aj-state-changed',{detail:window.__AJ_ESTADO__}));
+}
+function chooseScenario(id){const picked=scenarios.find(x=>x.id===id);if(!picked)return;sel=picked;const url=new URL(location.href);url.searchParams.set('aj_oab',sel.oab);url.searchParams.set('aj_plan',sel.plan);url.searchParams.set('aj_online',sel.online);url.searchParams.set('aj_scenario',sel.id);history.replaceState(null,'',url.href);const select=document.querySelector('#aj-lab-select');if(select)select.value=id;configureInterface()}
+function mount(){
+ const launcher=el('button');launcher.id='aj-lab-launch';launcher.type='button';launcher.textContent='⚙ Estados';document.body.append(launcher);
+ const panel=el('aside');panel.id='aj-lab-panel';panel.hidden=true;
+ panel.innerHTML='<h3>Estados interativos</h3><p>Alterne a situação para ver como mudam o conteúdo e as opções do menu. Estados propostos são editáveis.</p><label for="aj-lab-select">Cenário</label><select id="aj-lab-select"></select><div class="aj-lab-row"><button type="button" id="aj-lab-menu">☰ Ver menu do estado</button><button type="button" id="aj-lab-close">Fechar</button></div>';
+ document.body.append(panel);const select=panel.querySelector('select');for(const s of scenarios){const opt=el('option','',s.label);opt.value=s.id;select.append(opt)}select.value=sel.id;select.onchange=()=>chooseScenario(select.value);
+ launcher.onclick=()=>panel.hidden=!panel.hidden;panel.querySelector('#aj-lab-close').onclick=()=>panel.hidden=true;panel.querySelector('#aj-lab-menu').onclick=openMenu;
+ live=el('span');launcher.append(live);launcher.childNodes[0].textContent='⚙ ';
+ document.addEventListener('click',e=>{const b=e.target.closest?.('.app-menu-button,[data-action="drawer.open"]');if(!b)return;if(CFG.profile!=='estudante'&&CFG.isProfessionalHome&&!!window.ModularScreen)return; // V1 native validated menu is already dynamic
+ e.stopImmediatePropagation();e.preventDefault();openMenu();},true);
+ window.addEventListener('message',e=>{if(!e.data||e.data.type!=='aj-set-scenario')return;chooseScenario(e.data.id)});
+ window.addEventListener('modular-screen:ready',configureInterface);
+ configureInterface();
+ // If the V1 async composer mounts after this script, re-apply to native engine when ready.
+ setTimeout(configureInterface,100);
+ setTimeout(configureInterface,500);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+window.AJEstado={setScenario:chooseScenario,getScenario:()=>sel,openMenu};
+})();
+</script>
+<script type="application/json" id="aj-layout-canonical-data">{"schema":"advogadoja.layout.canonico","schemaVersion":"3.0.0","telaRef":"advogado.home_advogado","perfil":"advogado","contexto":{"tipo":"autenticado","areaAtiva":"profissional"},"componentes":{"header":{"id":"layout.header.app","props":{"marca":"AdvogadoJá+","perfil":"Profissional","notificacoesNaoLidas":2},"variantes":["autenticado"],"estados":{"notificacoes":{"inicial":"nao_lidas","opcoes":["sem_nao_lidas","nao_lidas"]}}},"titlebar":{"id":"layout.header.title","props":{"titulo":"Início"},"variantes":["padrao"],"estados":{"titulo":"Início"}},"menu":{"id":"layout.menu.drawer","variantes":["advogado"],"estados":{"painel":{"inicial":"fechado","opcoes":{"fechado":{"alvos":[{"tipo":"elemento","ref":"root","classes":{"open":false},"atributos":{"aria-hidden":"true"}}]},"aberto":{"alvos":[{"tipo":"elemento","ref":"root","classes":{"open":true},"atributos":{"aria-hidden":"false"}}]}}},"acessoOab":{"inicial":"enabled","opcoes":{"enabled":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-oab":"enabled"}}]},"restricted":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-oab":"restricted"}}]}}},"disponibilidade":{"inicial":"online","opcoes":{"online":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-disponibilidade":"online"}}]},"offline":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-disponibilidade":"offline"}}]}}},"vinculoEscritorio":{"inicial":"sem_escritorio","opcoes":{"sem_escritorio":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-vinculo-escritorio":"sem_escritorio"}}]},"convite_pendente":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-vinculo-escritorio":"convite_pendente"}}]},"ativo":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-vinculo-escritorio":"ativo"}}]},"suspenso":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-vinculo-escritorio":"suspenso"}}]}}},"grupoEscritorio":{"inicial":"fechado","opcoes":{"fechado":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-escritorio-menu":"fechado"}}]},"aberto":{"alvos":[{"tipo":"elemento","ref":"root","classes":{},"atributos":{"data-escritorio-menu":"aberto"}}]}}}}}}}</script>
+<script id="aj-canonical-layout-runtime">
+(()=>{'use strict';
+const el=document.getElementById('aj-layout-canonical-data');if(!el)return;
+const cfg=JSON.parse(el.textContent),role=cfg.perfil,kind=cfg.contexto.tipo;
+const def=cfg.componentes.menu?.estados||{};
+const defaults={};for(const [axis,v] of Object.entries(def))defaults[axis]=v.inicial;
+let state={...defaults},attached=false,menuRoot=null,headerRoot=null,titleRoot=null;
+function roots(){let header=null,title=null,menu=null;
+ const sec=document.querySelector('#screen-root [data-section-id="app-header"]');
+ const sTitle=document.querySelector('#screen-root [data-section-id="titlebar"]');
+ const sMenu=document.querySelector('#screen-root [data-section-id="drawer"]');
+ header=sec?.shadowRoot?.querySelector('[data-aj-canonical="layout.header.app"]')||document.querySelector('[data-aj-canonical="layout.header.app"]');
+ title=sTitle?.shadowRoot?.querySelector('[data-aj-canonical="layout.header.title"]')||document.querySelector('[data-aj-canonical="layout.header.title"]');
+ menu=sMenu?.shadowRoot?.querySelector('[data-aj-canonical="layout.menu.drawer"]')||document.querySelector('[data-aj-canonical="layout.menu.drawer"]');
+ return {header,title,menu};
+}
+const notify=msg=>{let x=document.getElementById('aj-layout-preview-message');if(!x){x=document.createElement('div');x.id='aj-layout-preview-message';x.setAttribute('role','status');Object.assign(x.style,{position:'fixed',bottom:'12px',left:'50%',transform:'translateX(-50%)',maxWidth:'95vw',zIndex:'99999',borderRadius:'10px',background:'#173c6b',color:'#fff',padding:'9px 14px',font:'12px system-ui',boxShadow:'0 5px 15px #0005'});document.body.append(x);}x.textContent=msg;clearTimeout(x._t);x._t=setTimeout(()=>x?.remove(),2800);};
+function change(axis,v){if(!def[axis]?.opcoes?.[v])return false;state[axis]=v;render();const pane=document.getElementById('aj-layout-state-controls');if(pane){const select=pane.querySelector('[data-aj-axis="'+axis+'"]');if(select)select.value=v;}return true;}
+function render(){({header:headerRoot,title:titleRoot,menu:menuRoot}=roots());if(!menuRoot)return;
+ menuRoot.classList.toggle('open',state.painel==='aberto');menuRoot.setAttribute('aria-hidden',state.painel==='aberto'?'false':'true');
+ menuRoot.setAttribute('data-estudante-menu',state.grupoEstudante||'fechado');menuRoot.setAttribute('data-escritorio-menu',state.grupoEscritorio||'fechado');
+ menuRoot.setAttribute('data-plano',state.planoEstudante||'sem_plano');menuRoot.setAttribute('data-oab',state.acessoOab||'enabled');menuRoot.setAttribute('data-disponibilidade',state.disponibilidade||'online');menuRoot.setAttribute('data-vinculo-escritorio',state.vinculoEscritorio||'sem_escritorio');menuRoot.setAttribute('data-permissao',state.permissao||'gestor');
+ const online=state.disponibilidade!=='offline';let root=menuRoot.querySelector('[data-aj-online-label]');if(root)root.textContent=online?'Online':'Offline';root=menuRoot.querySelector('[data-aj-online-copy]');if(root)root.textContent=online?'Recebendo novas solicitações':'Pausado para novas solicitações';
+ menuRoot.querySelectorAll('[data-aj-caret]').forEach(node=>{node.textContent=(node.dataset.ajCaret==='estudante'?state.grupoEstudante:state.grupoEscritorio)==='aberto'?'▾':'▸';});
+ const title=cfg.componentes.titlebar?.props?.titulo||'Início';
+ const isHome=title==='Início';
+ if(titleRoot?.querySelector('[data-aj-title]'))titleRoot.querySelector('[data-aj-title]').textContent=role==='cliente'&&state.grupoEstudante==='aberto'&&isHome?'Estudante':role==='advogado'&&state.grupoEscritorio==='aberto'&&isHome?'Escritório':title;
+}
+function bind(){const r=roots();if(!r.header&&!r.menu)return false;if(kind==='autenticado'&&!r.menu)return false;const eventRoot=r.menu?.getRootNode()||document; if(attached)return true;attached=true;
+ const handle=(event)=>{
+  const btn=event.target?.closest?.('[data-action],[data-aj-toggle],[data-aj-route]');if(!btn)return;
+  const action=btn.dataset.action,toggle=btn.dataset.ajToggle,dest=btn.dataset.ajRoute;
+  if(action==='drawer.open'){event.preventDefault();event.stopImmediatePropagation();change('painel','aberto');return;}
+  if(action==='drawer.close'){event.preventDefault();event.stopImmediatePropagation();change('painel','fechado');return;}
+  if(toggle){event.preventDefault();event.stopImmediatePropagation();if(toggle==='estudante')change('grupoEstudante',state.grupoEstudante==='aberto'?'fechado':'aberto');else if(toggle==='escritorio')change('grupoEscritorio',state.grupoEscritorio==='aberto'?'fechado':'aberto');else if(toggle==='disponibilidade')change('disponibilidade',state.disponibilidade==='online'?'offline':'online');return;}
+  if(dest){event.preventDefault();event.stopImmediatePropagation();const locked=btn.hasAttribute('data-aj-protegido')&&state.planoEstudante!=='ativo';const restricted=btn.getAttribute('data-aj-oab-only')==='enabled'&&state.acessoOab==='restricted';const office=btn.hasAttribute('data-aj-requer-escritorio')&&state.vinculoEscritorio!=='ativo';const perm=btn.getAttribute('data-aj-admin-only')==='gestor'&&state.permissao!=='gestor';notify(locked?'Plano Estudante não ativo: área protegida.':restricted?'Validação da OAB necessária.':office?'Vínculo ativo com Escritório necessário.':perm?'Permissão de gestor necessária.':'Destino registrado: '+dest+' (sem navegação nesta biblioteca).');change('painel','fechado');return;}
+ };
+ document.addEventListener('click',handle,true);if(r.header?.getRootNode()!==document)r.header.getRootNode().addEventListener('click',handle,true);if(r.menu?.getRootNode()!==document&&r.menu?.getRootNode()!==r.header?.getRootNode())r.menu.getRootNode().addEventListener('click',handle,true);
+ document.addEventListener('keydown',event=>{if(event.key==='Escape')change('painel','fechado')});
+ render();installInspector();return true;
+}
+function installInspector(){if(kind!=='autenticado'||!cfg.componentes.menu||document.getElementById('aj-layout-study-toggle'))return;
+ const toggle=document.createElement('button');toggle.id='aj-layout-study-toggle';toggle.type='button';toggle.textContent='⚙ Estados do layout';Object.assign(toggle.style,{position:'fixed',right:'10px',bottom:'10px',zIndex:'9995',padding:'7px 10px',font:'600 10px system-ui',background:'#10233f',color:'#fff',border:'1px solid #9bb0d2',borderRadius:'99px',cursor:'pointer'});
+ const panel=document.createElement('div');panel.id='aj-layout-state-controls';panel.hidden=true;Object.assign(panel.style,{position:'fixed',right:'10px',bottom:'48px',zIndex:'9995',width:'min(280px,90vw)',maxHeight:'57vh',overflowY:'auto',background:'#fff',color:'#10233f',padding:'14px',border:'1px solid #cbd6e5',borderRadius:'11px',font:'12px system-ui',boxShadow:'0 12px 35px #0003'});
+ const h=document.createElement('strong');h.textContent='Estados canônicos · layout';panel.append(h);
+ for(const [axis,details] of Object.entries(def)){if(axis==='painel')continue;const row=document.createElement('label');Object.assign(row.style,{display:'grid',gap:'3px',marginTop:'10px'});const t=document.createElement('span');t.textContent=axis;const select=document.createElement('select');select.dataset.ajAxis=axis;Object.assign(select.style,{width:'100%',padding:'7px',borderRadius:'6px',border:'1px solid #bdcce0'});for(const v of Object.keys(details.opcoes)){const o=document.createElement('option');o.value=v;o.textContent=v;select.append(o);}select.value=state[axis];select.addEventListener('change',()=>change(axis,select.value));row.append(t,select);panel.append(row);}
+ toggle.addEventListener('click',()=>panel.hidden=!panel.hidden);document.body.append(toggle,panel);
+}
+window.__advogadojaLayoutCanonico={getEstado:()=>({...state}),setEstado:change,getContrato:()=>cfg};
+if(!bind()){window.addEventListener('modular-screen:ready',bind,{once:true});const observer=new MutationObserver(()=>{if(bind())observer.disconnect()});observer.observe(document.body,{childList:true,subtree:true});setTimeout(()=>observer.disconnect(),6000);}
+})();
+</script>
+</body>
+</html>

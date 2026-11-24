@@ -1,0 +1,279 @@
+{
+  "identidade": {
+    "id": "auth.inicializacao.splash",
+    "tipo": "tela",
+    "namespace": "auth",
+    "nome": "Splash",
+    "nomeExibicao": "Splash"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/auth/inicializacao/V1_049_splash/documento.json"
+    },
+    "perfilRef": "auth",
+    "jornadaRefs": [
+      "global"
+    ],
+    "subjornadaRefs": [
+      "global.acesso.inicializacao"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "auth.inicializacao.splash.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "elementos": {},
+          "eventos": []
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "auth.inicializacao.splash.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 30,
+          "props": {},
+          "elementos": {
+            "screen_content.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0002": {
+              "tag": "div",
+              "paiRef": "screen_content.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "mark"
+              },
+              "texto": ""
+            },
+            "screen_content.e0003": {
+              "tag": "img",
+              "paiRef": "screen_content.e0002",
+              "ordem": 30,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": "AdvogadoJá+"
+              },
+              "texto": ""
+            },
+            "screen_content.e0004": {
+              "tag": "h1",
+              "paiRef": "screen_content.e0001",
+              "ordem": 40,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0005": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0004",
+              "ordem": 50,
+              "atributos": {},
+              "texto": "AdvogadoJá"
+            }
+          },
+          "eventos": []
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "modal.route-modal.v01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 110,
+          "props": {},
+          "elementos": {
+            "screen_route_modal.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-route-modal",
+                "aria-hidden": "true",
+                "role": "dialog",
+                "aria-modal": "true",
+                "aria-label": "Navegação simulada"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0002": {
+              "tag": "div",
+              "paiRef": "screen_route_modal.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj08-route-card"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0003": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj08-kicker"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "08 · tela isolada"
+            },
+            "screen_route_modal.e0005": {
+              "tag": "h2",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 50,
+              "atributos": {
+                "data-route-title": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Navegação simulada"
+            },
+            "screen_route_modal.e0007": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 70,
+              "atributos": {
+                "data-route-text": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Esta ação não abre outra tela nesta biblioteca."
+            },
+            "screen_route_modal.e0009": {
+              "tag": "code",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 90,
+              "atributos": {
+                "data-route-code": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0010": {
+              "tag": "button",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 100,
+              "atributos": {
+                "type": "button",
+                "data-aj08-close": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0011": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "Fechar"
+            }
+          },
+          "eventos": []
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "screen.auth.inicializacao.splash.popup.screen-note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 210,
+          "props": {},
+          "elementos": {
+            "screen_screen_note.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-static-note"
+              },
+              "texto": ""
+            },
+            "screen_screen_note.e0002": {
+              "tag": "#text",
+              "paiRef": "screen_screen_note.e0001",
+              "ordem": 20,
+              "atributos": {},
+              "texto": "auth.inicializacao.splash · tela isolada · 08"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "auth.inicializacao.splash.estilo.base",
+          "ordem": 10,
+          "css": "/* auth.inicializacao.splash · Splash */\n\n/* arquivo local da tela; mantenha aqui apenas ajustes específicos deste HTML isolado */\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.auth.inicializacao.splash.online",
+      "inicial": "false",
+      "opcoes": {
+        "false": {
+          "id": "estado.auth.inicializacao.splash.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.auth.inicializacao.splash.online.true",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.inicializacao.splash.auth.inicializacao.boas_vindas.inicializacao",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "inicializacao"
+        },
+        "destinoRef": "auth.inicializacao.boas_vindas",
+        "status": "inferencia_a_validar"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

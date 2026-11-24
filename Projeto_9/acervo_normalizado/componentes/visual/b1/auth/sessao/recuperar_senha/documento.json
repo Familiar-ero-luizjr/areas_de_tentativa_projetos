@@ -1,0 +1,117 @@
+{
+  "identidade": {
+    "id": "visual.b1.auth.sessao.recuperar_senha",
+    "tipo": "componente",
+    "nome": "Recuperar senha · composição visual B1"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/visual/b1/auth/sessao/recuperar_senha/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "visual"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "1.1",
+            "nome": "Acesso e autenticação"
+          }
+        ]
+      },
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "2.1",
+            "nome": "Acesso e autenticação"
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "numero": 3,
+        "nome": "Administrador",
+        "subjornadas": [
+          {
+            "id": "acesso",
+            "numero": "3.1",
+            "nome": "Acesso e autorização"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "elementos": {
+        "screen.root": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 1,
+          "atributos": {
+            "class": "screen-runtime b1-screen-runtime"
+          },
+          "texto": ""
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "visual_b1_auth_sessao_recuperar_senha.r0001",
+          "ordem": 10,
+          "css": ":host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}"
+        },
+        {
+          "id": "visual_b1_auth_sessao_recuperar_senha.r0002",
+          "ordem": 20,
+          "css": "*, *::before, *::after { box-sizing: border-box; }"
+        },
+        {
+          "id": "visual_b1_auth_sessao_recuperar_senha.r0003",
+          "ordem": 30,
+          "css": "button, input, select, textarea { font: inherit; }"
+        },
+        {
+          "id": "visual_b1_auth_sessao_recuperar_senha.r0004",
+          "ordem": 40,
+          "css": "button { -webkit-tap-highlight-color: transparent; }"
+        },
+        {
+          "id": "visual_b1_auth_sessao_recuperar_senha.r0005",
+          "ordem": 50,
+          "css": "a { color: inherit; text-decoration: none; }"
+        },
+        {
+          "id": "visual_b1_auth_sessao_recuperar_senha.r0006",
+          "ordem": 60,
+          "css": "[hidden] { display: none !important; }"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

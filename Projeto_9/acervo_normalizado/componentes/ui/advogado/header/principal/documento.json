@@ -1,0 +1,309 @@
+{
+  "identidade": {
+    "id": "ui.advogado.header.principal",
+    "tipo": "componente",
+    "nome": "Cabeçalho principal do advogado"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/ui/advogado/header/principal/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "ui"
+    },
+    "jornadas": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "app_header.e001",
+      "elementos": {
+        "app_header.e001": {
+          "tag": "header",
+          "paiRef": null,
+          "ordem": 10,
+          "atributos": {
+            "class": "app-header",
+            "data-component": "app-header"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.002": {
+          "tag": "button",
+          "paiRef": "app_header.e001",
+          "ordem": 10,
+          "atributos": {
+            "class": "app-menu-button",
+            "type": "button",
+            "data-action": "drawer.open",
+            "aria-label": "Abrir menu"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.003": {
+          "tag": "span",
+          "paiRef": "app_header.e001.chrome.002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "app_header.e001.chrome.004": {
+          "tag": "span",
+          "paiRef": "app_header.e001.chrome.002",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "app_header.e001.chrome.005": {
+          "tag": "span",
+          "paiRef": "app_header.e001.chrome.002",
+          "ordem": 30,
+          "atributos": {},
+          "texto": ""
+        },
+        "app_header.e001.chrome.006": {
+          "tag": "div",
+          "paiRef": "app_header.e001",
+          "ordem": 20,
+          "atributos": {
+            "class": "app-brand"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.007": {
+          "tag": "svg",
+          "paiRef": "app_header.e001.chrome.006",
+          "ordem": 10,
+          "atributos": {
+            "class": "brand-symbol",
+            "xmlns": "http://www.w3.org/2000/svg",
+            "viewBox": "0 0 100 100",
+            "aria-label": "Advogado Já"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.008": {
+          "tag": "g",
+          "paiRef": "app_header.e001.chrome.007",
+          "ordem": 10,
+          "atributos": {
+            "fill": "none",
+            "stroke": "#fff",
+            "stroke-width": "2.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.009": {
+          "tag": "path",
+          "paiRef": "app_header.e001.chrome.008",
+          "ordem": 10,
+          "atributos": {
+            "d": "M50 7C34.8 7 23 18.7 23 34.2c0 17 27 46.8 27 46.8s27-29.8 27-46.8C77 18.7 65.2 7 50 7Z"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.010": {
+          "tag": "circle",
+          "paiRef": "app_header.e001.chrome.008",
+          "ordem": 20,
+          "atributos": {
+            "cx": "50",
+            "cy": "34",
+            "r": "9.3"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.011": {
+          "tag": "path",
+          "paiRef": "app_header.e001.chrome.008",
+          "ordem": 30,
+          "atributos": {
+            "d": "M28 60.5C15.1 64.1 8 70.2 8 77.2 8 88.6 26.8 97 50 97s42-8.4 42-19.8c0-7-7.1-13.1-20-16.7"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.012": {
+          "tag": "path",
+          "paiRef": "app_header.e001.chrome.008",
+          "ordem": 40,
+          "atributos": {
+            "d": "M35.5 68.2C27 70.4 22 74 22 78c0 6 12.5 10.5 28 10.5S78 84 78 78c0-4-5-7.6-13.5-9.8"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.013": {
+          "tag": "div",
+          "paiRef": "app_header.e001.chrome.006",
+          "ordem": 20,
+          "atributos": {
+            "class": "app-brand-copy"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.014": {
+          "tag": "strong",
+          "paiRef": "app_header.e001.chrome.013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "app_header.e001.chrome.015": {
+          "tag": "small",
+          "paiRef": "app_header.e001.chrome.013",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "app_header.e001.chrome.016": {
+          "tag": "button",
+          "paiRef": "app_header.e001",
+          "ordem": 30,
+          "atributos": {
+            "class": "app-notifications",
+            "type": "button",
+            "aria-label": "Abrir notificações"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.017": {
+          "tag": "svg",
+          "paiRef": "app_header.e001.chrome.016",
+          "ordem": 10,
+          "atributos": {
+            "viewBox": "0 0 24 24"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.018": {
+          "tag": "path",
+          "paiRef": "app_header.e001.chrome.017",
+          "ordem": 10,
+          "atributos": {
+            "d": "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.019": {
+          "tag": "span",
+          "paiRef": "app_header.e001.chrome.016",
+          "ordem": 20,
+          "atributos": {
+            "class": "app-notifications-badge"
+          },
+          "texto": ""
+        },
+        "app_header.e001.chrome.014.texto": {
+          "tag": "#text",
+          "paiRef": "app_header.e001.chrome.014",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "AdvogadoJá+"
+        },
+        "app_header.e001.chrome.015.texto": {
+          "tag": "#text",
+          "paiRef": "app_header.e001.chrome.015",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Profissional"
+        },
+        "app_header.e001.chrome.019.texto": {
+          "tag": "#text",
+          "paiRef": "app_header.e001.chrome.019",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "2"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "ui_advogado_header_principal.r0001",
+          "ordem": 10,
+          "css": ".app-header{min-height:64px;display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:10px;align-items:center;padding:8px 14px;background:var(--primary);color:#fff;box-shadow:0 4px 14px #10233f2e;position:sticky;top:0;z-index:10}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0002",
+          "ordem": 20,
+          "css": ".app-menu-button,.app-notifications{width:40px;height:40px;display:grid;place-content:center;border:0;border-radius:10px;background:transparent;color:#fff}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0003",
+          "ordem": 30,
+          "css": ".app-menu-button{gap:4px}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0004",
+          "ordem": 40,
+          "css": ".app-menu-button span{width:20px;height:2px;border-radius:8px;background:#fff}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0005",
+          "ordem": 50,
+          "css": ".app-brand{display:flex;align-items:center;gap:9px;min-width:0}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0006",
+          "ordem": 60,
+          "css": ".brand-symbol{width:28px;height:28px;flex:none}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0007",
+          "ordem": 70,
+          "css": ".app-brand-copy strong,.app-brand-copy small{display:block}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0008",
+          "ordem": 80,
+          "css": ".app-brand-copy strong{font-size:16px;letter-spacing:-.02em;white-space:nowrap}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0009",
+          "ordem": 90,
+          "css": ".app-brand-copy small{font-size:9px;font-weight:800;letter-spacing:.08em;opacity:.72;margin-top:1px;text-transform:uppercase}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0010",
+          "ordem": 100,
+          "css": ".app-notifications{position:relative;justify-self:end}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0011",
+          "ordem": 110,
+          "css": ".app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}"
+        },
+        {
+          "id": "ui_advogado_header_principal.r0012",
+          "ordem": 120,
+          "css": ".app-notifications-badge{position:absolute;top:4px;right:2px;min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center;border:2px solid var(--primary);border-radius:99px;background:#ef4444;font-size:9px;font-weight:800}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.app_header.e001.chrome.002",
+      "elementoRef": "app_header.e001.chrome.002",
+      "evento": "click"
+    },
+    {
+      "id": "event.app_header.e001.chrome.016",
+      "elementoRef": "app_header.e001.chrome.016",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "versao": "1.0",
+  "cenarios": {
+    "advogado": [
+      {
+        "id": "pro_validado",
+        "label": "OAB validada · plano ativo · online",
+        "oab": "validada",
+        "plan": "ativo",
+        "online": "online",
+        "source": "fonte+proposta"
+      },
+      {
+        "id": "pro_sem_oab",
+        "label": "Sem OAB · acesso restrito",
+        "oab": "sem_oab",
+        "plan": "ativo",
+        "online": "offline",
+        "source": "fonte"
+      },
+      {
+        "id": "pro_pendente",
+        "label": "OAB em análise · acesso restrito",
+        "oab": "em_analise",
+        "plan": "ativo",
+        "online": "offline",
+        "source": "proposta"
+      },
+      {
+        "id": "pro_rejeitada",
+        "label": "OAB não validada · corrigir dados",
+        "oab": "rejeitada",
+        "plan": "ativo",
+        "online": "offline",
+        "source": "proposta"
+      },
+      {
+        "id": "pro_sem_plano",
+        "label": "OAB validada · sem plano",
+        "oab": "validada",
+        "plan": "sem_plano",
+        "online": "online",
+        "source": "proposta"
+      },
+      {
+        "id": "pro_offline",
+        "label": "OAB validada · profissional offline",
+        "oab": "validada",
+        "plan": "ativo",
+        "online": "offline",
+        "source": "fonte"
+      }
+    ],
+    "estudante": [
+      {
+        "id": "est_sem_plano",
+        "label": "Cliente/estudante · sem plano",
+        "oab": "nao_aplicavel",
+        "plan": "sem_plano",
+        "online": "offline",
+        "source": "fonte+proposta"
+      },
+      {
+        "id": "est_pendente",
+        "label": "Plano estudante · pagamento pendente",
+        "oab": "nao_aplicavel",
+        "plan": "pendente",
+        "online": "offline",
+        "source": "proposta"
+      },
+      {
+        "id": "est_ativo",
+        "label": "Plano estudante · ativo",
+        "oab": "nao_aplicavel",
+        "plan": "ativo",
+        "online": "offline",
+        "source": "fonte+proposta"
+      },
+      {
+        "id": "est_vencido",
+        "label": "Plano estudante · vencido",
+        "oab": "nao_aplicavel",
+        "plan": "vencido",
+        "online": "offline",
+        "source": "proposta"
+      }
+    ]
+  },
+  "menus": {
+    "advogado": [
+      [
+        "🏠",
+        "Início",
+        "advogado.home",
+        "all"
+      ],
+      [
+        "🛡️",
+        "Validar OAB",
+        "advogado.configuracao.validacao_oab",
+        "restricted"
+      ],
+      [
+        "📬",
+        "Solicitações",
+        "advogado.clientes.solicitacoes_recebidas",
+        "enabled"
+      ],
+      [
+        "📅",
+        "Disponibilidade e agenda",
+        "advogado.configuracao.agenda_semanal",
+        "enabled"
+      ],
+      [
+        "👤",
+        "Meu perfil profissional",
+        "advogado.perfil_profissional",
+        "all"
+      ],
+      [
+        "💳",
+        "Planos e assinatura",
+        "advogado.assinatura.planos",
+        "all"
+      ],
+      [
+        "🏢",
+        "Escritório",
+        "escritorio.gestao.escritorio",
+        "enabled"
+      ],
+      [
+        "⚙️",
+        "Configurações",
+        "advogado.configuracao.configuracao",
+        "all"
+      ],
+      [
+        "❔",
+        "Ajuda",
+        "advogado.configuracao.central_ajuda",
+        "all"
+      ]
+    ],
+    "estudante": [
+      [
+        "🏠",
+        "Início do cliente",
+        "cliente.home.inicio",
+        "all"
+      ],
+      [
+        "⚖️",
+        "Buscar advogados",
+        "cliente.profissionais.perfil_publico",
+        "all"
+      ],
+      [
+        "🎓",
+        "Home estudante",
+        "estudante.home.inicio",
+        "all"
+      ],
+      [
+        "📚",
+        "Catálogo de cursos",
+        "estudante.cursos.catalogo",
+        "all"
+      ],
+      [
+        "🔒",
+        "Meus cursos",
+        "estudante.cursos.meus_cursos",
+        "active"
+      ],
+      [
+        "💳",
+        "Planos estudante",
+        "estudante.assinatura.planos",
+        "all"
+      ],
+      [
+        "🧾",
+        "Minha assinatura",
+        "estudante.assinatura.gestao_assinatura",
+        "all"
+      ],
+      [
+        "👤",
+        "Dados acadêmicos",
+        "estudante.perfil.editar_academicos",
+        "all"
+      ],
+      [
+        "⚙️",
+        "Configurações",
+        "cliente.configuracao.configuracao",
+        "all"
+      ]
+    ]
+  },
+  "regras": "simulacao sem backend, extras PROPOSTA"
+}

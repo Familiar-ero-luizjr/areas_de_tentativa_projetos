@@ -1,0 +1,1355 @@
+{
+  "identidade": {
+    "id": "escritorio.onboarding.cadastro_escritorio",
+    "tipo": "tela",
+    "namespace": "escritorio",
+    "nome": "Onboarding Advogado · Dados do escritório",
+    "nomeExibicao": "Onboarding Advogado · Dados do escritório"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "01/telas/escritorio/onboarding/V1_076_cadastro_escritorio/documento.json"
+    },
+    "perfilRef": "escritorio",
+    "jornadaRefs": [
+      "escritorio"
+    ],
+    "subjornadaRefs": [
+      "escritorio.onboarding"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "escritorio.onboarding.cadastro_escritorio.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {},
+          "elementos": {},
+          "eventos": []
+        },
+        "screen.app_header": {
+          "id": "screen.app_header",
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "elementos": {
+            "screen_app_header.e0001": {
+              "tag": "header",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj-layout-app-header app-header aj-public",
+                "data-aj-canonical": "layout.header.app",
+                "data-profile": "advogado",
+                "data-variante": "publico"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0002": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj-layout-brand"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0003": {
+              "tag": "img",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 30,
+              "atributos": {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                "alt": ""
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0004": {
+              "tag": "div",
+              "paiRef": "screen_app_header.e0002",
+              "ordem": 40,
+              "atributos": {
+                "class": "aj-layout-brand-copy"
+              },
+              "texto": ""
+            },
+            "screen_app_header.e0005": {
+              "tag": "strong",
+              "paiRef": "screen_app_header.e0004",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "AdvogadoJá+"
+            },
+            "screen_app_header.e0007": {
+              "tag": "small",
+              "paiRef": "screen_app_header.e0004",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_app_header.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_app_header.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Profissional"
+            }
+          },
+          "eventos": []
+        },
+        "screen.content": {
+          "id": "screen.content",
+          "componenteRef": "escritorio.onboarding.cadastro_escritorio.content",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 130,
+          "props": {},
+          "elementos": {
+            "screen_content.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "registration__shell"
+              },
+              "texto": ""
+            },
+            "screen_content.e0002": {
+              "tag": "div",
+              "paiRef": "screen_content.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "registration__intro"
+              },
+              "texto": ""
+            },
+            "screen_content.e0003": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "eyebrow"
+              },
+              "texto": ""
+            },
+            "screen_content.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "Subfluxo Escritório"
+            },
+            "screen_content.e0005": {
+              "tag": "h1",
+              "paiRef": "screen_content.e0002",
+              "ordem": 50,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Dados do escritório"
+            },
+            "screen_content.e0007": {
+              "tag": "p",
+              "paiRef": "screen_content.e0002",
+              "ordem": 70,
+              "atributos": {},
+              "texto": ""
+            },
+            "screen_content.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "O advogado que cria o Escritório será o responsável/proprietário inicial."
+            },
+            "screen_content.e0009": {
+              "tag": "form",
+              "paiRef": "screen_content.e0001",
+              "ordem": 90,
+              "atributos": {
+                "class": "form-card",
+                "data-office-form": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0010": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 100,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0011": {
+              "tag": "input",
+              "paiRef": "screen_content.e0010",
+              "ordem": 110,
+              "atributos": {
+                "id": "office-name",
+                "type": "text",
+                "placeholder": " ",
+                "data-office-field": "name",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0012": {
+              "tag": "label",
+              "paiRef": "screen_content.e0010",
+              "ordem": 120,
+              "atributos": {
+                "for": "office-name"
+              },
+              "texto": ""
+            },
+            "screen_content.e0013": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0012",
+              "ordem": 130,
+              "atributos": {},
+              "texto": "Nome do escritório"
+            },
+            "screen_content.e0014": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 140,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0015": {
+              "tag": "input",
+              "paiRef": "screen_content.e0014",
+              "ordem": 150,
+              "atributos": {
+                "id": "office-cnpj",
+                "type": "text",
+                "placeholder": " ",
+                "inputmode": "numeric",
+                "data-office-field": "cnpj",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0016": {
+              "tag": "label",
+              "paiRef": "screen_content.e0014",
+              "ordem": 160,
+              "atributos": {
+                "for": "office-cnpj"
+              },
+              "texto": ""
+            },
+            "screen_content.e0017": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0016",
+              "ordem": 170,
+              "atributos": {},
+              "texto": "CNPJ"
+            },
+            "screen_content.e0018": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 180,
+              "atributos": {
+                "class": "field-grid two"
+              },
+              "texto": ""
+            },
+            "screen_content.e0019": {
+              "tag": "div",
+              "paiRef": "screen_content.e0018",
+              "ordem": 190,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0020": {
+              "tag": "input",
+              "paiRef": "screen_content.e0019",
+              "ordem": 200,
+              "atributos": {
+                "id": "office-email",
+                "type": "email",
+                "placeholder": " ",
+                "data-office-field": "email",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0021": {
+              "tag": "label",
+              "paiRef": "screen_content.e0019",
+              "ordem": 210,
+              "atributos": {
+                "for": "office-email"
+              },
+              "texto": ""
+            },
+            "screen_content.e0022": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0021",
+              "ordem": 220,
+              "atributos": {},
+              "texto": "E-mail"
+            },
+            "screen_content.e0023": {
+              "tag": "div",
+              "paiRef": "screen_content.e0018",
+              "ordem": 230,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0024": {
+              "tag": "input",
+              "paiRef": "screen_content.e0023",
+              "ordem": 240,
+              "atributos": {
+                "id": "office-phone",
+                "type": "tel",
+                "placeholder": " ",
+                "data-office-field": "phone",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0025": {
+              "tag": "label",
+              "paiRef": "screen_content.e0023",
+              "ordem": 250,
+              "atributos": {
+                "for": "office-phone"
+              },
+              "texto": ""
+            },
+            "screen_content.e0026": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0025",
+              "ordem": 260,
+              "atributos": {},
+              "texto": "Telefone"
+            },
+            "screen_content.e0027": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 270,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0028": {
+              "tag": "input",
+              "paiRef": "screen_content.e0027",
+              "ordem": 280,
+              "atributos": {
+                "id": "office-address",
+                "type": "text",
+                "placeholder": " ",
+                "data-office-field": "address",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0029": {
+              "tag": "label",
+              "paiRef": "screen_content.e0027",
+              "ordem": 290,
+              "atributos": {
+                "for": "office-address"
+              },
+              "texto": ""
+            },
+            "screen_content.e0030": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0029",
+              "ordem": 300,
+              "atributos": {},
+              "texto": "Logradouro"
+            },
+            "screen_content.e0031": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 310,
+              "atributos": {
+                "class": "field-grid two"
+              },
+              "texto": ""
+            },
+            "screen_content.e0032": {
+              "tag": "div",
+              "paiRef": "screen_content.e0031",
+              "ordem": 320,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0033": {
+              "tag": "input",
+              "paiRef": "screen_content.e0032",
+              "ordem": 330,
+              "atributos": {
+                "id": "office-address-number",
+                "type": "text",
+                "placeholder": " ",
+                "data-office-field": "addressNumber",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0034": {
+              "tag": "label",
+              "paiRef": "screen_content.e0032",
+              "ordem": 340,
+              "atributos": {
+                "for": "office-address-number"
+              },
+              "texto": ""
+            },
+            "screen_content.e0035": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0034",
+              "ordem": 350,
+              "atributos": {},
+              "texto": "Número"
+            },
+            "screen_content.e0036": {
+              "tag": "div",
+              "paiRef": "screen_content.e0031",
+              "ordem": 360,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0037": {
+              "tag": "input",
+              "paiRef": "screen_content.e0036",
+              "ordem": 370,
+              "atributos": {
+                "id": "office-zip",
+                "type": "text",
+                "placeholder": " ",
+                "inputmode": "numeric",
+                "data-office-field": "zipCode",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0038": {
+              "tag": "label",
+              "paiRef": "screen_content.e0036",
+              "ordem": 380,
+              "atributos": {
+                "for": "office-zip"
+              },
+              "texto": ""
+            },
+            "screen_content.e0039": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0038",
+              "ordem": 390,
+              "atributos": {},
+              "texto": "CEP"
+            },
+            "screen_content.e0040": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 400,
+              "atributos": {
+                "class": "field-grid two"
+              },
+              "texto": ""
+            },
+            "screen_content.e0041": {
+              "tag": "div",
+              "paiRef": "screen_content.e0040",
+              "ordem": 410,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0042": {
+              "tag": "input",
+              "paiRef": "screen_content.e0041",
+              "ordem": 420,
+              "atributos": {
+                "id": "office-neighborhood",
+                "type": "text",
+                "placeholder": " ",
+                "data-office-field": "neighborhood",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0043": {
+              "tag": "label",
+              "paiRef": "screen_content.e0041",
+              "ordem": 430,
+              "atributos": {
+                "for": "office-neighborhood"
+              },
+              "texto": ""
+            },
+            "screen_content.e0044": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0043",
+              "ordem": 440,
+              "atributos": {},
+              "texto": "Bairro"
+            },
+            "screen_content.e0045": {
+              "tag": "div",
+              "paiRef": "screen_content.e0040",
+              "ordem": 450,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0046": {
+              "tag": "input",
+              "paiRef": "screen_content.e0045",
+              "ordem": 460,
+              "atributos": {
+                "id": "office-district",
+                "type": "text",
+                "placeholder": " ",
+                "data-office-field": "district"
+              },
+              "texto": ""
+            },
+            "screen_content.e0047": {
+              "tag": "label",
+              "paiRef": "screen_content.e0045",
+              "ordem": 470,
+              "atributos": {
+                "for": "office-district"
+              },
+              "texto": ""
+            },
+            "screen_content.e0048": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0047",
+              "ordem": 480,
+              "atributos": {},
+              "texto": "Distrito"
+            },
+            "screen_content.e0049": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 490,
+              "atributos": {
+                "class": "field-grid two"
+              },
+              "texto": ""
+            },
+            "screen_content.e0050": {
+              "tag": "div",
+              "paiRef": "screen_content.e0049",
+              "ordem": 500,
+              "atributos": {
+                "class": "field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0051": {
+              "tag": "input",
+              "paiRef": "screen_content.e0050",
+              "ordem": 510,
+              "atributos": {
+                "id": "office-city",
+                "type": "text",
+                "placeholder": " ",
+                "data-office-field": "city",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0052": {
+              "tag": "label",
+              "paiRef": "screen_content.e0050",
+              "ordem": 520,
+              "atributos": {
+                "for": "office-city"
+              },
+              "texto": ""
+            },
+            "screen_content.e0053": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0052",
+              "ordem": 530,
+              "atributos": {},
+              "texto": "Cidade"
+            },
+            "screen_content.e0054": {
+              "tag": "div",
+              "paiRef": "screen_content.e0049",
+              "ordem": 540,
+              "atributos": {
+                "class": "select-field"
+              },
+              "texto": ""
+            },
+            "screen_content.e0055": {
+              "tag": "label",
+              "paiRef": "screen_content.e0054",
+              "ordem": 550,
+              "atributos": {
+                "for": "office-uf"
+              },
+              "texto": ""
+            },
+            "screen_content.e0056": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0055",
+              "ordem": 560,
+              "atributos": {},
+              "texto": "UF"
+            },
+            "screen_content.e0057": {
+              "tag": "select",
+              "paiRef": "screen_content.e0054",
+              "ordem": 570,
+              "atributos": {
+                "id": "office-uf",
+                "data-office-field": "uf",
+                "required": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0058": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 580,
+              "atributos": {
+                "value": ""
+              },
+              "texto": ""
+            },
+            "screen_content.e0059": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0058",
+              "ordem": 590,
+              "atributos": {},
+              "texto": "Selecionar"
+            },
+            "screen_content.e0060": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 600,
+              "atributos": {
+                "value": "AC"
+              },
+              "texto": ""
+            },
+            "screen_content.e0061": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0060",
+              "ordem": 610,
+              "atributos": {},
+              "texto": "AC"
+            },
+            "screen_content.e0062": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 620,
+              "atributos": {
+                "value": "AL"
+              },
+              "texto": ""
+            },
+            "screen_content.e0063": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0062",
+              "ordem": 630,
+              "atributos": {},
+              "texto": "AL"
+            },
+            "screen_content.e0064": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 640,
+              "atributos": {
+                "value": "AP"
+              },
+              "texto": ""
+            },
+            "screen_content.e0065": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0064",
+              "ordem": 650,
+              "atributos": {},
+              "texto": "AP"
+            },
+            "screen_content.e0066": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 660,
+              "atributos": {
+                "value": "AM"
+              },
+              "texto": ""
+            },
+            "screen_content.e0067": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0066",
+              "ordem": 670,
+              "atributos": {},
+              "texto": "AM"
+            },
+            "screen_content.e0068": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 680,
+              "atributos": {
+                "value": "BA"
+              },
+              "texto": ""
+            },
+            "screen_content.e0069": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0068",
+              "ordem": 690,
+              "atributos": {},
+              "texto": "BA"
+            },
+            "screen_content.e0070": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 700,
+              "atributos": {
+                "value": "CE"
+              },
+              "texto": ""
+            },
+            "screen_content.e0071": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0070",
+              "ordem": 710,
+              "atributos": {},
+              "texto": "CE"
+            },
+            "screen_content.e0072": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 720,
+              "atributos": {
+                "value": "DF"
+              },
+              "texto": ""
+            },
+            "screen_content.e0073": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0072",
+              "ordem": 730,
+              "atributos": {},
+              "texto": "DF"
+            },
+            "screen_content.e0074": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 740,
+              "atributos": {
+                "value": "ES"
+              },
+              "texto": ""
+            },
+            "screen_content.e0075": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0074",
+              "ordem": 750,
+              "atributos": {},
+              "texto": "ES"
+            },
+            "screen_content.e0076": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 760,
+              "atributos": {
+                "value": "GO"
+              },
+              "texto": ""
+            },
+            "screen_content.e0077": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0076",
+              "ordem": 770,
+              "atributos": {},
+              "texto": "GO"
+            },
+            "screen_content.e0078": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 780,
+              "atributos": {
+                "value": "MA"
+              },
+              "texto": ""
+            },
+            "screen_content.e0079": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0078",
+              "ordem": 790,
+              "atributos": {},
+              "texto": "MA"
+            },
+            "screen_content.e0080": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 800,
+              "atributos": {
+                "value": "MT"
+              },
+              "texto": ""
+            },
+            "screen_content.e0081": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0080",
+              "ordem": 810,
+              "atributos": {},
+              "texto": "MT"
+            },
+            "screen_content.e0082": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 820,
+              "atributos": {
+                "value": "MS"
+              },
+              "texto": ""
+            },
+            "screen_content.e0083": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0082",
+              "ordem": 830,
+              "atributos": {},
+              "texto": "MS"
+            },
+            "screen_content.e0084": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 840,
+              "atributos": {
+                "value": "MG"
+              },
+              "texto": ""
+            },
+            "screen_content.e0085": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0084",
+              "ordem": 850,
+              "atributos": {},
+              "texto": "MG"
+            },
+            "screen_content.e0086": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 860,
+              "atributos": {
+                "value": "PA"
+              },
+              "texto": ""
+            },
+            "screen_content.e0087": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0086",
+              "ordem": 870,
+              "atributos": {},
+              "texto": "PA"
+            },
+            "screen_content.e0088": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 880,
+              "atributos": {
+                "value": "PB"
+              },
+              "texto": ""
+            },
+            "screen_content.e0089": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0088",
+              "ordem": 890,
+              "atributos": {},
+              "texto": "PB"
+            },
+            "screen_content.e0090": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 900,
+              "atributos": {
+                "value": "PR"
+              },
+              "texto": ""
+            },
+            "screen_content.e0091": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0090",
+              "ordem": 910,
+              "atributos": {},
+              "texto": "PR"
+            },
+            "screen_content.e0092": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 920,
+              "atributos": {
+                "value": "PE"
+              },
+              "texto": ""
+            },
+            "screen_content.e0093": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0092",
+              "ordem": 930,
+              "atributos": {},
+              "texto": "PE"
+            },
+            "screen_content.e0094": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 940,
+              "atributos": {
+                "value": "PI"
+              },
+              "texto": ""
+            },
+            "screen_content.e0095": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0094",
+              "ordem": 950,
+              "atributos": {},
+              "texto": "PI"
+            },
+            "screen_content.e0096": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 960,
+              "atributos": {
+                "value": "RJ"
+              },
+              "texto": ""
+            },
+            "screen_content.e0097": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0096",
+              "ordem": 970,
+              "atributos": {},
+              "texto": "RJ"
+            },
+            "screen_content.e0098": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 980,
+              "atributos": {
+                "value": "RN"
+              },
+              "texto": ""
+            },
+            "screen_content.e0099": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0098",
+              "ordem": 990,
+              "atributos": {},
+              "texto": "RN"
+            },
+            "screen_content.e0100": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1000,
+              "atributos": {
+                "value": "RS"
+              },
+              "texto": ""
+            },
+            "screen_content.e0101": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0100",
+              "ordem": 1010,
+              "atributos": {},
+              "texto": "RS"
+            },
+            "screen_content.e0102": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1020,
+              "atributos": {
+                "value": "RO"
+              },
+              "texto": ""
+            },
+            "screen_content.e0103": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0102",
+              "ordem": 1030,
+              "atributos": {},
+              "texto": "RO"
+            },
+            "screen_content.e0104": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1040,
+              "atributos": {
+                "value": "RR"
+              },
+              "texto": ""
+            },
+            "screen_content.e0105": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0104",
+              "ordem": 1050,
+              "atributos": {},
+              "texto": "RR"
+            },
+            "screen_content.e0106": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1060,
+              "atributos": {
+                "value": "SC"
+              },
+              "texto": ""
+            },
+            "screen_content.e0107": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0106",
+              "ordem": 1070,
+              "atributos": {},
+              "texto": "SC"
+            },
+            "screen_content.e0108": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1080,
+              "atributos": {
+                "value": "SP"
+              },
+              "texto": ""
+            },
+            "screen_content.e0109": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0108",
+              "ordem": 1090,
+              "atributos": {},
+              "texto": "SP"
+            },
+            "screen_content.e0110": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1100,
+              "atributos": {
+                "value": "SE"
+              },
+              "texto": ""
+            },
+            "screen_content.e0111": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0110",
+              "ordem": 1110,
+              "atributos": {},
+              "texto": "SE"
+            },
+            "screen_content.e0112": {
+              "tag": "option",
+              "paiRef": "screen_content.e0057",
+              "ordem": 1120,
+              "atributos": {
+                "value": "TO"
+              },
+              "texto": ""
+            },
+            "screen_content.e0113": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0112",
+              "ordem": 1130,
+              "atributos": {},
+              "texto": "TO"
+            },
+            "screen_content.e0114": {
+              "tag": "div",
+              "paiRef": "screen_content.e0009",
+              "ordem": 1140,
+              "atributos": {
+                "class": "form-actions"
+              },
+              "texto": ""
+            },
+            "screen_content.e0115": {
+              "tag": "button",
+              "paiRef": "screen_content.e0114",
+              "ordem": 1150,
+              "atributos": {
+                "class": "secondary-action",
+                "type": "button",
+                "data-goto": "escritorio.onboarding.vinculo_escritorio"
+              },
+              "texto": ""
+            },
+            "screen_content.e0116": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0115",
+              "ordem": 1160,
+              "atributos": {},
+              "texto": "Voltar"
+            },
+            "screen_content.e0117": {
+              "tag": "button",
+              "paiRef": "screen_content.e0114",
+              "ordem": 1170,
+              "atributos": {
+                "class": "button",
+                "type": "submit",
+                "data-next": "advogado.onboarding.revisao_profissional"
+              },
+              "texto": ""
+            },
+            "screen_content.e0118": {
+              "tag": "#text",
+              "paiRef": "screen_content.e0117",
+              "ordem": 1180,
+              "atributos": {},
+              "texto": "Continuar"
+            },
+            "screen_content.e0119": {
+              "tag": "p",
+              "paiRef": "screen_content.e0009",
+              "ordem": 1190,
+              "atributos": {
+                "class": "form-status",
+                "aria-live": "polite"
+              },
+              "texto": ""
+            }
+          },
+          "eventos": []
+        },
+        "screen.route_modal": {
+          "id": "screen.route_modal",
+          "componenteRef": "modal.route-modal.v01",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 210,
+          "props": {},
+          "elementos": {
+            "screen_route_modal.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-route-modal",
+                "aria-hidden": "true",
+                "role": "dialog",
+                "aria-modal": "true",
+                "aria-label": "Navegação simulada"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0002": {
+              "tag": "div",
+              "paiRef": "screen_route_modal.e0001",
+              "ordem": 20,
+              "atributos": {
+                "class": "aj08-route-card"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0003": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 30,
+              "atributos": {
+                "class": "aj08-kicker"
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0004": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0003",
+              "ordem": 40,
+              "atributos": {},
+              "texto": "08 · tela isolada"
+            },
+            "screen_route_modal.e0005": {
+              "tag": "h2",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 50,
+              "atributos": {
+                "data-route-title": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0006": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0005",
+              "ordem": 60,
+              "atributos": {},
+              "texto": "Navegação simulada"
+            },
+            "screen_route_modal.e0007": {
+              "tag": "p",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 70,
+              "atributos": {
+                "data-route-text": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0008": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0007",
+              "ordem": 80,
+              "atributos": {},
+              "texto": "Esta ação não abre outra tela nesta biblioteca."
+            },
+            "screen_route_modal.e0009": {
+              "tag": "code",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 90,
+              "atributos": {
+                "data-route-code": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0010": {
+              "tag": "button",
+              "paiRef": "screen_route_modal.e0002",
+              "ordem": 100,
+              "atributos": {
+                "type": "button",
+                "data-aj08-close": ""
+              },
+              "texto": ""
+            },
+            "screen_route_modal.e0011": {
+              "tag": "#text",
+              "paiRef": "screen_route_modal.e0010",
+              "ordem": 110,
+              "atributos": {},
+              "texto": "Fechar"
+            }
+          },
+          "eventos": []
+        },
+        "screen.screen_note": {
+          "id": "screen.screen_note",
+          "componenteRef": "screen.escritorio.onboarding.cadastro_escritorio.popup.screen-note",
+          "paiRef": "screen.root",
+          "alvoRef": null,
+          "ordem": 310,
+          "props": {},
+          "elementos": {
+            "screen_screen_note.e0001": {
+              "tag": "div",
+              "paiRef": null,
+              "ordem": 10,
+              "atributos": {
+                "class": "aj08-static-note"
+              },
+              "texto": ""
+            },
+            "screen_screen_note.e0002": {
+              "tag": "#text",
+              "paiRef": "screen_screen_note.e0001",
+              "ordem": 20,
+              "atributos": {},
+              "texto": "escritorio.onboarding.cadastro_escritorio · tela isolada · 08"
+            }
+          },
+          "eventos": []
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primarySoft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "escritorio.onboarding.cadastro_escritorio.estilo.base",
+          "ordem": 10,
+          "css": ".aj-layout-app-header{position:relative;z-index:35;min-height:64px!important;width:100%;display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px!important;gap:10px;align-items:center;padding:8px 14px!important;background:#10233f!important;color:#fff!important;box-shadow:0 4px 14px rgba(16,35,63,.18);font-family:Inter,\"Plus Jakarta Sans\",\"Segoe UI\",Arial,sans-serif}\n.aj-layout-app-header.aj-public{grid-template-columns:minmax(0,1fr)!important;padding:10px 18px!important}\n.aj-layout-brand{min-width:0;display:flex;align-items:center;gap:9px}.aj-layout-brand img{width:28px;height:28px;flex:none;object-fit:contain;filter:brightness(0) invert(1)}\n.aj-layout-brand-copy{min-width:0;display:flex;flex-direction:column;justify-content:center}.aj-layout-brand-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.16;letter-spacing:-.02em;font-weight:800}.aj-layout-brand-copy small{font-size:9px;margin-top:2px;letter-spacing:.075em;text-transform:uppercase;font-weight:800;opacity:.74}\n.aj-layout-icon-button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:#fff;cursor:pointer;padding:0}.aj-layout-icon-button:hover{background:#ffffff15}.aj-layout-icon-button:focus-visible,.aj-layout-drawer button:focus-visible{outline:3px solid #9bc1fa;outline-offset:2px}\n.aj-layout-icon-button.app-menu-button{display:grid;place-content:center;gap:4px}.aj-layout-icon-button.app-menu-button span{display:block;width:20px;height:2px;border-radius:9px;background:currentColor}\n.aj-layout-icon-button.app-notifications{position:relative;justify-self:end}.aj-layout-icon-button.app-notifications svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}\n.aj-layout-badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 3px;border:2px solid #10233f;border-radius:999px;display:grid;place-items:center;background:#ef4444;color:#fff;font-size:9px;font-weight:850}\n.aj-layout-app-header.aj-public .app-menu-button,.aj-layout-app-header.aj-public .app-notifications{display:none!important}\n\n/* escritorio.onboarding.cadastro_escritorio · Onboarding Advogado · Dados do escritório */\n\n/* arquivo local da tela; mantenha aqui apenas ajustes específicos deste HTML isolado */\n\n/* Modal de navegação: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n/* Identificação da tela isolada: sem estilos exclusivos; utiliza a folha do componente principal. */\n\n:host {\n  display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;\n}\n*, *::before, *::after { box-sizing: border-box; }\nbutton, input, select, textarea { font: inherit; }\nbutton { -webkit-tap-highlight-color: transparent; }\na { color: inherit; text-decoration: none; }\n[hidden] { display: none !important; }\n"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "online": {
+      "id": "estado.escritorio.onboarding.cadastro_escritorio.online",
+      "inicial": "false",
+      "opcoes": {
+        "false": {
+          "id": "estado.escritorio.onboarding.cadastro_escritorio.online.false",
+          "alvos": []
+        },
+        "true": {
+          "id": "estado.escritorio.onboarding.cadastro_escritorio.online.true",
+          "alvos": []
+        }
+      }
+    }
+  },
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.escritorio.onboarding.cadastro_escritorio.escritorio.onboarding.vinculo_escritorio.b1.12.main.11.n0114",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "b1.12.main.11.n0114"
+        },
+        "destinoRef": "escritorio.onboarding.vinculo_escritorio",
+        "status": "referencia_explicita_na_fonte"
+      },
+      {
+        "id": "rota.escritorio.onboarding.cadastro_escritorio.escritorio.onboarding.vinculo_escritorio.button",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "button"
+        },
+        "destinoRef": "escritorio.onboarding.vinculo_escritorio",
+        "status": "referencia_explicita_na_fonte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

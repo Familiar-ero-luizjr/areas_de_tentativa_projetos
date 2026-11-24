@@ -1,0 +1,66 @@
+{
+  "identidade": {
+    "id": "auth.sessao.resetar_senha",
+    "tipo": "tela",
+    "nome": "Redefinir senha"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/auth/sessao/resetar_senha/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "auth"
+    },
+    "jornadas": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "ui.aj.layout.publico",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "ui_aj_layout_publico.e0002",
+          "ordem": 10,
+          "props": {
+            "perfil": "",
+            "notificacoes": "0"
+          },
+          "estados": {
+            "ambiente": "publico"
+          }
+        },
+        "screen.content": {
+          "componenteRef": "auth.sessao.resetar_senha.conteudo",
+          "paiRef": "screen.root",
+          "alvoRef": "ui_aj_layout_publico.e0003",
+          "ordem": 20,
+          "props": {},
+          "estados": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

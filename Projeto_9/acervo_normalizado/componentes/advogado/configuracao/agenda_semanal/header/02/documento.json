@@ -1,0 +1,82 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.agenda_semanal.header.02",
+    "tipo": "componente",
+    "nome": "advogado.configuracao.agenda_semanal.header.02"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/configuracao/agenda_semanal/header/02/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "disponibilidade",
+            "numero": "2.7",
+            "nome": "Disponibilidade profissional"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.12.header.11.n0000",
+      "elementos": {
+        "b1.12.header.11.n0000": {
+          "tag": "div",
+          "paiRef": null,
+          "ordem": 11,
+          "atributos": {
+            "class": "app-titlebar"
+          },
+          "texto": ""
+        },
+        "b1.12.header.11.n0001": {
+          "tag": "strong",
+          "paiRef": "b1.12.header.11.n0000",
+          "ordem": 2,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.12.header.11.n0001.texto": {
+          "tag": "#text",
+          "paiRef": "b1.12.header.11.n0001",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Agenda semanal"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "advogado_configuracao_agenda_semanal_header_02.r0001",
+          "ordem": 10,
+          "css": ".app-titlebar {\n  min-height:38px;\n  display:flex;\n  align-items:center;\n  padding:8px 18px;\n  border-bottom:1px solid var(--line);\n  background:#fff;\n  color:var(--primary);\n  font-size:13px;\n}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

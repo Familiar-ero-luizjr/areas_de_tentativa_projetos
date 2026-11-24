@@ -1,0 +1,781 @@
+{
+  "identidade": {
+    "id": "advogado.atendimentos.lista.main.01",
+    "tipo": "componente",
+    "nome": "advogado.atendimentos.lista.main.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/atendimentos/lista/main/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "operacao",
+            "numero": "2.6",
+            "nome": "Solicitações e atendimentos"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.13.main.12.n0000",
+      "elementos": {
+        "b1.13.main.12.n0000": {
+          "tag": "section",
+          "paiRef": null,
+          "ordem": 12,
+          "atributos": {
+            "class": "appointments-shell",
+            "aria-labelledby": "appointments-title"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0001": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "appointments-head"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0002": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 3,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0003": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0002",
+          "ordem": 4,
+          "atributos": {
+            "class": "appointments-eyebrow"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0005": {
+          "tag": "h1",
+          "paiRef": "b1.13.main.12.n0002",
+          "ordem": 6,
+          "atributos": {
+            "id": "appointments-title"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0007": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0002",
+          "ordem": 8,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0009": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 10,
+          "atributos": {
+            "class": "appointments-tabs",
+            "role": "tablist",
+            "aria-label": "Estados dos atendimentos"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0010": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0009",
+          "ordem": 11,
+          "atributos": {
+            "type": "button",
+            "role": "tab",
+            "data-action": "appointments.tab",
+            "data-tab": "",
+            "aria-selected": "false"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0011": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0010",
+          "ordem": 12,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0012": {
+          "tag": "b",
+          "paiRef": "b1.13.main.12.n0010",
+          "ordem": 13,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0013": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 14,
+          "atributos": {
+            "class": "appointments-panels"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0014": {
+          "tag": "section",
+          "paiRef": "b1.13.main.12.n0013",
+          "ordem": 15,
+          "atributos": {
+            "data-appointments-panel": "requested"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0015": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0014",
+          "ordem": 16,
+          "atributos": {
+            "class": "appointments-section-head"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0016": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0015",
+          "ordem": 17,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0017": {
+          "tag": "h2",
+          "paiRef": "b1.13.main.12.n0016",
+          "ordem": 18,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0019": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0016",
+          "ordem": 20,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0021": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0014",
+          "ordem": 22,
+          "atributos": {
+            "class": "appointments-list"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0022": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0021",
+          "ordem": 23,
+          "atributos": {
+            "class": "appointment-card",
+            "type": "button",
+            "data-goto": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0023": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0022",
+          "ordem": 24,
+          "atributos": {
+            "class": "appointment-main"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0024": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0023",
+          "ordem": 25,
+          "atributos": {
+            "class": "appointment-topline"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0025": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0024",
+          "ordem": 26,
+          "atributos": {
+            "class": "status status-requested"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0026": {
+          "tag": "time",
+          "paiRef": "b1.13.main.12.n0024",
+          "ordem": 27,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0027": {
+          "tag": "h3",
+          "paiRef": "b1.13.main.12.n0023",
+          "ordem": 28,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0028": {
+          "tag": "strong",
+          "paiRef": "b1.13.main.12.n0023",
+          "ordem": 29,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0029": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0023",
+          "ordem": 30,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0030": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0022",
+          "ordem": 31,
+          "atributos": {
+            "class": "appointment-chevron",
+            "aria-hidden": "true"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0032": {
+          "tag": "section",
+          "paiRef": "b1.13.main.12.n0013",
+          "ordem": 33,
+          "atributos": {
+            "data-appointments-panel": "ongoing",
+            "hidden": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0033": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0032",
+          "ordem": 34,
+          "atributos": {
+            "class": "appointments-section-head"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0034": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0033",
+          "ordem": 35,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0035": {
+          "tag": "h2",
+          "paiRef": "b1.13.main.12.n0034",
+          "ordem": 36,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0037": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0034",
+          "ordem": 38,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0039": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0032",
+          "ordem": 40,
+          "atributos": {
+            "class": "appointments-list"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0040": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0039",
+          "ordem": 41,
+          "atributos": {
+            "class": "appointment-card",
+            "type": "button",
+            "data-goto": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0041": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0040",
+          "ordem": 42,
+          "atributos": {
+            "class": "appointment-main"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0042": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0041",
+          "ordem": 43,
+          "atributos": {
+            "class": "appointment-topline"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0043": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0042",
+          "ordem": 44,
+          "atributos": {
+            "class": "status status-ongoing"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0044": {
+          "tag": "time",
+          "paiRef": "b1.13.main.12.n0042",
+          "ordem": 45,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0045": {
+          "tag": "h3",
+          "paiRef": "b1.13.main.12.n0041",
+          "ordem": 46,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0046": {
+          "tag": "strong",
+          "paiRef": "b1.13.main.12.n0041",
+          "ordem": 47,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0047": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0041",
+          "ordem": 48,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0048": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0040",
+          "ordem": 49,
+          "atributos": {
+            "class": "appointment-chevron",
+            "aria-hidden": "true"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0050": {
+          "tag": "section",
+          "paiRef": "b1.13.main.12.n0013",
+          "ordem": 51,
+          "atributos": {
+            "data-appointments-panel": "closed",
+            "hidden": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0051": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0050",
+          "ordem": 52,
+          "atributos": {
+            "class": "appointments-section-head"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0052": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0051",
+          "ordem": 53,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0053": {
+          "tag": "h2",
+          "paiRef": "b1.13.main.12.n0052",
+          "ordem": 54,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0055": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0052",
+          "ordem": 56,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0057": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0050",
+          "ordem": 58,
+          "atributos": {
+            "class": "appointments-list"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0058": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0057",
+          "ordem": 59,
+          "atributos": {
+            "class": "appointment-card",
+            "type": "button",
+            "data-goto": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0059": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0058",
+          "ordem": 60,
+          "atributos": {
+            "class": "appointment-main"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0060": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0059",
+          "ordem": 61,
+          "atributos": {
+            "class": "appointment-topline"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0061": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0060",
+          "ordem": 62,
+          "atributos": {
+            "class": "status status-closed"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0062": {
+          "tag": "time",
+          "paiRef": "b1.13.main.12.n0060",
+          "ordem": 63,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0063": {
+          "tag": "h3",
+          "paiRef": "b1.13.main.12.n0059",
+          "ordem": 64,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0064": {
+          "tag": "strong",
+          "paiRef": "b1.13.main.12.n0059",
+          "ordem": 65,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0065": {
+          "tag": "p",
+          "paiRef": "b1.13.main.12.n0059",
+          "ordem": 66,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0066": {
+          "tag": "span",
+          "paiRef": "b1.13.main.12.n0058",
+          "ordem": 67,
+          "atributos": {
+            "class": "appointment-chevron",
+            "aria-hidden": "true"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0003.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0003",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Área profissional"
+        },
+        "b1.13.main.12.n0005.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0005",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Atendimentos"
+        },
+        "b1.13.main.12.n0007.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0007",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Área profissional"
+        },
+        "b1.13.main.12.n0017.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0017",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Solicitadas"
+        },
+        "b1.13.main.12.n0019.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0019",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Registros desta etapa no protótipo."
+        },
+        "b1.13.main.12.n0030.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0030",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "›"
+        },
+        "b1.13.main.12.n0035.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0035",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Em andamento"
+        },
+        "b1.13.main.12.n0037.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0037",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Contatos ativos que ainda não foram encerrados."
+        },
+        "b1.13.main.12.n0048.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0048",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "›"
+        },
+        "b1.13.main.12.n0053.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0053",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Encerrados"
+        },
+        "b1.13.main.12.n0055.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0055",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Histórico dos atendimentos já finalizados."
+        },
+        "b1.13.main.12.n0066.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0066",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "›"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": [
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0001",
+          "ordem": 10,
+          "css": ".appointments-shell {\n  width: 100%;\n  display: grid;\n  gap: 16px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0002",
+          "ordem": 20,
+          "css": ".appointments-head {\n  padding: 2px 2px 0;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0003",
+          "ordem": 30,
+          "css": ".appointments-eyebrow {\n  display: block;\n  margin-bottom: 6px;\n  color: var(--gold);\n  font-size: 11px;\n  font-weight: 900;\n  letter-spacing: .08em;\n  text-transform: uppercase;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0004",
+          "ordem": 40,
+          "css": ".appointments-head h1 {\n  margin: 0;\n  color: var(--primary);\n  font-size: 24px;\n  line-height: 1.15;\n  letter-spacing: -.025em;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0005",
+          "ordem": 50,
+          "css": ".appointments-head p {\n  max-width: 580px;\n  margin: 8px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.5;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0006",
+          "ordem": 60,
+          "css": ".appointments-tabs {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0,1fr));\n  gap: 6px;\n  padding: 5px;\n  border: 1px solid var(--line);\n  border-radius: 14px;\n  background: #f8fafc;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0007",
+          "ordem": 70,
+          "css": ".appointments-tabs button {\n  min-width: 0;\n  min-height: 44px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 7px;\n  border: 0;\n  border-radius: 10px;\n  background: transparent;\n  color: #667085;\n  font-size: 12px;\n  font-weight: 800;\n  cursor: pointer;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0008",
+          "ordem": 80,
+          "css": ".appointments-tabs button b {\n  min-width: 20px;\n  height: 20px;\n  padding: 0 5px;\n  display: grid;\n  place-items: center;\n  border-radius: 999px;\n  background: #e9eef5;\n  color: #475467;\n  font-size: 10px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0009",
+          "ordem": 90,
+          "css": ".appointments-tabs button.is-active {\n  background: #fff;\n  color: var(--primary);\n  box-shadow: 0 1px 4px rgba(16,35,63,.10);\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0010",
+          "ordem": 100,
+          "css": ".appointments-tabs button.is-active b {\n  background: #fff5dd;\n  color: #875b09;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0011",
+          "ordem": 110,
+          "css": ".appointments-panels > section[hidden] {\n  display: none !important;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0012",
+          "ordem": 120,
+          "css": ".appointments-section-head {\n  margin-bottom: 10px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0013",
+          "ordem": 130,
+          "css": ".appointments-section-head h2 {\n  margin: 0;\n  color: var(--primary);\n  font-size: 17px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0014",
+          "ordem": 140,
+          "css": ".appointments-section-head p {\n  margin: 4px 0 0;\n  color: var(--muted);\n  font-size: 12px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0015",
+          "ordem": 150,
+          "css": ".appointments-list {\n  display: grid;\n  gap: 10px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0016",
+          "ordem": 160,
+          "css": ".appointment-card {\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(0,1fr) auto;\n  gap: 12px;\n  align-items: center;\n  padding: 15px;\n  border: 1px solid var(--line);\n  border-radius: 16px;\n  background: #fff;\n  color: var(--text);\n  text-align: left;\n  cursor: pointer;\n  box-shadow: 0 2px 7px rgba(16,35,63,.035);\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0017",
+          "ordem": 170,
+          "css": ".appointment-card:hover {\n  border-color: #b9c7d9;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0018",
+          "ordem": 180,
+          "css": ".appointment-main {\n  min-width: 0;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0019",
+          "ordem": 190,
+          "css": ".appointment-topline {\n  display: flex;\n  justify-content: space-between;\n  gap: 10px;\n  align-items: center;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0020",
+          "ordem": 200,
+          "css": ".appointment-topline time {\n  color: var(--muted);\n  font-size: 10px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0021",
+          "ordem": 210,
+          "css": ".status {\n  display: inline-flex;\n  min-height: 23px;\n  align-items: center;\n  padding: 3px 8px;\n  border-radius: 999px;\n  font-size: 9px;\n  font-weight: 900;\n  letter-spacing: .035em;\n  text-transform: uppercase;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0022",
+          "ordem": 220,
+          "css": ".status-requested {\n  background: #fff6df;\n  color: #855b0b;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0023",
+          "ordem": 230,
+          "css": ".status-ongoing {\n  background: #ecfdf3;\n  color: #087443;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0024",
+          "ordem": 240,
+          "css": ".status-closed {\n  background: #f2f4f7;\n  color: #475467;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0025",
+          "ordem": 250,
+          "css": ".appointment-card h3 {\n  margin: 11px 0 0;\n  color: var(--primary);\n  font-size: 16px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0026",
+          "ordem": 260,
+          "css": ".appointment-card strong {\n  display: block;\n  margin-top: 4px;\n  color: #344054;\n  font-size: 12px;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0027",
+          "ordem": 270,
+          "css": ".appointment-card p {\n  margin: 5px 0 0;\n  color: var(--muted);\n  font-size: 11px;\n  line-height: 1.45;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0028",
+          "ordem": 280,
+          "css": ".appointment-chevron {\n  color: var(--gold);\n  font-size: 26px;\n  line-height: 1;\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0029",
+          "ordem": 290,
+          "css": "@media (max-width: 520px) {\n  .appointments-tabs {\n    grid-template-columns: 1fr;\n  }\n\n  .appointments-tabs button {\n    justify-content: space-between;\n    padding: 0 12px;\n  }\n}"
+        },
+        {
+          "id": "advogado_atendimentos_lista_main_01.r0030",
+          "ordem": 300,
+          "css": "@media (min-width: 720px) {\n  .appointments-list {\n    grid-template-columns: 1fr 1fr;\n  }\n}"
+        }
+      ]
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.13.main.12.n0010",
+      "elementoRef": "b1.13.main.12.n0010",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.13.main.12.n0022",
+      "elementoRef": "b1.13.main.12.n0022",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.13.main.12.n0040",
+      "elementoRef": "b1.13.main.12.n0040",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.13.main.12.n0058",
+      "elementoRef": "b1.13.main.12.n0058",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

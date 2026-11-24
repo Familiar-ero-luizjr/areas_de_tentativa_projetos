@@ -1,0 +1,244 @@
+{
+  "identidade": {
+    "id": "advogado.clientes.recusar_solicitacao.main.01",
+    "tipo": "componente",
+    "nome": "advogado.clientes.recusar_solicitacao.main.01"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "componentes/advogado/clientes/recusar_solicitacao/main/01/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "advogado"
+    },
+    "jornadas": [
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "operacao",
+            "numero": "2.6",
+            "nome": "Solicitações e atendimentos"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "b1.13.main.12.n0000",
+      "elementos": {
+        "b1.13.main.12.n0000": {
+          "tag": "main",
+          "paiRef": null,
+          "ordem": 12,
+          "atributos": {
+            "class": "op-shell"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0001": {
+          "tag": "form",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 2,
+          "atributos": {
+            "class": "op-card op-form",
+            "data-prototype-form": "",
+            "data-success-message": "Recusa registrada na simulação."
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0002": {
+          "tag": "h2",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 3,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0004": {
+          "tag": "label",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 5,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0006": {
+          "tag": "select",
+          "paiRef": "b1.13.main.12.n0004",
+          "ordem": 7,
+          "atributos": {
+            "required": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0007": {
+          "tag": "option",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 8,
+          "atributos": {
+            "value": ""
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0009": {
+          "tag": "option",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 10,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0011": {
+          "tag": "option",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 12,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0013": {
+          "tag": "option",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 14,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0015": {
+          "tag": "option",
+          "paiRef": "b1.13.main.12.n0006",
+          "ordem": 16,
+          "atributos": {},
+          "texto": ""
+        },
+        "b1.13.main.12.n0017": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 18,
+          "atributos": {
+            "class": "button",
+            "type": "submit"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0019": {
+          "tag": "button",
+          "paiRef": "b1.13.main.12.n0001",
+          "ordem": 20,
+          "atributos": {
+            "class": "op-secondary",
+            "type": "button",
+            "data-goto": "advogado.clientes.detalhe_solicitacao"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0021": {
+          "tag": "div",
+          "paiRef": "b1.13.main.12.n0000",
+          "ordem": 22,
+          "atributos": {
+            "class": "op-toast",
+            "role": "status",
+            "aria-live": "polite"
+          },
+          "texto": ""
+        },
+        "b1.13.main.12.n0002.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0002",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Informe o motivo"
+        },
+        "b1.13.main.12.n0004.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0004",
+          "ordem": 6,
+          "atributos": {},
+          "texto": "Motivo"
+        },
+        "b1.13.main.12.n0007.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0007",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Selecione uma opção"
+        },
+        "b1.13.main.12.n0009.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0009",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Não atuo nesta matéria"
+        },
+        "b1.13.main.12.n0011.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0011",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Indisponibilidade de agenda"
+        },
+        "b1.13.main.12.n0013.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0013",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Conflito de interesse"
+        },
+        "b1.13.main.12.n0015.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0015",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Outro motivo"
+        },
+        "b1.13.main.12.n0017.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0017",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Confirmar recusa"
+        },
+        "b1.13.main.12.n0019.texto": {
+          "tag": "#text",
+          "paiRef": "b1.13.main.12.n0019",
+          "ordem": 10,
+          "atributos": {},
+          "texto": "Voltar"
+        }
+      },
+      "vinculos": [],
+      "colecoes": [],
+      "condicionais": []
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "event.b1.13.main.12.n0006",
+      "elementoRef": "b1.13.main.12.n0006",
+      "evento": "change"
+    },
+    {
+      "id": "event.b1.13.main.12.n0017",
+      "elementoRef": "b1.13.main.12.n0017",
+      "evento": "click"
+    },
+    {
+      "id": "event.b1.13.main.12.n0019",
+      "elementoRef": "b1.13.main.12.n0019",
+      "evento": "click"
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

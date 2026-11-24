@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AdvogadoJá+ · Biblioteca V2.1</title>
+  <link rel="stylesheet" href="inspector.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <span class="overline">ADVOGADOJÁ+ · BIBLIOTECA CONSOLIDADA · V2.1</span>
+      <h1>Acervo consolidado · motor universal</h1>
+      <p>O visualizador lê o catálogo e o contrato JSON de cada tela. A prévia é montada exclusivamente pelos componentes do catálogo V2.1.</p>
+    </div>
+    <div class="stats" id="stats" aria-live="polite"></div>
+  </header>
+  <div class="screenTools">
+    <input id="screenSearch" type="search" aria-label="Buscar tela" placeholder="Buscar por tela, ID ou caminho">
+    <select id="group" aria-label="Filtrar acervo"></select>
+  </div>
+  <nav class="phaseNav" id="phaseNav" aria-label="Fases do acervo"></nav>
+  <nav class="screens" id="screens" aria-label="Selecionar tela"></nav>
+  <main class="layout">
+    <section class="previewPane">
+      <div class="panelTitle">
+        <div><h2 id="name">Carregando…</h2><div class="muted" id="id"></div></div>
+        <div class="right"><button id="reset" type="button">Restaurar estados</button><a href="#" id="separate" target="_blank" rel="noopener">Abrir tela</a></div>
+      </div>
+      <div class="frameContainer"><iframe name="preview" id="preview" title="Prévia visual"></iframe></div>
+      <div class="hint" id="status" role="status" aria-live="polite">Carregando catálogo…</div>
+    </section>
+    <aside class="inspector">
+      <div class="tabbar" role="tablist" aria-label="Níveis do contrato">
+        <button data-tab="base" class="selected" type="button">Tela</button>
+        <button data-tab="flow" type="button">Fluxo</button>
+        <button data-tab="prototype" type="button">Protótipo</button>
+        <button data-tab="states" type="button">Estados</button>
+        <button data-tab="components" type="button">Componentes</button>
+        <button data-tab="data" type="button">Dados</button>
+      </div>
+      <div class="description" id="description"></div>
+      <div class="bar"><input aria-label="Pesquisar no JSON" id="search" type="search" placeholder="Pesquisar IDs e campos"><button id="expand" type="button">Expandir</button><button id="collapse" type="button">Recolher</button><button id="export" type="button">Exportar JSON</button></div>
+      <div class="tree" id="tree"></div>
+    </aside>
+  </main>
+  <script src="inspector.js" defer></script>
+</body>
+</html>

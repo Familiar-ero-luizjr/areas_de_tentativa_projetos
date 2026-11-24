@@ -1,0 +1,288 @@
+{
+  "identidade": {
+    "id": "notificacoes.detalhe.notificacao",
+    "tipo": "tela",
+    "namespace": "notificacoes",
+    "nome": "Detalhe da notificação",
+    "nomeExibicao": "Detalhe da notificação",
+    "descricao": "Mostrar conteúdo da notificação e ação relacionada."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/notificacoes/detalhe/notificacao/documento.json"
+    },
+    "escopo": {
+      "perfilRef": "notificacoes"
+    },
+    "jornadas": [
+      {
+        "id": "cliente",
+        "numero": 1,
+        "nome": "Cliente + Estudante",
+        "subjornadas": [
+          {
+            "id": "sistema",
+            "numero": "1.12",
+            "nome": "Ações gerais"
+          }
+        ]
+      },
+      {
+        "id": "advogado",
+        "numero": 2,
+        "nome": "Advogado",
+        "subjornadas": [
+          {
+            "id": "sistema",
+            "numero": "2.12",
+            "nome": "Ações gerais"
+          }
+        ]
+      },
+      {
+        "id": "admin",
+        "numero": 3,
+        "nome": "Administrador",
+        "subjornadas": [
+          {
+            "id": "sistema",
+            "numero": "3.10",
+            "nome": "Ações gerais"
+          }
+        ]
+      }
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "componenteRef": "visual.b1.notificacoes.detalhe.notificacao",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 1,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header": {
+          "componenteRef": "component.header.student.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 10,
+          "props": {},
+          "estados": {}
+        },
+        "screen.titlebar": {
+          "componenteRef": "component.titlebar.application.v2",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 11,
+          "props": {},
+          "estados": {}
+        },
+        "screen.main.01": {
+          "componenteRef": "notificacoes.detalhe.notificacao.content.01",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 12,
+          "props": {},
+          "estados": {}
+        },
+        "screen.header.v1": {
+          "componenteRef": "ui.aj.header.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": -10,
+          "props": {
+            "perfil": "Cliente",
+            "notificacoes": "3"
+          },
+          "estados": {
+            "ambiente": "interno"
+          }
+        },
+        "screen.menu.v1": {
+          "componenteRef": "ui.aj.menu.cliente.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "screen.root",
+          "ordem": 970,
+          "props": {},
+          "estados": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#fff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": []
+    }
+  },
+  "estados": {},
+  "variantes": [],
+  "interacoes": [
+    {
+      "id": "notificacoes.detalhe.notificacao.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.b1.11.header.10.n0001"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.menu.v1",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.2",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.b1.11.header.10.n0009"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.3",
+      "origem": {
+        "instanciaRef": "screen.header.v1",
+        "eventoRef": "event.ui_aj_header_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.menu.v1",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.4",
+      "origem": {
+        "instanciaRef": "screen.header.v1",
+        "eventoRef": "event.ui_aj_header_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "notificacoes.lista.notificacoes"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.5",
+      "origem": {
+        "instanciaRef": "screen.menu.v1",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.menu.v1",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.6",
+      "origem": {
+        "instanciaRef": "screen.menu.v1",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0014"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.home.inicio"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.7",
+      "origem": {
+        "instanciaRef": "screen.menu.v1",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0019"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.profissionais.minhas_solicitacoes"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.8",
+      "origem": {
+        "instanciaRef": "screen.menu.v1",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0024"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.profissionais.contatos_liberados"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.9",
+      "origem": {
+        "instanciaRef": "screen.menu.v1",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0034"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "cliente.configuracao.configuracao"
+      }
+    },
+    {
+      "id": "notificacoes.detalhe.notificacao.link.10",
+      "origem": {
+        "instanciaRef": "screen.menu.v1",
+        "eventoRef": "event.ui_aj_menu_cliente_v1.e0041"
+      },
+      "efeito": {
+        "tipo": "navegar",
+        "destinoRef": "auth.sessao.entrar"
+      }
+    }
+  ],
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "notificacoes.detalhe.notificacao.cenario.1",
+        "nome": "screen.header.v1: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.v1.ambiente": "interno"
+        }
+      },
+      {
+        "id": "notificacoes.detalhe.notificacao.cenario.2",
+        "nome": "screen.header.v1: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.header.v1.ambiente": "publico"
+        }
+      },
+      {
+        "id": "notificacoes.detalhe.notificacao.cenario.3",
+        "nome": "screen.menu.v1: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.menu.v1.painel": "fechado"
+        }
+      },
+      {
+        "id": "notificacoes.detalhe.notificacao.cenario.4",
+        "nome": "screen.menu.v1: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "screen.menu.v1.painel": "aberto"
+        }
+      }
+    ]
+  }
+}
