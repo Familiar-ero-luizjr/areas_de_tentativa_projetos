@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const ids=['global.splash','auth.global.boas_vindas','auth.global.sessao.entrar','auth.global.sessao.esqueceusenha','auth.global.sessao.resetarsenha','advogado.home','cliente.home.inicio','admin.home.dashboard'];
-const $=id=>document.getElementById(id);let active=ids[0],tab='base',doc=null,journ=null,audit=null,selected={},route=[];
+const $=id=>document.getElementById(id);let active=ids[0],tab='base',doc=null,journ=null,audit=null,selected={},route=[],phase='';
 const path=id=>'telas/'+id.replaceAll('.','/')+'/index.html';
 const fetchScreen=id=>fetch('telas/'+id.replaceAll('.','/')+'/documento.json').then(r=>{if(!r.ok)throw Error('Sem JSON '+id);return r.json()});
 const descriptions={base:'Identidade, classificação, estrutura HTML/CSS, estados, interações locais e dados. Sem duplicar navegação ou mocks.',flow:'Mesma base + navegacao.rotas. Bifurcações são calculadas pelos eventos e pelas condições das rotas.',prototype:'Mesma base + navegação + mocks. O JSON de origem é único.',journeys:'Catálogo externo de jornadas/subjornadas por rotaRefs, sem duplicar condições.',audit:'Avisos e limitações identificados pela auditoria estrutural e pela vinculação de eventos.',states:'Simulador genérico de estados: altere os valores e observe estrutura, estilos e rotas, sem modificar o JSON.'};
@@ -42,7 +42,11 @@ function render(){const out=view(),q=$('search').value.toLowerCase().trim();$('d
 async function openScreen(id){active=id;const p=path(id);$('preview').src=p;$('separate').href=p;
  try{doc=selected[id]||(selected[id]=await fetchScreen(id));$('name').textContent=doc.identidade.nomeExibicao;$('id').textContent=doc.identidade.id;
  document.querySelectorAll('.screens button').forEach(b=>b.classList.toggle('selected',b.dataset.screen===id));$('status').textContent='Tela: '+id;render();}catch(e){$('status').textContent='Erro: '+e.message}}
-function build(){for(const id of ids){const b=document.createElement('button');b.type='button';b.dataset.screen=id;b.textContent=id.split('.').slice(-2).join(' · ');const small=document.createElement('small');small.textContent=id;b.append(small);b.onclick=()=>openScreen(id);$('screens').append(b)}
+const phaseOf=id=>id.startsWith('advogado.')?'profissional':id.startsWith('cliente.')?'cliente':id.startsWith('admin.')?'administracao':'acesso';
+const phaseLabels={all:'Todas',acesso:'Acesso comum',profissional:'Profissional',cliente:'Cliente',administracao:'Administração'};
+function drawPhases(){const root=$('phaseNav');root.replaceChildren();for(const [key,label] of Object.entries(phaseLabels)){const b=document.createElement('button');b.type='button';b.classList.toggle('selected',(key==='all'?'':key)===phase);b.textContent=label;const small=document.createElement('small');small.textContent=key==='all'?ids.length:ids.filter(id=>phaseOf(id)===key).length;b.append(small);b.onclick=()=>{phase=key==='all'?'':key;drawPhases();drawScreens()};root.append(b)}}
+function drawScreens(){const root=$('screens');root.replaceChildren();for(const id of ids.filter(id=>!phase||phaseOf(id)===phase)){const b=document.createElement('button');b.type='button';b.dataset.screen=id;b.textContent=id.split('.').slice(-2).join(' · ');const small=document.createElement('small');small.textContent=id;b.append(small);b.onclick=()=>openScreen(id);root.append(b)}}
+function build(){drawPhases();drawScreens();
  for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>{tab=b.dataset.tab;render()};$('search').oninput=render;
  $('reset').onclick=()=>$('preview').contentWindow?.postMessage({type:'aj-reset'},'*');
  $('expand').onclick=()=>$('tree').querySelectorAll('details').forEach(el=>el.open=true);

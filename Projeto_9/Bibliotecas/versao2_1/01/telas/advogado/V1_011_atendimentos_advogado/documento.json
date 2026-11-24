@@ -105,12 +105,204 @@
       "opcoes": {
         "requested": {
           "id": "estado.advogado.atendimentos_advogado.appointmentsTab.requested",
-          "alvos": []
+          "alvos": [
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0011",
+              "atributos": {
+                "aria-selected": "true"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0016",
+              "atributos": {
+                "aria-selected": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0021",
+              "atributos": {
+                "aria-selected": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0027",
+              "atributos": {
+                "hidden": false
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0065",
+              "atributos": {
+                "hidden": true
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0103",
+              "atributos": {
+                "hidden": true
+              }
+            }
+          ]
+        },
+        "ongoing": {
+          "id": "estado.advogado.atendimentos_advogado.appointmentsTab.ongoing",
+          "alvos": [
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0011",
+              "atributos": {
+                "aria-selected": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0016",
+              "atributos": {
+                "aria-selected": "true"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0021",
+              "atributos": {
+                "aria-selected": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0027",
+              "atributos": {
+                "hidden": true
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0065",
+              "atributos": {
+                "hidden": false
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0103",
+              "atributos": {
+                "hidden": true
+              }
+            }
+          ]
+        },
+        "closed": {
+          "id": "estado.advogado.atendimentos_advogado.appointmentsTab.closed",
+          "alvos": [
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0011",
+              "atributos": {
+                "aria-selected": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0016",
+              "atributos": {
+                "aria-selected": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0021",
+              "atributos": {
+                "aria-selected": "true"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0027",
+              "atributos": {
+                "hidden": true
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0065",
+              "atributos": {
+                "hidden": true
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.content",
+              "ref": "screen_content.e0103",
+              "atributos": {
+                "hidden": false
+              }
+            }
+          ]
         }
       }
     }
   },
-  "interacoes": [],
+  "interacoes": [
+    {
+      "id": "interacao.advogado.atendimentos.tab.requested",
+      "origem": {
+        "instanciaRef": "screen.content",
+        "eventoRef": "event.appointments.tab.requested"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "dimensao": "appointmentsTab",
+        "valor": "requested"
+      }
+    },
+    {
+      "id": "interacao.advogado.atendimentos.tab.ongoing",
+      "origem": {
+        "instanciaRef": "screen.content",
+        "eventoRef": "event.appointments.tab.ongoing"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "dimensao": "appointmentsTab",
+        "valor": "ongoing"
+      }
+    },
+    {
+      "id": "interacao.advogado.atendimentos.tab.closed",
+      "origem": {
+        "instanciaRef": "screen.content",
+        "eventoRef": "event.appointments.tab.closed"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "dimensao": "appointmentsTab",
+        "valor": "closed"
+      }
+    }
+  ],
   "navegacao": {
     "rotas": []
   },

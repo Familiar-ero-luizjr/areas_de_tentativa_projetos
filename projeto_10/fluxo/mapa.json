@@ -1,5 +1,3295 @@
 {
   "schema": "advogadoja.mapa",
   "version": "1.0",
-  "maps": []
+  "maps": [
+    {
+      "telaRef": "global.splash",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Layout, header, menu, componentes, responsividade e estados visuais.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Referência de origem preservada; estrutura visual atual ainda deve ser validada no Map."
+          },
+          "definition": {
+            "source": "tela-existente",
+            "sourceNote": "A referência visual é a tela identificada pela mesma screenKey. A especificação não redefine o HTML.",
+            "layout": {
+              "structure": "",
+              "responsiveBehavior": "",
+              "scrolling": "",
+              "notes": ""
+            },
+            "style": {
+              "tokens": [],
+              "typography": [],
+              "spacing": [],
+              "notes": ""
+            },
+            "components": [
+              {
+                "id": "content",
+                "area": "main",
+                "type": "main/content",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "route-modal",
+                "area": "modal",
+                "type": "modal/route-modal",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "screen-note",
+                "area": "popup",
+                "type": "popup/screen-note",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              }
+            ],
+            "interactionNotes": [],
+            "sourcePath": "features/auth/screens/inicializacao/splash",
+            "screenManifest": "screen.json",
+            "dataSource": "catalogo/telas/auth/inicializacao/splash.json",
+            "assembly": {
+              "main": [
+                {
+                  "id": "content",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/content",
+                  "order": 30,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "modal": [
+                {
+                  "id": "route-modal",
+                  "slot": "modal",
+                  "sourceType": "shared",
+                  "ref": "modal.route-modal.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "popup": [
+                {
+                  "id": "screen-note",
+                  "slot": "popup",
+                  "sourceType": "local",
+                  "source": "local/popup/screen-note",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ]
+            },
+            "engine": {
+              "entry": "index.html",
+              "runtime": "engine/screen-engine.js",
+              "shell": "engine/shell.css",
+              "sectionBase": "engine/section-base.css"
+            }
+          },
+          "legacy": {
+            "sourcePath": "telas_propostas_em_construcao/features/auth/screens/inicializacao/splash/index.html",
+            "sourceStatus": "rascunho-evolutivo"
+          }
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Origem, destinos, rotas, voltar e condições de navegação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Rota preservada como referência histórica. Não assumir que continua definitiva."
+          },
+          "definition": {},
+          "legacy": {
+            "route": "/"
+          }
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "acceptanceCriteria": [
+              "A tela monta todos os componentes habilitados sem erro estrutural."
+            ],
+            "edgeCases": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "implementation",
+          "type": "implementation",
+          "title": "Implementação",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "constraints": [
+              "Preferir SDK cliente + regras de segurança. Usar backend apenas para segredo, privilégio, webhook ou operação confiável de servidor."
+            ],
+            "technologyNotes": [
+              "Legado · sourceOfTruth: screen.json + componentes modulares locais"
+            ],
+            "costNotes": [],
+            "performanceNotes": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            "Conversão estrutural baseada no pacote modular das Homes; as telas-modelo não foram alteradas.",
+            "Baseline técnica gerada a partir da estrutura real da tela; decisões funcionais continuam evolutivas.",
+            "Migrado da especificação anterior em modo somente leitura; revisar campos antes de considerar concluído."
+          ],
+          "legacy": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "auth.global.boas_vindas",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Layout, header, menu, componentes, responsividade e estados visuais.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Referência de origem preservada; estrutura visual atual ainda deve ser validada no Map."
+          },
+          "definition": {
+            "source": "tela-existente",
+            "sourceNote": "A referência visual é a tela identificada pela mesma screenKey. A especificação não redefine o HTML.",
+            "layout": {
+              "structure": "",
+              "responsiveBehavior": "",
+              "scrolling": "",
+              "notes": ""
+            },
+            "style": {
+              "tokens": [],
+              "typography": [],
+              "spacing": [],
+              "notes": ""
+            },
+            "components": [
+              {
+                "id": "content",
+                "area": "main",
+                "type": "main/content",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "route-modal",
+                "area": "modal",
+                "type": "modal/route-modal",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "screen-note",
+                "area": "popup",
+                "type": "popup/screen-note",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              }
+            ],
+            "interactionNotes": [],
+            "sourcePath": "features/auth/screens/inicializacao/boas_vindas",
+            "screenManifest": "screen.json",
+            "dataSource": "catalogo/telas/auth/inicializacao/boas_vindas.json",
+            "assembly": {
+              "main": [
+                {
+                  "id": "content",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/content",
+                  "order": 30,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "modal": [
+                {
+                  "id": "route-modal",
+                  "slot": "modal",
+                  "sourceType": "shared",
+                  "ref": "modal.route-modal.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "popup": [
+                {
+                  "id": "screen-note",
+                  "slot": "popup",
+                  "sourceType": "local",
+                  "source": "local/popup/screen-note",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ]
+            },
+            "engine": {
+              "entry": "index.html",
+              "runtime": "engine/screen-engine.js",
+              "shell": "engine/shell.css",
+              "sectionBase": "engine/section-base.css"
+            }
+          },
+          "legacy": {
+            "sourcePath": "telas_propostas_em_construcao/features/auth/screens/inicializacao/boas_vindas/index.html",
+            "sourceStatus": "rascunho-evolutivo"
+          }
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Origem, destinos, rotas, voltar e condições de navegação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Rota preservada como referência histórica. Não assumir que continua definitiva."
+          },
+          "definition": {
+            "incoming": [],
+            "outgoing": [
+              {
+                "id": "navigate-s003",
+                "trigger": "Elemento com destino auth.sessao.entrar",
+                "targetScreen": "auth.sessao.entrar",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              }
+            ]
+          },
+          "legacy": {
+            "route": "/boas-vindas"
+          }
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "acceptanceCriteria": [
+              "A tela monta todos os componentes habilitados sem erro estrutural."
+            ],
+            "edgeCases": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "implementation",
+          "type": "implementation",
+          "title": "Implementação",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "constraints": [
+              "Preferir SDK cliente + regras de segurança. Usar backend apenas para segredo, privilégio, webhook ou operação confiável de servidor."
+            ],
+            "technologyNotes": [
+              "Legado · sourceOfTruth: screen.json + componentes modulares locais"
+            ],
+            "costNotes": [],
+            "performanceNotes": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            "Conversão estrutural baseada no pacote modular das Homes; as telas-modelo não foram alteradas.",
+            "Baseline técnica gerada a partir da estrutura real da tela; decisões funcionais continuam evolutivas.",
+            "Migrado da especificação anterior em modo somente leitura; revisar campos antes de considerar concluído."
+          ],
+          "legacy": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "auth.global.sessao.entrar",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Layout, header, menu, componentes, responsividade e estados visuais.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Referência de origem preservada; estrutura visual atual ainda deve ser validada no Map."
+          },
+          "definition": {
+            "source": "tela-existente",
+            "sourceNote": "A referência visual é a tela identificada pela mesma screenKey. A especificação não redefine o HTML.",
+            "layout": {
+              "structure": "",
+              "responsiveBehavior": "",
+              "scrolling": "",
+              "notes": ""
+            },
+            "style": {
+              "tokens": [],
+              "typography": [],
+              "spacing": [],
+              "notes": ""
+            },
+            "components": [
+              {
+                "id": "topbar",
+                "area": "header",
+                "type": "header/topbar",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "content",
+                "area": "main",
+                "type": "main/content",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "route-modal",
+                "area": "modal",
+                "type": "modal/route-modal",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "screen-note",
+                "area": "popup",
+                "type": "popup/screen-note",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              }
+            ],
+            "interactionNotes": [],
+            "sourcePath": "features/auth/screens/sessao/entrar",
+            "screenManifest": "screen.json",
+            "dataSource": "catalogo/telas/auth/sessao/entrar.json",
+            "assembly": {
+              "header": [
+                {
+                  "id": "topbar",
+                  "slot": "header",
+                  "sourceType": "shared",
+                  "ref": "header.topbar.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "main": [
+                {
+                  "id": "content",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/content",
+                  "order": 30,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "modal": [
+                {
+                  "id": "route-modal",
+                  "slot": "modal",
+                  "sourceType": "shared",
+                  "ref": "modal.route-modal.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "popup": [
+                {
+                  "id": "screen-note",
+                  "slot": "popup",
+                  "sourceType": "local",
+                  "source": "local/popup/screen-note",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ]
+            },
+            "engine": {
+              "entry": "index.html",
+              "runtime": "engine/screen-engine.js",
+              "shell": "engine/shell.css",
+              "sectionBase": "engine/section-base.css"
+            }
+          },
+          "legacy": {
+            "sourcePath": "telas_propostas_em_construcao/features/auth/screens/sessao/entrar/index.html",
+            "sourceStatus": "modelo-em-validacao"
+          }
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Origem, destinos, rotas, voltar e condições de navegação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Rota preservada como referência histórica. Não assumir que continua definitiva."
+          },
+          "definition": {
+            "incoming": [],
+            "outgoing": [
+              {
+                "id": "navigate-s004",
+                "trigger": "Elemento com destino auth.cadastro.tipo_conta",
+                "targetScreen": "auth.cadastro.tipo_conta",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              }
+            ]
+          },
+          "legacy": {
+            "route": "/entrar"
+          }
+        },
+        {
+          "id": "acesso",
+          "type": "acesso",
+          "title": "Acesso / bloqueios",
+          "description": "Permissões, estados do usuário e condições de visibilidade/habilitação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Mecanismos de autenticação/acesso antigos preservados para nova decisão."
+          },
+          "definition": {},
+          "legacy": {
+            "auth": [
+              "AppleAuthProvider",
+              "GoogleAuthProvider / Google Sign-In",
+              "signInWithEmailAndPassword"
+            ]
+          }
+        },
+        {
+          "id": "dados",
+          "type": "dados",
+          "title": "Dados",
+          "description": "Dados lidos, criados, alterados, removidos e cruzamento com Dados Previstos.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Coleções/caminhos importados do legado. Confirmar leitura, gravação e estrutura atual antes de fechar."
+          },
+          "definition": {},
+          "legacy": {
+            "firestore": [
+              "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+              "users/{uid} (criação se ausente + leitura)",
+              "users/{uid} (leitura do perfil de conta)",
+              "users/{uid} (leitura)",
+              "users/{uid}/consents (leitura)",
+              "users/{uid}/push_tokens/{token} (gravação)"
+            ],
+            "plannedDataMatches": [
+              {
+                "name": "clients.mock.js",
+                "path": "dados_previstos_no_banco/clients.mock.js",
+                "collectionHint": "clients/{uid}"
+              },
+              {
+                "name": "contact-acceptances.mock.js",
+                "path": "dados_previstos_no_banco/contact-acceptances.mock.js",
+                "collectionHint": "contact_acceptances/{requestId}"
+              },
+              {
+                "name": "contact-request-events.mock.js",
+                "path": "dados_previstos_no_banco/contact-request-events.mock.js",
+                "collectionHint": "contact_requests/{requestId}/events/{eventId}"
+              },
+              {
+                "name": "contact-requests.mock.js",
+                "path": "dados_previstos_no_banco/contact-requests.mock.js",
+                "collectionHint": "contact_requests/{requestId}"
+              },
+              {
+                "name": "lawyers.mock.js",
+                "path": "dados_previstos_no_banco/lawyers.mock.js",
+                "collectionHint": "lawyers/{uid}"
+              },
+              {
+                "name": "users.mock.js",
+                "path": "dados_previstos_no_banco/users.mock.js",
+                "collectionHint": "users/{uid}"
+              }
+            ],
+            "operations": [
+              {
+                "operation": "authViewModel.apple",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Apple Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "AppleAuthProvider"
+                ],
+                "external": [],
+                "description": "Login Apple pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "authViewModel.google",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Google Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "GoogleAuthProvider / Google Sign-In"
+                ],
+                "external": [],
+                "description": "Login Google pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "authViewModel.login",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (leitura do perfil de conta)"
+                ],
+                "auth": [
+                  "signInWithEmailAndPassword"
+                ],
+                "external": [],
+                "description": "Autentica por e-mail/senha e carrega o usuário no Firestore.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "session.attachUser",
+                "type": "firestore+messaging",
+                "services": [
+                  "Cloud Firestore",
+                  "Firebase Cloud Messaging"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid}/consents (leitura)",
+                  "users/{uid} (leitura)",
+                  "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+                  "users/{uid}/push_tokens/{token} (gravação)"
+                ],
+                "auth": [],
+                "external": [
+                  "FCM: solicitação/registro de token push"
+                ],
+                "description": "Hidrata sessão/perfil e registra token push após anexar usuário.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "authViewModel.apple",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Apple Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "AppleAuthProvider"
+                ],
+                "external": [],
+                "description": "Login Apple pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "authViewModel.google",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Google Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "GoogleAuthProvider / Google Sign-In"
+                ],
+                "external": [],
+                "description": "Login Google pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "authViewModel.login",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (leitura do perfil de conta)"
+                ],
+                "auth": [
+                  "signInWithEmailAndPassword"
+                ],
+                "external": [],
+                "description": "Autentica por e-mail/senha e carrega o usuário no Firestore.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "session.attachUser",
+                "type": "firestore+messaging",
+                "services": [
+                  "Cloud Firestore",
+                  "Firebase Cloud Messaging"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid}/consents (leitura)",
+                  "users/{uid} (leitura)",
+                  "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+                  "users/{uid}/push_tokens/{token} (gravação)"
+                ],
+                "auth": [],
+                "external": [
+                  "FCM: solicitação/registro de token push"
+                ],
+                "description": "Hidrata sessão/perfil e registra token push após anexar usuário.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "firebase",
+          "type": "firebase",
+          "title": "Firebase",
+          "description": "Auth, Firestore, Storage, FCM e outras chamadas diretas do SDK.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Uso antigo de SDK/Firebase preservado. Decidir o que continua direto no app e o que muda."
+          },
+          "definition": {},
+          "legacy": {
+            "services": [
+              "Cloud Firestore",
+              "Firebase Auth",
+              "Firebase Cloud Messaging"
+            ],
+            "auth": [
+              "AppleAuthProvider",
+              "GoogleAuthProvider / Google Sign-In",
+              "signInWithEmailAndPassword"
+            ],
+            "operations": [
+              {
+                "operation": "authViewModel.apple",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Apple Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "AppleAuthProvider"
+                ],
+                "external": [],
+                "description": "Login Apple pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "authViewModel.google",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Google Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "GoogleAuthProvider / Google Sign-In"
+                ],
+                "external": [],
+                "description": "Login Google pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "authViewModel.login",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (leitura do perfil de conta)"
+                ],
+                "auth": [
+                  "signInWithEmailAndPassword"
+                ],
+                "external": [],
+                "description": "Autentica por e-mail/senha e carrega o usuário no Firestore.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "session.attachUser",
+                "type": "firestore+messaging",
+                "services": [
+                  "Cloud Firestore",
+                  "Firebase Cloud Messaging"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid}/consents (leitura)",
+                  "users/{uid} (leitura)",
+                  "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+                  "users/{uid}/push_tokens/{token} (gravação)"
+                ],
+                "auth": [],
+                "external": [
+                  "FCM: solicitação/registro de token push"
+                ],
+                "description": "Hidrata sessão/perfil e registra token push após anexar usuário.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "authViewModel.apple",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Apple Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "AppleAuthProvider"
+                ],
+                "external": [],
+                "description": "Login Apple pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "authViewModel.google",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Google Sign-In",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (criação se ausente + leitura)"
+                ],
+                "auth": [
+                  "GoogleAuthProvider / Google Sign-In"
+                ],
+                "external": [],
+                "description": "Login Google pelo Firebase Auth; garante documento do usuário no Firestore.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "authViewModel.login",
+                "type": "auth+firestore",
+                "services": [
+                  "Firebase Auth",
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid} (leitura do perfil de conta)"
+                ],
+                "auth": [
+                  "signInWithEmailAndPassword"
+                ],
+                "external": [],
+                "description": "Autentica por e-mail/senha e carrega o usuário no Firestore.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "session.attachUser",
+                "type": "firestore+messaging",
+                "services": [
+                  "Cloud Firestore",
+                  "Firebase Cloud Messaging"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid}/consents (leitura)",
+                  "users/{uid} (leitura)",
+                  "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+                  "users/{uid}/push_tokens/{token} (gravação)"
+                ],
+                "auth": [],
+                "external": [
+                  "FCM: solicitação/registro de token push"
+                ],
+                "description": "Hidrata sessão/perfil e registra token push após anexar usuário.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "servicos_externos",
+          "type": "servicos_externos",
+          "title": "Serviços externos",
+          "description": "APIs e serviços externos, como Stripe ou links externos.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Serviços externos do legado preservados. Confirmar necessidade, momento, segredo, custo e estratégia atual."
+          },
+          "definition": {},
+          "legacy": {
+            "services": [
+              "Apple Sign-In",
+              "Configuração externa / variáveis de ambiente",
+              "Google Sign-In"
+            ],
+            "external": [
+              "FCM: solicitação/registro de token push",
+              "appleSignInEnabled"
+            ],
+            "operations": [
+              {
+                "operation": "session.attachUser",
+                "type": "firestore+messaging",
+                "services": [
+                  "Cloud Firestore",
+                  "Firebase Cloud Messaging"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid}/consents (leitura)",
+                  "users/{uid} (leitura)",
+                  "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+                  "users/{uid}/push_tokens/{token} (gravação)"
+                ],
+                "auth": [],
+                "external": [
+                  "FCM: solicitação/registro de token push"
+                ],
+                "description": "Hidrata sessão/perfil e registra token push após anexar usuário.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "ExternalConfig",
+                "type": "config",
+                "services": [
+                  "Configuração externa / variáveis de ambiente"
+                ],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [
+                  "appleSignInEnabled"
+                ],
+                "description": "A tela consulta flags/valores de configuração externa.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "session.attachUser",
+                "type": "firestore+messaging",
+                "services": [
+                  "Cloud Firestore",
+                  "Firebase Cloud Messaging"
+                ],
+                "functions": [],
+                "firestore": [
+                  "users/{uid}/consents (leitura)",
+                  "users/{uid} (leitura)",
+                  "clients/{uid} OU lawyers/{uid} (leitura conforme perfil)",
+                  "users/{uid}/push_tokens/{token} (gravação)"
+                ],
+                "auth": [],
+                "external": [
+                  "FCM: solicitação/registro de token push"
+                ],
+                "description": "Hidrata sessão/perfil e registra token push após anexar usuário.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "ExternalConfig",
+                "type": "config",
+                "services": [
+                  "Configuração externa / variáveis de ambiente"
+                ],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [
+                  "appleSignInEnabled"
+                ],
+                "description": "A tela consulta flags/valores de configuração externa.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ambiente",
+          "type": "ambiente",
+          "title": "Variáveis / segredos",
+          "description": "Variáveis de ambiente, chaves e segredos e onde devem ficar.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Flags/variáveis históricas detectadas. Definir localização e necessidade atuais."
+          },
+          "definition": {},
+          "legacy": {
+            "operations": [
+              {
+                "operation": "ExternalConfig",
+                "type": "config",
+                "services": [
+                  "Configuração externa / variáveis de ambiente"
+                ],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [
+                  "appleSignInEnabled"
+                ],
+                "description": "A tela consulta flags/valores de configuração externa.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "ExternalConfig",
+                "type": "config",
+                "services": [
+                  "Configuração externa / variáveis de ambiente"
+                ],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [
+                  "appleSignInEnabled"
+                ],
+                "description": "A tela consulta flags/valores de configuração externa.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "runtime",
+          "type": "runtime",
+          "title": "Estados e comportamento",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "entryContexts": [
+              {
+                "id": "legacy-role-1",
+                "description": "Perfil/role permitido: visitante",
+                "source": "legado.frontend.allowedRoles",
+                "expectedValues": "visitante",
+                "required": true
+              }
+            ],
+            "inputs": [],
+            "outputs": [],
+            "states": [
+              {
+                "id": "legacy-state-1",
+                "name": "idle",
+                "description": "",
+                "entryCondition": "",
+                "visibleEffect": ""
+              },
+              {
+                "id": "legacy-state-2",
+                "name": "submitting",
+                "description": "",
+                "entryCondition": "",
+                "visibleEffect": ""
+              },
+              {
+                "id": "legacy-state-3",
+                "name": "authenticated",
+                "description": "",
+                "entryCondition": "",
+                "visibleEffect": ""
+              },
+              {
+                "id": "legacy-state-4",
+                "name": "profile-routing",
+                "description": "",
+                "entryCondition": "",
+                "visibleEffect": ""
+              },
+              {
+                "id": "legacy-state-5",
+                "name": "error",
+                "description": "",
+                "entryCondition": "",
+                "visibleEffect": ""
+              }
+            ],
+            "loadingStates": [
+              "Desabilitar ações enquanto a autenticação estiver em andamento.",
+              "Exibir retorno durante a leitura do perfil após autenticar."
+            ],
+            "emptyStates": [],
+            "errorStates": [
+              "Credenciais inválidas.",
+              "Conta desativada.",
+              "Falha do provedor externo.",
+              "Falha temporária ao carregar o perfil."
+            ],
+            "conditionalBehaviors": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "data",
+          "type": "data",
+          "title": "Dados",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "reads": [
+              {
+                "id": "read-current-user-profile",
+                "sourceKind": "banco-ou-serviço",
+                "provider": "Cloud Firestore client SDK",
+                "resource": "users/{uid}",
+                "trigger": "Após autenticação concluída.",
+                "queryOrSelector": "Documento do usuário autenticado.",
+                "result": "Determinar perfis, status da conta e próxima rota.",
+                "failure": "Manter sessão controlada e oferecer nova tentativa.",
+                "cacheOrFreshness": ""
+              }
+            ],
+            "writes": [],
+            "transientData": [],
+            "modelReferences": [
+              "dados_previstos_no_banco/users.mock.js",
+              "dados_previstos_no_banco/firebase-auth.mock.js"
+            ]
+          },
+          "legacy": {}
+        },
+        {
+          "id": "actions",
+          "type": "actions",
+          "title": "Ações e eventos",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            {
+              "id": "submit-login",
+              "trigger": "Enviar e-mail e senha",
+              "preconditions": "",
+              "localEffect": "Validar campos e autenticar.",
+              "dataEffect": "Firebase Authentication; depois leitura de users/{uid}.",
+              "integrationEffect": "",
+              "navigationEffect": "Direcionar conforme perfil e estado da conta.",
+              "successFeedback": "",
+              "failureBehavior": "Manter formulário e exibir mensagem segura."
+            },
+            {
+              "id": "start-google-login",
+              "trigger": "Continuar com Google",
+              "preconditions": "",
+              "localEffect": "Abrir o provedor configurado.",
+              "dataEffect": "Firebase Authentication.",
+              "integrationEffect": "",
+              "navigationEffect": "Mesma resolução de perfil do login por senha.",
+              "successFeedback": "",
+              "failureBehavior": "Permitir tentar novamente."
+            },
+            {
+              "id": "start-registration",
+              "trigger": "Criar uma conta",
+              "preconditions": "",
+              "localEffect": "Iniciar cadastro.",
+              "dataEffect": "Nenhum.",
+              "integrationEffect": "",
+              "navigationEffect": "auth.cadastro.tipo_conta",
+              "successFeedback": "",
+              "failureBehavior": "Não aplicável."
+            }
+          ],
+          "legacy": {}
+        },
+        {
+          "id": "integrations",
+          "type": "integrations",
+          "title": "Integrações",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            {
+              "id": "auth-email-password",
+              "kind": "serviço",
+              "provider": "Firebase Authentication client SDK",
+              "purpose": "Autenticar com e-mail e senha.",
+              "trigger": "Botão Entrar",
+              "operationOrEndpoint": "sign-in",
+              "request": "",
+              "response": "",
+              "authentication": "",
+              "failure": "",
+              "costNotes": "",
+              "privacyNotes": ""
+            },
+            {
+              "id": "auth-google",
+              "kind": "serviço",
+              "provider": "Firebase Authentication client SDK",
+              "purpose": "Autenticar com Google.",
+              "trigger": "Continuar com Google",
+              "operationOrEndpoint": "federated-sign-in",
+              "request": "",
+              "response": "",
+              "authentication": "",
+              "failure": "",
+              "costNotes": "",
+              "privacyNotes": ""
+            },
+            {
+              "id": "auth-apple",
+              "kind": "serviço",
+              "provider": "Firebase Authentication client SDK",
+              "purpose": "Autenticar com Apple.",
+              "trigger": "Continuar com Apple",
+              "operationOrEndpoint": "federated-sign-in",
+              "request": "",
+              "response": "",
+              "authentication": "",
+              "failure": "",
+              "costNotes": "",
+              "privacyNotes": ""
+            },
+            {
+              "id": "firebase-auth",
+              "kind": "integração",
+              "provider": "Firebase Authentication",
+              "purpose": "Gerenciar identidade e sessão.",
+              "trigger": "Ações de entrada e recuperação.",
+              "operationOrEndpoint": "",
+              "request": "",
+              "response": "",
+              "authentication": "",
+              "failure": "",
+              "costNotes": "serviço-gerenciado; acompanhar plano e volume",
+              "privacyNotes": ""
+            },
+            {
+              "id": "google-sign-in",
+              "kind": "integração",
+              "provider": "Google Identity via Firebase Auth",
+              "purpose": "Entrada federada.",
+              "trigger": "Continuar com Google",
+              "operationOrEndpoint": "",
+              "request": "",
+              "response": "",
+              "authentication": "",
+              "failure": "",
+              "costNotes": "sem chamada própria de backend no fluxo padrão",
+              "privacyNotes": ""
+            }
+          ],
+          "legacy": {}
+        },
+        {
+          "id": "security",
+          "type": "security",
+          "title": "Segurança e privacidade",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "permissions": [
+              "Visitante pode iniciar autenticação.",
+              "Usuário autenticado pode ler apenas o próprio documento de perfil."
+            ],
+            "sensitiveData": [
+              "Senha é transitória e nunca deve ser registrada em logs ou Firestore.",
+              "E-mail é dado pessoal.",
+              "Tokens de sessão são geridos pelo SDK de autenticação."
+            ],
+            "privacyNotes": "Mensagens não devem revelar se um e-mail específico possui conta.",
+            "authorizationNotes": ""
+          },
+          "legacy": {}
+        },
+        {
+          "id": "accessibility",
+          "type": "accessibility",
+          "title": "Acessibilidade",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            "Labels persistentes para e-mail e senha.",
+            "Mensagens de erro anunciadas em aria-live.",
+            "Ordem de foco preservada e envio pelo teclado."
+          ],
+          "legacy": {}
+        },
+        {
+          "id": "analytics",
+          "type": "analytics",
+          "title": "Analytics",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            {
+              "id": "legacy-analytics-1",
+              "trigger": "Enviar e-mail e senha",
+              "event": "login_attempt/login_success/login_error sem dados sensíveis.",
+              "payload": "",
+              "restrictions": "Sem dados sensíveis."
+            },
+            {
+              "id": "legacy-analytics-2",
+              "trigger": "Continuar com Google",
+              "event": "login_provider_google.",
+              "payload": "",
+              "restrictions": "Sem dados sensíveis."
+            },
+            {
+              "id": "legacy-analytics-3",
+              "trigger": "Criar uma conta",
+              "event": "signup_start.",
+              "payload": "",
+              "restrictions": "Sem dados sensíveis."
+            }
+          ],
+          "legacy": {}
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "acceptanceCriteria": [
+              "A tela monta todos os componentes habilitados sem erro estrutural.",
+              "Autenticar com credenciais válidas e resolver a rota pelo perfil.",
+              "Bloquear envio com campos inválidos e impedir duplo clique durante carregamento.",
+              "Não registrar senha, credencial ou token em logs e analytics."
+            ],
+            "edgeCases": [
+              "Conta sem documento users/{uid}.",
+              "Usuário com mais de um perfil.",
+              "Provedor externo cancelado.",
+              "Rede indisponível após autenticar."
+            ]
+          },
+          "legacy": {}
+        },
+        {
+          "id": "implementation",
+          "type": "implementation",
+          "title": "Implementação",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "constraints": [
+              "Preferir SDK cliente + regras de segurança. Usar backend apenas para segredo, privilégio, webhook ou operação confiável de servidor."
+            ],
+            "technologyNotes": [
+              "Legado · sourceOfTruth: screen.json + componentes modulares locais"
+            ],
+            "costNotes": [],
+            "performanceNotes": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            "Conversão estrutural baseada no pacote modular das Homes; as telas-modelo não foram alteradas.",
+            "Baseline técnica gerada a partir da estrutura real da tela; decisões funcionais continuam evolutivas.",
+            "auth-email-password: Sem Cloud Function por padrão; validar política e mensagens de erro.",
+            "auth-google: Integração cliente; configurar provedor e domínios autorizados.",
+            "auth-apple: Decisão de produto e configuração do provedor ainda pendentes.",
+            "firebase-auth: Uso pelo SDK cliente; não persistir senha no banco.",
+            "google-sign-in: Confirmar consentimento e configuração OAuth.",
+            "Migrado da especificação anterior em modo somente leitura; revisar campos antes de considerar concluído."
+          ],
+          "legacy": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "auth.global.sessao.esqueceusenha",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Composição de 5 instâncias da tela.",
+          "status": "analysis",
+          "required": true,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Rotas: 2",
+          "status": "analysis",
+          "required": true,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "runtime",
+          "type": "runtime",
+          "title": "Estados e comportamento",
+          "description": "Estados declarados: 2",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "actions",
+          "type": "actions",
+          "title": "Ações e eventos",
+          "description": "Interações declaradas: 0",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "Verificar comportamento dos formulários e rotas.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "Definição inicial proposta a partir do contrato V9.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "auth.global.sessao.resetarsenha",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Composição de 5 instâncias da tela.",
+          "status": "analysis",
+          "required": true,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Rotas: 2",
+          "status": "analysis",
+          "required": true,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "runtime",
+          "type": "runtime",
+          "title": "Estados e comportamento",
+          "description": "Estados declarados: 1",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "actions",
+          "type": "actions",
+          "title": "Ações e eventos",
+          "description": "Interações declaradas: 0",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "Verificar comportamento dos formulários e rotas.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "Definição inicial proposta a partir do contrato V9.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Derivado estruturalmente do JSON V9; requer validação editorial."
+          },
+          "definition": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "advogado.home",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Layout, header, menu, componentes, responsividade e estados visuais.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Referência de origem preservada; estrutura visual atual ainda deve ser validada no Map."
+          },
+          "definition": {
+            "source": "tela-existente",
+            "sourceNote": "A referência visual é a tela identificada pela mesma screenKey. A especificação não redefine o HTML.",
+            "layout": {
+              "structure": "",
+              "responsiveBehavior": "",
+              "scrolling": "",
+              "notes": ""
+            },
+            "style": {
+              "tokens": [],
+              "typography": [],
+              "spacing": [],
+              "notes": ""
+            },
+            "components": [
+              {
+                "id": "app-header",
+                "area": "header",
+                "type": "header/app-header",
+                "purpose": "Exibir marca, acesso ao menu e notificações.",
+                "visualRules": "Preservar cabeçalho azul da experiência profissional.",
+                "states": "Badge de notificações pode variar conforme não lidas."
+              },
+              {
+                "id": "titlebar",
+                "area": "header",
+                "type": "header/titlebar",
+                "purpose": "Identificar a área atual como Início.",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "hero",
+                "area": "main",
+                "type": "main/hero",
+                "purpose": "Apresentar saudação e explicar que a Home contém novas solicitações.",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "online-status",
+                "area": "main",
+                "type": "main/online-status",
+                "purpose": "Exibir e permitir simular o estado Online/Offline do profissional.",
+                "visualRules": "",
+                "states": "online | offline"
+              },
+              {
+                "id": "actions",
+                "area": "main",
+                "type": "main/actions",
+                "purpose": "Listar novas solicitações aguardando análise.",
+                "visualRules": "Cards devem apresentar informações suficientes para triagem sem substituir a tela de detalhe.",
+                "states": "lista com itens | estado vazio futuro"
+              },
+              {
+                "id": "drawer",
+                "area": "menu",
+                "type": "menu/drawer",
+                "purpose": "Navegação principal do profissional.",
+                "visualRules": "",
+                "states": "aberto | fechado"
+              },
+              {
+                "id": "route-modal",
+                "area": "modal",
+                "type": "modal/route-modal",
+                "purpose": "Simular destinos quando a tela é aberta isoladamente.",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "status-toast",
+                "area": "popup",
+                "type": "popup/status-toast",
+                "purpose": "Confirmar alteração simulada de Online/Offline.",
+                "visualRules": "",
+                "states": ""
+              }
+            ],
+            "interactionNotes": [],
+            "sourcePath": "features/advogado/screens/home_advogado",
+            "screenManifest": "screen.json",
+            "dataSource": "catalogo/telas/advogado/home/home_advogado.json",
+            "assembly": {
+              "header": [
+                {
+                  "id": "app-header",
+                  "slot": "header",
+                  "sourceType": "shared",
+                  "ref": "header.app-header.v04",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                },
+                {
+                  "id": "titlebar",
+                  "slot": "header",
+                  "sourceType": "shared",
+                  "ref": "header.titlebar.v01",
+                  "order": 20,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "main": [
+                {
+                  "id": "hero",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/hero",
+                  "order": 20,
+                  "enabled": true,
+                  "required": false
+                },
+                {
+                  "id": "online-status",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/online-status",
+                  "order": 30,
+                  "enabled": true,
+                  "required": false
+                },
+                {
+                  "id": "actions",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/actions",
+                  "order": 40,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "navigation": [],
+              "menu": [
+                {
+                  "id": "drawer",
+                  "slot": "menu",
+                  "sourceType": "shared",
+                  "ref": "menu.drawer.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "modal": [
+                {
+                  "id": "route-modal",
+                  "slot": "modal",
+                  "sourceType": "shared",
+                  "ref": "modal.route-modal.v02",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "popup": [
+                {
+                  "id": "status-toast",
+                  "slot": "popup",
+                  "sourceType": "shared",
+                  "ref": "popup.status-toast.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ]
+            },
+            "engine": {
+              "entry": "index.html",
+              "runtime": "engine/screen-engine.js",
+              "shell": "engine/shell.css",
+              "sectionBase": "engine/section-base.css"
+            }
+          },
+          "legacy": {
+            "sourcePath": "telas_propostas_em_construcao/features/advogado/screens/home_advogado/index.html",
+            "sourceStatus": "rascunho-evolutivo"
+          }
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Origem, destinos, rotas, voltar e condições de navegação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Rota preservada como referência histórica. Não assumir que continua definitiva."
+          },
+          "definition": {
+            "incoming": [
+              {
+                "id": "home-entry",
+                "trigger": "Entrada do profissional autenticado",
+                "targetScreen": "advogado.home_advogado",
+                "condition": "",
+                "contextSent": "",
+                "notes": "A Home é a entrada operacional do profissional."
+              }
+            ],
+            "outgoing": [
+              {
+                "id": "open-request-detail",
+                "trigger": "Selecionar uma solicitação",
+                "targetScreen": "advogado.clientes.detalhe_solicitacao",
+                "condition": "",
+                "contextSent": "solicitação selecionada",
+                "notes": ""
+              },
+              {
+                "id": "menu-atendimentos",
+                "trigger": "Menu > Atendimentos",
+                "targetScreen": "advogado.atendimentos_advogado",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Tela ainda será definida."
+              },
+              {
+                "id": "menu-profile",
+                "trigger": "Menu > Meu Perfil",
+                "targetScreen": "advogado.perfil_profissional",
+                "condition": "",
+                "contextSent": "",
+                "notes": ""
+              },
+              {
+                "id": "menu-plans",
+                "trigger": "Menu > Planos",
+                "targetScreen": "advogado.assinatura.gestao_assinatura",
+                "condition": "",
+                "contextSent": "",
+                "notes": ""
+              },
+              {
+                "id": "menu-office",
+                "trigger": "Menu > Escritório",
+                "targetScreen": "escritorio.gestao.escritorio",
+                "condition": "",
+                "contextSent": "",
+                "notes": ""
+              },
+              {
+                "id": "menu-settings",
+                "trigger": "Menu > Configurações",
+                "targetScreen": "advogado.configuracao.configuracao",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Tela ainda será definida."
+              },
+              {
+                "id": "header-notifications",
+                "trigger": "Sino de notificações",
+                "targetScreen": "notificacoes.lista.notificacoes",
+                "condition": "",
+                "contextSent": "",
+                "notes": ""
+              }
+            ]
+          },
+          "legacy": {
+            "route": "/professional/home"
+          }
+        },
+        {
+          "id": "dados",
+          "type": "dados",
+          "title": "Dados",
+          "description": "Dados lidos, criados, alterados, removidos e cruzamento com Dados Previstos.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Coleções/caminhos importados do legado. Confirmar leitura, gravação e estrutura atual antes de fechar."
+          },
+          "definition": {},
+          "legacy": {
+            "firestore": [
+              "law_offices/{officeId}",
+              "law_offices/{officeId}/members",
+              "lawyers/{uid} (leitura)",
+              "lawyers/{uid} (vínculo/ownedOfficeId/officeId)"
+            ],
+            "plannedDataMatches": [
+              {
+                "name": "law-office-members.mock.js",
+                "path": "dados_previstos_no_banco/law-office-members.mock.js",
+                "collectionHint": "law_offices/{officeId}/members/{uid}"
+              },
+              {
+                "name": "law-offices.mock.js",
+                "path": "dados_previstos_no_banco/law-offices.mock.js",
+                "collectionHint": "law_offices/{officeId}"
+              },
+              {
+                "name": "lawyers.mock.js",
+                "path": "dados_previstos_no_banco/lawyers.mock.js",
+                "collectionHint": "lawyers/{uid}"
+              }
+            ],
+            "operations": [
+              {
+                "operation": "office.load",
+                "type": "firestore+function",
+                "services": [
+                  "Cloud Firestore",
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "getPendingOfficeInvite"
+                ],
+                "firestore": [
+                  "lawyers/{uid} (vínculo/ownedOfficeId/officeId)",
+                  "law_offices/{officeId}",
+                  "law_offices/{officeId}/members"
+                ],
+                "auth": [],
+                "external": [],
+                "description": "Carrega escritório/equipe; quando não há escritório, consulta convite pendente via backend.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "professional.load",
+                "type": "firestore",
+                "services": [
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "lawyers/{uid} (leitura)"
+                ],
+                "auth": [],
+                "external": [],
+                "description": "Carrega perfil profissional diretamente do Firestore.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "firebase",
+          "type": "firebase",
+          "title": "Firebase",
+          "description": "Auth, Firestore, Storage, FCM e outras chamadas diretas do SDK.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Uso antigo de SDK/Firebase preservado. Decidir o que continua direto no app e o que muda."
+          },
+          "definition": {},
+          "legacy": {
+            "services": [
+              "Cloud Firestore"
+            ],
+            "auth": [],
+            "operations": [
+              {
+                "operation": "office.load",
+                "type": "firestore+function",
+                "services": [
+                  "Cloud Firestore",
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "getPendingOfficeInvite"
+                ],
+                "firestore": [
+                  "lawyers/{uid} (vínculo/ownedOfficeId/officeId)",
+                  "law_offices/{officeId}",
+                  "law_offices/{officeId}/members"
+                ],
+                "auth": [],
+                "external": [],
+                "description": "Carrega escritório/equipe; quando não há escritório, consulta convite pendente via backend.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "professional.load",
+                "type": "firestore",
+                "services": [
+                  "Cloud Firestore"
+                ],
+                "functions": [],
+                "firestore": [
+                  "lawyers/{uid} (leitura)"
+                ],
+                "auth": [],
+                "external": [],
+                "description": "Carrega perfil profissional diretamente do Firestore.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "cloud_functions",
+          "type": "cloud_functions",
+          "title": "Cloud Functions / backend",
+          "description": "Somente operações que realmente precisam de servidor.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Functions antigas preservadas como referência. Não significam obrigação de manter Cloud Functions/backend."
+          },
+          "definition": {},
+          "legacy": {
+            "functions": [
+              "getPendingOfficeInvite"
+            ],
+            "operations": [
+              {
+                "operation": "office.load",
+                "type": "firestore+function",
+                "services": [
+                  "Cloud Firestore",
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "getPendingOfficeInvite"
+                ],
+                "firestore": [
+                  "lawyers/{uid} (vínculo/ownedOfficeId/officeId)",
+                  "law_offices/{officeId}",
+                  "law_offices/{officeId}/members"
+                ],
+                "auth": [],
+                "external": [],
+                "description": "Carrega escritório/equipe; quando não há escritório, consulta convite pendente via backend.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "runtime",
+          "type": "runtime",
+          "title": "Estados e comportamento",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "A Home profissional substitui o antigo dashboard de atalhos e incorpora a função de novas solicitações. As demais áreas são acessadas pelo menu principal."
+          },
+          "definition": {
+            "entryContexts": [],
+            "inputs": [],
+            "outputs": [],
+            "states": [
+              {
+                "id": "online",
+                "description": "Profissional está disponível para receber novas solicitações."
+              },
+              {
+                "id": "offline",
+                "description": "Profissional está pausado para novas solicitações."
+              }
+            ],
+            "loadingStates": [],
+            "emptyStates": [],
+            "errorStates": [],
+            "conditionalBehaviors": [
+              "A Home deve exibir novas solicitações diretamente, sem exigir navegação para uma tela separada de solicitações recebidas.",
+              "Clicar em uma solicitação abre advogado.clientes.detalhe_solicitacao.",
+              "Atendimentos aceitos/em andamento/históricos não pertencem à lista principal de novas solicitações da Home."
+            ]
+          },
+          "legacy": {}
+        },
+        {
+          "id": "data",
+          "type": "data",
+          "title": "Dados",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "A Home profissional substitui o antigo dashboard de atalhos e incorpora a função de novas solicitações. As demais áreas são acessadas pelo menu principal."
+          },
+          "definition": {
+            "reads": [
+              "estado Online/Offline do profissional",
+              "novas solicitações pendentes de análise",
+              "quantidade de notificações não lidas"
+            ],
+            "writes": [],
+            "transientData": [],
+            "modelReferences": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "actions",
+          "type": "actions",
+          "title": "Ações e eventos",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "A Home profissional substitui o antigo dashboard de atalhos e incorpora a função de novas solicitações. As demais áreas são acessadas pelo menu principal."
+          },
+          "definition": [
+            {
+              "id": "professional.online.toggle",
+              "trigger": "Toque no controle Online/Offline",
+              "effect": "Alternar o estado de disponibilidade no protótipo.",
+              "notes": "A persistência real será definida na implementação."
+            },
+            {
+              "id": "professional.request.open",
+              "trigger": "Toque em uma nova solicitação",
+              "effect": "Abrir o detalhe da solicitação selecionada.",
+              "notes": ""
+            }
+          ],
+          "legacy": {}
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "A Home profissional substitui o antigo dashboard de atalhos e incorpora a função de novas solicitações. As demais áreas são acessadas pelo menu principal."
+          },
+          "definition": {
+            "acceptanceCriteria": [
+              "A Home abre mostrando novas solicitações sem depender da antiga tela Solicitações recebidas.",
+              "Cada card de solicitação navega para o detalhe da solicitação.",
+              "O controle Online/Offline alterna visualmente entre os dois estados.",
+              "O menu contém exatamente Início, Atendimentos, Meu Perfil, Planos, Escritório e Configurações, além de Sair.",
+              "O cabeçalho oferece acesso às notificações.",
+              "A tela permanece responsiva em largura mobile e desktop."
+            ],
+            "edgeCases": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "implementation",
+          "type": "implementation",
+          "title": "Implementação",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "A Home profissional substitui o antigo dashboard de atalhos e incorpora a função de novas solicitações. As demais áreas são acessadas pelo menu principal."
+          },
+          "definition": {
+            "constraints": [
+              "Preferir SDK cliente + regras de segurança. Usar backend apenas para segredo, privilégio, webhook ou operação confiável de servidor."
+            ],
+            "technologyNotes": [
+              "Legado · sourceOfTruth: screen.json + componentes modulares locais"
+            ],
+            "costNotes": [],
+            "performanceNotes": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "A Home profissional substitui o antigo dashboard de atalhos e incorpora a função de novas solicitações. As demais áreas são acessadas pelo menu principal."
+          },
+          "definition": [
+            "Esta tarefa altera somente a Home Profissional e sua própria especificação.",
+            "A antiga screenKey advogado.clientes.solicitacoes_recebidas não é usada como etapa intermediária da Home.",
+            "Atendimentos e Configurações são destinos planejados e serão criados/ajustados em tarefas próprias.",
+            "Agenda, configurações de atendimento, validação da OAB, termos e privacidade e suporte deverão ser organizados dentro de Configurações em etapa posterior."
+          ],
+          "legacy": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "cliente.home.inicio",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Layout, header, menu, componentes, responsividade e estados visuais.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Referência de origem preservada; estrutura visual atual ainda deve ser validada no Map."
+          },
+          "definition": {
+            "source": "tela-existente",
+            "sourceNote": "A referência visual é a tela identificada pela mesma screenKey. A especificação não redefine o HTML.",
+            "layout": {
+              "structure": "Mantém a casca mobile-first-adaptive existente, com header, main centralizada e drawer lateral. A main contém introdução, filtros e resultado mapa+lista.",
+              "responsiveBehavior": "Preservar as regras atuais de shell.css e largura máxima de 720px; componentes internos apenas se reorganizam em telas estreitas.",
+              "scrolling": "Rolagem vertical da main; header permanece sticky conforme a implementação existente.",
+              "notes": "Não alterar tema, header, drawer ou tokens visuais para introduzir a nova lógica."
+            },
+            "style": {
+              "tokens": [],
+              "typography": [],
+              "spacing": [],
+              "notes": ""
+            },
+            "components": [
+              {
+                "id": "app-header",
+                "area": "header",
+                "type": "header/app-header",
+                "purpose": "Cabeçalho existente com acesso ao menu e sino de notificações com badge.",
+                "visualRules": "Preservar componente atual.",
+                "states": ""
+              },
+              {
+                "id": "intro",
+                "area": "main",
+                "type": "main/intro",
+                "purpose": "Apresentar a descoberta de profissionais.",
+                "visualRules": "Usar tipografia e espaçamentos existentes.",
+                "states": ""
+              },
+              {
+                "id": "search",
+                "area": "main",
+                "type": "main/search",
+                "purpose": "Selecionar tipo de atendimento, uma ou mais áreas e raio.",
+                "visualRules": "Filtros integrados ao design atual; sem criar tela intermediária.",
+                "states": "Padrão: Todos, Todas as áreas, 10 km."
+              },
+              {
+                "id": "results",
+                "area": "main",
+                "type": "main/results",
+                "purpose": "Exibir mapa e lista sincronizados pelo mesmo conjunto filtrado.",
+                "visualRules": "Lista sempre abaixo do mapa; ambos mostram o mesmo recorte.",
+                "states": "Carregado, filtrado, vazio."
+              },
+              {
+                "id": "drawer",
+                "area": "menu",
+                "type": "menu/drawer",
+                "purpose": "Menu principal canônico: Início, Minhas solicitações, Contatos liberados, Meu perfil e Configurações.",
+                "visualRules": "Preservar design atual do drawer.",
+                "states": ""
+              },
+              {
+                "id": "route-modal",
+                "area": "modal",
+                "type": "modal/route-modal",
+                "purpose": "Simular destinos externos à tela isolada.",
+                "visualRules": "Preservar componente atual.",
+                "states": ""
+              }
+            ],
+            "interactionNotes": [
+              "A abertura da Home já deve mostrar profissionais no mapa e na lista; o usuário não precisa aplicar filtro para ver resultados.",
+              "Aplicar filtro refina mapa e lista simultaneamente na própria Home; áreas aceitam múltipla seleção.",
+              "Limpar filtros retorna ao estado padrão: todos os tipos, nenhuma área específica selecionada e raio de 10 km."
+            ],
+            "sourcePath": "features/cliente/screens/home_cliente",
+            "screenManifest": "screen.json",
+            "dataSource": "catalogo/telas/cliente/home/home_cliente.json",
+            "assembly": {
+              "header": [
+                {
+                  "id": "app-header",
+                  "slot": "header",
+                  "sourceType": "shared",
+                  "ref": "header.app-header.v05",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "main": [
+                {
+                  "id": "intro",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/intro",
+                  "order": 20,
+                  "enabled": true,
+                  "required": false
+                },
+                {
+                  "id": "search",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/search",
+                  "order": 30,
+                  "enabled": true,
+                  "required": false
+                },
+                {
+                  "id": "results",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/results",
+                  "order": 40,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "navigation": [],
+              "menu": [
+                {
+                  "id": "drawer",
+                  "slot": "menu",
+                  "sourceType": "shared",
+                  "ref": "menu.drawer.v02",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "modal": [
+                {
+                  "id": "route-modal",
+                  "slot": "modal",
+                  "sourceType": "shared",
+                  "ref": "modal.route-modal.v02",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ]
+            },
+            "engine": {
+              "entry": "index.html",
+              "runtime": "engine/screen-engine.js",
+              "shell": "engine/shell.css",
+              "sectionBase": "engine/section-base.css"
+            }
+          },
+          "legacy": {
+            "sourcePath": "telas_propostas_em_construcao/features/cliente/screens/home_cliente/index.html",
+            "sourceStatus": "Preview isolado:"
+          }
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Origem, destinos, rotas, voltar e condições de navegação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Rota preservada como referência histórica. Não assumir que continua definitiva."
+          },
+          "definition": {
+            "incoming": [],
+            "outgoing": [
+              {
+                "target": "cliente.profissionais.perfil_publico",
+                "source": "Home · selecionar profissional no mapa ou lista",
+                "notes": "Marcador no mapa e card na lista representam a mesma ação conceitual. Enviar o profissional selecionado como contexto; o perfil não deve abrir sem esse contexto no aplicativo real."
+              },
+              {
+                "target": "notificacoes.lista.notificacoes",
+                "source": "Header · sino de notificações",
+                "notes": "Notificações não ocupam item no drawer."
+              },
+              {
+                "target": "cliente.home_cliente",
+                "source": "Menu · Início",
+                "notes": "Permanece na própria Home funcional."
+              },
+              {
+                "target": "cliente.profissionais.minhas_solicitacoes",
+                "source": "Menu · Minhas solicitações",
+                "notes": "Abre a lista de solicitações; o detalhe só é aberto após o cliente selecionar um item."
+              },
+              {
+                "target": "cliente.profissionais.contatos_liberados",
+                "source": "Menu · Contatos liberados",
+                "notes": ""
+              },
+              {
+                "target": "cliente.perfil_cliente",
+                "source": "Menu · Meu perfil",
+                "notes": ""
+              },
+              {
+                "target": "cliente.configuracao.configuracao",
+                "source": "Menu · Configurações",
+                "notes": "Centraliza Preferências de contato, Termos e privacidade e Suporte."
+              },
+              {
+                "target": "auth.sessao.entrar",
+                "source": "Menu · Sair",
+                "notes": ""
+              }
+            ]
+          },
+          "legacy": {
+            "route": null
+          }
+        },
+        {
+          "id": "logica_flutter",
+          "type": "logica_flutter",
+          "title": "Lógica Flutter",
+          "description": "Validações, cálculos, estado local e regras que pertencem à lib.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Operações locais detectadas no legado; validar se continuam como lógica local no cliente."
+          },
+          "definition": {},
+          "legacy": {
+            "operations": [
+              {
+                "operation": "clientHome.chooseNeed",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "clientHome.chooseNeed",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "lawyerSearch.update",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "lawyerSearch.update",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "lawyerSearch.select",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "lawyerSearch.update",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "lawyerSearch.select",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "lawyerSearch.update",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "lawyerSearch.select",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "lawyerSearch.select",
+                "type": "local",
+                "services": [],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Operação local/estado de tela; não foi detectada comunicação externa nessa chamada.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "cloud_functions",
+          "type": "cloud_functions",
+          "title": "Cloud Functions / backend",
+          "description": "Somente operações que realmente precisam de servidor.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Functions antigas preservadas como referência. Não significam obrigação de manter Cloud Functions/backend."
+          },
+          "definition": {},
+          "legacy": {
+            "functions": [
+              "searchLawyers"
+            ],
+            "operations": [
+              {
+                "operation": "lawyerSearch.search",
+                "type": "function",
+                "services": [
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "searchLawyers"
+                ],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Executa matching/busca de profissionais no backend por Callable Function.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "lawyerSearch.search",
+                "type": "function",
+                "services": [
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "searchLawyers"
+                ],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Executa matching/busca de profissionais no backend por Callable Function.",
+                "environment": "HOMOLOG"
+              },
+              {
+                "operation": "lawyerSearch.search",
+                "type": "function",
+                "services": [
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "searchLawyers"
+                ],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Executa matching/busca de profissionais no backend por Callable Function.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "lawyerSearch.search",
+                "type": "function",
+                "services": [
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "searchLawyers"
+                ],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Executa matching/busca de profissionais no backend por Callable Function.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "maps",
+          "type": "maps",
+          "title": "Google Maps / geolocalização",
+          "description": "Mapa, localização, markers, chaves, eventos e estratégia de carregamento.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Integração de mapa/geolocalização detectada no legado. Definir lifecycle, momento de carga, renderização, reuso, cache, custos e fallback."
+          },
+          "definition": {},
+          "legacy": {
+            "services": [
+              "Google Maps SDK for Flutter"
+            ],
+            "external": [
+              "Mapa, marcadores e myLocation"
+            ],
+            "operations": [
+              {
+                "operation": "GoogleMap widget",
+                "type": "maps",
+                "services": [
+                  "Google Maps SDK for Flutter"
+                ],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [
+                  "Mapa, marcadores e myLocation"
+                ],
+                "description": "Renderiza Google Maps diretamente na tela.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "GoogleMap widget",
+                "type": "maps",
+                "services": [
+                  "Google Maps SDK for Flutter"
+                ],
+                "functions": [],
+                "firestore": [],
+                "auth": [],
+                "external": [
+                  "Mapa, marcadores e myLocation"
+                ],
+                "description": "Renderiza Google Maps diretamente na tela.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "runtime",
+          "type": "runtime",
+          "title": "Estados e comportamento",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Ao abrir, exibe todos os profissionais no raio padrão; filtros refinam simultaneamente o mapa e a lista, sem navegação intermediária."
+          },
+          "definition": {
+            "entryContexts": [],
+            "inputs": [],
+            "outputs": [],
+            "states": [
+              {
+                "id": "default",
+                "description": "Todos os profissionais disponíveis dentro do raio padrão de 10 km, ordenados por proximidade."
+              },
+              {
+                "id": "filtered",
+                "description": "Mapa e lista reduzidos pelo mesmo conjunto de filtros; profissionais podem possuir múltiplas especialidades."
+              },
+              {
+                "id": "empty",
+                "description": "Nenhum profissional corresponde ao recorte selecionado."
+              }
+            ],
+            "loadingStates": [],
+            "emptyStates": [],
+            "errorStates": [],
+            "conditionalBehaviors": [
+              {
+                "condition": "Nenhum filtro específico aplicado",
+                "behavior": "Exibir todos os profissionais dentro do raio padrão e ordenar por proximidade."
+              },
+              {
+                "condition": "Filtro aplicado",
+                "behavior": "Atualizar mapa e lista com o mesmo subconjunto de profissionais e reordenar a lista de forma coerente com os filtros."
+              },
+              {
+                "condition": "Adicionar ou remover área antes de Aplicar filtro",
+                "behavior": "Alterar somente a seleção pendente de áreas; a lista e o mapa permanecem no último recorte aplicado até a confirmação."
+              },
+              {
+                "condition": "Resultado vazio",
+                "behavior": "Mostrar estado vazio e manter os filtros editáveis."
+              }
+            ]
+          },
+          "legacy": {}
+        },
+        {
+          "id": "data",
+          "type": "data",
+          "title": "Dados",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Ao abrir, exibe todos os profissionais no raio padrão; filtros refinam simultaneamente o mapa e a lista, sem navegação intermediária."
+          },
+          "definition": {
+            "reads": [],
+            "writes": [],
+            "transientData": [
+              {
+                "name": "professionalFilters",
+                "description": "Tipo de atendimento, múltiplas áreas e raio usados somente para refinar a descoberta nesta tela; áreas podem ser adicionadas e removidas antes da aplicação."
+              },
+              {
+                "name": "selectedProfessional",
+                "description": "Profissional escolhido por marcador do mapa ou card da lista, mantido como contexto transitório para abrir o perfil público."
+              }
+            ],
+            "modelReferences": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "actions",
+          "type": "actions",
+          "title": "Ações e eventos",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Ao abrir, exibe todos os profissionais no raio padrão; filtros refinam simultaneamente o mapa e a lista, sem navegação intermediária."
+          },
+          "definition": [
+            {
+              "id": "professionals.type",
+              "trigger": "Selecionar tipo de atendimento",
+              "behavior": "Marca o tipo escolhido sem navegar para outra tela."
+            },
+            {
+              "id": "professionals.area.add",
+              "trigger": "Adicionar área",
+              "behavior": "Inclui uma área na seleção pendente, permitindo múltiplas áreas sem atualizar resultados até Aplicar filtro."
+            },
+            {
+              "id": "professionals.area.remove",
+              "trigger": "Remover área selecionada",
+              "behavior": "Remove a área da seleção pendente sem atualizar resultados até Aplicar filtro."
+            },
+            {
+              "id": "professionals.apply",
+              "trigger": "Aplicar filtro",
+              "behavior": "Aplica tipo, áreas e raio simultaneamente ao mapa e à lista; os dois nunca podem representar conjuntos diferentes."
+            },
+            {
+              "id": "professionals.reset",
+              "trigger": "Limpar filtros",
+              "behavior": "Restaura Todos + Todas as áreas + 10 km e atualiza mapa e lista para o estado padrão."
+            }
+          ],
+          "legacy": {}
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Ao abrir, exibe todos os profissionais no raio padrão; filtros refinam simultaneamente o mapa e a lista, sem navegação intermediária."
+          },
+          "definition": {
+            "acceptanceCriteria": [
+              "Ao abrir a Home, mapa e lista exibem automaticamente profissionais dentro de 10 km.",
+              "Mapa e lista mostram sempre o mesmo conjunto de profissionais.",
+              "Aplicar tipo, uma ou mais áreas ou raio reduz os dois resultados sem abrir outra tela.",
+              "Adicionar ou remover uma área altera somente a seleção pendente até Aplicar filtro.",
+              "Limpar filtros restaura Todos, Todas as áreas e 10 km.",
+              "Selecionar o mesmo profissional pelo marcador ou pelo card abre o mesmo perfil público com o profissional escolhido como contexto.",
+              "O menu contém Início e não contém um item separado Mapa.",
+              "A responsividade, o header, o drawer e os tokens visuais existentes permanecem preservados.",
+              "O header exibe sino de notificações com badge e destino para Notificações.",
+              "O menu principal contém apenas Início, Minhas solicitações, Contatos liberados, Meu perfil e Configurações antes de Sair.",
+              "Preferências de contato, Termos e privacidade e Suporte não aparecem como itens de primeiro nível do menu."
+            ],
+            "edgeCases": [
+              "Nenhum profissional encontrado no raio e filtros escolhidos.",
+              "Raio alterado para um valor que exclui parte da lista.",
+              "Filtro de área com profissionais online e offline."
+            ]
+          },
+          "legacy": {}
+        },
+        {
+          "id": "implementation",
+          "type": "implementation",
+          "title": "Implementação",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Ao abrir, exibe todos os profissionais no raio padrão; filtros refinam simultaneamente o mapa e a lista, sem navegação intermediária."
+          },
+          "definition": {
+            "constraints": [
+              "Preferir SDK cliente + regras de segurança. Usar backend apenas para segredo, privilégio, webhook ou operação confiável de servidor."
+            ],
+            "technologyNotes": [
+              "Legado · sourceOfTruth: screen.json + componentes modulares locais"
+            ],
+            "costNotes": [],
+            "performanceNotes": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Ao abrir, exibe todos os profissionais no raio padrão; filtros refinam simultaneamente o mapa e a lista, sem navegação intermediária."
+          },
+          "definition": [
+            "Baseline técnica gerada a partir da estrutura real da tela; decisões funcionais continuam evolutivas.",
+            "Migrado da especificação anterior em modo somente leitura; revisar campos antes de considerar concluído."
+          ],
+          "legacy": {}
+        }
+      ]
+    },
+    {
+      "telaRef": "admin.home.dashboard",
+      "modules": [
+        {
+          "id": "visual",
+          "type": "visual",
+          "title": "Visual / UX",
+          "description": "Layout, header, menu, componentes, responsividade e estados visuais.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Referência de origem preservada; estrutura visual atual ainda deve ser validada no Map."
+          },
+          "definition": {
+            "source": "tela-existente",
+            "sourceNote": "A referência visual é a tela identificada pela mesma screenKey. A especificação não redefine o HTML.",
+            "layout": {
+              "structure": "",
+              "responsiveBehavior": "",
+              "scrolling": "",
+              "notes": ""
+            },
+            "style": {
+              "tokens": [],
+              "typography": [],
+              "spacing": [],
+              "notes": ""
+            },
+            "components": [
+              {
+                "id": "app-header",
+                "area": "header",
+                "type": "header/app-header",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "titlebar",
+                "area": "header",
+                "type": "header/titlebar",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "content",
+                "area": "main",
+                "type": "main/content",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "bottom-nav",
+                "area": "navigation",
+                "type": "navigation/bottom-nav",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "drawer",
+                "area": "menu",
+                "type": "menu/drawer",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "route-modal",
+                "area": "modal",
+                "type": "modal/route-modal",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              },
+              {
+                "id": "screen-note",
+                "area": "popup",
+                "type": "popup/screen-note",
+                "purpose": "",
+                "visualRules": "",
+                "states": ""
+              }
+            ],
+            "interactionNotes": [],
+            "sourcePath": "features/admin/screens/dashboard/dashboard",
+            "screenManifest": "screen.json",
+            "dataSource": "catalogo/telas/admin/dashboard/dashboard.json",
+            "assembly": {
+              "header": [
+                {
+                  "id": "app-header",
+                  "slot": "header",
+                  "sourceType": "shared",
+                  "ref": "header.app-header.v03",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                },
+                {
+                  "id": "titlebar",
+                  "slot": "header",
+                  "sourceType": "local",
+                  "source": "local/header/titlebar",
+                  "order": 20,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "main": [
+                {
+                  "id": "content",
+                  "slot": "main",
+                  "sourceType": "local",
+                  "source": "main/content",
+                  "order": 30,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "navigation": [],
+              "menu": [
+                {
+                  "id": "drawer",
+                  "slot": "menu",
+                  "sourceType": "shared",
+                  "ref": "menu.drawer.v03",
+                  "order": 50,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "modal": [
+                {
+                  "id": "route-modal",
+                  "slot": "modal",
+                  "sourceType": "shared",
+                  "ref": "modal.route-modal.v01",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ],
+              "popup": [
+                {
+                  "id": "screen-note",
+                  "slot": "popup",
+                  "sourceType": "local",
+                  "source": "local/popup/screen-note",
+                  "order": 10,
+                  "enabled": true,
+                  "required": false
+                }
+              ]
+            },
+            "engine": {
+              "entry": "index.html",
+              "runtime": "engine/screen-engine.js",
+              "shell": "engine/shell.css",
+              "sectionBase": "engine/section-base.css"
+            }
+          },
+          "legacy": {
+            "sourcePath": "telas_propostas_em_construcao/features/admin/screens/dashboard/dashboard/index.html",
+            "sourceStatus": "rascunho-evolutivo"
+          }
+        },
+        {
+          "id": "navegacao",
+          "type": "navegacao",
+          "title": "Navegação",
+          "description": "Origem, destinos, rotas, voltar e condições de navegação.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Rota preservada como referência histórica. Não assumir que continua definitiva."
+          },
+          "definition": {
+            "incoming": [],
+            "outgoing": [
+              {
+                "id": "navigate-s048",
+                "trigger": "Elemento com destino admin.oab.validacao_oab",
+                "targetScreen": "admin.oab.validacao_oab",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              },
+              {
+                "id": "navigate-s049",
+                "trigger": "Elemento com destino admin.perfis.moderacao_perfis",
+                "targetScreen": "admin.perfis.moderacao_perfis",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              },
+              {
+                "id": "navigate-s050",
+                "trigger": "Elemento com destino admin.denuncias.denuncias",
+                "targetScreen": "admin.denuncias.denuncias",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              },
+              {
+                "id": "navigate-s051",
+                "trigger": "Elemento com destino admin.assinaturas.assinaturas",
+                "targetScreen": "admin.assinaturas.assinaturas",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              },
+              {
+                "id": "navigate-s052",
+                "trigger": "Elemento com destino admin.logs.logs_operacionais",
+                "targetScreen": "admin.logs.logs_operacionais",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              },
+              {
+                "id": "navigate-s003",
+                "trigger": "Elemento com destino auth.sessao.entrar",
+                "targetScreen": "auth.sessao.entrar",
+                "condition": "",
+                "contextSent": "",
+                "notes": "Navegação simulada no pacote isolado."
+              }
+            ]
+          },
+          "legacy": {
+            "route": "/admin"
+          }
+        },
+        {
+          "id": "cloud_functions",
+          "type": "cloud_functions",
+          "title": "Cloud Functions / backend",
+          "description": "Somente operações que realmente precisam de servidor.",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Functions antigas preservadas como referência. Não significam obrigação de manter Cloud Functions/backend."
+          },
+          "definition": {},
+          "legacy": {
+            "functions": [
+              "adminDashboard"
+            ],
+            "operations": [
+              {
+                "operation": "admin.loadDashboard",
+                "type": "function",
+                "services": [
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "adminDashboard"
+                ],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Carrega métricas administrativas pelo backend.",
+                "environment": "PROD"
+              },
+              {
+                "operation": "admin.loadDashboard",
+                "type": "function",
+                "services": [
+                  "Cloud Functions"
+                ],
+                "functions": [
+                  "adminDashboard"
+                ],
+                "firestore": [],
+                "auth": [],
+                "external": [],
+                "description": "Carrega métricas administrativas pelo backend.",
+                "environment": "HOMOLOG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "testing",
+          "type": "testing",
+          "title": "Testes e critérios de aceite",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "acceptanceCriteria": [
+              "A tela monta todos os componentes habilitados sem erro estrutural."
+            ],
+            "edgeCases": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "implementation",
+          "type": "implementation",
+          "title": "Implementação",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": {
+            "constraints": [
+              "Preferir SDK cliente + regras de segurança. Usar backend apenas para segredo, privilégio, webhook ou operação confiável de servidor."
+            ],
+            "technologyNotes": [
+              "Legado · sourceOfTruth: screen.json + componentes modulares locais"
+            ],
+            "costNotes": [],
+            "performanceNotes": []
+          },
+          "legacy": {}
+        },
+        {
+          "id": "notes",
+          "type": "notes",
+          "title": "Notas",
+          "description": "",
+          "status": "analysis",
+          "required": false,
+          "decision": {
+            "current": "",
+            "notes": "Confiança legada: estrutura-confirmada; comportamento-a-validar"
+          },
+          "definition": [
+            "Conversão estrutural baseada no pacote modular das Homes; as telas-modelo não foram alteradas.",
+            "Baseline técnica gerada a partir da estrutura real da tela; decisões funcionais continuam evolutivas.",
+            "Migrado da especificação anterior em modo somente leitura; revisar campos antes de considerar concluído."
+          ],
+          "legacy": {}
+        }
+      ]
+    }
+  ]
 }

@@ -25,6 +25,9 @@ function safeAttr(el,k,v){
 }
 function resolve(id){return instances[id]}
 function pathGet(obj,path){let val=obj;for(const p of String(path).split('.'))val=val?.[p];return val}
+// Diretivas de template herdadas não fazem parte do contrato V10. Sem uma
+// coleção declarada, elas não podem ser avaliadas e jamais devem vazar na UI.
+function textValue(value){return String(value??'').replace(/\{\{[#/](?:each|if)\b[^}]*\}\}/g,'')}
 function buildInstance(id){
  const inst=screen.estrutura.html.composicao[id],c=components[inst.componenteRef];assert(c,'Componente não localizado: '+inst.componenteRef);
  const h=c.estrutura?.html||{},defs=h.elementos||{},nodes={};
@@ -32,8 +35,8 @@ function buildInstance(id){
   assert(!ancestors.includes(nodeId),'Ciclo no componente '+c.identidade.id);
   const info=defs[nodeId];assert(info,'Elemento não localizado: '+nodeId+' em '+c.identidade.id);
   const tag=String(info.tag||'div').toLowerCase(),asSvg=svg||svgTags.has(tag);
-  const node=tag==='#text'?document.createTextNode(info.texto||''):asSvg?document.createElementNS(svgNS,tag):document.createElement(tag);
-  if(node.nodeType===1){node.dataset.uiNode=nodeId;for(const [k,v] of Object.entries(info.atributos||{}))safeAttr(node,k,v);if(info.texto)node.textContent=String(info.texto)}
+  const node=tag==='#text'?document.createTextNode(textValue(info.texto)):asSvg?document.createElementNS(svgNS,tag):document.createElement(tag);
+  if(node.nodeType===1){node.dataset.uiNode=nodeId;for(const [k,v] of Object.entries(info.atributos||{}))safeAttr(node,k,v);if(info.texto)node.textContent=textValue(info.texto)}
   nodes[nodeId]=node;
   for(const [child,ref] of Object.entries(defs).filter(([,x])=>x.paiRef===nodeId).sort((a,b)=>(a[1].ordem||0)-(b[1].ordem||0)))node.append(make(child,[...ancestors,nodeId],asSvg));
   return node;
