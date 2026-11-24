@@ -1,0 +1,64 @@
+{
+  "identidade": {
+    "id": "escritorio.equipe.equipe",
+    "tipo": "tela",
+    "namespace": "escritorio.equipe",
+    "nome": "Equipe",
+    "nomeExibicao": "Equipe"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/escritorio/equipe/equipe/P9_094_escritorio_equipe_equipe/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.escritorio.equipe.equipe.p9_094_escritorio_equipe_equipe.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.escritorio.equipe.equipe.escritorio_equipe_convidar_advogado.b1_13_main_12_n0004",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_escritorio_equipe_equipe_p9_094_escritorio_equipe_equipe_composto_screen_main_01_b1_13_main_12_n0004"
+        },
+        "destinoRef": "escritorio.equipe.convidar_advogado"
+      },
+      {
+        "id": "rota.escritorio.equipe.equipe.escritorio_gestao_escritorio.b1_13_main_12_n0006",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_escritorio_equipe_equipe_p9_094_escritorio_equipe_equipe_composto_screen_main_01_b1_13_main_12_n0006"
+        },
+        "destinoRef": "escritorio.gestao.escritorio"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

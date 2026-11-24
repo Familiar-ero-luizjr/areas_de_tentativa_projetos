@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.assinatura.checkout",
+    "tipo": "tela",
+    "namespace": "advogado.assinatura",
+    "nome": "Checkout",
+    "nomeExibicao": "Checkout"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/assinatura/checkout/P9_016_advogado_assinatura_checkout/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.assinatura.checkout.p9_016_advogado_assinatura_checkout.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.assinatura.checkout.advogado_assinatura_retorno_checkout.b1_13_main_12_n0008",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_assinatura_checkout_p9_016_advogado_assinatura_checkout_composto_screen_main_01_b1_13_main_12_n0008"
+        },
+        "destinoRef": "advogado.assinatura.retorno-checkout"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

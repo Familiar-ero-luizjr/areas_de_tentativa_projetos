@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.oab.dados",
+    "tipo": "tela",
+    "namespace": "advogado.oab",
+    "nome": "Dados da OAB",
+    "nomeExibicao": "Dados da OAB"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/oab/dados/P9_046_advogado_oab_dados/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.oab.dados.p9_046_advogado_oab_dados.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.oab.dados.advogado_onboarding_dados_profissionais.b1_12_main_11_n0100",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_oab_dados_p9_046_advogado_oab_dados_composto_screen_main_01_b1_12_main_11_n0100"
+        },
+        "destinoRef": "advogado.onboarding.dados_profissionais"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

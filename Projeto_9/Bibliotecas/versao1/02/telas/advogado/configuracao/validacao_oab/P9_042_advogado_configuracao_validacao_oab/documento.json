@@ -1,0 +1,64 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.validacao_oab",
+    "tipo": "tela",
+    "namespace": "advogado.configuracao",
+    "nome": "Validação da OAB",
+    "nomeExibicao": "Validação da OAB"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/configuracao/validacao_oab/P9_042_advogado_configuracao_validacao_oab/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.configuracao.validacao_oab.p9_042_advogado_configuracao_validacao_oab.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.validacao_oab.advogado_configuracao_configuracao.b1_13_main_12_n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_validacao_oab_p9_042_advogado_configuracao_validacao_oab_composto_screen_main_01_b1_13_main_12_n0001"
+        },
+        "destinoRef": "advogado.configuracao.configuracao"
+      },
+      {
+        "id": "rota.advogado.configuracao.validacao_oab.advogado_configuracao_configuracao.b1_13_main_12_n0147",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_validacao_oab_p9_042_advogado_configuracao_validacao_oab_composto_screen_main_01_b1_13_main_12_n0147"
+        },
+        "destinoRef": "advogado.configuracao.configuracao"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

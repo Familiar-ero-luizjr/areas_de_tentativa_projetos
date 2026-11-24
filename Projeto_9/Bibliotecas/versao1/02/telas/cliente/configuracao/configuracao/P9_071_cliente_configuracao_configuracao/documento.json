@@ -1,0 +1,72 @@
+{
+  "identidade": {
+    "id": "cliente.configuracao.configuracao",
+    "tipo": "tela",
+    "namespace": "cliente.configuracao",
+    "nome": "Configurações do cliente",
+    "nomeExibicao": "Configurações do cliente"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/cliente/configuracao/configuracao/P9_071_cliente_configuracao_configuracao/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.cliente.configuracao.configuracao.p9_071_cliente_configuracao_configuracao.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente_onboarding_preferencias_contato.b1_13_main_12_n0007",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_configuracao_configuracao_p9_071_cliente_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0007"
+        },
+        "destinoRef": "cliente.onboarding.preferencias_contato"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente_configuracao_termos_privacidade.b1_13_main_12_n0015",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_configuracao_configuracao_p9_071_cliente_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0015"
+        },
+        "destinoRef": "cliente.configuracao.termos_privacidade"
+      },
+      {
+        "id": "rota.cliente.configuracao.configuracao.cliente_configuracao_suporte.b1_13_main_12_n0023",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_configuracao_configuracao_p9_071_cliente_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0023"
+        },
+        "destinoRef": "cliente.configuracao.suporte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

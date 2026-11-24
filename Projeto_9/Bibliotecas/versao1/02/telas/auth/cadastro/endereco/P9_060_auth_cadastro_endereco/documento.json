@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "auth.cadastro.endereco",
+    "tipo": "tela",
+    "namespace": "auth.cadastro",
+    "nome": "Endereço",
+    "nomeExibicao": "Endereço"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/auth/cadastro/endereco/P9_060_auth_cadastro_endereco/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.auth.cadastro.endereco.p9_060_auth_cadastro_endereco.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.cadastro.endereco.auth_cadastro_contato.b1_12_main_11_n0109",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_cadastro_endereco_p9_060_auth_cadastro_endereco_composto_screen_main_01_b1_12_main_11_n0109"
+        },
+        "destinoRef": "auth.cadastro.contato"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.onboarding.dados_academicos",
+    "tipo": "tela",
+    "namespace": "advogado.onboarding",
+    "nome": "Dados acadêmicos",
+    "nomeExibicao": "Dados acadêmicos"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/onboarding/dados_academicos/P9_049_advogado_onboarding_dados_academicos/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.onboarding.dados_academicos.p9_049_advogado_onboarding_dados_academicos.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.onboarding.dados_academicos.auth_cadastro_concluido.b1_12_main_11_n0033",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_dados_academicos_p9_049_advogado_onboarding_dados_academicos_composto_screen_main_01_b1_12_main_11_n0033"
+        },
+        "destinoRef": "auth.cadastro.concluido"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

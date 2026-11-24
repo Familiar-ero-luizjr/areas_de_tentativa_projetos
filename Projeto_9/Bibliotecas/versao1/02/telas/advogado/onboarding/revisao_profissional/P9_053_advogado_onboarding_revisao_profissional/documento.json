@@ -1,0 +1,96 @@
+{
+  "identidade": {
+    "id": "advogado.onboarding.revisao_profissional",
+    "tipo": "tela",
+    "namespace": "advogado.onboarding",
+    "nome": "Revisão profissional",
+    "nomeExibicao": "Revisão profissional"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/onboarding/revisao_profissional/P9_053_advogado_onboarding_revisao_profissional/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.onboarding.revisao_profissional.p9_053_advogado_onboarding_revisao_profissional.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.onboarding.revisao_profissional.advogado_onboarding_dados_academicos.b1_12_main_11_n0015",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_revisao_profissional_p9_053_advogado_onboarding_revisao_profissional_composto_screen_main_01_b1_12_main_11_n0015"
+        },
+        "destinoRef": "advogado.onboarding.dados_academicos"
+      },
+      {
+        "id": "rota.advogado.onboarding.revisao_profissional.advogado_onboarding_dados_profissionais.b1_12_main_11_n0032",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_revisao_profissional_p9_053_advogado_onboarding_revisao_profissional_composto_screen_main_01_b1_12_main_11_n0032"
+        },
+        "destinoRef": "advogado.onboarding.dados_profissionais"
+      },
+      {
+        "id": "rota.advogado.onboarding.revisao_profissional.advogado_dados_oab.b1_12_main_11_n0054",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_revisao_profissional_p9_053_advogado_onboarding_revisao_profissional_composto_screen_main_01_b1_12_main_11_n0054"
+        },
+        "destinoRef": "advogado.dados_oab"
+      },
+      {
+        "id": "rota.advogado.onboarding.revisao_profissional.advogado_onboarding_areas_atuacao.b1_12_main_11_n0071",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_revisao_profissional_p9_053_advogado_onboarding_revisao_profissional_composto_screen_main_01_b1_12_main_11_n0071"
+        },
+        "destinoRef": "advogado.onboarding.areas_atuacao"
+      },
+      {
+        "id": "rota.advogado.onboarding.revisao_profissional.advogado_onboarding_disponibilidade.b1_12_main_11_n0088",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_revisao_profissional_p9_053_advogado_onboarding_revisao_profissional_composto_screen_main_01_b1_12_main_11_n0088"
+        },
+        "destinoRef": "advogado.onboarding.disponibilidade"
+      },
+      {
+        "id": "rota.advogado.onboarding.revisao_profissional.escritorio_onboarding_vinculo_escritorio.b1_12_main_11_n0110",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_revisao_profissional_p9_053_advogado_onboarding_revisao_profissional_composto_screen_main_01_b1_12_main_11_n0110"
+        },
+        "destinoRef": "escritorio.onboarding.vinculo_escritorio"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

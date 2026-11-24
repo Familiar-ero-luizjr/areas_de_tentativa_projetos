@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "auth.inicializacao.boas_vindas",
+    "tipo": "tela",
+    "namespace": "auth.inicializacao",
+    "nome": "Boas-vindas",
+    "nomeExibicao": "Boas-vindas"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/auth/inicializacao/boas_vindas/P9_065_auth_inicializacao_boas_vindas/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.auth.inicializacao.boas_vindas.p9_065_auth_inicializacao_boas_vindas.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.inicializacao.boas_vindas.auth_sessao_entrar.b1_11_main_10_n0011",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_inicializacao_boas_vindas_p9_065_auth_inicializacao_boas_vindas_composto_screen_main_01_b1_11_main_10_n0011"
+        },
+        "destinoRef": "auth.sessao.entrar"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

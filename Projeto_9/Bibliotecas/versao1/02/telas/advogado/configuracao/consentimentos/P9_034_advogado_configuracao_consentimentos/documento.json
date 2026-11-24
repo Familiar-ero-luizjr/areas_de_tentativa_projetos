@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.consentimentos",
+    "tipo": "tela",
+    "namespace": "advogado.configuracao",
+    "nome": "Consentimentos",
+    "nomeExibicao": "Consentimentos"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/configuracao/consentimentos/P9_034_advogado_configuracao_consentimentos/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.configuracao.consentimentos.p9_034_advogado_configuracao_consentimentos.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.consentimentos.advogado_configuracao_termos_privacidade.b1_13_main_12_n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_consentimentos_p9_034_advogado_configuracao_consentimentos_composto_screen_main_01_b1_13_main_12_n0001"
+        },
+        "destinoRef": "advogado.configuracao.termos_privacidade"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

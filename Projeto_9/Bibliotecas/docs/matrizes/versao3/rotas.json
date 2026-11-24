@@ -1,0 +1,1323 @@
+[
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "admin.home.dashboard",
+    "rota_id": "rota.admin.home.dashboard.validacao_oab_e0117",
+    "origem_instancia": "screen.painel",
+    "origem_evento": "event.admin_home_painel_v2.e0117",
+    "destino_tela": "admin.oab.validacao_oab",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "admin.home.dashboard",
+    "rota_id": "rota.admin.home.dashboard.administradores_e0119",
+    "origem_instancia": "screen.painel",
+    "origem_evento": "event.admin_home_painel_v2.e0119",
+    "destino_tela": "admin.governanca.administradores",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "admin.home.dashboard",
+    "rota_id": "rota.admin.home.dashboard.notificacoes_e0013",
+    "origem_instancia": "screen.header",
+    "origem_evento": "event.layout_header_app.e0013",
+    "destino_tela": "notificacoes.lista.notificacoes",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "admin.home.dashboard",
+    "rota_id": "rota.admin.home.dashboard.entrar_e0046",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_admin_v1.e0046",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.notificacoes",
+    "origem_instancia": "screen.header",
+    "origem_evento": "event.layout_header_app.e0013",
+    "destino_tela": "notificacoes.lista.notificacoes",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.validacao_oab.menu",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_advogado_v1.e0028",
+    "destino_tela": "advogado.configuracao.validacao_oab",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "profissional"
+        },
+        {
+          "estadoRef": "estado.advogado.home.acessoProfissional",
+          "igual": "restricted"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.assinatura.gestao",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_advogado_v1.e0043",
+    "destino_tela": "advogado.assinatura.gestao_assinatura",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.configuracao",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_advogado_v1.e0053",
+    "destino_tela": "advogado.configuracao.configuracao",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.validacao_oab.hero",
+    "origem_instancia": "screen.hero",
+    "origem_evento": "event.hero_restricted.e005",
+    "destino_tela": "advogado.configuracao.validacao_oab",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "profissional"
+        },
+        {
+          "estadoRef": "estado.advogado.home.acessoProfissional",
+          "igual": "restricted"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.solicitacao.detalhe.e007",
+    "origem_instancia": "screen.actions",
+    "origem_evento": "event.actions.e007",
+    "destino_tela": "advogado.clientes.detalhe_solicitacao",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "profissional"
+        },
+        {
+          "estadoRef": "estado.advogado.home.acessoProfissional",
+          "igual": "enabled"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.solicitacao.detalhe.e016",
+    "origem_instancia": "screen.actions",
+    "origem_evento": "event.actions.e016",
+    "destino_tela": "advogado.clientes.detalhe_solicitacao",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "profissional"
+        },
+        {
+          "estadoRef": "estado.advogado.home.acessoProfissional",
+          "igual": "enabled"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.solicitacao.detalhe.e025",
+    "origem_instancia": "screen.actions",
+    "origem_evento": "event.actions.e025",
+    "destino_tela": "advogado.clientes.detalhe_solicitacao",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "profissional"
+        },
+        {
+          "estadoRef": "estado.advogado.home.acessoProfissional",
+          "igual": "enabled"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "status_fonte": "extraida_do_json",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.escritorio.cadastrar",
+    "origem_instancia": "screen.office",
+    "origem_evento": "event.advogado_home_escritorio_area.e0018",
+    "destino_tela": "escritorio.onboarding.cadastro_escritorio",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "escritorio"
+        },
+        {
+          "estadoRef": "estado.advogado.home.vinculoEscritorio",
+          "igual": "sem_escritorio"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.vinculoEscritorio"
+    ],
+    "status_fonte": "proposta_estudo",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.escritorio.vincular",
+    "origem_instancia": "screen.office",
+    "origem_evento": "event.advogado_home_escritorio_area.e0020",
+    "destino_tela": "escritorio.onboarding.vinculo_escritorio",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "escritorio"
+        },
+        {
+          "estadoRef": "estado.advogado.home.vinculoEscritorio",
+          "igual": "sem_escritorio"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.vinculoEscritorio"
+    ],
+    "status_fonte": "proposta_estudo",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.menu_atendimentos",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "menu.atendimentos",
+    "destino_tela": "advogado.atendimentos_advogado",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.advogado.home.area",
+          "igual": "profissional"
+        },
+        {
+          "estadoRef": "estado.advogado.home.acessoProfissional",
+          "igual": "enabled"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.menu_perfil",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "menu.perfil",
+    "destino_tela": "advogado.perfil_profissional",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.sair",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_advogado_v1.e0060",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "confirmada_no_catalogo_de_oito_telas",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "advogado.home",
+    "rota_id": "rota.advogado.home.assinatura.planos",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": null,
+    "destino_tela": "advogado.assinatura.planos",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "proposta_sem_evento_confirmado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.boas_vindas",
+    "rota_id": "rota.auth.global.boas_vindas.continuar",
+    "origem_instancia": "screen.content",
+    "origem_evento": "continuar",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.entrar",
+    "rota_id": "rota.auth.global.sessao.entrar.recuperar_senha",
+    "origem_instancia": "screen.content",
+    "origem_evento": "esqueceu_senha",
+    "destino_tela": "auth.global.sessao.esqueceusenha",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/esqueceusenha/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.entrar",
+    "rota_id": "rota.auth.global.sessao.entrar.abrir_cadastro",
+    "origem_instancia": "screen.content",
+    "origem_evento": "cadastro.abrir",
+    "destino_tela": "auth.cadastro.tipo_conta",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.entrar",
+    "rota_id": "rota.auth.global.sessao.entrar.login_cliente_home_inicio",
+    "origem_instancia": "screen.content",
+    "origem_evento": "login.sucesso",
+    "destino_tela": "cliente.home.inicio",
+    "condicao": {
+      "estadoRef": "estado.auth.global.sessao.entrar.perfil",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.auth.global.sessao.entrar.perfil"
+    ],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/cliente/home/inicio/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.entrar",
+    "rota_id": "rota.auth.global.sessao.entrar.login_advogado_home",
+    "origem_instancia": "screen.content",
+    "origem_evento": "login.sucesso",
+    "destino_tela": "advogado.home",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.auth.global.sessao.entrar.perfil",
+          "igual": "advogado"
+        },
+        {
+          "estadoRef": "estado.auth.global.sessao.entrar.onboardingConcluido",
+          "igual": "sim"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.auth.global.sessao.entrar.perfil",
+      "estado.auth.global.sessao.entrar.onboardingConcluido"
+    ],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/advogado/home/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.entrar",
+    "rota_id": "rota.auth.global.sessao.entrar.login_admin_home_dashboard",
+    "origem_instancia": "screen.content",
+    "origem_evento": "login.sucesso",
+    "destino_tela": "admin.home.dashboard",
+    "condicao": {
+      "estadoRef": "estado.auth.global.sessao.entrar.perfil",
+      "igual": "administrador"
+    },
+    "estado_refs": [
+      "estado.auth.global.sessao.entrar.perfil"
+    ],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/admin/home/dashboard/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.entrar",
+    "rota_id": "rota.auth.global.sessao.entrar.login_advogado_onboarding_revisao_profissional",
+    "origem_instancia": "screen.content",
+    "origem_evento": "login.sucesso",
+    "destino_tela": "advogado.onboarding.revisao_profissional",
+    "condicao": {
+      "todos": [
+        {
+          "estadoRef": "estado.auth.global.sessao.entrar.perfil",
+          "igual": "advogado"
+        },
+        {
+          "estadoRef": "estado.auth.global.sessao.entrar.onboardingConcluido",
+          "igual": "nao"
+        }
+      ]
+    },
+    "estado_refs": [
+      "estado.auth.global.sessao.entrar.perfil",
+      "estado.auth.global.sessao.entrar.onboardingConcluido"
+    ],
+    "status_fonte": "destino_proposto_confirmar_etapa_pendente",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.esqueceusenha",
+    "rota_id": "rota.auth.global.sessao.esqueceusenha.recuperacao_confirmada",
+    "origem_instancia": "screen.root",
+    "origem_evento": "recuperacao.confirmada",
+    "destino_tela": "auth.global.sessao.resetarsenha",
+    "condicao": {
+      "estadoRef": "estado.auth.global.sessao.esqueceusenha.linkValido",
+      "igual": "sim"
+    },
+    "estado_refs": [
+      "estado.auth.global.sessao.esqueceusenha.linkValido"
+    ],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/resetarsenha/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.esqueceusenha",
+    "rota_id": "rota.auth.global.sessao.esqueceusenha.voltar",
+    "origem_instancia": "screen.conteudo",
+    "origem_evento": "voltar",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.resetarsenha",
+    "rota_id": "rota.auth.global.sessao.resetarsenha.senha_alterada",
+    "origem_instancia": "screen.conteudo",
+    "origem_evento": "senha.alterada",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "auth.global.sessao.resetarsenha",
+    "rota_id": "rota.auth.global.sessao.resetarsenha.voltar",
+    "origem_instancia": "screen.conteudo",
+    "origem_evento": "voltar",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0015",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0015",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0018",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0018",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0021",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0021",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0024",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0024",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0027",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0027",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0030",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0030",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0033",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0033",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0036",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0036",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0039",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0039",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0042",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0042",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0045",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0045",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0048",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0048",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0061",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0061",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0073",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0073",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0085",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0085",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0097",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0097",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0109",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0109",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0121",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0121",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0133",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0133",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0145",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0145",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0157",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0157",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0169",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0169",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0181",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0181",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.perfil_publico_e0193",
+    "origem_instancia": "screen.results",
+    "origem_evento": "event.cliente_home_results_v1.e0193",
+    "destino_tela": "cliente.profissionais.perfil_publico",
+    "condicao": {
+      "estadoRef": "estado.cliente.home.inicio.area",
+      "igual": "cliente"
+    },
+    "estado_refs": [
+      "estado.cliente.home.inicio.area"
+    ],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.notificacoes_e0013",
+    "origem_instancia": "screen.header",
+    "origem_evento": "event.layout_header_app.e0013",
+    "destino_tela": "notificacoes.lista.notificacoes",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.minhas_solicitacoes_e0019",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_cliente_v1.e0019",
+    "destino_tela": "cliente.profissionais.minhas_solicitacoes",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.contatos_liberados_e0024",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_cliente_v1.e0024",
+    "destino_tela": "cliente.profissionais.contatos_liberados",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.configuracao_e0034",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_cliente_v1.e0034",
+    "destino_tela": "cliente.configuracao.configuracao",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.entrar_e0041",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "event.ui_aj_menu_cliente_v1.e0041",
+    "destino_tela": "auth.global.sessao.entrar",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/sessao/entrar/documento.json"
+    ]
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "cliente.home.inicio",
+    "rota_id": "rota.cliente.home.inicio.menu_perfil",
+    "origem_instancia": "screen.drawer",
+    "origem_evento": "menu.perfil",
+    "destino_tela": "cliente.perfil_cliente",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "destino_externo_proposto",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "Destino não encontrado nesta versão; pode existir fora do escopo ou estar divergente",
+    "destino_no_escopo": false,
+    "destino_ambiguo": false,
+    "destino_caminhos": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "origem_tela": "global.splash",
+    "rota_id": "rota.global.splash.inicializacao_concluida",
+    "origem_instancia": "screen.content",
+    "origem_evento": "inicializacao.concluida",
+    "destino_tela": "auth.global.boas_vindas",
+    "condicao": null,
+    "estado_refs": [],
+    "status_fonte": "nao_informado",
+    "grau_confianca": "declarada_no_json",
+    "observacao": "",
+    "destino_no_escopo": true,
+    "destino_ambiguo": false,
+    "destino_caminhos": [
+      "versao3/telas/auth/global/boas_vindas/documento.json"
+    ]
+  }
+]

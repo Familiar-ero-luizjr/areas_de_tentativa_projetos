@@ -1,0 +1,1927 @@
+{
+  "identidade": {
+    "id": "advogado.home",
+    "tipo": "tela",
+    "namespace": "advogado",
+    "nome": "Início do advogado",
+    "nomeExibicao": "Início do advogado",
+    "descricao": "Home profissional única; estados controlam apresentação, estilos e rotas sem duplicar telas."
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "telas/advogado/home/documento.json"
+    },
+    "perfilRef": "advogado",
+    "jornadaRefs": [
+      "advogado",
+      "global.acesso"
+    ],
+    "subjornadaRefs": [
+      "advogado.operacao.notificacoes",
+      "advogado.operacao.validacao_oab",
+      "advogado.operacao.assinaturas",
+      "advogado.operacao.configuracoes",
+      "advogado.operacao.sessao",
+      "advogado.operacao.solicitacoes",
+      "advogado.operacao.escritorio",
+      "advogado.operacao.atendimento",
+      "advogado.operacao.perfil",
+      "global.acesso.entrada.com_onboarding",
+      "global.acesso.entrada.sem_onboarding"
+    ]
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.header": {
+          "componenteRef": "layout.header.app",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 10,
+          "props": {
+            "marca": "AdvogadoJá+",
+            "perfil": "advogado",
+            "areaAtiva": "profissional",
+            "rotuloAtivo": "PROFISSIONAL",
+            "rotulosPorArea": {
+              "profissional": "PROFISSIONAL",
+              "escritorio": "ESCRITÓRIO"
+            },
+            "notificacoesNaoLidas": 2,
+            "variante": "autenticada"
+          },
+          "estados": {
+            "ambiente": "interno",
+            "notificacoes": "com_nao_lidas"
+          },
+          "id": "screen.header"
+        },
+        "screen.root": {
+          "componenteRef": "advogado.home.layout",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 10,
+          "props": {},
+          "estados": {},
+          "id": "screen.root"
+        },
+        "screen.hero": {
+          "componenteRef": "advogado.home.apresentacao",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 20,
+          "props": {},
+          "estados": {},
+          "id": "screen.hero",
+          "visivelQuando": {
+            "estadoRef": "estado.advogado.home.area",
+            "igual": "profissional"
+          }
+        },
+        "screen.titlebar": {
+          "componenteRef": "layout.header.title",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 20,
+          "props": {
+            "titulo": "Início",
+            "variante": "padrao",
+            "titulosPorArea": {
+              "profissional": {
+                "default": "Início"
+              },
+              "escritorio": {
+                "default": "Escritório",
+                "inicio": "Escritório",
+                "equipe": "Equipe",
+                "convites": "Convites",
+                "distribuicao": "Distribuição interna",
+                "configuracao": "Dados do escritório"
+              }
+            },
+            "estadoSecaoPorArea": {
+              "escritorio": "secaoEscritorio"
+            }
+          },
+          "estados": {
+            "visibilidade": "visivel"
+          },
+          "id": "screen.titlebar",
+          "visivelQuando": {
+            "estadoRef": "estado.advogado.home.area",
+            "igual": "profissional"
+          }
+        },
+        "screen.online": {
+          "componenteRef": "advogado.home.status_online",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 30,
+          "props": {},
+          "estados": {},
+          "id": "screen.online",
+          "visivelQuando": {
+            "todos": [
+              {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "profissional"
+              },
+              {
+                "estadoRef": "estado.advogado.home.acessoProfissional",
+                "igual": "enabled"
+              }
+            ]
+          }
+        },
+        "screen.actions": {
+          "componenteRef": "advogado.home.solicitacoes",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 40,
+          "props": {},
+          "estados": {},
+          "id": "screen.actions",
+          "visivelQuando": {
+            "todos": [
+              {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "profissional"
+              },
+              {
+                "estadoRef": "estado.advogado.home.acessoProfissional",
+                "igual": "enabled"
+              }
+            ]
+          }
+        },
+        "screen.office": {
+          "componenteRef": "advogado.home.escritorio.area",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.main",
+          "ordem": 45,
+          "props": {},
+          "estados": {},
+          "id": "screen.office",
+          "visivelQuando": {
+            "estadoRef": "estado.advogado.home.area",
+            "igual": "escritorio"
+          }
+        },
+        "screen.drawer": {
+          "componenteRef": "ui.aj.menu.advogado.v1",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 50,
+          "props": {},
+          "estados": {
+            "painel": "fechado",
+            "disponibilidade": "online",
+            "grupoEscritorio": "fechado"
+          },
+          "id": "screen.drawer"
+        },
+        "screen.toast": {
+          "componenteRef": "popup.status-toast.v01",
+          "paiRef": "screen.root",
+          "alvoRef": "layout.app",
+          "ordem": 70,
+          "props": {},
+          "estados": {},
+          "id": "screen.toast"
+        }
+      }
+    },
+    "css": {
+      "tokens": {
+        "--primary": "#10233f",
+        "--primary-soft": "#173c6b",
+        "--gold": "#b88932",
+        "--page": "#eef2f6",
+        "--surface": "#ffffff",
+        "--line": "#dbe3ee",
+        "--text": "#172033",
+        "--muted": "#667085"
+      },
+      "regras": [
+        {
+          "id": "advogado_home.r0001",
+          "ordem": 10,
+          "css": "*{box-sizing:border-box}"
+        },
+        {
+          "id": "advogado_home.r0002",
+          "ordem": 20,
+          "css": "html,body{margin:0;min-height:100%;font-family:Inter,\"Segoe UI\",system-ui,Arial,sans-serif}"
+        },
+        {
+          "id": "advogado_home.r0003",
+          "ordem": 30,
+          "css": "body{background:#e8eef6;color:#1f2937}"
+        },
+        {
+          "id": "advogado_home.r0004",
+          "ordem": 40,
+          "css": "button,select,input{font:inherit}"
+        },
+        {
+          "id": "advogado_home.r0005",
+          "ordem": 50,
+          "css": "button{cursor:pointer}"
+        },
+        {
+          "id": "advogado_home.r0006",
+          "ordem": 60,
+          "css": "button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #87bcff;outline-offset:2px}"
+        },
+        {
+          "id": "advogado_home.r0007",
+          "ordem": 70,
+          "css": "button[hidden],section[hidden],div[hidden]{display:none!important}"
+        },
+        {
+          "id": "advogado_home.r0008",
+          "ordem": 80,
+          "css": ".app{min-height:100%;color:#172033;background:#eef2f6;--text:#172033}"
+        },
+        {
+          "id": "advogado_home.r0009",
+          "ordem": 90,
+          "css": ".app-main{width:min(100%,720px);margin:auto;padding:22px 16px 28px;display:grid;gap:12px}"
+        },
+        {
+          "id": "advogado_home.r0011",
+          "ordem": 110,
+          "css": ".app[data-professional-access=\"restricted\"] .online-card,.app[data-professional-access=\"restricted\"] .requests-block{display:none}",
+          "aplicaQuando": {
+            "estadoRef": "estado.advogado.home.acessoProfissional",
+            "igual": "restricted"
+          }
+        },
+        {
+          "id": "advogado_home.r0012",
+          "ordem": 120,
+          "css": ".app[data-professional-access=\"restricted\"] [data-capability=\"canActProfessionally\"]{display:none}",
+          "aplicaQuando": {
+            "estadoRef": "estado.advogado.home.acessoProfissional",
+            "igual": "restricted"
+          }
+        },
+        {
+          "id": "advogado_home.r0013",
+          "ordem": 130,
+          "css": ".app[data-professional-access=\"enabled\"] [data-capability=\"canValidateOab\"]{display:none}",
+          "aplicaQuando": {
+            "estadoRef": "estado.advogado.home.acessoProfissional",
+            "igual": "enabled"
+          }
+        },
+        {
+          "id": "advogado_home.r0014",
+          "ordem": 140,
+          "css": ".app[data-professional-access=\"restricted\"] .drawer-online{display:none}",
+          "aplicaQuando": {
+            "estadoRef": "estado.advogado.home.acessoProfissional",
+            "igual": "restricted"
+          }
+        },
+        {
+          "id": "advogado.home.escritorio.estilo",
+          "ordem": 10000,
+          "css": "\n.aj-app {min-height:100dvh; color:#172033; background:var(--page); position:relative;} \n.aj-main{width:min(100%,720px);margin:auto;padding:22px 16px 38px;display:grid;gap:12px;} \n.aj-main > *{min-width:0;}.aj-main > section{min-width:0;} \n.app-header{width:100%}.aj-headline{color:var(--primary);font-size:24px;line-height:1.2;margin:0 0 5px}\n.aj-eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:900}\n.aj-subtitle{color:var(--muted);font-size:13px;line-height:1.55;margin:0}\n.aj-card{padding:16px;background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 3px 11px #10233f09}\n.aj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}\n.aj-tile{display:flex;align-items:center;gap:12px;min-height:88px;padding:13px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--text);text-align:left;cursor:pointer;}\n.aj-tile:hover{background:#f8fbff;border-color:#b1cae9}.aj-tile-icon{font-size:24px;flex:none}.aj-tile strong,.aj-tile small{display:block}.aj-tile strong{font-size:13px}.aj-tile small{font-size:11px;color:#65758b;margin-top:4px;line-height:1.45}\n.aj-pill{display:inline-flex;padding:5px 10px;border-radius:999px;background:#e8f1ff;color:#244c7e;font-size:10px;font-weight:900}\n.aj-primary,.aj-secondary{min-height:40px;padding:9px 13px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;}\n.aj-primary{background:var(--primary);border:1px solid var(--primary);color:#fff}.aj-secondary{background:#fff;border:1px solid #bbd0e8;color:#173c6b}\n.aj-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.aj-status-warning{background:#fffaf0;border-color:#efd4a4}.aj-status-success{background:#f2fcf6;border-color:#a6ddba}\n.aj-status-line{display:flex;justify-content:space-between;gap:8px;align-items:center}.aj-list{display:grid;gap:8px}.aj-small{font-size:12px;color:var(--muted);line-height:1.55}\n.aj-section-title{font-size:17px;letter-spacing:-.02em;color:var(--primary);margin:0 0 9px}\n.aj-inline-menu{display:flex;gap:6px;flex-wrap:wrap}.aj-inline-menu button{font-size:11px;padding:8px 9px;border-radius:8px;background:#f2f6fc;color:#294667;border:1px solid #cbdcf0}\n.aj-inline-menu button[aria-current=\"page\"]{background:#dbeafe;border-color:#95b4df;font-weight:900}\n.aj-placeholder{padding:16px;border:1px dashed #afc3df;border-radius:12px;background:#f8fbff;color:#546a83;font-size:12px;line-height:1.55}\n.drawer-nav .aj-group-button{font-weight:700;background:#ffffff0b}.drawer-nav .aj-group-button span{flex:1}\n.drawer-nav .aj-subnav{display:grid;gap:0;background:rgba(0,0,0,.12);}.drawer-nav .aj-subnav[hidden]{display:none!important}\n.drawer-nav .aj-subnav button{min-height:42px!important;padding:11px 14px 11px 53px!important;font-size:12px!important;}\n.drawer-nav .aj-subnav button:disabled{opacity:.5}\n@media (max-width:400px){.aj-grid{grid-template-columns:1fr}}\n\n.app[data-area=\"profissional\"] .aj-office-module{display:none!important}.app[data-area=\"escritorio\"] .app-titlebar,.app[data-area=\"escritorio\"] .hero-shell,.app[data-area=\"escritorio\"] .online-card,.app[data-area=\"escritorio\"] .requests-block{display:none!important}.app[data-area=\"escritorio\"] .aj-office-module{display:block!important}.app[data-area=\"escritorio\"] .app-main{display:block;} .app[data-area=\"escritorio\"] .aj-office-module>*+*{margin-top:12px} .aj-office-module [data-office-state]:not([data-office-state=\"x\"]){ } .app[data-office-state=\"sem_escritorio\"] .only-office-active,.app[data-office-state=\"convite_pendente\"] .only-office-active,.app[data-office-state=\"suspenso\"] .only-office-active{display:none!important}.app[data-office-state=\"ativo\"] .only-office-empty{display:none!important}.app:not([data-office-view=\"inicio\"]) .office-intro{display:none!important}"
+        }
+      ]
+    }
+  },
+  "estados": {
+    "area": {
+      "inicial": "profissional",
+      "opcoes": {
+        "profissional": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-area": "profissional"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.header",
+              "ref": "layout_header_app.e0012",
+              "texto": "PROFISSIONAL"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Início"
+            }
+          ],
+          "id": "estado.advogado.home.area.profissional"
+        },
+        "escritorio": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-area": "escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.header",
+              "ref": "layout_header_app.e0012",
+              "texto": "ESCRITÓRIO"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Escritório"
+            }
+          ],
+          "id": "estado.advogado.home.area.escritorio"
+        }
+      },
+      "id": "estado.advogado.home.area"
+    },
+    "vinculoEscritorio": {
+      "inicial": "sem_escritorio",
+      "opcoes": {
+        "sem_escritorio": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-state": "sem_escritorio"
+              }
+            },
+            {
+              "tipo": "instancia",
+              "ref": "screen.drawer",
+              "atributos": {
+                "data-office-state": "sem_escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0011",
+              "texto": "Sem escritório vinculado"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0013",
+              "texto": "Sem vínculo"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0015",
+              "texto": "Você ainda não participa de um escritório. Pode continuar atuando individualmente ou criar seu próprio ambiente."
+            }
+          ],
+          "id": "estado.advogado.home.vinculoEscritorio.sem_escritorio"
+        },
+        "convite_pendente": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-state": "convite_pendente"
+              }
+            },
+            {
+              "tipo": "instancia",
+              "ref": "screen.drawer",
+              "atributos": {
+                "data-office-state": "convite_pendente"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0011",
+              "texto": "Vínculo pendente"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0013",
+              "texto": "Pendente"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0015",
+              "texto": "Há um vínculo com escritório aguardando confirmação (cenário proposto)."
+            }
+          ],
+          "id": "estado.advogado.home.vinculoEscritorio.convite_pendente"
+        },
+        "ativo": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-state": "ativo"
+              }
+            },
+            {
+              "tipo": "instancia",
+              "ref": "screen.drawer",
+              "atributos": {
+                "data-office-state": "ativo"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0011",
+              "texto": "Escritório vinculado"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0013",
+              "texto": "Ativo"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0015",
+              "texto": "Área do escritório disponível."
+            }
+          ],
+          "id": "estado.advogado.home.vinculoEscritorio.ativo"
+        },
+        "suspenso": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-state": "suspenso"
+              }
+            },
+            {
+              "tipo": "instancia",
+              "ref": "screen.drawer",
+              "atributos": {
+                "data-office-state": "suspenso"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0011",
+              "texto": "Vínculo temporariamente suspenso"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0013",
+              "texto": "Suspenso"
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0015",
+              "texto": "Área organizacional com acesso restrito (cenário proposto)."
+            }
+          ],
+          "id": "estado.advogado.home.vinculoEscritorio.suspenso"
+        }
+      },
+      "id": "estado.advogado.home.vinculoEscritorio"
+    },
+    "secaoEscritorio": {
+      "inicial": "inicio",
+      "opcoes": {
+        "inicio": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-view": "inicio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Escritório",
+              "quando": {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0061",
+              "texto": "Visão geral, vínculo e opções de acesso."
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0031",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0039",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0051",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0053",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0055",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0057",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0059",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item1",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item2",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item3",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item4",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item5",
+              "atributos": {
+                "aria-current": "false"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.secaoEscritorio.inicio"
+        },
+        "equipe": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-view": "equipe"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Equipe",
+              "quando": {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0061",
+              "texto": "Equipe jurídica: integrantes e convites."
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0031",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0039",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0051",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0053",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0055",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0057",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0059",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item1",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item2",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item3",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item4",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item5",
+              "atributos": {
+                "aria-current": "false"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.secaoEscritorio.equipe"
+        },
+        "convites": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-view": "convites"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Convites",
+              "quando": {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0061",
+              "texto": "Convidar advogado para a equipe."
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0031",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0039",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0051",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0053",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0055",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0057",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0059",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item1",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item2",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item3",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item4",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item5",
+              "atributos": {
+                "aria-current": "false"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.secaoEscritorio.convites"
+        },
+        "distribuicao": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-view": "distribuicao"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Distribuição interna",
+              "quando": {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0061",
+              "texto": "Distribuição interna de solicitações."
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0031",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0039",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0051",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0053",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0055",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0057",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0059",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item1",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item2",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item3",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item4",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item5",
+              "atributos": {
+                "aria-current": "false"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.secaoEscritorio.distribuicao"
+        },
+        "configuracao": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-office-view": "configuracao"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.titlebar",
+              "ref": "layout_header_title.e002.texto",
+              "texto": "Dados do escritório",
+              "quando": {
+                "estadoRef": "estado.advogado.home.area",
+                "igual": "escritorio"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0061",
+              "texto": "Dados de cadastro e gestão organizacional do escritório."
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0031",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0039",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0051",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0053",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0055",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0057",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.office",
+              "ref": "advogado_home_escritorio_area.e0059",
+              "atributos": {
+                "aria-current": "page"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item1",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item2",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item3",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item4",
+              "atributos": {
+                "aria-current": "false"
+              }
+            },
+            {
+              "tipo": "elemento",
+              "instanciaRef": "screen.drawer",
+              "ref": "aj_office.item5",
+              "atributos": {
+                "aria-current": "page"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.secaoEscritorio.configuracao"
+        }
+      },
+      "id": "estado.advogado.home.secaoEscritorio"
+    },
+    "acessoProfissional": {
+      "inicial": "restricted",
+      "origemValor": "dados_profissionais_validacao_oab (mapeamento backend pendente)",
+      "opcoes": {
+        "restricted": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-professional-access": "restricted"
+              }
+            },
+            {
+              "tipo": "instancia",
+              "ref": "screen.drawer",
+              "atributos": {
+                "data-professional-access": "restricted"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.acessoProfissional.restricted"
+        },
+        "enabled": {
+          "alvos": [
+            {
+              "tipo": "instancia",
+              "ref": "screen.root",
+              "classes": {},
+              "atributos": {
+                "data-professional-access": "enabled"
+              }
+            },
+            {
+              "tipo": "instancia",
+              "ref": "screen.drawer",
+              "atributos": {
+                "data-professional-access": "enabled"
+              }
+            }
+          ],
+          "id": "estado.advogado.home.acessoProfissional.enabled"
+        }
+      },
+      "id": "estado.advogado.home.acessoProfissional"
+    }
+  },
+  "interacoes": [
+    {
+      "id": "advogado.home.link.1",
+      "origem": {
+        "instanciaRef": "screen.header",
+        "eventoRef": "event.layout_header_app.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "aberto"
+      }
+    },
+    {
+      "id": "advogado.home.link.3",
+      "origem": {
+        "instanciaRef": "screen.online",
+        "eventoRef": "event.online_status.e001"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "disponibilidade",
+        "valor": "offline"
+      }
+    },
+    {
+      "id": "advogado.home.link.4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0002"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "painel",
+        "valor": "fechado"
+      }
+    },
+    {
+      "id": "advogado.home.link.5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0013"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "disponibilidade",
+        "valor": "offline"
+      }
+    },
+    {
+      "id": "advogado.home.link.6",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0023"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "profissional"
+          },
+          {
+            "tipo": "definir_estado",
+            "instanciaRef": "screen.drawer",
+            "dimensao": "painel",
+            "valor": "fechado"
+          }
+        ]
+      }
+    },
+    {
+      "id": "advogado.home.link.9",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.ui_aj_menu_advogado_v1.e0048"
+      },
+      "efeito": {
+        "tipo": "alternar_estado",
+        "instanciaRef": "screen.drawer",
+        "dimensao": "grupoEscritorio",
+        "valores": [
+          "fechado",
+          "aberto"
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0031",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0031"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "equipe"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0039",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0039"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "distribuicao"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0051",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0051"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "inicio"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0053",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0053"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "equipe"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0055",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0055"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "convites"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0057",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0057"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "distribuicao"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0059",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0059"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "configuracao"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.office.event.advogado_home_escritorio_area.e0064",
+      "origem": {
+        "instanciaRef": "screen.office",
+        "eventoRef": "event.advogado_home_escritorio_area.e0064"
+      },
+      "efeito": {
+        "tipo": "definir_estado",
+        "dimensao": "area",
+        "valor": "profissional"
+      }
+    },
+    {
+      "id": "adv.menu.office.aj_office.item1",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.aj_office.item1"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "inicio"
+          },
+          {
+            "tipo": "definir_estado",
+            "instanciaRef": "screen.drawer",
+            "dimensao": "painel",
+            "valor": "fechado"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.menu.office.aj_office.item2",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.aj_office.item2"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "equipe"
+          },
+          {
+            "tipo": "definir_estado",
+            "instanciaRef": "screen.drawer",
+            "dimensao": "painel",
+            "valor": "fechado"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.menu.office.aj_office.item3",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.aj_office.item3"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "convites"
+          },
+          {
+            "tipo": "definir_estado",
+            "instanciaRef": "screen.drawer",
+            "dimensao": "painel",
+            "valor": "fechado"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.menu.office.aj_office.item4",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.aj_office.item4"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "distribuicao"
+          },
+          {
+            "tipo": "definir_estado",
+            "instanciaRef": "screen.drawer",
+            "dimensao": "painel",
+            "valor": "fechado"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adv.menu.office.aj_office.item5",
+      "origem": {
+        "instanciaRef": "screen.drawer",
+        "eventoRef": "event.aj_office.item5"
+      },
+      "efeito": {
+        "tipo": "multiplos",
+        "efeitos": [
+          {
+            "tipo": "definir_estado",
+            "dimensao": "area",
+            "valor": "escritorio"
+          },
+          {
+            "tipo": "definir_estado",
+            "dimensao": "secaoEscritorio",
+            "valor": "configuracao"
+          },
+          {
+            "tipo": "definir_estado",
+            "instanciaRef": "screen.drawer",
+            "dimensao": "painel",
+            "valor": "fechado"
+          }
+        ]
+      }
+    }
+  ],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.home.notificacoes",
+        "origem": {
+          "instanciaRef": "screen.header",
+          "eventoRef": "event.layout_header_app.e0013"
+        },
+        "destinoRef": "notificacoes.lista.notificacoes",
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.validacao_oab.menu",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "event.ui_aj_menu_advogado_v1.e0028"
+        },
+        "destinoRef": "advogado.configuracao.validacao_oab",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "profissional"
+            },
+            {
+              "estadoRef": "estado.advogado.home.acessoProfissional",
+              "igual": "restricted"
+            }
+          ]
+        },
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.assinatura.gestao",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "event.ui_aj_menu_advogado_v1.e0043"
+        },
+        "destinoRef": "advogado.assinatura.gestao_assinatura",
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.configuracao",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "event.ui_aj_menu_advogado_v1.e0053"
+        },
+        "destinoRef": "advogado.configuracao.configuracao",
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.entrar_e0060",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "event.ui_aj_menu_advogado_v1.e0060"
+        },
+        "destinoRef": "auth.global.sessao.entrar"
+      },
+      {
+        "id": "rota.advogado.home.validacao_oab.hero",
+        "origem": {
+          "instanciaRef": "screen.hero",
+          "eventoRef": "event.hero_restricted.e005"
+        },
+        "destinoRef": "advogado.configuracao.validacao_oab",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "profissional"
+            },
+            {
+              "estadoRef": "estado.advogado.home.acessoProfissional",
+              "igual": "restricted"
+            }
+          ]
+        },
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.solicitacao.detalhe.e007",
+        "origem": {
+          "instanciaRef": "screen.actions",
+          "eventoRef": "event.actions.e007"
+        },
+        "destinoRef": "advogado.clientes.detalhe_solicitacao",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "profissional"
+            },
+            {
+              "estadoRef": "estado.advogado.home.acessoProfissional",
+              "igual": "enabled"
+            }
+          ]
+        },
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.solicitacao.detalhe.e016",
+        "origem": {
+          "instanciaRef": "screen.actions",
+          "eventoRef": "event.actions.e016"
+        },
+        "destinoRef": "advogado.clientes.detalhe_solicitacao",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "profissional"
+            },
+            {
+              "estadoRef": "estado.advogado.home.acessoProfissional",
+              "igual": "enabled"
+            }
+          ]
+        },
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.solicitacao.detalhe.e025",
+        "origem": {
+          "instanciaRef": "screen.actions",
+          "eventoRef": "event.actions.e025"
+        },
+        "destinoRef": "advogado.clientes.detalhe_solicitacao",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "profissional"
+            },
+            {
+              "estadoRef": "estado.advogado.home.acessoProfissional",
+              "igual": "enabled"
+            }
+          ]
+        },
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.escritorio.cadastrar",
+        "origem": {
+          "instanciaRef": "screen.office",
+          "eventoRef": "event.advogado_home_escritorio_area.e0018"
+        },
+        "destinoRef": "escritorio.onboarding.cadastro_escritorio",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "escritorio"
+            },
+            {
+              "estadoRef": "estado.advogado.home.vinculoEscritorio",
+              "igual": "sem_escritorio"
+            }
+          ]
+        },
+        "status": "proposta_estudo"
+      },
+      {
+        "id": "rota.advogado.home.escritorio.vincular",
+        "origem": {
+          "instanciaRef": "screen.office",
+          "eventoRef": "event.advogado_home_escritorio_area.e0020"
+        },
+        "destinoRef": "escritorio.onboarding.vinculo_escritorio",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "escritorio"
+            },
+            {
+              "estadoRef": "estado.advogado.home.vinculoEscritorio",
+              "igual": "sem_escritorio"
+            }
+          ]
+        },
+        "status": "proposta_estudo"
+      },
+      {
+        "id": "rota.advogado.home.menu_atendimentos",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "menu.atendimentos"
+        },
+        "destinoRef": "advogado.atendimentos_advogado",
+        "quando": {
+          "todos": [
+            {
+              "estadoRef": "estado.advogado.home.area",
+              "igual": "profissional"
+            },
+            {
+              "estadoRef": "estado.advogado.home.acessoProfissional",
+              "igual": "enabled"
+            }
+          ]
+        },
+        "status": "destino_externo_proposto"
+      },
+      {
+        "id": "rota.advogado.home.menu_perfil",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "menu.perfil"
+        },
+        "destinoRef": "advogado.perfil_profissional",
+        "status": "destino_externo_proposto"
+      },
+      {
+        "id": "rota.advogado.home.sair",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": "event.ui_aj_menu_advogado_v1.e0060"
+        },
+        "destinoRef": "auth.sessao.entrar",
+        "status": "extraida_do_json"
+      },
+      {
+        "id": "rota.advogado.home.assinatura.planos",
+        "origem": {
+          "instanciaRef": "screen.drawer",
+          "eventoRef": null
+        },
+        "destinoRef": "advogado.assinatura.planos",
+        "status": "proposta_sem_evento_confirmado"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": [
+      {
+        "id": "advogado.home.cenario.1",
+        "nome": "screen.root: acessoProfissional=enabled",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.advogado.home.acessoProfissional": "enabled"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.2",
+        "nome": "screen.root: acessoProfissional=restricted",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.advogado.home.acessoProfissional": "restricted"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.3",
+        "nome": "screen.header: ambiente=interno",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.layout.header.app.ambiente": "interno"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.4",
+        "nome": "screen.header: ambiente=publico",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.layout.header.app.ambiente": "publico"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.5",
+        "nome": "screen.drawer: painel=fechado",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.ui.aj.menu.advogado.v1.painel": "fechado"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.6",
+        "nome": "screen.drawer: painel=aberto",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.ui.aj.menu.advogado.v1.painel": "aberto"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.7",
+        "nome": "screen.drawer: disponibilidade=online",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.ui.aj.menu.advogado.v1.disponibilidade": "online"
+        }
+      },
+      {
+        "id": "advogado.home.cenario.8",
+        "nome": "screen.drawer: disponibilidade=offline",
+        "tipo": "estado_visual",
+        "valores": {
+          "estado.ui.aj.menu.advogado.v1.disponibilidade": "offline"
+        }
+      },
+      {
+        "id": "adv.office.mock.sem",
+        "nome": "Sem escritório",
+        "valores": {
+          "estado.advogado.home.vinculoEscritorio": "sem_escritorio",
+          "estado.advogado.home.area": "escritorio"
+        }
+      },
+      {
+        "id": "adv.office.mock.ativo",
+        "nome": "Escritório ativo",
+        "valores": {
+          "estado.advogado.home.vinculoEscritorio": "ativo",
+          "estado.advogado.home.area": "escritorio"
+        }
+      },
+      {
+        "id": "adv.office.mock.pendente",
+        "nome": "Convite pendente (proposta)",
+        "valores": {
+          "estado.advogado.home.vinculoEscritorio": "convite_pendente",
+          "estado.advogado.home.area": "escritorio"
+        }
+      },
+      {
+        "id": "adv.office.mock.suspenso",
+        "nome": "Escritório suspenso (proposta)",
+        "valores": {
+          "estado.advogado.home.vinculoEscritorio": "suspenso",
+          "estado.advogado.home.area": "escritorio"
+        }
+      }
+    ]
+  }
+}

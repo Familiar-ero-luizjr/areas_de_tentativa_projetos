@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.validacao.status",
+    "tipo": "tela",
+    "namespace": "advogado.validacao",
+    "nome": "Perfil em validação",
+    "nomeExibicao": "Perfil em validação"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/validacao/status/P9_056_advogado_validacao_status/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.validacao.status.p9_056_advogado_validacao_status.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.validacao.status.advogado_onboarding_revisao_profissional.atual_html_n00020",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_validacao_status_p9_056_advogado_validacao_status_composto_screen_main_01_atual_html_n00020"
+        },
+        "destinoRef": "advogado.onboarding.revisao_profissional"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

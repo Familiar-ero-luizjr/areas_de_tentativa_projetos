@@ -1,0 +1,64 @@
+{
+  "identidade": {
+    "id": "advogado.disponibilidade.painel",
+    "tipo": "tela",
+    "namespace": "advogado.disponibilidade",
+    "nome": "Disponibilidade profissional",
+    "nomeExibicao": "Disponibilidade profissional"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/disponibilidade/painel/P9_043_advogado_disponibilidade_painel/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.disponibilidade.painel.p9_043_advogado_disponibilidade_painel.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.disponibilidade.painel.advogado_configuracao_agenda_semanal.atual_html_n00051",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_disponibilidade_painel_p9_043_advogado_disponibilidade_painel_composto_screen_main_01_atual_html_n00051"
+        },
+        "destinoRef": "advogado.configuracao.agenda_semanal"
+      },
+      {
+        "id": "rota.advogado.disponibilidade.painel.advogado_disponibilidade_raio_atendimento.atual_html_n00057",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_disponibilidade_painel_p9_043_advogado_disponibilidade_painel_composto_screen_main_01_atual_html_n00057"
+        },
+        "destinoRef": "advogado.disponibilidade.raio_atendimento"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

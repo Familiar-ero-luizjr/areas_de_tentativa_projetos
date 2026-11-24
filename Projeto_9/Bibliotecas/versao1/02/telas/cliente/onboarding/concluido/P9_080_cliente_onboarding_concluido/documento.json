@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "cliente.onboarding.concluido",
+    "tipo": "tela",
+    "namespace": "cliente.onboarding",
+    "nome": "Onboarding do cliente concluído",
+    "nomeExibicao": "Onboarding do cliente concluído"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/cliente/onboarding/concluido/P9_080_cliente_onboarding_concluido/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.cliente.onboarding.concluido.p9_080_cliente_onboarding_concluido.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.cliente.onboarding.concluido.cliente_home_cliente.b1_12_main_11_n0014",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_onboarding_concluido_p9_080_cliente_onboarding_concluido_composto_screen_main_01_b1_12_main_11_n0014"
+        },
+        "destinoRef": "cliente.home_cliente"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

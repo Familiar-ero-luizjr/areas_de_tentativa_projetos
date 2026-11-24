@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "auth.sessao.entrar",
+    "tipo": "tela",
+    "namespace": "auth.sessao",
+    "nome": "Entrar",
+    "nomeExibicao": "Entrar"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/auth/sessao/entrar/P9_067_auth_sessao_entrar/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.auth.sessao.entrar.p9_067_auth_sessao_entrar.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.sessao.entrar.auth_cadastro_tipo_conta.b1_12_main_11_n0029",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_sessao_entrar_p9_067_auth_sessao_entrar_composto_screen_main_01_b1_12_main_11_n0029"
+        },
+        "destinoRef": "auth.cadastro.tipo_conta"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

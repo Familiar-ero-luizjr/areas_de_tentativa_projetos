@@ -1,0 +1,80 @@
+{
+  "identidade": {
+    "id": "auth.cadastro.revisao",
+    "tipo": "tela",
+    "namespace": "auth.cadastro",
+    "nome": "Revisão do cadastro",
+    "nomeExibicao": "Revisão do cadastro"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/auth/cadastro/revisao/P9_062_auth_cadastro_revisao/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.auth.cadastro.revisao.p9_062_auth_cadastro_revisao.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.auth.cadastro.revisao.auth_cadastro_tipo_conta.b1_12_main_11_n0015",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_cadastro_revisao_p9_062_auth_cadastro_revisao_composto_screen_main_01_b1_12_main_11_n0015"
+        },
+        "destinoRef": "auth.cadastro.tipo_conta"
+      },
+      {
+        "id": "rota.auth.cadastro.revisao.auth_cadastro_contato.b1_12_main_11_n0052",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_cadastro_revisao_p9_062_auth_cadastro_revisao_composto_screen_main_01_b1_12_main_11_n0052"
+        },
+        "destinoRef": "auth.cadastro.contato"
+      },
+      {
+        "id": "rota.auth.cadastro.revisao.auth_cadastro_endereco.b1_12_main_11_n0069",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_cadastro_revisao_p9_062_auth_cadastro_revisao_composto_screen_main_01_b1_12_main_11_n0069"
+        },
+        "destinoRef": "auth.cadastro.endereco"
+      },
+      {
+        "id": "rota.auth.cadastro.revisao.auth_cadastro_consentimentos.b1_12_main_11_n0081",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_auth_cadastro_revisao_p9_062_auth_cadastro_revisao_composto_screen_main_01_b1_12_main_11_n0081"
+        },
+        "destinoRef": "auth.cadastro.consentimentos"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "identidade": {
+    "id": "cliente.configuracao.falar_suporte",
+    "tipo": "tela",
+    "namespace": "cliente.configuracao",
+    "nome": "Falar com o suporte",
+    "nomeExibicao": "Falar com o suporte"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/cliente/configuracao/falar_suporte/P9_073_cliente_configuracao_falar_suporte/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.cliente.configuracao.falar_suporte.p9_073_cliente_configuracao_falar_suporte.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.cliente.configuracao.falar_suporte.cliente_configuracao_suporte.b1_13_main_12_n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_configuracao_falar_suporte_p9_073_cliente_configuracao_falar_suporte_composto_screen_main_01_b1_13_main_12_n0001"
+        },
+        "destinoRef": "cliente.configuracao.suporte"
+      },
+      {
+        "id": "rota.cliente.configuracao.falar_suporte.cliente_configuracao_suporte.b1_13_main_12_n0030",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_configuracao_falar_suporte_p9_073_cliente_configuracao_falar_suporte_composto_screen_main_01_b1_13_main_12_n0030"
+        },
+        "destinoRef": "cliente.configuracao.suporte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

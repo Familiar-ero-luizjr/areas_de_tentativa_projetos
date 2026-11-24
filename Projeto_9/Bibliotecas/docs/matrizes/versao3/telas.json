@@ -1,0 +1,308 @@
+[
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "admin.home.dashboard",
+    "nome": "Painel administrativo",
+    "perfil": "admin",
+    "caminho": "versao3/telas/admin/home/dashboard/documento.json",
+    "estado_ids": [
+      "estado.admin.home.dashboard.permissao",
+      "estado.admin.home.dashboard.situacaoFila",
+      "estado.admin.home.dashboard.secaoAdmin"
+    ],
+    "jornada_refs": [
+      "admin"
+    ],
+    "subjornada_refs": [
+      "admin.operacao.validacao_oab",
+      "admin.operacao.administradores",
+      "admin.operacao.notificacoes",
+      "admin.operacao.sessao"
+    ],
+    "rotas": [
+      "rota.admin.home.dashboard.validacao_oab_e0117",
+      "rota.admin.home.dashboard.administradores_e0119",
+      "rota.admin.home.dashboard.notificacoes_e0013",
+      "rota.admin.home.dashboard.entrar_e0046"
+    ],
+    "origens": [
+      "auth.global.sessao.entrar"
+    ],
+    "instancias": 5,
+    "css_regras": 3,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "advogado.home",
+    "nome": "Início do advogado",
+    "perfil": "advogado",
+    "caminho": "versao3/telas/advogado/home/documento.json",
+    "estado_ids": [
+      "estado.advogado.home.area",
+      "estado.advogado.home.vinculoEscritorio",
+      "estado.advogado.home.secaoEscritorio",
+      "estado.advogado.home.acessoProfissional"
+    ],
+    "jornada_refs": [
+      "advogado",
+      "global.acesso"
+    ],
+    "subjornada_refs": [
+      "advogado.operacao.notificacoes",
+      "advogado.operacao.assinaturas",
+      "advogado.operacao.configuracoes",
+      "advogado.operacao.sessao",
+      "advogado.operacao.solicitacoes",
+      "advogado.operacao.escritorio",
+      "advogado.operacao.atendimento",
+      "advogado.operacao.perfil",
+      "global.acesso.entrada.com_onboarding",
+      "global.acesso.entrada.sem_onboarding",
+      "advogado.operacao.oab_pendente",
+      "advogado.operacao.oab_habilitada",
+      "advogado.operacao.escritorio.cadastro_vinculo",
+      "advogado.operacao.escritorio.equipe",
+      "advogado.operacao.escritorio.convites",
+      "advogado.operacao.escritorio.distribuicao",
+      "advogado.operacao.escritorio.configuracao"
+    ],
+    "rotas": [
+      "rota.advogado.home.notificacoes",
+      "rota.advogado.home.validacao_oab.menu",
+      "rota.advogado.home.assinatura.gestao",
+      "rota.advogado.home.configuracao",
+      "rota.advogado.home.validacao_oab.hero",
+      "rota.advogado.home.solicitacao.detalhe.e007",
+      "rota.advogado.home.solicitacao.detalhe.e016",
+      "rota.advogado.home.solicitacao.detalhe.e025",
+      "rota.advogado.home.escritorio.cadastrar",
+      "rota.advogado.home.escritorio.vincular",
+      "rota.advogado.home.menu_atendimentos",
+      "rota.advogado.home.menu_perfil",
+      "rota.advogado.home.sair",
+      "rota.advogado.home.assinatura.planos"
+    ],
+    "origens": [
+      "auth.global.sessao.entrar"
+    ],
+    "instancias": 9,
+    "css_regras": 14,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "auth.global.boas_vindas",
+    "nome": "Boas-vindas",
+    "perfil": "auth",
+    "caminho": "versao3/telas/auth/global/boas_vindas/documento.json",
+    "estado_ids": [],
+    "jornada_refs": [
+      "global.acesso"
+    ],
+    "subjornada_refs": [
+      "global.acesso.inicializacao"
+    ],
+    "rotas": [
+      "rota.auth.global.boas_vindas.continuar"
+    ],
+    "origens": [
+      "global.splash"
+    ],
+    "instancias": 2,
+    "css_regras": 0,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "auth.global.sessao.entrar",
+    "nome": "Entrar",
+    "perfil": "auth",
+    "caminho": "versao3/telas/auth/global/sessao/entrar/documento.json",
+    "estado_ids": [
+      "estado.auth.global.sessao.entrar.autenticacao",
+      "estado.auth.global.sessao.entrar.perfil",
+      "estado.auth.global.sessao.entrar.onboardingConcluido"
+    ],
+    "jornada_refs": [
+      "global.acesso"
+    ],
+    "subjornada_refs": [
+      "global.acesso.recuperacao",
+      "global.acesso.entrada",
+      "global.acesso.entrada.sem_onboarding",
+      "global.acesso.entrada.com_onboarding"
+    ],
+    "rotas": [
+      "rota.auth.global.sessao.entrar.recuperar_senha",
+      "rota.auth.global.sessao.entrar.abrir_cadastro",
+      "rota.auth.global.sessao.entrar.login_cliente_home_inicio",
+      "rota.auth.global.sessao.entrar.login_advogado_home",
+      "rota.auth.global.sessao.entrar.login_admin_home_dashboard",
+      "rota.auth.global.sessao.entrar.login_advogado_onboarding_revisao_profissional"
+    ],
+    "origens": [
+      "admin.home.dashboard",
+      "advogado.home",
+      "auth.global.boas_vindas",
+      "auth.global.sessao.esqueceusenha",
+      "auth.global.sessao.resetarsenha",
+      "auth.global.sessao.resetarsenha",
+      "cliente.home.inicio"
+    ],
+    "instancias": 4,
+    "css_regras": 1,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "auth.global.sessao.esqueceusenha",
+    "nome": "Esqueceu a senha",
+    "perfil": "auth",
+    "caminho": "versao3/telas/auth/global/sessao/esqueceusenha/documento.json",
+    "estado_ids": [
+      "estado.auth.global.sessao.esqueceusenha.formulario",
+      "estado.auth.global.sessao.esqueceusenha.linkValido"
+    ],
+    "jornada_refs": [
+      "global.acesso"
+    ],
+    "subjornada_refs": [
+      "global.acesso.recuperacao"
+    ],
+    "rotas": [
+      "rota.auth.global.sessao.esqueceusenha.recuperacao_confirmada",
+      "rota.auth.global.sessao.esqueceusenha.voltar"
+    ],
+    "origens": [
+      "auth.global.sessao.entrar"
+    ],
+    "instancias": 5,
+    "css_regras": 1,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "auth.global.sessao.resetarsenha",
+    "nome": "Redefinir senha",
+    "perfil": "auth",
+    "caminho": "versao3/telas/auth/global/sessao/resetarsenha/documento.json",
+    "estado_ids": [
+      "estado.auth.global.sessao.resetarsenha.formulario"
+    ],
+    "jornada_refs": [
+      "global.acesso"
+    ],
+    "subjornada_refs": [
+      "global.acesso.recuperacao"
+    ],
+    "rotas": [
+      "rota.auth.global.sessao.resetarsenha.senha_alterada",
+      "rota.auth.global.sessao.resetarsenha.voltar"
+    ],
+    "origens": [
+      "auth.global.sessao.esqueceusenha"
+    ],
+    "instancias": 5,
+    "css_regras": 1,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "cliente.home.inicio",
+    "nome": "Início do cliente",
+    "perfil": "cliente",
+    "caminho": "versao3/telas/cliente/home/inicio/documento.json",
+    "estado_ids": [
+      "estado.cliente.home.inicio.area",
+      "estado.cliente.home.inicio.planoEstudante",
+      "estado.cliente.home.inicio.secaoEstudante"
+    ],
+    "jornada_refs": [
+      "cliente"
+    ],
+    "subjornada_refs": [
+      "cliente.operacao.perfil",
+      "cliente.operacao.notificacoes",
+      "cliente.operacao.solicitacoes",
+      "cliente.operacao.contatos_liberados",
+      "cliente.operacao.configuracoes",
+      "cliente.operacao.sessao"
+    ],
+    "rotas": [
+      "rota.cliente.home.inicio.perfil_publico_e0015",
+      "rota.cliente.home.inicio.perfil_publico_e0018",
+      "rota.cliente.home.inicio.perfil_publico_e0021",
+      "rota.cliente.home.inicio.perfil_publico_e0024",
+      "rota.cliente.home.inicio.perfil_publico_e0027",
+      "rota.cliente.home.inicio.perfil_publico_e0030",
+      "rota.cliente.home.inicio.perfil_publico_e0033",
+      "rota.cliente.home.inicio.perfil_publico_e0036",
+      "rota.cliente.home.inicio.perfil_publico_e0039",
+      "rota.cliente.home.inicio.perfil_publico_e0042",
+      "rota.cliente.home.inicio.perfil_publico_e0045",
+      "rota.cliente.home.inicio.perfil_publico_e0048",
+      "rota.cliente.home.inicio.perfil_publico_e0061",
+      "rota.cliente.home.inicio.perfil_publico_e0073",
+      "rota.cliente.home.inicio.perfil_publico_e0085",
+      "rota.cliente.home.inicio.perfil_publico_e0097",
+      "rota.cliente.home.inicio.perfil_publico_e0109",
+      "rota.cliente.home.inicio.perfil_publico_e0121",
+      "rota.cliente.home.inicio.perfil_publico_e0133",
+      "rota.cliente.home.inicio.perfil_publico_e0145",
+      "rota.cliente.home.inicio.perfil_publico_e0157",
+      "rota.cliente.home.inicio.perfil_publico_e0169",
+      "rota.cliente.home.inicio.perfil_publico_e0181",
+      "rota.cliente.home.inicio.perfil_publico_e0193",
+      "rota.cliente.home.inicio.notificacoes_e0013",
+      "rota.cliente.home.inicio.minhas_solicitacoes_e0019",
+      "rota.cliente.home.inicio.contatos_liberados_e0024",
+      "rota.cliente.home.inicio.configuracao_e0034",
+      "rota.cliente.home.inicio.entrar_e0041",
+      "rota.cliente.home.inicio.menu_perfil"
+    ],
+    "origens": [
+      "auth.global.sessao.entrar"
+    ],
+    "instancias": 8,
+    "css_regras": 4,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  },
+  {
+    "versao": "versao3",
+    "biblioteca": "referencia",
+    "tela_id": "global.splash",
+    "nome": "Splash",
+    "perfil": "global",
+    "caminho": "versao3/telas/global/splash/documento.json",
+    "estado_ids": [],
+    "jornada_refs": [
+      "global.acesso"
+    ],
+    "subjornada_refs": [
+      "global.acesso.inicializacao"
+    ],
+    "rotas": [
+      "rota.global.splash.inicializacao_concluida"
+    ],
+    "origens": [],
+    "instancias": 2,
+    "css_regras": 0,
+    "origem_evidencia": "documento.json",
+    "alertas": []
+  }
+]

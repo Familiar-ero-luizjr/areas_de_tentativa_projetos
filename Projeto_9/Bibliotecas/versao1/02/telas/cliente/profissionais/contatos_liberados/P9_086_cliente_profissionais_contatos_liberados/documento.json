@@ -1,0 +1,64 @@
+{
+  "identidade": {
+    "id": "cliente.profissionais.contatos_liberados",
+    "tipo": "tela",
+    "namespace": "cliente.profissionais",
+    "nome": "Contatos liberados",
+    "nomeExibicao": "Contatos liberados"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/cliente/profissionais/contatos_liberados/P9_086_cliente_profissionais_contatos_liberados/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.cliente.profissionais.contatos_liberados.p9_086_cliente_profissionais_contatos_liberados.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.cliente.profissionais.contatos_liberados.cliente_profissionais_detalhe_solicitacao.b1_13_main_12_n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_profissionais_contatos_liberados_p9_086_cliente_profissionais_contatos_liberados_composto_screen_main_01_b1_13_main_12_n0001"
+        },
+        "destinoRef": "cliente.profissionais.detalhe_solicitacao"
+      },
+      {
+        "id": "rota.cliente.profissionais.contatos_liberados.cliente_profissionais_detalhe_solicitacao.b1_13_main_12_n0007",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_cliente_profissionais_contatos_liberados_p9_086_cliente_profissionais_contatos_liberados_composto_screen_main_01_b1_13_main_12_n0007"
+        },
+        "destinoRef": "cliente.profissionais.detalhe_solicitacao"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

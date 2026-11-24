@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.central_ajuda",
+    "tipo": "tela",
+    "namespace": "advogado.configuracao",
+    "nome": "Central de ajuda",
+    "nomeExibicao": "Central de ajuda"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/configuracao/central_ajuda/P9_031_advogado_configuracao_central_ajuda/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.configuracao.central_ajuda.p9_031_advogado_configuracao_central_ajuda.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.central_ajuda.advogado_configuracao_suporte.b1_13_main_12_n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_central_ajuda_p9_031_advogado_configuracao_central_ajuda_composto_screen_main_01_b1_13_main_12_n0001"
+        },
+        "destinoRef": "advogado.configuracao.suporte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

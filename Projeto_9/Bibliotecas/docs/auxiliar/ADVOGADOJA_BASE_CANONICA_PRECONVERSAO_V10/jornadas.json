@@ -1,0 +1,339 @@
+{
+  "jornadas": [
+    {
+      "id": "global.acesso",
+      "nome": "Acesso comum",
+      "paiRef": null,
+      "filhosRefs": [
+        "global.acesso.inicializacao",
+        "global.acesso.entrada",
+        "global.acesso.recuperacao"
+      ]
+    },
+    {
+      "id": "advogado",
+      "nome": "Advogado",
+      "paiRef": null,
+      "filhosRefs": [
+        "advogado.operacao"
+      ]
+    },
+    {
+      "id": "cliente",
+      "nome": "Cliente",
+      "paiRef": null,
+      "filhosRefs": [
+        "cliente.operacao"
+      ]
+    },
+    {
+      "id": "admin",
+      "nome": "Administração",
+      "paiRef": null,
+      "filhosRefs": [
+        "admin.operacao"
+      ]
+    }
+  ],
+  "subjornadas": [
+    {
+      "id": "global.acesso.inicializacao",
+      "nome": "Inicialização",
+      "paiRef": "global.acesso",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.global.splash.inicializacao_concluida",
+        "rota.auth.global.boas_vindas.continuar"
+      ]
+    },
+    {
+      "id": "global.acesso.entrada",
+      "nome": "Entrada",
+      "paiRef": "global.acesso",
+      "filhosRefs": [
+        "global.acesso.entrada.com_onboarding",
+        "global.acesso.entrada.sem_onboarding"
+      ],
+      "rotaRefs": [
+        "rota.auth.global.sessao.entrar.abrir_cadastro",
+        "rota.auth.global.sessao.entrar.login_cliente_home_inicio",
+        "rota.auth.global.sessao.entrar.login_admin_home_dashboard"
+      ]
+    },
+    {
+      "id": "global.acesso.recuperacao",
+      "nome": "Recuperação de senha",
+      "paiRef": "global.acesso",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.auth.global.sessao.entrar.recuperar_senha",
+        "rota.auth.global.sessao.esqueceusenha.recuperacao_confirmada",
+        "rota.auth.global.sessao.esqueceusenha.voltar",
+        "rota.auth.global.sessao.resetarsenha.senha_alterada",
+        "rota.auth.global.sessao.resetarsenha.voltar"
+      ]
+    },
+    {
+      "id": "global.acesso.entrada.com_onboarding",
+      "nome": "Entrada com onboarding",
+      "paiRef": "global.acesso.entrada",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.auth.global.sessao.entrar.login_advogado_onboarding_revisao_profissional"
+      ]
+    },
+    {
+      "id": "global.acesso.entrada.sem_onboarding",
+      "nome": "Entrada sem onboarding",
+      "paiRef": "global.acesso.entrada",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.auth.global.sessao.entrar.login_advogado_home"
+      ]
+    },
+    {
+      "id": "advogado.operacao",
+      "nome": "Operação profissional",
+      "paiRef": "advogado",
+      "filhosRefs": [
+        "advogado.operacao.notificacoes",
+        "advogado.operacao.validacao_oab",
+        "advogado.operacao.assinaturas",
+        "advogado.operacao.configuracoes",
+        "advogado.operacao.sessao",
+        "advogado.operacao.solicitacoes",
+        "advogado.operacao.escritorio",
+        "advogado.operacao.atendimento",
+        "advogado.operacao.perfil"
+      ],
+      "rotaRefs": []
+    },
+    {
+      "id": "cliente.operacao",
+      "nome": "Operação do cliente",
+      "paiRef": "cliente",
+      "filhosRefs": [
+        "cliente.operacao.perfil",
+        "cliente.operacao.notificacoes",
+        "cliente.operacao.solicitacoes",
+        "cliente.operacao.contatos_liberados",
+        "cliente.operacao.configuracoes",
+        "cliente.operacao.sessao"
+      ],
+      "rotaRefs": []
+    },
+    {
+      "id": "admin.operacao",
+      "nome": "Operação administrativa",
+      "paiRef": "admin",
+      "filhosRefs": [
+        "admin.operacao.validacao_oab",
+        "admin.operacao.administradores",
+        "admin.operacao.notificacoes",
+        "admin.operacao.sessao"
+      ],
+      "rotaRefs": []
+    },
+    {
+      "id": "advogado.operacao.notificacoes",
+      "nome": "Notificações",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.notificacoes"
+      ]
+    },
+    {
+      "id": "advogado.operacao.validacao_oab",
+      "nome": "Validação OAB",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.validacao_oab.menu",
+        "rota.advogado.home.validacao_oab.hero"
+      ]
+    },
+    {
+      "id": "advogado.operacao.assinaturas",
+      "nome": "Assinaturas",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.assinatura.gestao",
+        "rota.advogado.home.sair",
+        "rota.advogado.home.assinatura.planos"
+      ]
+    },
+    {
+      "id": "advogado.operacao.configuracoes",
+      "nome": "Configurações",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.configuracao"
+      ]
+    },
+    {
+      "id": "advogado.operacao.sessao",
+      "nome": "Sessão",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.entrar_e0060"
+      ]
+    },
+    {
+      "id": "advogado.operacao.solicitacoes",
+      "nome": "Solicitações",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.solicitacao.detalhe.e007",
+        "rota.advogado.home.solicitacao.detalhe.e016",
+        "rota.advogado.home.solicitacao.detalhe.e025"
+      ]
+    },
+    {
+      "id": "advogado.operacao.escritorio",
+      "nome": "Escritório",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.escritorio.cadastrar",
+        "rota.advogado.home.escritorio.vincular"
+      ]
+    },
+    {
+      "id": "advogado.operacao.atendimento",
+      "nome": "Atendimento",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.menu_atendimentos"
+      ]
+    },
+    {
+      "id": "advogado.operacao.perfil",
+      "nome": "Perfil",
+      "paiRef": "advogado.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.advogado.home.menu_perfil"
+      ]
+    },
+    {
+      "id": "cliente.operacao.perfil",
+      "nome": "Perfil",
+      "paiRef": "cliente.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.cliente.home.inicio.perfil_publico_e0015",
+        "rota.cliente.home.inicio.perfil_publico_e0018",
+        "rota.cliente.home.inicio.perfil_publico_e0021",
+        "rota.cliente.home.inicio.perfil_publico_e0024",
+        "rota.cliente.home.inicio.perfil_publico_e0027",
+        "rota.cliente.home.inicio.perfil_publico_e0030",
+        "rota.cliente.home.inicio.perfil_publico_e0033",
+        "rota.cliente.home.inicio.perfil_publico_e0036",
+        "rota.cliente.home.inicio.perfil_publico_e0039",
+        "rota.cliente.home.inicio.perfil_publico_e0042",
+        "rota.cliente.home.inicio.perfil_publico_e0045",
+        "rota.cliente.home.inicio.perfil_publico_e0048",
+        "rota.cliente.home.inicio.perfil_publico_e0061",
+        "rota.cliente.home.inicio.perfil_publico_e0073",
+        "rota.cliente.home.inicio.perfil_publico_e0085",
+        "rota.cliente.home.inicio.perfil_publico_e0097",
+        "rota.cliente.home.inicio.perfil_publico_e0109",
+        "rota.cliente.home.inicio.perfil_publico_e0121",
+        "rota.cliente.home.inicio.perfil_publico_e0133",
+        "rota.cliente.home.inicio.perfil_publico_e0145",
+        "rota.cliente.home.inicio.perfil_publico_e0157",
+        "rota.cliente.home.inicio.perfil_publico_e0169",
+        "rota.cliente.home.inicio.perfil_publico_e0181",
+        "rota.cliente.home.inicio.perfil_publico_e0193",
+        "rota.cliente.home.inicio.menu_perfil"
+      ]
+    },
+    {
+      "id": "cliente.operacao.notificacoes",
+      "nome": "Notificações",
+      "paiRef": "cliente.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.cliente.home.inicio.notificacoes_e0013"
+      ]
+    },
+    {
+      "id": "cliente.operacao.solicitacoes",
+      "nome": "Solicitações",
+      "paiRef": "cliente.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.cliente.home.inicio.minhas_solicitacoes_e0019"
+      ]
+    },
+    {
+      "id": "cliente.operacao.contatos_liberados",
+      "nome": "Contatos liberados",
+      "paiRef": "cliente.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.cliente.home.inicio.contatos_liberados_e0024"
+      ]
+    },
+    {
+      "id": "cliente.operacao.configuracoes",
+      "nome": "Configurações",
+      "paiRef": "cliente.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.cliente.home.inicio.configuracao_e0034"
+      ]
+    },
+    {
+      "id": "cliente.operacao.sessao",
+      "nome": "Sessão",
+      "paiRef": "cliente.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.cliente.home.inicio.entrar_e0041"
+      ]
+    },
+    {
+      "id": "admin.operacao.validacao_oab",
+      "nome": "Validação OAB",
+      "paiRef": "admin.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.admin.home.dashboard.validacao_oab_e0117"
+      ]
+    },
+    {
+      "id": "admin.operacao.administradores",
+      "nome": "Administradores",
+      "paiRef": "admin.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.admin.home.dashboard.administradores_e0119"
+      ]
+    },
+    {
+      "id": "admin.operacao.notificacoes",
+      "nome": "Notificações",
+      "paiRef": "admin.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.admin.home.dashboard.notificacoes_e0013"
+      ]
+    },
+    {
+      "id": "admin.operacao.sessao",
+      "nome": "Sessão",
+      "paiRef": "admin.operacao",
+      "filhosRefs": [],
+      "rotaRefs": [
+        "rota.admin.home.dashboard.entrar_e0046"
+      ]
+    }
+  ]
+}

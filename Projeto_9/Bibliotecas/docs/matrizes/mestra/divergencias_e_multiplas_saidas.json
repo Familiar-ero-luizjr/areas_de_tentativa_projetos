@@ -1,0 +1,58 @@
+[
+  {
+    "origem": "auth.global.sessao.entrar",
+    "destinos": [
+      "advogado.onboarding.dados_profissionais",
+      "advogado.onboarding.revisao_profissional"
+    ],
+    "tipo": "divergencia_entre_versoes",
+    "nota": "V2/V2.1 apontam para dados_profissionais, V3 para revisao_profissional; determinar política de retomada por etapa antes de homologar."
+  },
+  {
+    "origem": "advogado.onboarding.revisao_profissional",
+    "destinos": [
+      "advogado.dados_oab",
+      "advogado.onboarding.areas_atuacao",
+      "advogado.onboarding.dados_academicos",
+      "advogado.onboarding.dados_profissionais",
+      "advogado.onboarding.disponibilidade",
+      "escritorio.onboarding.vinculo_escritorio"
+    ],
+    "tipo": "multiplas_saidas_exigem_analise_de_evento_e_estado",
+    "nota": "Múltiplos destinos não são necessariamente inconsistentes: podem ser botões ou condições distintas."
+  },
+  {
+    "origem": "auth.cadastro.revisao",
+    "destinos": [
+      "auth.cadastro.consentimentos",
+      "auth.cadastro.contato",
+      "auth.cadastro.endereco",
+      "auth.cadastro.tipo_conta"
+    ],
+    "tipo": "multiplas_saidas_exigem_analise_de_evento_e_estado",
+    "nota": "Múltiplos destinos não são necessariamente inconsistentes: podem ser botões ou condições distintas."
+  },
+  {
+    "origem": "auth.global.sessao.entrar",
+    "destinos": [
+      "admin.home.dashboard",
+      "advogado.home",
+      "advogado.onboarding.dados_profissionais",
+      "advogado.onboarding.revisao_profissional",
+      "auth.cadastro.tipo_conta",
+      "auth.global.sessao.esqueceusenha",
+      "cliente.home.inicio"
+    ],
+    "tipo": "multiplas_saidas_exigem_analise_de_evento_e_estado",
+    "nota": "Múltiplos destinos não são necessariamente inconsistentes: podem ser botões ou condições distintas."
+  },
+  {
+    "origem": "auth.global.sessao.esqueceusenha",
+    "destinos": [
+      "auth.global.sessao.entrar",
+      "auth.global.sessao.resetarsenha"
+    ],
+    "tipo": "multiplas_saidas_exigem_analise_de_evento_e_estado",
+    "nota": "Múltiplos destinos não são necessariamente inconsistentes: podem ser botões ou condições distintas."
+  }
+]

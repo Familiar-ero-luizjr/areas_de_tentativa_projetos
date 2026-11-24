@@ -1,0 +1,56 @@
+{
+  "identidade": {
+    "id": "advogado.onboarding.dados_profissionais",
+    "tipo": "tela",
+    "namespace": "advogado.onboarding",
+    "nome": "Dados profissionais",
+    "nomeExibicao": "Dados profissionais"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/onboarding/dados_profissionais/P9_050_advogado_onboarding_dados_profissionais/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.onboarding.dados_profissionais.p9_050_advogado_onboarding_dados_profissionais.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.onboarding.dados_profissionais.advogado_onboarding_dados_academicos.b1_12_main_11_n0028",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_onboarding_dados_profissionais_p9_050_advogado_onboarding_dados_profissionais_composto_screen_main_01_b1_12_main_11_n0028"
+        },
+        "destinoRef": "advogado.onboarding.dados_academicos"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

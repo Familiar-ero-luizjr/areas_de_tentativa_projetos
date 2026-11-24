@@ -1,0 +1,64 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.preferencias_atendimento",
+    "tipo": "tela",
+    "namespace": "advogado.configuracao",
+    "nome": "Preferências de atendimento",
+    "nomeExibicao": "Preferências de atendimento"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/configuracao/preferencias_atendimento/P9_038_advogado_configuracao_preferencias_atendimento/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.configuracao.preferencias_atendimento.p9_038_advogado_configuracao_preferencias_atendimento.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.preferencias_atendimento.advogado_configuracao_configuracao.b1_13_main_12_n0001",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_preferencias_atendimento_p9_038_advogado_configuracao_preferencias_atendimento_composto_screen_main_01_b1_13_main_12_n0001"
+        },
+        "destinoRef": "advogado.configuracao.configuracao"
+      },
+      {
+        "id": "rota.advogado.configuracao.preferencias_atendimento.advogado_configuracao_agenda_semanal.b1_13_main_12_n0012",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_preferencias_atendimento_p9_038_advogado_configuracao_preferencias_atendimento_composto_screen_main_01_b1_13_main_12_n0012"
+        },
+        "destinoRef": "advogado.configuracao.agenda_semanal"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}

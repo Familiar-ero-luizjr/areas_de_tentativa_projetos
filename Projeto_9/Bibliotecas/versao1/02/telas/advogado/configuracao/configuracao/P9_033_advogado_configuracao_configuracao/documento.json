@@ -1,0 +1,88 @@
+{
+  "identidade": {
+    "id": "advogado.configuracao.configuracao",
+    "tipo": "tela",
+    "namespace": "advogado.configuracao",
+    "nome": "Configurações",
+    "nomeExibicao": "Configurações"
+  },
+  "classificacao": {
+    "localizacao": {
+      "caminho": "versao1/02/telas/advogado/configuracao/configuracao/P9_033_advogado_configuracao_configuracao/documento.json"
+    },
+    "jornadaRefs": [],
+    "subjornadaRefs": []
+  },
+  "estrutura": {
+    "html": {
+      "raizRef": "screen.root",
+      "composicao": {
+        "screen.root": {
+          "id": "screen.root",
+          "componenteRef": "v1.b02.advogado.configuracao.configuracao.p9_033_advogado_configuracao_configuracao.composto",
+          "paiRef": null,
+          "alvoRef": null,
+          "ordem": 0,
+          "props": {}
+        }
+      }
+    },
+    "css": {
+      "tokens": {},
+      "regras": []
+    }
+  },
+  "estados": {},
+  "interacoes": [],
+  "navegacao": {
+    "rotas": [
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado_configuracao_agenda_semanal.b1_13_main_12_n0009",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_configuracao_p9_033_advogado_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0009"
+        },
+        "destinoRef": "advogado.configuracao.agenda_semanal"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado_configuracao_preferencias_atendimento.b1_13_main_12_n0019",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_configuracao_p9_033_advogado_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0019"
+        },
+        "destinoRef": "advogado.configuracao.preferencias_atendimento"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado_configuracao_validacao_oab.b1_13_main_12_n0029",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_configuracao_p9_033_advogado_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0029"
+        },
+        "destinoRef": "advogado.configuracao.validacao_oab"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado_configuracao_termos_privacidade.b1_13_main_12_n0039",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_configuracao_p9_033_advogado_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0039"
+        },
+        "destinoRef": "advogado.configuracao.termos_privacidade"
+      },
+      {
+        "id": "rota.advogado.configuracao.configuracao.advogado_configuracao_suporte.b1_13_main_12_n0049",
+        "origem": {
+          "instanciaRef": "screen.root",
+          "eventoRef": "event.v1_b02_advogado_configuracao_configuracao_p9_033_advogado_configuracao_configuracao_composto_screen_main_01_b1_13_main_12_n0049"
+        },
+        "destinoRef": "advogado.configuracao.suporte"
+      }
+    ]
+  },
+  "dados": {
+    "fontes": [],
+    "operacoes": []
+  },
+  "mocks": {
+    "cenarios": []
+  }
+}
