@@ -33,3 +33,8 @@ O menu é montado pelo registro. Os motores são carregados na inicialização p
 
 ## Verificação
 Sintaxe JavaScript conferida com Node. O teste visual no navegador foi bloqueado pela política do ambiente; não há garantia de equivalência visual integral ou de todos os fluxos de edição.
+
+## Documentação integrada
+O módulo editor_documentacao usa a fonte dados/editor_documentacao.json (84 seções, versão mais completa do ZIP recebido). O menu de seções é um submenu do menu principal. A fonte documental é isolada do modelo relacional e salva localmente pelo motor geral. Exportar fontes inclui ambos os modelos e a documentação; exportar JSON global mantém o formato V3 do banco.
+
+Importação parcial aceita um objeto {id,title,content,children}, uma lista de objetos, ou um envelope sections/section. Escolha raiz, acima, abaixo, subseção ou atualização por ID. IDs duplicados são recusados; atualização preserva filhos não enviados. Importação completa é uma ação separada com confirmação. Para persistir no arquivo físico, exporte e substitua manualmente a fonte em dados/.
