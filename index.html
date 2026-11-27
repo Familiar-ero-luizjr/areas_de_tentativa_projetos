@@ -6,36 +6,147 @@
     <meta name="description" content="Catálogo de projetos independentes." />
     <title>Áreas de tentativa — Projetos</title>
     <style>
-      :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; color: #17243a; background: #f3f6fb; }
-      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 2rem; }
-      main { width: min(920px, 100%); }
-      h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.25rem); }
-      .lead { color: #53657f; font-size: 1.1rem; line-height: 1.6; max-width: 46rem; }
-      .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 2rem; }
-      a { color: inherit; }
-      .card { display: block; min-height: 150px; padding: 1.25rem; border: 1px solid #d6dfec; border-radius: 16px; background: #fff; text-decoration: none; box-shadow: 0 6px 24px #17243a0d; transition: transform .15s, box-shadow .15s; }
-      .card:hover, .card:focus-visible { transform: translateY(-3px); box-shadow: 0 12px 30px #17243a1f; outline: 3px solid #6a9fff; outline-offset: 3px; }
-      .card h2 { margin: 0 0 .5rem; font-size: 1.2rem; } .card p { margin: 0; color: #53657f; line-height: 1.5; }
-      footer { margin-top: 2rem; color: #66758b; font-size: .9rem; }
+      :root {
+        color-scheme: light;
+        font-family: Inter, system-ui, sans-serif;
+        color: #17243a;
+        background: #f3f6fb;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+      main {
+        width: min(920px, 100%);
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.25rem);
+      }
+      .lead {
+        color: #53657f;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 46rem;
+      }
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      a {
+        color: inherit;
+      }
+      .card {
+        display: block;
+        min-height: 150px;
+        padding: 1.25rem;
+        border: 1px solid #d6dfec;
+        border-radius: 16px;
+        background: #fff;
+        text-decoration: none;
+        box-shadow: 0 6px 24px #17243a0d;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px #17243a1f;
+        outline: 3px solid #6a9fff;
+        outline-offset: 3px;
+      }
+      .card h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1.2rem;
+      }
+      .card p {
+        margin: 0;
+        color: #53657f;
+        line-height: 1.5;
+      }
+      footer {
+        margin-top: 2rem;
+        color: #66758b;
+        font-size: 0.9rem;
+      }
     </style>
   </head>
   <body>
     <main>
       <h1>Áreas de tentativa</h1>
-      <p class="lead">Projetos independentes, cada um com sua página, documentação e contrato de trabalho para agentes de IA.</p>
+      <p class="lead">
+        Projetos independentes, cada um com sua página, documentação e contrato
+        de trabalho para agentes de IA.
+      </p>
       <section class="projects" aria-label="Projetos">
-        <a class="card" href="Projeto_1/"><h2>Projeto 1</h2><p>Laboratório funcional Advogado Já.</p></a>
-        <a class="card" href="Projeto_2/"><h2>Projeto 2</h2><p>Catálogo funcional do Organizador de Vida.</p></a>
-        <a class="card" href="Projeto_3/"><h2>Projeto 3</h2><p>Padrão de arquitetura para HTML autocontido.</p></a>
-        <a class="card" href="Projeto_4/"><h2>Projeto 4</h2><p>Laboratório de telas JSON do Advogado Já.</p></a>
-        <a class="card" href="Projeto_5/"><h2>Projeto 5</h2><p>Workspace Modular V6 do Advogado Já: motores independentes e catálogo ativo.</p></a>
-        <a class="card" href="Projeto_6/"><h2>Projeto 6</h2><p>Laboratórios de protótipos Advogado Já: Modular V2 e Cliente Interativo V3.</p></a>
-        <a class="card" href="Projeto_7/"><h2>Projeto 7</h2><p>Projeto Telas.</p></a>
-        <a class="card" href="Projeto_8/"><h2>Projeto 8</h2><p>AdvogadoJá: Banco, Contrato, Jornadas e Protótipos modulares.</p></a>
-        <a class="card" href="Projeto_9/"><h2>Projeto 9</h2><p>AdvogadoJá: ambientes modulares de contratos, catálogo de IDs e Motor V4.</p></a>
-        <a class="card" href="projeto_10/"><h2>Projeto 10</h2><p>AdvogadoJá: motor de fluxo atual e visualizador de referências de legado.</p></a>
+        <a class="card" href="Projeto_1/"
+          ><h2>Projeto 1</h2>
+          <p>Laboratório funcional Advogado Já.</p></a
+        >
+        <a class="card" href="Projeto_2/"
+          ><h2>Projeto 2</h2>
+          <p>Catálogo funcional do Organizador de Vida.</p></a
+        >
+        <a class="card" href="Projeto_3/"
+          ><h2>Projeto 3</h2>
+          <p>Padrão de arquitetura para HTML autocontido.</p></a
+        >
+        <a class="card" href="Projeto_4/"
+          ><h2>Projeto 4</h2>
+          <p>Laboratório de telas JSON do Advogado Já.</p></a
+        >
+        <a class="card" href="Projeto_5/"
+          ><h2>Projeto 5</h2>
+          <p>
+            Workspace Modular V6 do Advogado Já: motores independentes e
+            catálogo ativo.
+          </p></a
+        >
+        <a class="card" href="Projeto_6/"
+          ><h2>Projeto 6</h2>
+          <p>
+            Laboratórios de protótipos Advogado Já: Modular V2 e Cliente
+            Interativo V3.
+          </p></a
+        >
+        <a class="card" href="Projeto_7/"
+          ><h2>Projeto 7</h2>
+          <p>Projeto Telas.</p></a
+        >
+        <a class="card" href="Projeto_8/"
+          ><h2>Projeto 8</h2>
+          <p>
+            AdvogadoJá: Banco, Contrato, Jornadas e Protótipos modulares.
+          </p></a
+        >
+        <a class="card" href="Projeto_9/"
+          ><h2>Projeto 9</h2>
+          <p>
+            AdvogadoJá: ambientes modulares de contratos, catálogo de IDs e
+            Motor V4.
+          </p></a
+        >
+        <a class="card" href="projeto_10/"
+          ><h2>Projeto 10</h2>
+          <p>
+            AdvogadoJá: motor de fluxo atual e visualizador de referências de
+            legado.
+          </p></a
+        >
+        <a class="card" href="projeto_11/"
+          ><h2>Projeto 11</h2>
+          <p>AdvogadoJá:.</p></a
+        >
       </section>
-      <footer>Escolha um projeto para acessar seu ambiente independente.</footer>
+      <footer>
+        Escolha um projeto para acessar seu ambiente independente.
+      </footer>
     </main>
   </body>
 </html>
