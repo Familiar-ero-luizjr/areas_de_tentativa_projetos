@@ -541,6 +541,130 @@
               "children": []
             }
           ]
+        },
+        {
+          "id": "66ae5785-fcf3-50b0-873b-6fa0e5256340",
+          "title": "Jornadas",
+          "content": "",
+          "children": [
+            {
+              "id": "a7dbe1c1-b2e3-5a55-8987-ac7e4181195f",
+              "title": "Objetivo e escopo",
+              "content": "Visualizar as telas do AdvogadoJá Plus agrupadas por jornada e subjornada, em sequência de navegação, com protótipos mobile lado a lado. O módulo é um inventário visual navegável, não um diagrama de fluxo nem um editor de telas. O design deve reproduzir a imagem de referência: cabeçalho azul-marinho compacto, barra de controles branca, fundo cinza azulado e grupos brancos horizontais com miniaturas reais das telas.\n\nA imagem mostra três grupos: Inicialização e login, Cadastro comum e Recuperação de acesso. Os demais grupos devem vir do JSON, sem limitar o módulo aos exemplos.",
+              "children": []
+            },
+            {
+              "id": "26c5a184-ff96-5254-8f4e-2db7f62bc636",
+              "title": "Requisitos de design (UI)",
+              "content": "| ID | Elemento | Requisito |\n|---|---|---|\n| UI-001 | Cabeçalho | Faixa horizontal azul-marinho, título branco alinhado à esquerda, subtítulo pequeno e destaque dourado no Plus, como na referência. |\n| UI-002 | Barra de controles | Faixa branca compacta imediatamente abaixo do cabeçalho, com seletores de escala e tela. |\n| UI-003 | Fundo | Cinza azulado muito claro, sem decoração adicional. |\n| UI-004 | Grupos | Seções brancas de largura disponível, borda fina azul-acinzentada, cantos discretamente arredondados. |\n| UI-005 | Título do grupo | Numeração sequencial de apresentação, nome em negrito, alinhado no canto superior esquerdo. |\n| UI-006 | Galeria | Telas em uma linha horizontal, alinhadas pelo topo, da esquerda para a direita. |\n| UI-007 | Espaço livre | Preservar a área branca à direita quando houver poucas telas; não centralizar nem esticar as miniaturas. |\n| UI-008 | Identificação | Acima de cada miniatura: número da tela, nome em negrito e identificador técnico menor. |\n| UI-009 | Protótipo | Moldura retangular vertical, borda fina, cantos pequenos; sem simulação decorativa de aparelho. |\n| UI-010 | Conteúdo | Renderizar HTML/CSS real de cada tela, preservando cores, fontes, imagens, componentes, proporções e estados. |\n| UI-011 | Rolagem | Tela longa com rolagem vertical interna; não comprimir o conteúdo para fazê-lo caber. |\n| UI-012 | Ampliação | Botão pequeno “Ampliar tela”, abaixo de cada miniatura, alinhado à esquerda. |\n| UI-013 | Densidade | Interface compacta, margens e espaçamentos pequenos e consistentes. |\n| UI-014 | Responsividade | Em telas estreitas, manter a proporção e permitir rolagem horizontal dentro do grupo; página com rolagem vertical. |\n| UI-015 | Integração | Quando incorporado ao projeto, usar menu global existente, sem duplicar cabeçalho ou navegação; manter a faixa de identificação do módulo quando necessária. |",
+              "children": [
+                {
+                  "id": "5d2e9594-dab4-5e4e-bd90-d8ea79c6f47d",
+                  "title": "Paleta visual proposta",
+                  "content": "| Token | Cor aproximada | Uso |\n|---|---|---|\n| `--navy` | `#10223B` | Cabeçalho e texto principal |\n| `--gold` | `#C9A45A` | Destaque Plus |\n| `--canvas` | `#EDF2F6` | Fundo geral |\n| `--surface` | `#FFFFFF` | Grupos e controles |\n| `--border` | `#CCD9E8` | Bordas |\n| `--muted` | `#64748B` | Identificadores e textos secundários |\n\nCores são estimativas da captura; não substituem os tokens originais das telas.",
+                  "children": []
+                },
+                {
+                  "id": "0a0d90ab-fcda-5c06-98c5-84e90644072d",
+                  "title": "Dimensões e escala",
+                  "content": "Na captura de 1366 × 768, a área do aplicativo começa abaixo da interface do navegador. Observam-se margem externa de aproximadamente 5–7 px, miniaturas de cerca de 79 × 172 px, intervalo horizontal de 5–6 px e grupos separados por cerca de 7 px. Essas são medidas na escala exibida na captura, não dimensões nativas dos protótipos.\n\n- Usar escala configurável; proposta: 20%, 30%, 50%, 75%, 100%.\n- Usar viewport mobile configurável (referência inicial proposta: 390 × 844 CSS px).\n- Calcular largura e altura externas pela escala escolhida, preservando proporção e viewport lógico; não usar zoom que altere a estrutura responsiva da tela.\n- Tipografia da interface externa: compacta, sans-serif; fonte original de cada protótipo deve ser mantida.\n- Não impor largura máxima centralizada à galeria; ela ocupa a área disponível.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "e0d52c19-7450-5640-beaf-029eb99260ff",
+              "title": "Componentes visuais",
+              "content": "",
+              "children": [
+                {
+                  "id": "42d988ce-ab5f-534e-b47f-59ad28a24a48",
+                  "title": "Estrutura geral",
+                  "content": "```text\nMódulo Jornadas\n├── Cabeçalho / identificação do módulo\n├── Barra de controles\n│   ├── Escala\n│   ├── Selecionar tela\n│   └── Filtros e ações complementares (propostos)\n└── Área de jornadas\n    ├── Grupo 01 — Inicialização e login\n    │   ├── Splash\n    │   ├── Boas-vindas\n    │   └── Login\n    ├── Grupo 02 — Cadastro comum\n    │   ├── Tipo de conta\n    │   ├── Identificação\n    │   ├── Contato\n    │   ├── Endereço\n    │   ├── Acesso e segurança\n    │   ├── Termos e privacidade\n    │   ├── Revisão de cadastro\n    │   └── Cadastro concluído\n    └── Grupo 03 — Recuperação de acesso\n        ├── Recuperação de senha\n        └── Redefinição de senha\n```\n\nOs nomes acima são transcrições visuais/descrições dos exemplos exibidos; o JSON vigente é a fonte dos nomes e IDs reais.",
+                  "children": []
+                },
+                {
+                  "id": "d354f937-6193-5dd0-b6f2-88ec814cb59b",
+                  "title": "Grupo de jornada/subjornada",
+                  "content": "Título compacto seguido de uma galeria horizontal. Quando uma jornada possui várias subjornadas, renderizar um grupo por subjornada, preservando o vínculo com a jornada pai. A numeração é visual e derivada da ordenação; não serve como identificador. Não criar abas de bifurcação neste módulo: essa representação pertence ao módulo Fluxo.",
+                  "children": []
+                },
+                {
+                  "id": "19961aa3-f9fd-50bc-95ab-3753d253b686",
+                  "title": "Card de ocorrência de tela",
+                  "content": "```text\nNúmero da tela\nNome da tela\nID técnico\n┌─────────────────┐\n│ HTML/CSS real   │\n│ da tela mobile  │\n│                 │\n│ rolagem interna │\n└─────────────────┘\n[ Ampliar tela ]\n```\n\nO card é uma ocorrência, não uma cópia da definição da tela. A mesma tela pode aparecer em várias jornadas/subjornadas. O nome e o ID técnico são obtidos do catálogo. A ordem visual e o identificador da ocorrência são independentes.",
+                  "children": []
+                },
+                {
+                  "id": "57780b7e-bc46-5c9a-a5dc-716849fca351",
+                  "title": "Visualização ampliada (proposta)",
+                  "content": "Modal com título, identificação técnica, jornada/subjornada, protótipo em escala legível e controle de fechar. Se houver múltiplos estados, oferecer seletor discreto na parte inferior da visualização. Exibir estado atual, sem alterar a definição original. Disponibilizar informações da ocorrência e acesso ao mapa, se integrado. Fechar retorna ao mesmo ponto da galeria.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "da0182f9-b85f-555d-b7bc-0e6d004593de",
+              "title": "Requisitos funcionais (UX)",
+              "content": "| ID | Funcionalidade | Comportamento |\n|---|---|---|\n| RF-001 | Carregar catálogo | Ler as definições de telas e componentes do JSON compartilhado. |\n| RF-002 | Agrupar | Associar as telas às jornadas e subjornadas declaradas em classificação. |\n| RF-003 | Ordenar | Derivar sequência pelas entradas e saídas de navegação, não pela ordem das chaves do catálogo. |\n| RF-004 | Renderizar miniaturas | Exibir protótipos reais, não imagens estáticas nem cards genéricos. |\n| RF-005 | Escala global | Alterar simultaneamente a escala de todas as miniaturas. |\n| RF-006 | Selecionar tela | Localizar a ocorrência escolhida, deslocar a página até ela e destacá-la temporariamente. |\n| RF-007 | Ampliar tela | Abrir visualização legível sem perder a posição da galeria. |\n| RF-008 | Rolagem interna | Navegar pelo conteúdo longo de cada protótipo sem deslocar toda a página indevidamente. |\n| RF-009 | Estados | Selecionar estados disponíveis em telas com múltiplos estados, no visual ampliado. |\n| RF-010 | Componentes | Resolver componentes reutilizáveis e suas propriedades pelo motor compartilhado. |\n| RF-011 | Mocks | Alimentar o protótipo com dados simulados e indicar erros de resolução. |\n| RF-012 | Ocorrências | Preservar participações repetidas da mesma tela em jornadas ou caminhos distintos. |\n| RF-013 | Informações | Exibir identidade, classificação, estado e contexto de navegação da ocorrência. |\n| RF-014 | Mapa | Abrir o mapa correspondente por ação explícita, quando disponível. |\n| RF-015 | Filtros | Filtrar por perfil, jornada, subjornada e busca por nome/ID, como extensão proposta. |\n| RF-016 | Limpar filtros | Restaurar a galeria completa. |\n| RF-017 | Importar JSON | Validar e carregar dados do módulo, preservando os demais módulos. |\n| RF-018 | Exportar JSON | Exportar individualmente os dados/projeção do módulo Jornadas. |\n| RF-019 | Exportar Markdown | Gerar inventário textual das jornadas exibidas, com nomes, IDs, ocorrências e ordem; ação complementar proposta. |\n| RF-020 | Persistência | Preservar preferências de escala e filtros localmente, sem modificar catálogo. |\n| RF-021 | Dados incompletos | Sinalizar ausência de classificação, estrutura, rota ou referência sem inventar informações. |\n| RF-022 | Atualização | Recalcular a projeção quando os dados compartilhados forem alterados. |\n| RF-023 | Isolamento | Impedir que CSS ou eventos internos de uma tela modifiquem outras miniaturas ou a interface geral. |\n| RF-024 | Desempenho | Renderizar sob demanda grupos/miniaturas fora da área visível, mantendo dimensões e ordem. |\n\nRF-001 a RF-024 são requisitos propostos para implementação; a captura confirma a disposição visual, os seletores e a ação de ampliação, mas não comprova o comportamento interno do HTML original.",
+              "children": []
+            },
+            {
+              "id": "608e2fff-46b0-5256-b74b-5ed4608aee84",
+              "title": "Contrato de dados e motor",
+              "content": "",
+              "children": [
+                {
+                  "id": "dd80588f-09cf-573d-ad32-8e6fea49722e",
+                  "title": "Fontes de verdade",
+                  "content": "| Informação | Origem |\n|---|---|\n| ID e nome | `telas[id].identidade` |\n| Perfil | `classificacao.perfilRef` |\n| Jornada | `classificacao.jornadas[].id` |\n| Subjornada | `classificacao.jornadas[].subjornadas[].id` |\n| Ordem e caminhos | `navegacao[].entradas`, `navegacao[].saidas`, `navegacao[].rotas` |\n| Estado | `estados` e suas referências |\n| Protótipo | `estrutura` selecionada pelo estado |\n| Componentes | coleção `componentes` e referências de composição |\n| Dados de exemplo | `dados` e `mocks` |\n\nA classificação não contém rotas. A navegação determina a sequência; não duplicar as definições de tela na projeção do módulo. Nomes de jornadas/subjornadas só devem ser resolvidos a partir de dados disponíveis; se houver apenas ID, exibi-lo como fallback.",
+                  "children": []
+                },
+                {
+                  "id": "f531a07e-0b61-58b6-86dd-4edea3562041",
+                  "title": "Projeção proposta (não é alteração do JSON mestre)",
+                  "content": "```json\n{\n  \"schema\": \"advogadoja.modulo.jornadas\",\n  \"schemaVersion\": \"1.0.0\",\n  \"jornadas\": [\n    {\n      \"id\": \"<jornadaRef>\",\n      \"nome\": \"<nome_resolvido>\",\n      \"ordem\": 1,\n      \"subjornadas\": [\n        {\n          \"id\": \"<subjornadaRef>\",\n          \"nome\": \"<nome_resolvido>\",\n          \"ordem\": 1,\n          \"ocorrencias\": [\n            {\n              \"id\": \"<id_permanente_da_ocorrencia>\",\n              \"telaRef\": \"<id_da_tela>\",\n              \"ordemTela\": 1,\n              \"estadoRef\": null\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n```\n\nIDs de ocorrências não mudam com reordenação; não usar índice de array como identidade permanente. `estadoRef: null` indica que a seleção inicial será resolvida pelo contrato de estados, sem presumir um estado não declarado. `ordem` e `ordemTela` são projeções calculadas. Identificadores de jornada/subjornada referenciam os existentes no catálogo; não gerar novos quando já existem.",
+                  "children": []
+                },
+                {
+                  "id": "c53cd138-6421-5ff6-ba16-20dbcd566da8",
+                  "title": "Algoritmo de organização",
+                  "content": "1. Validar catálogo e indexar telas e componentes por ID.\n2. Ler classificação e criar agrupamentos por jornada/subjornada.\n3. Resolver ligações de navegação por referências de rotas, entradas, saídas e alternativas, respeitando o escopo dos IDs.\n4. Ordenar ocorrências seguindo caminhos documentados. Quando houver alternativas, manter a relação com o caminho; não inventar uma sequência única que contradiga a navegação.\n5. Detectar ciclos, referências ausentes, caminhos independentes e ordem ambígua; sinalizar pendências e usar ordem de apresentação determinística quando necessário, sem confundi-la com ordem de navegação confirmada.\n6. Resolver estado, estrutura, composição e mocks; renderizar cada miniatura com isolamento.\n7. Aplicar filtros e escala somente à projeção visual.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "3c1f1335-f330-56fb-a566-17bddd2cee5e",
+              "title": "Arquitetura modular",
+              "content": "```text\nprojeto/\n├── index.html\n├── estilo.css\n├── motor.js\n├── dados/\n│   ├── modulos.json\n│   ├── telas.json\n│   ├── mapa.json\n│   └── jornadas.json\n└── modulos/\n    └── jornadas/\n        ├── index.html\n        ├── estilo.css\n        └── motor.js\n```\n\n| Arquivo | Responsabilidade |\n|---|---|\n| `index.html` geral | Menu global e área de carregamento dos módulos |\n| `motor.js` geral | Registro de módulos, carregamento e compartilhamento dos dados |\n| `dados/telas.json` | Fonte canônica das telas e componentes |\n| `dados/jornadas.json` | Projeção opcional persistida do módulo; não fonte concorrente de navegação |\n| `dados/mapa.json` | Dados para integração com mapa |\n| `modulos/jornadas/index.html` | Estrutura da interface e pontos de montagem |\n| `modulos/jornadas/estilo.css` | Galeria, grupos, controles, escala, modal e responsividade |\n| `modulos/jornadas/motor.js` | Agrupamento, ordenação, renderização, filtros, ampliação e exportações |\n\nO motor de Jornadas consome o renderizador compartilhado de telas; não implementa novamente o HTML/CSS de cada tela. Proposta de isolamento: iframe com viewport lógico e transformação de escala; outra solução é aceitável se preservar o mesmo resultado. O carregamento por `fetch` de arquivos locais pode exigir servidor HTTP; importação por seletor de arquivos pode funcionar offline. A forma de distribuição deverá ser validada no ambiente do projeto.",
+              "children": []
+            },
+            {
+              "id": "7975ddff-b07a-5a6f-9908-44646c098f20",
+              "title": "Importação, exportação e persistência",
+              "content": "- Importação individual por módulo, sem substituir o documento geral ou os dados de outros módulos.\n- Validar schema, IDs, tipos e referências antes de aplicar alterações; em caso de erro, preservar dados anteriores.\n- Exportação JSON com projeção do módulo, mantendo referências e IDs permanentes.\n- Exportação Markdown do inventário com hierarquia e tabelas de ocorrências; indicar escopo (todas as jornadas ou filtro atual).\n- Não exportar preferências visuais como se fossem definições de tela.\n- Persistir escala, filtros e seleção separadamente dos dados canônicos.",
+              "children": []
+            },
+            {
+              "id": "b78dbdec-abb0-5e5f-9f9e-50a95669e1ad",
+              "title": "Critérios de aceite",
+              "content": "- [ ] Cabeçalho, barra compacta, fundo e grupos fiéis à referência.\n- [ ] Miniaturas lado a lado, alinhadas à esquerda, mantendo proporção mobile e espaço livre.\n- [ ] Identificação acima e botão Ampliar tela abaixo de cada miniatura.\n- [ ] HTML/CSS real, componentes e imagens preservados.\n- [ ] Rolagem interna em telas longas.\n- [ ] Escala global funcional sem deformação do layout.\n- [ ] Seletor de tela localiza ocorrências corretamente.\n- [ ] Modal ampliado preserva o visual e o contexto.\n- [ ] Estados selecionáveis quando disponíveis.\n- [ ] Agrupamento a partir da classificação e ordem a partir da navegação.\n- [ ] Ocorrências repetidas preservadas com IDs próprios.\n- [ ] Referências ausentes sinalizadas, sem inventar rotas.\n- [ ] Importação/exportação individual sem afetar outros módulos.\n- [ ] HTML, CSS, motor e dados separados.\n- [ ] Responsividade sem deformar os protótipos.\n- [ ] Comparação visual na mesma resolução e escala da captura de referência.",
+              "children": []
+            },
+            {
+              "id": "7aa366bf-0156-5092-ab68-77dfca7cfa9e",
+              "title": "Diretrizes obrigatórias",
+              "content": "- Não redesenhar as telas ou substituí-las por mockups genéricos.\n- Não transformar a galeria em fluxo de cards, tabela ou diagrama de nós.\n- Não preencher o espaço livre esticando as miniaturas.\n- Não duplicar o menu principal no módulo integrado.\n- Não fixar telas, jornadas ou quantidade de cards diretamente no HTML.\n- Não derivar navegação da ordem de classificação nem inventar bifurcações.\n- Não alterar IDs por mudança de posição.\n- Não substituir outros módulos durante a importação.\n- Não tratar as dimensões estimadas da captura como CSS original confirmado.",
+              "children": []
+            },
+            {
+              "id": "42c90876-184e-567b-b507-fb92eadd6f29",
+              "title": "Limites e decisões propostas",
+              "content": "A referência disponível é uma captura de tela, não o HTML/CSS/JS original. As medidas, cores, opções de escala, comportamento do modal, filtros, exportações, estratégia de isolamento e contrato de projeção são propostas de implementação, não funcionalidades verificadas no arquivo original. O objetivo deste Markdown é especificar o módulo; não implementa nem testa um HTML. A fidelidade final deverá ser aferida com comparação visual e testes funcionais quando o módulo for desenvolvido.",
+              "children": []
+            }
+          ]
         }
       ]
     }
