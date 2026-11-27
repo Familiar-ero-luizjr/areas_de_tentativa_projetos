@@ -1,0 +1,1438 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.cadastro.endereco": {
+      "identidade": {
+        "id": "auth.cadastro.endereco",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Endereço"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "cadastro"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "header",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  29,
+                  43,
+                  44,
+                  47,
+                  48
+                ],
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "img",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": 3,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 4,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 2,
+                "estiloRefs": [
+                  45
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              },
+              {
+                "id": 5,
+                "tag": "section",
+                "paiRef": 0,
+                "ordem": 1,
+                "estiloRefs": [
+                  9,
+                  46
+                ],
+                "atributos": {
+                  "class": "registration"
+                }
+              },
+              {
+                "id": 6,
+                "tag": "div",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [
+                  10,
+                  13
+                ],
+                "atributos": {
+                  "class": "registration__shell"
+                }
+              },
+              {
+                "id": 7,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 0,
+                "estiloRefs": [
+                  11,
+                  12,
+                  13
+                ],
+                "atributos": {
+                  "class": "registration__intro"
+                }
+              },
+              {
+                "id": 8,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 0,
+                "estiloRefs": [
+                  4,
+                  13
+                ],
+                "atributos": {
+                  "class": "eyebrow"
+                },
+                "texto": "Dados pessoais"
+              },
+              {
+                "id": 9,
+                "tag": "h1",
+                "paiRef": 7,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Endereço"
+              },
+              {
+                "id": 10,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Endereço residencial associado à conta. Localização precisa continua sendo tratada separadamente."
+              },
+              {
+                "id": 11,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 1,
+                "estiloRefs": [
+                  14,
+                  15
+                ],
+                "atributos": {
+                  "class": "progress",
+                  "aria-label": "Etapa 4 de 7"
+                }
+              },
+              {
+                "id": 12,
+                "tag": "span",
+                "paiRef": 11,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "style": "width:57.14%"
+                }
+              },
+              {
+                "id": 13,
+                "tag": "form",
+                "paiRef": 6,
+                "ordem": 2,
+                "estiloRefs": [
+                  16,
+                  17,
+                  18,
+                  28
+                ],
+                "atributos": {
+                  "class": "form-card",
+                  "novalidate": ""
+                }
+              },
+              {
+                "id": 14,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 0,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 15,
+                "tag": "input",
+                "paiRef": 14,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-zip",
+                  "name": "zipCode",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "postal-code",
+                  "inputmode": "numeric",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.zipCode"
+                }
+              },
+              {
+                "id": 16,
+                "tag": "label",
+                "paiRef": 14,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-zip"
+                },
+                "texto": "CEP"
+              },
+              {
+                "id": 17,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 1,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 18,
+                "tag": "input",
+                "paiRef": 17,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-address",
+                  "name": "address",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "address-line1",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.address"
+                }
+              },
+              {
+                "id": 19,
+                "tag": "label",
+                "paiRef": 17,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-address"
+                },
+                "texto": "Logradouro"
+              },
+              {
+                "id": 20,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 2,
+                "estiloRefs": [
+                  22
+                ],
+                "atributos": {
+                  "class": "field-grid"
+                }
+              },
+              {
+                "id": 21,
+                "tag": "div",
+                "paiRef": 20,
+                "ordem": 0,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 22,
+                "tag": "input",
+                "paiRef": 21,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-number",
+                  "name": "addressNumber",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "address-line2",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.addressNumber"
+                }
+              },
+              {
+                "id": 23,
+                "tag": "label",
+                "paiRef": 21,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-number"
+                },
+                "texto": "Número"
+              },
+              {
+                "id": 24,
+                "tag": "div",
+                "paiRef": 20,
+                "ordem": 1,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 25,
+                "tag": "input",
+                "paiRef": 24,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-complement",
+                  "name": "complement",
+                  "type": "text",
+                  "placeholder": " ",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.complement"
+                }
+              },
+              {
+                "id": 26,
+                "tag": "label",
+                "paiRef": 24,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-complement"
+                },
+                "texto": "Complemento"
+              },
+              {
+                "id": 27,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 3,
+                "estiloRefs": [
+                  22
+                ],
+                "atributos": {
+                  "class": "field-grid"
+                }
+              },
+              {
+                "id": 28,
+                "tag": "div",
+                "paiRef": 27,
+                "ordem": 0,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 29,
+                "tag": "input",
+                "paiRef": 28,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-neighborhood",
+                  "name": "neighborhood",
+                  "type": "text",
+                  "placeholder": " ",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.neighborhood"
+                }
+              },
+              {
+                "id": 30,
+                "tag": "label",
+                "paiRef": 28,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-neighborhood"
+                },
+                "texto": "Bairro"
+              },
+              {
+                "id": 31,
+                "tag": "div",
+                "paiRef": 27,
+                "ordem": 1,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 32,
+                "tag": "input",
+                "paiRef": 31,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-district",
+                  "name": "district",
+                  "type": "text",
+                  "placeholder": " ",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.district"
+                }
+              },
+              {
+                "id": 33,
+                "tag": "label",
+                "paiRef": 31,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-district"
+                },
+                "texto": "Distrito"
+              },
+              {
+                "id": 34,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 4,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 35,
+                "tag": "input",
+                "paiRef": 34,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-city",
+                  "name": "city",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "address-level2",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.city"
+                }
+              },
+              {
+                "id": 36,
+                "tag": "label",
+                "paiRef": 34,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-city"
+                },
+                "texto": "Cidade"
+              },
+              {
+                "id": 37,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 5,
+                "estiloRefs": [
+                  22
+                ],
+                "atributos": {
+                  "class": "field-grid"
+                }
+              },
+              {
+                "id": 38,
+                "tag": "div",
+                "paiRef": 37,
+                "ordem": 0,
+                "estiloRefs": [
+                  18,
+                  19,
+                  20,
+                  21
+                ],
+                "atributos": {
+                  "class": "select-field"
+                }
+              },
+              {
+                "id": 39,
+                "tag": "label",
+                "paiRef": 38,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-uf"
+                },
+                "texto": "UF"
+              },
+              {
+                "id": 40,
+                "tag": "select",
+                "paiRef": 38,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-uf",
+                  "name": "uf",
+                  "autocomplete": "address-level1",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.uf"
+                }
+              },
+              {
+                "id": 41,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "value": ""
+                },
+                "texto": "Selecionar"
+              },
+              {
+                "id": 42,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "AC"
+              },
+              {
+                "id": 43,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "AL"
+              },
+              {
+                "id": 44,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 3,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "AP"
+              },
+              {
+                "id": 45,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 4,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "AM"
+              },
+              {
+                "id": 46,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 5,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "BA"
+              },
+              {
+                "id": 47,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 6,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "CE"
+              },
+              {
+                "id": 48,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 7,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "DF"
+              },
+              {
+                "id": 49,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 8,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "ES"
+              },
+              {
+                "id": 50,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 9,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "GO"
+              },
+              {
+                "id": 51,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 10,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "MA"
+              },
+              {
+                "id": 52,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 11,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "MT"
+              },
+              {
+                "id": 53,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 12,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "MS"
+              },
+              {
+                "id": 54,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 13,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "MG"
+              },
+              {
+                "id": 55,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 14,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "PA"
+              },
+              {
+                "id": 56,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 15,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "PB"
+              },
+              {
+                "id": 57,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 16,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "PR"
+              },
+              {
+                "id": 58,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 17,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "PE"
+              },
+              {
+                "id": 59,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 18,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "PI"
+              },
+              {
+                "id": 60,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 19,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "RJ"
+              },
+              {
+                "id": 61,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 20,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "RN"
+              },
+              {
+                "id": 62,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 21,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "RS"
+              },
+              {
+                "id": 63,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 22,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "RO"
+              },
+              {
+                "id": 64,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 23,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "RR"
+              },
+              {
+                "id": 65,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 24,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "SC"
+              },
+              {
+                "id": 66,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 25,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "SP"
+              },
+              {
+                "id": 67,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 26,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "SE"
+              },
+              {
+                "id": 68,
+                "tag": "option",
+                "paiRef": 40,
+                "ordem": 27,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "TO"
+              },
+              {
+                "id": 69,
+                "tag": "div",
+                "paiRef": 37,
+                "ordem": 1,
+                "estiloRefs": [
+                  18,
+                  19,
+                  20,
+                  21
+                ],
+                "atributos": {
+                  "class": "select-field"
+                }
+              },
+              {
+                "id": 70,
+                "tag": "label",
+                "paiRef": 69,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-country"
+                },
+                "texto": "País"
+              },
+              {
+                "id": 71,
+                "tag": "select",
+                "paiRef": 69,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-country",
+                  "name": "country",
+                  "value": "BR"
+                },
+                "valor": {
+                  "ref": "dados.cadastro.country"
+                }
+              },
+              {
+                "id": 72,
+                "tag": "option",
+                "paiRef": 71,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "value": "BR"
+                },
+                "texto": "Brasil"
+              },
+              {
+                "id": 73,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 6,
+                "estiloRefs": [
+                  23
+                ],
+                "atributos": {
+                  "class": "form-actions"
+                }
+              },
+              {
+                "id": 74,
+                "tag": "button",
+                "paiRef": 73,
+                "ordem": 0,
+                "estiloRefs": [
+                  24
+                ],
+                "atributos": {
+                  "class": "secondary-action",
+                  "type": "button"
+                },
+                "texto": "Voltar"
+              },
+              {
+                "id": 75,
+                "tag": "button",
+                "paiRef": 73,
+                "ordem": 1,
+                "estiloRefs": [
+                  5,
+                  49
+                ],
+                "atributos": {
+                  "class": "button",
+                  "type": "button"
+                },
+                "texto": "Continuar"
+              },
+              {
+                "id": 76,
+                "tag": "p",
+                "paiRef": 13,
+                "ordem": 7,
+                "estiloRefs": [
+                  13,
+                  25
+                ],
+                "atributos": {
+                  "class": "form-status",
+                  "aria-live": "polite"
+                }
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": "button,\ninput",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 4,
+                "seletor": ".eyebrow",
+                "declaracoes": "margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;"
+              },
+              {
+                "id": 5,
+                "seletor": ".button",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 6,
+                "seletor": ".field",
+                "declaracoes": "position: relative;\n  margin-bottom: 14px;"
+              },
+              {
+                "id": 7,
+                "seletor": ".field input",
+                "declaracoes": "width: 100%;\n  min-height: 57px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 14px 9px;\n  outline: 0;"
+              },
+              {
+                "id": 8,
+                "seletor": ".field label",
+                "declaracoes": "position: absolute;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;"
+              },
+              {
+                "id": 9,
+                "seletor": ".registration",
+                "declaracoes": "min-height: 100dvh;\n  background: var(--page);"
+              },
+              {
+                "id": 10,
+                "seletor": ".registration__shell",
+                "declaracoes": "width: min(100%, 620px);\n  margin: 0 auto;\n  padding: 24px 18px 48px;"
+              },
+              {
+                "id": 11,
+                "seletor": ".registration__intro",
+                "declaracoes": "margin: 2px 2px 18px;"
+              },
+              {
+                "id": 12,
+                "seletor": ".registration__intro h1,\n.registration--success h1",
+                "declaracoes": "margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;"
+              },
+              {
+                "id": 13,
+                "seletor": ".registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status)",
+                "declaracoes": "margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;"
+              },
+              {
+                "id": 14,
+                "seletor": ".progress",
+                "declaracoes": "height: 5px;\n  margin: 0 2px 18px;\n  overflow: hidden;\n  border-radius: 999px;\n  background: #dce4ed;"
+              },
+              {
+                "id": 15,
+                "seletor": ".progress span",
+                "declaracoes": "display: block;\n  height: 100%;\n  border-radius: inherit;\n  background: var(--gold);"
+              },
+              {
+                "id": 16,
+                "seletor": ".form-card",
+                "declaracoes": "padding: 18px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: var(--surface);"
+              },
+              {
+                "id": 17,
+                "seletor": ".form-card .field:last-of-type",
+                "declaracoes": "margin-bottom: 0;"
+              },
+              {
+                "id": 18,
+                "seletor": ".form-card .field input,\n.form-card .select-field select",
+                "declaracoes": "background: #fff;\n  color: var(--text);"
+              },
+              {
+                "id": 19,
+                "seletor": ".select-field",
+                "declaracoes": "position: relative;\n  margin-bottom: 14px;"
+              },
+              {
+                "id": 20,
+                "seletor": ".select-field label",
+                "declaracoes": "position: absolute;\n  z-index: 1;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;\n  pointer-events: none;"
+              },
+              {
+                "id": 21,
+                "seletor": ".select-field select",
+                "declaracoes": "width: 100%;\n  min-height: 57px;\n  appearance: auto;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 40px 9px 14px;\n  outline: 0;\n  cursor: pointer;"
+              },
+              {
+                "id": 22,
+                "seletor": ".field-grid",
+                "declaracoes": "display: grid;\n  grid-template-columns: 1fr;\n  gap: 0;"
+              },
+              {
+                "id": 23,
+                "seletor": ".form-actions",
+                "declaracoes": "display: grid;\n  grid-template-columns: minmax(96px, .7fr) 1.3fr;\n  gap: 10px;\n  margin-top: 20px;"
+              },
+              {
+                "id": 24,
+                "seletor": ".secondary-action",
+                "declaracoes": "min-height: 54px;\n  border: 1px solid var(--line);\n  border-radius: 13px;\n  padding: 14px 16px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 25,
+                "seletor": ".form-status",
+                "declaracoes": "min-height: 18px;\n  margin: 10px 0 0;\n  color: #9b2c2c;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 700;"
+              },
+              {
+                "id": 26,
+                "bloco": "@media (min-width: 520px){.field-grid{grid-template-columns: 1fr 1fr;\n    gap: 12px;}}"
+              },
+              {
+                "id": 27,
+                "bloco": "@media (min-width: 700px){.registration__shell{padding-top: 38px;\n    padding-bottom: 64px;}.form-card{padding: 26px;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.10);}}"
+              },
+              {
+                "id": 28,
+                "seletor": ".form-card textarea",
+                "declaracoes": "width:100%; min-height:118px; resize:vertical; border:1px solid var(--line); border-radius:12px; padding:24px 14px 12px; background:#fff; color:var(--text); font:inherit; line-height:1.5; outline:0;"
+              },
+              {
+                "id": 29,
+                "seletor": ".app-header",
+                "declaracoes": "position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);"
+              },
+              {
+                "id": 30,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 31,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 32,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 33,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 34,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 35,
+                "seletor": "button, input, select, textarea",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 36,
+                "seletor": "button",
+                "declaracoes": "-webkit-tap-highlight-color: transparent;"
+              },
+              {
+                "id": 37,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 38,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 39,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 40,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 41,
+                "seletor": "button",
+                "declaracoes": "cursor:pointer"
+              },
+              {
+                "id": 42,
+                "seletor": "button:disabled",
+                "declaracoes": "opacity:.55;cursor:not-allowed"
+              },
+              {
+                "id": 43,
+                "seletor": ".app-header",
+                "declaracoes": "background:#10233f;color:white;padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:800"
+              },
+              {
+                "id": 44,
+                "seletor": ".app-header img",
+                "declaracoes": "width:32px"
+              },
+              {
+                "id": 45,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 46,
+                "seletor": ".registration",
+                "declaracoes": "min-height:calc(100dvh - 64px)"
+              },
+              {
+                "id": 47,
+                "seletor": ".app-header",
+                "declaracoes": "gap:0"
+              },
+              {
+                "id": 48,
+                "seletor": ".app-header img",
+                "declaracoes": "margin-right:10px"
+              },
+              {
+                "id": 49,
+                "seletor": ".button:focus-visible,a:focus-visible",
+                "declaracoes": "outline:3px solid #b88932;outline-offset:3px"
+              },
+              {
+                "id": 50,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 51,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 52,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 74,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1000
+            }
+          ]
+        },
+        {
+          "id": 1001,
+          "origem": {
+            "elementoRef": 75,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1001
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 105,
+              "path": "/cadastro/dados-pessoais/contato",
+              "telaRef": "auth.cadastro.contato",
+              "origemCaminho": "referencia",
+              "nome": "Contato"
+            },
+            {
+              "id": 106,
+              "path": "/cadastro/dados-pessoais/endereco",
+              "telaRef": "auth.cadastro.endereco",
+              "origemCaminho": "referencia",
+              "nome": "Endereço"
+            },
+            {
+              "id": 107,
+              "path": "/cadastro/acesso-seguranca",
+              "telaRef": "auth.cadastro.seguranca",
+              "origemCaminho": "referencia",
+              "nome": "Acesso e segurança"
+            },
+            {
+              "id": 109,
+              "path": "/cadastro/revisao",
+              "telaRef": "auth.cadastro.revisao",
+              "origemCaminho": "referencia",
+              "nome": "Revisão do cadastro"
+            }
+          ],
+          "entradas": [
+            {
+              "origemTelaRef": "auth.cadastro.contato",
+              "origemEstadoRef": 0,
+              "eventoRef": 1001,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 106
+            },
+            {
+              "origemTelaRef": "auth.cadastro.seguranca",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 106
+            },
+            {
+              "origemTelaRef": "auth.cadastro.revisao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1002,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 106
+            }
+          ],
+          "saidas": [
+            {
+              "eventoRef": 1000,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 105,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            },
+            {
+              "eventoRef": 1001,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 107,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {},
+        "camposFormulario": [
+          {
+            "elementoRef": 15,
+            "campo": "zipCode",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 18,
+            "campo": "address",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 22,
+            "campo": "addressNumber",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 25,
+            "campo": "complement",
+            "tipo": "text",
+            "obrigatorio": false,
+            "persistir": true
+          },
+          {
+            "elementoRef": 29,
+            "campo": "neighborhood",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 32,
+            "campo": "district",
+            "tipo": "text",
+            "obrigatorio": false,
+            "persistir": true
+          },
+          {
+            "elementoRef": 35,
+            "campo": "city",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 40,
+            "campo": "uf",
+            "tipo": "select",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 71,
+            "campo": "country",
+            "tipo": "select",
+            "obrigatorio": false,
+            "persistir": true
+          }
+        ]
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

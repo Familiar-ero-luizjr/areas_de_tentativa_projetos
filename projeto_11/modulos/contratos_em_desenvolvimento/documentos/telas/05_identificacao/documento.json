@@ -1,0 +1,1125 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.cadastro.identificacao": {
+      "identidade": {
+        "id": "auth.cadastro.identificacao",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Identificação"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "cadastro"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "header",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  34,
+                  48,
+                  49,
+                  52,
+                  53
+                ],
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "img",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": 3,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 4,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 2,
+                "estiloRefs": [
+                  50
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              },
+              {
+                "id": 5,
+                "tag": "section",
+                "paiRef": 0,
+                "ordem": 1,
+                "estiloRefs": [
+                  9,
+                  51
+                ],
+                "atributos": {
+                  "class": "registration"
+                }
+              },
+              {
+                "id": 6,
+                "tag": "div",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [
+                  10,
+                  13
+                ],
+                "atributos": {
+                  "class": "registration__shell"
+                }
+              },
+              {
+                "id": 7,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 0,
+                "estiloRefs": [
+                  11,
+                  12,
+                  13
+                ],
+                "atributos": {
+                  "class": "registration__intro"
+                }
+              },
+              {
+                "id": 8,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 0,
+                "estiloRefs": [
+                  4,
+                  13
+                ],
+                "atributos": {
+                  "class": "eyebrow"
+                },
+                "texto": "Dados pessoais"
+              },
+              {
+                "id": 9,
+                "tag": "h1",
+                "paiRef": 7,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Identificação"
+              },
+              {
+                "id": 10,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Este bloco é comum para Cliente e Advogado."
+              },
+              {
+                "id": 11,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 1,
+                "estiloRefs": [
+                  14,
+                  15
+                ],
+                "atributos": {
+                  "class": "progress",
+                  "aria-label": "Etapa 2 de 7"
+                }
+              },
+              {
+                "id": 12,
+                "tag": "span",
+                "paiRef": 11,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "style": "width:28.57%"
+                }
+              },
+              {
+                "id": 13,
+                "tag": "form",
+                "paiRef": 6,
+                "ordem": 2,
+                "estiloRefs": [
+                  16,
+                  17,
+                  18,
+                  33
+                ],
+                "atributos": {
+                  "class": "form-card",
+                  "novalidate": ""
+                }
+              },
+              {
+                "id": 14,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 0,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 15,
+                "tag": "input",
+                "paiRef": 14,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-name",
+                  "name": "name",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "given-name",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.name"
+                }
+              },
+              {
+                "id": 16,
+                "tag": "label",
+                "paiRef": 14,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-name"
+                },
+                "texto": "Nome"
+              },
+              {
+                "id": 17,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 1,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 18,
+                "tag": "input",
+                "paiRef": 17,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-surname",
+                  "name": "surname",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "family-name",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.surname"
+                }
+              },
+              {
+                "id": 19,
+                "tag": "label",
+                "paiRef": 17,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-surname"
+                },
+                "texto": "Sobrenome"
+              },
+              {
+                "id": 20,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 2,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 21,
+                "tag": "input",
+                "paiRef": 20,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-username",
+                  "name": "username",
+                  "type": "text",
+                  "placeholder": " ",
+                  "autocomplete": "username",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.username"
+                }
+              },
+              {
+                "id": 22,
+                "tag": "label",
+                "paiRef": 20,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-username"
+                },
+                "texto": "Nome de usuário"
+              },
+              {
+                "id": 23,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 3,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 24,
+                "tag": "input",
+                "paiRef": 23,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-cpf",
+                  "name": "cpf",
+                  "type": "text",
+                  "placeholder": " ",
+                  "inputmode": "numeric",
+                  "autocomplete": "off",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.cpf"
+                }
+              },
+              {
+                "id": 25,
+                "tag": "label",
+                "paiRef": 23,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-cpf"
+                },
+                "texto": "CPF"
+              },
+              {
+                "id": 26,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 4,
+                "estiloRefs": [
+                  6,
+                  7,
+                  8,
+                  17,
+                  18
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 27,
+                "tag": "input",
+                "paiRef": 26,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-birthday",
+                  "name": "birthday",
+                  "type": "date",
+                  "placeholder": " ",
+                  "autocomplete": "bday",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.birthday"
+                }
+              },
+              {
+                "id": 28,
+                "tag": "label",
+                "paiRef": 26,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-birthday"
+                },
+                "texto": "Data de nascimento"
+              },
+              {
+                "id": 29,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 5,
+                "estiloRefs": [
+                  18,
+                  19,
+                  20,
+                  21
+                ],
+                "atributos": {
+                  "class": "select-field"
+                }
+              },
+              {
+                "id": 30,
+                "tag": "label",
+                "paiRef": 29,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "reg-gender"
+                },
+                "texto": "Gênero"
+              },
+              {
+                "id": 31,
+                "tag": "select",
+                "paiRef": 29,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-gender",
+                  "name": "gender",
+                  "required": "",
+                  "value": ""
+                },
+                "valor": {
+                  "ref": "dados.cadastro.gender"
+                }
+              },
+              {
+                "id": 32,
+                "tag": "option",
+                "paiRef": 31,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "value": ""
+                },
+                "texto": "Selecionar"
+              },
+              {
+                "id": 33,
+                "tag": "option",
+                "paiRef": 31,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "value": "feminino"
+                },
+                "texto": "Feminino"
+              },
+              {
+                "id": 34,
+                "tag": "option",
+                "paiRef": 31,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {
+                  "value": "masculino"
+                },
+                "texto": "Masculino"
+              },
+              {
+                "id": 35,
+                "tag": "option",
+                "paiRef": 31,
+                "ordem": 3,
+                "estiloRefs": [],
+                "atributos": {
+                  "value": "nao-informar"
+                },
+                "texto": "Prefiro não informar"
+              },
+              {
+                "id": 36,
+                "tag": "label",
+                "paiRef": 13,
+                "ordem": 6,
+                "estiloRefs": [
+                  25,
+                  26,
+                  27,
+                  28,
+                  29,
+                  30
+                ],
+                "atributos": {
+                  "class": "upload-field"
+                }
+              },
+              {
+                "id": 37,
+                "tag": "span",
+                "paiRef": 36,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 38,
+                "tag": "strong",
+                "paiRef": 37,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Foto de perfil"
+              },
+              {
+                "id": 39,
+                "tag": "small",
+                "paiRef": 37,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Opcional · JPG ou PNG"
+              },
+              {
+                "id": 40,
+                "tag": "span",
+                "paiRef": 36,
+                "ordem": 1,
+                "estiloRefs": [
+                  31
+                ],
+                "atributos": {
+                  "class": "upload-button"
+                },
+                "texto": "Escolher foto"
+              },
+              {
+                "id": 41,
+                "tag": "input",
+                "paiRef": 36,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "reg-photo",
+                  "type": "file",
+                  "accept": "image/jpeg,image/png"
+                }
+              },
+              {
+                "id": 42,
+                "tag": "em",
+                "paiRef": 36,
+                "ordem": 3,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Nenhum arquivo selecionado"
+              },
+              {
+                "id": 43,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 7,
+                "estiloRefs": [
+                  22
+                ],
+                "atributos": {
+                  "class": "form-actions"
+                }
+              },
+              {
+                "id": 44,
+                "tag": "button",
+                "paiRef": 43,
+                "ordem": 0,
+                "estiloRefs": [
+                  23
+                ],
+                "atributos": {
+                  "class": "secondary-action",
+                  "type": "button"
+                },
+                "texto": "Voltar"
+              },
+              {
+                "id": 45,
+                "tag": "button",
+                "paiRef": 43,
+                "ordem": 1,
+                "estiloRefs": [
+                  5,
+                  54
+                ],
+                "atributos": {
+                  "class": "button",
+                  "type": "button"
+                },
+                "texto": "Continuar"
+              },
+              {
+                "id": 46,
+                "tag": "p",
+                "paiRef": 13,
+                "ordem": 8,
+                "estiloRefs": [
+                  13,
+                  24
+                ],
+                "atributos": {
+                  "class": "form-status",
+                  "aria-live": "polite"
+                }
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": "button,\ninput",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 4,
+                "seletor": ".eyebrow",
+                "declaracoes": "margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;"
+              },
+              {
+                "id": 5,
+                "seletor": ".button",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 6,
+                "seletor": ".field",
+                "declaracoes": "position: relative;\n  margin-bottom: 14px;"
+              },
+              {
+                "id": 7,
+                "seletor": ".field input",
+                "declaracoes": "width: 100%;\n  min-height: 57px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 14px 9px;\n  outline: 0;"
+              },
+              {
+                "id": 8,
+                "seletor": ".field label",
+                "declaracoes": "position: absolute;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;"
+              },
+              {
+                "id": 9,
+                "seletor": ".registration",
+                "declaracoes": "min-height: 100dvh;\n  background: var(--page);"
+              },
+              {
+                "id": 10,
+                "seletor": ".registration__shell",
+                "declaracoes": "width: min(100%, 620px);\n  margin: 0 auto;\n  padding: 24px 18px 48px;"
+              },
+              {
+                "id": 11,
+                "seletor": ".registration__intro",
+                "declaracoes": "margin: 2px 2px 18px;"
+              },
+              {
+                "id": 12,
+                "seletor": ".registration__intro h1,\n.registration--success h1",
+                "declaracoes": "margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;"
+              },
+              {
+                "id": 13,
+                "seletor": ".registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status)",
+                "declaracoes": "margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;"
+              },
+              {
+                "id": 14,
+                "seletor": ".progress",
+                "declaracoes": "height: 5px;\n  margin: 0 2px 18px;\n  overflow: hidden;\n  border-radius: 999px;\n  background: #dce4ed;"
+              },
+              {
+                "id": 15,
+                "seletor": ".progress span",
+                "declaracoes": "display: block;\n  height: 100%;\n  border-radius: inherit;\n  background: var(--gold);"
+              },
+              {
+                "id": 16,
+                "seletor": ".form-card",
+                "declaracoes": "padding: 18px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: var(--surface);"
+              },
+              {
+                "id": 17,
+                "seletor": ".form-card .field:last-of-type",
+                "declaracoes": "margin-bottom: 0;"
+              },
+              {
+                "id": 18,
+                "seletor": ".form-card .field input,\n.form-card .select-field select",
+                "declaracoes": "background: #fff;\n  color: var(--text);"
+              },
+              {
+                "id": 19,
+                "seletor": ".select-field",
+                "declaracoes": "position: relative;\n  margin-bottom: 14px;"
+              },
+              {
+                "id": 20,
+                "seletor": ".select-field label",
+                "declaracoes": "position: absolute;\n  z-index: 1;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;\n  pointer-events: none;"
+              },
+              {
+                "id": 21,
+                "seletor": ".select-field select",
+                "declaracoes": "width: 100%;\n  min-height: 57px;\n  appearance: auto;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 40px 9px 14px;\n  outline: 0;\n  cursor: pointer;"
+              },
+              {
+                "id": 22,
+                "seletor": ".form-actions",
+                "declaracoes": "display: grid;\n  grid-template-columns: minmax(96px, .7fr) 1.3fr;\n  gap: 10px;\n  margin-top: 20px;"
+              },
+              {
+                "id": 23,
+                "seletor": ".secondary-action",
+                "declaracoes": "min-height: 54px;\n  border: 1px solid var(--line);\n  border-radius: 13px;\n  padding: 14px 16px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 24,
+                "seletor": ".form-status",
+                "declaracoes": "min-height: 18px;\n  margin: 10px 0 0;\n  color: #9b2c2c;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 700;"
+              },
+              {
+                "id": 25,
+                "seletor": ".upload-field",
+                "declaracoes": "position: relative;\n  display: grid;\n  grid-template-columns: 1fr auto;\n  gap: 8px 12px;\n  align-items: center;\n  margin: 4px 0 14px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 13px 14px;\n  cursor: pointer;"
+              },
+              {
+                "id": 26,
+                "seletor": ".upload-field input",
+                "declaracoes": "position: absolute;\n  width: 1px;\n  height: 1px;\n  opacity: 0;\n  pointer-events: none;"
+              },
+              {
+                "id": 27,
+                "seletor": ".upload-field strong,\n.upload-field small,\n.upload-field em",
+                "declaracoes": "display: block;"
+              },
+              {
+                "id": 28,
+                "seletor": ".upload-field strong",
+                "declaracoes": "color: var(--primary);\n  font-size: 13px;"
+              },
+              {
+                "id": 29,
+                "seletor": ".upload-field small,\n.upload-field em",
+                "declaracoes": "color: var(--muted);\n  font-size: 10px;\n  font-style: normal;"
+              },
+              {
+                "id": 30,
+                "seletor": ".upload-field em",
+                "declaracoes": "grid-column: 1 / -1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;"
+              },
+              {
+                "id": 31,
+                "seletor": ".upload-button",
+                "declaracoes": "border-radius: 9px;\n  padding: 9px 10px;\n  background: #eef3f8;\n  color: var(--primary);\n  font-size: 11px;\n  font-weight: 800;"
+              },
+              {
+                "id": 32,
+                "bloco": "@media (min-width: 700px){.registration__shell{padding-top: 38px;\n    padding-bottom: 64px;}.form-card{padding: 26px;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.10);}}"
+              },
+              {
+                "id": 33,
+                "seletor": ".form-card textarea",
+                "declaracoes": "width:100%; min-height:118px; resize:vertical; border:1px solid var(--line); border-radius:12px; padding:24px 14px 12px; background:#fff; color:var(--text); font:inherit; line-height:1.5; outline:0;"
+              },
+              {
+                "id": 34,
+                "seletor": ".app-header",
+                "declaracoes": "position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);"
+              },
+              {
+                "id": 35,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 36,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 37,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 38,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 39,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 40,
+                "seletor": "button, input, select, textarea",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 41,
+                "seletor": "button",
+                "declaracoes": "-webkit-tap-highlight-color: transparent;"
+              },
+              {
+                "id": 42,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 43,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 44,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 45,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 46,
+                "seletor": "button",
+                "declaracoes": "cursor:pointer"
+              },
+              {
+                "id": 47,
+                "seletor": "button:disabled",
+                "declaracoes": "opacity:.55;cursor:not-allowed"
+              },
+              {
+                "id": 48,
+                "seletor": ".app-header",
+                "declaracoes": "background:#10233f;color:white;padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:800"
+              },
+              {
+                "id": 49,
+                "seletor": ".app-header img",
+                "declaracoes": "width:32px"
+              },
+              {
+                "id": 50,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 51,
+                "seletor": ".registration",
+                "declaracoes": "min-height:calc(100dvh - 64px)"
+              },
+              {
+                "id": 52,
+                "seletor": ".app-header",
+                "declaracoes": "gap:0"
+              },
+              {
+                "id": 53,
+                "seletor": ".app-header img",
+                "declaracoes": "margin-right:10px"
+              },
+              {
+                "id": 54,
+                "seletor": ".button:focus-visible,a:focus-visible",
+                "declaracoes": "outline:3px solid #b88932;outline-offset:3px"
+              },
+              {
+                "id": 55,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 56,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 57,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 44,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1000
+            }
+          ]
+        },
+        {
+          "id": 1001,
+          "origem": {
+            "elementoRef": 45,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1001
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 103,
+              "path": "/cadastro/tipo-conta",
+              "telaRef": "auth.cadastro.tipo_conta",
+              "origemCaminho": "referencia",
+              "nome": "Tipo de conta"
+            },
+            {
+              "id": 104,
+              "path": "/cadastro/dados-pessoais/identificacao",
+              "telaRef": "auth.cadastro.identificacao",
+              "origemCaminho": "referencia",
+              "nome": "Identificação"
+            },
+            {
+              "id": 105,
+              "path": "/cadastro/dados-pessoais/contato",
+              "telaRef": "auth.cadastro.contato",
+              "origemCaminho": "referencia",
+              "nome": "Contato"
+            }
+          ],
+          "entradas": [
+            {
+              "origemTelaRef": "auth.cadastro.tipo_conta",
+              "origemEstadoRef": 0,
+              "eventoRef": 1001,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 104
+            },
+            {
+              "origemTelaRef": "auth.cadastro.contato",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 104
+            }
+          ],
+          "saidas": [
+            {
+              "eventoRef": 1000,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 103,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            },
+            {
+              "eventoRef": 1001,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 105,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {},
+        "camposFormulario": [
+          {
+            "elementoRef": 15,
+            "campo": "name",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 18,
+            "campo": "surname",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 21,
+            "campo": "username",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 24,
+            "campo": "cpf",
+            "tipo": "text",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 27,
+            "campo": "birthday",
+            "tipo": "date",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 31,
+            "campo": "gender",
+            "tipo": "select",
+            "obrigatorio": true,
+            "persistir": true
+          },
+          {
+            "elementoRef": 41,
+            "campo": "campo",
+            "tipo": "file",
+            "obrigatorio": false,
+            "persistir": false
+          }
+        ]
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

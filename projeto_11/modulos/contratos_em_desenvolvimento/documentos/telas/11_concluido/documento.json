@@ -1,0 +1,557 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.cadastro.concluido": {
+      "identidade": {
+        "id": "auth.cadastro.concluido",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Cadastro concluído"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "cadastro"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "header",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  17,
+                  31,
+                  32,
+                  35,
+                  36
+                ],
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "img",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": 3,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 4,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 2,
+                "estiloRefs": [
+                  33
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              },
+              {
+                "id": 5,
+                "tag": "section",
+                "paiRef": 0,
+                "ordem": 1,
+                "estiloRefs": [
+                  6,
+                  8,
+                  9,
+                  13,
+                  15,
+                  34
+                ],
+                "atributos": {
+                  "class": "registration registration--success"
+                }
+              },
+              {
+                "id": 6,
+                "tag": "div",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [
+                  7,
+                  9,
+                  13
+                ],
+                "atributos": {
+                  "class": "registration__shell success-shell"
+                }
+              },
+              {
+                "id": 7,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 0,
+                "estiloRefs": [
+                  14
+                ],
+                "atributos": {
+                  "class": "success-mark",
+                  "aria-hidden": "true"
+                },
+                "texto": "✓"
+              },
+              {
+                "id": 8,
+                "tag": "p",
+                "paiRef": 6,
+                "ordem": 1,
+                "estiloRefs": [
+                  4,
+                  9
+                ],
+                "atributos": {
+                  "class": "eyebrow"
+                },
+                "texto": "Conta criada"
+              },
+              {
+                "id": 9,
+                "tag": "h1",
+                "paiRef": 6,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Dados pessoais concluídos"
+              },
+              {
+                "id": 10,
+                "tag": "p",
+                "paiRef": 6,
+                "ordem": 3,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 11,
+                "tag": "span",
+                "paiRef": 10,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "O cadastro comum está pronto. A partir daqui começa o onboarding específico do perfil "
+              },
+              {
+                "id": 12,
+                "tag": "strong",
+                "paiRef": 10,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": {
+                  "op": "if",
+                  "args": [
+                    {
+                      "ref": "dados.cadastro.accountTypeInline"
+                    },
+                    {
+                      "ref": "dados.cadastro.accountTypeInline"
+                    },
+                    "—"
+                  ]
+                }
+              },
+              {
+                "id": 13,
+                "tag": "span",
+                "paiRef": 10,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "."
+              },
+              {
+                "id": 14,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 4,
+                "estiloRefs": [
+                  10,
+                  11,
+                  15
+                ],
+                "atributos": {
+                  "class": "form-note"
+                },
+                "texto": "O onboarding específico será implementado na próxima etapa."
+              },
+              {
+                "id": 15,
+                "tag": "button",
+                "paiRef": 6,
+                "ordem": 5,
+                "estiloRefs": [
+                  5,
+                  37
+                ],
+                "atributos": {
+                  "class": "button",
+                  "type": "button"
+                },
+                "texto": "Ir para o acesso"
+              },
+              {
+                "id": 16,
+                "tag": "p",
+                "paiRef": 6,
+                "ordem": 6,
+                "estiloRefs": [
+                  9,
+                  12
+                ],
+                "atributos": {
+                  "class": "form-status",
+                  "aria-live": "polite"
+                }
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": "button,\ninput",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 4,
+                "seletor": ".eyebrow",
+                "declaracoes": "margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;"
+              },
+              {
+                "id": 5,
+                "seletor": ".button",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 6,
+                "seletor": ".registration",
+                "declaracoes": "min-height: 100dvh;\n  background: var(--page);"
+              },
+              {
+                "id": 7,
+                "seletor": ".registration__shell",
+                "declaracoes": "width: min(100%, 620px);\n  margin: 0 auto;\n  padding: 24px 18px 48px;"
+              },
+              {
+                "id": 8,
+                "seletor": ".registration__intro h1,\n.registration--success h1",
+                "declaracoes": "margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;"
+              },
+              {
+                "id": 9,
+                "seletor": ".registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status)",
+                "declaracoes": "margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;"
+              },
+              {
+                "id": 10,
+                "seletor": ".form-note",
+                "declaracoes": "display: flex;\n  gap: 8px;\n  margin: 16px 0 0;\n  border-radius: 12px;\n  padding: 12px 13px;\n  background: #f3f6fa;\n  color: var(--muted);\n  font-size: 11px;\n  line-height: 1.5;"
+              },
+              {
+                "id": 11,
+                "seletor": ".form-note strong",
+                "declaracoes": "flex: 0 0 auto;\n  color: var(--primary);"
+              },
+              {
+                "id": 12,
+                "seletor": ".form-status",
+                "declaracoes": "min-height: 18px;\n  margin: 10px 0 0;\n  color: #9b2c2c;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 700;"
+              },
+              {
+                "id": 13,
+                "seletor": ".registration--success .success-shell",
+                "declaracoes": "min-height: calc(100dvh - 64px);\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding-top: 36px;\n  padding-bottom: 60px;\n  text-align: center;"
+              },
+              {
+                "id": 14,
+                "seletor": ".success-mark",
+                "declaracoes": "display: grid;\n  width: 74px;\n  height: 74px;\n  margin: 0 auto 18px;\n  place-items: center;\n  border-radius: 50%;\n  background: var(--primary);\n  color: #fff;\n  font-size: 34px;\n  font-weight: 800;\n  box-shadow: 0 12px 28px rgba(16, 35, 63, .18);"
+              },
+              {
+                "id": 15,
+                "seletor": ".registration--success .form-note",
+                "declaracoes": "margin: 24px 0 18px;\n  text-align: left;"
+              },
+              {
+                "id": 16,
+                "bloco": "@media (min-width: 700px){.registration__shell{padding-top: 38px;\n    padding-bottom: 64px;}}"
+              },
+              {
+                "id": 17,
+                "seletor": ".app-header",
+                "declaracoes": "position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);"
+              },
+              {
+                "id": 18,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 19,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 20,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 21,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 22,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 23,
+                "seletor": "button, input, select, textarea",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 24,
+                "seletor": "button",
+                "declaracoes": "-webkit-tap-highlight-color: transparent;"
+              },
+              {
+                "id": 25,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 26,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 27,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 28,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 29,
+                "seletor": "button",
+                "declaracoes": "cursor:pointer"
+              },
+              {
+                "id": 30,
+                "seletor": "button:disabled",
+                "declaracoes": "opacity:.55;cursor:not-allowed"
+              },
+              {
+                "id": 31,
+                "seletor": ".app-header",
+                "declaracoes": "background:#10233f;color:white;padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:800"
+              },
+              {
+                "id": 32,
+                "seletor": ".app-header img",
+                "declaracoes": "width:32px"
+              },
+              {
+                "id": 33,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 34,
+                "seletor": ".registration",
+                "declaracoes": "min-height:calc(100dvh - 64px)"
+              },
+              {
+                "id": 35,
+                "seletor": ".app-header",
+                "declaracoes": "gap:0"
+              },
+              {
+                "id": 36,
+                "seletor": ".app-header img",
+                "declaracoes": "margin-right:10px"
+              },
+              {
+                "id": 37,
+                "seletor": ".button:focus-visible,a:focus-visible",
+                "declaracoes": "outline:3px solid #b88932;outline-offset:3px"
+              },
+              {
+                "id": 38,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 39,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 40,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 15,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1000
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 1,
+              "path": "/entrar",
+              "telaRef": "auth.sessao.entrar",
+              "origemCaminho": "referencia",
+              "nome": "Login"
+            },
+            {
+              "id": 109,
+              "path": "/cadastro/revisao",
+              "telaRef": "auth.cadastro.revisao",
+              "origemCaminho": "referencia",
+              "nome": "Revisão do cadastro"
+            },
+            {
+              "id": 110,
+              "path": "/cadastro/concluido",
+              "telaRef": "auth.cadastro.concluido",
+              "origemCaminho": "referencia",
+              "nome": "Cadastro concluído"
+            }
+          ],
+          "entradas": [
+            {
+              "origemTelaRef": "auth.cadastro.revisao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1004,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 110
+            }
+          ],
+          "saidas": [
+            {
+              "eventoRef": 1000,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 1,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {},
+        "camposFormulario": []
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

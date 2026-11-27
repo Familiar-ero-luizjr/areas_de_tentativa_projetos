@@ -1,0 +1,322 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.inicializacao.splash": {
+      "identidade": {
+        "id": "auth.inicializacao.splash",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Splash"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "acesso"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll",
+                  "aria-label": "Toque para continuar",
+                  "style": "cursor:pointer"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "section",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  5,
+                  6,
+                  7,
+                  8,
+                  19,
+                  22
+                ],
+                "atributos": {
+                  "class": "splash"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "div",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 3,
+                "tag": "div",
+                "paiRef": 2,
+                "ordem": 0,
+                "estiloRefs": [
+                  3,
+                  4,
+                  19
+                ],
+                "atributos": {
+                  "class": "mark"
+                }
+              },
+              {
+                "id": 4,
+                "tag": "img",
+                "paiRef": 3,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": "AdvogadoJáPlus"
+                }
+              },
+              {
+                "id": 5,
+                "tag": "h1",
+                "paiRef": 2,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 6,
+                "tag": "span",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 7,
+                "tag": "span",
+                "paiRef": 5,
+                "ordem": 1,
+                "estiloRefs": [
+                  18
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": ".mark",
+                "declaracoes": "display: grid;\n  width: 76px;\n  height: 76px;\n  margin: auto;\n  place-items: center;\n  border-radius: 24px;\n  background: var(--primary);\n  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);"
+              },
+              {
+                "id": 4,
+                "seletor": ".mark img",
+                "declaracoes": "width: 54%;\n  height: 54%;\n  object-fit: contain;"
+              },
+              {
+                "id": 5,
+                "seletor": ".splash",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 100dvh;\n  padding: 28px;\n  place-items: center;\n  color: #fff;\n  background: radial-gradient(\n    circle at 50% 20%,\n    #284e7d 0,\n    var(--primary) 48%,\n    #08172d 100%\n  );"
+              },
+              {
+                "id": 6,
+                "seletor": ".splash > div",
+                "declaracoes": "text-align: center;"
+              },
+              {
+                "id": 7,
+                "seletor": ".splash button",
+                "declaracoes": "border: 0;\n  background: transparent;\n  color: inherit;\n  cursor: pointer;\n  text-align: center;"
+              },
+              {
+                "id": 8,
+                "seletor": ".splash h1",
+                "declaracoes": "margin: 22px 0 0;\n  font-size: clamp(30px, 8vw, 46px);\n  line-height: 1;\n  letter-spacing: -0.04em;"
+              },
+              {
+                "id": 9,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 10,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 11,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 12,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 13,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 14,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 15,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 16,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 17,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 18,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 19,
+                "seletor": ".splash .mark",
+                "declaracoes": "background:#10233f"
+              },
+              {
+                "id": 20,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 21,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 22,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 0,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1000
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 100,
+              "path": "/",
+              "telaRef": "auth.inicializacao.splash",
+              "origemCaminho": "referencia",
+              "nome": "Splash"
+            },
+            {
+              "id": 101,
+              "path": "/boas-vindas",
+              "telaRef": "auth.inicializacao.boas_vindas",
+              "origemCaminho": "referencia",
+              "nome": "Boas-vindas"
+            }
+          ],
+          "entradas": [],
+          "saidas": [
+            {
+              "eventoRef": 1000,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 101,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "proposta: tocar para avançar (motor sem temporizador)"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {},
+        "camposFormulario": []
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

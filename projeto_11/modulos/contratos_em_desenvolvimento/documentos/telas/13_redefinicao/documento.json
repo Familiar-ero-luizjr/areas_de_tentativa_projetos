@@ -1,0 +1,539 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.sessao.redefinicao": {
+      "identidade": {
+        "id": "auth.sessao.redefinicao",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Redefinição de senha"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "acesso"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "header",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  7,
+                  22,
+                  23,
+                  28,
+                  29
+                ],
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "img",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": 3,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 4,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 2,
+                "estiloRefs": [
+                  24
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              },
+              {
+                "id": 5,
+                "tag": "main",
+                "paiRef": 0,
+                "ordem": 1,
+                "estiloRefs": [
+                  25,
+                  26,
+                  27
+                ],
+                "atributos": {
+                  "class": "simple"
+                }
+              },
+              {
+                "id": 6,
+                "tag": "p",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [
+                  5
+                ],
+                "atributos": {
+                  "class": "eyebrow"
+                },
+                "texto": "Recuperação de acesso"
+              },
+              {
+                "id": 7,
+                "tag": "h1",
+                "paiRef": 5,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Redefinir senha"
+              },
+              {
+                "id": 8,
+                "tag": "form",
+                "paiRef": 5,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {
+                  "novalidate": ""
+                }
+              },
+              {
+                "id": 9,
+                "tag": "label",
+                "paiRef": 8,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 10,
+                "tag": "span",
+                "paiRef": 9,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "Nova senha"
+              },
+              {
+                "id": 11,
+                "tag": "input",
+                "paiRef": 9,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "name": "password",
+                  "type": "password",
+                  "minlength": "8",
+                  "required": "",
+                  "autocomplete": "new-password"
+                }
+              },
+              {
+                "id": 12,
+                "tag": "label",
+                "paiRef": 8,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 13,
+                "tag": "span",
+                "paiRef": 12,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "Confirmar nova senha"
+              },
+              {
+                "id": 14,
+                "tag": "input",
+                "paiRef": 12,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "name": "confirm",
+                  "type": "password",
+                  "minlength": "8",
+                  "required": "",
+                  "autocomplete": "new-password"
+                }
+              },
+              {
+                "id": 15,
+                "tag": "button",
+                "paiRef": 8,
+                "ordem": 2,
+                "estiloRefs": [
+                  6,
+                  30
+                ],
+                "atributos": {
+                  "class": "button",
+                  "type": "button"
+                },
+                "texto": "Redefinir senha"
+              },
+              {
+                "id": 16,
+                "tag": "a",
+                "paiRef": 5,
+                "ordem": 3,
+                "estiloRefs": [],
+                "atributos": {
+                  "href": "/entrar"
+                },
+                "texto": "Voltar ao login"
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": "a",
+                "declaracoes": "color: inherit;\n  text-decoration: none;"
+              },
+              {
+                "id": 4,
+                "seletor": "button,\ninput",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 5,
+                "seletor": ".eyebrow",
+                "declaracoes": "margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;"
+              },
+              {
+                "id": 6,
+                "seletor": ".button",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 7,
+                "seletor": ".app-header",
+                "declaracoes": "position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);"
+              },
+              {
+                "id": 8,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 9,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 10,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 11,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 12,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 13,
+                "seletor": "button, input, select, textarea",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 14,
+                "seletor": "button",
+                "declaracoes": "-webkit-tap-highlight-color: transparent;"
+              },
+              {
+                "id": 15,
+                "seletor": "a",
+                "declaracoes": "color: inherit; text-decoration: none;"
+              },
+              {
+                "id": 16,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 17,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 18,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 19,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 20,
+                "seletor": "button",
+                "declaracoes": "cursor:pointer"
+              },
+              {
+                "id": 21,
+                "seletor": "button:disabled",
+                "declaracoes": "opacity:.55;cursor:not-allowed"
+              },
+              {
+                "id": 22,
+                "seletor": ".app-header",
+                "declaracoes": "background:#10233f;color:white;padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:800"
+              },
+              {
+                "id": 23,
+                "seletor": ".app-header img",
+                "declaracoes": "width:32px"
+              },
+              {
+                "id": 24,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 25,
+                "seletor": ".simple",
+                "declaracoes": "max-width:520px;margin:32px auto;padding:24px;background:white;border-radius:16px"
+              },
+              {
+                "id": 26,
+                "seletor": ".simple input",
+                "declaracoes": "width:100%;padding:14px;border:1px solid #dbe3ee;border-radius:10px;margin:8px 0 16px"
+              },
+              {
+                "id": 27,
+                "seletor": ".simple a",
+                "declaracoes": "display:block;margin-top:16px"
+              },
+              {
+                "id": 28,
+                "seletor": ".app-header",
+                "declaracoes": "gap:0"
+              },
+              {
+                "id": 29,
+                "seletor": ".app-header img",
+                "declaracoes": "margin-right:10px"
+              },
+              {
+                "id": 30,
+                "seletor": ".button:focus-visible,a:focus-visible",
+                "declaracoes": "outline:3px solid #b88932;outline-offset:3px"
+              },
+              {
+                "id": 31,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 32,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 33,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 15,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1000
+            }
+          ]
+        },
+        {
+          "id": 1001,
+          "origem": {
+            "elementoRef": 16,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1001
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 1,
+              "path": "/entrar",
+              "telaRef": "auth.sessao.entrar",
+              "origemCaminho": "referencia",
+              "nome": "Login"
+            },
+            {
+              "id": 111,
+              "path": "/esqueceu-senha",
+              "telaRef": "auth.sessao.recuperacao",
+              "origemCaminho": "referencia",
+              "nome": "Recuperação de senha"
+            },
+            {
+              "id": 112,
+              "path": "/redefinir-senha",
+              "telaRef": "auth.sessao.redefinicao",
+              "origemCaminho": "referencia",
+              "nome": "Redefinição de senha"
+            }
+          ],
+          "entradas": [
+            {
+              "origemTelaRef": "auth.sessao.recuperacao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 112
+            }
+          ],
+          "saidas": [
+            {
+              "eventoRef": 1000,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 1,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "proposta: redefinição simulada"
+            },
+            {
+              "eventoRef": 1001,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 1,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {},
+        "camposFormulario": [
+          {
+            "elementoRef": 11,
+            "campo": "password",
+            "tipo": "password",
+            "obrigatorio": true,
+            "persistir": false
+          },
+          {
+            "elementoRef": 14,
+            "campo": "confirm",
+            "tipo": "password",
+            "obrigatorio": true,
+            "persistir": false
+          }
+        ]
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

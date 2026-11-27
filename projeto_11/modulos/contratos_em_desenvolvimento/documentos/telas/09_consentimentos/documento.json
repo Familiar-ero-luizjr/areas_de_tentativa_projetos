@@ -1,0 +1,894 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.cadastro.consentimentos": {
+      "identidade": {
+        "id": "auth.cadastro.consentimentos",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Termos e privacidade"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "cadastro"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "header",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  28,
+                  42,
+                  43,
+                  46,
+                  47
+                ],
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "img",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": 3,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 4,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 2,
+                "estiloRefs": [
+                  44
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              },
+              {
+                "id": 5,
+                "tag": "section",
+                "paiRef": 0,
+                "ordem": 1,
+                "estiloRefs": [
+                  6,
+                  45
+                ],
+                "atributos": {
+                  "class": "registration"
+                }
+              },
+              {
+                "id": 6,
+                "tag": "div",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [
+                  7,
+                  10
+                ],
+                "atributos": {
+                  "class": "registration__shell"
+                }
+              },
+              {
+                "id": 7,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 0,
+                "estiloRefs": [
+                  8,
+                  9,
+                  10
+                ],
+                "atributos": {
+                  "class": "registration__intro"
+                }
+              },
+              {
+                "id": 8,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 0,
+                "estiloRefs": [
+                  4,
+                  10
+                ],
+                "atributos": {
+                  "class": "eyebrow"
+                },
+                "texto": "Consentimentos"
+              },
+              {
+                "id": 9,
+                "tag": "h1",
+                "paiRef": 7,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Termos e privacidade"
+              },
+              {
+                "id": 10,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Antes de criar a conta, confirme a leitura dos documentos legais."
+              },
+              {
+                "id": 11,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 1,
+                "estiloRefs": [
+                  11,
+                  12
+                ],
+                "atributos": {
+                  "class": "progress",
+                  "aria-label": "Etapa 6 de 7"
+                }
+              },
+              {
+                "id": 12,
+                "tag": "span",
+                "paiRef": 11,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "style": "width:85.71%"
+                }
+              },
+              {
+                "id": 13,
+                "tag": "form",
+                "paiRef": 6,
+                "ordem": 2,
+                "estiloRefs": [
+                  13,
+                  27
+                ],
+                "atributos": {
+                  "class": "form-card",
+                  "novalidate": ""
+                }
+              },
+              {
+                "id": 14,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 0,
+                "estiloRefs": [
+                  19
+                ],
+                "atributos": {
+                  "class": "legal-links"
+                }
+              },
+              {
+                "id": 15,
+                "tag": "button",
+                "paiRef": 14,
+                "ordem": 0,
+                "estiloRefs": [
+                  20,
+                  21,
+                  22,
+                  23
+                ],
+                "atributos": {
+                  "type": "button",
+                  "class": "legal-link"
+                }
+              },
+              {
+                "id": 16,
+                "tag": "span",
+                "paiRef": 15,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 17,
+                "tag": "strong",
+                "paiRef": 16,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Termos de Uso"
+              },
+              {
+                "id": 18,
+                "tag": "small",
+                "paiRef": 16,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Consultar documento"
+              },
+              {
+                "id": 19,
+                "tag": "b",
+                "paiRef": 15,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "›"
+              },
+              {
+                "id": 20,
+                "tag": "button",
+                "paiRef": 14,
+                "ordem": 1,
+                "estiloRefs": [
+                  20,
+                  21,
+                  22,
+                  23
+                ],
+                "atributos": {
+                  "type": "button",
+                  "class": "legal-link"
+                }
+              },
+              {
+                "id": 21,
+                "tag": "span",
+                "paiRef": 20,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {}
+              },
+              {
+                "id": 22,
+                "tag": "strong",
+                "paiRef": 21,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Política de Privacidade"
+              },
+              {
+                "id": 23,
+                "tag": "small",
+                "paiRef": 21,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Consultar documento"
+              },
+              {
+                "id": 24,
+                "tag": "b",
+                "paiRef": 20,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "›"
+              },
+              {
+                "id": 25,
+                "tag": "label",
+                "paiRef": 13,
+                "ordem": 1,
+                "estiloRefs": [
+                  24,
+                  25
+                ],
+                "atributos": {
+                  "class": "check-row"
+                }
+              },
+              {
+                "id": 26,
+                "tag": "input",
+                "paiRef": 25,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "type": "checkbox",
+                  "name": "legalAccepted",
+                  "required": "",
+                  "checked": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "ref": "dados.cadastro.legalAccepted"
+                      },
+                      true
+                    ]
+                  }
+                }
+              },
+              {
+                "id": 27,
+                "tag": "span",
+                "paiRef": 25,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Li e aceito os Termos de Uso e a Política de Privacidade."
+              },
+              {
+                "id": 28,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 2,
+                "estiloRefs": [
+                  14,
+                  15
+                ],
+                "atributos": {
+                  "class": "form-note"
+                }
+              },
+              {
+                "id": 29,
+                "tag": "strong",
+                "paiRef": 28,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Registro de aceite"
+              },
+              {
+                "id": 30,
+                "tag": "span",
+                "paiRef": 28,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "A versão do documento e a data do aceite serão registradas pelo sistema. Consentimento de localização e preferências de comunicação pertencem ao onboarding."
+              },
+              {
+                "id": 31,
+                "tag": "div",
+                "paiRef": 13,
+                "ordem": 3,
+                "estiloRefs": [
+                  16
+                ],
+                "atributos": {
+                  "class": "form-actions"
+                }
+              },
+              {
+                "id": 32,
+                "tag": "button",
+                "paiRef": 31,
+                "ordem": 0,
+                "estiloRefs": [
+                  17
+                ],
+                "atributos": {
+                  "class": "secondary-action",
+                  "type": "button"
+                },
+                "texto": "Voltar"
+              },
+              {
+                "id": 33,
+                "tag": "button",
+                "paiRef": 31,
+                "ordem": 1,
+                "estiloRefs": [
+                  5,
+                  48
+                ],
+                "atributos": {
+                  "class": "button",
+                  "type": "button"
+                },
+                "texto": "Revisar cadastro"
+              },
+              {
+                "id": 34,
+                "tag": "p",
+                "paiRef": 13,
+                "ordem": 4,
+                "estiloRefs": [
+                  10,
+                  18
+                ],
+                "atributos": {
+                  "class": "form-status",
+                  "aria-live": "polite"
+                }
+              },
+              {
+                "id": 35,
+                "tag": "p",
+                "paiRef": 0,
+                "ordem": 999,
+                "estiloRefs": [],
+                "atributos": {
+                  "role": "status",
+                  "style": "padding:12px"
+                },
+                "texto": {
+                  "ref": "local.aviso"
+                },
+                "visivelQuando": {
+                  "ref": "local.aviso"
+                }
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": "button,\ninput",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 4,
+                "seletor": ".eyebrow",
+                "declaracoes": "margin: 0 0 10px;\n  color: var(--gold);\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;"
+              },
+              {
+                "id": 5,
+                "seletor": ".button",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 6,
+                "seletor": ".registration",
+                "declaracoes": "min-height: 100dvh;\n  background: var(--page);"
+              },
+              {
+                "id": 7,
+                "seletor": ".registration__shell",
+                "declaracoes": "width: min(100%, 620px);\n  margin: 0 auto;\n  padding: 24px 18px 48px;"
+              },
+              {
+                "id": 8,
+                "seletor": ".registration__intro",
+                "declaracoes": "margin: 2px 2px 18px;"
+              },
+              {
+                "id": 9,
+                "seletor": ".registration__intro h1,\n.registration--success h1",
+                "declaracoes": "margin: 0;\n  color: var(--primary);\n  font-size: clamp(25px, 7vw, 34px);\n  line-height: 1.12;\n  letter-spacing: -0.025em;"
+              },
+              {
+                "id": 10,
+                "seletor": ".registration__intro > p:not(.eyebrow),\n.registration--success > .registration__shell > p:not(.eyebrow):not(.form-status)",
+                "declaracoes": "margin: 10px 0 0;\n  color: var(--muted);\n  font-size: 14px;\n  line-height: 1.58;"
+              },
+              {
+                "id": 11,
+                "seletor": ".progress",
+                "declaracoes": "height: 5px;\n  margin: 0 2px 18px;\n  overflow: hidden;\n  border-radius: 999px;\n  background: #dce4ed;"
+              },
+              {
+                "id": 12,
+                "seletor": ".progress span",
+                "declaracoes": "display: block;\n  height: 100%;\n  border-radius: inherit;\n  background: var(--gold);"
+              },
+              {
+                "id": 13,
+                "seletor": ".form-card",
+                "declaracoes": "padding: 18px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: var(--surface);"
+              },
+              {
+                "id": 14,
+                "seletor": ".form-note",
+                "declaracoes": "display: flex;\n  gap: 8px;\n  margin: 16px 0 0;\n  border-radius: 12px;\n  padding: 12px 13px;\n  background: #f3f6fa;\n  color: var(--muted);\n  font-size: 11px;\n  line-height: 1.5;"
+              },
+              {
+                "id": 15,
+                "seletor": ".form-note strong",
+                "declaracoes": "flex: 0 0 auto;\n  color: var(--primary);"
+              },
+              {
+                "id": 16,
+                "seletor": ".form-actions",
+                "declaracoes": "display: grid;\n  grid-template-columns: minmax(96px, .7fr) 1.3fr;\n  gap: 10px;\n  margin-top: 20px;"
+              },
+              {
+                "id": 17,
+                "seletor": ".secondary-action",
+                "declaracoes": "min-height: 54px;\n  border: 1px solid var(--line);\n  border-radius: 13px;\n  padding: 14px 16px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 18,
+                "seletor": ".form-status",
+                "declaracoes": "min-height: 18px;\n  margin: 10px 0 0;\n  color: #9b2c2c;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 700;"
+              },
+              {
+                "id": 19,
+                "seletor": ".legal-links",
+                "declaracoes": "display: grid;\n  gap: 8px;\n  margin-bottom: 14px;"
+              },
+              {
+                "id": 20,
+                "seletor": ".legal-link",
+                "declaracoes": "display: flex;\n  width: 100%;\n  align-items: center;\n  justify-content: space-between;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 13px 14px;\n  background: #fff;\n  color: var(--primary);\n  text-align: left;\n  cursor: pointer;"
+              },
+              {
+                "id": 21,
+                "seletor": ".legal-link strong,\n.legal-link small",
+                "declaracoes": "display: block;"
+              },
+              {
+                "id": 22,
+                "seletor": ".legal-link small",
+                "declaracoes": "margin-top: 3px;\n  color: var(--muted);\n  font-size: 10px;\n  font-weight: 500;"
+              },
+              {
+                "id": 23,
+                "seletor": ".legal-link b",
+                "declaracoes": "font-size: 22px;\n  font-weight: 500;"
+              },
+              {
+                "id": 24,
+                "seletor": ".check-row",
+                "declaracoes": "display: grid;\n  grid-template-columns: auto 1fr;\n  gap: 10px;\n  align-items: start;\n  color: var(--text);\n  font-size: 12px;\n  line-height: 1.5;\n  cursor: pointer;"
+              },
+              {
+                "id": 25,
+                "seletor": ".check-row input",
+                "declaracoes": "width: 18px;\n  height: 18px;\n  margin: 1px 0 0;\n  accent-color: var(--primary);"
+              },
+              {
+                "id": 26,
+                "bloco": "@media (min-width: 700px){.registration__shell{padding-top: 38px;\n    padding-bottom: 64px;}.form-card{padding: 26px;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.10);}}"
+              },
+              {
+                "id": 27,
+                "seletor": ".form-card textarea",
+                "declaracoes": "width:100%; min-height:118px; resize:vertical; border:1px solid var(--line); border-radius:12px; padding:24px 14px 12px; background:#fff; color:var(--text); font:inherit; line-height:1.5; outline:0;"
+              },
+              {
+                "id": 28,
+                "seletor": ".app-header",
+                "declaracoes": "position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);"
+              },
+              {
+                "id": 29,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 30,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 31,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 32,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 33,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 34,
+                "seletor": "button, input, select, textarea",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 35,
+                "seletor": "button",
+                "declaracoes": "-webkit-tap-highlight-color: transparent;"
+              },
+              {
+                "id": 36,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 37,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 38,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 39,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 40,
+                "seletor": "button",
+                "declaracoes": "cursor:pointer"
+              },
+              {
+                "id": 41,
+                "seletor": "button:disabled",
+                "declaracoes": "opacity:.55;cursor:not-allowed"
+              },
+              {
+                "id": 42,
+                "seletor": ".app-header",
+                "declaracoes": "background:#10233f;color:white;padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:800"
+              },
+              {
+                "id": 43,
+                "seletor": ".app-header img",
+                "declaracoes": "width:32px"
+              },
+              {
+                "id": 44,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 45,
+                "seletor": ".registration",
+                "declaracoes": "min-height:calc(100dvh - 64px)"
+              },
+              {
+                "id": 46,
+                "seletor": ".app-header",
+                "declaracoes": "gap:0"
+              },
+              {
+                "id": 47,
+                "seletor": ".app-header img",
+                "declaracoes": "margin-right:10px"
+              },
+              {
+                "id": 48,
+                "seletor": ".button:focus-visible,a:focus-visible",
+                "declaracoes": "outline:3px solid #b88932;outline-offset:3px"
+              },
+              {
+                "id": 49,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 50,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 51,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 15,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "definir",
+              "campo": "local.aviso",
+              "valor": "Consulta: Termos de Uso — conteúdo integral não fornecido nesta fonte."
+            }
+          ]
+        },
+        {
+          "id": 1001,
+          "origem": {
+            "elementoRef": 20,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "definir",
+              "campo": "local.aviso",
+              "valor": "Consulta: Política de Privacidade — conteúdo integral não fornecido nesta fonte."
+            }
+          ]
+        },
+        {
+          "id": 1002,
+          "origem": {
+            "elementoRef": 32,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1002
+            }
+          ]
+        },
+        {
+          "id": 1003,
+          "origem": {
+            "elementoRef": 33,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1003
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 107,
+              "path": "/cadastro/acesso-seguranca",
+              "telaRef": "auth.cadastro.seguranca",
+              "origemCaminho": "referencia",
+              "nome": "Acesso e segurança"
+            },
+            {
+              "id": 108,
+              "path": "/cadastro/termos-privacidade",
+              "telaRef": "auth.cadastro.consentimentos",
+              "origemCaminho": "referencia",
+              "nome": "Termos e privacidade"
+            },
+            {
+              "id": 109,
+              "path": "/cadastro/revisao",
+              "telaRef": "auth.cadastro.revisao",
+              "origemCaminho": "referencia",
+              "nome": "Revisão do cadastro"
+            }
+          ],
+          "entradas": [
+            {
+              "origemTelaRef": "auth.cadastro.seguranca",
+              "origemEstadoRef": 0,
+              "eventoRef": 1001,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 108
+            },
+            {
+              "origemTelaRef": "auth.cadastro.revisao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1003,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 108
+            }
+          ],
+          "saidas": [
+            {
+              "eventoRef": 1002,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 107,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            },
+            {
+              "eventoRef": 1003,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 109,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {
+          "aviso": ""
+        },
+        "camposFormulario": [
+          {
+            "elementoRef": 26,
+            "campo": "legalAccepted",
+            "tipo": "checkbox",
+            "obrigatorio": true,
+            "persistir": true
+          }
+        ]
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

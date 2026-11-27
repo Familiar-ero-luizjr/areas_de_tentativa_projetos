@@ -1,0 +1,1793 @@
+{
+  "schema": "advogadoja.tela.autocontidas",
+  "schemaVersion": "0.5.0-experimental",
+  "telas": {
+    "auth.sessao.entrar": {
+      "identidade": {
+        "id": "auth.sessao.entrar",
+        "tipo": "tela",
+        "namespace": "auth",
+        "nome": "Login"
+      },
+      "classificacao": {
+        "perfilRef": "comum",
+        "jornadas": [
+          {
+            "id": "auth",
+            "subjornadas": [
+              {
+                "id": "acesso"
+              }
+            ]
+          }
+        ]
+      },
+      "estrutura": [
+        {
+          "id": 0,
+          "html": {
+            "raizRef": 0,
+            "elementos": [
+              {
+                "id": 0,
+                "tag": "div",
+                "paiRef": null,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-root screen-scroll"
+                }
+              },
+              {
+                "id": 1,
+                "tag": "header",
+                "paiRef": 0,
+                "ordem": 0,
+                "estiloRefs": [
+                  27,
+                  42,
+                  43,
+                  45,
+                  46
+                ],
+                "atributos": {
+                  "class": "app-header"
+                }
+              },
+              {
+                "id": 2,
+                "tag": "img",
+                "paiRef": 1,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": ""
+                }
+              },
+              {
+                "id": 3,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "AdvogadoJá"
+              },
+              {
+                "id": 4,
+                "tag": "span",
+                "paiRef": 1,
+                "ordem": 2,
+                "estiloRefs": [
+                  44
+                ],
+                "atributos": {
+                  "class": "plus"
+                },
+                "texto": "Plus"
+              },
+              {
+                "id": 5,
+                "tag": "section",
+                "paiRef": 0,
+                "ordem": 1,
+                "estiloRefs": [
+                  8,
+                  12
+                ],
+                "atributos": {
+                  "class": "login"
+                }
+              },
+              {
+                "id": 6,
+                "tag": "div",
+                "paiRef": 5,
+                "ordem": 0,
+                "estiloRefs": [
+                  9
+                ],
+                "atributos": {
+                  "class": "login__shell"
+                }
+              },
+              {
+                "id": 7,
+                "tag": "div",
+                "paiRef": 6,
+                "ordem": 0,
+                "estiloRefs": [
+                  10,
+                  11,
+                  13
+                ],
+                "atributos": {
+                  "class": "login__brand"
+                }
+              },
+              {
+                "id": 8,
+                "tag": "div",
+                "paiRef": 7,
+                "ordem": 0,
+                "estiloRefs": [
+                  5,
+                  6,
+                  11
+                ],
+                "atributos": {
+                  "class": "mark"
+                }
+              },
+              {
+                "id": 9,
+                "tag": "img",
+                "paiRef": 8,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUiPg0KICA8dGl0bGUgaWQ9InRpdGxlIj5Tw61tYm9sbyBBZHZvZ2Fkb0rDoTwvdGl0bGU+DQogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTUwIDdDMzQuOCA3IDIzIDE4LjcgMjMgMzQuMmMwIDE3IDI3IDQ2LjggMjcgNDYuOHMyNy0yOS44IDI3LTQ2LjhDNzcgMTguNyA2NS4yIDcgNTAgN1oiLz4NCiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjM0IiByPSI5LjMiLz4NCiAgICA8cGF0aCBkPSJNMjggNjAuNUMxNS4xIDY0LjEgOCA3MC4yIDggNzcuMiA4IDg4LjYgMjYuOCA5NyA1MCA5N3M0Mi04LjQgNDItMTkuOGMwLTctNy4xLTEzLjEtMjAtMTYuNyIvPg0KICAgIDxwYXRoIGQ9Ik0zNS41IDY4LjJDMjcgNzAuNCAyMiA3NCAyMiA3OGMwIDYgMTIuNSAxMC41IDI4IDEwLjVTNzggODQgNzggNzhjMC00LTUtNy42LTEzLjUtOS44Ii8+DQogIDwvZz4NCjwvc3ZnPg0K",
+                  "alt": "AdvogadoJáPlus"
+                }
+              },
+              {
+                "id": 10,
+                "tag": "h1",
+                "paiRef": 7,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Entre na sua conta"
+              },
+              {
+                "id": 11,
+                "tag": "p",
+                "paiRef": 7,
+                "ordem": 2,
+                "estiloRefs": [],
+                "atributos": {},
+                "texto": "Acesse sua jornada na plataforma."
+              },
+              {
+                "id": 12,
+                "tag": "form",
+                "paiRef": 6,
+                "ordem": 1,
+                "estiloRefs": [
+                  14
+                ],
+                "atributos": {
+                  "class": "card",
+                  "id": "login-form",
+                  "novalidate": ""
+                }
+              },
+              {
+                "id": 13,
+                "tag": "div",
+                "paiRef": 12,
+                "ordem": 0,
+                "estiloRefs": [
+                  15,
+                  16,
+                  17
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 14,
+                "tag": "input",
+                "paiRef": 13,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "email",
+                  "type": "email",
+                  "placeholder": " ",
+                  "required": "",
+                  "name": "email",
+                  "autocomplete": "email"
+                }
+              },
+              {
+                "id": 15,
+                "tag": "label",
+                "paiRef": 13,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "email"
+                },
+                "texto": "E-mail"
+              },
+              {
+                "id": 16,
+                "tag": "div",
+                "paiRef": 12,
+                "ordem": 1,
+                "estiloRefs": [
+                  15,
+                  16,
+                  17
+                ],
+                "atributos": {
+                  "class": "field"
+                }
+              },
+              {
+                "id": 17,
+                "tag": "input",
+                "paiRef": 16,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "id": "password",
+                  "type": "password",
+                  "placeholder": " ",
+                  "required": "",
+                  "name": "password",
+                  "autocomplete": "current-password"
+                }
+              },
+              {
+                "id": 18,
+                "tag": "label",
+                "paiRef": 16,
+                "ordem": 1,
+                "estiloRefs": [],
+                "atributos": {
+                  "for": "password"
+                },
+                "texto": "Senha"
+              },
+              {
+                "id": 19,
+                "tag": "a",
+                "paiRef": 12,
+                "ordem": 2,
+                "estiloRefs": [
+                  18
+                ],
+                "atributos": {
+                  "class": "help",
+                  "href": "/esqueceu-senha"
+                },
+                "texto": "Esqueci minha senha"
+              },
+              {
+                "id": 20,
+                "tag": "button",
+                "paiRef": 12,
+                "ordem": 3,
+                "estiloRefs": [
+                  7,
+                  47
+                ],
+                "atributos": {
+                  "class": "button",
+                  "type": "button"
+                },
+                "texto": "Entrar"
+              },
+              {
+                "id": 21,
+                "tag": "div",
+                "paiRef": 12,
+                "ordem": 4,
+                "estiloRefs": [
+                  19,
+                  20
+                ],
+                "atributos": {
+                  "class": "divider"
+                },
+                "texto": "ou"
+              },
+              {
+                "id": 22,
+                "tag": "button",
+                "paiRef": 12,
+                "ordem": 5,
+                "estiloRefs": [
+                  21
+                ],
+                "atributos": {
+                  "class": "secondary",
+                  "type": "button",
+                  "disabled": "",
+                  "title": "Login social não habilitado nesta versão"
+                },
+                "texto": "Continuar com Google"
+              },
+              {
+                "id": 23,
+                "tag": "button",
+                "paiRef": 12,
+                "ordem": 6,
+                "estiloRefs": [
+                  21
+                ],
+                "atributos": {
+                  "class": "secondary",
+                  "type": "button",
+                  "disabled": "",
+                  "title": "Login social não habilitado nesta versão"
+                },
+                "texto": "Continuar com Apple"
+              },
+              {
+                "id": 24,
+                "tag": "p",
+                "paiRef": 12,
+                "ordem": 7,
+                "estiloRefs": [
+                  22,
+                  23
+                ],
+                "atributos": {
+                  "class": "signup"
+                }
+              },
+              {
+                "id": 25,
+                "tag": "span",
+                "paiRef": 24,
+                "ordem": 0,
+                "estiloRefs": [],
+                "atributos": {
+                  "class": "auth-text"
+                },
+                "texto": "Ainda não tem conta? "
+              },
+              {
+                "id": 26,
+                "tag": "button",
+                "paiRef": 24,
+                "ordem": 1,
+                "estiloRefs": [
+                  26
+                ],
+                "atributos": {
+                  "class": "link-button",
+                  "type": "button"
+                },
+                "texto": "Criar uma conta"
+              },
+              {
+                "id": 27,
+                "tag": "p",
+                "paiRef": 12,
+                "ordem": 8,
+                "estiloRefs": [
+                  24
+                ],
+                "atributos": {
+                  "class": "status",
+                  "aria-live": "polite"
+                }
+              }
+            ],
+            "composicao": []
+          },
+          "css": {
+            "tokens": {},
+            "regras": [
+              {
+                "id": 0,
+                "seletor": ":root",
+                "declaracoes": "--primary: #10233f;\n  --primary-soft: #173c6b;\n  --gold: #b88932;\n  --page: #eef2f6;\n  --surface: #fff;\n  --line: #dbe3ee;\n  --text: #172033;\n  --muted: #667085;\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 1,
+                "seletor": "*",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 2,
+                "seletor": "body",
+                "declaracoes": "min-width: 320px;\n  min-height: 100dvh;\n  margin: 0;\n  background: var(--page);\n  color: var(--text);"
+              },
+              {
+                "id": 3,
+                "seletor": "a",
+                "declaracoes": "color: inherit;\n  text-decoration: none;"
+              },
+              {
+                "id": 4,
+                "seletor": "button,\ninput",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 5,
+                "seletor": ".mark",
+                "declaracoes": "display: grid;\n  width: 76px;\n  height: 76px;\n  margin: auto;\n  place-items: center;\n  border-radius: 24px;\n  background: var(--primary);\n  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);"
+              },
+              {
+                "id": 6,
+                "seletor": ".mark img",
+                "declaracoes": "width: 54%;\n  height: 54%;\n  object-fit: contain;"
+              },
+              {
+                "id": 7,
+                "seletor": ".button",
+                "declaracoes": "display: grid;\n  width: 100%;\n  min-height: 54px;\n  place-items: center;\n  border: 0;\n  border-radius: 13px;\n  padding: 14px 18px;\n  background: var(--primary);\n  color: #fff;\n  font-size: 14px;\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 8,
+                "seletor": ".login",
+                "declaracoes": "min-height: 100dvh;\n  background: var(--page);"
+              },
+              {
+                "id": 9,
+                "seletor": ".login__shell",
+                "declaracoes": "width: min(100%, 520px);\n  margin: auto;\n  padding: 28px 20px 48px;"
+              },
+              {
+                "id": 10,
+                "seletor": ".login__brand",
+                "declaracoes": "margin: 8px 0 24px;\n  text-align: center;"
+              },
+              {
+                "id": 11,
+                "seletor": ".login__brand .mark",
+                "declaracoes": "width: 64px;\n  height: 64px;\n  margin: 0 auto 16px;\n  border-radius: 21px;"
+              },
+              {
+                "id": 12,
+                "seletor": ".login h1",
+                "declaracoes": "margin: 0;\n  color: var(--primary);\n  font-size: 27px;"
+              },
+              {
+                "id": 13,
+                "seletor": ".login__brand p",
+                "declaracoes": "margin: 8px 0 0;\n  color: var(--muted);\n  font-size: 14px;"
+              },
+              {
+                "id": 14,
+                "seletor": ".card",
+                "declaracoes": "padding: 20px;\n  border: 1px solid var(--line);\n  border-radius: 18px;\n  background: #fff;"
+              },
+              {
+                "id": 15,
+                "seletor": ".field",
+                "declaracoes": "position: relative;\n  margin-bottom: 14px;"
+              },
+              {
+                "id": 16,
+                "seletor": ".field input",
+                "declaracoes": "width: 100%;\n  min-height: 57px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 22px 14px 9px;\n  outline: 0;"
+              },
+              {
+                "id": 17,
+                "seletor": ".field label",
+                "declaracoes": "position: absolute;\n  top: 8px;\n  left: 14px;\n  color: var(--primary);\n  font-size: 10px;\n  font-weight: 800;"
+              },
+              {
+                "id": 18,
+                "seletor": ".help",
+                "declaracoes": "display: inline-block;\n  margin: 2px 0 14px;\n  color: var(--primary);\n  font-size: 13px;\n  font-weight: 800;"
+              },
+              {
+                "id": 19,
+                "seletor": ".divider",
+                "declaracoes": "display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 20px 0 12px;\n  color: var(--muted);\n  font-size: 12px;"
+              },
+              {
+                "id": 20,
+                "seletor": ".divider::before,\n.divider::after",
+                "declaracoes": "height: 1px;\n  flex: 1;\n  background: var(--line);\n  content: \"\";"
+              },
+              {
+                "id": 21,
+                "seletor": ".secondary",
+                "declaracoes": "width: 100%;\n  min-height: 50px;\n  margin-top: 9px;\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  background: #fff;\n  color: var(--primary);\n  font-weight: 800;"
+              },
+              {
+                "id": 22,
+                "seletor": ".signup",
+                "declaracoes": "margin: 20px 0 0;\n  color: var(--muted);\n  text-align: center;\n  font-size: 13px;"
+              },
+              {
+                "id": 23,
+                "seletor": ".signup a",
+                "declaracoes": "color: var(--primary);\n  font-weight: 800;"
+              },
+              {
+                "id": 24,
+                "seletor": ".status",
+                "declaracoes": "min-height: 20px;\n  margin: 12px 0 0;\n  color: var(--primary);\n  text-align: center;\n  font-size: 12px;\n  font-weight: 700;"
+              },
+              {
+                "id": 25,
+                "bloco": "@media (min-width: 700px){.login__shell{padding-top: 54px;}.card{padding: 28px;\n    box-shadow: 0 12px 36px rgba(16, 35, 63, 0.14);}}"
+              },
+              {
+                "id": 26,
+                "seletor": ".link-button",
+                "declaracoes": "border: 0;\n  padding: 0;\n  background: transparent;\n  color: var(--primary);\n  font-weight: 800;\n  cursor: pointer;"
+              },
+              {
+                "id": 27,
+                "seletor": ".app-header",
+                "declaracoes": "position: sticky;\n  top: 0;\n  z-index: 12;\n  min-height: 62px;\n  display: grid;\n  grid-template-columns: 42px 1fr auto;\n  gap: 10px;\n  align-items: center;\n  padding: 8px 14px;\n  background: var(--primary);\n  color: #fff;\n  box-shadow: 0 4px 14px rgba(16,35,63,.18);"
+              },
+              {
+                "id": 28,
+                "seletor": "html,body",
+                "declaracoes": "min-height:100%;"
+              },
+              {
+                "id": 29,
+                "seletor": "#screen-root,.screen-runtime,[data-screen-root]",
+                "declaracoes": "min-height:100dvh"
+              },
+              {
+                "id": 30,
+                "seletor": "[data-studio-toolbar]",
+                "declaracoes": "display:flex!important"
+              },
+              {
+                "id": 31,
+                "seletor": ":host",
+                "declaracoes": "display: block;\n  width: 100%;\n  color: var(--text, #172033);\n  font-family: \"Plus Jakarta Sans\", \"Segoe UI\", Arial, sans-serif;"
+              },
+              {
+                "id": 32,
+                "seletor": "*, *::before, *::after",
+                "declaracoes": "box-sizing: border-box;"
+              },
+              {
+                "id": 33,
+                "seletor": "button, input, select, textarea",
+                "declaracoes": "font: inherit;"
+              },
+              {
+                "id": 34,
+                "seletor": "button",
+                "declaracoes": "-webkit-tap-highlight-color: transparent;"
+              },
+              {
+                "id": 35,
+                "seletor": "a",
+                "declaracoes": "color: inherit; text-decoration: none;"
+              },
+              {
+                "id": 36,
+                "seletor": "[hidden]",
+                "declaracoes": "display: none !important;"
+              },
+              {
+                "id": 37,
+                "seletor": ":root",
+                "declaracoes": "--primary:#10233f;--gold:#b88932;--page:#eef2f6;--surface:white;--line:#dbe3ee;--text:#172033;--muted:#667085"
+              },
+              {
+                "id": 38,
+                "seletor": "*",
+                "declaracoes": "box-sizing:border-box"
+              },
+              {
+                "id": 39,
+                "seletor": "body",
+                "declaracoes": "margin:0;font-family:Arial,sans-serif;color:var(--text);background:var(--page)"
+              },
+              {
+                "id": 40,
+                "seletor": "button",
+                "declaracoes": "cursor:pointer"
+              },
+              {
+                "id": 41,
+                "seletor": "button:disabled",
+                "declaracoes": "opacity:.55;cursor:not-allowed"
+              },
+              {
+                "id": 42,
+                "seletor": ".app-header",
+                "declaracoes": "background:#10233f;color:white;padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:800"
+              },
+              {
+                "id": 43,
+                "seletor": ".app-header img",
+                "declaracoes": "width:32px"
+              },
+              {
+                "id": 44,
+                "seletor": ".plus",
+                "declaracoes": "color:#d6ac60;font-style:italic"
+              },
+              {
+                "id": 45,
+                "seletor": ".app-header",
+                "declaracoes": "gap:0"
+              },
+              {
+                "id": 46,
+                "seletor": ".app-header img",
+                "declaracoes": "margin-right:10px"
+              },
+              {
+                "id": 47,
+                "seletor": ".button:focus-visible,a:focus-visible",
+                "declaracoes": "outline:3px solid #b88932;outline-offset:3px"
+              },
+              {
+                "id": 48,
+                "seletor": ".auth-root",
+                "declaracoes": "height:100%;overflow:auto;overscroll-behavior:contain;background:var(--page,#eef2f6);color:var(--text,#172033);font-family:Arial,sans-serif"
+              },
+              {
+                "id": 49,
+                "seletor": ".auth-text",
+                "declaracoes": "display:contents"
+              },
+              {
+                "id": 50,
+                "seletor": ".auth-root .splash",
+                "declaracoes": "min-height:100%;"
+              }
+            ]
+          }
+        }
+      ],
+      "estados": [
+        {
+          "id": 0,
+          "nome": "Inicial",
+          "condicoes": [],
+          "estruturaRef": 0,
+          "navegacaoRef": 0
+        }
+      ],
+      "interacoes": [
+        {
+          "id": 1000,
+          "origem": {
+            "elementoRef": 19,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1000
+            }
+          ]
+        },
+        {
+          "id": 1001,
+          "origem": {
+            "elementoRef": 20,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1001
+            }
+          ]
+        },
+        {
+          "id": 1002,
+          "origem": {
+            "elementoRef": 22,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1002
+            }
+          ]
+        },
+        {
+          "id": 1003,
+          "origem": {
+            "elementoRef": 23,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1003
+            }
+          ]
+        },
+        {
+          "id": 1004,
+          "origem": {
+            "elementoRef": 26,
+            "evento": "click"
+          },
+          "condicoes": [],
+          "acoes": [
+            {
+              "tipo": "navegar",
+              "eventoRef": 1004
+            }
+          ]
+        }
+      ],
+      "navegacao": [
+        {
+          "id": 0,
+          "rotas": [
+            {
+              "id": 0,
+              "path": "/cliente/home",
+              "telaRef": "cliente.home_cliente",
+              "origemCaminho": "referencia",
+              "nome": "Home Cliente"
+            },
+            {
+              "id": 1,
+              "path": "/entrar",
+              "telaRef": "auth.sessao.entrar",
+              "origemCaminho": "referencia",
+              "nome": "Login"
+            },
+            {
+              "id": 2,
+              "path": "/onboarding/cliente/localizacao",
+              "telaRef": "cliente.onboarding.localizacao",
+              "origemCaminho": "referencia",
+              "nome": "Localização"
+            },
+            {
+              "id": 5,
+              "path": "/demo/estudante/assinatura/modal-acesso",
+              "telaRef": "estudante.assinatura.modal_acesso",
+              "origemCaminho": "ficticio",
+              "nome": "Aviso de acesso restrito"
+            },
+            {
+              "id": 6,
+              "path": "/cliente/solicitacoes",
+              "telaRef": "cliente.profissionais.minhas_solicitacoes",
+              "origemCaminho": "referencia",
+              "nome": "Minhas solicitações"
+            },
+            {
+              "id": 7,
+              "path": "/cliente/contatos",
+              "telaRef": "cliente.profissionais.contatos_liberados",
+              "origemCaminho": "referencia",
+              "nome": "Contatos liberados"
+            },
+            {
+              "id": 8,
+              "path": "/cliente/perfil",
+              "telaRef": "cliente.perfil_cliente",
+              "origemCaminho": "referencia",
+              "nome": "Meu perfil"
+            },
+            {
+              "id": 9,
+              "path": "/demo/estudante/home",
+              "telaRef": "estudante.home",
+              "origemCaminho": "ficticio",
+              "nome": "Home Estudante"
+            },
+            {
+              "id": 10,
+              "path": "/demo/estudante/catalogo/cursos",
+              "telaRef": "estudante.catalogo.cursos",
+              "origemCaminho": "ficticio",
+              "nome": "Catálogo de cursos"
+            },
+            {
+              "id": 11,
+              "path": "/demo/estudante/cursos/meus-cursos",
+              "telaRef": "estudante.cursos.meus_cursos",
+              "origemCaminho": "ficticio",
+              "nome": "Meus cursos"
+            },
+            {
+              "id": 12,
+              "path": "/demo/estudante/perfil/dados-academicos",
+              "telaRef": "estudante.perfil.dados_academicos",
+              "origemCaminho": "ficticio",
+              "nome": "Dados acadêmicos"
+            },
+            {
+              "id": 13,
+              "path": "/demo/estudante/assinatura/gestao-assinatura",
+              "telaRef": "estudante.assinatura.gestao_assinatura",
+              "origemCaminho": "ficticio",
+              "nome": "Minha assinatura"
+            },
+            {
+              "id": 14,
+              "path": "/demo/estudante/assinatura/planos",
+              "telaRef": "estudante.assinatura.planos",
+              "origemCaminho": "ficticio",
+              "nome": "Planos Estudante"
+            },
+            {
+              "id": 15,
+              "path": "/cliente/configuracoes",
+              "telaRef": "cliente.configuracao.configuracao",
+              "origemCaminho": "referencia",
+              "nome": "Configurações"
+            },
+            {
+              "id": 16,
+              "path": "/demo/emergencia/190",
+              "telaRef": "emergencia.190",
+              "origemCaminho": "ficticio",
+              "nome": "Emergência — simulação"
+            },
+            {
+              "id": 17,
+              "path": "/demo/notificacoes/lista/notificacoes",
+              "telaRef": "notificacoes.lista.notificacoes",
+              "origemCaminho": "ficticio",
+              "nome": "Notificações"
+            },
+            {
+              "id": 18,
+              "path": "/demo/cliente/profissionais/perfil-publico",
+              "telaRef": "cliente.profissionais.perfil_publico",
+              "origemCaminho": "ficticio",
+              "nome": "Perfil do profissional"
+            },
+            {
+              "id": 19,
+              "path": "/demo/estudante/assinatura/checkout",
+              "telaRef": "estudante.assinatura.checkout",
+              "origemCaminho": "ficticio",
+              "nome": "Checkout do Plano Estudante"
+            },
+            {
+              "id": 20,
+              "path": "/demo/estudante/assinatura/contratacao-concluida",
+              "telaRef": "estudante.assinatura.contratacao_concluida",
+              "origemCaminho": "ficticio",
+              "nome": "Contratação concluída"
+            },
+            {
+              "id": 21,
+              "path": "/demo/estudante/assinatura/historico-assinatura",
+              "telaRef": "estudante.assinatura.historico_assinatura",
+              "origemCaminho": "ficticio",
+              "nome": "Histórico do Plano Estudante"
+            },
+            {
+              "id": 101,
+              "path": "/boas-vindas",
+              "telaRef": "auth.inicializacao.boas_vindas",
+              "origemCaminho": "referencia",
+              "nome": "Boas-vindas"
+            },
+            {
+              "id": 103,
+              "path": "/cadastro/tipo-conta",
+              "telaRef": "auth.cadastro.tipo_conta",
+              "origemCaminho": "referencia",
+              "nome": "Tipo de conta"
+            },
+            {
+              "id": 110,
+              "path": "/cadastro/concluido",
+              "telaRef": "auth.cadastro.concluido",
+              "origemCaminho": "referencia",
+              "nome": "Cadastro concluído"
+            },
+            {
+              "id": 111,
+              "path": "/esqueceu-senha",
+              "telaRef": "auth.sessao.recuperacao",
+              "origemCaminho": "referencia",
+              "nome": "Recuperação de senha"
+            },
+            {
+              "id": 112,
+              "path": "/redefinir-senha",
+              "telaRef": "auth.sessao.redefinicao",
+              "origemCaminho": "referencia",
+              "nome": "Redefinição de senha"
+            }
+          ],
+          "entradas": [
+            {
+              "origemTelaRef": "cliente.home_cliente",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.home_cliente",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.home_cliente",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.home_cliente",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.onboarding.localizacao",
+              "origemEstadoRef": 0,
+              "eventoRef": 201,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.modal_acesso",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.modal_acesso",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.modal_acesso",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.modal_acesso",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.minhas_solicitacoes",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.minhas_solicitacoes",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.minhas_solicitacoes",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.minhas_solicitacoes",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.contatos_liberados",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.contatos_liberados",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.contatos_liberados",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.contatos_liberados",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.perfil_cliente",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.perfil_cliente",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.perfil_cliente",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.perfil_cliente",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.home",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.home",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.home",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.home",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.catalogo.cursos",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.catalogo.cursos",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.catalogo.cursos",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.catalogo.cursos",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.cursos.meus_cursos",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.cursos.meus_cursos",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.cursos.meus_cursos",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.cursos.meus_cursos",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.perfil.dados_academicos",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.perfil.dados_academicos",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.perfil.dados_academicos",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.perfil.dados_academicos",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.gestao_assinatura",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.gestao_assinatura",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.gestao_assinatura",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.gestao_assinatura",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.planos",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.planos",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.planos",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.planos",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.configuracao.configuracao",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.configuracao.configuracao",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.configuracao.configuracao",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.configuracao.configuracao",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "emergencia.190",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "emergencia.190",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "emergencia.190",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "emergencia.190",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "notificacoes.lista.notificacoes",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "notificacoes.lista.notificacoes",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "notificacoes.lista.notificacoes",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "notificacoes.lista.notificacoes",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.perfil_publico",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.perfil_publico",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.perfil_publico",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "cliente.profissionais.perfil_publico",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.checkout",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.checkout",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.checkout",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.checkout",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.contratacao_concluida",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.contratacao_concluida",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.contratacao_concluida",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.contratacao_concluida",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.historico_assinatura",
+              "origemEstadoRef": 0,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.historico_assinatura",
+              "origemEstadoRef": 1,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.historico_assinatura",
+              "origemEstadoRef": 2,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "estudante.assinatura.historico_assinatura",
+              "origemEstadoRef": 3,
+              "eventoRef": 11,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "auth.inicializacao.boas_vindas",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "auth.cadastro.tipo_conta",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "auth.cadastro.concluido",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "auth.sessao.recuperacao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1001,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "auth.sessao.redefinicao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1000,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            },
+            {
+              "origemTelaRef": "auth.sessao.redefinicao",
+              "origemEstadoRef": 0,
+              "eventoRef": 1001,
+              "alternativaRef": 0,
+              "condicoesOrigem": [],
+              "condicoesDestino": [],
+              "rotaRef": 1
+            }
+          ],
+          "saidas": [
+            {
+              "eventoRef": 1000,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 111,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            },
+            {
+              "eventoRef": 1001,
+              "alternativas": [
+                {
+                  "condicoes": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "ref": "dados.onboardingConcluido"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "rotaRef": 0,
+                  "efeitos": []
+                },
+                {
+                  "condicoes": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "ref": "dados.onboardingConcluido"
+                        },
+                        false
+                      ]
+                    }
+                  ],
+                  "rotaRef": 2,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "V0.4: login cliente simulado"
+            },
+            {
+              "eventoRef": 1002,
+              "alternativas": [
+                {
+                  "condicoes": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "ref": "dados.onboardingConcluido"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "rotaRef": 0,
+                  "efeitos": []
+                },
+                {
+                  "condicoes": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "ref": "dados.onboardingConcluido"
+                        },
+                        false
+                      ]
+                    }
+                  ],
+                  "rotaRef": 2,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "V0.4: login cliente simulado"
+            },
+            {
+              "eventoRef": 1003,
+              "alternativas": [
+                {
+                  "condicoes": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "ref": "dados.onboardingConcluido"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "rotaRef": 0,
+                  "efeitos": []
+                },
+                {
+                  "condicoes": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "ref": "dados.onboardingConcluido"
+                        },
+                        false
+                      ]
+                    }
+                  ],
+                  "rotaRef": 2,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "V0.4: login cliente simulado"
+            },
+            {
+              "eventoRef": 1004,
+              "alternativas": [
+                {
+                  "condicoes": [],
+                  "rotaRef": 103,
+                  "efeitos": []
+                }
+              ],
+              "origemDefinicao": "referencia"
+            }
+          ]
+        }
+      ],
+      "dados": {
+        "fontes": [],
+        "operacoes": [],
+        "locaisIniciais": {},
+        "camposFormulario": [
+          {
+            "elementoRef": 14,
+            "campo": "email",
+            "tipo": "email",
+            "obrigatorio": true,
+            "persistir": false
+          },
+          {
+            "elementoRef": 17,
+            "campo": "password",
+            "tipo": "password",
+            "obrigatorio": true,
+            "persistir": false
+          }
+        ]
+      },
+      "mocks": {
+        "aviso": "Dados fictícios. Sem autenticação, envio, validação de identidade ou persistência externa."
+      }
+    }
+  },
+  "componentes": {}
+}

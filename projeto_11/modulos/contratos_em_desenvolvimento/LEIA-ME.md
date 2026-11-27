@@ -1,7 +1,9 @@
-# AdvogadoJáPlus — Laboratórios V0.4 isolados
+# Atualização incremental — Contratos em desenvolvimento
 
-Abra index.html. O menu lateral recolhível seleciona uma das 14 telas reais do catálogo. Cada HTML individual abre sua própria tela inicialmente.
+Copie modulos.json e modulos/contratos_em_desenvolvimento/ sobre a raiz do Projeto 11. Abra via servidor HTTP (iniciar.bat). O index, estilo e motor principais não foram alterados.
 
-O interpretador V0.4 permanece inalterado. O adaptador do laboratório intercepta apenas as transições de rota, mostra o destino, origem e condições em modal e mantém a tela atual. Efeitos internos e estados continuam sendo processados pelo motor. A aba Fluxo registra destinos mesmo quando não há laboratório correspondente. Contratos demonstrativos preexistentes são mantidos apenas como referências de rota, não como opções do catálogo.
+O catálogo controla os dois grupos e seus itens. Os 14 laboratórios compartilham documentos/index.html, estilo.css e motor.js. Cada tela tem seu documento.json individual. A árvore lê o MESMO JSON da Home, sem cópia. Importação na árvore altera a sessão; exporte e substitua o arquivo correspondente para persistir.
 
-Os controles de assinatura e onboarding aparecem somente nas telas em que são relevantes para esta simulação. Reiniciar tela restaura o cenário. Não há autenticação nem integração real. Regras de acesso não verificadas permanecem propostas, conforme os contratos anteriores.
+Migração estrutural experimental V0.4 → V0.5: rotas dentro da navegação, classificação aninhada, IDs, condições e elementos preservados. Rotas incluem nome para leitura. Só os componentes utilizados foram incluídos. As 20 telas demonstrativas não foram duplicadas; referências e caminhos permanecem. A Home inclui oito entradas de autenticação adicionais já existentes no laboratório. O motor do laboratório continua simulando navegação por modal, conforme o ZIP de origem.
+
+Sobreposição não apaga arquivos antigos. Após conferir, remova apenas os antigos documentos/telas/*.html e arvore/Home_Cliente_Arvore_JSON_V05.html; não remova as subpastas com JSON. O antigo documentos/LEIA-ME.md também fica obsoleto. O catálogo novo não usa esses arquivos. Para adicionar telas, crie uma pasta com documento.json e registre no catálogo.
