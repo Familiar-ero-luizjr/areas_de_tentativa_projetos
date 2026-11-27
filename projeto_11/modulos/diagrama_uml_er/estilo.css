@@ -1,0 +1,17 @@
+.frame{height:70vh;overflow:auto;border:1px solid #c4d3e5;background:#f7f9fc;border-radius:7px}
+.board{position:relative;display:flex;gap:42px;width:max-content;padding:20px 25px;align-items:flex-start;transform-origin:top left}
+.lane{width:255px;flex:none}
+.lane-title{font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.7px;text-align:center;border-bottom:2px solid var(--c);padding:10px 0;color:var(--c)}
+.entity{position:relative;z-index:1;border:1px solid #c5d5e8;border-top:3px solid var(--c);border-radius:5px;background:white;margin:15px 0;box-shadow:0 2px 5px #203b5910;overflow:hidden;cursor:pointer}
+.entity:hover,.entity.selected{outline:2px solid var(--c)}
+.entity header{padding:8px;background:#fff}
+.entity header b{font:700 12px ui-monospace,monospace}
+.field{display:flex;justify-content:space-between;gap:5px;padding:5px 7px;border-top:1px solid #e3ebf3;font-size:10px;overflow-wrap:anywhere}
+.field:nth-child(even){background:#f6f9fc}
+.field span:last-child{text-align:right;color:#647b92}
+.pk{color:#a46c16;font-weight:bold}
+.fk{color:#225b9d;font-weight:bold}
+.wires{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.dim{opacity:.22}
+.match{outline:2px solid #d8a348}
+.legend{padding:9px;color:#647b92;background:white;border:1px solid #cbd9ea;font-size:11px}

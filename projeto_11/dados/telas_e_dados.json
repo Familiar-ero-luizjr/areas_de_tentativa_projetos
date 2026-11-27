@@ -1,0 +1,437 @@
+{
+  "telas": [
+    {
+      "id": "auth.inicializacao.splash",
+      "nome": "Splash",
+      "jornada": "Acesso público",
+      "itens": [
+        {
+          "direcao": "Saída",
+          "nome": "Estado da sessão",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.inicializacao.boas_vindas",
+      "nome": "Boas-vindas",
+      "jornada": "Acesso público",
+      "itens": [
+        {
+          "direcao": "Saída",
+          "nome": "Escolha de continuar",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.sessao.entrar",
+      "nome": "Entrar",
+      "jornada": "Acesso público",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "E-mail",
+          "tabela": "users",
+          "campo": "email",
+          "operacao": "Consultar",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Senha",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Sessão autenticada ou erro",
+          "tabela": "users",
+          "campo": "",
+          "operacao": "Consultar",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [
+        "E-mail",
+        "Senha"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.tipo_conta",
+      "nome": "Tipo de conta",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Tipo de conta",
+          "tabela": "user_profiles",
+          "campo": "profile_type",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Tipo de conta selecionado",
+          "tabela": "user_profiles",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [
+        "Tipo de conta"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.identificacao",
+      "nome": "Identificação",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Nome",
+          "tabela": "users",
+          "campo": "name",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Sobrenome",
+          "tabela": "users",
+          "campo": "last_name",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Nome de usuário",
+          "tabela": "users",
+          "campo": "username",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "CPF",
+          "tabela": "users",
+          "campo": "cpf",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Data de nascimento",
+          "tabela": "users",
+          "campo": "birth_date",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Gênero",
+          "tabela": "users",
+          "campo": "gender",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Foto de perfil",
+          "tabela": "users",
+          "campo": "photo_url",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Dados de identificação",
+          "tabela": "users",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [
+        "Nome",
+        "Sobrenome",
+        "Nome de usuário",
+        "CPF",
+        "Data de nascimento",
+        "Gênero",
+        "Foto de perfil"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.contato",
+      "nome": "Contato",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "E-mail",
+          "tabela": "users",
+          "campo": "email",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Telefone com DDI",
+          "tabela": "users",
+          "campo": "phone",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Dados de contato",
+          "tabela": "users",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [
+        "E-mail",
+        "Telefone com DDI"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.endereco",
+      "nome": "Endereço",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "CEP",
+          "tabela": "user_addresses",
+          "campo": "zip_code",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Logradouro",
+          "tabela": "user_addresses",
+          "campo": "street",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Número",
+          "tabela": "user_addresses",
+          "campo": "number",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Complemento",
+          "tabela": "user_addresses",
+          "campo": "complement",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Bairro",
+          "tabela": "user_addresses",
+          "campo": "district",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Cidade",
+          "tabela": "user_addresses",
+          "campo": "city",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "UF",
+          "tabela": "user_addresses",
+          "campo": "state",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "País",
+          "tabela": "user_addresses",
+          "campo": "country",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Endereço preenchido",
+          "tabela": "user_addresses",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [
+        "CEP",
+        "Logradouro",
+        "Número",
+        "Complemento",
+        "Bairro",
+        "Cidade",
+        "UF",
+        "País"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.seguranca",
+      "nome": "Acesso e segurança",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Senha",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Confirmar senha",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Credenciais para serviço de autenticação",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [
+        "Senha",
+        "Confirmar senha"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.consentimentos",
+      "nome": "Termos e privacidade",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Aceite dos termos e política",
+          "tabela": "user_consents",
+          "campo": "granted",
+          "operacao": "Temporário",
+          "observacao": "Proposta; revisar persistência"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Consentimento registrado no rascunho",
+          "tabela": "user_consents",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Proposta a confirmar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Documentos vigentes",
+          "tabela": "legal_documents",
+          "campo": "",
+          "operacao": "Consultar",
+          "observacao": "Proposta"
+        }
+      ],
+      "visual": [
+        "Aceite dos termos e política"
+      ],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.revisao",
+      "nome": "Revisão",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Saída",
+          "nome": "Confirmação do cadastro",
+          "tabela": "users",
+          "campo": "",
+          "operacao": "Inserir",
+          "observacao": "Proposta a confirmar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Dados confirmados",
+          "tabela": "user_addresses",
+          "campo": "",
+          "operacao": "Inserir",
+          "observacao": "Momento da gravação a confirmar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Dados confirmados",
+          "tabela": "user_profiles",
+          "campo": "",
+          "operacao": "Inserir",
+          "observacao": "Momento da gravação a confirmar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Dados confirmados",
+          "tabela": "user_consents",
+          "campo": "",
+          "operacao": "Inserir",
+          "observacao": "Momento da gravação a confirmar"
+        }
+      ],
+      "visual": [],
+      "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "auth.cadastro.concluido",
+      "nome": "Cadastro concluído",
+      "jornada": "Cadastro comum",
+      "itens": [
+        {
+          "direcao": "Saída",
+          "nome": "Resultado da criação da conta",
+          "tabela": "users",
+          "campo": "",
+          "operacao": "Consultar",
+          "observacao": "Proposta a confirmar"
+        }
+      ],
+      "visual": [],
+      "descricao": "Mapeamento inicial proposto"
+    }
+  ]
+}
