@@ -1,0 +1,664 @@
+{
+  "schema": "advogadoja.analise_requisitos",
+  "schemaVersion": "1.0.0",
+  "records": [
+    {
+      "id": "DEF-001",
+      "kind": "definicoes",
+      "description": "O cliente somente pode assinar o Plano Estudante.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-002",
+      "kind": "definicoes",
+      "description": "O Plano Estudante pode ser assinado pelo cliente e pelo advogado.",
+      "profile": "Compartilhado",
+      "topic": "Planos e assinaturas",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-003",
+      "kind": "definicoes",
+      "description": "O Plano Estudante possui permissões diferentes conforme o perfil.",
+      "profile": "Compartilhado",
+      "topic": "Planos e assinaturas",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-004",
+      "kind": "definicoes",
+      "description": "O advogado com OAB validada não precisa apresentar comprovante de matrícula.",
+      "profile": "Advogado",
+      "topic": "Planos e assinaturas",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-005",
+      "kind": "definicoes",
+      "description": "O cliente pode buscar advogados próximos.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-006",
+      "kind": "definicoes",
+      "description": "A busca apresenta os profissionais em mapa e lista.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-007",
+      "kind": "definicoes",
+      "description": "O cliente pode filtrar profissionais por área de atuação.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-008",
+      "kind": "definicoes",
+      "description": "O cliente pode filtrar profissionais por distância.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-009",
+      "kind": "definicoes",
+      "description": "O cliente pode filtrar por tipo de atendimento.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-010",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar o perfil do advogado.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-011",
+      "kind": "definicoes",
+      "description": "O cliente pode solicitar contato para consultoria.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-012",
+      "kind": "definicoes",
+      "description": "O cliente pode solicitar contato prioritário.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": "Distribuição anterior de permissões entre planos não aprovada."
+    },
+    {
+      "id": "DEF-013",
+      "kind": "definicoes",
+      "description": "O cliente pode acompanhar suas solicitações.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-014",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar seus contatos liberados.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-015",
+      "kind": "definicoes",
+      "description": "O cliente pode entrar em contato por WhatsApp ou ligação após o aceite.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-016",
+      "kind": "definicoes",
+      "description": "O cliente pode avaliar atendimentos.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-017",
+      "kind": "definicoes",
+      "description": "O cliente pode receber notificações.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-018",
+      "kind": "definicoes",
+      "description": "O cliente possui acesso ao suporte.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-019",
+      "kind": "definicoes",
+      "description": "O cliente pode gerenciar seu perfil.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-020",
+      "kind": "definicoes",
+      "description": "Estudante não constitui um perfil independente.",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-021",
+      "kind": "definicoes",
+      "description": "O cliente estudante deve comprovar vínculo estudantil.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-022",
+      "kind": "definicoes",
+      "description": "O cliente pode cadastrar e editar seus dados acadêmicos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-023",
+      "kind": "definicoes",
+      "description": "O cliente pode enviar documentação estudantil.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-024",
+      "kind": "definicoes",
+      "description": "O cliente pode acompanhar a validação da documentação.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-025",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar o catálogo de cursos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-026",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar os detalhes dos cursos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-027",
+      "kind": "definicoes",
+      "description": "O Plano Estudante oferece acesso a cursos gratuitos.",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-028",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar seus cursos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-029",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar seus acessos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-030",
+      "kind": "definicoes",
+      "description": "O cliente pode contratar e gerenciar sua assinatura.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-031",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar o histórico da assinatura.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-032",
+      "kind": "definicoes",
+      "description": "A Main da Home Cliente apresenta a busca de profissionais.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-033",
+      "kind": "definicoes",
+      "description": "A busca inicial apresenta profissionais dentro de um raio padrão.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-034",
+      "kind": "definicoes",
+      "description": "Mapa e lista apresentam os mesmos resultados.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-035",
+      "kind": "definicoes",
+      "description": "Os profissionais são ordenados por proximidade.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-036",
+      "kind": "definicoes",
+      "description": "Os filtros podem ser aplicados e limpos.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-037",
+      "kind": "definicoes",
+      "description": "O menu lateral pode variar conforme o estado do cliente.",
+      "profile": "Cliente",
+      "topic": "Home e navegação",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-038",
+      "kind": "definicoes",
+      "description": "O menu deve ser compartilhado entre as páginas correspondentes ao mesmo contexto.",
+      "profile": "Compartilhado",
+      "topic": "Home e navegação",
+      "status": "Em análise",
+      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "RN-001",
+      "kind": "regras",
+      "description": "Restringir a assinatura do perfil Cliente ao Plano Estudante.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Em análise",
+      "source": "Derivação proposta de definição confirmada",
+      "refs": [
+        "DEF-001"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "RN-002",
+      "kind": "regras",
+      "description": "Dispensar comprovante de matrícula para advogado com OAB validada ao contratar o Plano Estudante.",
+      "profile": "Advogado",
+      "topic": "Plano Estudante",
+      "status": "Em análise",
+      "source": "Derivação proposta de definição confirmada",
+      "refs": [
+        "DEF-002",
+        "DEF-004"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "RF-001",
+      "kind": "funcionais",
+      "description": "Permitir busca de profissionais com apresentação dos resultados em mapa e lista.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Derivação proposta da lista inicial",
+      "refs": [
+        "DEF-005",
+        "DEF-006",
+        "DEF-034"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "RF-002",
+      "kind": "funcionais",
+      "description": "Permitir aplicar e limpar filtros por área, distância e tipo de atendimento.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Derivação proposta da lista inicial",
+      "refs": [
+        "DEF-007",
+        "DEF-008",
+        "DEF-009",
+        "DEF-036"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q-001",
+      "kind": "questoes",
+      "description": "Quais permissões do Plano Estudante diferem entre Cliente e Advogado?",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-002",
+        "DEF-003"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q-002",
+      "kind": "questoes",
+      "description": "Qual comprovação é exigida do cliente e do advogado sem OAB validada?",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Discussão atual; a documentação anterior exigia comprovante de vínculo",
+      "refs": [
+        "DEF-004",
+        "DEF-021"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q-003",
+      "kind": "questoes",
+      "description": "Quais estados da Home Cliente realmente alteram Menu, Main ou navegação?",
+      "profile": "Cliente",
+      "topic": "Home e navegação",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-037",
+        "DEF-038"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q-004",
+      "kind": "questoes",
+      "description": "Quais itens de menu e estados da Home Advogado devem ser definidos?",
+      "profile": "Advogado",
+      "topic": "Home e navegação",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "Q-005",
+      "kind": "questoes",
+      "description": "Qual a ordem entre validação acadêmica, contratação e pagamento?",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Projeto 11 — Plano Estudante — conteúdo compartilhado",
+      "refs": [
+        "DEF-023",
+        "DEF-024",
+        "DEF-030"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q-006",
+      "kind": "questoes",
+      "description": "Quais são as condições de acesso ao contato prioritário?",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Distribuição anterior entre planos não aprovada",
+      "refs": [
+        "DEF-001",
+        "DEF-012"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "INC-001",
+      "kind": "inconsistencias",
+      "description": "Propostas antigas de planos Cliente Essencial e Cliente Plus precisam ser revistas: somente o Plano Estudante pode ser assinado pelo Cliente.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Em aberto",
+      "source": "Projeto 11 — Planos — Cliente / Planos apresentados",
+      "refs": [
+        "DEF-001"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "INC-002",
+      "kind": "inconsistencias",
+      "description": "A exigência anterior de comprovação estudantil para todos precisa contemplar a dispensa do advogado com OAB validada.",
+      "profile": "Advogado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Projeto 11 — Plano Estudante — conteúdo compartilhado",
+      "refs": [
+        "DEF-004"
+      ],
+      "notes": ""
+    }
+  ],
+  "history": [
+    {
+      "id": "H-001",
+      "recordId": "DEF-001",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-001",
+        "kind": "definicoes",
+        "description": "O cliente somente pode assinar o Plano Estudante.",
+        "profile": "Cliente",
+        "topic": "Planos e assinaturas",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-002",
+      "recordId": "DEF-002",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-002",
+        "kind": "definicoes",
+        "description": "O Plano Estudante pode ser assinado pelo cliente e pelo advogado.",
+        "profile": "Compartilhado",
+        "topic": "Planos e assinaturas",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-003",
+      "recordId": "DEF-003",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-003",
+        "kind": "definicoes",
+        "description": "O Plano Estudante possui permissões diferentes conforme o perfil.",
+        "profile": "Compartilhado",
+        "topic": "Planos e assinaturas",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-004",
+      "recordId": "DEF-004",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-004",
+        "kind": "definicoes",
+        "description": "O advogado com OAB validada não precisa apresentar comprovante de matrícula.",
+        "profile": "Advogado",
+        "topic": "Planos e assinaturas",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [],
+        "notes": ""
+      }
+    }
+  ]
+}
