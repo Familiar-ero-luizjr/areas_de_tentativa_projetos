@@ -131,8 +131,11 @@
       "topic": "Busca e atendimento",
       "status": "Em análise",
       "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
-      "refs": [],
-      "notes": "Distribuição anterior de permissões entre planos não aprovada."
+      "refs": [
+        "DEF-039",
+        "DEF-040"
+      ],
+      "notes": "A solicitação de contato prioritário não exige assinatura; as condições operacionais ainda precisam ser definidas."
     },
     {
       "id": "DEF-013",
@@ -272,32 +275,38 @@
       "description": "O cliente pode consultar o catálogo de cursos.",
       "profile": "Cliente",
       "topic": "Plano Estudante",
-      "status": "Em análise",
-      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
       "refs": [],
-      "notes": ""
+      "notes": "O catálogo também pode ser visualizado sem assinatura; ver DEF-041."
     },
     {
       "id": "DEF-026",
       "kind": "definicoes",
-      "description": "O cliente pode consultar os detalhes dos cursos.",
+      "description": "O cliente pode consultar a lista de módulos dos cursos, inclusive sem assinatura.",
       "profile": "Cliente",
       "topic": "Plano Estudante",
-      "status": "Em análise",
-      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
-      "refs": [],
-      "notes": ""
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-042",
+        "DEF-043"
+      ],
+      "notes": "Acesso a outros detalhes do curso além do catálogo e da lista de módulos não foi confirmado."
     },
     {
       "id": "DEF-027",
       "kind": "definicoes",
-      "description": "O Plano Estudante oferece acesso a cursos gratuitos.",
+      "description": "O Plano Estudante oferece acesso aos cursos autorizados pela assinatura.",
       "profile": "Compartilhado",
       "topic": "Plano Estudante",
-      "status": "Em análise",
-      "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
-      "refs": [],
-      "notes": ""
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-047",
+        "DEF-048"
+      ],
+      "notes": "Não afirmar que todos os cursos são gratuitos ou incluídos; a distribuição de cursos por plano ainda está em aberto."
     },
     {
       "id": "DEF-028",
@@ -421,6 +430,302 @@
       "notes": ""
     },
     {
+      "id": "DEF-039",
+      "kind": "definicoes",
+      "description": "Todas as funcionalidades gerais do perfil Cliente são gratuitas.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-001"
+      ],
+      "notes": "Gratuidade do aplicativo; não significa gratuidade dos serviços jurídicos prestados por advogados. Condições operacionais das funcionalidades ainda podem ser definidas."
+    },
+    {
+      "id": "DEF-040",
+      "kind": "definicoes",
+      "description": "O cliente paga exclusivamente pelas funcionalidades adquiridas por meio do Plano Estudante.",
+      "profile": "Cliente",
+      "topic": "Planos e assinaturas",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-001",
+        "DEF-039"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "DEF-041",
+      "kind": "definicoes",
+      "description": "O cliente sem Plano Estudante pode visualizar o catálogo de cursos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-025",
+        "DEF-039"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "DEF-042",
+      "kind": "definicoes",
+      "description": "O cliente sem Plano Estudante pode visualizar a lista de módulos de cada curso.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-041"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "DEF-043",
+      "kind": "definicoes",
+      "description": "O cliente sem Plano Estudante não pode acessar o conteúdo dos módulos.",
+      "profile": "Cliente",
+      "topic": "Plano Estudante",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-040",
+        "DEF-041",
+        "DEF-042"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "DEF-044",
+      "kind": "definicoes",
+      "description": "Os conteúdos dos cursos são hospedados na plataforma externa The Members.",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [],
+      "notes": ""
+    },
+    {
+      "id": "DEF-045",
+      "kind": "definicoes",
+      "description": "O AdvogadoJá Plus apresenta o catálogo de cursos e as listas de módulos, sem hospedar os conteúdos educacionais.",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-041",
+        "DEF-042",
+        "DEF-044"
+      ],
+      "notes": "A forma de obtenção e sincronização do catálogo ainda não está definida."
+    },
+    {
+      "id": "DEF-046",
+      "kind": "definicoes",
+      "description": "O AdvogadoJá Plus deverá possuir integração com a The Members.",
+      "profile": "Compartilhado",
+      "topic": "Integração The Members",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-044"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "DEF-047",
+      "kind": "definicoes",
+      "description": "Cada plano deverá estar relacionado aos cursos que disponibiliza.",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-002",
+        "DEF-046"
+      ],
+      "notes": "A relação concreta entre planos e cursos ainda deve ser definida."
+    },
+    {
+      "id": "DEF-048",
+      "kind": "definicoes",
+      "description": "A The Members deverá liberar somente os cursos autorizados pelo plano contratado.",
+      "profile": "Compartilhado",
+      "topic": "Integração The Members",
+      "status": "Confirmado",
+      "source": "Definição explícita do usuário nesta conversa",
+      "refs": [
+        "DEF-046",
+        "DEF-047"
+      ],
+      "notes": "A viabilidade técnica e o mecanismo de controle de acesso externo ainda precisam ser verificados."
+    },
+    {
+      "id": "DEF-049",
+      "kind": "definicoes",
+      "description": "A liberação dos cursos deverá ocorrer automaticamente após a ativação da assinatura.",
+      "profile": "Compartilhado",
+      "topic": "Integração The Members",
+      "status": "Em análise",
+      "source": "Proposta derivada da discussão atual; requer validação",
+      "refs": [
+        "DEF-046",
+        "DEF-048"
+      ],
+      "notes": "Automação e momento exato da concessão são propostas, não confirmações explícitas."
+    },
+    {
+      "id": "DEF-050",
+      "kind": "definicoes",
+      "description": "A perda do direito de acesso ao plano deverá refletir nas permissões da The Members.",
+      "profile": "Compartilhado",
+      "topic": "Integração The Members",
+      "status": "Em análise",
+      "source": "Proposta derivada da discussão atual; requer validação",
+      "refs": [
+        "DEF-046",
+        "DEF-048"
+      ],
+      "notes": "Definir as condições, prazos e mecanismo de revogação; não presumir que cancelamento implique perda imediata de acesso."
+    },
+    {
+      "id": "DEF-051",
+      "kind": "definicoes",
+      "description": "O cliente pode cadastrar conta, entrar, recuperar senha e sair.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-052",
+      "kind": "definicoes",
+      "description": "O cliente pode excluir sua conta.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-053",
+      "kind": "definicoes",
+      "description": "O cliente pode utilizar geolocalização ou definir manualmente sua cidade.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-054",
+      "kind": "definicoes",
+      "description": "O cliente pode detalhar, cancelar e encerrar suas solicitações.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-055",
+      "kind": "definicoes",
+      "description": "O cliente pode avaliar clareza e tempo de resposta e adicionar comentários.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-056",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar notificações recebidas.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-057",
+      "kind": "definicoes",
+      "description": "O cliente tem acesso à opção de emergência Disque 190.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-058",
+      "kind": "definicoes",
+      "description": "O cliente pode definir canais e horários de contato.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-059",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar a central de ajuda e abrir e acompanhar chamados.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-060",
+      "kind": "definicoes",
+      "description": "O cliente pode denunciar condutas por meio do suporte.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-061",
+      "kind": "definicoes",
+      "description": "O cliente pode consultar termos de uso e política de privacidade.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
+      "id": "DEF-062",
+      "kind": "definicoes",
+      "description": "O cliente pode gerenciar autorizações de localização e notificações.",
+      "profile": "Cliente",
+      "topic": "Conta e suporte",
+      "status": "Em análise",
+      "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+      "refs": [],
+      "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+    },
+    {
       "id": "RN-001",
       "kind": "regras",
       "description": "Restringir a assinatura do perfil Cliente ao Plano Estudante.",
@@ -518,7 +823,7 @@
         "DEF-037",
         "DEF-038"
       ],
-      "notes": ""
+      "notes": "Estados candidatos discutidos, não aprovados: sem assinatura; documentação em análise; documentação recusada; documentação aprovada sem assinatura; pagamento pendente; Plano Estudante ativo; Plano Estudante vencido. Só criar estados distintos quando houver diferença funcional ou visual relevante. Menu, Main e navegação ainda precisam ser definidos."
     },
     {
       "id": "Q-004",
@@ -549,16 +854,121 @@
     {
       "id": "Q-006",
       "kind": "questoes",
-      "description": "Quais são as condições de acesso ao contato prioritário?",
+      "description": "Quais condições operacionais e limites se aplicam ao contato prioritário e à consultoria do cliente?",
       "profile": "Cliente",
       "topic": "Busca e atendimento",
       "status": "Em aberto",
       "source": "Distribuição anterior entre planos não aprovada",
       "refs": [
-        "DEF-001",
-        "DEF-012"
+        "DEF-011",
+        "DEF-012",
+        "DEF-039",
+        "DEF-040"
+      ],
+      "notes": "A cobrança por funcionalidades gerais já foi descartada. Permanecem em aberto limites e condições de uso."
+    },
+    {
+      "id": "Q-007",
+      "kind": "questoes",
+      "description": "Quais benefícios e cursos específicos o Plano Estudante disponibiliza?",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-047",
+        "DEF-048"
+      ],
+      "notes": "Definir relação concreta entre planos e cursos, sem presumir acesso a todos."
+    },
+    {
+      "id": "Q-008",
+      "kind": "questoes",
+      "description": "Quais critérios de validade, renovação e revalidação se aplicam à documentação estudantil?",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-021",
+        "DEF-004"
+      ],
+      "notes": "A exceção de OAB validada deve ser preservada."
+    },
+    {
+      "id": "Q-009",
+      "kind": "questoes",
+      "description": "O que acontece com os benefícios e acessos educacionais após vencimento ou cancelamento?",
+      "profile": "Compartilhado",
+      "topic": "Plano Estudante",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-048",
+        "DEF-050"
+      ],
+      "notes": "Definir o momento efetivo de perda do direito de acesso."
+    },
+    {
+      "id": "Q-010",
+      "kind": "questoes",
+      "description": "Quais regras de disponibilidade determinam a exibição dos advogados na busca do Cliente?",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-005",
+        "DEF-009",
+        "DEF-033"
       ],
       "notes": ""
+    },
+    {
+      "id": "Q-011",
+      "kind": "questoes",
+      "description": "Quais itens e subitens de menu, conteúdo da Main, Header, Alerts e Footer aparecem em cada estado da Home Cliente?",
+      "profile": "Cliente",
+      "topic": "Home e navegação",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "Q-003",
+        "DEF-037",
+        "DEF-038"
+      ],
+      "notes": "Começar pelo menu sem assinatura. Nenhum menu novo foi aprovado."
+    },
+    {
+      "id": "Q-012",
+      "kind": "questoes",
+      "description": "Quais são as ramificações e telas de destino da Home Cliente para cada estado e item de menu?",
+      "profile": "Cliente",
+      "topic": "Home e navegação",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "Q-003",
+        "Q-011"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q-013",
+      "kind": "questoes",
+      "description": "Quais recursos da The Members permitem integração para catálogo, lista de módulos, identidade, concessão e revogação de acessos?",
+      "profile": "Compartilhado",
+      "topic": "Integração The Members",
+      "status": "Em aberto",
+      "source": "Discussão atual",
+      "refs": [
+        "DEF-044",
+        "DEF-046",
+        "DEF-048",
+        "DEF-049",
+        "DEF-050"
+      ],
+      "notes": "Investigação técnica pendente; não houve verificação da API. Questão de produto com desdobramento futuro no ambiente Aplicações."
     },
     {
       "id": "INC-001",
@@ -569,9 +979,11 @@
       "status": "Em aberto",
       "source": "Projeto 11 — Planos — Cliente / Planos apresentados",
       "refs": [
-        "DEF-001"
+        "DEF-001",
+        "DEF-039",
+        "DEF-040"
       ],
-      "notes": ""
+      "notes": "Regra comercial resolvida na discussão: apenas Plano Estudante é contratável pelo Cliente. A inconsistência continua aberta até revisão das propostas/documentos antigos."
     },
     {
       "id": "INC-002",
@@ -658,6 +1070,847 @@
         "source": "Definição explícita do usuário nesta conversa",
         "refs": [],
         "notes": ""
+      }
+    },
+    {
+      "id": "H-005",
+      "recordId": "DEF-039",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-039",
+        "kind": "definicoes",
+        "description": "Todas as funcionalidades gerais do perfil Cliente são gratuitas.",
+        "profile": "Cliente",
+        "topic": "Planos e assinaturas",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-001"
+        ],
+        "notes": "Gratuidade do aplicativo; não significa gratuidade dos serviços jurídicos prestados por advogados. Condições operacionais das funcionalidades ainda podem ser definidas."
+      }
+    },
+    {
+      "id": "H-006",
+      "recordId": "DEF-040",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-040",
+        "kind": "definicoes",
+        "description": "O cliente paga exclusivamente pelas funcionalidades adquiridas por meio do Plano Estudante.",
+        "profile": "Cliente",
+        "topic": "Planos e assinaturas",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-001",
+          "DEF-039"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-007",
+      "recordId": "DEF-041",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-041",
+        "kind": "definicoes",
+        "description": "O cliente sem Plano Estudante pode visualizar o catálogo de cursos.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-025",
+          "DEF-039"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-008",
+      "recordId": "DEF-042",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-042",
+        "kind": "definicoes",
+        "description": "O cliente sem Plano Estudante pode visualizar a lista de módulos de cada curso.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-041"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-009",
+      "recordId": "DEF-043",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-043",
+        "kind": "definicoes",
+        "description": "O cliente sem Plano Estudante não pode acessar o conteúdo dos módulos.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-040",
+          "DEF-041",
+          "DEF-042"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-010",
+      "recordId": "DEF-044",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-044",
+        "kind": "definicoes",
+        "description": "Os conteúdos dos cursos são hospedados na plataforma externa The Members.",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-011",
+      "recordId": "DEF-045",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-045",
+        "kind": "definicoes",
+        "description": "O AdvogadoJá Plus apresenta o catálogo de cursos e as listas de módulos, sem hospedar os conteúdos educacionais.",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-041",
+          "DEF-042",
+          "DEF-044"
+        ],
+        "notes": "A forma de obtenção e sincronização do catálogo ainda não está definida."
+      }
+    },
+    {
+      "id": "H-012",
+      "recordId": "DEF-046",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-046",
+        "kind": "definicoes",
+        "description": "O AdvogadoJá Plus deverá possuir integração com a The Members.",
+        "profile": "Compartilhado",
+        "topic": "Integração The Members",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-044"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-013",
+      "recordId": "DEF-047",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-047",
+        "kind": "definicoes",
+        "description": "Cada plano deverá estar relacionado aos cursos que disponibiliza.",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-002",
+          "DEF-046"
+        ],
+        "notes": "A relação concreta entre planos e cursos ainda deve ser definida."
+      }
+    },
+    {
+      "id": "H-014",
+      "recordId": "DEF-048",
+      "action": "Definição confirmada na conversa",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-048",
+        "kind": "definicoes",
+        "description": "A The Members deverá liberar somente os cursos autorizados pelo plano contratado.",
+        "profile": "Compartilhado",
+        "topic": "Integração The Members",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-046",
+          "DEF-047"
+        ],
+        "notes": "A viabilidade técnica e o mecanismo de controle de acesso externo ainda precisam ser verificados."
+      }
+    },
+    {
+      "id": "H-015",
+      "recordId": "DEF-049",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-049",
+        "kind": "definicoes",
+        "description": "A liberação dos cursos deverá ocorrer automaticamente após a ativação da assinatura.",
+        "profile": "Compartilhado",
+        "topic": "Integração The Members",
+        "status": "Em análise",
+        "source": "Proposta derivada da discussão atual; requer validação",
+        "refs": [
+          "DEF-046",
+          "DEF-048"
+        ],
+        "notes": "Automação e momento exato da concessão são propostas, não confirmações explícitas."
+      }
+    },
+    {
+      "id": "H-016",
+      "recordId": "DEF-050",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-050",
+        "kind": "definicoes",
+        "description": "A perda do direito de acesso ao plano deverá refletir nas permissões da The Members.",
+        "profile": "Compartilhado",
+        "topic": "Integração The Members",
+        "status": "Em análise",
+        "source": "Proposta derivada da discussão atual; requer validação",
+        "refs": [
+          "DEF-046",
+          "DEF-048"
+        ],
+        "notes": "Definir as condições, prazos e mecanismo de revogação; não presumir que cancelamento implique perda imediata de acesso."
+      }
+    },
+    {
+      "id": "H-017",
+      "recordId": "DEF-025",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "DEF-025",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar o catálogo de cursos.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Em análise",
+        "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+        "refs": [],
+        "notes": ""
+      },
+      "after": {
+        "id": "DEF-025",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar o catálogo de cursos.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [],
+        "notes": "O catálogo também pode ser visualizado sem assinatura; ver DEF-041."
+      }
+    },
+    {
+      "id": "H-018",
+      "recordId": "DEF-026",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "DEF-026",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar os detalhes dos cursos.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Em análise",
+        "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+        "refs": [],
+        "notes": ""
+      },
+      "after": {
+        "id": "DEF-026",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar a lista de módulos dos cursos, inclusive sem assinatura.",
+        "profile": "Cliente",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-042",
+          "DEF-043"
+        ],
+        "notes": "Acesso a outros detalhes do curso além do catálogo e da lista de módulos não foi confirmado."
+      }
+    },
+    {
+      "id": "H-019",
+      "recordId": "DEF-027",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "DEF-027",
+        "kind": "definicoes",
+        "description": "O Plano Estudante oferece acesso a cursos gratuitos.",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Em análise",
+        "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+        "refs": [],
+        "notes": ""
+      },
+      "after": {
+        "id": "DEF-027",
+        "kind": "definicoes",
+        "description": "O Plano Estudante oferece acesso aos cursos autorizados pela assinatura.",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Confirmado",
+        "source": "Definição explícita do usuário nesta conversa",
+        "refs": [
+          "DEF-047",
+          "DEF-048"
+        ],
+        "notes": "Não afirmar que todos os cursos são gratuitos ou incluídos; a distribuição de cursos por plano ainda está em aberto."
+      }
+    },
+    {
+      "id": "H-020",
+      "recordId": "DEF-012",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "DEF-012",
+        "kind": "definicoes",
+        "description": "O cliente pode solicitar contato prioritário.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+        "refs": [],
+        "notes": "Distribuição anterior de permissões entre planos não aprovada."
+      },
+      "after": {
+        "id": "DEF-012",
+        "kind": "definicoes",
+        "description": "O cliente pode solicitar contato prioritário.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Lista de definições consolidada na conversa a partir da documentação do Projeto 11; requer revisão individual.",
+        "refs": [
+          "DEF-039",
+          "DEF-040"
+        ],
+        "notes": "A solicitação de contato prioritário não exige assinatura; as condições operacionais ainda precisam ser definidas."
+      }
+    },
+    {
+      "id": "H-021",
+      "recordId": "Q-006",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "Q-006",
+        "kind": "questoes",
+        "description": "Quais são as condições de acesso ao contato prioritário?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Distribuição anterior entre planos não aprovada",
+        "refs": [
+          "DEF-001",
+          "DEF-012"
+        ],
+        "notes": ""
+      },
+      "after": {
+        "id": "Q-006",
+        "kind": "questoes",
+        "description": "Quais condições operacionais e limites se aplicam ao contato prioritário e à consultoria do cliente?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Distribuição anterior entre planos não aprovada",
+        "refs": [
+          "DEF-011",
+          "DEF-012",
+          "DEF-039",
+          "DEF-040"
+        ],
+        "notes": "A cobrança por funcionalidades gerais já foi descartada. Permanecem em aberto limites e condições de uso."
+      }
+    },
+    {
+      "id": "H-022",
+      "recordId": "Q-003",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "Q-003",
+        "kind": "questoes",
+        "description": "Quais estados da Home Cliente realmente alteram Menu, Main ou navegação?",
+        "profile": "Cliente",
+        "topic": "Home e navegação",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-037",
+          "DEF-038"
+        ],
+        "notes": ""
+      },
+      "after": {
+        "id": "Q-003",
+        "kind": "questoes",
+        "description": "Quais estados da Home Cliente realmente alteram Menu, Main ou navegação?",
+        "profile": "Cliente",
+        "topic": "Home e navegação",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-037",
+          "DEF-038"
+        ],
+        "notes": "Estados candidatos discutidos, não aprovados: sem assinatura; documentação em análise; documentação recusada; documentação aprovada sem assinatura; pagamento pendente; Plano Estudante ativo; Plano Estudante vencido. Só criar estados distintos quando houver diferença funcional ou visual relevante. Menu, Main e navegação ainda precisam ser definidos."
+      }
+    },
+    {
+      "id": "H-023",
+      "recordId": "INC-001",
+      "action": "Atualização conforme discussão do Cliente",
+      "at": null,
+      "before": {
+        "id": "INC-001",
+        "kind": "inconsistencias",
+        "description": "Propostas antigas de planos Cliente Essencial e Cliente Plus precisam ser revistas: somente o Plano Estudante pode ser assinado pelo Cliente.",
+        "profile": "Cliente",
+        "topic": "Planos e assinaturas",
+        "status": "Em aberto",
+        "source": "Projeto 11 — Planos — Cliente / Planos apresentados",
+        "refs": [
+          "DEF-001"
+        ],
+        "notes": ""
+      },
+      "after": {
+        "id": "INC-001",
+        "kind": "inconsistencias",
+        "description": "Propostas antigas de planos Cliente Essencial e Cliente Plus precisam ser revistas: somente o Plano Estudante pode ser assinado pelo Cliente.",
+        "profile": "Cliente",
+        "topic": "Planos e assinaturas",
+        "status": "Em aberto",
+        "source": "Projeto 11 — Planos — Cliente / Planos apresentados",
+        "refs": [
+          "DEF-001",
+          "DEF-039",
+          "DEF-040"
+        ],
+        "notes": "Regra comercial resolvida na discussão: apenas Plano Estudante é contratável pelo Cliente. A inconsistência continua aberta até revisão das propostas/documentos antigos."
+      }
+    },
+    {
+      "id": "H-024",
+      "recordId": "Q-007",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-007",
+        "kind": "questoes",
+        "description": "Quais benefícios e cursos específicos o Plano Estudante disponibiliza?",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-047",
+          "DEF-048"
+        ],
+        "notes": "Definir relação concreta entre planos e cursos, sem presumir acesso a todos."
+      }
+    },
+    {
+      "id": "H-025",
+      "recordId": "Q-008",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-008",
+        "kind": "questoes",
+        "description": "Quais critérios de validade, renovação e revalidação se aplicam à documentação estudantil?",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-021",
+          "DEF-004"
+        ],
+        "notes": "A exceção de OAB validada deve ser preservada."
+      }
+    },
+    {
+      "id": "H-026",
+      "recordId": "Q-009",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-009",
+        "kind": "questoes",
+        "description": "O que acontece com os benefícios e acessos educacionais após vencimento ou cancelamento?",
+        "profile": "Compartilhado",
+        "topic": "Plano Estudante",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-048",
+          "DEF-050"
+        ],
+        "notes": "Definir o momento efetivo de perda do direito de acesso."
+      }
+    },
+    {
+      "id": "H-027",
+      "recordId": "Q-010",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-010",
+        "kind": "questoes",
+        "description": "Quais regras de disponibilidade determinam a exibição dos advogados na busca do Cliente?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-005",
+          "DEF-009",
+          "DEF-033"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-028",
+      "recordId": "Q-011",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-011",
+        "kind": "questoes",
+        "description": "Quais itens e subitens de menu, conteúdo da Main, Header, Alerts e Footer aparecem em cada estado da Home Cliente?",
+        "profile": "Cliente",
+        "topic": "Home e navegação",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "Q-003",
+          "DEF-037",
+          "DEF-038"
+        ],
+        "notes": "Começar pelo menu sem assinatura. Nenhum menu novo foi aprovado."
+      }
+    },
+    {
+      "id": "H-029",
+      "recordId": "Q-012",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-012",
+        "kind": "questoes",
+        "description": "Quais são as ramificações e telas de destino da Home Cliente para cada estado e item de menu?",
+        "profile": "Cliente",
+        "topic": "Home e navegação",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "Q-003",
+          "Q-011"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "id": "H-030",
+      "recordId": "Q-013",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-013",
+        "kind": "questoes",
+        "description": "Quais recursos da The Members permitem integração para catálogo, lista de módulos, identidade, concessão e revogação de acessos?",
+        "profile": "Compartilhado",
+        "topic": "Integração The Members",
+        "status": "Em aberto",
+        "source": "Discussão atual",
+        "refs": [
+          "DEF-044",
+          "DEF-046",
+          "DEF-048",
+          "DEF-049",
+          "DEF-050"
+        ],
+        "notes": "Investigação técnica pendente; não houve verificação da API. Questão de produto com desdobramento futuro no ambiente Aplicações."
+      }
+    },
+    {
+      "id": "H-031",
+      "recordId": "DEF-051",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-051",
+        "kind": "definicoes",
+        "description": "O cliente pode cadastrar conta, entrar, recuperar senha e sair.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-032",
+      "recordId": "DEF-052",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-052",
+        "kind": "definicoes",
+        "description": "O cliente pode excluir sua conta.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-033",
+      "recordId": "DEF-053",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-053",
+        "kind": "definicoes",
+        "description": "O cliente pode utilizar geolocalização ou definir manualmente sua cidade.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-034",
+      "recordId": "DEF-054",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-054",
+        "kind": "definicoes",
+        "description": "O cliente pode detalhar, cancelar e encerrar suas solicitações.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-035",
+      "recordId": "DEF-055",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-055",
+        "kind": "definicoes",
+        "description": "O cliente pode avaliar clareza e tempo de resposta e adicionar comentários.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-036",
+      "recordId": "DEF-056",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-056",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar notificações recebidas.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-037",
+      "recordId": "DEF-057",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-057",
+        "kind": "definicoes",
+        "description": "O cliente tem acesso à opção de emergência Disque 190.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-038",
+      "recordId": "DEF-058",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-058",
+        "kind": "definicoes",
+        "description": "O cliente pode definir canais e horários de contato.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-039",
+      "recordId": "DEF-059",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-059",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar a central de ajuda e abrir e acompanhar chamados.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-040",
+      "recordId": "DEF-060",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-060",
+        "kind": "definicoes",
+        "description": "O cliente pode denunciar condutas por meio do suporte.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-041",
+      "recordId": "DEF-061",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-061",
+        "kind": "definicoes",
+        "description": "O cliente pode consultar termos de uso e política de privacidade.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-042",
+      "recordId": "DEF-062",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-062",
+        "kind": "definicoes",
+        "description": "O cliente pode gerenciar autorizações de localização e notificações.",
+        "profile": "Cliente",
+        "topic": "Conta e suporte",
+        "status": "Em análise",
+        "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
+        "refs": [],
+        "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
       }
     }
   ]
