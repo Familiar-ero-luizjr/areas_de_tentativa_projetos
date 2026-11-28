@@ -432,6 +432,555 @@
       ],
       "visual": [],
       "descricao": "Mapeamento inicial proposto"
+    },
+    {
+      "id": "professional_profile",
+      "nome": "Perfil público do profissional",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Profissional selecionado",
+          "tabela": "professional_public_profiles",
+          "campo": "id",
+          "operacao": "Consultar",
+          "observacao": "Contexto de navegação; não usar ID mock como UUID."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Nome público",
+          "tabela": "professional_public_profiles",
+          "campo": "display_name",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "OAB",
+          "tabela": "professional_public_profiles",
+          "campo": "oab_number",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "UF da OAB",
+          "tabela": "professional_public_profiles",
+          "campo": "oab_uf",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Validação da OAB",
+          "tabela": "professional_public_profiles",
+          "campo": "oab_validation_status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Áreas",
+          "tabela": "professional_public_profiles",
+          "campo": "practice_areas",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Disponibilidade",
+          "tabela": "professional_public_profiles",
+          "campo": "availability_status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Localização pública",
+          "tabela": "professional_public_profiles",
+          "campo": "public_city",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "UF pública",
+          "tabela": "professional_public_profiles",
+          "campo": "public_state",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Resumo público",
+          "tabela": "professional_public_profiles",
+          "campo": "summary",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Avaliações e médias",
+          "tabela": "request_reviews",
+          "campo": "",
+          "operacao": "Consultar",
+          "observacao": "Agregação e publicação pendentes; sem gravar médias fictícias."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Status da solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Telefone/canal direto",
+          "tabela": "users",
+          "campo": "phone",
+          "operacao": "Consultar",
+          "observacao": "Mapeamento candidato; somente após aceite autorizado; canal WhatsApp específico ainda não definido."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Solicitar contato",
+          "tabela": "contact_requests",
+          "campo": "",
+          "operacao": "Inserir",
+          "observacao": "Identidade e estado pending; tipo e área a confirmar."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Cancelar solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Atualizar",
+          "observacao": "Apenas pendente; proposta."
+        }
+      ],
+      "visual": [
+        "Nome",
+        "OAB",
+        "Áreas",
+        "Disponibilidade",
+        "Resumo",
+        "Contato",
+        "Avaliações"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
+    },
+    {
+      "id": "client_requests",
+      "nome": "Minhas solicitações",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Solicitações do cliente",
+          "tabela": "contact_requests",
+          "campo": "",
+          "operacao": "Consultar",
+          "observacao": "Somente registros do cliente autenticado."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Área",
+          "tabela": "contact_requests",
+          "campo": "area",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Tipo",
+          "tabela": "contact_requests",
+          "campo": "request_type",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Data",
+          "tabela": "contact_requests",
+          "campo": "created_at",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Status da solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Filtro de status",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Somente estado da interface."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Solicitação selecionada",
+          "tabela": "contact_requests",
+          "campo": "id",
+          "operacao": "Temporário",
+          "observacao": "Não grava seleção no banco."
+        }
+      ],
+      "visual": [
+        "Filtros",
+        "Área",
+        "Tipo e data",
+        "Status",
+        "Identificador"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
+    },
+    {
+      "id": "client_request_detail",
+      "nome": "Detalhe da solicitação",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "ID da solicitação selecionada",
+          "tabela": "contact_requests",
+          "campo": "id",
+          "operacao": "Consultar",
+          "observacao": "Contexto temporário da navegação; autorização a validar."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Status da solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Área",
+          "tabela": "contact_requests",
+          "campo": "area",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Profissional",
+          "tabela": "professional_public_profiles",
+          "campo": "display_name",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Resumo da solicitação",
+          "tabela": "contact_requests",
+          "campo": "description",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Avaliação registrada",
+          "tabela": "request_reviews",
+          "campo": "",
+          "operacao": "Consultar",
+          "observacao": "Deriva estado avaliada; não duplica status persistido."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Telefone/canal direto",
+          "tabela": "users",
+          "campo": "phone",
+          "operacao": "Consultar",
+          "observacao": "Mapeamento candidato; somente após aceite autorizado; canal WhatsApp específico ainda não definido."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Cancelar solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Atualizar",
+          "observacao": "Somente pending; proposta."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Destino da ação",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "WhatsApp, encerrar, avaliar ou suporte; depende do estado."
+        }
+      ],
+      "visual": [
+        "Área",
+        "Status",
+        "Profissional",
+        "Resumo",
+        "Ações condicionais",
+        "Avaliação registrada"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
+    },
+    {
+      "id": "client_contacts",
+      "nome": "Contatos liberados",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "Solicitações aceitas",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Somente aceitas ativas, proposta."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Profissional",
+          "tabela": "professional_public_profiles",
+          "campo": "display_name",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Área",
+          "tabela": "contact_requests",
+          "campo": "area",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Solicitação selecionada",
+          "tabela": "contact_requests",
+          "campo": "id",
+          "operacao": "Temporário",
+          "observacao": "Proposta a revisar"
+        }
+      ],
+      "visual": [
+        "Nome do profissional",
+        "Área",
+        "Contato liberado"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
+    },
+    {
+      "id": "external_contact_notice",
+      "nome": "Aviso antes do WhatsApp",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "ID da solicitação selecionada",
+          "tabela": "contact_requests",
+          "campo": "id",
+          "operacao": "Consultar",
+          "observacao": "Contexto temporário da navegação; autorização a validar."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Status da solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Telefone/canal direto",
+          "tabela": "users",
+          "campo": "phone",
+          "operacao": "Consultar",
+          "observacao": "Mapeamento candidato; somente após aceite autorizado; canal WhatsApp específico ainda não definido."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Página de origem",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Retorno à origem; sem armazenamento persistente."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Confirmação de abertura externa",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Simulação; sem chamada real."
+        }
+      ],
+      "visual": [
+        "Aviso de canal externo",
+        "Abrir WhatsApp"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
+    },
+    {
+      "id": "request_close",
+      "nome": "Encerrar solicitação",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "ID da solicitação selecionada",
+          "tabela": "contact_requests",
+          "campo": "id",
+          "operacao": "Consultar",
+          "observacao": "Contexto temporário da navegação; autorização a validar."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Status da solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Motivos do encerramento",
+          "tabela": "contact_requests",
+          "campo": "close_reasons",
+          "operacao": "Temporário",
+          "observacao": "Seleção múltipla; mínimo um na prévia, regra pendente."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Observação opcional",
+          "tabela": "contact_requests",
+          "campo": "close_note",
+          "operacao": "Temporário",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Status encerrada",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Atualizar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Motivos de encerramento",
+          "tabela": "contact_requests",
+          "campo": "close_reasons",
+          "operacao": "Atualizar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Observação",
+          "tabela": "contact_requests",
+          "campo": "close_note",
+          "operacao": "Atualizar",
+          "observacao": "Proposta a revisar"
+        }
+      ],
+      "visual": [
+        "Motivos",
+        "Observação opcional",
+        "Encerrar solicitação"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
+    },
+    {
+      "id": "experience_review",
+      "nome": "Avaliar experiência",
+      "jornada": "Cliente / Profissionais e solicitações",
+      "itens": [
+        {
+          "direcao": "Entrada",
+          "nome": "ID da solicitação selecionada",
+          "tabela": "contact_requests",
+          "campo": "id",
+          "operacao": "Consultar",
+          "observacao": "Contexto temporário da navegação; autorização a validar."
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Status da solicitação",
+          "tabela": "contact_requests",
+          "campo": "status",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Nome do profissional",
+          "tabela": "professional_public_profiles",
+          "campo": "display_name",
+          "operacao": "Consultar",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Nota geral",
+          "tabela": "request_reviews",
+          "campo": "overall_rating",
+          "operacao": "Temporário",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Clareza",
+          "tabela": "request_reviews",
+          "campo": "clarity_rating",
+          "operacao": "Temporário",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Tempo de resposta",
+          "tabela": "request_reviews",
+          "campo": "response_time_rating",
+          "operacao": "Temporário",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Entrada",
+          "nome": "Comentário opcional",
+          "tabela": "request_reviews",
+          "campo": "comment",
+          "operacao": "Temporário",
+          "observacao": "Proposta a revisar"
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Avaliação registrada",
+          "tabela": "request_reviews",
+          "campo": "",
+          "operacao": "Inserir",
+          "observacao": "Uma por solicitação encerrada; notas 1–5; proposta."
+        },
+        {
+          "direcao": "Saída",
+          "nome": "Pular avaliação",
+          "tabela": "",
+          "campo": "",
+          "operacao": "Temporário",
+          "observacao": "Sem registro de avaliação."
+        }
+      ],
+      "visual": [
+        "Profissional",
+        "Nota geral",
+        "Clareza",
+        "Tempo de resposta",
+        "Comentário opcional"
+      ],
+      "descricao": "Mapeamento proposto a partir da prévia. Banco de dados e regras de persistência não homologados."
     }
   ]
 }

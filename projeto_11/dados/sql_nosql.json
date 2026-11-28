@@ -14,6 +14,12 @@
       "nome": "Termos e privacidade",
       "cor": "#a67b35",
       "descricao": "Documentos e consentimentos"
+    },
+    {
+      "id": "professional_requests",
+      "nome": "Profissionais e solicitações",
+      "cor": "#3979af",
+      "descricao": "Proposta a revisar — dados necessários às sete telas; não é migração executada."
     }
   ],
   "tabelas": [
@@ -490,6 +496,323 @@
         }
       ],
       "constraints": []
+    },
+    {
+      "id": "professional_public_profiles",
+      "nome": "professional_public_profiles",
+      "dominio": "professional_requests",
+      "descricao": "Proposta a revisar — Apresentação pública do advogado; vínculo com user_profiles, sem expor contato privado.",
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "pk": true,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "gen_random_uuid()",
+          "indice": false,
+          "descricao": "Proposta a revisar. Identidade persistente; não usar IDs fictícios dos mocks."
+        },
+        {
+          "nome": "profile_id",
+          "tipo": "uuid",
+          "pk": false,
+          "unico": true,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Perfil advogado; elegibilidade e validação da OAB a confirmar."
+        },
+        {
+          "nome": "display_name",
+          "tipo": "varchar(160)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Nome público"
+        },
+        {
+          "nome": "oab_number",
+          "tipo": "varchar(40)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Número de inscrição"
+        },
+        {
+          "nome": "oab_uf",
+          "tipo": "char(2)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. UF da inscrição"
+        },
+        {
+          "nome": "oab_validation_status",
+          "tipo": "varchar(40)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Origem e enumeração a confirmar"
+        },
+        {
+          "nome": "practice_areas",
+          "tipo": "text[]",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Áreas exibidas; catálogo definitivo pendente"
+        },
+        {
+          "nome": "availability_status",
+          "tipo": "varchar(40)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Disponibilidade exibida; origem e sincronização pendentes"
+        },
+        {
+          "nome": "public_city",
+          "tipo": "varchar(120)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Cidade pública"
+        },
+        {
+          "nome": "public_state",
+          "tipo": "char(2)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. UF pública"
+        },
+        {
+          "nome": "summary",
+          "tipo": "text",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Resumo público; não confundir com dados privados"
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "id": "contact_requests",
+      "nome": "contact_requests",
+      "dominio": "professional_requests",
+      "descricao": "Proposta a revisar — Solicitação individual Cliente → Advogado. Contato liberado é consequência do aceite.",
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "pk": true,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "gen_random_uuid()",
+          "indice": false,
+          "descricao": "Proposta a revisar. Identidade persistente; não usar IDs fictícios dos mocks."
+        },
+        {
+          "nome": "client_profile_id",
+          "tipo": "uuid",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": true,
+          "descricao": "Proposta a revisar. Perfil cliente proprietário."
+        },
+        {
+          "nome": "professional_profile_id",
+          "tipo": "uuid",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": true,
+          "descricao": "Proposta a revisar. Perfil público profissional destinatário."
+        },
+        {
+          "nome": "area",
+          "tipo": "varchar(120)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Área de atendimento; catálogo pendente"
+        },
+        {
+          "nome": "request_type",
+          "tipo": "varchar(40)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Consultoria ou contato prioritário; escolha/origem a definir"
+        },
+        {
+          "nome": "description",
+          "tipo": "text",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Resumo quando fornecido; não exigir narrativa jurídica detalhada"
+        },
+        {
+          "nome": "status",
+          "tipo": "varchar(40)",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": true,
+          "descricao": "Proposta a revisar. pending, accepted, declined, cancelled, closed. none é estado visual sem registro; reviewed é derivado da avaliação."
+        },
+        {
+          "nome": "created_at",
+          "tipo": "timestamptz",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "now()",
+          "indice": false,
+          "descricao": "Proposta a revisar. Criação da solicitação."
+        },
+        {
+          "nome": "updated_at",
+          "tipo": "timestamptz",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "now()",
+          "indice": false,
+          "descricao": "Proposta a revisar. Última alteração."
+        },
+        {
+          "nome": "close_reasons",
+          "tipo": "text[]",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Motivos selecionados; obrigatoriedade e catálogo pendentes"
+        },
+        {
+          "nome": "close_note",
+          "tipo": "text",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Observação opcional de encerramento"
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "id": "request_reviews",
+      "nome": "request_reviews",
+      "dominio": "professional_requests",
+      "descricao": "Proposta a revisar — Avaliação de experiência associada à solicitação encerrada; regra de unicidade proposta.",
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "pk": true,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "gen_random_uuid()",
+          "indice": false,
+          "descricao": "Proposta a revisar. Identidade persistente; não usar IDs fictícios dos mocks."
+        },
+        {
+          "nome": "request_id",
+          "tipo": "uuid",
+          "pk": false,
+          "unico": true,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Solicitação avaliada."
+        },
+        {
+          "nome": "overall_rating",
+          "tipo": "smallint",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Nota geral 1–5; proposta."
+        },
+        {
+          "nome": "clarity_rating",
+          "tipo": "smallint",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Clareza 1–5; proposta."
+        },
+        {
+          "nome": "response_time_rating",
+          "tipo": "smallint",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Tempo de resposta 1–5; proposta."
+        },
+        {
+          "nome": "comment",
+          "tipo": "text",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": false,
+          "padrao": "",
+          "indice": false,
+          "descricao": "Proposta a revisar. Comentário opcional; publicação/moderação pendentes."
+        },
+        {
+          "nome": "created_at",
+          "tipo": "timestamptz",
+          "pk": false,
+          "unico": false,
+          "obrigatorio": true,
+          "padrao": "now()",
+          "indice": false,
+          "descricao": "Proposta a revisar. Registro da avaliação."
+        }
+      ],
+      "constraints": []
     }
   ],
   "relacoes": [
@@ -532,6 +855,46 @@
       "cardinalidade": "N:1",
       "exclusao": "NO ACTION",
       "descricao": ""
+    },
+    {
+      "id": "r5",
+      "origem": "professional_public_profiles",
+      "campoOrigem": "profile_id",
+      "destino": "user_profiles",
+      "campoDestino": "id",
+      "cardinalidade": "1:1",
+      "exclusao": "NO ACTION",
+      "descricao": "Proposta a revisar; política de exclusão e retenção não definida."
+    },
+    {
+      "id": "r6",
+      "origem": "contact_requests",
+      "campoOrigem": "client_profile_id",
+      "destino": "user_profiles",
+      "campoDestino": "id",
+      "cardinalidade": "N:1",
+      "exclusao": "NO ACTION",
+      "descricao": "Proposta a revisar; política de exclusão e retenção não definida."
+    },
+    {
+      "id": "r7",
+      "origem": "contact_requests",
+      "campoOrigem": "professional_profile_id",
+      "destino": "professional_public_profiles",
+      "campoDestino": "id",
+      "cardinalidade": "N:1",
+      "exclusao": "NO ACTION",
+      "descricao": "Proposta a revisar; política de exclusão e retenção não definida."
+    },
+    {
+      "id": "r8",
+      "origem": "request_reviews",
+      "campoOrigem": "request_id",
+      "destino": "contact_requests",
+      "campoDestino": "id",
+      "cardinalidade": "1:1",
+      "exclusao": "NO ACTION",
+      "descricao": "Proposta a revisar; política de exclusão e retenção não definida."
     }
   ]
 }

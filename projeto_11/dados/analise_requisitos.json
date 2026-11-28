@@ -997,6 +997,211 @@
         "DEF-004"
       ],
       "notes": ""
+    },
+    {
+      "id": "DEF-063",
+      "kind": "definicoes",
+      "description": "O perfil público e o detalhe da solicitação reutilizam um componente de situação da solicitação, com apresentações próprias.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Confirmado",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-010",
+        "DEF-013",
+        "DEF-054"
+      ],
+      "notes": "Componente request_detail; confirmação explícita do usuário na discussão anterior. Não implica aprovação das regras de negócio restantes."
+    },
+    {
+      "id": "RN-003",
+      "kind": "regras",
+      "description": "Exibir canais de contato direto somente quando a solicitação estiver aceita.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-015",
+        "DEF-014"
+      ],
+      "notes": "Regra do legado reproduzida na prévia; validação de autorização fora do protótipo."
+    },
+    {
+      "id": "RN-004",
+      "kind": "regras",
+      "description": "Preservar a identidade da solicitação ao acompanhar, cancelar, encerrar e avaliar; não alterar outro registro.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-013",
+        "DEF-054"
+      ],
+      "notes": "Transporte do registro e autorização ainda precisam de implementação."
+    },
+    {
+      "id": "RN-005",
+      "kind": "regras",
+      "description": "Permitir cancelar solicitação pendente e encerrar solicitação aceita.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-054",
+        "RN-004"
+      ],
+      "notes": "Proposta de transições; cancelada e encerrada permanecem no histórico."
+    },
+    {
+      "id": "RN-006",
+      "kind": "regras",
+      "description": "Permitir avaliação após encerramento; não repetir avaliação da mesma solicitação.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-016",
+        "DEF-055",
+        "RN-004"
+      ],
+      "notes": "Proposta: envio opcional, três notas obrigatórias se enviar, comentário opcional; avaliada é condição derivada da avaliação."
+    },
+    {
+      "id": "RF-003",
+      "kind": "funcionais",
+      "description": "Abrir o perfil público do profissional selecionado e permitir solicitar contato.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-010",
+        "DEF-011",
+        "DEF-012",
+        "DEF-063"
+      ],
+      "notes": "professional_profile; seleção a transportar pelo motor."
+    },
+    {
+      "id": "RF-004",
+      "kind": "funcionais",
+      "description": "Listar e filtrar solicitações e abrir o detalhe do registro selecionado.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-013",
+        "DEF-054",
+        "RN-004"
+      ],
+      "notes": "client_requests e client_request_detail; filtros Todas, Pendentes, Aceitas e Recusadas."
+    },
+    {
+      "id": "RF-005",
+      "kind": "funcionais",
+      "description": "Consultar contatos liberados e exibir aviso antes de direcionar ao WhatsApp.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-014",
+        "DEF-015",
+        "RN-003"
+      ],
+      "notes": "client_contacts e external_contact_notice; chamadas apenas simuladas."
+    },
+    {
+      "id": "RF-006",
+      "kind": "funcionais",
+      "description": "Registrar encerramento com motivos e observação, e oferecer avaliação posterior.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em análise",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-054",
+        "DEF-055",
+        "RN-005",
+        "RN-006"
+      ],
+      "notes": "request_close e experience_review; regras de obrigatoriedade pendentes."
+    },
+    {
+      "id": "Q-014",
+      "kind": "questoes",
+      "description": "Quando o cliente pode abrir nova solicitação ao mesmo profissional? É permitida mais de uma ativa?",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-054",
+        "RN-004"
+      ],
+      "notes": "D-04 da especificação V2."
+    },
+    {
+      "id": "Q-015",
+      "kind": "questoes",
+      "description": "Quais motivos de encerramento são permitidos e quais são obrigatórios?",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-054",
+        "RN-005"
+      ],
+      "notes": "D-07: prévia usa múltiplos motivos e mínimo um, sem aprovação definitiva."
+    },
+    {
+      "id": "Q-016",
+      "kind": "questoes",
+      "description": "Como serão tratados publicação, moderação, edição e visibilidade das avaliações?",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-016",
+        "DEF-055",
+        "RN-006"
+      ],
+      "notes": "Prévia não define moderação nem publicação real."
+    },
+    {
+      "id": "Q-017",
+      "kind": "questoes",
+      "description": "Como transportar a seleção e o contexto da solicitação entre páginas e validar a autorização de acesso?",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "RN-004",
+        "DEF-063"
+      ],
+      "notes": "Motor atual não suporta continuidade genérica de data.* e novos operadores; não homologado."
+    },
+    {
+      "id": "Q-018",
+      "kind": "questoes",
+      "description": "Confirmar a classificação e os caminhos de navegação da subjornada Profissionais e solicitações.",
+      "profile": "Cliente",
+      "topic": "Busca e atendimento",
+      "status": "Em aberto",
+      "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+      "refs": [
+        "DEF-013",
+        "DEF-063"
+      ],
+      "notes": "professional_requests ordem 5, sete ocorrências na ordem do catálogo; classificação é proposta organizacional."
     }
   ],
   "history": [
@@ -1911,6 +2116,309 @@
         "source": "AdvogadoJa_Funcionalidades_Cliente_Advogado (1).md — inventário do Cliente / Área Estudante; requer revisão individual.",
         "refs": [],
         "notes": "Funcionalidade prevista no inventário; detalhes ainda não aprovados individualmente."
+      }
+    },
+    {
+      "id": "H-043",
+      "recordId": "DEF-063",
+      "action": "Registro de decisão confirmada",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "DEF-063",
+        "kind": "definicoes",
+        "description": "O perfil público e o detalhe da solicitação reutilizam um componente de situação da solicitação, com apresentações próprias.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Confirmado",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-010",
+          "DEF-013",
+          "DEF-054"
+        ],
+        "notes": "Componente request_detail; confirmação explícita do usuário na discussão anterior. Não implica aprovação das regras de negócio restantes."
+      }
+    },
+    {
+      "id": "H-044",
+      "recordId": "RN-003",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RN-003",
+        "kind": "regras",
+        "description": "Exibir canais de contato direto somente quando a solicitação estiver aceita.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-015",
+          "DEF-014"
+        ],
+        "notes": "Regra do legado reproduzida na prévia; validação de autorização fora do protótipo."
+      }
+    },
+    {
+      "id": "H-045",
+      "recordId": "RN-004",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RN-004",
+        "kind": "regras",
+        "description": "Preservar a identidade da solicitação ao acompanhar, cancelar, encerrar e avaliar; não alterar outro registro.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-013",
+          "DEF-054"
+        ],
+        "notes": "Transporte do registro e autorização ainda precisam de implementação."
+      }
+    },
+    {
+      "id": "H-046",
+      "recordId": "RN-005",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RN-005",
+        "kind": "regras",
+        "description": "Permitir cancelar solicitação pendente e encerrar solicitação aceita.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-054",
+          "RN-004"
+        ],
+        "notes": "Proposta de transições; cancelada e encerrada permanecem no histórico."
+      }
+    },
+    {
+      "id": "H-047",
+      "recordId": "RN-006",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RN-006",
+        "kind": "regras",
+        "description": "Permitir avaliação após encerramento; não repetir avaliação da mesma solicitação.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-016",
+          "DEF-055",
+          "RN-004"
+        ],
+        "notes": "Proposta: envio opcional, três notas obrigatórias se enviar, comentário opcional; avaliada é condição derivada da avaliação."
+      }
+    },
+    {
+      "id": "H-048",
+      "recordId": "RF-003",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RF-003",
+        "kind": "funcionais",
+        "description": "Abrir o perfil público do profissional selecionado e permitir solicitar contato.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-010",
+          "DEF-011",
+          "DEF-012",
+          "DEF-063"
+        ],
+        "notes": "professional_profile; seleção a transportar pelo motor."
+      }
+    },
+    {
+      "id": "H-049",
+      "recordId": "RF-004",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RF-004",
+        "kind": "funcionais",
+        "description": "Listar e filtrar solicitações e abrir o detalhe do registro selecionado.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-013",
+          "DEF-054",
+          "RN-004"
+        ],
+        "notes": "client_requests e client_request_detail; filtros Todas, Pendentes, Aceitas e Recusadas."
+      }
+    },
+    {
+      "id": "H-050",
+      "recordId": "RF-005",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RF-005",
+        "kind": "funcionais",
+        "description": "Consultar contatos liberados e exibir aviso antes de direcionar ao WhatsApp.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-014",
+          "DEF-015",
+          "RN-003"
+        ],
+        "notes": "client_contacts e external_contact_notice; chamadas apenas simuladas."
+      }
+    },
+    {
+      "id": "H-051",
+      "recordId": "RF-006",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "RF-006",
+        "kind": "funcionais",
+        "description": "Registrar encerramento com motivos e observação, e oferecer avaliação posterior.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em análise",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-054",
+          "DEF-055",
+          "RN-005",
+          "RN-006"
+        ],
+        "notes": "request_close e experience_review; regras de obrigatoriedade pendentes."
+      }
+    },
+    {
+      "id": "H-052",
+      "recordId": "Q-014",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-014",
+        "kind": "questoes",
+        "description": "Quando o cliente pode abrir nova solicitação ao mesmo profissional? É permitida mais de uma ativa?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-054",
+          "RN-004"
+        ],
+        "notes": "D-04 da especificação V2."
+      }
+    },
+    {
+      "id": "H-053",
+      "recordId": "Q-015",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-015",
+        "kind": "questoes",
+        "description": "Quais motivos de encerramento são permitidos e quais são obrigatórios?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-054",
+          "RN-005"
+        ],
+        "notes": "D-07: prévia usa múltiplos motivos e mínimo um, sem aprovação definitiva."
+      }
+    },
+    {
+      "id": "H-054",
+      "recordId": "Q-016",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-016",
+        "kind": "questoes",
+        "description": "Como serão tratados publicação, moderação, edição e visibilidade das avaliações?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-016",
+          "DEF-055",
+          "RN-006"
+        ],
+        "notes": "Prévia não define moderação nem publicação real."
+      }
+    },
+    {
+      "id": "H-055",
+      "recordId": "Q-017",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-017",
+        "kind": "questoes",
+        "description": "Como transportar a seleção e o contexto da solicitação entre páginas e validar a autorização de acesso?",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "RN-004",
+          "DEF-063"
+        ],
+        "notes": "Motor atual não suporta continuidade genérica de data.* e novos operadores; não homologado."
+      }
+    },
+    {
+      "id": "H-056",
+      "recordId": "Q-018",
+      "action": "Registro incluído para análise",
+      "at": null,
+      "before": null,
+      "after": {
+        "id": "Q-018",
+        "kind": "questoes",
+        "description": "Confirmar a classificação e os caminhos de navegação da subjornada Profissionais e solicitações.",
+        "profile": "Cliente",
+        "topic": "Busca e atendimento",
+        "status": "Em aberto",
+        "source": "Especificação V2 e HTML Profissionais e Solicitações — Novo Contrato; integração atual",
+        "refs": [
+          "DEF-013",
+          "DEF-063"
+        ],
+        "notes": "professional_requests ordem 5, sete ocorrências na ordem do catálogo; classificação é proposta organizacional."
       }
     }
   ]
