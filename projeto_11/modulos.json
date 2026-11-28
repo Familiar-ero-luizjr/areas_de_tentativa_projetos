@@ -1,50 +1,59 @@
 {
   "versao": 1,
-  "moduloInicial": "diagrama_uml_er",
+  "moduloInicial": "data",
   "modulos": [
     {
-      "id": "diagrama_uml_er",
-      "nome": "Diagrama UML / ER",
+      "id": "data",
+      "nome": "Dados",
       "ordem": 1,
       "ativo": true,
-      "dados": [
-        "sql_nosql",
-        "telas_e_dados"
-      ],
-      "rota": "diagram"
-    },
-    {
-      "id": "tabelas",
-      "nome": "Tabelas",
-      "ordem": 2,
-      "ativo": true,
-      "dados": [
-        "sql_nosql",
-        "telas_e_dados"
-      ],
-      "rota": "tables"
-    },
-    {
-      "id": "telas_e_dados",
-      "nome": "Telas e dados",
-      "ordem": 3,
-      "ativo": true,
-      "dados": [
-        "sql_nosql",
-        "telas_e_dados"
-      ],
-      "rota": "screens"
-    },
-    {
-      "id": "sql_nosql",
-      "nome": "SQL / NoSQL",
-      "ordem": 4,
-      "ativo": true,
-      "dados": [
-        "sql_nosql",
-        "telas_e_dados"
-      ],
-      "rota": "sql"
+      "moduloInicial": "diagrama_uml_er",
+      "submodulos": [
+        {
+          "id": "diagrama_uml_er",
+          "nome": "Diagrama UML / ER",
+          "ordem": 1,
+          "ativo": true,
+          "dados": [
+            "sql_nosql",
+            "telas_e_dados"
+          ],
+          "rota": "diagram"
+        },
+        {
+          "id": "tabelas",
+          "nome": "Tabelas",
+          "ordem": 2,
+          "ativo": true,
+          "dados": [
+            "sql_nosql",
+            "telas_e_dados"
+          ],
+          "rota": "tables"
+        },
+        {
+          "id": "telas_e_dados",
+          "nome": "Telas e dados",
+          "ordem": 3,
+          "ativo": true,
+          "dados": [
+            "sql_nosql",
+            "telas_e_dados"
+          ],
+          "rota": "screens"
+        },
+        {
+          "id": "sql_nosql",
+          "nome": "SQL / NoSQL",
+          "ordem": 4,
+          "ativo": true,
+          "dados": [
+            "sql_nosql",
+            "telas_e_dados"
+          ],
+          "rota": "sql"
+        }
+      ]
     },
     {
       "id": "editor_documentacao",
